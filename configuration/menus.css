@@ -1,0 +1,24 @@
+menupopup,
+#context-navigation,
+#appMenu-popup #appMenu-mainView,
+.panel-arrowcontainer,
+panelview {
+  background-color: var(--main-nav-bar-bg-color) !important;
+  border: 0px !important;
+  border-radius: 10px !important;
+}
+
+.panel-arrowcontainer {
+  margin: 0px -3px -3px -3px !important;
+}
+
+.panel-arrowcontent {
+  margin: 0 !important;
+  opacity: 1 !important;
+  background: url("../assets/left-arrow.svg");
+}
+
+.panel-arrowbox {
+  margin: 0 !important;
+  display: none !important;
+}

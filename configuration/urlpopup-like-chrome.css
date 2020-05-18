@@ -1,0 +1,88 @@
+/* Makes urlbar popup to appear Like on various Google search services */
+/* Firefox 70+ only */
+/* Popup uses colors from your theme */
+
+/* Focused  urlbar popup radius, can be edited freely */
+#urlbar > .urlbarView:not(.megabar),
+#urlbar.megabar[focused] > #urlbar-background {
+  border-radius: 8px !important;
+}
+
+/* Layout containing block hackery, don't touch pls */
+#urlbar-container:not(.megabar) {
+  transform: translateY(0);
+  position: relative;
+  z-index: 10;
+}
+
+/* constrain popup to urlbar width */
+.urlbarView:not(.megabar) {
+  max-width: 100% !important;
+  top: calc(35px + var(--toolbarbutton-outer-padding)) !important;
+  border-width: 0 !important;
+  background-color: transparent !important;
+  pointer-events: none;
+  border-radius: 0 0 var(--inputbar-rounding) var(--inputbar-rounding) !important;
+}
+
+/* Apply popup background color to the urlbar background when focused */
+#urlbar:not(.megabar):focus-within {
+  background-color: var(--urlview-color);
+}
+
+/* Spacer to offset actual results. This is placed over urlbar text  */
+.urlbarView:not(.megabar)::before {
+  content: "";
+  display: -moz-box;
+  height: calc(1em + var(--toolbarbutton-outer-padding));
+}
+
+/* Add popup background color to sub-elements, since it was removed from the popup itself */
+.urlbarView:not(.megabar) > .search-one-offs,
+.urlbarView:not(.megabar) > .urlbarView-body-outer {
+  background-color: var(--urlview-color); /* Set background-color here */
+  color: white; /* Set text color here */
+  pointer-events: auto;
+}
+
+/* Add separator line under urlbar text field */
+.urlbarView:not(.megabar) > .urlbarView-body-outer::before {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    grey 35%,
+    grey 65%,
+    transparent
+  );
+}
+
+/* Remove normal urlbar border and background */
+#urlbar:not(.megabar)[focused] {
+  border: none !important;
+  background-color: var(--urlview-color) !important;
+}
+
+/* Add shadow to focused popup + urlbar */
+#urlbar:not(.megabar)[focused],
+#urlbar.megabar[focused] > #urlbar-background,
+#urlbar[open] > .urlbarView:not(.megabar) {
+  box-shadow: var(--urlbar-shadow-open) !important;
+}
+
+#urlbar.megabar[focused] > #urlbar-background {
+  border-width: 0px !important;
+}
+
+/* Remove horizontal paddings from texts */
+.urlbarView-row {
+  padding: 6px 0px !important;
+}
+
+/* Hide Dropdown Icon URL */
+.urlbar-history-dropmarker {
+  display: none !important;
+}

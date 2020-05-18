@@ -1,0 +1,22 @@
+/* NAV BAR */
+
+#nav-bar {
+  -moz-box-ordinal-group: 0 !important;
+  border: none !important;
+  position: relative !important;
+  background-color: var(--main-tab-bg-color) !important;
+  background-image: none !important;
+  padding: 9px 6px 9px 6px !important;
+}
+
+#navigator-toolbox {
+  border: 0px !important;
+  border-color: var(--main-tab-bg-color) !important;
+  --tabs-border-color: transparent !important;
+}
+
+#navigator-toolbox::before,
+#navigator-toolbox::after {
+  border: 0px !important;
+  display: none !important;
+}

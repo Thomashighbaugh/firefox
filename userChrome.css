@@ -1,19 +1,8 @@
-/* PREAMBLE */
-
-/* TODO */
-/* - implement blur on menus without compton, perhaps doable when backdropfilter becomes avail for menus */
-/* - fix odd transparent rectangle in menus when using compton 
- *      -  This issue is due to how shadows, transparency and blur 
- *         are handled by compton */
-/* - tweak chromelike urlbar-container to include previus urlbar.css */
-
 /* COLORS */
 @import url("themes/light.css");
 @import url("themes/dark.css");
 @import url("themes/dark-grey.css");
 
-/* IMPORTS */
-/*@import url(themes/firefox.css);*/
 
 /* MAIN CSS CUSTOMIZATION*/
 @import url(configuration/main.css);

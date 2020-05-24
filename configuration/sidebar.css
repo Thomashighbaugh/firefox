@@ -2,7 +2,7 @@
 
 #sidebar-box {
   background-color: var(--main-tab-bg-color) !important;
-  border-right: 0px solid rgba(44, 44, 44, 0.5);
+  border-right: 1px solid #556;
   box-shadow: 0px !important;
 }
 

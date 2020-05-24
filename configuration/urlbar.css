@@ -14,21 +14,21 @@
 /* Make urlbar megabar appear more compact */
 /* Set the pref browser.urlbar.megabar to true */
 #urlbar.megabar[breakout] {
-  margin-inline-start: 0px !important;
-  width: 100% !important;
-  left: 0 !important;
-  top: 0 !important;
+  /*margin-inline-start: 0px !important;*/
+  /*width: 100% !important;*/
+  /*left: 0 !important;*/
+  /*top: 0 !important;*/
 }
 
 #urlbar.megabar[breakout]:not([open]) {
-  bottom: calc(
-    (var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2
-  ) !important;
+  /*bottom: calc(*/
+  /*  (var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2*/
+  /*) !important;*/
 }
 
 .urlbarView.megabar {
-  margin-inline: 0 !important;
-  width: auto !important;
+  /*margin-inline: 0 !important;*/
+  /*width: auto !important;*/
 }
 
 .urlbarView-row {
@@ -50,13 +50,13 @@
 }
 
 #urlbar-input {
-  caret-color: white !important;
+  caret-color: #edeeff !important;
   text-align: center !important;
 }
 
 #urlbar[open] {
   background-color: var(--urlview-color) !important;
-  width: auto !important;
+  width: 100% !important;
 }
 
 .urlbarView::before {
@@ -66,6 +66,8 @@
 #urlbar-results {
   padding: 0 !important;
   margin-left: 0 px !important;
+  width: 100% !important;
+
 }
 
 #urlbar-container,
@@ -83,7 +85,6 @@
 
 .urlbarView {
   position: absolute !important;
-  background-image: url(assets/noise-512x512.png) !important;
   background-color: var(--urlview-color) !important;
   backdrop-filter: blur(32px) !important;
   border-radius: 0 0 var(--inputbar-rounding) var(--inputbar-rounding) !important;
@@ -94,16 +95,16 @@
 
 .urlbarView-row:hover,
 .urlbarView-row[selected="true"] {
-  background: var(--main-highlight) !important;
-  color: white !important;
+  background: #24262d !important;
+  color: #edeeff !important;
 }
 
 .urlbarView-favicon {
-  display: None !important;
+  /*display: None !important;*/
 }
 
 .urlbarView-title,
 .urlbarView-url {
   text-overflow: ellipsis !important;
-  mask-image: none !important;
+  /*mask-image: none !important;*/
 }

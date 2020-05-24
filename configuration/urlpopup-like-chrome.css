@@ -11,7 +11,7 @@
 /* Layout containing block hackery, don't touch pls */
 #urlbar-container:not(.megabar) {
   transform: translateY(0);
-  position: relative;
+  /*position: relative;*/
   z-index: 10;
 }
 
@@ -30,7 +30,7 @@
   background-color: var(--urlview-color);
 }
 
-/* Spacer to offset actual results. This is placed over urlbar text  */
+ Spacer to offset actual results. This is placed over urlbar text
 .urlbarView:not(.megabar)::before {
   content: "";
   display: -moz-box;
@@ -41,7 +41,7 @@
 .urlbarView:not(.megabar) > .search-one-offs,
 .urlbarView:not(.megabar) > .urlbarView-body-outer {
   background-color: var(--urlview-color); /* Set background-color here */
-  color: white; /* Set text color here */
+  color: #edeeff !important; /* Set text color here */
   pointer-events: auto;
 }
 
@@ -54,10 +54,10 @@
   background-image: linear-gradient(
     to right,
     transparent,
-    grey 35%,
+    #556 35%,
     grey 65%,
     transparent
-  );
+  ) !important;
 }
 
 /* Remove normal urlbar border and background */
@@ -84,5 +84,5 @@
 
 /* Hide Dropdown Icon URL */
 .urlbar-history-dropmarker {
-  display: none !important;
+  /*display: none !important;*/
 }

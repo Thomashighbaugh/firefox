@@ -6,7 +6,7 @@
   position: relative !important;
   background-color: var(--main-tab-bg-color) !important;
   background-image: none !important;
-  padding: 9px 6px 9px 6px !important;
+  /*padding: 9px 6px 9px 6px !important;*/
 }
 
 #navigator-toolbox {

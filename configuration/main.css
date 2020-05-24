@@ -4,8 +4,8 @@
 * {
   /* -------------------- Customization -------------------- */
   --tab-corner-rounding: 10px;
-  --urlbar-rounding: 25px;
-  --inputbar-rounding: 25px;
+  --urlbar-rounding: 18px;
+  --inputbar-rounding: 18px;
 }
 
 #titlebar,
@@ -19,7 +19,7 @@ window,
   -moz-appearance: none !important;
   background-image: none !important;
 }
-r #titlebar {
+ #titlebar {
   -moz-box-ordinal-group: 1 !important;
   border-top-color: transparent !important;
   border-bottom-color: transparent !important;
@@ -58,10 +58,10 @@ r #titlebar {
 }
 
 /* Hide Bookmark Star */
-.urlbarView-row[type="bookmark"] .urlbarView-type-icon {
-}
+/*.urlbarView-row[type="bookmark"] .urlbarView-type-icon {*/
+/*}*/
 
 /* Hide Page Actions */
-#page-action-buttons {
-  display: none !important;
-}
+/*#page-action-buttons {*/
+/*  display: none !important;*/
+/*}*/

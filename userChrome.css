@@ -1,25 +1,197 @@
-/* PREAMBLE */
+/* New Tab Flash */
+:root {
+  --newtab-textbox-background-color: #17161b !important;
+  background-color: #17161b !important;
+  color: #e9e9ff !important;
+}
 
-/* TODO */
-/* - implement blur on menus without compton, perhaps doable when backdropfilter becomes avail for menus */
-/* - fix odd transparent rectangle in menus when using compton 
- *      -  This issue is due to how shadows, transparency and blur 
- *         are handled by compton */
-/* - tweak chromelike urlbar-container to include previus urlbar.css */
+#browser vbox,
+#appcontent tabbrowser,
+#content,
+#tabbrowser-tabpanels,
+browser[type="content-primary"],
+browser[type="content"] > html {
+  background: #17161b !important;
+}
 
-/* COLORS */
-@import url("themes/light.css");
-@import url("themes/dark.css");
-@import url("themes/dark-grey.css");
+.tab-line {
+  display : none !important;
+}
 
-/* IMPORTS */
-/*@import url(themes/firefox.css);*/
+/* Toolbar buttons */
+.toolbarbutton-1 {
+  fill: #edeeff !important;
+  background-color: #17161b !important;
+}
 
-/* MAIN CSS CUSTOMIZATION*/
-@import url(configuration/main.css);
-@import url(configuration/navbar.css);
-@import url(configuration/urlbar.css);
-@import url(configuration/urlpopup-like-chrome.css);
-@import url(configuration/tabbar.css);
-@import url(configuration/sidebar.css);
-@import url(configuration/menus.css);
+/* Remove border under navbar */
+#navigator-toolbox::after {
+  border-bottom: 0px !important;
+}
+
+
+#tabbrowser-tabs {
+  background-color: #17161b !important;
+  /*--tab-min-height: 32px !important;*/
+  /*margin-left: 0px !important;*/
+  /*height: 32px !important;*/
+  width: 10rem !important;
+  --tab-min-width: 10rem !important;
+  --tab-max-width: 15rem !important ;
+  margin-bottom: 0px !important;
+  display: inline-block !important;
+  text-align: center !important;
+  font-family: "SF Mono Heavy", monospace;
+}
+.tabbrowser-tabs[selected] {
+}
+
+tab {
+  padding: 1px !important;
+  background-color: #17161b !important;
+  color: #e9e9ff !important;
+}
+
+.tab-content {
+  border-bottom: 5px solid #e9e9ff !important;
+}
+
+.tab-content[selected="true"] {
+  background-color: #17161b !important;
+  border-bottom: 5px solid #00caff !important;
+  font-weight: 900 !important;
+  color: #edeeff !important;
+}
+
+#nav-bar-customization-target {
+  background-color: #17161b !important;
+}
+
+.tabbrowser-tab {
+  opacity: 0.5;
+}
+.tabbrowser-tab:hover {
+  opacity: 0.75;
+}
+.tabbrowser-tab[selected] {
+  opacity: 1;
+}
+
+#urlbar {
+  box-shadow: none !important;
+  background-color: #17161b !important;
+  background: none !important;
+  border: none !important;
+  color: #a3afc1 !important;
+  font-weight: bold !important;
+}
+
+#urlbar:hover {
+  box-shadow: none !important;
+}
+
+#tracking-protection-icon-container,
+#pageActionSeparator {
+  border-inline-width: 0px !important;
+  display: none;
+}
+.urlbar-icon,
+.urlbar-icon-wrapper,
+#tabbrowser-tabs toolbarbutton,
+toolbar toolbarbutton > .toolbarbutton-icon,
+toolbar toolbarbutton > .toolbarbutton-badge-stack,
+.titlebar-button,
+#identity-box,
+#tracking-protection-icon-container,
+.findbar-textbox ~ toolbarbutton,
+toolbarbutton.scrollbutton-up,
+toolbarbutton.scrollbutton-down {
+  background-color: transparent !important;
+}
+
+.tabbrowser-tab:hover
+  > .tab-stack
+  > .tab-background:not([selected="true"]):not([multiselected]) {
+  background-color: transparent !important;
+}
+
+/*Tabs below nav bar*/
+
+#nav-bar {
+  -moz-box-ordinal-group: 1 !important;
+}
+#PersonalToolbar {
+  -moz-box-ordinal-group: 2 !important;
+}
+#titlebar {
+  -moz-box-ordinal-group: 3 !important;
+}
+
+#navigator-toolbox {
+  margin-top: 0px;
+  padding-top: 0px !important;
+}
+#toolbar-menubar {
+  position: fixed;
+  top: 0px;
+}
+#navigator-toolbox {
+  --tabs-border-color: transparent !important;
+} /* remove weird line*/
+
+/*Hide tabs bar if one tab is opened*/
+
+#tabbrowser-tabs,
+#tabbrowser-tabs > .tabbrowser-arrowscrollbox {
+  min-height: 0 !important;
+}
+
+#tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"] {
+  visibility: collapse !important;
+}
+
+#tabbrowser-tabs #tabs-newtab-button {
+  visibility: collapse !important;
+}
+
+/* FAVICONS Color */
+/* turn the inactive tab favicons gray */
+.tab-throbber-tabslist,
+.tab-throbber,
+.tab-icon-pending,
+.tab-icon-image,
+.tab-sharing-icon-overlay,
+.tab-icon-sound,
+.tab-close-button {
+  filter: grayscale(100%) opacity(100%) !important;
+}
+/* Selected */
+.tabbrowser-tab[selected] .tab-icon-image {
+  filter: grayscale(0%) opacity(100%) !important;
+}
+
+.tab-text {
+  text-align: center !important;
+}
+.tab-label {
+  -moz-box-flex: 1 !important;
+  text-align: center !important;
+}
+
+/* Hides Navbar. Press Control + L to get it to display  */
+#main-window:not([customizing])
+  #navigator-toolbox:not(:focus-within):not(:hover) {
+  margin-top: -40px;
+}
+#navigator-toolbox:hover:not(:focus-within) {
+  margin-top: -40px;
+}
+#navigator-toolbox {
+  transition: 0.2s margin-top ease-out;
+}
+
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+toolbarbutton#alltabs-button {
+  -moz-binding: url("userChrome.xml#js");
+}

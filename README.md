@@ -1,5 +1,7 @@
 # userChrome.css
 
+[!Screenshot](./assets/20200719_050237.png)
+
 ## Firefox Customizations
 
 The files contained here style my personal Firefox configuration using CSS (a language I know a little too well for my sanity it seems) and style the browser window itself, not specific webpages

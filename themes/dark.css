@@ -1,0 +1,37 @@
+* {
+  /* ELEMENT OPACITIES */
+  /* Change these values based on personal preference [0-1] */
+  /* You may need to tune these to get overlapping elemtns to blend nicely */
+  --main-tab-alpha: 0.65;
+  --main-nav-alpha: 0.7;
+  --tab-hover-alpha: 0.1;
+  --tab-active-alpha: 0.1;
+  --url-mask-alpha: 0.7;
+  --highlight-alpha: 0.5;
+
+  /* DARK COLORS*/
+  --main-tab-bg-color: rgba(44, 44, 44, var(--main-tab-alpha));
+  --main-nav-bar-bg-color: rgba(22, 22, 22, var(--main-nav-alpha));
+  --tab-hover-bg-color: rgba(255, 255, 255, var(--tab-hover-alpha));
+  --tab-active-bg-color: rgba(255, 255, 255, var(--tab-active-alpha));
+  --url-mask-color: rgba(22, 22, 22, var(--url-mask-alpha));
+  --main-highlight: rgba(0, 120, 212, var(--highlight-alpha));
+  --urlbar-open-color: rgba(22, 22, 22, 0.7);
+  --urlview-color: rgba(22, 22, 22, 0.7);
+
+  /* SHADOW SETTINGS */
+  --urlbar-shadow-open: 0 1px 1px rgba(22, 22, 22, 0.25),
+    0 2px 2px rgba(22, 22, 22, 0.2), 0 4px 4px rgba(22, 22, 22, 0.15),
+    0 8px 8px rgba(22, 22, 22, 0.1);
+
+  --tabbar-shadow-selected: 1px 1px 1px rgba(22, 22, 22, 0.25),
+    -1px 1px 1px rgba(22, 22, 22, 0.25), 2px 2px 2px rgba(22, 22, 22, 0.2),
+    -2px 2px 2px rgba(22, 22, 22, 0.2), 4px 4px 4px rgba(22, 22, 22, 0.15),
+    -4px 4px 4px rgba(22, 22, 22, 0.15), 8px 8px 8px rgba(22, 22, 22, 0.1),
+    -8px 8px 8px rgba(22, 22, 22, 0.1), 16px 16px 16px rgba(22, 22, 22, 0.05),
+    -16px 16px 16px rgba(22, 22, 22, 0.05);
+
+  --tabbar-shadow: inset 0px 1px 1px rgba(22, 22, 22, 0.25),
+    inset 0px 2px 1px rgba(22, 22, 22, 0.2),
+    inset 0px 4px 1px rgba(22, 22, 22, 0.15);
+}

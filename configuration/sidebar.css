@@ -1,0 +1,14 @@
+/* SIDEBAR */
+
+#sidebar-box {
+  background-color: var(--main-tab-bg-color) !important;
+  border-right: 1px solid #556;
+  box-shadow: 0px !important;
+}
+
+/* lock sidebar to specified width */
+#sidebar-box,
+#sidebar-box #sidebar {
+  -moz-appearance: none !important;
+  background-color: var(--main-tab-bg-color) !important;
+}

@@ -1,6 +1,6 @@
 # userChrome.css
 
-[!Screenshot](./assets/20200719_050237.png)
+![Screenshot](./assets/20200719_050237.png)
 
 ## Firefox Customizations
 

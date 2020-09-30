@@ -1,0 +1,30 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/*
+ * This style will hide the tab bar. For MacOS
+ *
+ * Contributor(s): Isaac-Newt, Ivan0xFF, millerdev
+ */
+
+#titlebar {
+  visibility: collapse;
+}
+
+/* Position window controls */
+#TabsToolbar .titlebar-buttonbox-container {
+  display: block;
+  position: absolute;
+  visibility: visible;
+  margin-left: 2px;
+  margin-top: 2px;
+}
+
+/*
+ * Make room for window controls and a bit of extra space for window drag/move.
+ * Only apply this style when not in fullscreen mode.
+ */
+#main-window:not([inFullscreen]) #nav-bar{
+  padding: 0px 5px 0px 105px !important;
+}

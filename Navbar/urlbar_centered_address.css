@@ -1,0 +1,88 @@
+/**
+ * Center address in urlbar and prevent it from shifting.
+ * Hide unnecessary elements to clean up UI.
+ */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+#urlbar .urlbar-input-box {
+  margin: auto !important;
+}
+
+#urlbar html|input#urlbar-input {
+  text-align: center !important;
+}
+
+/* Hide "search with Google" placeholder text */
+#urlbar html|input#urlbar-input::placeholder {
+  opacity: 0 !important;
+}
+
+/* Keep consistent margin across all URL states. Needed to ensure constant width of #identity-box */
+#identity-box {
+  margin-inline-end: 4px !important;
+	padding-inline-end: 8px !important;
+}
+
+/* Always keep the width of 2 icons, but disable pointer events on not loaded pages */
+#identity-box[class="unknownIdentity"] {
+  min-width: 52px !important;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Negate notification icons No-Hover policy */
+#identity-box:hover:not([open=true]) {
+  background-color: hsla(0,0%,70%,.2) !important;
+  fill-opacity: 0.8 !important;
+}
+
+#identity-box:hover:active {
+  background-color: hsla(0,0%,70%,.3) !important;
+  fill-opacity: 0.8 !important;
+}
+
+/* Hide useless buttons */
+#urlbar .urlbar-go-button,
+#urlbar .urlbar-history-dropmarker {
+  display: none !important;
+}
+
+/* Page action buttons always occupy their space */
+#urlbar[pageproxystate="invalid"] > #page-action-buttons > #pageActionButton,
+#urlbar[pageproxystate="invalid"] > #page-action-buttons > #star-button-box {
+  -moz-box-ordinal-group: 0;
+  display: -moz-box !important;
+  visibility: hidden !important;
+  pointer-events: none;
+}
+
+/* Minimize some spacing */
+#pageActionSeparator {
+  visibility: collapse !important;
+}
+
+/* #page-action-buttons > :not([hidden]) ~ #pageActionSeparator {
+  visibility: visible !important;
+  margin: 0 4px !important;
+} */
+
+#userContext-icons,
+#urlbar-zoom-button {
+  margin: 0 4px !important;
+}
+
+#urlbar-zoom-button {
+  -moz-box-ordinal-group: 0;
+}
+
+/* Don't show "Switch to tab" text */
+#urlbar-display-box {
+  display: none !important;
+}
+
+/* Fix URL prefix alignment in case of left overflow | Not needed in FF 70 */
+/* html|input.urlbar-scheme {
+   text-align: left !important;
+} */

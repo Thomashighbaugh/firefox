@@ -1,0 +1,12 @@
+/** 
+ * Flag multi-selected tabs with an orange marker
+ */
+
+.tabbrowser-tab[multiselected="true"] .tab-content::before {
+  position: absolute;
+  margin: -18px 0 0 -9px;
+  padding: 0 2px;
+  color:darkorange;
+  content: "●"; 
+  font-size: 11px;
+}

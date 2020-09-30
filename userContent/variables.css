@@ -1,0 +1,19 @@
+/**
+ * Set colors to match ArcDark theme
+ */
+
+:root {
+   --toolbar-bgcolor: #292d35;
+
+
+  --arc-dark-tabbar: #292d35;
+  --arc-dark-navbar: #3c3f4c;
+  
+  --scroll-thumb-color: #5f6776;
+  --scroll-track-color: var(--arc-dark-navbar);
+  
+  --newtab-background-image: url('../Backgrounds/bg-photo-1366.jpg');
+}
+
+
+

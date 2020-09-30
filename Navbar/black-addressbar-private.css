@@ -1,0 +1,11 @@
+/*
+ * Gives the address bar a black background in a private browsing window.
+ *
+ * Contributor(s): Madis0
+ */
+
+#main-window[privatebrowsingmode="temporary"] #urlbar
+{
+  background: black !important;
+  color: white !important;
+}

@@ -1,0 +1,105 @@
+/**
+ * Make JS alert, prompt and confirm modals dark 
+ */
+
+@keyframes fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes scale-in {
+  0%   { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
+}
+
+tabmodalprompt {
+  background-color: transparent !important;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.25)) !important;
+  animation: 0.2s fade-in;
+}
+
+tabmodalprompt > spacer[flex="1"] {
+  display: none;
+}
+
+tabmodalprompt .tabmodalprompt-mainContainer {
+  position: relative !important;
+  transform-origin: top center;
+  max-width: 600px;
+  background-color: var(--toolbar-bgcolor) !important;
+  border: 1px solid var(--toolbox-border-bottom-color) !important;
+  border-top-width: 0 !important;
+  border-radius: 0 0 var(--toolbarbutton-border-radius) var(--toolbarbutton-border-radius) !important;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  font-size: 14px;
+  animation: 0.2s scale-in;
+}
+
+tabmodalprompt .tabmodalprompt-mainContainer * {
+  color: var(--lwt-text-color);
+}
+
+tabmodalprompt .tabmodalprompt-mainContainer .tabmodalprompt-topContainer textbox {
+  -moz-appearance: none !important;
+  margin: 12px 0 0 0 !important;
+  /*padding: 8px !important;*/
+  background-color: var(--lwt-toolbar-field-background-color, hsla(0,0%,100%,.8)) !important;
+  border: 1px solid var(--lwt-toolbar-field-border-color, hsla(240,5%,5%,.25));
+  border-radius: var(--toolbarbutton-border-radius);
+  text-align: center !important;
+}
+
+tabmodalprompt .tabmodalprompt-mainContainer .tabmodalprompt-topContainer textbox .textbox-input {
+  padding: 8px !important;
+}
+
+tabmodalprompt .tabmodalprompt-mainContainer .tabmodalprompt-topContainer textbox[focused="true"] {
+  background-color: var(--lwt-toolbar-field-focus, var(--lwt-toolbar-field-background-color, white)) !important;
+}
+
+tabmodalprompt .tabmodalprompt-mainContainer .tabmodalprompt-topContainer checkbox {
+/*	margin: 12px 0 0 0 !important;*/
+  margin-top: 12px !important;
+  opacity: 0.7 !important;
+}
+
+tabmodalprompt .tabmodalprompt-mainContainer .tabmodalprompt-buttonContainer {	
+  display: block !important;
+  padding: 9px 20px 12px !important;
+  background-color: transparent !important;
+  text-align: center !important;
+}
+
+tabmodalprompt .tabmodalprompt-mainContainer .tabmodalprompt-buttonContainer spacer {
+  display: none !important;
+}
+
+tabmodalprompt .tabmodalprompt-mainContainer .tabmodalprompt-buttonContainer button {
+  -moz-appearance: none !important;
+  padding: 2px 3px;
+  border: 1px solid var(--toolbox-border-bottom-color);
+  border-radius: var(--toolbarbutton-border-radius);
+}
+
+tabmodalprompt .tabmodalprompt-mainContainer .tabmodalprompt-buttonContainer button:hover, 
+tabmodalprompt .tabmodalprompt-mainContainer .tabmodalprompt-buttonContainer button:focus {
+  background-color: var(--toolbarbutton-hover-background);
+}
+
+tabmodalprompt .tabmodalprompt-mainContainer .tabmodalprompt-buttonContainer button:active {
+  background-color: var(--toolbarbutton-active-background);
+}
+
+tabmodalprompt .tabmodalprompt-mainContainer .tabmodalprompt-buttonContainer button[default="true"], 
+tabmodalprompt .tabmodalprompt-mainContainer .tabmodalprompt-buttonContainer button[label="OK"] {
+  background-color: #0badff;
+  border-color: #0badff;
+  color: #fff !important;
+}
+
+tabmodalprompt .tabmodalprompt-mainContainer .tabmodalprompt-buttonContainer button[default="true"]:hover, 
+tabmodalprompt .tabmodalprompt-mainContainer .tabmodalprompt-buttonContainer button[default="true"]:focus, 
+tabmodalprompt .tabmodalprompt-mainContainer .tabmodalprompt-buttonContainer button[label="OK"]:hover, 
+tabmodalprompt .tabmodalprompt-mainContainer .tabmodalprompt-buttonContainer button[label="OK"]:focus {
+  background-color: #0badff !important;
+}

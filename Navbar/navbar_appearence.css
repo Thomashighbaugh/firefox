@@ -1,0 +1,41 @@
+/**
+ * Tweaks concerning NavBar area
+ */
+
+/* Remove border between Tabs and NavBar */
+#nav-bar {
+  margin-bottom: -1px !important;
+  border: none !important;
+  box-shadow: none !important;
+}   
+
+/* Keep Navbar on top during Findbar/Bookmark bar sliding animations */
+#nav-bar {
+  z-index: 3;
+}
+
+/* Download progress */
+/* #downloads-button[progress] #downloads-indicator-icon{
+  fill: #39f !important;
+} */
+
+/* Shorter menu button separator (4px padding => 10px) */
+/* :root:not([uidensity="compact"]):not([chromehidden~="toolbar"]) #PanelUI-button {
+  border-image-source: linear-gradient( transparent 10px, var(--lwt-toolbar-vertical-separator, rgba(255,255,255,.2)) 10px, var(--lwt-toolbar-vertical-separator, rgba(255,255,255,.2)) calc(100% - 10px), transparent calc(100% - 10px) ) !important;
+} */
+
+/* Hide menu button separator and remove its spacing */
+:root:not([uidensity=compact]):not([chromehidden~="toolbar"]) #PanelUI-button {
+  margin-inline-start: 0 !important;
+  border-inline-start: none !important;
+}  
+
+:root:not([uidensity="compact"]) #PanelUI-menu-button {
+  padding-left: 0 !important;
+}
+
+/* Move "search with" text in richlist to the bottom */
+.search-panel-one-offs {
+  -moz-box-ordinal-group: 0;
+}  
+

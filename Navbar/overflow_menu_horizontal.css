@@ -1,0 +1,23 @@
+/**
+ * Addons overflow menu
+ * Remove text labels and make menu horizontal
+ */
+
+#widget-overflow-fixed-list {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	padding: 0 6px;
+}
+
+#widget-overflow-fixed-list toolbarbutton {
+  /* width of elements: 20%, which means 5 in a row */
+	flex: 1 0 20%;
+	padding: 12px 0 !important;
+}
+
+#widget-overflow-fixed-list .toolbarbutton-text, 
+#overflowMenu-customize-button {
+  display: none !important;
+} 
+

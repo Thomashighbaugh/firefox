@@ -1,197 +1,114 @@
-/* New Tab Flash */
-:root {
-  --newtab-textbox-background-color: #17161b !important;
-  background-color: #17161b !important;
-  color: #e9e9ff !important;
-}
-
-#browser vbox,
-#appcontent tabbrowser,
-#content,
-#tabbrowser-tabpanels,
-browser[type="content-primary"],
-browser[type="content"] > html {
-  background: #17161b !important;
-}
-
-.tab-line {
-  display : none !important;
-}
-
-/* Toolbar buttons */
-.toolbarbutton-1 {
-  fill: #edeeff !important;
-  background-color: #17161b !important;
-}
-
-/* Remove border under navbar */
-#navigator-toolbox::after {
-  border-bottom: 0px !important;
-}
+@import 'General/compact_sidebar.css';
+@import 'General/context_and_popup_menus.css';
+@import 'General/dark_background_on_loading_pages.css';
+@import 'General/dark_modal_prompts.css';
+@import 'General/findbar_top_centered.css';
+@import 'General/autohide-reload-in-address-bar.css';
+@import 'General/dark-thin-context-menu.css';
 
 
-#tabbrowser-tabs {
-  background-color: #17161b !important;
-  /*--tab-min-height: 32px !important;*/
-  /*margin-left: 0px !important;*/
-  /*height: 32px !important;*/
-  width: 10rem !important;
-  --tab-min-width: 10rem !important;
-  --tab-max-width: 15rem !important ;
-  margin-bottom: 0px !important;
-  display: inline-block !important;
-  text-align: center !important;
-  font-family: "SF Mono Heavy", monospace;
-}
-.tabbrowser-tabs[selected] {
-}
 
-tab {
-  padding: 1px !important;
-  background-color: #17161b !important;
-  color: #e9e9ff !important;
-}
+@import 'Navbar/identitybox_colored_line.css';
+@import 'Navbar/dark-navigation-toolbar-dropdown.css';
 
-.tab-content {
-  border-bottom: 5px solid #e9e9ff !important;
-}
+@import 'Navbar/menu_buttons_rotate_on_click.css';
+@import 'Navbar/navbar_appearence.css';
+@import 'Navbar/overflow_menu_horizontal.css';
+@import 'Navbar/urlbar_appearence.css';
+@import 'Navbar/urlbar_appearence.css';
+@import 'Navbar/nav-bar-custom.css';
+@import 'Navbar/urlbar_centered_address.css';
+@import 'Navbar/urlbar_remove_megabar.css';
+@import 'Tabs/tabs-custom.css';
+@import "Navbar/transition-color.css";
+@import 'Tabs/dynamic_tab_width.css';
+@import 'Tabs/flag_multi_selected_tabs.css';
+@import 'Tabs/tab_close_button_on_hover_only.css';
+@import 'Tabs/tab_sound_icon_above_favicon.css';
+@import 'Tabs/tab_title_appearence.css';
+@import "Toolbars/auto-hide.css";
+@import 'Toolbars/bookmark_toolbar_on_bottom_of_newtab.css';
+@import 'Toolbars/compact-toolbars.css';
+@import "Toolbars/menubar_visible_on_hover.css";
+@import "Toolbars/show_navbar_on_hover.css";
+/* Is namespace even needed? */
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-.tab-content[selected="true"] {
-  background-color: #17161b !important;
-  border-bottom: 5px solid #00caff !important;
-  font-weight: 900 !important;
-  color: #edeeff !important;
-}
+/* :focus {outline:none !important;}
+::-moz-focus-inner {border:0 !important; } */
 
-#nav-bar-customization-target {
-  background-color: #17161b !important;
-}
 
-.tabbrowser-tab {
-  opacity: 0.5;
-}
-.tabbrowser-tab:hover {
-  opacity: 0.75;
-}
-.tabbrowser-tab[selected] {
-  opacity: 1;
-}
+/**
+ * Work-in-progress stuff 
+ */
 
-#urlbar {
-  box-shadow: none !important;
-  background-color: #17161b !important;
-  background: none !important;
+/* #statuspanel-label {  
+  background-color: var(--toolbar-bgcolor) !important;
+  color: #ccc !important;
   border: none !important;
-  color: #a3afc1 !important;
-  font-weight: bold !important;
+} */
+
+/* Win8: show Firefox's native minimize/close buttons instead of OS styled ones */
+/* bug: #window-controls doesn't spawn in #TabsToolbar until window resize
+/* @media (-moz-os-version: windows-win8) {
+  #window-controls {
+    display: -moz-box !important;
+  }
+
+  .titlebar-buttonbox-container {
+    visibility: collapse !important;
+  }
+} */
+
+/*:root {
+  --panel-disabled-color: rgba(211, 218, 227, 0.5) !important;
+  --lwt-accent-color:  !important;
+  --lwt-text-color: rgba(207, 218, 231) !important;
+  --arrowpanel-background: rgb(64, 69, 82) !important;
+  --arrowpanel-color: rgba(211, 218, 227, 1) !important;
+  --arrowpanel-border-color: rgb(43, 46, 57) !important;
+  --lwt-toolbar-field-background-color: rgb(64, 69, 82) !important;
+  --lwt-toolbar-field-color: rgba(211, 218, 227, 1) !important;
+  --lwt-toolbar-field-border-color: rgb(43, 46, 57) !important;
+  --lwt-toolbar-field-focus: rgba(255, 255, 255, 0.075) !important;
+  --toolbar-field-focus-border-color: rgb(43, 46, 57) !important;
+  --toolbar-bgcolor: rgb(56, 60, 74) !important;
+  --toolbar-color: rgb(211, 218, 227) !important;
+  --urlbar-separator-color: rgba(255, 255, 255, 0.2) !important;
+  --lwt-toolbar-vertical-separator: rgb(43, 46, 57) !important;
+  --chrome-content-separator-color: rgb(43, 46, 57) !important;
+  --lwt-toolbarbutton-icon-fill-attention: rgb(82, 148, 226) !important;
+  --lwt-toolbarbutton-hover-background: rgba(255, 255, 255, 0.12) !important;
+  --lwt-toolbarbutton-active-background: rgb(82, 148, 226) !important;
+  --autocomplete-popup-background: rgb(64, 69, 82) !important;
+  --autocomplete-popup-color: rgb(211, 218, 227) !important;
+  --autocomplete-popup-border-color: rgb(43, 46, 57) !important;
+  --autocomplete-popup-highlight-background: rgb(82, 148, 226) !important;
+  --autocomplete-popup-highlight-color: rgb(227, 234, 243) !important;
+}*/
+
+/* Sidebar autohide */ 
+/*#sidebar-box{
+  --uc-sidebar-width: 6px;
+  --uc-sidebar-hover-width: 220px;
+  position: relative;
+  min-width: var(--uc-sidebar-width) !important;
+  width: var(--uc-sidebar-width) !important;
+  max-width: var(--uc-sidebar-width) !important;
+  z-index:1;
 }
 
-#urlbar:hover {
-  box-shadow: none !important;
+#sidebar-header{ overflow: hidden; color: var(--chrome-color, inherit) !important}
+
+#sidebar{
+  transition: min-width 115ms linear !important;
+  min-width: var(--uc-sidebar-width) !important;
+  will-change: min-width;
 }
 
-#tracking-protection-icon-container,
-#pageActionSeparator {
-  border-inline-width: 0px !important;
-  display: none;
-}
-.urlbar-icon,
-.urlbar-icon-wrapper,
-#tabbrowser-tabs toolbarbutton,
-toolbar toolbarbutton > .toolbarbutton-icon,
-toolbar toolbarbutton > .toolbarbutton-badge-stack,
-.titlebar-button,
-#identity-box,
-#tracking-protection-icon-container,
-.findbar-textbox ~ toolbarbutton,
-toolbarbutton.scrollbutton-up,
-toolbarbutton.scrollbutton-down {
-  background-color: transparent !important;
-}
+#sidebar-box:hover > #sidebar{ min-width: var(--uc-sidebar-hover-width) !important; }
 
-.tabbrowser-tab:hover
-  > .tab-stack
-  > .tab-background:not([selected="true"]):not([multiselected]) {
-  background-color: transparent !important;
-}
-
-/*Tabs below nav bar*/
-
-#nav-bar {
-  -moz-box-ordinal-group: 1 !important;
-}
-#PersonalToolbar {
-  -moz-box-ordinal-group: 2 !important;
-}
-#titlebar {
-  -moz-box-ordinal-group: 3 !important;
-}
-
-#navigator-toolbox {
-  margin-top: 0px;
-  padding-top: 0px !important;
-}
-#toolbar-menubar {
-  position: fixed;
-  top: 0px;
-}
-#navigator-toolbox {
-  --tabs-border-color: transparent !important;
-} /* remove weird line*/
-
-/*Hide tabs bar if one tab is opened*/
-
-#tabbrowser-tabs,
-#tabbrowser-tabs > .tabbrowser-arrowscrollbox {
-  min-height: 0 !important;
-}
-
-#tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"] {
-  visibility: collapse !important;
-}
-
-#tabbrowser-tabs #tabs-newtab-button {
-  visibility: collapse !important;
-}
-
-/* FAVICONS Color */
-/* turn the inactive tab favicons gray */
-.tab-throbber-tabslist,
-.tab-throbber,
-.tab-icon-pending,
-.tab-icon-image,
-.tab-sharing-icon-overlay,
-.tab-icon-sound,
-.tab-close-button {
-  filter: grayscale(100%) opacity(100%) !important;
-}
-/* Selected */
-.tabbrowser-tab[selected] .tab-icon-image {
-  filter: grayscale(0%) opacity(100%) !important;
-}
-
-.tab-text {
-  text-align: center !important;
-}
-.tab-label {
-  -moz-box-flex: 1 !important;
-  text-align: center !important;
-}
-
-/* Hides Navbar. Press Control + L to get it to display  */
-#main-window:not([customizing])
-  #navigator-toolbox:not(:focus-within):not(:hover) {
-  margin-top: -40px;
-}
-#navigator-toolbox:hover:not(:focus-within) {
-  margin-top: -40px;
-}
-#navigator-toolbox {
-  transition: 0.2s margin-top ease-out;
-}
-
-@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
-
-toolbarbutton#alltabs-button {
-  -moz-binding: url("userChrome.xml#js");
-}
+#sidebar,
+#sidebar-header{
+  background-color: var(--toolbar-bgcolor) !important;
+}*/

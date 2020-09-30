@@ -1,0 +1,83 @@
+/**
+ * Findbar on top of the page with centered elements
+ */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+findbar {
+  --findbarbutton-vertical-padding: 4px;
+  --findbar-height: calc(2 * var(--findbarbutton-vertical-padding) + 22px);
+  --findbar-height-negative: calc(-1 * var(--findbar-height));
+
+  /* Large number to keep all elements centered and to prevent them from shifting when .found-mathes text changes width.
+   * Also the main thing to customize, as it requires different values depending on screen resolution and localization. */
+  --found-matches-width: 236px;   
+  
+  -moz-box-ordinal-group: 0; 
+  position: fixed !important;
+/*   display: block !important; */
+  width: 100% !important;
+  border-top: none !important;  
+  background: var(--toolbar-bgcolor) !important;
+  transition: transform 120ms ease-out !important;
+  z-index: 2; 
+}
+
+findbar, findbar[hidden] {
+  display: -webkit-inline-box !important;
+  margin-top: -2px !important;
+  padding-bottom: 4px !important;
+}
+
+findbar[hidden] {
+  visibility: collapse !important;
+  opacity: 1 !important;
+  transform: translateY(var(--findbar-height-negative));
+}
+
+/* Reverse order of elements */
+.findbar-container {
+  -moz-box-direction: reverse;
+  -moz-box-pack: center;
+  margin: auto;
+}
+
+.findbar-container > hbox {
+  -moz-box-ordinal-group: 1;
+  margin: 0 70px;
+}
+
+.findbar-container > hbox > toolbarbutton {
+  display: none !important;
+}
+
+findbar html|input.findbar-textbox {
+  width: 32em !important;
+  text-align: center !important;  
+} 
+
+findbar .found-matches {
+  -moz-box-ordinal-group: 2;  
+  display: -moz-box; 
+  min-width: var(--found-matches-width) !important;
+  width: var(--found-matches-width) !important;
+  margin-inline-end: 8px !important;
+  opacity: 0.75 !important;
+  text-align: right !important;  
+}
+
+findbar .found-matches[hidden] {
+  display: -moz-box !important;
+  visibility: hidden !important;
+}
+
+findbar .findbar-button {
+  -moz-box-ordinal-group: 0;
+  display: -moz-box !important;
+  padding: var(--findbarbutton-vertical-padding) var(--toolbarbutton-inner-padding) !important;
+}
+
+.findbar-container > .findbar-find-fast:not(.found-matches) {
+  display: none !important;
+}

@@ -8,10 +8,9 @@
 }
 
 .tabbrowser-tab[selected]:not([pinned]) {
-  min-width: calc(var(--tab-min-width) + 50px) !important;
+	min-width: calc(var(--tab-min-width) + 50px) !important;
 }
 
-/* .tabbrowser-tab:not([pinned]) {
+.tabbrowser-tab:not([pinned]) {
 	transition: min-width 100ms ease-out, max-width 100ms ease-out;
-} */
-
+}

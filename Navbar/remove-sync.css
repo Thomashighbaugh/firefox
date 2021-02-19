@@ -1,9 +1,0 @@
-/*
- * Remove the "Sign in to sync" from top of photon hamburger menu.
- *
- * Contributor(s): PilzAdam
- */
-
-#appMenu-fxa-container, #appMenu-fxa-container + toolbarseparator {
-  display: none !important;
-}

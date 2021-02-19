@@ -1,126 +1,31 @@
-@import "General/compact_sidebar.css";
-@import "General/context_and_popup_menus.css";
-@import "General/dark_background_on_loading_pages.css";
-@import "General/dark_modal_prompts.css";
-@import "General/findbar_top_centered.css";
-@import "General/autohide-reload-in-address-bar.css";
-@import "General/dark-thin-context-menu.css";
+/***********************************
+**	Thomas Leon Highbaugh
+**	Created	2/19/2021
+**  UserChrome file for Firefox
+************************************/
 
-@import "Navbar/identitybox_colored_line.css";
-@import "Navbar/dark-navigation-toolbar-dropdown.css";
+/***********************************
+COLOR SCHEME
+***********************************/
 
-@import "Navbar/menu_buttons_rotate_on_click.css";
-@import "Navbar/navbar_appearence.css";
-@import "Navbar/overflow_menu_horizontal.css";
-@import "Navbar/urlbar_appearence.css";
-@import "Navbar/urlbar_appearence.css";
-@import "Navbar/nav-bar-custom.css";
-@import "Navbar/urlbar_centered_address.css";
-@import "Navbar/urlbar_remove_megabar.css";
+/* Blurred Color Scheme */
+@import url("colors/blurred.css");
 
-@import "Tabs/tabs-custom.css";
-@import "Navbar/transition-color.css";
-@import "Tabs/dynamic_tab_width.css";
-@import "Tabs/flag_multi_selected_tabs.css";
-@import "Tabs/tab_close_button_on_hover_only.css";
-@import "Tabs/tab_sound_icon_above_favicon.css";
-@import "Tabs/tab_title_appearence.css";
+/* Solid Color Scheme */
 
-@import "Toolbars/auto-hide.css";
-@import "Toolbars/bookmark_toolbar_on_bottom_of_newtab.css";
-@import "Toolbars/compact-toolbars.css";
-@import "Toolbars/menubar_visible_on_hover.css";
-@import "Toolbars/show_navbar_on_hover.css";
-/* Is namespace even needed? */
-@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+//@import url('colors/solid.css');
 
-:focus {
-  outline: none !important;
-}
-::-moz-focus-inner {
-  border: 0 !important;
-}
+/****************************************
+USER INTERFACE ELEMENTS
+****************************************/
 
-/**
- * Work-in-progress stuff 
- */
-
-#statuspanel-label {
-  background-color: var(--toolbar-bgcolor) !important;
-  color: #ccc !important;
-  border: none !important;
-}
-
-/* Win8: show Firefox's native minimize/close buttons instead of OS styled ones */
-/* bug: #window-controls doesn't spawn in #TabsToolbar until window resize
-/* @media (-moz-os-version: windows-win8) {
-  #window-controls {
-    display: -moz-box !important;
-  }
-
-  .titlebar-buttonbox-container {
-    visibility: collapse !important;
-  }
-} */
-
-:root {
-  --panel-disabled-color: #313040 !important;
-  --lwt-accent-color: #edeeff !important;
-  --lwt-text-color: #fc29a8 !important;
-  --arrowpanel-background: #313040 !important;
-  --arrowpanel-color: #edeeff !important;
-  --arrowpanel-border-color: #313040 !important;
-  --lwt-toolbar-field-background-color: #313040 !important;
-  --lwt-toolbar-field-color: #edeeff !important;
-  --lwt-toolbar-field-border-color: #313040 !important;
-  --lwt-toolbar-field-focus: #1f2023 !important;
-  --toolbar-field-focus-border-color: #313040 !important;
-  --toolbar-bgcolor: #1f2023 !important;
-  --toolbar-color: #e9e9ff !important;
-  --urlbar-separator-color: #1f2023 !important;
-  --lwt-toolbar-vertical-separator: #313040 !important;
-  --chrome-content-separator-color: #313040 !important;
-  --lwt-toolbarbutton-icon-fill-attention: #00caff !important;
-  --lwt-toolbarbutton-hover-background: rgba(255, 255, 255, 0.12) !important;
-  --lwt-toolbarbutton-active-background: #00caff !important;
-  --autocomplete-popup-background: #313040 !important;
-  --autocomplete-popup-color: #e9e9ff !important;
-  --autocomplete-popup-border-color: #edeeff !important;
-  --autocomplete-popup-highlight-background: #00caff !important;
-  --autocomplete-popup-highlight-color: #edeeff !important;
-}
-
-/* Sidebar autohide */
-#sidebar-box {
-  --uc-sidebar-width: 6px;
-  --uc-sidebar-hover-width: 220px;
-  position: relative;
-  min-width: 6px !important;
-  width: var(--uc-sidebar-width) !important;
-  background-color: #3a3f49ff !important;
-
-  max-width: var(--uc-sidebar-width) !important;
-  z-index: 1;
-}
-
-#sidebar-header {
-  overflow: hidden;
-  color: var(--autocomplete-popup-color, inherit) !important;
-}
-
-#sidebar {
-  transition: min-width 115ms linear !important;
-  min-width: var(--uc-sidebar-width) !important;
-  will-change: min-width;
-  background-color: #3a3f49ff !important;
-}
-
-#sidebar-box:hover > #sidebar {
-  min-width: var(--uc-sidebar-hover-width) !important;
-  background-color: #3a3f49ff !important;
-}
-
-#sidebar,
-#sidebar-header {
-  background-color: #3a3f49ff !important;
-}
+@import url("parts/main-window.css");
+@import url("parts/toolbar.css");
+@import url("parts/tabbar.css");
+@import url("parts/urlbar.css");
+@import url("parts/sidebar.css");
+@import url("parts/arrow-panel.css");
+@import url("parts/findbar.css");
+@import url("parts/context-menu.css");
+@import url("parts/customization-window.css");
+@import url("parts/window-controls.css");

@@ -1,20 +1,25 @@
-@import url('userContent/variables.css');
- @import url('userContent/about_addons.css');
-@import url('userContent/about_newtab.css');
-@import url('userContent/about_reader.css');
-@import url('userContent/error_pages.css');
-@import url('userContent/view_source.css');
- @import url('userContent/addon_styling.css');
-@import url('userContent/webpage_specific.css');
+@import url("userChrome.css");
 
-/* Thin scrollbars everywhere */
-:root {
-  scrollbar-color: var(--scroll-thumb-color) var(--scroll-track-color);
-  scrollbar-width: thin !important;
+/* Removes the white loading page */
+/* url(about:newtab), url(about:home) */
+@-moz-document url(about:blank) {
+  html:not(#ublock0-epicker),
+  html:not(#ublock0-epicker) body,
+  #newtab-customize-overlay {
+    background: var(--bf-bg) !important;
+  }
 }
 
-* { scrollbar-width: thin !important }
+/* Sets up minimal scrollbar */
+:root {
+  scrollbar-width: thin !important;
+  scrollbar-color: #b2bfd9 transparent !important;
+}
 
-/* Disable outlines on focused elements (links/buttons) */
-:focus { outline: none; }
-::-moz-focus-inner { border: 0; }
+/*  Sets up minimal incognito scrollbar */
+@-moz-document url(about:privatebrowsing) {
+  :root {
+    scrollbar-width: thin !important;
+    scrollbar-color: #b2bfd9 transparent !important;
+  }
+}

@@ -1,9 +1,0 @@
-/*
- * Hides the Highlight All button on findbar
- *
- * Contributor(s): Madis0
- */
-
-.findbar-highlight {
-  visibility: collapse !important;
-}

@@ -1,5 +1,3 @@
-
-
 /*
 ░█░█░▀█▀░█▀█░█▀▄░█▀█░█░█░█▀▄░█░█░▀█▀░▀█▀░█▀█░█▀█░█▀▀
 ░█▄█░░█░░█░█░█░█░█░█░█▄█░█▀▄░█░█░░█░░░█░░█░█░█░█░▀▀█
@@ -9,15 +7,15 @@ The control buttons. Contains, close, minimize, and maximize buttons
 */
 
 #autohide-context {
-	display: none !important;
+  display: none !important;
 }
 
 #window-controls[hidden="true"] {
-	display: none !important;
+  display: none !important;
 }
 
 #window-controls[hidden="false"] {
-	display: inline-flex !important;
+  display: inline-flex !important;
 }
 
 /* Hide titlebar-buttonbox if there's single tab */

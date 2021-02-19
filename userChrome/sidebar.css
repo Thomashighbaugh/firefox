@@ -11,18 +11,18 @@ Sidebar
 
 #sidebar-box:-moz-lwtheme-darktext,
 #sidebar-box:-moz-lwtheme-brighttext {
-	--sidebar-background-color: var(--bf-sidebar-bg) !important;
-	--sidebar-text-color: var(--bf-sidebar-color) !important;
+  --sidebar-background-color: var(--sidebar-bg) !important;
+  --sidebar-text-color: var(--sidebar-color) !important;
 }
 
 #sidebar,
 .sidebar-panel {
-	background: transparent !important;
+  background: transparent !important;
 }
 
 /* Sidebar searchbar */
 #sidebar-search-container #search-box {
-	border: none !important;
-	padding: 6px !important;
-	border-radius: var(--bf-sidebar-searchbar-radius) !important;
+  border: none !important;
+  padding: 6px !important;
+  border-radius: var(--sidebar-searchbar-radius) !important;
 }

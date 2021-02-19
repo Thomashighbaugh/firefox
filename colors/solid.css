@@ -1,83 +1,83 @@
 :root {
-	/* All the CSS variables here are global */
-	/* These applies to all colorschemes */
+  /* All the CSS variables here are global */
+  /* These applies to all colorschemes */
 
-	/* If windows - `-moz-win-glass`, if macOS - `-moz-mac-vibrancy-dark` */
-	--bf-moz-appearance: -moz-win-glass !important;
+  /* If windows - `-moz-win-glass`, if macOS - `-moz-mac-vibrancy-dark` */
+  --moz-appearance: -moz-win-glass !important;
 
-	--bf-backdrop-blur: 6px;
+  --backdrop-blur: 6px;
 
-	--bf-sidebar-searchbar-radius: 6px;
+  --sidebar-searchbar-radius: 6px;
 
-	--bf-accent-bg: #4C5FF9CC;
-	--bf-blank-page-bg: #252525;
-	
-	--bf-urlbar-hightlight-bg: var(--bf-accent-bg);
-	--bf-urlbar-radius: 9px;
-	--bf-urlbar-results-font-size: 12pt;
-	--bf-urlbar-results-font-weight: 550;
-	--bf-urlbar-font-size: 12pt;
-	--bf-urlbar-font-weight: 500;
-	--bf-urlbar-switch-tab-color: #6498EF;
-	--bf-urlbar-bookmark-color: #53E2AE;
-	
-	--bf-navbar-padding: 6px;
-	
-	--bf-tab-selected-bg: #77777788;
-	--bf-tab-font-size: 11pt;
-	--bf-tab-font-weight: 400;
-	--bf-tab-height: 36px;
-	--bf-tab-border-radius: 6px;
-	--bf-tab-soundplaying-bg: #985EFFCC;
+  --accent-bg: #4c5ff9cc;
+  --blank-page-bg: #252525;
 
-	--toolbar-bgcolor: transparent !important;
-	--urlbar-separator-color: transparent !important;
+  --urlbar-hightlight-bg: var(--accent-bg);
+  --urlbar-radius: 9px;
+  --urlbar-results-font-size: 12pt;
+  --urlbar-results-font-weight: 550;
+  --urlbar-font-size: 12pt;
+  --urlbar-font-weight: 500;
+  --urlbar-switch-tab-color: #6498ef;
+  --urlbar-bookmark-color: #53e2ae;
+
+  --navbar-padding: 6px;
+
+  --tab-selected-bg: #77777788;
+  --tab-font-size: 11pt;
+  --tab-font-weight: 400;
+  --tab-height: 36px;
+  --tab-border-radius: 6px;
+  --tab-soundplaying-bg: #985effcc;
+
+  --toolbar-bgcolor: transparent !important;
+  --urlbar-separator-color: transparent !important;
 }
 
 /* Light Mode */
 :root:-moz-lwtheme-darktext {
-	--bf-main-window: #FFFFFF;
-	--bf-bg: var(--bf-main-window);
-	--bf-color: #0A0A0A;
-	
-	--bf-hover-bg: #1A1A1A33;
-	--bf-active-bg: #1A1A1A66;
-	
-	--bf-icon-color: #0A0A0A;
-	--bf-tab-toolbar-bg: #E5E5E5;
-	--bf-tab-selected-bg: var(--bf-bg);
-	--bf-navbar-bg: var(--bf-bg);
-	--bf-urlbar-bg: #E6E6E6;
-	--bf-urlbar-active-bg: #E6E6E6;
-	--bf-urlbar-focused-color: var(--bf-color);
-	
-	--bf-sidebar-bg: var(--bf-bg);
-	--bf-sidebar-color: var(--bf-color);
-	
-	--bf-menupopup-bg: #F2F2F2EE;
-	--bf-menupopup-color: var(--bf-color);
+  --main-window: #ffffff;
+  --bg: var(--main-window);
+  --color: #0a0a0a;
+
+  --hover-bg: #1a1a1a33;
+  --active-bg: #1a1a1a66;
+
+  --icon-color: #0a0a0a;
+  --tab-toolbar-bg: #e5e5e5;
+  --tab-selected-bg: var(--bg);
+  --navbar-bg: var(--bg);
+  --urlbar-bg: #e6e6e6;
+  --urlbar-active-bg: #e6e6e6;
+  --urlbar-focused-color: var(--color);
+
+  --sidebar-bg: var(--bg);
+  --sidebar-color: var(--color);
+
+  --menupopup-bg: #f2f2f2ee;
+  --menupopup-color: var(--color);
 }
 
 /* Dark Mode */
 :root:-moz-lwtheme-brighttext {
-	--bf-main-window: #0A0A0A;
-	--bf-bg: var(--bf-main-window);
-	--bf-color: #F2F2F2;
-	
-	--bf-hover-bg: #F2F2F233;
-	--bf-active-bg: #F2F2F266;
-	
-	--bf-icon-color: #F2F2F2;
-	--bf-tab-toolbar-bg: var(--base-bg);
-	--bf-tab-selected-bg: #252525;
-	--bf-navbar-bg: #202020;
-	--bf-urlbar-bg: #2F2F2F;
-	--bf-urlbar-active-bg: #2F2F2F;
-	--bf-urlbar-focused-color: var(--bf-color);
-	
-	--bf-sidebar-bg: var(--bf-bg);
-	--bf-sidebar-color: var(--bf-color);
-	
-	--bf-menupopup-bg: #0A0A0AEE;
-	--bf-menupopup-color: var(--bf-color);
+  --main-window: #0a0a0a;
+  --bg: var(--main-window);
+  --color: #f2f2f2;
+
+  --hover-bg: #f2f2f233;
+  --active-bg: #f2f2f266;
+
+  --icon-color: #f2f2f2;
+  --tab-toolbar-bg: var(--base-bg);
+  --tab-selected-bg: #252525;
+  --navbar-bg: #202020;
+  --urlbar-bg: #2f2f2f;
+  --urlbar-active-bg: #2f2f2f;
+  --urlbar-focused-color: var(--color);
+
+  --sidebar-bg: var(--bg);
+  --sidebar-color: var(--color);
+
+  --menupopup-bg: #0a0a0aee;
+  --menupopup-color: var(--color);
 }

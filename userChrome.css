@@ -1,9 +1,4 @@
-/***********************************
-**	Thomas Leon Highbaugh
-**	Created	2/19/2021
-**  UserChrome file for Firefox
-************************************/
-
+/*  */
 /***********************************
 COLOR SCHEME
 ***********************************/
@@ -16,16 +11,16 @@ COLOR SCHEME
 //@import url('colors/solid.css');
 
 /****************************************
-USER INTERFACE ELEMENTS
+USER INTERFACE userChrome
 ****************************************/
 
-@import url("parts/main-window.css");
-@import url("parts/toolbar.css");
-@import url("parts/tabbar.css");
-@import url("parts/urlbar.css");
-@import url("parts/sidebar.css");
-@import url("parts/arrow-panel.css");
-@import url("parts/findbar.css");
-@import url("parts/context-menu.css");
-@import url("parts/customization-window.css");
-@import url("parts/window-controls.css");
+@import url("userChrome/main-window.css");
+@import url("userChrome/toolbar.css");
+@import url("userChrome/tabbar.css");
+@import url("userChrome/urlbar.css");
+@import url("userChrome/sidebar.css");
+@import url("userChrome/dropdown.css");
+@import url("userChrome/findbar.css");
+@import url("userChrome/context-menu.css");
+@import url("userChrome/customization-window.css");
+@import url("userChrome/window-controls.css");

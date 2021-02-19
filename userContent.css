@@ -1,7 +1,23 @@
-@import url("userChrome.css");
+/*
+ * Author: Thomas Leon Highbaugh (thighbaugh@zoho.com)
+ * Project: Firefox
+ * File: userContent.css
+ * Description: This file changes the things within the browser window.
+ */
 
-/* Removes the white loading page */
-/* url(about:newtab), url(about:home) */
+@import url("userChrome.css");
+@import url("userContent/about_addons");
+@import url("userContent/about_newtab");
+@import url("userContent/about_reader");
+@import url("userContent/addon_styling");
+@import url("userContent/error_pages");
+@import url("userContent/variables");
+@import url("userContent/view_source");
+@import url("userContent/webpage_specific");
+
+/* Set background color of landing pages */
+@-moz-document url(about:newtab),
+@-moz-document url(about:home),
 @-moz-document url(about:blank) {
   html:not(#ublock0-epicker),
   html:not(#ublock0-epicker) body,
@@ -12,14 +28,22 @@
 
 /* Sets up minimal scrollbar */
 :root {
-  scrollbar-width: thin !important;
-  scrollbar-color: #b2bfd9 transparent !important;
+  /* scrollbar-width: thin !important; */
+  scrollbar-color: #8b9cbe transparent !important;
 }
 
 /*  Sets up minimal incognito scrollbar */
 @-moz-document url(about:privatebrowsing) {
   :root {
-    scrollbar-width: thin !important;
-    scrollbar-color: #b2bfd9 transparent !important;
+    /* scrollbar-width: thin !important; */
+    scrollbar-color: #8b9cbe transparent !important;
   }
+}
+
+/* Disable outlines on focused elements (links/buttons) */
+:focus {
+  outline: none;
+}
+::-moz-focus-inner {
+  border: 0;
 }

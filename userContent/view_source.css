@@ -1,0 +1,21 @@
+/**
+ * Dark View-source with syntax highlight
+ */
+
+@-moz-document url-prefix(view-source:) {
+  html {
+    background: #22262d !important;
+    color: #b2bfd9 !important;
+  }
+
+  .attribute-name {
+    color: #00eaff !important;
+  }
+  .start-tag,
+  .end-tag {
+    color: #ff29a8 !important;
+  }
+  .attribute-value {
+    color: #61aeee !important;
+  }
+}

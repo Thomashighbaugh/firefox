@@ -48,12 +48,7 @@ download_bf() {
 		message " [!!] There was a problem while downloading the theme. Terminating..."
 		exit
 	fi
-	echo "░█▀▄░█░░░█░█░█▀▄░█▀▄░█▀▀░█▀▄"
-	echo "░█▀▄░█░░░█░█░█▀▄░█▀▄░█▀▀░█░█"
-	echo "░▀▀░░▀▀▀░▀▀▀░▀░▀░▀░▀░▀▀▀░▀▀░"
-	echo "┏━┛┏━┃┃ ┃"
-	echo "┏━┛┃ ┃ ┛ "
-	echo "┛  ━━┛┛ ┛"
+	echo ""
 	message "blurredfox successfully installed! Enjoy!"
 }
 

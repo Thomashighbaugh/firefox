@@ -8,7 +8,7 @@ message() {
 	printf "%s\n" "$*" >&2
 }
 
-download_bf() {
+download_ff() {
 
 	message "[>>] Downloading theme..."
 
@@ -38,7 +38,7 @@ download_bf() {
 		mv "${CHROME_DIRECTORY}/user.js" "${CHROME_DIRECTORY}/../"
 
 		if [[ $? -eq 0 ]]; then
-			rm -rf "/tmp/blurredfox-master"
+			rm -rf "/tmp/firefox-master"
 		else
 			message " [!!] There was a problem while copying the files. Terminating..."
 			exit
@@ -49,7 +49,7 @@ download_bf() {
 		exit
 	fi
 	echo ""
-	message "blurredfox successfully installed! Enjoy!"
+	message "firefox successfully installed! Enjoy!"
 }
 
 function check_profile() {
@@ -69,7 +69,7 @@ function print_help() {
 	echo "Example:"
 	echo "$ ./install stable"
 	echo "$ ./install dev"
-	echo "$ curl -fsSL https://raw.githubusercontent.com/manilarome/blurredfox/script/install.sh | bash -s -- stable"
+	echo "$ curl -fsSL https://raw.githubusercontent.com/Thomashighbaugh/firefox/script/install.sh | bash -s -- stable"
 	echo ""
 	echo "Defaults to 'stable' if empty."
 }
@@ -129,7 +129,7 @@ if [[ -n "$FF_USER_DIRECTORY" ]]; then
 			mkdir "${CHROME_DIRECTORY}"
 		fi
 		# Download theme
-		download_bf
+		download_ff
 	else
 		message "[>>] Chrome folder does not exist! Creating one..."
 		mkdir "${FF_USER_DIRECTORY}/chrome"
@@ -139,7 +139,7 @@ if [[ -n "$FF_USER_DIRECTORY" ]]; then
 			CHROME_DIRECTORY="${FF_USER_DIRECTORY}/chrome"
 
 			# Download theme
-			download_bf
+			download_ff
 		else
 			message "[!!] There was a problem while creating the directory. Terminating..."
 			exit 1

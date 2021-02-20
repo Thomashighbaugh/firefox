@@ -24,8 +24,8 @@ tabmodalprompt {
   background-color: transparent !important;
   background-image: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.45),
-    rgba(0, 0, 0, 0.25)
+    var(--base02),
+    var(--base03)
   ) !important;
   animation: 0.2s fade-in;
 }
@@ -43,13 +43,13 @@ tabmodalprompt .tabmodalprompt-mainContainer {
   border-top-width: 0 !important;
   border-radius: 0 0 var(--toolbarbutton-border-radius)
     var(--toolbarbutton-border-radius) !important;
-  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0 2px 0 var(--box-shadow);
   font-size: 14px;
   animation: 0.2s scale-in;
 }
 
 tabmodalprompt .tabmodalprompt-mainContainer * {
-  color: var(--lwt-text-color);
+  color: var(--color);
 }
 
 tabmodalprompt
@@ -59,12 +59,8 @@ tabmodalprompt
   -moz-appearance: none !important;
   margin: 12px 0 0 0 !important;
   /*padding: 8px !important;*/
-  background-color: var(
-    --lwt-toolbar-field-background-color,
-    hsla(0, 0%, 100%, 0.8)
-  ) !important;
-  border: 1px solid
-    var(--lwt-toolbar-field-border-color, hsla(240, 5%, 5%, 0.25));
+  background-color: var(--base02, --base06) !important;
+  border: 1px solid var(--base05, --base00);
   border-radius: var(--toolbarbutton-border-radius);
   text-align: center !important;
 }
@@ -146,8 +142,8 @@ tabmodalprompt
   .tabmodalprompt-mainContainer
   .tabmodalprompt-buttonContainer
   button[label="OK"] {
-  background-color: var(--base14);
-  border-color: var(--base14);
+  background-color: var(--base02);
+  border-color: var(--base03);
   color: var(--base07) !important;
 }
 

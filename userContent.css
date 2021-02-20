@@ -5,6 +5,8 @@
  * Description: This file changes the things within the browser window.
  */
 
+@import url("colors/vice.css");
+
 @import url("userChrome.css");
 @import url("userContent/customization-window");
 @import url("userContent/about_addons");
@@ -12,7 +14,6 @@
 @import url("userContent/about_reader");
 @import url("userContent/addon_styling");
 @import url("userContent/error_pages");
-@import url("userContent/variables");
 @import url("userContent/view_source");
 @import url("userContent/webpage_specific");
 
@@ -23,21 +24,21 @@
   html:not(#ublock0-epicker),
   html:not(#ublock0-epicker) body,
   #newtab-customize-overlay {
-    background: var(--bf-bg) !important;
+    background: var(--bg) !important;
   }
 }
 
 /* Sets up minimal scrollbar */
 :root {
   /* scrollbar-width: thin !important; */
-  scrollbar-color: #8b9cbe transparent !important;
+  scrollbar-color: var(--base06) transparent !important;
 }
 
 /*  Sets up minimal incognito scrollbar */
 @-moz-document url(about:privatebrowsing) {
   :root {
     /* scrollbar-width: thin !important; */
-    scrollbar-color: #8b9cbe transparent !important;
+    scrollbar-color: var(--base06) transparent !important;
   }
 }
 

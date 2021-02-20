@@ -222,7 +222,7 @@
 
 /* Auto-Hide the Urlbar */
 
-#nav-bar:not([customizing="true"]):not([inFullscreen]) {
+/* #nav-bar:not([customizing="true"]):not([inFullscreen]) {
   min-height: 1px !important;
   max-height: 0px !important;
   margin-top: 1px !important;
@@ -243,4 +243,30 @@
 
 #urlbar {
   --urlbar-toolbar-height: 32px !important;
+} */
+
+#TabsToolbar {
+  -moz-window-dragging: no-drag !important;
+}
+
+#nav-bar:not([customizing="true"]):not([inFullscreen]) {
+  min-height: 1px !important;
+  max-height: 1px !important;
+  margin-bottom: -1px !important;
+  transition: all 180ms ease 0.5s !important;
+  z-index: -1 !important;
+}
+
+#navigator-toolbox:hover:not([inFullscreen]) #nav-bar,
+#navigator-toolbox:focus-within:not([inFullscreen]) #nav-bar {
+  min-height: 40px !important;
+  max-height: 40px !important;
+  margin-bottom: -40px !important;
+  transition: all 180ms ease 0s !important;
+  z-index: 1 !important;
+}
+
+#urlbar,
+#urlbar[breakout][breakout-extend] {
+  top: calc(20px - var(--urlbar-height) / 2) !important;
 }

@@ -316,9 +316,16 @@
 } */
 
 /* Shorter menu button separator (4px padding => 10px) */
-/* :root:not([uidensity="compact"]):not([chromehidden~="toolbar"]) #PanelUI-button {
-  border-image-source: linear-gradient( transparent 10px, var(--lwt-toolbar-vertical-separator, rgba(255,255,255,.2)) 10px, var(--lwt-toolbar-vertical-separator, rgba(255,255,255,.2)) calc(100% - 10px), transparent calc(100% - 10px) ) !important;
-} */
+:root:not([uidensity="compact"]):not([chromehidden~="toolbar"])
+  #PanelUI-button {
+  border-image-source: linear-gradient(
+    transparent 10px,
+    var(--lwt-toolbar-vertical-separator, rgba(255, 255, 255, 0.2)) 10px,
+    var(--lwt-toolbar-vertical-separator, rgba(255, 255, 255, 0.2))
+      calc(100% - 10px),
+    transparent calc(100% - 10px)
+  ) !important;
+}
 
 /* Hide menu button separator and remove its spacing */
 :root:not([uidensity="compact"]):not([chromehidden~="toolbar"])
@@ -334,4 +341,49 @@
 /* Move "search with" text in richlist to the bottom */
 .search-panel-one-offs {
   -moz-box-ordinal-group: 0;
+}
+
+#navigator-toolbox::after {
+  display: none !important;
+  border-bottom: 0 !important;
+}
+
+#nav-bar,
+#TabsToolbar {
+  border: none !important;
+}
+
+#nav-bar-customization-target {
+  background-color: #292d35 !important;
+}
+
+#navigator-toolbox {
+  margin-top: 0;
+  padding-top: 0 !important;
+  border: none !important;
+}
+
+#navigator-toolbox {
+  --tabs-border-color: transparent !important;
+}
+
+.toolbarbutton-1 {
+  fill: #edeeff !important;
+  background-color: #292d35 !important;
+}
+
+#urlbar-input-container {
+  border: none !important;
+}
+
+#urlbar[open] > #urlbar-background {
+  background: #292d35 !important;
+  border-color: transparent !important;
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.32) !important;
+}
+
+#urlbar-background {
+  background-color: #292d35 !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
 }

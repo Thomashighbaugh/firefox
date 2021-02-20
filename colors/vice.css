@@ -31,18 +31,17 @@
 
   --accent-bg: var(--base13);
   --blank-page-bg: var(--base21)
-   --box-shadow: var(--base01)66;
+   --box-shadow: #22262d66;
 
   --urlbar-hightlight-bg: var(--accent-bg);
   --urlbar-radius: 9px;
-  --urlbar-results-font-size: 12pt;
+  --urlbar-results-font-size: 12px;
   --urlbar-results-font-weight: 550;
-  --urlbar-font-size: 12pt;
+  --urlbar-font-size: 12px;
   --urlbar-font-weight: 500;
   --urlbar-switch-tab-color: var(--base13);
   --urlbar-bookmark-color: var(--base08);
-  --urlbar-height: 20px;
-  --navbar-padding: 6px;
+  --navbar-padding: 4px;
 
   --tab-selected-bg: var(--base20);
   --tab-font-size: 11pt;

@@ -1,18 +1,16 @@
-@-moz-document url("chrome://mozapps/content/extensions/aboutaddons.html") {
- /* url-prefix(chrome://mozapps/content/extensions/extensions.xul) */
-
-/* Don't dim disabled addon's icon */   
-	richlistitem[active="false"] .icon {
-	  filter: unset !important;
-	}
-
-
-/**
- * Compact addons page 
- * by mjcov
- * https://www.reddit.com/r/FirefoxCSS/comments/bc8f07/my_compact_addons_manager_screenshot_inside/ 
- * TODO: restyle this section
+/*
+ * Author: Thomas Leon Highbaugh (thighbaugh@zoho.com)
+ * Project: firefox
+ * File: userContent/about_addons.css
+ * Description: styles the addons page
  */
+@-moz-document url("chrome://mozapps/content/extensions/aboutaddons.html")
+{
+  /* Don't dim disabled addon's icon */
+  richlistitem[active="false"] .icon {
+    filter: unset !important;
+  }
+
   #addons-page .addon.card {
     max-width: 85% !important;
     padding: 4px 6px 4px 11px !important;
@@ -40,133 +38,124 @@
     padding: 1rem 12px !important;
   }
   #addons-page .card:hover {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.08) !important;
+    box-shadow: 0 4px 8px 0 var(--color), 0 2px 4px 0 var(--box-shadow) !important;
   }
   #addons-page .card:focus {
-    box-shadow: 0 0 0 2px var(--bg) !important;
+    box-shadow: 0 0 0 2px var(--box-shadow) !important;
   }
   #addons-page #private-browsing-notice,
   #addons-page .privateBrowsing-notice {
     display: none !important;
   }
   #addons-page .addon[privateBrowsing="true"] .name:after {
-    content: 'PRIVATE';
+    content: "PRIVATE";
     display: inline-block;
-    background-color: var(--purple-70);
-    color: #fff;
+    background-color: var(--bg);
+    color: var(--color);
     opacity: 0.55;
     padding: 4px 5px 3px;
     font-size: 0.9rem;
     font-weight: 600;
     margin-left: 5px;
   }
-  
 
-/* 
+  /* 
  * Show action buttons (enable/disable, options etc.)
  * https://www.reddit.com/r/FirefoxCSS/comments/cs4yl5/show_action_buttons_enabledisable_options_etc_on/
  */
   panel-list {
-        border: none !important;
-        box-shadow: none !important;
-        display: inline !important;
-        min-width: unset !important;
-        padding: 0 !important;
-        right: 0px !important;
-    }
+    border: none !important;
+    box-shadow: none !important;
+    display: inline !important;
+    min-width: unset !important;
+    padding: 0 !important;
+    right: 0px !important;
+  }
 
-    panel-item {
-        display: inline-block !important;
-        margin-inline-start: 2px !important;
-    }
-    
-    .more-options-menu {
-        margin: unset !important;
-    }
-    
-    /* link + is needed to avoid styling check for updates buttons and tabs on add-on detail pages because shadowdom */
-    link + button {
-        background-color: var(--in-content-button-background) !important;
-        background-position: center !important;
-        border-radius: 2px !important;
-        cursor: pointer !important;
-        height: 32px !important;
-        padding-left: 8px !important;
-        padding-right: 8px !important;        
-    }
-    link + button:hover {
-        background-color: var(--in-content-button-background-hover) !important;
-    }
-    link + button:hover:active {
-        background-color: var(--in-content-button-background-active) !important;
-    }
-    link + button:focus {
-        box-shadow: 0 0 0 1px var(--in-content-border-active) inset, 0 0 0 1px var(--in-content-border-active), 0 0 0 4px var(--in-content-border-active-shadow) !important;
-    }
+  panel-item {
+    display: inline-block !important;
+    margin-inline-start: 2px !important;
+  }
 
-    /* dot badging on update button */
-    link + button::after {
-        left: 22px !important;
-        top: 4px !important;
-    }        
+  .more-options-menu {
+    margin: unset !important;
+  }
 
-    /* use icons, remove text */
-    panel-item[action="remove"],
-    panel-item[action="install-update"],
-    panel-item[action="always-activate"] {
-        font-size: 0px !important;
-        position: relative !important;
-        top: -6px !important;
-        fill: var(--in-content-page-color) !important;
-        width: 32px !important;
-    }
-    
-    .more-options-button.ghost-button,
-    .arrow.top,
-    .arrow.bottom,
-    panel-item-separator,
-    panel-item[action="report"],
-    panel-item[action="expand"],
-    panel-item[hidden],
-    .addon-description {
-        display: none !important;
-    }
-    
-    .card-contents {
-        align-self: center !important;
-    }
+  /* link + is needed to avoid styling check for updates buttons and tabs on add-on detail pages because shadowdom */
+  link + button {
+    background-color: var(--bg) !important;
+    background-position: center !important;
+    border-radius: 2px !important;
+    cursor: pointer !important;
+    height: 32px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+  link + button:hover {
+    background-color: var(--hover-bg) !important;
+  }
+  link + button:hover:active {
+    background-color: var(--active-bg) !important;
+  }
+  link + button:focus {
+    box-shadow: 0 0 0 1px var(--box-shadow) inset, 0 0 0 1px var(--active-bg),
+      0 0 0 4px var(--hover-bg) !important;
+  }
 
-/* show counter next to "Enabled" and "Disabled" */
-    addon-list[type="extension"] section[section="0"] > addon-card {
-        counter-increment: enabled;
-    }
-    addon-list[type="extension"] section[section="1"] > addon-card {
-        counter-increment: disabled;
-    }
-    section[section="0"] {
-        counter-reset: enabledpvt; /* define scope */
-    }
-    addon-list[type="extension"] section[section="0"] > addon-card .addon-badge-private-browsing-allowed {
-        counter-increment: enabledpvt;
-    }
-    addon-list[type="extension"] section[section="0"],
-    addon-list[type="extension"] section[section="1"] {
-        position: relative !important;
-    }
-    addon-list[type="extension"] section[section="0"] > .list-section-heading,
-    addon-list[type="extension"] section[section="1"] > .list-section-heading {
-        visibility: collapse !important;
-    }
-    addon-list[type="extension"] section[section="0"]::after,
-    addon-list[type="extension"] section[section="1"]::after {
-    	content: "Увімкнено: " counter(enabled) ", в приватних вікнах: " counter(enabledpvt);
-        position: absolute !important;
-    	top: 0px !important;
-        font-size: 17px;
-        font-weight: 600;
-    }
-    addon-list[type="extension"] section[section="1"]::after {
-    	content: "Вимкнено: " counter(disabled);
-    } 
-  
-}
+  /* dot badging on update button */
+  link + button::after {
+    left: 22px !important;
+    top: 4px !important;
+  }
+
+  /* use icons, remove text */
+  panel-item[action="remove"],
+  panel-item[action="install-update"],
+  panel-item[action="always-activate"] {
+    font-size: 0px !important;
+    position: relative !important;
+    top: -6px !important;
+    fill: var(--color) !important;
+    width: 32px !important;
+  }
+
+  .more-options-button.ghost-button,
+  .arrow.top,
+  .arrow.bottom,
+  panel-item-separator,
+  panel-item[action="report"],
+  panel-item[action="expand"],
+  panel-item[hidden],
+  .addon-description {
+    display: none !important;
+  }
+
+  .card-contents {
+    align-self: center !important;
+  }
+
+  /* show counter next to "Enabled" and "Disabled" */
+  addon-list[type="extension"] section[section="0"] > addon-card {
+    counter-increment: enabled;
+  }
+  addon-list[type="extension"] section[section="1"] > addon-card {
+    counter-increment: disabled;
+  }
+  section[section="0"] {
+    counter-reset: enabledpvt; /* define scope */
+  }
+  addon-list[type="extension"]
+    section[section="0"]
+    > addon-card
+    .addon-badge-private-browsing-allowed {
+    counter-increment: enabledpvt;
+  }
+  addon-list[type="extension"] section[section="0"],
+  addon-list[type="extension"] section[section="1"] {
+    position: relative !important;
+  }
+  addon-list[type="extension"] section[section="0"] > .list-section-heading,
+  addon-list[type="extension"] section[section="1"] > .list-section-heading {
+    visibility: collapse !important;
+  }
+

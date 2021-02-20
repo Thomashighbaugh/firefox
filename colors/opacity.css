@@ -11,6 +11,7 @@
 
   --accent-bg: #00caff;
   --blank-page-bg: #22262d;
+  --box-shadow: #22262d66;
 
   --urlbar-hightlight-bg: var(--accent-bg);
   --urlbar-radius: 9px;
@@ -55,6 +56,7 @@
   --sidebar-color: var(--color);
 
   --menupopup-bg: #e9efffaa;
+  --menupopup-bg-hover: #b2bfd9aa;
   --menupopup-color: var(--color);
 }
 
@@ -79,5 +81,6 @@
   --sidebar-color: var(--color);
 
   --menupopup-bg: #3c3f4caa;
+  --menupopup-bg-hover: #555e70aa;
   --menupopup-color: var(--color);
 }

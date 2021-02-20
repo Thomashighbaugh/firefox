@@ -9,8 +9,9 @@
 
   --sidebar-searchbar-radius: 6px;
 
-  --accent-bg: #4c5ff9cc;
-  --blank-page-bg: #252525;
+  --accent-bg: #00caff;
+  --blank-page-bg: #22262d;
+  --box-shadow: #22262d66;
 
   --urlbar-hightlight-bg: var(--accent-bg);
   --urlbar-radius: 9px;
@@ -18,17 +19,17 @@
   --urlbar-results-font-weight: 550;
   --urlbar-font-size: 12pt;
   --urlbar-font-weight: 500;
-  --urlbar-switch-tab-color: #6498ef;
-  --urlbar-bookmark-color: #53e2ae;
+  --urlbar-switch-tab-color: #00caff;
+  --urlbar-bookmark-color: #ff29a8;
 
   --navbar-padding: 6px;
 
-  --tab-selected-bg: #77777788;
+  --tab-selected-bg: #3c3f4c;
   --tab-font-size: 11pt;
-  --tab-font-weight: 400;
-  --tab-height: 36px;
+  --tab-font-weight: 600;
+  --tab-height: 24px;
   --tab-border-radius: 6px;
-  --tab-soundplaying-bg: #985effcc;
+  --tab-soundplaying-bg: #22262d;
 
   --toolbar-bgcolor: transparent !important;
   --urlbar-separator-color: transparent !important;
@@ -36,48 +37,50 @@
 
 /* Light Mode */
 :root:-moz-lwtheme-darktext {
-  --main-window: #ffffff;
-  --bg: var(--main-window);
-  --color: #0a0a0a;
+  --main-window: transparent;
+  --bg: #e9efff;
+  --color: #22262d;
 
-  --hover-bg: #1a1a1a33;
-  --active-bg: #1a1a1a66;
+  --hover-bg: #17191e;
+  --active-bg: #17191e;
 
-  --icon-color: #0a0a0a;
-  --tab-toolbar-bg: #e5e5e5;
-  --tab-selected-bg: var(--bg);
+  --icon-color: #22262d;
+  --tab-toolbar-bg: #e9efff;
+  --tab-selected-bg: #0b0c0f;
   --navbar-bg: var(--bg);
-  --urlbar-bg: #e6e6e6;
-  --urlbar-active-bg: #e6e6e6;
+  --urlbar-bg: var(--bg);
+  --urlbar-active-bg: var(--bg);
   --urlbar-focused-color: var(--color);
 
   --sidebar-bg: var(--bg);
   --sidebar-color: var(--color);
 
-  --menupopup-bg: #f2f2f2ee;
+  --menupopup-bg: #e9efff;
   --menupopup-color: var(--color);
+  --menupopup-bg-hover: #b2bfd9;
 }
 
 /* Dark Mode */
 :root:-moz-lwtheme-brighttext {
-  --main-window: #0a0a0a;
-  --bg: var(--main-window);
-  --color: #f2f2f2;
+  --main-window: transparent;
+  --bg: #22262d;
+  --color: #b2bfd9;
 
-  --hover-bg: #f2f2f233;
-  --active-bg: #f2f2f266;
+  --hover-bg: #e9efff;
+  --active-bg: #e9efff;
 
-  --icon-color: #f2f2f2;
-  --tab-toolbar-bg: var(--base-bg);
-  --tab-selected-bg: #252525;
-  --navbar-bg: #202020;
-  --urlbar-bg: #2f2f2f;
-  --urlbar-active-bg: #2f2f2f;
+  --icon-color: #e9efff;
+  --tab-toolbar-bg: #0b0c0f;
+  --tab-selected-bg: #e9efff;
+  --navbar-bg: var(--bg);
+  --urlbar-bg: var(--bg);
+  --urlbar-active-bg: var(--bg);
   --urlbar-focused-color: var(--color);
 
   --sidebar-bg: var(--bg);
   --sidebar-color: var(--color);
 
-  --menupopup-bg: #0a0a0aee;
+  --menupopup-bg: #3c3f4c;
+  --menupopup-bg-hover: #555e70;
   --menupopup-color: var(--color);
 }

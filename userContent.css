@@ -6,6 +6,7 @@
  */
 
 @import url("userChrome.css");
+@import url("userContent/customization-window");
 @import url("userContent/about_addons");
 @import url("userContent/about_newtab");
 @import url("userContent/about_reader");

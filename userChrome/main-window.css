@@ -10,14 +10,6 @@
   -moz-appearance: var(--moz-appearance) !important;
 }
 
-/*
-░█▀▀░█▀█░█▀█░▀█▀
-░█▀▀░█░█░█░█░░█░
-░▀░░░▀▀▀░▀░▀░░▀░
-
-I'm not sure if this does something
-*/
-
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

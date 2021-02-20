@@ -9,8 +9,7 @@
   transition-delay: 1s;
   filter: alpha(opacity=0);
   opacity: 0;
-  transition: visibility, ease 0.25s, margin-top, ease 0.25s, opacity, ease 0.25s,
-    rotate, ease 0.14s !important;
+  
 }
 
 :root:not([customizing]) :hover > #nav-bar,

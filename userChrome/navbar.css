@@ -17,7 +17,7 @@
 #nav-bar:focus-within,
 #urlbar[focused="true"],
 #identity-box[open="true"],
-#navigator-toolbox:hover > #nav-bar:not([customizing]),
+
 #toolbar-menubar:not([inactive="true"]) ~ #nav-bar:not([customizing]) {
   visibility: visible;
   margin-top: 0px;

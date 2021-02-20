@@ -70,8 +70,8 @@
   --active-bg: #e9efff;
 
   --icon-color: #b2bfd9;
-  --tab-toolbar-bg: #3c3f4c;
-  --tab-selected-bg: #383a47;
+  --tab-toolbar-bg: #22262d;
+  --tab-selected-bg: #2f303d;
   --navbar-bg: var(--bg);
   --urlbar-bg: var(--bg);
   --urlbar-active-bg: var(--bg);

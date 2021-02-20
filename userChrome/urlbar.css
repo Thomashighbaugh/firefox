@@ -2,7 +2,7 @@
 #urlbar {
   /* URL bar and toolbar height */
   --urlbar-height: 40px !important;
-  --urlbar-toolbar-height: 44px !important;
+  --urlbar-toolbar-height: 40px !important;
 }
 
 #urlbar-input:focus {

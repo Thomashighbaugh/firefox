@@ -26,7 +26,7 @@
     color: var(--icon-color) !important;
   }
   .permatoolbar {
-    background-color: #292d35 !important;
+    background-color: var(--bg) !important;
   }
   .permatoolbar .button {
     background-color: var(--menupopup-bg) !important;
@@ -43,40 +43,40 @@
     background-color: var(--bg) !important;
   }
   #firewallContainer > div:hover {
-    background-color: #36393f !important;
+    background-color: var(--base02) !important;
   }
   #firewallContainer > div > span {
-    color: #eee !important;
-    border-bottom: 0px solid #111 !important;
+    color: var(--base07) !important;
+    border-bottom: 0px solid var(--base00) !important;
   }
   #firewallContainer > div > span:first-of-type ~ span {
-    border-left: 0px solid #111 !important;
+    border-left: 0px solid var(--base00) !important;
   }
   #extraTools {
-    background-color: #292d35 !important;
+    background-color: var(--base01) !important;
   }
   #extraTools > span:hover {
     color: #8ad !important;
   }
   #dashboard-nav-widgets {
-    background-color: #111 !important;
-    border-bottom: 0px solid #666 !important;
+    background-color: var(--base00) !important;
+    border-bottom: 0px solid var(--base05) !important;
   }
   .tabButton {
-    background-color: #292d35 !important;
-    border: 1px solid #666 !important;
-    border-bottom: 0px solid #666 !important;
-    color: #eee !important;
+    background-color: var(--base01) !important;
+    border: 1px solid var(--base05) !important;
+    border-bottom: 0px solid var(--base05) !important;
+    color: var(--base07) !important;
   }
   .tabButton.selected {
-    background-color: #292d35 !important;
-    border-bottom: 0px solid #292d35 !important;
+    background-color: var(--base01) !important;
+    border-bottom: 0px solid var(--base01) !important;
   }
   #diff li {
-    background-color: #3c3f4c !important;
+    background-color: var(--base03) !important;
   }
   #diff li:nth-child(even) {
-    background-color: #666 !important;
+    background-color: var(--base05) !important;
   }
   #diff textarea {
     background-color: var(--blank-page-bg) !important;
@@ -90,15 +90,15 @@
   }
   #tooltip {
     background-color: var(--blank-page-bg) !important;
-    border: 0px solid gray !important;
+    border: 0px solid var(--base03) !important;
     border-radius: 0px !important;
-    box-shadow: 0px 0px 0px gray !important;
-    color: white !important;
+    box-shadow: 0px 0px 0px var(--base03) !important;
+    color: var(--base07) !important;
   }
   #refresh {
     background-color: var(--bg) !important;
     border: 0px solid var(--color) !important;
     border-radius: 0px !important;
-    fill: white !important;
+    fill: var(--base07) !important;
   }
 }

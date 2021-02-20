@@ -37,7 +37,7 @@
 
 /* Light Mode */
 :root:-moz-lwtheme-darktext {
-  --main-window: transparent;
+  --main-window: #e9efff;
   --bg: #e9efff;
   --color: #22262d;
 
@@ -62,7 +62,7 @@
 
 /* Dark Mode */
 :root:-moz-lwtheme-brighttext {
-  --main-window: transparent;
+  --main-window: #3c3f4c;
   --bg: #3c3f4c;
   --color: #b2bfd9;
 

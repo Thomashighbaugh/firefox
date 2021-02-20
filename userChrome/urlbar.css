@@ -2,16 +2,6 @@
 #urlbar {
   max-width: 70% !important;
   margin: 0 15% !important;
-
-  /* URL bar and toolbar height */
-  --urlbar-height: 36px !important;
-  --urlbar-toolbar-height: 40px !important;
-}
-
-/* URL bar and toolbar height if compact mode */
-:root[uidensity="compact"] #urlbar {
-  --urlbar-height: 30px !important;
-  --urlbar-toolbar-height: 34px !important;
 }
 
 #urlbar-input:focus {
@@ -50,6 +40,7 @@
 .urlbar-icon-wrapper[open],
 .urlbar-icon:not([disabled]):hover:active,
 .urlbar-icon-wrapper:hover:active {
+  background: var(--active-bg);
 }
 
 /* Set color scheme */
@@ -105,15 +96,9 @@
 }
 
 .urlbar-icon > image {
-  fill: #ff00ff !important;
-  color: #ff00ff !important;
+  fill: var(--base08) !important;
+  color: var(--base08) !important;
 }
-
-.urlbarView-favicon,
-.urlbarView-type-icon {
-  display: none !important;
-}
-
 .urlbarView-row[type="bookmark"] > span {
   color: var(--urlbar-bookmark-color) !important;
 }
@@ -291,54 +276,16 @@
 
 /* Give the address bar darker background in a private browsing window and tweak selection colors */
 #urlbar ::-moz-selection {
-  background-color: #5294f9 !important;
-  color: #fff !important;
-}
-
-#main-window[privatebrowsingmode] #urlbar ::-moz-selection {
-  background-color: #5a5a5a !important;
-  color: #f0f0f0 !important;
-}
-
-#main-window[privatebrowsingmode] #urlbar {
-  background-color: #303030 !important;
-}
-
-/* Vertically center container label */
-#userContext-icons #userContext-label {
-  margin-bottom: 2px !important;
-  margin-inline-end: 2px !important;
-}
-
-#userContext-icons {
-  -moz-box-ordinal-group: 99;
-  padding-right: 2px !important;
+  background-color: var(--accent) !important;
+  color: var(--base07) !important;
 }
 
 #urlbar:not([focused="true"]):-moz-lwtheme,
 #urlbar.hidden-focus:-moz-lwtheme {
-  border-color: rgba(40, 40, 50, 0.25) !important;
-}
-
-#urlbar:not(.hidden-focus)[focused="true"],
-#searchbar:focus-within {
-  /* border-color: rgba(40, 40, 50, 0.4) !important; */
-  border-color: var(
-    --lwt-toolbar-field-border-color,
-    hsla(240, 5%, 5%, 0.25)
-  ) !important;
-  box-shadow: 0 0px 1px 1px rgba(40, 40, 50, 0.15) !important;
-}
-
-#urlbar:not(.hidden-focus):-moz-lwtheme[focused="true"],
-#navigator-toolbox #searchbar:focus-within:-moz-lwtheme {
-  /* default color: rgb(60, 65, 78) */
-  background-color: rgb(63, 69, 83) !important;
+  border-color: var(--base02) !important;
 }
 
 /* Get rid of border and shadow, blend into toolbar */
 #urlbar {
   border: none !important;
-  /*   box-shadow: none !important; */
-  /*   background-color: var(--toolbar-bgcolor) !important; */
 }

@@ -13,9 +13,11 @@
     rotate, ease 0.4s !important;
 }
 
+:root:not([customizing]) > #nav-bar,
 #nav-bar:focus-within,
 #urlbar[focused="true"],
 #identity-box[open="true"],
+#navigator-toolbox > #nav-bar:not([customizing]),
 #toolbar-menubar:not([inactive="true"]) ~ #nav-bar:not([customizing]) {
   visibility: visible;
   margin-top: 0px;

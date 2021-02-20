@@ -10,7 +10,7 @@
 
 /* 	Set minimum height for tab bar */
 #tabbrowser-tabs {
-  --tab-min-height: 0;
+  --tab-min-height: 20px;
   margin: 6px;
 }
 

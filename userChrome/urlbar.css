@@ -264,9 +264,6 @@
   border: none !important;
 }
 
-/* remove megabar */
-@-moz-document url(chrome://browser/content/browser.xhtml)
-{
   #urlbar[breakout][breakout-extend] > #urlbar-input-container,
   #urlbar-input-container {
     height: var(--urlbar-height) !important;
@@ -278,8 +275,8 @@
 
   #urlbar[breakout][breakout-extend] {
     top: calc(
-      (var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2
-    ) !important;
+      	top: calc(20px - var(--urlbar-height) / 2) !important;
+
     left: 0 !important;
     width: 100% !important;
   }
@@ -297,93 +294,3 @@
     border-radius: var(--toolbarbutton-border-radius)
       var(--toolbarbutton-border-radius) 0 0 !important;
   }
-}
-/* Remove border between Tabs and NavBar */
-#nav-bar {
-  margin-bottom: -1px !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* Keep Navbar on top during Findbar/Bookmark bar sliding animations */
-#nav-bar {
-  z-index: 3;
-}
-
-/* Download progress */
-/* #downloads-button[progress] #downloads-indicator-icon{
-  fill: #39f !important;
-} */
-
-/* Shorter menu button separator (4px padding => 10px) */
-:root:not([uidensity="compact"]):not([chromehidden~="toolbar"])
-  #PanelUI-button {
-  border-image-source: linear-gradient(
-    transparent 10px,
-    var(--lwt-toolbar-vertical-separator, rgba(255, 255, 255, 0.2)) 10px,
-    var(--lwt-toolbar-vertical-separator, rgba(255, 255, 255, 0.2))
-      calc(100% - 10px),
-    transparent calc(100% - 10px)
-  ) !important;
-}
-
-/* Hide menu button separator and remove its spacing */
-:root:not([uidensity="compact"]):not([chromehidden~="toolbar"])
-  #PanelUI-button {
-  margin-inline-start: 0 !important;
-  border-inline-start: none !important;
-}
-
-:root:not([uidensity="compact"]) #PanelUI-menu-button {
-  padding-left: 0 !important;
-}
-
-/* Move "search with" text in richlist to the bottom */
-.search-panel-one-offs {
-  -moz-box-ordinal-group: 0;
-}
-
-#navigator-toolbox::after {
-  display: none !important;
-  border-bottom: 0 !important;
-}
-
-#nav-bar,
-#TabsToolbar {
-  border: none !important;
-}
-
-#nav-bar-customization-target {
-  background-color: #292d35 !important;
-}
-
-#navigator-toolbox {
-  margin-top: 0;
-  padding-top: 0 !important;
-  border: none !important;
-}
-
-#navigator-toolbox {
-  --tabs-border-color: transparent !important;
-}
-
-.toolbarbutton-1 {
-  fill: #edeeff !important;
-  background-color: #292d35 !important;
-}
-
-#urlbar-input-container {
-  border: none !important;
-}
-
-#urlbar[open] > #urlbar-background {
-  background: #292d35 !important;
-  border-color: transparent !important;
-  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.32) !important;
-}
-
-#urlbar-background {
-  background-color: #292d35 !important;
-  box-shadow: none !important;
-  border-color: transparent !important;
-}

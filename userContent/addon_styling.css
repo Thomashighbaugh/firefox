@@ -1,4 +1,4 @@
-/** 
+/* * 
  * https://www.reddit.com/r/FirefoxCSS/comments/7lefac/ublock_origin_dark_theme/
  * https://www.reddit.com/r/FirefoxCSS/comments/bcgnvb/fully_themed_ublock_origin_css/
  */
@@ -6,7 +6,7 @@
 @-moz-document url-prefix("moz-extension://96739bf5-16fd-468d-ba3e-fcf65184ca7c/")
 {
   body {
-    background-color: var(--bg) !important;
+    background-color: var(--blank-page-bg) !important;
     color: var(--color) !important;
   }
   a {

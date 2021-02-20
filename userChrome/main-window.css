@@ -1,20 +1,12 @@
-/*
-░▀█▀░█▀▄░█▀█░█▀█░█▀▀░█▀█░█▀█░█▀▄░█▀▀░█▀█░█▀▀░█░█
-░░█░░█▀▄░█▀█░█░█░▀▀█░█▀▀░█▀█░█▀▄░█▀▀░█░█░█░░░░█░
-░░▀░░▀░▀░▀░▀░▀░▀░▀▀▀░▀░░░▀░▀░▀░▀░▀▀▀░▀░▀░▀▀▀░░▀░
-
-Main window
-*/
 #main-window {
   -webkit-font-kerning: normal;
   font-kerning: normal;
   border: none !important;
 }
 
-/* Add transparency to light and dark color schemes */
 #main-window:-moz-lwtheme-brighttext,
 #main-window:-moz-lwtheme-darktext {
-  background: var(--main-window) !important;
+  background: transparent !important;
   -moz-appearance: var(--moz-appearance) !important;
 }
 

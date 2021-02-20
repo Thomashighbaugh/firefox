@@ -8,7 +8,7 @@
 @import url("colors/vice.css");
 
 @import url("userChrome.css");
-@import url("userContent/about_addons");
+/* @import url("userContent/about_addons"); */
 @import url("userContent/about_newtab");
 @import url("userContent/about_reader");
 @import url("userContent/addon_styling");

@@ -12,7 +12,7 @@ download_ff() {
 
 	message "[>>] Downloading theme..."
 
-	curl -LJ0 https://github.com/Thomashighbaugh/firefox/archive/master.tar.gz | tar -xz -C /tmp/
+	curl -LJ0 https://github.com/Thomashighbaugh/firefox/archive/master.tar.gz | tar -xz -C /tmp/firefox
 
 	# Download success!
 	if [[ $? -eq 0 ]]; then
@@ -149,30 +149,3 @@ else
 	message "[!!] No Firefox ${RELEASE_NAME} user profile detected! Make sure to run Firefox ${RELEASE_NAME} atleast once! Terminating..."
 	exit 1
 fi
-
-####################################################################################################
-## Comment out everything above except the shebang, then uncomment the below for local installations
-####################################################################################################
-# THEME=$PWD
-
-# if [ "$(ls $HOME/.mozilla/firefox/*.default-release | wc -l)" -ge "1" ]; then
-# 	USER_DIRECTORY=$HOME/.mozilla/firefox/"*.default-release"
-
-# elif [ "$(ls $HOME/.mozilla/firefox/*.dev-edition-default | wc -l)" -ge "1" ]; then
-# 	USER_DIRECTORY=$HOME/.mozilla/firefox/"*.dev-edition-default"
-
-# elif [ "$(ls $HOME/.mozilla/firefox/*.default-beta | wc -l)" -ge "1" ]; then
-# 	USER_DIRECTORY=$HOME/.mozilla/firefox/"*.default-beta"
-
-# elif [ "$(ls $HOME/.mozilla/firefox/*.default-nightly | wc -l)" -ge "1" ]; then
-# 	USER_DIRECTORY=$HOME/.mozilla/firefox/"*.default-nightly"
-
-# elif [ "$(ls $HOME/.mozilla/firefox/*.default-esr | wc -l)" -ge "1" ]; then
-# 	USER_DIRECTORY=$HOME/.mozilla/firefox/"*.default-esr"
-
-# fi
-
-# #  Copy Configuration
-# cp -rvf "$THEME" "$USER_DIRECTORY"/chrome
-
-# cp -rvf "$THEME"/user.js "$USER_DIRECTORY"

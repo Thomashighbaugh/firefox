@@ -2,6 +2,16 @@
 #urlbar {
   max-width: 70% !important;
   margin: 0 15% !important;
+
+  /* URL bar and toolbar height */
+  --urlbar-height: 36px !important;
+  --urlbar-toolbar-height: 40px !important;
+}
+
+/* URL bar and toolbar height if compact mode */
+:root[uidensity="compact"] #urlbar {
+  --urlbar-height: 30px !important;
+  --urlbar-toolbar-height: 34px !important;
 }
 
 #urlbar-input:focus {
@@ -98,9 +108,6 @@
 .urlbar-icon > image {
   fill: var(--base08) !important;
   color: var(--base08) !important;
-}
-.urlbarView-row[type="bookmark"] > span {
-  color: var(--urlbar-bookmark-color) !important;
 }
 
 .urlbarView-row[type="switchtab"] > span .urlbarView-url {
@@ -229,40 +236,7 @@
 
 #urlbar,
 #urlbar[breakout][breakout-extend] {
-  top: calc(20px - var(--urlbar-height) / 2) !important;
-}
-
-/* Compact Navbar */
-
-/* Remove padding on urlbar (icons on the right break without this) */
-#urlbar-input-container {
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
-}
-
-/* Reduce "breakout" navbar height */
-#urlbar[breakout][breakout-extend] > #urlbar-input-container {
-  height: calc(var(--urlbar-toolbar-height) - 4px) !important;
-}
-
-/* Fix breakout positioning being too high after we decreased the height */
-#urlbar[breakout][breakout-extend] {
-  top: 2px !important;
-}
-
-/* Remove padding on search one offs div */
-.search-one-offs {
-  padding-block: 0px !important;
-}
-
-/* Fix padding left of the search one-off icons */
-.search-panel-one-offs {
-  padding-left: 7px !important;
-}
-
-/* Remove margins around the search one-off icons */
-.searchbar-engine-one-off-item {
-  margin: 0px !important;
+  top: calc(40px - var(--urlbar-height) / 2) !important;
 }
 
 /** 

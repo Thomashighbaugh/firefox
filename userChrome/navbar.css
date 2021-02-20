@@ -4,8 +4,7 @@
 
 #nav-bar:not([customizing]) {
   visibility: visible;
-  margin-top: -50px;
-    margin-bottom: 5px !important;
+  
 
   background: var(--bg)
   transition-delay: 1s;

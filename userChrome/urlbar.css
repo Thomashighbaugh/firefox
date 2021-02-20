@@ -1,11 +1,3 @@
-/*
-░█░█░█▀▄░█░░░█▀▄░█▀█░█▀▄
-░█░█░█▀▄░█░░░█▀▄░█▀█░█▀▄
-░▀▀▀░▀░▀░▀▀▀░▀▀░░▀░▀░▀░▀
-
-URL bar
-*/
-
 /* URL bar max-width and centered hack */
 #urlbar {
   max-width: 70% !important;

@@ -10,37 +10,16 @@
 
 /* 	Set minimum height for tab bar */
 #tabbrowser-tabs {
-  /* --tab-min-height: 0; */
-  margin: 6px 5px 6px 5px;
+  --tab-min-height: 0;
+  margin: 6px;
 }
 
 /* Compact mode */
 :root[uidensity="compact"] #tabbrowser-tabs {
   margin: 0 !important;
 }
-
-/* Hide solo tab */
-
-/* #tabbrowser-tabs
-  tab[first-visible-tab="true"][last-visible-tab="true"]:only-of-type {
-  visibility: collapse;
-} */
-
-/* Hide New Tab Button immediately next to solo tab */
-
-/* #tabbrowser-tabs
-  tab[first-visible-tab="true"][last-visible-tab="true"]:only-of-type
-  + toolbarbutton {
-  visibility: collapse;
-} */
-
-/* Stretch Tabs */
-/* .tabbrowser-tab[fadein]:not([pinned]) {
-  max-width: none !important;
-} */
-
 .tab-background {
-  border: none !important;
+  border: var(--color) solid 0.25rem !important;
 }
 
 .tab-background:-moz-lwtheme-darktext,
@@ -88,7 +67,7 @@
 .tab-content {
   justify-content: center;
   align-items: center;
-  margin-top: -1px;
+
   min-width: 100% !important;
   padding: 0 10px !important;
 }
@@ -173,7 +152,7 @@ hbox.tab-content[pinned="true"] .tab-text {
 }
 
 .tabbrowser-tab:hover {
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 4px var(--box-shadow);
 }
 
 /* Set color scheme */
@@ -217,4 +196,28 @@ hbox.tab-content[pinned="true"] .tab-text {
 }
 #titlebar {
   -moz-box-ordinal-group: 3 !important;
+}
+
+/* subtle tab separators */
+
+.tabbrowser-tab::after,
+.tabbrowser-tab::before {
+  margin-bottom: 9px !important;
+  margin-top: 9px !important;
+}
+
+.tabbrowser-tab:hover::after,
+.tabbrowser-tab[multiselected]::after,
+#tabbrowser-tabs:not([movingtab]) > .tabbrowser-tab[beforehovered]::after,
+#tabbrowser-tabs:not([movingtab])
+  > .tabbrowser-tab[before-multiselected]::after {
+  visibility: hidden !important;
+}
+
+#tabbrowser-tabs:not([movingtab])
+  > .tabbrowser-tab[beforeselected-visible]::after,
+#tabbrowser-tabs[movingtab] > .tabbrowser-tab[visuallyselected]::before,
+.tabbrowser-tab[visuallyselected]::after,
+.tabbrowser-tab:last-of-type::after {
+  visibility: hidden !important;
 }

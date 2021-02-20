@@ -49,7 +49,7 @@
   min-height: 1px !important;
   max-height: 0px !important;
   margin-top: 1px !important;
-  margin-bottom: -1px !important;
+  margin-bottom: -3px !important;
   transition: all 50ms linear 0s !important;
   z-index: -5 !important;
 }

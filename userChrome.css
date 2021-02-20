@@ -18,3 +18,4 @@ USER INTERFACE userChrome
 @import url("userChrome/findbar.css");
 @import url("userChrome/context-menu.css");
 @import url("userChrome/window-controls.css");
+@import url("userChrome/navbar.css");

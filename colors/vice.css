@@ -63,15 +63,15 @@
 /* Dark Mode */
 :root:-moz-lwtheme-brighttext {
   --main-window: transparent;
-  --bg: #22262d;
+  --bg: #2f303d;
   --color: #b2bfd9;
 
   --hover-bg: #e9efff;
   --active-bg: #e9efff;
 
   --icon-color: #b2bfd9;
-  --tab-toolbar-bg: #22262d;
-  --tab-selected-bg: #2f303d;
+  --tab-toolbar-bg: #2f303d;
+  --tab-selected-bg: #3c3f4c;
   --navbar-bg: var(--bg);
   --urlbar-bg: var(--bg);
   --urlbar-active-bg: var(--bg);

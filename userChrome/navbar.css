@@ -13,7 +13,6 @@
     rotate, ease 0.4s !important;
 }
 
-#nav-bar,
 #nav-bar:focus-within,
 #urlbar[focused="true"],
 #identity-box[open="true"],

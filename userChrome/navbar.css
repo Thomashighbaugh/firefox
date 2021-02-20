@@ -19,7 +19,7 @@
 #navigator-toolbox:focus-within:not([inFullscreen]) #nav-bar {
   min-height: 40px !important;
   max-height: 40px !important;
-  margin-bottom: -40px !important;
+  margin-bottom: -30px !important;
   transition: all 180ms ease 0s !important;
   z-index: 1 !important;
 }

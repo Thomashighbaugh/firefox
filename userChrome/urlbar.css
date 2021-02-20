@@ -1,8 +1,5 @@
 /* URL bar max-width and centered hack */
 #urlbar {
-  max-width: 70% !important;
-  margin: 0 15% !important;
-
   /* URL bar and toolbar height */
   --urlbar-height: 30px !important;
   --urlbar-toolbar-height: 34px !important;

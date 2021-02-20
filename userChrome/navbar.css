@@ -4,12 +4,8 @@
 
 #nav-bar:not([customizing]) {
   visibility: collapse;
-  margin-bottom: 0!important;
-  background: var(--bg)
-  transition-delay: 1s;
-  filter: alpha(opacity=0);
-  opacity: 0;
-  
+  margin-bottom: 0 !important;
+  background: var(--bg);
 }
 
 :root:not([customizing]) :hover > #nav-bar,
@@ -23,7 +19,7 @@
   filter: alpha(opacity=100);
   opacity: 100;
   margin-bottom: 0;
-  padding-bottom:2px;
+  padding-bottom: 2px;
 }
 #PersonalToolbar {
   margin-top: 0px;
@@ -38,7 +34,6 @@
   margin-bottom: 0px !important;
   overflow-x: scroll;
 }
-
 
 #nav-bar {
   -moz-box-ordinal-group: 1 !important;

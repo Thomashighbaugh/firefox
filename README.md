@@ -20,10 +20,10 @@ curl -fsSL https://raw.githubusercontent.com/Thomashighbaugh/firefox/script/inst
 
 ### Development
 
-If you wish to add things to the theme, change its colors or make other modifications to the theme, then you'll have to adjust the installation script's git location it is sourcing the theme from to your own git repository.
+If you want to install this theme after modifying the source code, I have provided a section at the bottom of the `install.sh` script you can use to do exactly that. To utilize this section, you have to comment out everything above this bottom section, then uncomment the section itself before running the script otherwise you'll just install my variant.
 
 ## Post Installation
 
 After completing the installation, restart firefox _if open_ or open it.
 
-If you want to use a different color scheme, change the `Theme` in the customization tab which is accessed by right clicking in the findbar and selecting `Customize`.
+If you want to use a different color scheme, change the `Theme` in the customization tab which is accessed by right clicking in the `findbar` and selecting `Customize`.

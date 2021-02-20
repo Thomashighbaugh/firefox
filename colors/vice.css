@@ -10,7 +10,7 @@
   --sidebar-searchbar-radius: 6px;
 
   --accent-bg: #00caff;
-  --blank-page-bg: #22262d;
+  --blank-page-bg: #22262dbb;
   --box-shadow: #22262d66;
 
   --urlbar-hightlight-bg: var(--accent-bg);
@@ -24,12 +24,12 @@
 
   --navbar-padding: 6px;
 
-  --tab-selected-bg: #383a47;
+  --tab-selected-bg: #383a47bb;
   --tab-font-size: 11pt;
   --tab-font-weight: 600;
   --tab-height: 24px;
   --tab-border-radius: 6px;
-  --tab-soundplaying-bg: #22262d;
+  --tab-soundplaying-bg: #22262dbb;
 
   --toolbar-bgcolor: transparent !important;
   --urlbar-separator-color: transparent !important;
@@ -38,15 +38,15 @@
 /* Light Mode */
 :root:-moz-lwtheme-darktext {
   --main-window: transparent;
-  --bg: #e9efff;
+  --bg: #e9efffbb;
   --color: #22262d;
 
-  --hover-bg: #17191e;
-  --active-bg: #17191e;
+  --hover-bg: #17191ebb;
+  --active-bg: #17191ebb;
 
-  --icon-color: #22262d;
-  --tab-toolbar-bg: #e9efff;
-  --tab-selected-bg: #0b0c0f;
+  --icon-color: #22262dbb;
+  --tab-toolbar-bg: #e9efffbb;
+  --tab-selected-bg: #0b0c0fbb;
   --navbar-bg: var(--bg);
   --urlbar-bg: var(--bg);
   --urlbar-active-bg: var(--bg);
@@ -55,7 +55,7 @@
   --sidebar-bg: var(--bg);
   --sidebar-color: var(--color);
 
-  --menupopup-bg: #e9efff;
+  --menupopup-bg: var(--bg)
   --menupopup-color: var(--color);
   --menupopup-bg-hover: #b2bfd9;
 }
@@ -63,15 +63,15 @@
 /* Dark Mode */
 :root:-moz-lwtheme-brighttext {
   --main-window: transparent;
-  --bg: #2f303d;
-  --color: #b2bfd9;
+  --bg: #2f303dbb;
+  --color: #b2bfd9bb;
 
-  --hover-bg: #e9efff;
-  --active-bg: #e9efff;
+  --hover-bg: #e9efffbb;
+  --active-bg: #e9efffbb;
 
-  --icon-color: #b2bfd9;
-  --tab-toolbar-bg: #2f303d;
-  --tab-selected-bg: #3c3f4c;
+  --icon-color: #b2bfd9bb;
+  --tab-toolbar-bg: #2f303dbb;
+  --tab-selected-bg: #3c3f4cbb;
   --navbar-bg: var(--bg);
   --urlbar-bg: var(--bg);
   --urlbar-active-bg: var(--bg);
@@ -80,7 +80,7 @@
   --sidebar-bg: var(--bg);
   --sidebar-color: var(--color);
 
-  --menupopup-bg: #3c3f4c;
-  --menupopup-bg-hover: #555e70;
+  --menupopup-bg: #3c3f4cbb;
+  --menupopup-bg-hover: #555e70bb;
   --menupopup-color: var(--color);
 }

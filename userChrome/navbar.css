@@ -20,7 +20,7 @@
   opacity: 100;
   margin-bottom: 0;
   padding-bottom: 2px;
-}
+}*/
 #PersonalToolbar {
   margin-top: 0px;
 }
@@ -30,10 +30,10 @@
 }
 
 :-moz-any(#content, #appcontent) browser {
-  overflow-y: visi;
+  overflow-y: visible;
   margin-bottom: 0px !important;
   overflow-x: scroll;
-}*/
+}
 
 #nav-bar {
   -moz-box-ordinal-group: 1 !important;
@@ -57,7 +57,7 @@
 #navigator-toolbox:focus-within :-moz-any(#nav-bar) {
   min-height: 32px !important;
   max-height: 32px !important;
-  margin-top: 1px !important;
+  margin-top: 0px !important;
   margin-bottom: -32px !important;
   transition: all 50ms linear 0s !important;
   z-index: 5 !important;

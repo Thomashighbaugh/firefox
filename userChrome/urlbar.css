@@ -4,8 +4,8 @@
   margin: 0 15% !important;
 
   /* URL bar and toolbar height */
-  --urlbar-height: 40px !important;
-  --urlbar-toolbar-height: 44px !important;
+  --urlbar-height: 30px !important;
+  --urlbar-toolbar-height: 34px !important;
 }
 
 #urlbar-input:focus {
@@ -204,25 +204,6 @@
 #tracking-protection-icon-container[open="true"]:-moz-lwtheme-darktext,
 #tracking-protection-icon-container[open="true"]:-moz-lwtheme-brighttext {
   background: var(--hover-bg) !important;
-}
-
-/* Hides Navbar unless Control+l is pressed */
-#TabsToolbar {
-  -moz-window-dragging: no-drag !important;
-}
-
-#navigator-toolbox:hover:not([inFullscreen]) #nav-bar,
-#navigator-toolbox:focus-within:not([inFullscreen]) #nav-bar {
-  min-height: 40px !important;
-  max-height: 40px !important;
-  margin-bottom: -40px !important;
-  transition: all 180ms ease 0s !important;
-  z-index: 1 !important;
-}
-
-#urlbar,
-#urlbar[breakout][breakout-extend] {
-  top: calc(44px - var(--urlbar-height) / 2) !important;
 }
 
 /* Remove placeholder text in the address bar */

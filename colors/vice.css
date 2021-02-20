@@ -24,7 +24,7 @@
 
   --navbar-padding: 6px;
 
-  --tab-selected-bg: #3c3f4c;
+  --tab-selected-bg: #383a47;
   --tab-font-size: 11pt;
   --tab-font-weight: 600;
   --tab-height: 24px;
@@ -37,7 +37,7 @@
 
 /* Light Mode */
 :root:-moz-lwtheme-darktext {
-  --main-window: #e9efff;
+  --main-window: transparent;
   --bg: #e9efff;
   --color: #22262d;
 
@@ -62,7 +62,7 @@
 
 /* Dark Mode */
 :root:-moz-lwtheme-brighttext {
-  --main-window: #3c3f4c;
+  --main-window: transparent;
   --bg: #3c3f4c;
   --color: #b2bfd9;
 
@@ -71,7 +71,7 @@
 
   --icon-color: #e9efff;
   --tab-toolbar-bg: #3c3f4c;
-  --tab-selected-bg: #e9efff;
+  --tab-selected-bg: #383a47;
   --navbar-bg: var(--bg);
   --urlbar-bg: var(--bg);
   --urlbar-active-bg: var(--bg);

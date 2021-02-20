@@ -33,7 +33,7 @@
   overflow-y: visi;
   margin-bottom: 0px !important;
   overflow-x: scroll;
-}
+}*/
 
 #nav-bar {
   -moz-box-ordinal-group: 1 !important;
@@ -43,7 +43,7 @@
 }
 #titlebar {
   -moz-box-ordinal-group: 3 !important;
-} */
+}
 
 #nav-bar:not([customizing="true"]):not([inFullscreen]) {
   min-height: 1px !important;
@@ -54,7 +54,6 @@
   z-index: -5 !important;
 }
 
-#navigator-toolbox:hover:not([inFullscreen]) :-moz-any(#nav-bar),
 #navigator-toolbox:focus-within :-moz-any(#nav-bar) {
   min-height: 32px !important;
   max-height: 32px !important;

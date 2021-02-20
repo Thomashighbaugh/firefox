@@ -5,6 +5,8 @@
 #nav-bar:not([customizing]) {
   visibility: visible;
   margin-top: -50px;
+    margin-bottom: 5px !important;
+
   background: var(--bg)
   transition-delay: 1s;
   filter: alpha(opacity=0);
@@ -34,7 +36,7 @@
 }
 
 :-moz-any(#content, #appcontent) browser {
-  overflow-y: visible;
+  overflow-y: visi;
   margin-bottom: 0px !important;
   overflow-x: scroll;
 }

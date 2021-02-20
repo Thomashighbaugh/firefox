@@ -12,7 +12,7 @@ download_ff() {
 
 	message "[>>] Downloading theme..."
 
-	curl -LJ0 https://github.com/Thomashighbaugh/firefox/archive/master.tar.gz | tar -xz -C /tmp/firefox
+	curl -LJ0 https://github.com/Thomashighbaugh/firefox/archive/master.tar.gz | tar -xz -C /tmp
 
 	# Download success!
 	if [[ $? -eq 0 ]]; then

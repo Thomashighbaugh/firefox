@@ -40,18 +40,19 @@ The tabs container
 }
 
 /* Hide solo tab */
-/*
-#tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"]:only-of-type {
+
+#tabbrowser-tabs
+  tab[first-visible-tab="true"][last-visible-tab="true"]:only-of-type {
   visibility: collapse;
 }
-*/
 
 /* Hide New Tab Button immediately next to solo tab */
-/*
-#tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"]:only-of-type + toolbarbutton {
-	visibility: collapse;
+
+#tabbrowser-tabs
+  tab[first-visible-tab="true"][last-visible-tab="true"]:only-of-type
+  + toolbarbutton {
+  visibility: collapse;
 }
-*/
 
 /* Stretch Tabs */
 .tabbrowser-tab[fadein]:not([pinned]) {
@@ -235,19 +236,13 @@ hbox.tab-content[pinned="true"] .tab-text {
   background: transparent;
 }
 
-/* Remove hover effects on tab bar buttons */
-#TabsToolbar {
-  --toolbarbutton-active-background: transparent !important;
-  --toolbarbutton-hover-background: transparent !important;
-  -moz-appearance: none !important;
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+#nav-bar {
+  -moz-box-ordinal-group: 1 !important;
 }
-
-/* Left to Right Alignment of tabs toolbar */
-/* #TabsToolbar {
-  direction: rtl;
+#PersonalToolbar {
+  -moz-box-ordinal-group: 2 !important;
 }
-
-#tabbrowser-tabs {
-  direction: ltr;
+#titlebar {
+  -moz-box-ordinal-group: 3 !important;
 }
-*/

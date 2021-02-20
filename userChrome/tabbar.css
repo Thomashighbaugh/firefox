@@ -187,7 +187,6 @@ hbox.tab-content[pinned="true"] .tab-text {
   background: transparent;
 }
 
-@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 #nav-bar {
   -moz-box-ordinal-group: 1 !important;
 }
@@ -212,23 +211,4 @@ hbox.tab-content[pinned="true"] .tab-text {
 #tabbrowser-tabs:not([movingtab])
   > .tabbrowser-tab[before-multiselected]::after {
   visibility: hidden !important;
-}
-/* dynamic tab width */
-#tabbrowser-tabs:not([movingtab])
-  > .tabbrowser-tab[beforeselected-visible]::after,
-#tabbrowser-tabs[movingtab] > .tabbrowser-tab[visuallyselected]::before,
-.tabbrowser-tab[visuallyselected]::after,
-.tabbrowser-tab:last-of-type::after {
-  visibility: hidden !important;
-}
-.tabbrowser-tab:not([pinned]) {
-  max-width: 300px !important;
-}
-
-.tabbrowser-tab[selected]:not([pinned]) {
-  min-width: calc(var(--tab-min-width) + 50px) !important;
-}
-
-.tabbrowser-tab:not([pinned]) {
-  transition: min-width 100ms ease-out, max-width 100ms ease-out;
 }

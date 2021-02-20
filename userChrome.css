@@ -10,7 +10,7 @@ USER INTERFACE userChrome
 ****************************************/
 
 @import url("userChrome/main-window.css");
-@import url("userChrome/toolbar.css");
+/* @import url("userChrome/toolbar.css"); */
 @import url("userChrome/tabbar.css");
 @import url("userChrome/urlbar.css");
 @import url("userChrome/sidebar.css");

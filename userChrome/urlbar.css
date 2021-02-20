@@ -220,31 +220,7 @@
   background: var(--hover-bg) !important;
 }
 
-/* Auto-Hide the Urlbar */
-
-/* #nav-bar:not([customizing="true"]):not([inFullscreen]) {
-  min-height: 1px !important;
-  max-height: 0px !important;
-  margin-top: 1px !important;
-  margin-bottom: -1px !important;
-  transition: all 50ms linear 0s !important;
-  z-index: -5 !important;
-}
-
-#navigator-toolbox:hover:not([inFullscreen]) :-moz-any(#nav-bar),
-#navigator-toolbox:focus-within :-moz-any(#nav-bar) {
-  min-height: 32px !important;
-  max-height: 32px !important;
-  margin-top: 1px !important;
-  margin-bottom: -32px !important;
-  transition: all 50ms linear 0s !important;
-  z-index: 5 !important;
-}
-
-#urlbar {
-  --urlbar-toolbar-height: 32px !important;
-} */
-
+/* Hides Navbar unless Control+l is pressed */
 #TabsToolbar {
   -moz-window-dragging: no-drag !important;
 }
@@ -269,4 +245,43 @@
 #urlbar,
 #urlbar[breakout][breakout-extend] {
   top: calc(20px - var(--urlbar-height) / 2) !important;
+}
+
+/* Compact Navbar */
+
+/* Remove padding on urlbar results */
+.urlbarView-row {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+/* Remove padding on urlbar (icons on the right break without this) */
+#urlbar-input-container {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+/* Reduce "breakout" navbar height */
+#urlbar[breakout][breakout-extend] > #urlbar-input-container {
+  height: calc(var(--urlbar-toolbar-height) - 4px) !important;
+}
+
+/* Fix breakout positioning being too high after we decreased the height */
+#urlbar[breakout][breakout-extend] {
+  top: 2px !important;
+}
+
+/* Remove padding on search one offs div */
+.search-one-offs {
+  padding-block: 0px !important;
+}
+
+/* Fix padding left of the search one-off icons */
+.search-panel-one-offs {
+  padding-left: 7px !important;
+}
+
+/* Remove margins around the search one-off icons */
+.searchbar-engine-one-off-item {
+  margin: 0px !important;
 }

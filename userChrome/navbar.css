@@ -3,8 +3,8 @@
 }
 
 #nav-bar:not([customizing]) {
-  visibility: visible;
-margin-bottom: 0!important;
+  visibility: collapse;
+  margin-bottom: 0!important;
   background: var(--bg)
   transition-delay: 1s;
   filter: alpha(opacity=0);

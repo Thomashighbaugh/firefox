@@ -41,7 +41,7 @@
   --urlbar-font-weight: 500;
   --urlbar-switch-tab-color: var(--base13);
   --urlbar-bookmark-color: var(--base08);
-
+  --urlbar-height: 20px;
   --navbar-padding: 6px;
 
   --tab-selected-bg: var(--base20);

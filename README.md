@@ -20,7 +20,7 @@ curl -fsSL https://raw.githubusercontent.com/Thomashighbaugh/firefox/script/inst
 
 ### Development
 
-If you want to install this theme after modifying the source code, I have provided a section at the bottom of the `install.sh` script you can use to do exactly that. To utilize this section, you have to comment out everything above this bottom section, then uncomment the section itself before running the script otherwise you'll just install my variant.
+In order to install a variant of this theme which you have crafted locally, you can either manually copy the files to a chrome directory within your browser's profile or you may set up your own repository, then use modify the `install.sh` script to download from that repository's url. I would have included the option in a commented out section of the script, but was frustrated in my attempt by the nature of globbing and variable assignment, which if you understand how to do this, I welcome any forks.
 
 ## Post Installation
 

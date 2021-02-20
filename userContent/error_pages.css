@@ -1,11 +1,11 @@
 /** 
  * Dark error pages to match overall theme
  */
- 
+
 body.neterror,
 body.certerror {
-  background-color: var(--arc-dark-tabbar) !important;
-  color: #fffc !important;
+  background-color: var(--bg) !important;
+  color: var(--color) !important;
 }
 
 body.neterror #errorPageContainer h1,
@@ -16,5 +16,5 @@ body.certerror #errorPageContainer button {
 }
 
 body.certerror #badCertAdvancedPanel {
-  background-color: var(--arc-dark-navbar) !important;
+  background-color: var(--bg) !important;
 }

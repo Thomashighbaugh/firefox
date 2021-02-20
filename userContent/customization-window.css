@@ -1,4 +1,5 @@
 #customization-container {
+  background: var(--bg) !important;
 }
 
 #customization-container:-moz-lwtheme-darktext,

@@ -10,7 +10,7 @@
 #nav-bar:not([customizing="true"]):not([inFullscreen]) {
   min-height: 1px !important;
   max-height: 1px !important;
-  margin-bottom: 0 !important;
+  margin-bottom: -5px !important;
   transition: all 180ms ease 0.5s !important;
   z-index: -1 !important;
 }

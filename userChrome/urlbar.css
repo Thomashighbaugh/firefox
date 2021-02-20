@@ -222,12 +222,8 @@
 
 #urlbar,
 #urlbar[breakout][breakout-extend] {
-  top: calc(40px - var(--urlbar-height) / 2) !important;
+  top: calc(44px - var(--urlbar-height) / 2) !important;
 }
-
-/** 
- * Other tweaks regarding urlbar 
- */
 
 /* Remove placeholder text in the address bar */
 .urlbar-input-box > .urlbar-input::placeholder {

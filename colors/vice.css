@@ -86,21 +86,21 @@
   --bg: var(--base21);
   --color: var(--base06);
 
-  --hover-bg: var(--base07);
-  --active-bg: var(--base07);
+  --hover-bg: var(--base02);
+  --active-bg: var(--base03);
 
   --icon-color: var(--base06);
   --tab-toolbar-bg: var(--base21);
   --tab-selected-bg: var(--base02);
   --navbar-bg: var(--bg);
-  --urlbar-bg: var(--bg);
-  --urlbar-active-bg: var(--bg);
+  --urlbar-bg: var(--base00);
+  --urlbar-active-bg: var(--base01);
   --urlbar-focused-color: var(--color);
 
   --sidebar-bg: var(--bg);
   --sidebar-color: var(--color);
 
   --menupopup-bg: var(--base02);
-  --menupopup-bg-hover: var(--base03);
+  --menupopup-bg-hover: var(--base01);
   --menupopup-color: var(--color);
 }

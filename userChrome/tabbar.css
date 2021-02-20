@@ -19,7 +19,7 @@
   margin: 0 !important;
 }
 .tab-background {
-  border: var(--color) solid 0.25rem !important;
+  border: var(--color) solid 0.06125rem !important;
 }
 
 .tab-background:-moz-lwtheme-darktext,

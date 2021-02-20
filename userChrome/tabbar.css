@@ -194,11 +194,3 @@ hbox.tab-content[pinned="true"] .tab-text {
   margin-bottom: 9px !important;
   margin-top: 9px !important;
 }
-
-.tabbrowser-tab:hover::after,
-.tabbrowser-tab[multiselected]::after,
-#tabbrowser-tabs:not([movingtab]) > .tabbrowser-tab[beforehovered]::after,
-#tabbrowser-tabs:not([movingtab])
-  > .tabbrowser-tab[before-multiselected]::after {
-  visibility: hidden !important;
-}

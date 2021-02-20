@@ -8,12 +8,6 @@
   --urlbar-toolbar-height: 44px !important;
 }
 
-/* URL bar and toolbar height if compact mode */
-:root[uidensity="compact"] #urlbar {
-  --urlbar-height: 30px !important;
-  --urlbar-toolbar-height: 34px !important;
-}
-
 #urlbar-input:focus {
 }
 
@@ -219,7 +213,6 @@
 
 #navigator-toolbox:hover:not([inFullscreen]) #nav-bar,
 #navigator-toolbox:focus-within:not([inFullscreen]) #nav-bar {
-  margin-top: 44px !important;
   min-height: 40px !important;
   max-height: 40px !important;
   margin-bottom: -40px !important;

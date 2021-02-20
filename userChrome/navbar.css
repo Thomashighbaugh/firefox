@@ -4,8 +4,8 @@
 
 #nav-bar:not([customizing]) {
   visibility: visible;
-  
-
+  margin-top: -10px;
+margin-bottom: 0!important;
   background: var(--bg)
   transition-delay: 1s;
   filter: alpha(opacity=0);

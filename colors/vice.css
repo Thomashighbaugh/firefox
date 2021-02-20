@@ -63,7 +63,7 @@
 /* Dark Mode */
 :root:-moz-lwtheme-brighttext {
   --main-window: transparent;
-  --bg: #22262d;
+  --bg: #3c3f4c;
   --color: #b2bfd9;
 
   --hover-bg: #e9efff;

@@ -8,7 +8,6 @@
 @import url("colors/vice.css");
 
 @import url("userChrome.css");
-@import url("userContent/customization-window");
 @import url("userContent/about_addons");
 @import url("userContent/about_newtab");
 @import url("userContent/about_reader");
@@ -16,6 +15,7 @@
 @import url("userContent/error_pages");
 @import url("userContent/view_source");
 @import url("userContent/webpage_specific");
+@import url("userContent/customization-window");
 
 /* Set background color of landing pages */
 @-moz-document url(about:newtab),

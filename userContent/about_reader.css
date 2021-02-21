@@ -5,26 +5,15 @@
  * Description: styles reader page
  */
 @-moz-document url-prefix("about:reader") {
-  /* Fonts */
-  body.sans-serif,
-  body.sans-serif .remove-button {
-    font-family: "Segoe UI", Arial, sans-serif !important;
-  }
-
-  body.serif,
-  body.serif .remove-button {
-    font-family: "Tahoma", "Times New Roman", serif !important;
-  }
-
   /* Buttons and Toolbar to match browser's navbar color */
   .toolbar {
-    background-color: var(--arc-dark-navbar) !important;
+    background-color: var(--blank-page-bg) !important;
     border: none !important;
   }
 
   .button {
     height: 52px !important;
-    background-color: var(--arc-dark-navbar) !important;
+    background-color: var(--bg) !important;
     fill: var(--color) !important;
     border: none !important;
   }

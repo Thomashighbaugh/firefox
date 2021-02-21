@@ -1,10 +1,23 @@
+/*
+ * Author: Thomas Leon Highbaugh (thighbaugh@zoho.com)
+ * Project: blurredfox
+ * File: userChrome/customization-window.css
+ * Description: for the window that opens when one right clicks
+ * the toolbar and hits the customize dialog. I would have put
+ * this in userContent as it is more akin to such, but the only
+ * way I could get it to work was by including it within the
+ * userChrome section for reasons I am unsure of, so it is here.
+ */
+
 #customization-container {
   background: var(--bg) !important;
+  color: var(--color) !important;
 }
 
 #customization-container:-moz-lwtheme-darktext,
 #customization-container:-moz-lwtheme-brighttext {
   background: var(--bg) !important;
+  color: var(--color) !important;
 }
 
 .customizationmode-button {
@@ -15,6 +28,7 @@
 .customizationmode-button:-moz-lwtheme-darktext,
 .customizationmode-button:-moz-lwtheme-brighttext {
   color: var(--color) !important;
+  background: var(--bg);
 }
 
 .customizationmode-button:hover {

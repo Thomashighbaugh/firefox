@@ -1,3 +1,9 @@
+/*
+ * Author: Thomas Leon Highbaugh (thighbaugh@zoho.com)
+ * Project: blurredfox
+ * File: userChrome/window-controls.css
+ * Description: styles the window controls, or specifically hides them
+ */
 #autohide-context {
   display: none !important;
 }
@@ -9,10 +15,3 @@
 #window-controls[hidden="false"] {
   display: inline-flex !important;
 }
-
-/* Hide titlebar-buttonbox if there's single tab */
-/*
-:root[tabsintitlebar][sizemode="maximized"] #titlebar .titlebar-buttonbox-container {
-	display: none !important;
-}
-*/

@@ -1,5 +1,8 @@
-/** 
- * Dark error pages to match overall theme
+/*
+ * Author: Thomas Leon Highbaugh (thighbaugh@zoho.com)
+ * Project: firefox
+ * File: userContent/error_pages.css
+ * Description: styles the error pages to match the overall theme
  */
 
 body.neterror,

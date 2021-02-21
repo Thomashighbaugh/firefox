@@ -24,6 +24,7 @@
 #browser #appcontent #tabbrowser-tabbox findbar:-moz-lwtheme-darktext,
 #browser #appcontent #tabbrowser-tabbox findbar:-moz-lwtheme-brighttext {
   background-color: var(--bg) !important;
+  color: var(--color) !important;
 }
 
 .findbar-find-previous,
@@ -44,4 +45,5 @@
   #tabbrowser-tabbox
   .findbar-find-fast:not([status="notfound"]):-moz-lwtheme-brighttext {
   background-color: var(--bg) !important;
+  color: var(--color) !important;
 }

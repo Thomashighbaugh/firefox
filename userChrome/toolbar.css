@@ -1,3 +1,10 @@
+/*
+ * Author: Thomas Leon Highbaugh (thighbaugh@zoho.com)
+ * Project: firefox
+ * File: userChrome/toolbar.css
+ * Description: Styles the toolbars, which are in some cases also 
+ * styled within their own files, this file serves as a catch-all
+ */
 .browser-toolbar {
 }
 

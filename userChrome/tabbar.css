@@ -1,6 +1,11 @@
+/*
+ * Author: Thomas Leon Highbaugh (thighbaugh@zoho.com)
+ * Project: firefox
+ * File: userChrome/tabbar.css
+ * Description: Styles the toolbar containing the tabs
+ */
 .toolbar-items {
 }
-
 /* Transparent tabs */
 .toolbar-items:-moz-lwtheme-darktext,
 .toolbar-items:-moz-lwtheme-brighttext {

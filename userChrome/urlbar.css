@@ -1,8 +1,15 @@
+/*
+ * Author: Thomas Leon Highbaugh (thighbaugh@zoho.com)
+ * Project: firefox
+ * File: userChrome/urlbar.css
+ * Description: Styles the url input bar
+ */
+
 /* URL bar max-width and centered hack */
 #urlbar {
   /* URL bar and toolbar height */
-  --urlbar-height: 40px !important;
-  --urlbar-toolbar-height: 40px !important;
+  --urlbar-height: 32px !important;
+  --urlbar-toolbar-height: 32px !important;
 }
 
 #urlbar-input:focus {

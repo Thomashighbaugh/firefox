@@ -1,21 +1,24 @@
-/**
- * Dark View-source with syntax highlight
+/
+  /*
+ * Author: Thomas Leon Highbaugh (thighbaugh@zoho.com)
+ * Project: firefox
+ * File: userContent/view_source.css
+ * Description: styles the output of viewsource
  */
-
-@-moz-document url-prefix(view-source:) {
+  @-moz-document url-prefix(view-source:) {
   html {
-    background: #22262d !important;
-    color: #b2bfd9 !important;
+    background: (--bg) !important;
+    color: var(--color) !important;
   }
 
   .attribute-name {
-    color: #00eaff !important;
+    color: var(--base15) !important;
   }
   .start-tag,
   .end-tag {
-    color: #ff29a8 !important;
+    color: var(--base16) !important;
   }
   .attribute-value {
-    color: #61aeee !important;
+    color: var(--base14) !important;
   }
 }

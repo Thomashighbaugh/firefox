@@ -26,7 +26,6 @@ menupopup > menu > menupopup:-moz-lwtheme-brighttext {
 }
 
 menupopup menuseparator {
-  /* 	-moz-appearance: none !important; */
   margin: 2px 0 2px 0 !important;
   padding: 0 !important;
   border-top: none !important;
@@ -36,6 +35,6 @@ menupopup menuseparator {
 menupopup menuseparator:-moz-lwtheme-darktext,
 menupopup menuseparator:-moz-lwtheme-brighttext {
   -moz-appearance: none !important;
-  background: #22262d !important;
-  color: #e9efff !important;
+  background: var(--blank-page-bg) !important;
+  color: var(--color) !important;
 }

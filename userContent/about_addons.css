@@ -22,7 +22,6 @@
     margin-left: 12px !important;
   }
   #addons-page #heading {
-    /*margin: -3.35rem 0 1rem 0 !important;*/
     margin: -3.35rem 0 0 0 !important;
   }
   #addons-page #heading .heading-inner {
@@ -59,10 +58,7 @@
     margin-left: 5px;
   }
 
-  /* 
- * Show action buttons (enable/disable, options etc.)
- * https://www.reddit.com/r/FirefoxCSS/comments/cs4yl5/show_action_buttons_enabledisable_options_etc_on/
- */
+
   panel-list {
     border: none !important;
     box-shadow: none !important;

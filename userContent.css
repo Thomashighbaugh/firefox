@@ -25,27 +25,17 @@
   html:not(#ublock0-epicker) body,
   #newtab-customize-overlay {
     background: var(--bg) !important;
+    color: var(--color) !important;
   }
 }
 
 /* Sets up minimal scrollbar */
 :root {
-  /* scrollbar-width: thin !important; */
-  scrollbar-color: var(--base06) transparent !important;
+  scrollbar-color: var(--base05) transparent !important;
 }
 
-/*  Sets up minimal incognito scrollbar */
 @-moz-document url(about:privatebrowsing) {
   :root {
-    /* scrollbar-width: thin !important; */
-    scrollbar-color: var(--base06) transparent !important;
+    scrollbar-color: var(--base05) transparent !important;
   }
-}
-
-/* Disable outlines on focused elements (links/buttons) */
-:focus {
-  outline: none;
-}
-::-moz-focus-inner {
-  border: 0;
 }

@@ -1,5 +1,5 @@
 /**
- * Make JS alert, prompt and confirm modals dark 
+ * Make JS alert, prompt and confirm modals dark
  */
 
 @keyframes fade-in {
@@ -23,9 +23,9 @@
 tabmodalprompt {
   background-color: transparent !important;
   background-image: linear-gradient(
-    to bottom,
-    var(--blank-page-bg),
-    var(--bg)
+  to bottom,
+  var(--blank-page-bg),
+  var(--bg)
   ) !important;
   animation: 0.2s fade-in;
   color: var(--color) !important;
@@ -39,11 +39,11 @@ tabmodalprompt .tabmodalprompt-mainContainer {
   position: relative !important;
   transform-origin: top center;
   max-width: 600px;
-  background-color: var(--toolbar-bgcolor) !important;
+  background-color: var(--hover-bg) !important;
   border: 1px solid var(--toolbox-border-bottom-color) !important;
   border-top-width: 0 !important;
   border-radius: 0 0 var(--toolbarbutton-border-radius)
-    var(--toolbarbutton-border-radius) !important;
+  var(--toolbarbutton-border-radius) !important;
   box-shadow: 0 0 2px 0 var(--box-shadow);
   font-size: 14px;
   animation: 0.2s scale-in;
@@ -54,9 +54,9 @@ tabmodalprompt .tabmodalprompt-mainContainer * {
 }
 
 tabmodalprompt
-  .tabmodalprompt-mainContainer
-  .tabmodalprompt-topContainer
-  textbox {
+.tabmodalprompt-mainContainer
+.tabmodalprompt-topContainer
+textbox {
   -moz-appearance: none !important;
   margin: 12px 0 0 0 !important;
   /*padding: 8px !important;*/
@@ -67,26 +67,26 @@ tabmodalprompt
 }
 
 tabmodalprompt
-  .tabmodalprompt-mainContainer
-  .tabmodalprompt-topContainer
-  textbox
-  .textbox-input {
+.tabmodalprompt-mainContainer
+.tabmodalprompt-topContainer
+textbox
+.textbox-input {
   padding: 8px !important;
 }
 
 tabmodalprompt
-  .tabmodalprompt-mainContainer
-  .tabmodalprompt-topContainer
-  textbox[focused="true"] {
+.tabmodalprompt-mainContainer
+.tabmodalprompt-topContainer
+textbox[focused="true"] {
   background-color: var(--bg), var(--blank-page-bg) !important;
   color: var(--color);
 }
 
 tabmodalprompt
-  .tabmodalprompt-mainContainer
-  .tabmodalprompt-topContainer
-  checkbox {
-  /*	margin: 12px 0 0 0 !important;*/
+.tabmodalprompt-mainContainer
+.tabmodalprompt-topContainer
+checkbox {
+  /*  margin: 12px 0 0 0 !important;*/
   margin-top: 12px !important;
   opacity: 0.7 !important;
 }
@@ -99,16 +99,16 @@ tabmodalprompt .tabmodalprompt-mainContainer .tabmodalprompt-buttonContainer {
 }
 
 tabmodalprompt
-  .tabmodalprompt-mainContainer
-  .tabmodalprompt-buttonContainer
-  spacer {
+.tabmodalprompt-mainContainer
+.tabmodalprompt-buttonContainer
+spacer {
   display: none !important;
 }
 
 tabmodalprompt
-  .tabmodalprompt-mainContainer
-  .tabmodalprompt-buttonContainer
-  button {
+.tabmodalprompt-mainContainer
+.tabmodalprompt-buttonContainer
+button {
   -moz-appearance: none !important;
   padding: 2px 3px;
   border: 1px solid var(--toolbox-border-bottom-color);
@@ -116,52 +116,52 @@ tabmodalprompt
 }
 
 tabmodalprompt
-  .tabmodalprompt-mainContainer
-  .tabmodalprompt-buttonContainer
-  button:hover,
+.tabmodalprompt-mainContainer
+.tabmodalprompt-buttonContainer
+button:hover,
 tabmodalprompt
-  .tabmodalprompt-mainContainer
-  .tabmodalprompt-buttonContainer
-  button:focus {
+.tabmodalprompt-mainContainer
+.tabmodalprompt-buttonContainer
+button:focus {
   background-color: var(--toolbarbutton-hover-background);
 }
 
 tabmodalprompt
-  .tabmodalprompt-mainContainer
-  .tabmodalprompt-buttonContainer
-  button:active {
+.tabmodalprompt-mainContainer
+.tabmodalprompt-buttonContainer
+button:active {
   background-color: var(--toolbarbutton-active-background);
 }
 
 tabmodalprompt
-  .tabmodalprompt-mainContainer
-  .tabmodalprompt-buttonContainer
-  button[default="true"],
+.tabmodalprompt-mainContainer
+.tabmodalprompt-buttonContainer
+button[default="true"],
 tabmodalprompt
-  .tabmodalprompt-mainContainer
-  .tabmodalprompt-buttonContainer
-  button[label="OK"] {
+.tabmodalprompt-mainContainer
+.tabmodalprompt-buttonContainer
+button[label="OK"] {
   background-color: var(--bg) !important;
   border-color: var(--base03);
   color: var(--color) !important;
 }
 
 tabmodalprompt
-  .tabmodalprompt-mainContainer
-  .tabmodalprompt-buttonContainer
-  button[default="true"]:hover,
+.tabmodalprompt-mainContainer
+.tabmodalprompt-buttonContainer
+button[default="true"]:hover,
 tabmodalprompt
-  .tabmodalprompt-mainContainer
-  .tabmodalprompt-buttonContainer
-  button[default="true"]:focus,
+.tabmodalprompt-mainContainer
+.tabmodalprompt-buttonContainer
+button[default="true"]:focus,
 tabmodalprompt
-  .tabmodalprompt-mainContainer
-  .tabmodalprompt-buttonContainer
-  button[label="OK"]:hover,
+.tabmodalprompt-mainContainer
+.tabmodalprompt-buttonContainer
+button[label="OK"]:hover,
 tabmodalprompt
-  .tabmodalprompt-mainContainer
-  .tabmodalprompt-buttonContainer
-  button[label="OK"]:focus {
+.tabmodalprompt-mainContainer
+.tabmodalprompt-buttonContainer
+button[label="OK"]:focus {
   background-color: var(--bg) !important;
   color: var(--color) !important;
 }

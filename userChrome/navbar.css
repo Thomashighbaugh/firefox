@@ -29,6 +29,8 @@
 }
 
 #nav-bar:not([customizing="true"]):not([inFullscreen]) {
+  background-color: var(--bg) !important;
+  color: var(--color)!important;
   min-height: 1px !important;
   max-height: 0px !important;
   margin-top: 1px !important;

@@ -1,29 +1,17 @@
 /*
  * Author: Thomas Leon Highbaugh (thighbaugh@zoho.com)
- * Project: blurredfox
- * File: userChrome/findbar.css
- * Description: Urlbar 
+ * Description: Urlbar
  */
 
 #browser #appcontent #tabbrowser-tabbox findbar,
 #browser #appcontent #tabbrowser-tabbox tabpanels {
   -moz-appearance: none !important;
   border: none !important;
-}
-
-#browser #appcontent #tabbrowser-tabbox findbar:-moz-lwtheme-darktext,
-#browser #appcontent #tabbrowser-tabbox findbar:-moz-lwtheme-brighttext,
-#browser #appcontent #tabbrowser-tabbox tabpanels:-moz-lwtheme-darktext,
-#browser #appcontent #tabbrowser-tabbox tabpanels:-moz-lwtheme-brighttext {
-  background: transparent !important;
+  background: var(--hover-bg) !important;
 }
 
 #browser #appcontent #tabbrowser-tabbox findbar {
-}
-
-#browser #appcontent #tabbrowser-tabbox findbar:-moz-lwtheme-darktext,
-#browser #appcontent #tabbrowser-tabbox findbar:-moz-lwtheme-brighttext {
-  background-color: var(--bg) !important;
+  background-color: var(--hover-bg) !important;
   color: var(--color) !important;
 }
 
@@ -34,16 +22,6 @@
 }
 
 #browser #appcontent #tabbrowser-tabbox .findbar-find-fast {
-}
-
-#browser
-  #appcontent
-  #tabbrowser-tabbox
-  .findbar-find-fast:not([status="notfound"]):-moz-lwtheme-darktext,
-#browser
-  #appcontent
-  #tabbrowser-tabbox
-  .findbar-find-fast:not([status="notfound"]):-moz-lwtheme-brighttext {
-  background-color: var(--bg) !important;
+  background-color: var(--hover-bg) !important;
   color: var(--color) !important;
 }

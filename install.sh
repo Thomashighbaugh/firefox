@@ -14,12 +14,12 @@ download_ff() {
 
     curl -LJ0 https://github.com/Thomashighbaugh/firefox/archive/master.tar.gz | tar -xz -C /tmp
 
-    echo"[>>] Download success!"
-    echo "[>>]"
-    echo "[>>]"
-    echo "[>>]"
-    echo "[>>]"
-    echo "[>>] Begin: Installation Phase"
+    message "[>>] Download success!"
+    message "[>>]"
+    message "[>>]"
+    message "[>>]"
+    message "[>>]"
+    message "[>>] Begin: Installation Phase"
 
     if [[ $? -eq 0 ]]; then
         message "[>>] Copying..."
@@ -27,19 +27,19 @@ download_ff() {
         FF_THEME="/tmp/firefox-master/"
         cp -r "${FF_THEME}"* "${CHROME_DIRECTORY}"
 
-        echo "[>>] Backup user.js instead of overwriting it"
+        message "[>>] Backup user.js instead of overwriting it"
 
         if [ -e "${CHROME_DIRECTORY}/../user.js" ]; then
-        
+
             message "[>>] Prior Configuration Detected, Creating Backup..."
-            
+
             user_pref_backup_dir="${CHROME_DIRECTORY}/../user-prefs-backup"
 
-        if [[ ! -d "${user_pref_backup_dir}" ]]; then
-          
-            message "[>>] No Prior Installation Detected, Proceeding As Usual..."
-            
-            mkdir "${user_pref_backup_dir}"
+            if [[ ! -d "${user_pref_backup_dir}" ]]; then
+
+                message "[>>] No Prior Installation Detected, Proceeding As Usual..."
+
+                mkdir "${user_pref_backup_dir}"
             fi
 
             mv --backup=t "${CHROME_DIRECTORY}/../user.js" "${user_pref_backup_dir}"
@@ -59,7 +59,7 @@ download_ff() {
         message " [!!] There was a problem while downloading the theme. Terminating..."
         exit
     fi
-    echo ""
+    message ""
     message "[!!] Firefox customization has been successfully installed, please restart your browser to view your new interface."
 }
 
@@ -68,20 +68,20 @@ function check_profile() {
 }
 
 function print_help() {
-    echo "Usage: run this script followed by the variant of firefox you are installing to"
-    echo "/path/to/this/script/install.sh "
-    echo "[++] help  - Print this help"
-    echo "[++] stable    - Firefox Stable Build"
-    echo "[++] dev   - Firefox Developer Edition"
-    echo "[++] beta  - Firefox Beta"
-    echo "[++] nightly - Firefox Nightly"
-    echo "[++] esr   - Firefox Extended Support Release"
-    echo "[++]"
-    echo "[!!] Example:"
+    message "Usage: run this script followed by the variant of firefox you are installing to"
+    message "/path/to/this/script/install.sh "
+    message "[++] help  - Print this help"
+    message "[++] stable    - Firefox Stable Build"
+    message "[++] dev   - Firefox Developer Edition"
+    message "[++] beta  - Firefox Beta"
+    message "[++] nightly - Firefox Nightly"
+    message "[++] esr   - Firefox Extended Support Release"
+    message "[++]"
+    message "[!!] Example:"
 
-    echo "[$$] $ curl -fsSL https://raw.githubusercontent.com/Thomashighbaugh/firefox/script/install.sh | bash -s -- stable"
-    echo ""
-    echo "[!!] The script will default to 'stable' if no option is provided to it, for sake of simplicity and the most common use case."
+    message "[$$] $ curl -fsSL https://raw.githubusercontent.com/Thomashighbaugh/firefox/script/install.sh | bash -s -- stable"
+    message ""
+    message "[!!] The script will default to 'stable' if no option is provided to it, for sake of simplicity and the most common use case."
 }
 
 # Check args
@@ -106,7 +106,7 @@ if [[ ! -z "${@}" ]] && [[ ! -z "${1}" ]]; then
         print_help
         exit
     else
-        echo -ne "[!!] Invalid parameter provided, please try using one of the valid parameters as specified in the help message.\n"
+        message -ne "[!!] Invalid parameter provided, please try using one of the valid parameters as specified in the help message.\n"
         print_help
         exit
     fi

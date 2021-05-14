@@ -6,7 +6,7 @@
 
 #main-window:-moz-lwtheme-brighttext,
 #main-window:-moz-lwtheme-darktext {
-  background: transparent !important;
+  background: var(--bg) !important;
   -moz-appearance: var(--moz-appearance) !important;
 }
 

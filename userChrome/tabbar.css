@@ -1,7 +1,5 @@
 /*
  * Author: Thomas Leon Highbaugh (thighbaugh@zoho.com)
- * Project: firefox
- * File: userChrome/tabbar.css
  * Description: Styles the toolbar containing the tabs
  */
 .toolbar-items {
@@ -13,7 +11,7 @@
   -moz-appearance: var(--moz-appearance) !important;
 }
 
-/* 	Set minimum height for tab bar */
+/*  Set minimum height for tab bar */
 #tabbrowser-tabs {
   --tab-min-height: 32px;
   margin: 6px;
@@ -25,11 +23,7 @@
 }
 .tab-background {
   border: none !important;
-}
-
-.tab-background:-moz-lwtheme-darktext,
-.tab-background:-moz-lwtheme-brighttext {
-  background: transparent !important;
+  background: var(--tabs-bg) !important;
   -moz-appearance: var(--moz-appearance) !important;
 }
 
@@ -40,13 +34,6 @@
 .tab-background:not[visuallyselected] {
   background: var(--tab-selected-bg) !important;
   opacity: 0.5 !important;
-}
-
-/* Remove the lines on the side of the selected tab */
-.tabbrowser-tab[beforeselected-visible="true"]::after,
-.tabbrowser-tab[beforeselected-visible="true"]::before,
-.tabbrowser-tab[selected="true"]::after,
-.tabbrowser-tab[selected="true"]::before {
   border-left: none !important;
 }
 
@@ -77,7 +64,7 @@
   padding: 0 10px !important;
 }
 
-/* A way to center the label and icon while 
+/* A way to center the label and icon while
 the close button is positioned to the far right */
 .tab-content::before {
   content: "";
@@ -104,19 +91,18 @@ the close button is positioned to the far right */
   min-width: 3px !important;
 }
 
-/* If tab close button is not present, don't force favicon to the center */
 #tabbrowser-tabs[closebuttons="activetab"]
-  .tabbrowser-tab:not([selected="true"])
-  .tab-throbber,
+.tabbrowser-tab:not([selected="true"])
+.tab-throbber,
 #tabbrowser-tabs[closebuttons="activetab"]
-  .tabbrowser-tab:not([selected="true"])
-  .tab-throbber-fallback,
+.tabbrowser-tab:not([selected="true"])
+.tab-throbber-fallback,
 #tabbrowser-tabs[closebuttons="activetab"]
-  .tabbrowser-tab:not([selected="true"]):not([busy])
-  .tab-icon-image,
+.tabbrowser-tab:not([selected="true"]):not([busy])
+.tab-icon-image,
 #tabbrowser-tabs[closebuttons="activetab"]
-  .tabbrowser-tab:not([selected="true"]):not([image])
-  .tab-label-container {
+.tabbrowser-tab:not([selected="true"]):not([image])
+.tab-label-container {
   margin-left: 0 !important;
 }
 
@@ -135,7 +121,7 @@ hbox.tab-content[pinned="true"] .tab-text {
   display: none !important;
 }
 
-/* 	Hide the blue line on top of tab */
+/*  Hide the blue line on top of tab */
 .tab-line {
   display: none !important;
 }
@@ -149,6 +135,7 @@ hbox.tab-content[pinned="true"] .tab-text {
   height: var(--tab-height) !important;
   overflow: hidden;
   margin-top: 0 !important;
+  background: var(--bg) !important;
   margin-bottom: 0 !important;
 }
 
@@ -158,15 +145,10 @@ hbox.tab-content[pinned="true"] .tab-text {
 
 .tabbrowser-tab:hover {
   box-shadow: 0 1px 4px var(--box-shadow);
-}
-
-/* Set color scheme */
-.tabbrowser-tab:hover:-moz-lwtheme-darktext,
-.tabbrowser-tab:hover:-moz-lwtheme-brighttext {
   background: var(--hover-bg) !important;
 }
 
-/* 	Audio playing background */
+/*  Audio playing background */
 .tabbrowser-tab[soundplaying="true"] {
   background-color: var(--tab-soundplaying-bg) !important;
 }
@@ -174,14 +156,14 @@ hbox.tab-content[pinned="true"] .tab-text {
 #tabbrowser-tabs {
 }
 
-/* 	Audio Icon */
+/*  Audio Icon */
 .tab-icon-sound {
 }
 
 /* Center pinned tab stack(Contains icon) if #tabbrowser-tabs[positionpinnedtabs=true] */
 #tabbrowser-tabs[positionpinnedtabs="true"]
-  .tabbrowser-tab[pinned="true"]
-  .tab-stack {
+.tabbrowser-tab[pinned="true"]
+.tab-stack {
   position: relative !important;
   top: 50% !important;
   transform: translateY(-50%) !important;

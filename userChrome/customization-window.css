@@ -28,7 +28,7 @@
 .customizationmode-button:-moz-lwtheme-darktext,
 .customizationmode-button:-moz-lwtheme-brighttext {
   color: var(--color) !important;
-  background: var(--bg);
+  background: var(--bg) !important;
 }
 
 .customizationmode-button:hover {

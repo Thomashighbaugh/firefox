@@ -22,56 +22,80 @@
   --base20: #383a47;
   --base21: #2B3140;
   --base22: #f4f4f7;
+  --base23: #2c323b;
 
   --backdrop-blur: 6px;
 
   --sidebar-searchbar-radius: 6px;
 
   --accent-bg: var(--base13);
-  --blank-page-bg: var(--base02)
-  --box-shadow: #22262d66;
+  --blank-page-bg: var(--base01)
+  --box-shadow: #00000066;
   --urlbar-hightlight-bg: var(--accent-bg);
   --urlbar-radius: 9px;
   --urlbar-results-font-size: 12px;
   --urlbar-results-font-weight: 550;
   --urlbar-font-size: 12px;
-  --urlbar-font-weight: 500;
-  --urlbar-bg: var(--base02);
+  --urlbar-font-weight: 700;
+  --urlbar-bg: var(--base01);
   --urlbar-switch-tab-color: var(--base06);
   --urlbar-bookmark-color: var(--base06);
   --navbar-padding: 4px;
 
   --tab-font-size: 11pt;
-  --tab-font-weight: 600;
+  --tab-font-weight: 900;
   --tab-height: 24px;
   --tab-border-radius: 6px;
-  --tab-soundplaying-bg: var(--base02);
+  --tab-soundplaying-bg: var(--base01);
 
-  --toolbar-bgcolor: var(--base02) !important;
+  --toolbar-bgcolor: var(--base01) !important;
   --urlbar-separator-color: var(--base07) !important;
 
-  --main-window: var(--base03);
-  --bg: var(--base02);
+  --main-window: var(--base01);
+  --bg: var(--base01);
   --color: var(--base06);
 
-  --hover-bg: var(--base20);
-  --active-bg: var(--base03);
+  --hover-bg: var(--base23);
+  --active-bg: var(--base23);
 
   --icon-color: var(--base06);
-  --tab-toolbar-bg: var(--base02);
-  --tab-selected-bg: var(--base18);
+  --tab-toolbar-bg: var(--base01);
+  --tab-selected-bg: var(--base23);
   --navbar-bg: var(--bg);
-  --urlbar-bg: var(--base20);
-  --urlbar-active-bg: var(--base20);
+  --urlbar-bg: var(--base23);
+  --urlbar-active-bg: var(--base23);
   --urlbar-focused-color: var(--color);
 
   --sidebar-bg: var(--bg);
   --sidebar-color: var(--color);
 
-  --menupopup-bg: var(--base02);
-  --menupopup-bg-hover: var(--base02);
+  --menupopup-bg: var(--base01);
+  --menupopup-bg-hover: var(--base01);
   --menupopup-color: var(--color);
-  --tabs-bg: var(--base20);
+  --tabs-bg: var(--base01);
+
+  --main-window: var(--base01);
+  --bg: var(--base01);
+  --color: var(--base06);
+
+  --hover-bg: var(--bg);
+  --active-bg: var(--bg);
+  --tabs-bg: var(--bg);
+  --icon-color: var(--base01);
+  --tab-toolbar-bg: var(--base01);
+  --tab-selected-bg: var(--base23);
+  --navbar-bg: var(--bg);
+  --urlbar-bg: var(--base01);
+  --urlbar-active-bg: var(--base23);
+  --urlbar-focused-color: var(--color);
+
+  --sidebar-bg: var(--bg);
+  --sidebar-color: var(--color);
+
+  --menupopup-bg: var(--base01);
+  --menupopup-bg-hover: var(--base01);
+  --menupopup-color: var(--color);
+
 
 }
 
@@ -81,7 +105,7 @@
   --bg: var(--base07);
   --color: var(--base01);
 
-  --hover-bg: var(--base05);
+  --hover-bg: var(--base06);
   --active-bg: var(--base06);
 
   --icon-color: var(--base01);
@@ -102,25 +126,25 @@
 
 /* Dark Mode */
 :root:-moz-lwtheme-brighttext {
-  --main-window: var(--base02);
-  --bg: var(--base02);
+  --main-window: var(--base01);
+  --bg: var(--base01);
   --color: var(--base06);
 
   --hover-bg: var(--base20);
-  --active-bg: var(--base03);
-  --tabs-bg: var(--base20);
+  --active-bg: var(--base23);
+  --tabs-bg: var(--base01);
   --icon-color: var(--base06);
-  --tab-toolbar-bg: var(--base02);
-  --tab-selected-bg: var(--base18);
+  --tab-toolbar-bg: var(--base01);
+  --tab-selected-bg: var(--base23);
   --navbar-bg: var(--bg);
-  --urlbar-bg: var(--base20);
-  --urlbar-active-bg: var(--base03);
+  --urlbar-bg: var(--base23);
+  --urlbar-active-bg: var(--base23);
   --urlbar-focused-color: var(--color);
 
   --sidebar-bg: var(--bg);
   --sidebar-color: var(--color);
 
-  --menupopup-bg: var(--base02);
-  --menupopup-bg-hover: var(--base02);
+  --menupopup-bg: var(--base01);
+  --menupopup-bg-hover: var(--base01);
   --menupopup-color: var(--color);
 }

@@ -6,9 +6,10 @@
  */
 
 @import url("colors/vice.css");
-
 @import url("userChrome.css");
+
 /* @import url("userContent/about_addons"); */
+
 @import url("userContent/about_newtab");
 @import url("userContent/about_reader");
 @import url("userContent/addon_styling");
@@ -18,24 +19,46 @@
 @import url("userContent/customization-window");
 
 /* Set background color of landing pages */
+
 @-moz-document url(about:newtab),
 @-moz-document url(about:home),
 @-moz-document url(about:blank) {
-  html:not(#ublock0-epicker),
-  html:not(#ublock0-epicker) body,
-  #newtab-customize-overlay {
-    background: var(--bg) !important;
-    color: var(--color) !important;
-  }
+    html:not(#ublock0-epicker),
+    html:not(#ublock0-epicker) body,
+    #newtab-customize-overlay {
+        background: var(--bg) !important;
+        color: var(--color) !important;
+    }
 }
 
+
 /* Sets up minimal scrollbar */
+
 :root {
-  scrollbar-color: var(--base05) transparent !important;
+    scrollbar-color: var(--color) transparent !important;
+    background: var(--base24) !important;
+    font-weight: 900;
+    font-family: "Hurmit Nerd Font Mono bold", monospace !important;
 }
 
 @-moz-document url(about:privatebrowsing) {
-  :root {
-    scrollbar-color: var(--base05) transparent !important;
-  }
+     :root {
+        scrollbar-color: var(--color) transparent !important;
+        background: var(--base24) !important;
+        color: var(--color) !important;
+    }
+}
+
+#action-box {
+    background: var(--base21) !important;
+}
+
+.wide-container button {
+    background: var(--base03) !important;
+}
+
+.wide-container th,
+.wide-container td,
+.wide-container tr {
+    background: var(--base21) !important;
 }

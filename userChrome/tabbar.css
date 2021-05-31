@@ -33,7 +33,8 @@
 
 .tab-background {
     border: none !important;
-    background: var(--tabs-bg) !important;
+    color: var(--color) !important;
+    background: var(--bg) !important;
     -moz-appearance: var(--moz-appearance) !important;
 }
 
@@ -117,6 +118,8 @@ the close button is positioned to the far right */
 #tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]):not([busy]) .tab-icon-image,
 #tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]):not([image]) .tab-label-container {
     margin-left: 0 !important;
+    fill: var(--color) !important;
+    color: var(--color) !important;
 }
 
 

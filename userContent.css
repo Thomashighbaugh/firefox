@@ -36,7 +36,7 @@
 
 :root {
     scrollbar-color: var(--color) transparent !important;
-    background: var(--base24) !important;
+    /* background: var(--base24) !important; */
     font-weight: 900;
     font-family: "Hurmit Nerd Font Mono bold", monospace !important;
 }

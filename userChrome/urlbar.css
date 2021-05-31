@@ -156,7 +156,9 @@
 
 /* Bookmark button - Star button */
 
-#star-button {}
+
+/* 
+#star-button {} */
 
 #star-button:hover:not(.no-hover):not([open="true"]) {
     background: var(--bg) !important;

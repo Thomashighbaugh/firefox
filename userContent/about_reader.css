@@ -4,40 +4,35 @@
  * File: userContent/about_reader.css
  * Description: styles reader page
  */
+
 @-moz-document url-prefix("about:reader") {
-  /* Buttons and Toolbar to match browser's navbar color */
-  .toolbar {
-    background-color: var(--blank-page-bg) !important;
-    border: none !important;
-  }
-
-  .button {
-    height: 52px !important;
-    background-color: var(--bg) !important;
-    fill: var(--color) !important;
-    border: none !important;
-  }
-
-  .button:hover {
-    background-color: var(--bg) !important;
-    fill: var(--accent) !important;
-  }
-
-  .close-button {
-    height: 68px !important;
-  }
-
-  .close-button:hover {
-    background-color: var(--bg) !important;
-    fill: var(--urlbar-bookmark-color) !important;
-  }
-
-  .dropdown.narrate-dropdown {
-    display: none !important;
-  }
-
-  /* Text colors */
-  .moz-reader-content a:visited {
-    color: var(--urlbar-bookmark-color) !important;
-  }
+    /* Buttons and Toolbar to match browser's navbar color */
+    .toolbar {
+        background-color: var(--bg) !important;
+        border: none !important;
+    }
+    .button {
+        height: 52px !important;
+        background-color: var(--bg) !important;
+        fill: var(--color) !important;
+        border: none !important;
+    }
+    .button:hover {
+        background-color: var(--bg) !important;
+        fill: var(--accent) !important;
+    }
+    .close-button {
+        height: 68px !important;
+    }
+    .close-button:hover {
+        background-color: var(--bg) !important;
+        fill: var(--urlbar-bookmark-color) !important;
+    }
+    .dropdown.narrate-dropdown {
+        display: none !important;
+    }
+    /* Text colors */
+    .moz-reader-content a:visited {
+        color: var(--urlbar-bookmark-color) !important;
+    }
 }

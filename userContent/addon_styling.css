@@ -3,106 +3,105 @@
  * https://www.reddit.com/r/FirefoxCSS/comments/bcgnvb/fully_themed_ublock_origin_css/
  */
 
-@-moz-document url-prefix("moz-extension://96739bf5-16fd-468d-ba3e-fcf65184ca7c/")
-{
-  body {
-    background-color: var(--blank-page-bg) !important;
-    color: var(--color) !important;
-  }
-  a {
-    color: var(--accent) !important;
-  }
-  h2 {
-    background-color: var(--blank-page-bg) !important;
-    color: var(--color) !important;
-  }
-  code {
-    background-color: var(--blank-page-bg) !important;
-  }
-  .tool {
-    color: var(--color) !important;
-  }
-  .tool.enabled:hover {
-    color: var(--icon-color) !important;
-  }
-  .permatoolbar {
-    background-color: var(--bg) !important;
-  }
-  .permatoolbar .button {
-    background-color: var(--menupopup-bg) !important;
-  }
-  .permatoolbar .button:hover {
-    background-color: var(--menupopup-bg) !important;
-  }
-  #tooltip {
-    background-color: var(--bg) !important;
-    border: 0px solid var(--blank-page-bg) !important;
-    color: var(--color) !important;
-  }
-  #firewallContainer > div {
-    background-color: var(--bg) !important;
-    color: var(--color) !important;
-  }
-  #firewallContainer > div:hover {
-    background-color: var(--blank-page-bg) !important;
-    color: var(--color) !important;
-  }
-  #firewallContainer > div > span {
-    color: var(--color) !important;
-    border-bottom: 0px solid var(--blank-page-bg) !important;
-  }
-  #firewallContainer > div > span:first-of-type ~ span {
-    border-left: 0px solid var(--base00) !important;
-  }
-  #extraTools {
-    background-color: var(--blank-page-bg) !important;
-    color: var(--color) !important;
-  }
-  #extraTools > span:hover {
-    color: var(--accent) !important;
-  }
-  #dashboard-nav-widgets {
-    background-color: var(--bg) !important;
-    color: var(--color) !important;
-    border-bottom: 0px solid var(--base05) !important;
-  }
-  .tabButton {
-    background-color: var(--bg) !important;
-    border: 1px solid var(--base05) !important;
-    border-bottom: 0px solid var(--base05) !important;
-    color: var(--color) !important;
-  }
-  .tabButton.selected {
-    background-color: var(--base01) !important;
-    border-bottom: 0px solid var(--base01) !important;
-  }
-  #diff li {
-    background-color: var(--base03) !important;
-  }
-  #diff li:nth-child(even) {
-    background-color: var(--base05) !important;
-  }
-  #diff textarea {
-    background-color: var(--blank-page-bg) !important;
-    color: var(--color) !important;
-  }
-  #switch .fa-icon {
-    fill: var(--icon-color) !important;
-  }
-  body.off #switch .fa-icon {
-    fill: var(--accent) !important;
-  }
-  #tooltip {
-    background-color: var(--blank-page-bg) !important;
-    border: 0px solid var(--bg) !important;
-    border-radius: 0px !important;
-    box-shadow: 0px 0px 0px var(--box-shadow) !important;
-    color: var(--color) !important;
-  }
-  #refresh {
-    background-color: var(--bg) !important;
-    border: 0px solid var(--color) !important;
-    border-radius: 0px !important;
-    fill: var(--color) !important;
-  }
+@-moz-document url-prefix("moz-extension://96739bf5-16fd-468d-ba3e-fcf65184ca7c/") {
+    body {
+        background-color: var(--bg) !important;
+        color: var(--color) !important;
+    }
+    a {
+        color: var(--accent) !important;
+    }
+    h2 {
+        background-color: var(--bg) !important;
+        color: var(--color) !important;
+    }
+    code {
+        background-color: var(--bg) !important;
+    }
+    .tool {
+        color: var(--color) !important;
+    }
+    .tool.enabled:hover {
+        color: var(--icon-color) !important;
+    }
+    .permatoolbar {
+        background-color: var(--bg) !important;
+    }
+    .permatoolbar .button {
+        background-color: var(--menupopup-bg) !important;
+    }
+    .permatoolbar .button:hover {
+        background-color: var(--menupopup-bg) !important;
+    }
+    #tooltip {
+        background-color: var(--bg) !important;
+        border: 0px solid var(--bg) !important;
+        color: var(--color) !important;
+    }
+    #firewallContainer>div {
+        background-color: var(--bg) !important;
+        color: var(--color) !important;
+    }
+    #firewallContainer>div:hover {
+        background-color: var(--bg) !important;
+        color: var(--color) !important;
+    }
+    #firewallContainer>div>span {
+        color: var(--color) !important;
+        border-bottom: 0px solid var(--bg) !important;
+    }
+    #firewallContainer>div>span:first-of-type~span {
+        border-left: 0px solid var(--base00) !important;
+    }
+    #extraTools {
+        background-color: var(--bg) !important;
+        color: var(--color) !important;
+    }
+    #extraTools>span:hover {
+        color: var(--accent) !important;
+    }
+    #dashboard-nav-widgets {
+        background-color: var(--bg) !important;
+        color: var(--color) !important;
+        border-bottom: 0px solid var(--base05) !important;
+    }
+    .tabButton {
+        background-color: var(--bg) !important;
+        border: 1px solid var(--base05) !important;
+        border-bottom: 0px solid var(--base05) !important;
+        color: var(--color) !important;
+    }
+    .tabButton.selected {
+        background-color: var(--base01) !important;
+        border-bottom: 0px solid var(--base01) !important;
+    }
+    #diff li {
+        background-color: var(--base03) !important;
+    }
+    #diff li:nth-child(even) {
+        background-color: var(--base05) !important;
+    }
+    #diff textarea {
+        background-color: var(--bg) !important;
+        color: var(--color) !important;
+    }
+    #switch .fa-icon {
+        fill: var(--icon-color) !important;
+    }
+    body.off #switch .fa-icon {
+        fill: var(--accent) !important;
+    }
+    #tooltip {
+        background-color: var(--bg) !important;
+        border: 0px solid var(--bg) !important;
+        border-radius: 0px !important;
+        box-shadow: 0px 0px 0px var(--box-shadow) !important;
+        color: var(--color) !important;
+    }
+    #refresh {
+        background-color: var(--bg) !important;
+        border: 0px solid var(--color) !important;
+        border-radius: 0px !important;
+        fill: var(--color) !important;
+    }
 }

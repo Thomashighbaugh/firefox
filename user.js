@@ -1,6 +1,16 @@
-user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true); 
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("layers.acceleration.force-enabled", true);
 user_pref("gfx.webrender.all", true);
 user_pref("gfx.webrender.enabled", true);
 user_pref("svg.context-properties.content.enabled", true);
 user_pref("layout.css.backdrop-filter.enabled", true);
+user_perf("dom.event.contextmenu.enabled", false)
+user_perf("dom.event.clipboardevents.enabled", false)
+user_perf("plugins.enumerable_names", "blank")
+user_perf("layout.frame_rate.precise", true)
+user_perf("layout.frame_rate.precise", true)
+user_perf("webgl.force_enabled", true)
+user_perf("layers.offmainthreadcomposition.enabled", true)
+user_perf("layers.offmainthreadcomposition.async-animations", true)
+user_perf("layers.async-video.enabled", true)
+user_perf("html5.offmainthread", true~)

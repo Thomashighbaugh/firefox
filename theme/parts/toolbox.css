@@ -77,3 +77,12 @@ findbar:-moz-window-inactive label,
 #TabsToolbar[movingtab] + #nav-bar {
 	margin-top: 0 !important;
 }
+
+
+/* This makes certain menus adapt to your toolbar text color. Can make menu text illegible in 
+some transparent themes, remove if needed. */
+panelview:not([extension]),
+.panel-arrowcontent {
+    background-color: var(--toolbar-bgcolor) !important;
+    color: var(--toolbar-color) !important;
+}

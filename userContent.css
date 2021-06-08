@@ -5,7 +5,7 @@
  * Description: This file changes the things within the browser window.
  */
 
-@import url("colors/vice.css");
+@import url("userContent/colors/dark.css");
 @import url("userChrome.css");
 
 /* @import url("userContent/about_addons"); */

@@ -279,3 +279,88 @@ tab[selected]:-moz-window-inactive {
 	position: relative;
 	margin-right: -10px;
 }
+/* Bottom corner rounding for tabs, Remove this section if your tab bottom corners look bad */
+tab[visuallyselected] .tab-background::before,
+tab[visuallyselected] .tab-background::after {
+    content: "" !important;
+    display: inline !important;
+    position: absolute !important;
+    width: var(--tab-corner-rounding) !important;
+    height: var(--tab-corner-rounding) !important;
+    bottom: -1px !important;
+    pointer-events: none !important;
+    background-color: transparent !important;
+    transition: var(--animation-speed) !important;
+}
+
+tab[visuallyselected] .tab-background::before {
+    border-bottom-right-radius: var(--tab-corner-rounding) !important;
+    transform: translateX(calc(-1 * var(--tab-corner-rounding))) !important;
+    box-shadow: 4px 4px 0px 4px var(--toolbar-bgcolor) !important;
+    transition: var(--animation-speed) !important;
+}
+
+tab[visuallyselected] .tab-background::after {
+    border-bottom-left-radius: var(--tab-corner-rounding) !important;
+    right: 0px !important;
+    transform: translateX(calc(var(--tab-corner-rounding) + 1px)) !important;
+    box-shadow: -4px 4px 0px 4px var(--toolbar-bgcolor) !important;
+    transition: var(--animation-speed) !important;
+}
+
+.tab-background, .tab-loading-burst  {
+    border-radius: var(--tab-corner-rounding) var(--tab-corner-rounding) 0px 0px !important;
+    margin: -1px !important;
+
+}
+
+tab:not(:active) .tab-background {
+    transition: background-color var(--animation-speed) !important;
+}
+
+
+:root[uidensity="compact"] {
+    --tab-min-height: 31px !important;
+}
+
+tab:not([selected]):hover .tab-background {
+    background-color: var(--toolbarbutton-hover-background) !important;
+}
+
+tab {
+    min-width: 1px !important;
+    clip-width: 1px !important;
+    padding-bottom: 1px !important;
+}
+
+.tab-line {
+    display: none !important;
+}
+
+tab:not([beforeselected-visible])::after {
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+    transition: border-color var(--animation-speed), margin-top var(--animation-speed) !important;
+
+}
+
+tab[beforehovered]::after,
+tab:hover::after {
+    border-color: transparent !important;
+    margin-top: 20px !important;
+}
+
+#navigator-toolbox {
+    --tabs-border-color: transparent !important;
+}
+
+
+
+tab[visuallyselected] .tab-background {
+        box-shadow: 0px 3px 12px -5px black !important;
+}
+
+[last-visible-tab] {
+    margin-right: calc(var(--tab-corner-rounding) + 2px) !important; /* fix unexpected tab overflow */
+}
+

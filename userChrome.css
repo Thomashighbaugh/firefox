@@ -1,24 +1,30 @@
-/*  */
 
+/* Import theme */
+@import "theme/theme.css";
 
-/***********************************
-COLOR SCHEME
-***********************************/
+/*
+ * Here you can enable other theme features not included by default.
+ * To enable a specific feature, uncomment its @import line by removing "/*" at
+ * the beginning of the line. To disable it, put the "/*" back.
+ */
 
-@import url("colors/vice.css");
+/* Hide the tab bar when only one tab is open (GNOMISH)
+ * You should move the new tab button somewhere else for this to work, because by
+ * default it is on the tab bar too. */
+@import "theme/hide-single-tab.css";
 
-/****************************************
-USER INTERFACE userChrome
-****************************************/
+/* Limit the URL bar's autocompletion popup's width to the URL bar's width (GNOMISH) */
+@import "theme/matching-autocomplete-width.css";
 
-@import url("userChrome/main-window.css");
-@import url("userChrome/customization-window.css");
-@import url("userChrome/toolbar.css");
-@import url("userChrome/tabbar.css");
-@import url("userChrome/urlbar.css");
-@import url("userChrome/sidebar.css");
-@import url("userChrome/dropdown.css");
-@import url("userChrome/findbar.css");
-@import url("userChrome/context-menu.css");
-@import url("userChrome/window-controls.css");
-@import url("userChrome/navbar.css");
+/* Use system theme icons instead of Adwaita icons included by theme */
+@import "theme/system-icons.css";
+
+/* Make all tab icons look kinda like symbolic icons */
+/*@import "theme/symbolic-tab-icons.css"; /**/
+
+/* Import a custom stylesheet
+ * Everything you add in your customChrome.css file (it doesn't exist by
+ * default) will be included here and preserved between updates, so you can move
+ * your configuration to that file if you don't like setting it up after every
+ * update. You can also apply your own custom styles in that file. */
+@import "customChrome.css"; /**/

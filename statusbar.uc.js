@@ -119,12 +119,12 @@ UC.statusBar = {
         @-moz-document url('${_uc.BROWSERCHROME}') {
           #status-bar {
             color: initial !important;
-            background-color: var(--toolbar-non-lwt-bgcolor) !important;
+            background-color: #17191e !important;
           }
           #status-text > #statuspanel-label {
             border-top: 0 !important;
             background-color: unset !important;
-            color: #444 !important;
+            color: #8b9cbe !important;
           }
           #browser-bottombox:not([collapsed]) {
             border-top: 1px solid var(--chrome-content-separator-color) !important;
@@ -132,7 +132,7 @@ UC.statusBar = {
           #wrapper-status-text label::after {
             content: "Status text" !important;
             color: red !important;
-            border: 1px #aaa solid !important;
+            border: 1px #000 solid !important;
             border-radius: 3px !important;
             font-weight: bold !important;
           }

@@ -10,9 +10,8 @@
 @import "parts/remove-white-flash.css";
 @import "parts/scrollbars.css";
 @import "parts/icons.css";
-@import "colors/dark.css";
+@import "../colors/vice.css";
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
-
 :root {
-	--space-above-tabbar: 0 !important;
+    --space-above-tabbar: 0 !important;
 }

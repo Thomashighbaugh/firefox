@@ -51,15 +51,15 @@
 }
 
 #action-box {
-    background: var(--base03) !important;
+    background: var(--base21) !important;
 }
 
 .wide-container button {
-    background: var(--base05) !important;
+    background: var(--base20) !important;
 }
 
 .wide-container th,
 .wide-container td,
 .wide-container tr {
-    background: var(--base03) !important;
+    background: var(--base21) !important;
 }

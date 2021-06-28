@@ -20,6 +20,7 @@
 
 /* Set background color of landing pages */
 
+@-moz-document url(about:profiles),
 @-moz-document url(about:newtab),
 @-moz-document url(about:home),
 @-moz-document url(about:blank) {

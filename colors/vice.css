@@ -6,7 +6,7 @@
   --base04: #0b0c0f;
   --base05: #8b9cbe;
   --base06: #b2bfd9;
-  --base07: #e9efff;
+  --base07: #f4f4f7;
   --base08: #ff29a8;
   --base09: #796af5;
   --base10: #f0ee6e;
@@ -21,7 +21,7 @@
   --base19: #0b0c0f;
   --base20: #383a47;
   --base21: #2b3140;
-  --base22: #f4f4f7;
+  --base22: #e9efff;
   --base23: #2c323b;
   --base24: #303646;
   --backdrop-blur: 6px;
@@ -73,7 +73,7 @@
 
 :root:-moz-lwtheme-brighttext {
   --main-window: var(--base01);
-  --bg: var(--base01);
+  --bg: var(--base00);
   --color: var(--base07);
   --hover-bg: var(--base23);
   --active-bg: var(--base23);

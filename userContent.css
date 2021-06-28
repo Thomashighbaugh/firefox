@@ -44,7 +44,7 @@
 @-moz-document url(about:privatebrowsing) {
      :root {
         scrollbar-color: var(--color) transparent !important;
-        background: var(--base24) !important;
+        background: var(--base01) !important;
         color: var(--color) !important;
     }
 }

@@ -89,7 +89,7 @@
         fill: var(--icon-color) !important;
     }
     body.off #switch .fa-icon {
-        fill: var(--accent) !important;
+        fill: var(--color) !important;
     }
     #tooltip {
         background-color: var(--bg) !important;

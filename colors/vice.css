@@ -47,7 +47,7 @@
     --tab-soundplaying-bg: var(--base01);
     --tab-selected-bg: var(--base23);
     --urlbar-active-bg: var(--base23);
-    --main-window: var(--base01);
+    --main-window: var(--base02);
 }
 
 
@@ -171,7 +171,7 @@
     --sidebar-bg: var(--bg);
     --sidebar-color: var(--color);
     --menupopup-bg: var(--base01);
-    --accent-bg: var(--base06);
+    --accent-bg: var(--base01);
     --urlbar-switch-tab-color: var(--base07);
     --urlbar-bookmark-color: var(--base07);
     --browser-before-load-background: var(--bg);
@@ -205,7 +205,7 @@
     --button-border-accent-color: var(--base24);
     --button-box-shadow: inset 0 1px var(--base01), 0 1px 2px var(--base01);
     --button-hover-background: linear-gradient(to top, var(--base21), var(--base01) 1px);
-    --button-active-background: linear-gradient(45deg, var(--base05), var(--base13));
+    --button-active-background: linear-gradient(45deg, var(--base21), var(--base01));
     --button-active-border-color: var(--base04);
     --button-active-border-accent-color: var(--base04);
     --button-active-box-shadow: inset 0 1px var(--base00);

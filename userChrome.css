@@ -17,7 +17,8 @@
 
 /* Make all tab icons look kinda like symbolic icons */
 
+@import url("theme/symbolic-tab-icons.css");
 
-/* @import url("theme/symbolic-tab-icons.css"); */
+/* Hide single tabs */
 
 @import url("theme/hide-single-tab.css");

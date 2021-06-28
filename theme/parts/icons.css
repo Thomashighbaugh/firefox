@@ -23,9 +23,9 @@
 	content: "" !important;
 	background: url("../icons/pan-end-symbolic.svg");
 	background-size: contain;
-	height: 16px;
-	width: 16px;
-	margin-top: -2px !important;
+	height: 32px;
+	width: 32px;
+	margin-top: 0px !important;
 }
 .protections-popup-category::after {
 	content: url("../icons/pan-start-symbolic.svg") !important;
@@ -46,8 +46,8 @@
 .menu-right {
 	-moz-appearance: none !important;
 	list-style-image: url("../icons/pan-end-symbolic.svg") !important;
-	width: 16px !important;
-	height: 16px !important;
+	width: 32px !important;
+	height: 32px !important;
 }
 menu[disabled] > .menu-right {
 	opacity: 0.3;
@@ -62,8 +62,8 @@ menu:not([disabled]):hover > .menu-right {
 #viewButton .button-menu-dropmarker {
 	-moz-appearance: none !important;
 	list-style-image: url("../icons/pan-down-symbolic.svg") !important;
-	width: 16px !important;
-	height: 16px !important;
+	width: 32px !important;
+	height: 32px !important;
 }
 .menulist-label-box:after {
 	content: url("../icons/pan-down-symbolic.svg") !important;
@@ -73,8 +73,8 @@ menu:not([disabled]):hover > .menu-right {
 .expander-up > .button-box {
 	-moz-appearance: none !important;
 	list-style-image: url("../icons/pan-up-symbolic.svg") !important;
-	width: 16px !important;
-	height: 16px !important;
+	width: 32px !important;
+	height: 32px !important;
 }
 
 /* Search entries */
@@ -85,15 +85,15 @@ menu:not([disabled]):hover > .menu-right {
 	opacity: 0.7 !important;
 }
 #search-box .textbox-search-sign {
-	width: 16px !important;
+	width: 32px !important;
 	margin: 2px 0;
 }
 
 /* Tree views */
 treechildren::-moz-tree-twisty {
 	list-style-image: url("../icons/pan-down-symbolic.svg") !important;
-	width: 16px !important;
-	height: 16px !important;
+	width: 32px !important;
+	height: 32px !important;
 }
 treechildren::-moz-tree-twisty(open) {
 	list-style-image: url("../icons/pan-end-symbolic.svg") !important;
@@ -124,7 +124,7 @@ menuitem[type="checkbox"][checked="true"] {
 	list-style-image: url("../icons/checkbox-checked-symbolic.svg") !important;
 }
 menuitem[type="checkbox"][disabled="true"] .menu-iconic-icon {
-	opacity: 0.5;
+	opacity: 0.9;
 }
 menuitem[type="checkbox"]:not([disabled="true"]):hover .menu-iconic-icon {
 	filter: invert(100%) brightness(200%);
@@ -138,7 +138,7 @@ menuitem[type="radio"][checked="true"] {
 	list-style-image: url("../icons/radio-checked-symbolic.svg") !important;
 }
 menuitem[type="radio"][disabled="true"] .menu-iconic-icon {
-	opacity: 0.5;
+	opacity: 0.9;
 }
 menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	filter: invert(100%) brightness(200%);

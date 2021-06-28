@@ -20,7 +20,7 @@
 
 		/* Sidebar */
 		--sidebar-background: #17191e;
-		--inactive-sidebar-background: #2b3140;
+		--inactive-sidebar-background: #22262d;
 
 		/* Popups */
 		--menu-background: #17191e;
@@ -44,10 +44,10 @@
 		--button-border-color: #0b0c0f;
 		--button-border-accent-color: #070707;	
 		--button-box-shadow: inset 0 1px rgba(255, 255, 255, 0.02), 0 1px 2px rgba(0, 0, 0, 0.07);	
-		--button-hover-background: linear-gradient(to top, #252a3f, #252a3f 1px);	
+		--button-hover-background: linear-gradient(to top, #252a3f, #22262d 1px);	
 		--button-active-background: linear-gradient(45deg,#8b9cbe, #0badff);
 		--button-active-border-color: #0b0c0f;
-		--button-active-border-accent-color: #000000;
+		--button-active-border-accent-color: #0b0c0f;
 		--button-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);	
 		--button-disabled-background: #2b3140;
 		--button-disabled-border-color: #17191e;
@@ -106,7 +106,7 @@
 		--switch-slider-box-shadow: inset 0 1px rgba(255, 255, 255, 0.02), 0 1px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.07);	
 		--switch-active-background: linear-gradient(to right, #ff3d81, #8265ff);;
 		--switch-active-border-color: #0b0c0f;
-		--switch-active-slider-border-color: #3c3f4c;
+		--switch-active-slider-border-color: #22262d;
 		--switch-active-slider-background: #ffffff;
 
 		--start-gradient-color: #0badff;

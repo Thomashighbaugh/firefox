@@ -55,38 +55,38 @@
 
 :root:-moz-lwtheme-darktext {
     --main-window: var(--base02);
-    --bg: var(--base05);
-    --color: var(--base01);
-    --hover-bg: var(--base06);
-    --active-bg: var(--base06);
-    --icon-color: var(--base01);
-    --tab-toolbar-bg: var(--base06);
-    --tab-selected-bg: var(--base05);
-    --urlbar-active-bg: var(--base07);
-    --sidebar-bg: var(--color);
-    --sidebar-color: var(--base01);
-    --menupopup-bg: var(--base07);
+    --bg: var(--base02);
+    --color: var(--base07);
+    --hover-bg: var(--base02);
+    --active-bg: var(--base02);
+    --icon-color: var(--base07);
+    --tab-toolbar-bg: var(--base02);
+    --tab-selected-bg: var(--base02);
+    --urlbar-active-bg: var(--base0);
+    --sidebar-bg: var(--bg);
+    --sidebar-color: var(--base07);
+    --menupopup-bg: var(--base02);
     --accent-bg: var(--base13);
-    --urlbar-switch-tab-color: var(--base02);
-    --urlbar-bookmark-color: var(--base02);
-    --browser-before-load-background: var(--base01);
+    --urlbar-switch-tab-color: var(--base07);
+    --urlbar-bookmark-color: var(--base07);
+    --browser-before-load-background: var(--base02);
     /* Toolbars */
-    --toolbar-background: var(--base01);
+    --toolbar-background: var(--base02);
     --toolbar-color: var(--base07);
     --toolbar-border-color: var(--base00);
-    --inactive-toolbar-background: var(--base01);
-    --inactive-toolbar-border-color: var(--base01);
+    --inactive-toolbar-background: var(--base02);
+    --inactive-toolbar-border-color: var(--base05);
     /* Sidebar */
-    --sidebar-background: var(--base01);
-    --inactive-sidebar-background: var(--base00);
+    --sidebar-background: var(--base02);
+    --inactive-sidebar-background: var(--base02);
     /* Popups */
-    --menu-background: var(--base01);
-    --menu-border-color: var(--base00);
-    --popover-background: var(--base01);
-    --popover-border-color: var(--base00);
+    --menu-background: var(--base02);
+    --menu-border-color: var(--base07);
+    --popover-background: var(--base02);
+    --popover-border-color: var(--base01);
     --popover-shadow: 0 1px 2px var(--base02);
     --popover-button-hover-background: var(--base29);
-    --popover-separator-color: var(--base01);
+    --popover-separator-color: var(--base02);
     /* Header bar */
     --headerbar-background: linear-gradient(to top, var(--base01), var(--base01));
     --headerbar-border-color: var(--base24);
@@ -136,23 +136,23 @@
     --inactive-urlbar-border-color: var(--base01);
     --inactive-urlbar-box-shadow: none;
     --inactive-urlbar-color: var(--base05);
-    --focused-urlbar-border-color: #b2bfd9;
+    --focused-urlbar-border-color: var(--base06);
     --private-urlbar-background: var(--base28);
     /* Tabs */
-    --tabbar-tab-color: #b2bfd9;
+    --tabbar-tab-color: var(--base06);
     --tabbar-tab-hover-background: var(--base01);
     --tabbar-tab-hover-border-bottom-color: var(--base00);
     --tabbar-tab-hover-color: #d6ddff;
     --tabbar-tab-active-background: #1A1E21;
-    --tabbar-tab-active-border-bottom-color: #b2bfd9;
+    --tabbar-tab-active-border-bottom-color: var(--base06);
     --tabbar-tab-active-color: var(--base07);
     --tabbar-tab-active-hover-background: var(--base01);
     --inactive-tabbar-tab-color: var(--base05);
     --inactive-tabbar-tab-active-background: var(--base01);
-    --inactive-tabbar-tab-active-border-bottom-color: #b2bfd9;
-    --inactive-tabbar-tab-active-color: #565656;
-    --start-gradient-color: var(--base05);
-    --end-gradient-color: var(--base07);
+    --inactive-tabbar-tab-active-border-bottom-color: var(--base06);
+    --inactive-tabbar-tab-active-color: var(--base07);
+    --start-gradient-color: var(--base12);
+    --end-gradient-color: var(--base16);
 }
 
 

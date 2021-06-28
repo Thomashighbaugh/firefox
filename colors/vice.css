@@ -28,9 +28,11 @@
     --base26: #570b0e;
     --base27: #092444;
     --base28: #25003e;
+    --base29: #1b1f22;
+    --base30: #1c2023;
     --backdrop-blur: 6px;
     --sidebar-searchbar-radius: 6px;
-    --box-shadow: #01010166;
+    --box-shadow: #0b0c0f66;
     --urlbar-hightlight-bg: var(--accent-bg);
     --urlbar-radius: 9px;
     --urlbar-results-font-size: 12px;
@@ -67,6 +69,90 @@
     --accent-bg: var(--base13);
     --urlbar-switch-tab-color: var(--base02);
     --urlbar-bookmark-color: var(--base02);
+    --browser-before-load-background: var(--base01);
+    /* Toolbars */
+    --toolbar-background: var(--base01);
+    --toolbar-color: var(--base07);
+    --toolbar-border-color: var(--base00);
+    --inactive-toolbar-background: var(--base01);
+    --inactive-toolbar-border-color: var(--base01);
+    /* Sidebar */
+    --sidebar-background: var(--base01);
+    --inactive-sidebar-background: var(--base00);
+    /* Popups */
+    --menu-background: var(--base01);
+    --menu-border-color: var(--base00);
+    --popover-background: var(--base01);
+    --popover-border-color: var(--base00);
+    --popover-shadow: 0 1px 2px var(--base02);
+    --popover-button-hover-background: var(--base29);
+    --popover-separator-color: var(--base01);
+    /* Header bar */
+    --headerbar-background: linear-gradient(to top, var(--base01), var(--base01));
+    --headerbar-border-color: var(--base24);
+    --headerbar-box-shadow: inset 0 1px var(--base01);
+    --inactive-headerbar-background: linear-gradient(var(--base01), var(--base01));
+    --inactive-headerbar-border-color: var(--base01);
+    --inactive-headerbar-box-shadow: inset 0 1px var(--base01);
+    /* Buttons */
+    --button-background: linear-gradient(to top, var(--base30) 2px, var(--base01));
+    --button-border-color: var(--base00);
+    --button-border-accent-color: var(--base24);
+    --button-box-shadow: inset 0 1px var(--base01), 0 1px 2px var(--base02);
+    --button-hover-background: linear-gradient(to top, var(--base29), var(--base29) 1px);
+    --button-active-background: linear-gradient(45deg, var(--base01), var(--base24));
+    --button-active-border-color: var(--base00);
+    --button-active-border-accent-color: var(--base24);
+    --button-active-box-shadow: inset 0 1px var(--base01);
+    --button-disabled-background: var(--base29);
+    --button-disabled-border-color: var(--base01);
+    --button-disabled-box-shadow: inset 0 1px var(--base01);
+    --inactive-button-background: linear-gradient(var(--base01), var(--base19));
+    --inactive-button-border-color: var(--base01);
+    --inactive-button-box-shadow: inset 0 1px var(--base01);
+    --button-suggested-action-background: linear-gradient(to top, var(--base05) 2px, #29323c);
+    --button-suggested-action-border-color: var(--base05);
+    --button-suggested-action-border-accent-color: var(--base19);
+    ;
+    --button-suggested-action-box-shadow: inset 0 1px var(--base01), 0 1px 2px var(--base02);
+    --button-suggested-action-hover-background: linear-gradient(to top, var(--base05), #29323cec 1px);
+    --button-suggested-action-active-background: var(--base05);
+    --button-suggested-action-active-border-color: var(--base05);
+    --button-suggested-action-active-box-shadow: inset 0 1px var(--base01);
+    --button-destructive-action-background: linear-gradient(to top, var(--base25) 2px, var(--base26));
+    --button-destructive-action-border-color: var(--base25);
+    --button-destructive-action-border-accent-color: var(--base26);
+    --button-destructive-action-box-shadow: inset 0 1px var(--base01), 0 1px 2px var(--base01);
+    --button-destructive-action-hover-background: linear-gradient(to top, var(--base25), var(--base26) 1px);
+    --button-destructive-action-active-background: var(--base25);
+    --button-destructive-action-active-border-color: var(--base25);
+    --button-destructive-action-active-box-shadow: inset 0 1px var(--base01);
+    /* URL bar */
+    --urlbar-background: linear-gradient(var(--base30), var(--base30));
+    --urlbar-border-color: var(--base00);
+    --urlbar-box-shadow: inset 0 0 0 1px var(--base30);
+    --urlbar-color: var(--base07);
+    --inactive-urlbar-background: linear-gradient(var(--base29), var(--base01));
+    --inactive-urlbar-border-color: var(--base01);
+    --inactive-urlbar-box-shadow: none;
+    --inactive-urlbar-color: var(--base05);
+    --focused-urlbar-border-color: #b2bfd9;
+    --private-urlbar-background: var(--base28);
+    /* Tabs */
+    --tabbar-tab-color: #b2bfd9;
+    --tabbar-tab-hover-background: var(--base01);
+    --tabbar-tab-hover-border-bottom-color: var(--base00);
+    --tabbar-tab-hover-color: #d6ddff;
+    --tabbar-tab-active-background: #1A1E21;
+    --tabbar-tab-active-border-bottom-color: #b2bfd9;
+    --tabbar-tab-active-color: var(--base07);
+    --tabbar-tab-active-hover-background: var(--base01);
+    --inactive-tabbar-tab-color: var(--base05);
+    --inactive-tabbar-tab-active-background: var(--base01);
+    --inactive-tabbar-tab-active-border-bottom-color: #b2bfd9;
+    --inactive-tabbar-tab-active-color: #565656;
+    --start-gradient-color: var(--base05);
+    --end-gradient-color: var(--base07);
 }
 
 
@@ -103,9 +189,9 @@
     --menu-border-color: var(--base04);
     --popover-background: var(--bg);
     --popover-border-color: var(--base04);
-    --popover-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --popover-shadow: 0 1px 2px var(--base02);
     --popover-button-hover-background: var(--base21);
-    --popover-separator-color: rgba(0, 0, 0, 0.1);
+    --popover-separator-color: var(--base01);
     /* Header bar */
     --headerbar-background: linear-gradient(to top, var(--bg), var(--bg));
     --headerbar-border-color: var(--base24);
@@ -117,7 +203,7 @@
     --button-background: linear-gradient(to top, var(--bg) 2px, var(--bg));
     --button-border-color: var(--base04);
     --button-border-accent-color: var(--base24);
-    --button-box-shadow: inset 0 1px var(--base01), 0 1px 2px rgba(0, 0, 0, 0.07);
+    --button-box-shadow: inset 0 1px var(--base01), 0 1px 2px var(--base01);
     --button-hover-background: linear-gradient(to top, var(--base21), var(--base01) 1px);
     --button-active-background: linear-gradient(45deg, var(--base05), var(--base13));
     --button-active-border-color: var(--base04);
@@ -133,7 +219,7 @@
     --button-suggested-action-border-color: var(--base13);
     --button-suggested-action-border-accent-color: var(--base27);
     ;
-    --button-suggested-action-box-shadow: inset 0 1px var(--base01), 0 1px 2px rgba(0, 0, 0, 0.07);
+    --button-suggested-action-box-shadow: inset 0 1px var(--base01), 0 1px 2px var(--base02);
     --button-suggested-action-hover-background: linear-gradient(to top, #0badffec, #ff29a8ec 1px);
     --button-suggested-action-active-background: var(--base13);
     --button-suggested-action-active-border-color: var(--base13);
@@ -141,8 +227,8 @@
     --button-destructive-action-background: linear-gradient(to top, #FF29a8 2px, var(--base16));
     --button-destructive-action-border-color: var(--base16);
     --button-destructive-action-border-accent-color: var(--base26);
-    --button-destructive-action-box-shadow: inset 0 1px var(--base01), 0 1px 2px rgba(0, 0, 0, 0.07);
-    --button-destructive-action-hover-background: linear-gradient(to top, var(--base25)ec, #FF4B2Bec 1px);
+    --button-destructive-action-box-shadow: inset 0 1px var(--base01), 0 1px 2px var(--base02);
+    --button-destructive-action-hover-background: linear-gradient(to top, var(--base25), var(--base26) 1px);
     --button-destructive-action-active-background: var(--base25);
     --button-destructive-action-active-border-color: var(--base25);
     --button-destructive-action-active-box-shadow: inset 0 1px var(--base00);
@@ -175,7 +261,7 @@
     --switch-border-color: var(--base04);
     --switch-slider-background: var(--base00);
     --switch-slider-border-color: var(--base04);
-    --switch-slider-box-shadow: inset 0 1px var(--base01), 0 1px var(--base01), 0 1px 2px rgba(0, 0, 0, 0.07);
+    --switch-slider-box-shadow: inset 0 1px var(--base01), 0 1px var(--base01), 0 1px 2px var(--base02);
     --switch-active-background: linear-gradient(to right, var(--base16), var(--base17));
     ;
     --switch-active-border-color: var(--base04);

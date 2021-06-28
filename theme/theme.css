@@ -10,7 +10,6 @@
 @import "parts/remove-white-flash.css";
 @import "parts/scrollbars.css";
 @import "parts/icons.css";
-@import "colors/alternative.css"
 @import "colors/dark.css";
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 

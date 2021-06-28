@@ -29,7 +29,7 @@
     --base27: #092444;
     --base28: #25003e;
     --base29: #1b1f22;
-    --base30: #1c2023;
+    --base30: #1A1E21;
     --backdrop-blur: 6px;
     --sidebar-searchbar-radius: 6px;
     --box-shadow: #0b0c0f66;
@@ -47,7 +47,7 @@
     --tab-soundplaying-bg: var(--base01);
     --tab-selected-bg: var(--base23);
     --urlbar-active-bg: var(--base23);
-    --main-window: var(--base02);
+    --main-window: var(--base00);
 }
 
 
@@ -128,7 +128,7 @@
     --button-destructive-action-active-border-color: var(--base25);
     --button-destructive-action-active-box-shadow: inset 0 1px var(--base01);
     /* URL bar */
-    --urlbar-background: linear-gradient(var(--base30), var(--base30));
+    --urlbar-background: linear-gradient(var(--base01), var(--base30));
     --urlbar-border-color: var(--base00);
     --urlbar-box-shadow: inset 0 0 0 1px var(--base30);
     --urlbar-color: var(--base07);

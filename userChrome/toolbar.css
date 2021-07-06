@@ -1,0 +1,86 @@
+/*
+ * Author: Thomas Leon Highbaugh (thighbaugh@zoho.com)
+ * Project: firefox
+ * File: userChrome/toolbar.css
+ * Description: Styles the toolbars, which are in some cases also 
+ * styled within their own files, this file serves as a catch-all
+ */
+.browser-toolbar {
+}
+
+.browser-toolbar:-moz-lwtheme-darktext,
+.browser-toolbar:-moz-lwtheme-brighttext {
+  background: var(--tab-toolbar-bg) !important;
+}
+
+toolbar {
+  background-image: none !important;
+}
+
+toolbar#nav-bar {
+  padding: var(--navbar-padding) !important;
+
+  /* Remove horizontal line on navbar */
+  box-shadow: none !important;
+  border-top: none !important;
+}
+
+/* Set color schemes for #nav-bar */
+toolbar#nav-bar:-moz-lwtheme-darktext,
+toolbar#nav-bar:-moz-lwtheme-brighttext {
+  background: var(--navbar-bg) !important;
+}
+
+toolbarbutton {
+  box-shadow: none !important;
+  margin-left: 2px !important;
+}
+
+.toolbarbutton-1 {
+}
+
+/* Set color schemes for #nav-bar */
+.toolbarbutton-1:-moz-lwtheme-darktext,
+.toolbarbutton-1:-moz-lwtheme-brighttext {
+  --toolbarbutton-hover-background: var(--hover-bg) !important;
+  --toolbarbutton-active-background: var(--active-bg) !important;
+}
+
+#searchbar {
+  border: none !important;
+}
+
+/* Set color scheme */
+#searchbar:-moz-lwtheme-darktext,
+#searchbar:-moz-lwtheme-brighttext {
+  background: var(--bg) !important;
+}
+
+.searchbar-textbox {
+  font-weight: 700 !important;
+}
+
+#navigator-toolbox,
+toolbaritem {
+  border: none !important;
+}
+
+#navigator-toolbox::after {
+  border-bottom: 0 !important;
+}
+
+.toolbarbutton-text {
+}
+
+/* Set color scheme */
+.toolbarbutton-text:-moz-lwtheme-darktext,
+.toolbarbutton-text:-moz-lwtheme-brighttext {
+  color: var(--icon-color) !important;
+}
+
+/* Back button */
+#back-button > .toolbarbutton-icon {
+  --backbutton-background: transparent !important;
+  border: none !important;
+  -moz-appearance: var(--moz-appearance) !important;
+}

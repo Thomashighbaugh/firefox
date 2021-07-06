@@ -1,0 +1,219 @@
+/*
+ * Author: Thomas Leon Highbaugh (thighbaugh@zoho.com)
+ * Project: firefox
+ * File: userChrome/urlbar.css
+ * Description: Styles the url input bar
+ */
+
+
+/* URL bar max-width and centered hack */
+
+#urlbar {
+    /* URL bar and toolbar height */
+    --urlbar-height: 32px !important;
+    --urlbar-toolbar-height: 32px !important;
+}
+
+#urlbar-input:focus {
+    color: var(--urlbar-focused-color) !important;
+}
+
+
+/* Set color scheme */
+
+#urlbar-input:focus:-moz-lwtheme-darktext,
+#urlbar-input:focus:-moz-lwtheme-brighttext {
+    color: var(--urlbar-focused-color) !important;
+    background: var(--base01) !important;
+}
+
+#urlbar-background {
+    border-radius: var(--urlbar-radius) !important;
+    border-bottom: var(--base02) 0.125rem solid !important;
+    background: var(--base01) !important;
+}
+
+
+/* Set color scheme */
+
+.urlbar-icon:not([disabled]):hover:-moz-lwtheme-darktext,
+.urlbar-icon:not([disabled]):hover:-moz-lwtheme-brighttext,
+.urlbar-icon-wrapper:not([disabled]):hover:-moz-lwtheme-darktext,
+.urlbar-icon-wrapper:not([disabled]):hover:-moz-lwtheme-brighttext {
+    background: var(--bg) !important;
+}
+
+.urlbar-icon[open],
+.urlbar-icon-wrapper[open],
+.urlbar-icon:not([disabled]):hover:active,
+.urlbar-icon-wrapper:hover:active {
+    background: var(--bg) !important;
+}
+
+
+/* Set color scheme */
+
+.urlbar-icon[open]:-moz-lwtheme-darktext,
+.urlbar-icon[open]:-moz-lwtheme-brighttext,
+.urlbar-icon-wrapper[open]:-moz-lwtheme-darktext,
+.urlbar-icon-wrapper[open]:-moz-lwtheme-brighttext,
+.urlbar-icon:not([disabled]):hover:active:-moz-lwtheme-darktext,
+.urlbar-icon:not([disabled]):hover:active:-moz-lwtheme-brighttext,
+.urlbar-icon-wrapper:hover:active:-moz-lwtheme-darktext,
+.urlbar-icon-wrapper:hover:active:-moz-lwtheme-brighttext {
+    background: var(--bg) !important;
+}
+
+.urlbar-icon-wrapper[open]>.urlbar-icon,
+.urlbar-icon-wrapper>.urlbar-icon:hover,
+.urlbar-icon-wrapper>.urlbar-icon:hover:active {
+    background: var(--bg) !important;
+}
+
+
+/* Set color scheme */
+
+.urlbar-icon-wrapper[open]>.urlbar-icon:-moz-lwtheme-darktext,
+.urlbar-icon-wrapper[open]>.urlbar-icon:-moz-lwtheme-brighttext,
+.urlbar-icon-wrapper>.urlbar-icon:hover:-moz-lwtheme-darktext,
+.urlbar-icon-wrapper>.urlbar-icon:hover:-moz-lwtheme-brighttext,
+.urlbar-icon-wrapper>.urlbar-icon:hover:active:-moz-lwtheme-darktext,
+.urlbar-icon-wrapper>.urlbar-icon:hover:active:-moz-lwtheme-brighttext {
+    background: var(--bg) !important;
+}
+
+#urlbar[breakout-extend="true"]:not([open="true"])>#urlbar-background {
+    box-shadow: none !important;
+    display: none !important;
+    -moz-appearance: var(--moz-appearance) !important;
+}
+
+
+/* Set color scheme */
+
+#urlbar[open="true"]>#urlbar-background:-moz-lwtheme-darktext,
+#urlbar[open="true"]>#urlbar-background:-moz-lwtheme-brighttext {
+    background: var(--urlbar-active-bg) !important;
+    backdrop-filter: blur(var(--backdrop-blur)) !important;
+}
+
+
+/* Set color scheme */
+
+.urlbar-icon:-moz-lwtheme-darktext,
+.urlbar-icon:-moz-lwtheme-brighttext {
+    color: var(--icon-color) !important;
+}
+
+.urlbar-icon>image {
+    fill: var(--base08) !important;
+    color: var(--base08) !important;
+}
+
+.urlbarView-row[type="switchtab"]>span .urlbarView-url {
+    color: var(--urlbar-switch-tab-color) !important;
+}
+
+#urlbar-results {
+    font-weight: var(--urlbar-results-font-weight);
+    font-size: var(--urlbar-results-font-size) !important;
+}
+
+
+/* Hover background color */
+
+.urlbarView-row-inner:hover {
+    background: var(--accent-bg) !important;
+}
+
+.urlbarView-url,
+.search-panel-one-offs-container {
+    font-weight: var(--urlbar-results-font-weight);
+    font-size: var(--urlbar-font-size) !important;
+}
+
+#urlbar-input {
+    font-size: var(--urlbar-font-size) !important;
+    font-weight: var(--urlbar-font-weight) !important;
+    text-align: center !important;
+}
+
+
+/* Urlbar buttons */
+
+.urlbar-icon,
+.urlbar-page-action {
+    border-radius: 6px;
+}
+
+
+/* URL bar hightlight color */
+
+::-moz-selection {
+    background-color: var(--urlbar-hightlight-bg) !important;
+}
+
+
+/* Bookmark button - Star button */
+
+
+/* 
+#star-button {} */
+
+#star-button:hover:not(.no-hover):not([open="true"]) {
+    background: var(--bg) !important;
+}
+
+
+/* Set color scheme */
+
+#star-button:hover:active:not(.no-hover):-moz-lwtheme-darktext,
+#star-button:hover:active:not(.no-hover):-moz-lwtheme-brighttext,
+#star-button[open="true"]:-moz-lwtheme-darktext,
+#star-button[open="true"]:-moz-lwtheme-brighttext {
+    background: var(--bg) !important;
+}
+
+
+/* Tracking */
+
+#tracking-protection-icon-container {
+    border-radius: 6px !important;
+    margin: 2px !important;
+}
+
+
+/* Identity */
+
+#identity-box {
+    border-radius: 6px !important;
+    margin: 2px !important;
+}
+
+#identity-box:hover:not(.no-hover):not([open="true"]),
+#tracking-protection-icon-container:hover:not(.no-hover):not([open="true"]) {
+    background: var(--bg) !important;
+}
+
+#identity-box:hover:active:not(.no-hover),
+#identity-box[open="true"],
+#tracking-protection-icon-container:hover:active:not(.no-hover),
+#tracking-protection-icon-container[open="true"] {
+    background: var(--bg) !important;
+}
+
+
+/* Remove placeholder text in the address bar */
+
+.urlbar-input-box>.urlbar-input::placeholder {
+    opacity: 0 !important;
+}
+
+#urlbar[breakout][breakout-extend]>#urlbar-input-container,
+#urlbar-input-container {
+    height: var(--urlbar-height) !important;
+    padding-block: 0px !important;
+    padding-inline: 0px !important;
+    transition: none !important;
+    border-radius: var(--toolbarbutton-border-radius) !important;
+}

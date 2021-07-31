@@ -26,8 +26,9 @@ download_ff() {
 
         FF_THEME="/tmp/firefox-master/"
         cp -r "${FF_THEME}"* "${CHROME_DIRECTORY}"
-
-        message "[>>] Backup user.js instead of overwriting it"
+        mv "${CHROME_DIRECTORY}"/userChromeJS/* "${CHROME_DIRECTORY}" && rm -rvf "${CHROME_DIRECTORY}"/userChrome
+        JS 
+      message "[>>] Backup user.js instead of overwriting it"
 
         if [ -e "${CHROME_DIRECTORY}/../user.js" ]; then
 

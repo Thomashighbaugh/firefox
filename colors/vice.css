@@ -45,7 +45,7 @@
     --tab-height: 24px;
     --tab-border-radius: 6px;
     --tab-soundplaying-bg: var(--base01);
-    --tab-selected-bg: var(--base23);
+    --tab-selected-bg: var(--base13);
     --urlbar-active-bg: var(--base23);
     --main-window: var(--base00);
 }
@@ -61,7 +61,7 @@
     --active-bg: var(--base02);
     --icon-color: var(--base07);
     --tab-toolbar-bg: var(--base02);
-    --tab-selected-bg: var(--base02);
+    --tab-selected-bg: var(--base13);
     --urlbar-active-bg: var(--base0);
     --sidebar-bg: var(--bg);
     --sidebar-color: var(--base07);
@@ -166,7 +166,7 @@
     --active-bg: var(--base23);
     --icon-color: var(--base07);
     --tab-toolbar-bg: var(--base01);
-    --tab-selected-bg: var(--base23);
+    --tab-selected-bg: var(--base02);
     --urlbar-active-bg: var(--bg);
     --sidebar-bg: var(--bg);
     --sidebar-color: var(--color);

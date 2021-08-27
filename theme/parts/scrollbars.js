@@ -9,7 +9,7 @@
         --gnome-scrollbars-hover-border-color: #8b9cbe;
         --gnome-scrollbars-thumb-bgcolor: rgba(0, 0, 0, 0.32);
         --gnome-scrollbars-thumb-blend-mode: multiply;
-        --gnome-scrollbars-thumb-outline: 1px solid rgba(215, 215, 255, 0.4);
+        --gnome-scrollbars-thumb-outline: 1px solid #b2bfd9;
         --gnome-scrollbars-thumb-hover-bgcolor: #b2bfd9;
         --gnome-scrollbars-thumb-active-bgcolor: #8b9cbe;
     }
@@ -19,7 +19,7 @@
 		    --gnome-scrollbars-hover-border-color: #17191e;
 		    --gnome-scrollbars-thumb-bgcolor: #17191e;
 		    --gnome-scrollbars-thumb-blend-mode: screen;
-		    --gnome-scrollbars-thumb-outline: 1px solid rgba(0, 0, 0, 0.4);
+		    --gnome-scrollbars-thumb-outline: 1px solid #17191e99;
 		    --gnome-scrollbars-thumb-hover-bgcolor: #b2bfd9;
 		    --gnome-scrollbars-thumb-active-bgcolor: #8b9cbe;
 		}

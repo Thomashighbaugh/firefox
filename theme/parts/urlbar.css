@@ -6,7 +6,7 @@
 
 #tabbrowser-tabs,
 #tabbrowser-tabs > .tabbrowser-arrowscrollbox {
-  min-height: 10px !important;
+  min-height: 0 !important;
 }
 
 #tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"] {
@@ -21,11 +21,11 @@
 #tabbrowser-tabs
   > .tabbrowser-arrowscrollbox
   main-window[privatebrowsingmode="temporary"] {
-  min-height: var(--tab-min-height);
+  min-height: 50px;
 }
 
 #tabbrowser-tabs tab {
-  min-height: var(--tab-min-height);
+  min-height: 50px;
 }
 
 /*

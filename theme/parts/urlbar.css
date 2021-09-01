@@ -1,34 +1,6 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
 /*
- * From https://gist.github.com/BenoitAverty/af633ee20e27f48f9ba7178451432206
- */
-
-#tabbrowser-tabs,
-#tabbrowser-tabs > .tabbrowser-arrowscrollbox {
-  min-height: 0 !important;
-}
-
-#tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"] {
-  visibility: collapse;
-}
-
-#tabbrowser-tabs .tabs-newtab-button {
-  visibility: collapse !important;
-}
-
-#tabbrowser-tabs,
-#tabbrowser-tabs
-  > .tabbrowser-arrowscrollbox
-  main-window[privatebrowsingmode="temporary"] {
-  min-height: var(--tab-min-height);
-}
-
-#tabbrowser-tabs tab {
-  min-height: var(--tab-min-height);
-}
-
-/*
  * From https://support.mozilla.org/en-US/questions/1185426
  */
 
@@ -44,18 +16,3 @@
 #TabsToolbar {
   -moz-box-ordinal-group: 3 !important;
 }
-
-/*
- * Based on firefox own behavior while in fullscreen
- */
-
-/* #navigator-toolbox {
-  margin-top: -40px;
-  transition: margin-top 0.5s;
-}
-
-#navigator-toolbox:hover,
-#navigator-toolbox:focus-within {
-  margin-top: 0px;
-  transition: margin-top 0.5s;
-} */

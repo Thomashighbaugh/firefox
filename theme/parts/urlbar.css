@@ -20,3 +20,8 @@
 /*
  * Based on firefox own behavior while in fullscreen
  */
+
+#navigator-toolbox:focus-within {
+  margin-top: 0px;
+  transition: margin-top 0.5s;
+}

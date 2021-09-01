@@ -6,7 +6,7 @@
 
 #tabbrowser-tabs,
 #tabbrowser-tabs > .tabbrowser-arrowscrollbox {
-  min-height: 0 !important;
+  min-height: 10px !important;
 }
 
 #tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"] {

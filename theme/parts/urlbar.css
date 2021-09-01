@@ -21,11 +21,11 @@
 #tabbrowser-tabs
   > .tabbrowser-arrowscrollbox
   main-window[privatebrowsingmode="temporary"] {
-  min-height: 50px;
+  min-height: var(--tab-min-height);
 }
 
 #tabbrowser-tabs tab {
-  min-height: 50px;
+  min-height: var(--tab-min-height);
 }
 
 /*
@@ -61,5 +61,9 @@
 #navigator-toolbox:hover,
 #navigator-toolbox:focus-within {
   margin-top: 0px;
-  transition: margin-top 0.5s;
+  transition: margin-top 0.125s;
+  -webkit-transition: margin-top 0.125s;
+  -moz-transition: margin-top 0.125s;
+  -ms-transition: margin-top 0.125s;
+  -o-transition: margin-top 0.125s;
 }

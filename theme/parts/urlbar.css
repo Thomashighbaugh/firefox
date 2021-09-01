@@ -57,7 +57,7 @@
   -ms-transition: margin-top 0.125s;
   -o-transition: margin-top 0.125s;
 }
-
+/*
 #navigator-toolbox:hover,
 #navigator-toolbox:focus-within {
   margin-top: 0px;
@@ -66,4 +66,4 @@
   -moz-transition: margin-top 0.125s;
   -ms-transition: margin-top 0.125s;
   -o-transition: margin-top 0.125s;
-}
+} */

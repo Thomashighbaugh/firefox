@@ -51,7 +51,11 @@
 
 #navigator-toolbox {
   margin-top: -40px;
-  transition: margin-top 0.5s;
+  transition: margin-top 0.125s;
+  -webkit-transition: margin-top 0.125s;
+  -moz-transition: margin-top 0.125s;
+  -ms-transition: margin-top 0.125s;
+  -o-transition: margin-top 0.125s;
 }
 
 #navigator-toolbox:hover,

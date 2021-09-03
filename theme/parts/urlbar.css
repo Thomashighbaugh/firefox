@@ -16,3 +16,51 @@
 #TabsToolbar {
   -moz-box-ordinal-group: 3 !important;
 }
+/* Preventing the tabs from changing on hover */
+.tabbrowser-tab:not([visuallyselected="true"]):hover .tab-background {
+  background: transparent !important;
+}
+.tabbrowser-tab:not([visuallyselected="true"]) label {
+  opacity: 0.75 !important;
+}
+.tabbrowser-tab,
+.tabbrowser-tab[visuallyselected="true"]:hover {
+  --tab-label-mask-size: 1em !important;
+}
+.tab-close-button {
+  width: 24px !important;
+  padding: 7px !important;
+} /* Removing tab's margins and adapting corners */
+:root {
+  --tab-border-radius: 10px !important;
+  --tab-block-margin: 0 !important;
+}
+.tab-background {
+  border-radius: 0px 0px var(--tab-border-radius) var(--tab-border-radius) !important;
+  box-shadow: inset 0 2px var(--identity-tab-color, transparent) !important;
+} /* Making the all the toolbars transparent */ /* /!\ This can have strange effect when using "native style", in that case you'll have to find and use the native color of the titlebar instead of "transparent" */
+.browser-toolbar:not(.titlebar-color) {
+  background: transparent !important;
+} /* Removing the second text line in tabs */
+.tab-secondary-label {
+  display: none;
+} /* Making the extended URL bar background color match and removing borders and shadows */
+#urlbar-background,
+#searchbar {
+  border: none !important;
+  background-color: transparent !important;
+  animation-name: none !important;
+  box-shadow: none !important;
+}
+#urlbar[breakout][breakout-extend] > #urlbar-background {
+  background-color: var(--lwt-accent-color) !important;
+  background-image: var(--lwt-additional-images) !important;
+  background-repeat: var(--lwt-background-tiling) !important;
+  background-position: var(--lwt-background-alignment) !important;
+}
+#urlbar[open] > .urlbarView > .urlbarView-body-outer > .urlbarView-body-inner {
+  border: none !important;
+}
+#nav-bar:not([tabs-hidden="true"]) {
+  box-shadow: none !important;
+}

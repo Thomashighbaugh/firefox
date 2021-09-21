@@ -27,7 +27,7 @@ download_ff() {
         FF_THEME="/tmp/firefox-master/"
         cp -r "${FF_THEME}"* "${CHROME_DIRECTORY}"
         mv "${CHROME_DIRECTORY}"/userChromeJS/* "${CHROME_DIRECTORY}" && rm -rvf "${CHROME_DIRECTORY}"/userChromeJS
-        JS 
+         
       message "[>>] Backup user.js instead of overwriting it"
 
         if [ -e "${CHROME_DIRECTORY}/../user.js" ]; then
@@ -68,6 +68,11 @@ function check_profile() {
     FF_USER_DIRECTORY="$(find "${HOME}/.mozilla/firefox/" -maxdepth 1 -type d -regextype egrep -regex '.*[a-zA-Z0-9]+.'${1})"
 }
 
+function check_librewolf_profile() {
+    FF_USER_DIRECTORY="$(find "${HOME}/.librewolf/" -maxdepth 1 -type d -regextype egrep -regex '.*[a-zA-Z0-9]+.'${1})"
+}
+
+
 function print_help() {
     message "Usage: run this script followed by the variant of firefox you are installing to"
     message "/path/to/this/script/install.sh "
@@ -103,6 +108,9 @@ if [[ ! -z "${@}" ]] && [[ ! -z "${1}" ]]; then
     elif [[ "${1}" == "esr" ]]; then
         RELEASE_NAME="ESR"
         check_profile "default-esr"
+    elif [[ "${1}" == "librewolf" ]]; then
+      RELEASE_NAME="librewolf"
+      check_librewolf_profile "default-release"
     elif [[ "${1}" == "help" ]]; then
         print_help
         exit

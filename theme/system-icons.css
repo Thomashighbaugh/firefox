@@ -240,8 +240,10 @@
   list-style-image: url("moz-icon://stock/edit-paste-symbolic?size=dialog") !important;
 }
 
+toolbarbutton,
 .titlebar-button {
   vsible: hidden;
   width: 0;
   height: 0;
+  display: none;
 }

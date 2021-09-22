@@ -243,7 +243,8 @@
 .titlebar-button,
 .titlebar-min,
 .titlebar-max,
-.titlebar-close {
+.titlebar-close,
+#window-controls {
   vsible: hidden;
   width: 0;
   height: 0;

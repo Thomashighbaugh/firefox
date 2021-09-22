@@ -245,8 +245,8 @@
 .titlebar-max,
 .titlebar-close,
 #window-controls {
-  vsible: hidden;
-  width: 0;
-  height: 0;
-  display: none;
+  vsible: hidden !important;
+  width: 1% !important;
+  height: 0 !important;
+  display: none !important;
 }

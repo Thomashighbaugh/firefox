@@ -26,6 +26,9 @@ download_ff() {
 
         FF_THEME="/tmp/firefox-master/"
         cp -r "${FF_THEME}"* "${CHROME_DIRECTORY}"
+	cp -r "${FF_THEME}"patches/defaults /usr/lib/firefox
+	cp -r  "${FF_THEME}"patches/config.js /usr/lib/firefox
+	mv "${CHROME_DIRECTORY}"/patches/utils "${CHROME_DIRECTORY}" && rm -rvf "${CHROME_DIRECTORY}"/patches
         mv "${CHROME_DIRECTORY}"/userChromeJS/* "${CHROME_DIRECTORY}" && rm -rvf "${CHROME_DIRECTORY}"/userChromeJS
          
       message "[>>] Backup user.js instead of overwriting it"
@@ -120,9 +123,9 @@ if [[ ! -z "${@}" ]] && [[ ! -z "${1}" ]]; then
         exit
     fi
 else
-    # check_profile "(dev-edition|default)-(release|beta|nightly|default|esr)"
-    RELEASE_NAME="Stable"
-    check_profile "default-default"
+   check_profile "(dev-edition|default)-(release|beta|nightly|default|esr)"
+   # RELEASE_NAME="Stable"
+   # check_profile "default-default"
 fi
 
 if [[ -n "$FF_USER_DIRECTORY" ]]; then

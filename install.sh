@@ -104,7 +104,7 @@ if [[ ! -z "${@}" ]] && [[ ! -z "${1}" ]]; then
         check_profile "default-nightly"
     elif [[ "${1}" == "stable" ]]; then
         RELEASE_NAME="Stable"
-        check_profile "default-release"
+        check_profile "default-default"
     elif [[ "${1}" == "esr" ]]; then
         RELEASE_NAME="ESR"
         check_profile "default-esr"

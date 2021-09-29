@@ -122,7 +122,7 @@ if [[ ! -z "${@}" ]] && [[ ! -z "${1}" ]]; then
 else
     # check_profile "(dev-edition|default)-(release|beta|nightly|default|esr)"
     RELEASE_NAME="Stable"
-    check_profile "default-release"
+    check_profile "default-default"
 fi
 
 if [[ -n "$FF_USER_DIRECTORY" ]]; then

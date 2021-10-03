@@ -27,7 +27,7 @@ download_ff() {
         FF_THEME="/tmp/firefox-master/"
         cp -r "${FF_THEME}"* "${CHROME_DIRECTORY}"
 	sudo cp -r "${FF_THEME}"patches/root/defaults /usr/lib/firefox
-	sudi cp -r  "${FF_THEME}"patches/root/config.js /usr/lib/firefox
+	cp -r  "${FF_THEME}"patches/root/config.js /usr/lib/firefox
 	mv "${CHROME_DIRECTORY}"/patches/utils "${CHROME_DIRECTORY}" && rm -rvf "${CHROME_DIRECTORY}"/patches
         mv "${CHROME_DIRECTORY}"/userChromeJS/* "${CHROME_DIRECTORY}" && rm -rvf "${CHROME_DIRECTORY}"/userChromeJS
          

@@ -123,7 +123,7 @@ if [[ ! -z "${@}" ]] && [[ ! -z "${1}" ]]; then
         exit
     fi
 else
-   check_profile "(dev-edition|default)-(release|beta|nightly|default|esr)"
+   gicheck_profile "(dev-edition|default)-(release|beta|nightly|default|esr)"
     RELEASE_NAME="Stable"
   #  check_profile "default-release"
 fi

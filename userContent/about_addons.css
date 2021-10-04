@@ -14,6 +14,7 @@
         margin: 0 0 8px !important;
         border-radius: 2px !important;
         background: var(--base00) !important;
+        color: var(--base07) !important;
     }
     #addons-page #header-inner {
         width: auto !important;

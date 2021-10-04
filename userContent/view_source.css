@@ -7,8 +7,8 @@
  */
   @-moz-document url-prefix(view-source:) {
   html {
-    background: (--bg) !important;
-    color: var(--color) !important;
+    background: (--base00) !important;
+    color: var(--base06) !important;
   }
 
   .attribute-name {

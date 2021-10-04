@@ -30,7 +30,7 @@
     html:not(#ublock0-epicker) body,
     #newtab-customize-overlay {
         background: var(--tab-toolbar-bg) !important;
-        color: var(--color) !important;
+        color: var(--base06) !important;
     }
 }
 
@@ -46,9 +46,9 @@
 
 @-moz-document url(about:privatebrowsing) {
      :root {
-        scrollbar-color: var(--color) transparent !important;
+        scrollbar-color: var(--base06) transparent !important;
         background: var(--tab-toolbar-bg) !important;
-        color: var(--color) !important;
+        color: var(--base06) !important;
     }
 }
 

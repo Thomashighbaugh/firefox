@@ -55,20 +55,20 @@
 
 :root:-moz-lwtheme-darktext {
     --main-window: var(--base02);
-    --bg: var(--base02);
-    --color: var(--base07);
+    --base00: var(--base02);
+    --base06: var(--base07);
     --hover-bg: var(--base02);
     --active-bg: var(--base02);
-    --icon-color: var(--base07);
+    --base07: var(--base07);
     --tab-toolbar-bg: var(--base02);
     --tab-selected-bg: var(--base13);
     --urlbar-active-bg: var(--base0);
-    --sidebar-bg: var(--bg);
+    --sidebar-bg: var(--base00);
     --sidebar-color: var(--base07);
-    --menupopup-bg: var(--base02);
+    --base02: var(--base02);
     --accent-bg: var(--base13);
     --urlbar-switch-tab-color: var(--base07);
-    --urlbar-bookmark-color: var(--base07);
+    --base06: var(--base07);
     --browser-before-load-background: var(--base02);
     /* Toolbars */
     --toolbar-background: var(--base02);
@@ -160,47 +160,47 @@
 
 :root:-moz-lwtheme-brighttext {
     --main-window: var(--base01);
-    --bg: var(--base00);
-    --color: var(--base07);
+    --base00: var(--base00);
+    --base06: var(--base07);
     --hover-bg: var(--base23);
     --active-bg: var(--base23);
-    --icon-color: var(--base07);
+    --base07: var(--base07);
     --tab-toolbar-bg: var(--base01);
     --tab-selected-bg: var(--base02);
-    --urlbar-active-bg: var(--bg);
-    --sidebar-bg: var(--bg);
-    --sidebar-color: var(--color);
-    --menupopup-bg: var(--base01);
+    --urlbar-active-bg: var(--base00);
+    --sidebar-bg: var(--base00);
+    --sidebar-color: var(--base06);
+    --base02: var(--base01);
     --accent-bg: var(--base01);
     --urlbar-switch-tab-color: var(--base07);
-    --urlbar-bookmark-color: var(--base07);
-    --browser-before-load-background: var(--bg);
+    --base06: var(--base07);
+    --browser-before-load-background: var(--base00);
     /* Toolbars */
-    --toolbar-background: var(--bg);
+    --toolbar-background: var(--base00);
     --toolbar-color: var(--base07);
     --toolbar-border-color: var(--base04);
-    --inactive-toolbar-background: var(--bg);
+    --inactive-toolbar-background: var(--base00);
     --inactive-toolbar-border-color: var(--base01);
     /* Sidebar */
-    --sidebar-background: var(--bg);
-    --inactive-sidebar-background: var(--bg);
+    --sidebar-background: var(--base00);
+    --inactive-sidebar-background: var(--base00);
     /* Popups */
-    --menu-background: var(--bg);
+    --menu-background: var(--base00);
     --menu-border-color: var(--base04);
-    --popover-background: var(--bg);
+    --popover-background: var(--base00);
     --popover-border-color: var(--base04);
     --popover-shadow: 0 1px 2px var(--base02);
     --popover-button-hover-background: var(--base21);
     --popover-separator-color: var(--base01);
     /* Header bar */
-    --headerbar-background: linear-gradient(to top, var(--bg), var(--bg));
+    --headerbar-background: linear-gradient(to top, var(--base00), var(--base00));
     --headerbar-border-color: var(--base24);
     --headerbar-box-shadow: inset 0 1px var(--base01);
-    --inactive-headerbar-background: linear-gradient(var(--bg), var(--bg));
+    --inactive-headerbar-background: linear-gradient(var(--base00), var(--base00));
     --inactive-headerbar-border-color: var(--base01);
     --inactive-headerbar-box-shadow: inset 0 1px var(--base01);
     /* Buttons */
-    --button-background: linear-gradient(to top, var(--bg) 2px, var(--bg));
+    --button-background: linear-gradient(to top, var(--base00) 2px, var(--base00));
     --button-border-color: var(--base04);
     --button-border-accent-color: var(--base24);
     --button-box-shadow: inset 0 1px var(--base01), 0 1px 2px var(--base01);
@@ -210,10 +210,10 @@
     --button-active-border-accent-color: var(--base04);
     --button-active-box-shadow: inset 0 1px var(--base00);
     --button-disabled-background: var(--base01);
-    --button-disabled-border-color: var(--bg);
+    --button-disabled-border-color: var(--base00);
     --button-disabled-box-shadow: inset 0 1px var(--base00);
-    --inactive-button-background: linear-gradient(var(--bg), var(--bg));
-    --inactive-button-border-color: var(--bg);
+    --inactive-button-background: linear-gradient(var(--base00), var(--base00));
+    --inactive-button-border-color: var(--base00);
     --inactive-button-box-shadow: inset 0 1px var(--base00);
     --button-suggested-action-background: linear-gradient(to top, var(--base13) 2px, #ff29a8);
     --button-suggested-action-border-color: var(--base13);
@@ -233,7 +233,7 @@
     --button-destructive-action-active-border-color: var(--base25);
     --button-destructive-action-active-box-shadow: inset 0 1px var(--base00);
     /* URL bar */
-    --urlbar-background: linear-gradient(var(--bg), var(--bg));
+    --urlbar-background: linear-gradient(var(--base00), var(--base00));
     --urlbar-border-color: var(--base04);
     --urlbar-box-shadow: inset 0 0 0 1px var(--base01);
     --urlbar-color: var(--base07);
@@ -248,12 +248,12 @@
     --tabbar-tab-hover-background: var(--base01);
     --tabbar-tab-hover-border-bottom-color: var(--base04);
     --tabbar-tab-hover-color: var(--base06);
-    --tabbar-tab-active-background: var(--bg);
+    --tabbar-tab-active-background: var(--base00);
     --tabbar-tab-active-border-bottom-color: var(--base13);
     --tabbar-tab-active-color: var(--base07);
-    --tabbar-tab-active-hover-background: var(--bg);
+    --tabbar-tab-active-hover-background: var(--base00);
     --inactive-tabbar-tab-color: var(--base03);
-    --inactive-tabbar-tab-active-background: var(--bg);
+    --inactive-tabbar-tab-active-background: var(--base00);
     --inactive-tabbar-tab-active-border-bottom-color: var(--base13);
     --inactive-tabbar-tab-active-color: var(--base03);
     /* Switch */

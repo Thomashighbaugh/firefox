@@ -5,71 +5,71 @@
 
 @-moz-document url-prefix("moz-extension://96739bf5-16fd-468d-ba3e-fcf65184ca7c/") {
     body {
-        background-color: var(--bg) !important;
-        color: var(--color) !important;
+        background-color: var(--base00) !important;
+        color: var(--base06) !important;
     }
     a {
         color: var(--accent) !important;
     }
     h2 {
-        background-color: var(--bg) !important;
-        color: var(--color) !important;
+        background-color: var(--base00) !important;
+        color: var(--base06) !important;
     }
     code {
-        background-color: var(--bg) !important;
+        background-color: var(--base00) !important;
     }
     .tool {
-        color: var(--color) !important;
+        color: var(--base06) !important;
     }
     .tool.enabled:hover {
-        color: var(--icon-color) !important;
+        color: var(--base07) !important;
     }
     .permatoolbar {
-        background-color: var(--bg) !important;
+        background-color: var(--base00) !important;
     }
     .permatoolbar .button {
-        background-color: var(--menupopup-bg) !important;
+        background-color: var(--base02) !important;
     }
     .permatoolbar .button:hover {
-        background-color: var(--menupopup-bg) !important;
+        background-color: var(--base02) !important;
     }
     #tooltip {
-        background-color: var(--bg) !important;
-        border: 0px solid var(--bg) !important;
-        color: var(--color) !important;
+        background-color: var(--base00) !important;
+        border: 0px solid var(--base00) !important;
+        color: var(--base06) !important;
     }
     #firewallContainer>div {
-        background-color: var(--bg) !important;
-        color: var(--color) !important;
+        background-color: var(--base00) !important;
+        color: var(--base06) !important;
     }
     #firewallContainer>div:hover {
-        background-color: var(--bg) !important;
-        color: var(--color) !important;
+        background-color: var(--base00) !important;
+        color: var(--base06) !important;
     }
     #firewallContainer>div>span {
-        color: var(--color) !important;
-        border-bottom: 0px solid var(--bg) !important;
+        color: var(--base06) !important;
+        border-bottom: 0px solid var(--base00) !important;
     }
     #firewallContainer>div>span:first-of-type~span {
         border-left: 0px solid var(--base00) !important;
     }
     #extraTools {
-        background-color: var(--bg) !important;
-        color: var(--color) !important;
+        background-color: var(--base00) !important;
+        color: var(--base06) !important;
     }
     #extraTools>span:hover {
         color: var(--accent) !important;
     }
     #dashboard-nav-widgets {
-        background-color: var(--bg) !important;
-        color: var(--color) !important;
+        background-color: var(--base00) !important;
+        color: var(--base06) !important;
         border-bottom: 0px solid var(--base05) !important;
     }
     .tabButton {
-        background-color: var(--bg) !important;
+        background-color: var(--base00) !important;
         border: 1px solid var(--base05) !important;
         border-bottom: 0px solid var(--base05) !important;
-        color: var(--color) !important;
+        color: var(--base06) !important;
     }
     .tabButton.selected {
         background-color: var(--base01) !important;
@@ -82,26 +82,26 @@
         background-color: var(--base05) !important;
     }
     #diff textarea {
-        background-color: var(--bg) !important;
-        color: var(--color) !important;
+        background-color: var(--base00) !important;
+        color: var(--base06) !important;
     }
     #switch .fa-icon {
-        fill: var(--icon-color) !important;
+        fill: var(--base07) !important;
     }
     body.off #switch .fa-icon {
-        fill: var(--color) !important;
+        fill: var(--base06) !important;
     }
     #tooltip {
-        background-color: var(--bg) !important;
-        border: 0px solid var(--bg) !important;
+        background-color: var(--base00) !important;
+        border: 0px solid var(--base00) !important;
         border-radius: 0px !important;
         box-shadow: 0px 0px 0px var(--box-shadow) !important;
-        color: var(--color) !important;
+        color: var(--base06) !important;
     }
     #refresh {
-        background-color: var(--bg) !important;
-        border: 0px solid var(--color) !important;
+        background-color: var(--base00) !important;
+        border: 0px solid var(--base06) !important;
         border-radius: 0px !important;
-        fill: var(--color) !important;
+        fill: var(--base06) !important;
     }
 }

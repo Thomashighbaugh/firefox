@@ -3,8 +3,8 @@
 @-moz-document url-prefix('https://www.youtube.com') {
     /* Prevent whiteflash before Youtube dark theme loads */
     html {
-        background-color: var(--bg);
-        color: var(--color);
+        background-color: var(--base00);
+        color: var(--base06);
     }
     /* Smaller font for fullscreen video title */
     .ytp-big-mode .ytp-title-text {

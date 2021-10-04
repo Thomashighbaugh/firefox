@@ -7,8 +7,8 @@
 
 body.neterror,
 body.certerror {
-  background-color: var(--bg) !important;
-  color: var(--color) !important;
+  background-color: var(--base00) !important;
+  color: var(--base06) !important;
 }
 
 body.neterror #errorPageContainer h1,
@@ -19,5 +19,5 @@ body.certerror #errorPageContainer button {
 }
 
 body.certerror #badCertAdvancedPanel {
-  background-color: var(--bg) !important;
+  background-color: var(--base00) !important;
 }

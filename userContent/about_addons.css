@@ -1,0 +1,142 @@
+    /*
+ * Author: Thomas Leon Highbaugh (thighbaugh@zoho.com)
+ * Project: firefox
+ * File: userContent/about_addons.css
+ * Description: styles the addons page
+ */
+
+@-moz-document url("chrome://mozapps/content/extensions/aboutaddons.html") {
+    /* Don't dim disabled addon's icon */
+
+    #addons-page .addon.card {
+        max-width: 85% !important;
+        padding: 4px 6px 4px 11px !important;
+        margin: 0 0 8px !important;
+        border-radius: 2px !important;
+        background: var(--base00) !important;
+        color: var(--base07) !important;
+    }
+    #addons-page #header-inner {
+        width: auto !important;
+        margin-left: 12px !important;
+    }
+    #addons-page #heading {
+        margin: -3.35rem 0 0 0 !important;
+    }
+    #addons-page #heading .heading-inner {
+        margin-left: 12px !important;
+        margin-inline-start: 0 !important;
+        padding-right: 4px !important;
+        width: calc(100vw - 240px - 24px) !important;
+    }
+    #addons-page #heading-name {
+        visibility: hidden !important;
+    }
+    #addons-page #addon-list {
+        padding: 1rem 12px !important;
+    }
+    #addons-page .card:hover {
+        box-shadow: 0 4px 8px 0 var(--base05), 0 2px 4px 0 var(--base01) !important;
+    }
+    #addons-page .card:focus {
+        box-shadow: 0 0 0 2px var(--base01) !important;
+    }
+    #addons-page #private-browsing-notice,
+    #addons-page .privateBrowsing-notice {
+        display: none !important;
+    }
+    #addons-page .addon[privateBrowsing="true"] .name:after {
+        content: "PRIVATE";
+        display: inline-block;
+        background-color: var(--base00);
+        color: var(--base05);
+        opacity: 0.55;
+        padding: 4px 5px 3px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+    panel-list {
+        border: none !important;
+        box-shadow: none !important;
+        display: inline !important;
+        min-width: unset !important;
+        padding: 0 !important;
+        right: 0px !important;
+    }
+    panel-item {
+        display: inline-block !important;
+        margin-inline-start: 2px !important;
+    }
+    .more-options-menu {
+        margin: unset !important;
+    }
+    /* link + is needed to avoid styling check for updates buttons and tabs on add-on detail pages because shadowdom */
+    link+button {
+        background-color: var(--base00) !important;
+        background-position: center !important;
+        border-radius: 2px !important;
+        cursor: pointer !important;
+        height: 32px !important;
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+    link+button:hover {
+        background-color: var(--hover-bg) !important;
+    }
+    link+button:hover:active {
+        background-color: var(--base02) !important;
+    }
+    link+button:focus {
+        box-shadow: 0 0 0 1px var(--base01) inset, 0 0 0 1px var(--base02), 0 0 0 4px var(--hover-bg) !important;
+    }
+    /* dot badging on update button */
+    link+button::after {
+        left: 22px !important;
+        top: 4px !important;
+    }
+    /* use icons, remove text */
+    panel-item[action="remove"],
+    panel-item[action="install-update"],
+    panel-item[action="always-activate"] {
+        font-size: 0px !important;
+        position: relative !important;
+        top: -6px !important;
+        fill: var(--base05) !important;
+        width: 32px !important;
+    }
+    .more-options-button.ghost-button,
+    .arrow.top,
+    .arrow.bottom,
+    panel-item-separator,
+    panel-item[action="report"],
+    panel-item[action="expand"],
+    panel-item[hidden],
+    .addon-description {
+        display: none !important;
+    }
+    .card-contents {
+        align-self: center !important;
+    }
+    /* show counter next to "Enabled" and "Disabled" */
+    addon-list[type="extension"] section[section="0"]>addon-card {
+        counter-increment: enabled;
+    }
+    addon-list[type="extension"] section[section="1"]>addon-card {
+        counter-increment: disabled;
+    }
+    section[section="0"] {
+        counter-reset: enabledpvt;
+        /* define scope */
+    }
+    addon-list[type="extension"] section[section="0"]>addon-card .addon-badge-private-browsing-allowed {
+        counter-increment: enabledpvt;
+    }
+    addon-list[type="extension"] section[section="0"],
+    addon-list[type="extension"] section[section="1"] {
+        position: relative !important;
+    }
+    addon-list[type="extension"] section[section="0"]>.list-section-heading,
+    addon-list[type="extension"] section[section="1"]>.list-section-heading {
+        visibility: collapse !important;
+    }

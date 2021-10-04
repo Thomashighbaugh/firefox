@@ -28,7 +28,7 @@
 /*Dark*/
 [lwt-newtab-brighttext] .search-wrapper input {
   transition: all 0.3s ease !important;
-  background: var(--base02) var(--newtab-search-icon) 12px center no-repeat !important;
+  background: var(--base02) var(--base06) 12px center no-repeat !important;
   background-size: 20px !important;
   border: 1px solid !important;
   border-color: var(--base03) !important;
@@ -38,7 +38,7 @@
 /*Private*/
 html.private .search-wrapper input {
   transition: all 0.3s ease !important;
-  background: var(--base02) var(--newtab-search-icon) 12px center no-repeat !important;
+  background: var(--base02) var(--base06) 12px center no-repeat !important;
   background-size: 20px !important;
   border: 1px solid !important;
   border-color: #3c3f4c !important;

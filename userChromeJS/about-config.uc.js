@@ -1,5 +1,5 @@
 // Creates a Button for about:config access
-// UC.extensionOptionsMenu = {
+// UC.aboutConfigPage = {
 //   // config
 //   showVersion: true,
 //   showHidden: false,
@@ -40,18 +40,18 @@
 //     } catch (e) {}
 //   }
 // };
-// UC.extensionOptionsMenu.init();
+// UC.aboutConfigPage.init();
 // ==UserScript==
 // @name            Extension Options Menu
 // @author          xiaoxiaoflood
 // @include         main
-// @shutdown        UC.extensionOptionsMenu.destroy();
+// @shutdown        UC.aboutConfigPage.destroy();
 // @onlyonce
 // ==/UserScript==
 
 // inspired by https://addons.mozilla.org/en-US/firefox/addon/extension-options-menu/
 
-UC.extensionOptionsMenu = {
+UC.aboutConfigPage = {
   // config
   showVersion: true,
   showHidden: false,
@@ -108,8 +108,8 @@ UC.extensionOptionsMenu = {
   destroy: function () {
     CustomizableUI.destroyWidget("eom-button");
     _uc.sss.unregisterSheet(this.STYLE.url, this.STYLE.type);
-    delete UC.extensionOptionsMenu;
+    delete UC.aboutConfigPage;
   }
 };
 
-UC.extensionOptionsMenu.init();
+UC.aboutConfigPage.init();

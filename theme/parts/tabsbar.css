@@ -100,7 +100,7 @@ tab[selected]:-moz-window-inactive {
 
 /* Adjust tab label width */
 .tab-label-container {
-  min-width: 32px !important;
+  min-width: 48px !important;
 }
 
 /* Put tab close button and icon sound to the right */

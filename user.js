@@ -127,3 +127,6 @@ user_perf("widget.gtk.alt-theme.scrollbar", true);
 user_perf("widget.non-native-theme.gtk.scrollbar.allow-buttons", true);
 // Set my GTK theme to be Firefox's
 user_perf("widget.content.gtk-theme-override", "Dhumavati-White-Dark");
+
+// Stop the stupid "be careful lol" warning for about:config
+user_perfs("browser.aboutConfig.showWarning", false);

@@ -134,7 +134,7 @@
     var(--base24),
     var(--base00)
   );
-  --button-suggested-action-border-color: var(--base05);
+  --button-suggested-action-border-color: var(--base01);
   --button-suggested-action-border-accent-color: var(--base19);
   --button-suggested-action-box-shadow: outset 2px 1px var(--base01),
     0 1px 2px var(--base02);
@@ -146,7 +146,7 @@
     var(--base00)
   );
   --button-suggested-action-active-background: var(--base05);
-  --button-suggested-action-active-border-color: var(--base05);
+  --button-suggested-action-active-border-color: var(--base01);
   --button-suggested-action-active-box-shadow: outset 2px 1px var(--base01);
   --button-destructive-action-background: linear-gradient(
     to top,
@@ -187,7 +187,7 @@
   --tabbar-tab-active-hover-background: var(--base01);
   --inactive-tabbar-tab-color: var(--base05);
   --inactive-tabbar-tab-active-background: var(--base01);
-  --inactive-tabbar-tab-active-border-bottom-color: var(--base06);
+  --inactive-tabbar-tab-active-border-bottom-color: var(--base01);
   --inactive-tabbar-tab-active-color: var(--base07);
   --start-gradient-color: var(--base13);
   --end-gradient-color: var(--base16);

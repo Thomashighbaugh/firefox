@@ -34,7 +34,7 @@
      objecttolerance="10"
      borderopacity="1"
      bordercolor="#666666"
-     pagecolor="#ffffff" />
+     pagecolor="#f4f4f7" />
   <metadata
      id="metadata90">
     <rdf:RDF>
@@ -96,7 +96,7 @@
      id="layer4"
      transform="translate(-12.005853,-888)" />
   <g
-     style="fill:#ffffff"
+     style="fill:#f4f4f7"
      id="layer10"
      transform="translate(-12.005853,-952)">
     <path

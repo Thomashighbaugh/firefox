@@ -104,9 +104,9 @@
     ---inactive-urlbar-background: linear-gradient(#181c28, #181c28);
     ---inactive-urlbar-border-color: #22262d;
     ---inactive-urlbar-box-shadow: none;
-    ---inactive-urlbar-color: #d6d6d6;
-    ---focused-urlbar-border-color: #ff87d7;
-    ---private-urlbar-background: #25003e;
+    ---inactive-urlbar-color: #b2bfd9;
+    ---focused-urlbar-border-color: #f4f4f7;
+    ---private-urlbar-background: #17191ecc;
 
     /* Tabs */
     ---tabbar-tab-color: #b2bfd999;
@@ -114,12 +114,12 @@
     ---tabbar-tab-hover-border-bottom-color: #101114;
     ---tabbar-tab-hover-color: #3c3f4c99;
     ---tabbar-tab-active-background: #161925;
-    ---tabbar-tab-active-border-bottom-color: #ff87d7;
-    ---tabbar-tab-active-color: #b2bfd9;
+    ---tabbar-tab-active-border-bottom-color: #8b9cbeaa;
+    ---tabbar-tab-active-color: #f4f4f7;
     ---tabbar-tab-active-hover-background: #101114;
     ---inactive-tabbar-tab-color: #b2bfd999;
     ---inactive-tabbar-tab-active-background: #17191e;
-    ---inactive-tabbar-tab-active-border-bottom-color: #ff87d7;
+    ---inactive-tabbar-tab-active-border-bottom-color: #8b9cbe;
     ---inactive-tabbar-tab-active-color: #b2bfd999;
 
     /* Switch */
@@ -132,7 +132,7 @@
     ---switch-active-background: linear-gradient(to right, #f7005a, #ffffaf);
     ---switch-active-border-color: #101114;
     ---switch-active-slider-border-color: #555e70;
-    ---switch-active-slider-background: #ffffff;
+    ---switch-active-slider-background: #f4f4f7;
 
     ---start-gradient-color: #0badff;
     ---end-gradient-color: #ff00aa;

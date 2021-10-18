@@ -1,145 +1,136 @@
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-/* Variables that start with --sweet- are added by me and are assigned
+/* Variables that start with --- are added by me and are assigned
  * to elements somewhere in this code. The rest of the variables are
  * built-in in Firefox, so you need to add an !important if you wanna
  * override them. */
 @media (prefers-color-scheme: light) {
   :root {
     /* Browser area before a page starts loading */
-    --sweet-browser-before-load-background: #17191e;
+    ---browser-before-load-background: #17191e;
 
     /* Toolbars */
-    --sweet-toolbar-background: #17191e;
-    --sweet-toolbar-color: #b2bfd9;
-    --sweet-toolbar-border-color: #101114;
-    --sweet-inactive-toolbar-background: #17191e;
-    --sweet-inactive-toolbar-border-color: #22262d;
+    ---toolbar-background: #17191e;
+    ---toolbar-color: #b2bfd9;
+    ---toolbar-border-color: #101114;
+    ---inactive-toolbar-background: #17191e;
+    ---inactive-toolbar-border-color: #22262d;
 
     /* Sidebar */
-    --sweet-sidebar-background: #17191e;
-    --sweet-inactive-sidebar-background: #181c28;
+    ---sidebar-background: #17191e;
+    ---inactive-sidebar-background: #181c28;
 
     /* Popups */
-    --sweet-menu-background: #17191e;
-    --sweet-menu-border-color: #101114;
-    --sweet-popover-background: #17191e;
-    --sweet-popover-border-color: #101114;
-    --sweet-popover-shadow: 0 1px 2px #22262d33;
-    --sweet-popover-button-hover-background: #2f303d;
-    --sweet-popover-separator-color: rgba(0, 0, 0, 0.1);
+    ---menu-background: #17191e;
+    ---menu-border-color: #101114;
+    ---popover-background: #17191e;
+    ---popover-border-color: #101114;
+    ---popover-shadow: 0 1px 2px #22262d33;
+    ---popover-button-hover-background: #2f303d;
+    ---popover-separator-color: #17191e00;
 
     /* Header bar */
-    --sweet-headerbar-background: linear-gradient(to top, #17191e, #17191e);
-    --sweet-headerbar-border-color: #21242b;
-    --sweet-headerbar-box-shadow: inset 0 1px #10111466;
-    --sweet-inactive-headerbar-background: linear-gradient(#17191e, #17191e);
-    --sweet-inactive-headerbar-border-color: #22262d;
-    --sweet-inactive-headerbar-box-shadow: inset 0 1px #10111466;
+    ---headerbar-background: linear-gradient(to top, #17191e, #17191e);
+    ---headerbar-border-color: #21242b;
+    ---headerbar-box-shadow: inset 0 1px #10111466;
+    ---inactive-headerbar-background: linear-gradient(#17191e, #17191e);
+    ---inactive-headerbar-border-color: #22262d;
+    ---inactive-headerbar-box-shadow: inset 0 1px #10111466;
 
     /* Buttons */
-    --sweet-button-background: linear-gradient(to top, #161925 2px, #161925);
-    --sweet-button-border-color: #101114;
-    --sweet-button-border-accent-color: #21242b;
-    --sweet-button-box-shadow: inset 0 1px #10111466,
-      0 1px 2px rgba(0, 0, 0, 0.07);
-    --sweet-button-hover-background: linear-gradient(
-      to top,
-      #2f303d,
-      #2f303d 1px
-    );
-    --sweet-button-active-background: linear-gradient(45deg, #0badff, #ff00aa);
-    --sweet-button-active-border-color: #101114;
-    --sweet-button-active-border-accent-color: #000000;
-    --sweet-button-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
-    --sweet-button-disabled-background: #181c28;
-    --sweet-button-disabled-border-color: #17191e;
-    --sweet-button-disabled-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
-    --sweet-inactive-button-background: linear-gradient(#17191e, #17191e);
-    --sweet-inactive-button-border-color: #17191e;
-    --sweet-inactive-button-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
-    --sweet-button-suggested-action-background: linear-gradient(
+    ---button-background: linear-gradient(to top, #161925 2px, #161925);
+    ---button-border-color: #101114;
+    ---button-border-accent-color: #21242b;
+    ---button-box-shadow: inset 0 1px #10111466, 0 1px 2px #17191e22;
+    ---button-hover-background: linear-gradient(to top, #2f303d, #2f303d 1px);
+    ---button-active-background: linear-gradient(45deg, #0badff, #ff00aa);
+    ---button-active-border-color: #101114;
+    ---button-active-border-accent-color: #000000;
+    ---button-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
+    ---button-disabled-background: #181c28;
+    ---button-disabled-border-color: #17191e;
+    ---button-disabled-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
+    ---inactive-button-background: linear-gradient(#17191e, #17191e);
+    ---inactive-button-border-color: #17191e;
+    ---inactive-button-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
+    ---button-suggested-action-background: linear-gradient(
       to top,
       #0badff 2px,
       #eaafc8
     );
-    --sweet-button-suggested-action-border-color: #0badff;
-    --sweet-button-suggested-action-border-accent-color: #092444;
-    --sweet-button-suggested-action-box-shadow: inset 0 1px #10111466,
-      0 1px 2px rgba(0, 0, 0, 0.07);
-    --sweet-button-suggested-action-hover-background: linear-gradient(
+    ---button-suggested-action-border-color: #0badff;
+    ---button-suggested-action-border-accent-color: #092444;
+    ---button-suggested-action-box-shadow: inset 0 1px #10111466,
+      0 1px 2px #17191e22;
+    ---button-suggested-action-hover-background: linear-gradient(
       to top,
       #0badffec,
       #ff87d7 1px
     );
-    --sweet-button-suggested-action-active-background: #0badff;
-    --sweet-button-suggested-action-active-border-color: #0badff;
-    --sweet-button-suggested-action-active-box-shadow: inset 0 1px
+    ---button-suggested-action-active-background: #0badff;
+    ---button-suggested-action-active-border-color: #0badff;
+    ---button-suggested-action-active-box-shadow: inset 0 1px
       rgba(255, 255, 255, 0);
-    --sweet-button-destructive-action-background: linear-gradient(
+    ---button-destructive-action-background: linear-gradient(
       to top,
       #ff416c 2px,
       #ff4b2b
     );
-    --sweet-button-destructive-action-border-color: #ff416c;
-    --sweet-button-destructive-action-border-accent-color: #570b0e;
-    --sweet-button-destructive-action-box-shadow: inset 0 1px #10111466,
-      0 1px 2px rgba(0, 0, 0, 0.07);
-    --sweet-button-destructive-action-hover-background: linear-gradient(
+    ---button-destructive-action-border-color: #ff416c;
+    ---button-destructive-action-border-accent-color: #570b0e;
+    ---button-destructive-action-box-shadow: inset 0 1px #10111466,
+      0 1px 2px #17191e22;
+    ---button-destructive-action-hover-background: linear-gradient(
       to top,
       #ff416cec,
       #ff00aa 1px
     );
-    --sweet-button-destructive-action-active-background: #ff416c;
-    --sweet-button-destructive-action-active-border-color: #ff416c;
-    --sweet-button-destructive-action-active-box-shadow: inset 0 1px
+    ---button-destructive-action-active-background: #ff416c;
+    ---button-destructive-action-active-border-color: #ff416c;
+    ---button-destructive-action-active-box-shadow: inset 0 1px
       rgba(255, 255, 255, 0);
 
     /* URL bar */
-    --sweet-urlbar-background: linear-gradient(#161925, #161925);
-    --sweet-urlbar-border-color: #101114;
-    --sweet-urlbar-box-shadow: inset 0 0 0 1px rgba(21, 83, 158, 0);
-    --sweet-urlbar-color: #b2bfd9;
-    --sweet-inactive-urlbar-background: linear-gradient(#181c28, #181c28);
-    --sweet-inactive-urlbar-border-color: #22262d;
-    --sweet-inactive-urlbar-box-shadow: none;
-    --sweet-inactive-urlbar-color: #d6d6d6;
-    --sweet-focused-urlbar-border-color: #ff87d7;
-    --sweet-private-urlbar-background: #25003e;
+    ---urlbar-background: linear-gradient(#161925, #161925);
+    ---urlbar-border-color: #101114;
+    ---urlbar-box-shadow: inset 0 0 0 1px rgba(21, 83, 158, 0);
+    ---urlbar-color: #b2bfd9;
+    ---inactive-urlbar-background: linear-gradient(#181c28, #181c28);
+    ---inactive-urlbar-border-color: #22262d;
+    ---inactive-urlbar-box-shadow: none;
+    ---inactive-urlbar-color: #d6d6d6;
+    ---focused-urlbar-border-color: #ff87d7;
+    ---private-urlbar-background: #25003e;
 
     /* Tabs */
-    --sweet-tabbar-tab-color: #b2bfd999;
-    --sweet-tabbar-tab-hover-background: #17191e;
-    --sweet-tabbar-tab-hover-border-bottom-color: #101114;
-    --sweet-tabbar-tab-hover-color: #3c3f4c99;
-    --sweet-tabbar-tab-active-background: #161925;
-    --sweet-tabbar-tab-active-border-bottom-color: #ff87d7;
-    --sweet-tabbar-tab-active-color: #b2bfd9;
-    --sweet-tabbar-tab-active-hover-background: #101114;
-    --sweet-inactive-tabbar-tab-color: #b2bfd999;
-    --sweet-inactive-tabbar-tab-active-background: #17191e;
-    --sweet-inactive-tabbar-tab-active-border-bottom-color: #ff87d7;
-    --sweet-inactive-tabbar-tab-active-color: #b2bfd999;
+    ---tabbar-tab-color: #b2bfd999;
+    ---tabbar-tab-hover-background: #17191e;
+    ---tabbar-tab-hover-border-bottom-color: #101114;
+    ---tabbar-tab-hover-color: #3c3f4c99;
+    ---tabbar-tab-active-background: #161925;
+    ---tabbar-tab-active-border-bottom-color: #ff87d7;
+    ---tabbar-tab-active-color: #b2bfd9;
+    ---tabbar-tab-active-hover-background: #101114;
+    ---inactive-tabbar-tab-color: #b2bfd999;
+    ---inactive-tabbar-tab-active-background: #17191e;
+    ---inactive-tabbar-tab-active-border-bottom-color: #ff87d7;
+    ---inactive-tabbar-tab-active-color: #b2bfd999;
 
     /* Switch */
-    --sweet-switch-background: #1e2233;
-    --sweet-switch-border-color: #101114;
-    --sweet-switch-slider-background: #151723;
-    --sweet-switch-slider-border-color: #101114;
-    --sweet-switch-slider-box-shadow: inset 0 1px #10111466,
-      0 1px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.07);
-    --sweet-switch-active-background: linear-gradient(
-      to right,
-      #f7005a,
-      #ffffaf
-    );
-    --sweet-switch-active-border-color: #101114;
-    --sweet-switch-active-slider-border-color: #3c3f4c;
-    --sweet-switch-active-slider-background: #ffffff;
+    ---switch-background: #1e2233;
+    ---switch-border-color: #101114;
+    ---switch-slider-background: #151723;
+    ---switch-slider-border-color: #101114;
+    ---switch-slider-box-shadow: inset 0 1px #10111466, 0 1px #17191e00,
+      0 1px 2px #17191e22;
+    ---switch-active-background: linear-gradient(to right, #f7005a, #ffffaf);
+    ---switch-active-border-color: #101114;
+    ---switch-active-slider-border-color: #3c3f4c;
+    ---switch-active-slider-background: #ffffff;
 
-    --sweet-start-gradient-color: #0badff;
-    --sweet-end-gradient-color: #ff00aa;
-    --sweet-start-gradient-color-rgb: 88, 0, 226;
-    --sweet-end-gradient-color-rgb: 255, 0, 230;
+    ---start-gradient-color: #0badff;
+    ---end-gradient-color: #ff00aa;
+    ---start-gradient-color-rgb: 88, 0, 226;
+    ---end-gradient-color-rgb: 255, 0, 230;
   }
 }

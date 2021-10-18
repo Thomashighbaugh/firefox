@@ -2,34 +2,37 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
-#sidebar-box, .sidebar-panel {
-	background: var(--sweet-sidebar-background) !important;
+#sidebar-box,
+.sidebar-panel {
+  background: var(---sidebar-background) !important;
 }
-#sidebar-box:-moz-window-inactive, .sidebar-panel:-moz-window-inactive {
-	background: var(--sweet-inactive-sidebar-background) !important;
+#sidebar-box:-moz-window-inactive,
+.sidebar-panel:-moz-window-inactive {
+  background: var(---inactive-sidebar-background) !important;
 }
-#sidebar-box:-moz-window-inactive label, #sidebar-box:-moz-window-inactive image,
-.sidebar-panel:-moz-window-inactive label, .sidebar-panel:-moz-window-inactive image,
+#sidebar-box:-moz-window-inactive label,
+#sidebar-box:-moz-window-inactive image,
+.sidebar-panel:-moz-window-inactive label,
+.sidebar-panel:-moz-window-inactive image,
 .sidebar-placesTreechildren:-moz-window-inactive {
-    opacity: 0.7 !important;
+  opacity: 0.7 !important;
 }
 .sidebar-placesTreechildren {
-    color: var(--sweet-toolbar-color) !important;
+  color: var(---toolbar-color) !important;
 }
 #sidebar-splitter {
-	background: var(--sweet-toolbar-border-color) !important;
-	border: 0 !important;
-	width: 1px !important;
+  background: var(---toolbar-border-color) !important;
+  border: 0 !important;
+  width: 1px !important;
 }
 #sidebar-splitter:-moz-window-inactive {
-	background: var(--sweet-inactive-toolbar-border-color) !important;
+  background: var(---inactive-toolbar-border-color) !important;
 }
 
 #sidebar-header {
-	padding: 6px !important;
-	border-bottom: 1px solid var(--sweet-toolbar-border-color) !important;
+  padding: 6px !important;
+  border-bottom: 1px solid var(---toolbar-border-color) !important;
 }
 #sidebar-search-container {
-	padding: 6px !important;
+  padding: 6px !important;
 }
-

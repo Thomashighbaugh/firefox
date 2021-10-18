@@ -8,34 +8,34 @@
 #searchbar,
 #search-box,
 .findbar-textbox {
-	-moz-appearance: none !important;
-	background: var(--sweet-urlbar-background) !important;
-	border: 1.5px solid var(--sweet-urlbar-border-color) !important;
-	border-radius: 5px !important;
-	box-shadow: var(--sweet-urlbar-box-shadow) !important;
-	color: var(--sweet-urlbar-color) !important;
-	height: 32px !important;
-	max-height: 32px !important;
-	margin: 0 !important;
-	padding: 6px !important;
-	box-sizing: border-box;
+  -moz-appearance: none !important;
+  background: var(---urlbar-background) !important;
+  border: 1.5px solid var(---urlbar-border-color) !important;
+  border-radius: 5px !important;
+  box-shadow: var(---urlbar-box-shadow) !important;
+  color: var(---urlbar-color) !important;
+  height: 32px !important;
+  max-height: 32px !important;
+  margin: 0 !important;
+  padding: 6px !important;
+  box-sizing: border-box;
 }
 
 #urlbar.megabar #urlbar-input-container,
 #urlbar:not(.megabar),
 #searchbar {
-	padding: 0 !important;
+  padding: 0 !important;
 }
 
 /* Entries focused */
 #urlbar:not(.megabar)[focused],
 #searchbar:focus-within,
-#search-box[focused], 
+#search-box[focused],
 .findbar-textbox[focused],
 .findbar-textbox:focus {
-	outline: 1.5px solid var(--sweet-focused-urlbar-border-color) !important;
-	outline-offset: -2px;
-	-moz-outline-radius: 5px;
+  outline: 1.5px solid var(---focused-urlbar-border-color) !important;
+  outline-offset: -2px;
+  -moz-outline-radius: 5px;
 }
 
 /* Inactive window entries */
@@ -43,39 +43,41 @@
 #urlbar:not(.megabar):-moz-window-inactive,
 #searchbar:-moz-window-inactive,
 #search-box:-moz-window-inactive,
-.findbar-textbox:-moz-window-inactive{
-	background: var(--sweet-inactive-urlbar-background) !important;
-	border-color: var(--sweet-inactive-urlbar-border-color) !important;
-	box-shadow: var(--sweet-inactive-urlbar-box-shadow) !important;
-	color: var(--sweet-inactive-urlbar-color) !important;
+.findbar-textbox:-moz-window-inactive {
+  background: var(---inactive-urlbar-background) !important;
+  border-color: var(---inactive-urlbar-border-color) !important;
+  box-shadow: var(---inactive-urlbar-box-shadow) !important;
+  color: var(---inactive-urlbar-color) !important;
 }
 
 /* Entries combined */
 .findbar-textbox:not(.minimal) {
-	border-top-right-radius: 0 !important;
-	border-bottom-right-radius: 0 !important;
-	border-right-width: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-right-width: 0 !important;
 }
-.findbar-textbox:not(.minimal)[focused], .findbar-textbox:not(.minimal):focus {
-	-moz-outline-radius: 5px 0 0 5px !important;
+.findbar-textbox:not(.minimal)[focused],
+.findbar-textbox:not(.minimal):focus {
+  -moz-outline-radius: 5px 0 0 5px !important;
 }
-
 
 /* Entries fixes */
-#urlbar-container, #search-container {
-	padding: 0 !important;
-	margin: 0 3px !important;
+#urlbar-container,
+#search-container {
+  padding: 0 !important;
+  margin: 0 3px !important;
 }
-#urlbar, #searchbar {
-	margin: 0 3px !important;
-	padding: 0 !important;
+#urlbar,
+#searchbar {
+  margin: 0 3px !important;
+  padding: 0 !important;
 }
 .searchbar-textbox {
-	border: 0 !important;
-	padding: 0 !important;
-	margin: 0 !important;
-	min-height: auto !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: auto !important;
 }
 #searchbar > .searchbar-textbox[focused] .searchbar-search-button:not(#hack) {
-	margin: 0 !important;
+  margin: 0 !important;
 }

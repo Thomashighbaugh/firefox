@@ -38,7 +38,7 @@
   ---inactive-headerbar-box-shadow: outset 0 1px #10111466;
 
   /* Buttons */
-  ---button-background: linear-gradient(-32deg, , #22262d, , #17191e, #2f303d);
+  ---button-background: linear-gradient(-32deg, #22262d, , #17191e, #2f303d);
   ---button-border-color: #0f1113;
   ---button-border-accent-color: #21242b;
   ---button-box-shadow: outset 0 1px #10111466, 0 1px 2px #17191e22;

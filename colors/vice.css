@@ -7,24 +7,24 @@
   --base05: #8b9cbe;
   --base06: #b2bfd9;
   --base07: #f4f4f7;
-  --base08: #ff29a8;
-  --base09: #796af5;
-  --base10: #f0ee6e;
+  --base08: #ff00aa;
+  --base09: #8265ff;
+  --base10: #ffffaf;
   --base11: #878eff;
-  --base12: #00eaff;
+  --base12: #87ffff;
   --base13: #0badff;
   --base14: #209afe;
-  --base15: #00fae9;
-  --base16: #ff3d81;
-  --base17: #8265ff;
+  --base15: #44ffdd;
+  --base16: #ff87d7;
+  --base17: #af9dfc;
   --base18: #555566;
-  --base19: #0b0c0f;
-  --base20: #383a47;
-  --base21: #2b3140;
-  --base22: #e9efff;
-  --base23: #2c323b;
-  --base24: #070707;
-  --base25: #ff416c;
+  --base19: #22262d;
+  --base20: #0b0c0f;
+  --base21: #3c3f4c;
+  --base22: #555566;
+  --base23: #727f96;
+  --base24: #383a47;
+  --base25: #2f303d;
   --base26: #570b0e;
   --base27: #092444;
   --base28: #25003e;
@@ -45,7 +45,7 @@
   --tab-height: 34px;
   --tab-border-radius: 6px;
   --tab-soundplaying-bg: var(--base01);
-  --tab-selected-bg: var(--base13);
+  --tab-selected-bg: var(--base05);
   --urlbar-active-bg: var(--base23);
   --main-window: var(--base00);
 }
@@ -80,7 +80,7 @@
   --inactive-sidebar-background: var(--base02);
   /* Popups */
   --menu-background: var(--base02);
-  --menu-border-color: var(--base07);
+  --menu-border-color: var(--base29);
   --popover-background: var(--base02);
   --popover-border-color: var(--base01);
   --popover-shadow: 0 1px 2px var(--base02);
@@ -103,12 +103,14 @@
     var(--base01)
   );
   --button-border-color: var(--base00);
-  --button-border-accent-color: var(--base24);
+  --button-border-accent-color: var(--base29);
   --button-box-shadow: inset 0 1px var(--base01), 0 1px 2px var(--base02);
   --button-hover-background: linear-gradient(
-    to top,
-    var(--base29),
-    var(--base29) 1px
+    -32deg,
+    var(--base00),
+    var(--base01),
+    var(--base23),
+    var(--base29)
   );
   --button-active-background: linear-gradient(
     45deg,

@@ -207,7 +207,7 @@
   --urlbar-active-bg: var(--base29);
   --sidebar-bg: var(--base00);
   --sidebar-color: var(--base07);
-  --base02: var(--base02);
+  
   --accent-bg: var(--base05);
   --urlbar-switch-tab-color: var(--base07);
   --browser-before-load-background: var(--base02);
@@ -324,7 +324,7 @@
   --tabbar-tab-hover-border-bottom-color: var(--base04);
   --tabbar-tab-hover-color: var(--base06);
   --tabbar-tab-active-background: var(--base00);
-  --tabbar-tab-active-border-bottom-color: var(--base13);
+  --tabbar-tab-active-border-bottom-color: var(--base01);
   --tabbar-tab-active-color: var(--base07);
   --tabbar-tab-active-hover-background: var(--base00);
   --inactive-tabbar-tab-color: var(--base22);
@@ -333,7 +333,7 @@
   --inactive-tabbar-tab-active-color: var(--base03);
   /* Switch */
   --switch-background: #1e2233;
-  --switch-border-color: var(--base04);
+  --switch-border-color: var(--base01);
   --switch-slider-background: var(--base00);
   --switch-slider-border-color: var(--base04);
   --switch-slider-box-shadow: outset 2px 1px var(--base29), 0 1px var(--base01),
@@ -344,7 +344,7 @@
     var(--base13)
   );
   --switch-active-border-color: var(--base04);
-  --switch-active-slider-border-color: var(--base07);
+  --switch-active-slider-border-color: var(--base01);
   --switch-active-slider-background: var(--base00);
   --start-gradient-color: var(--base13);
   --end-gradient-color: #ff29a8;

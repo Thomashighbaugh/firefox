@@ -44,7 +44,7 @@
     ---inactive-headerbar-box-shadow: outset 0 1px #10111466;
 
     /* Buttons */
-    ---button-background: linear-gradient(to top, #161925 2px, #161925);
+    ---button-background: linear-gradient(to top, var(--base30) 2px, var(--base30));
     ---button-border-color: #3c3f4ccc;
     ---button-border-accent-color: #555e70cc;
     ---button-box-shadow: outset 0 1px #10111466, 0 1px 2px #17191e22;
@@ -80,17 +80,17 @@
     ---button-suggested-action-active-box-shadow: outset 0 1px #17191e33;
     ---button-destructive-action-background: linear-gradient(
       to top,
-      #ff416c 2px,
-      #ff4b2b
+      var(--base16) 2px,
+      var(--base16)
     );
-    ---button-destructive-action-border-color: #ff416c;
-    ---button-destructive-action-border-accent-color: #570b0e;
+    ---button-destructive-action-border-color: var(--base16);
+    ---button-destructive-action-border-accent-color: var(--base26);
     ---button-destructive-action-box-shadow: outset 0 1px #10111466,
       0 1px 2px #17191e22;
     ---button-destructive-action-hover-background: linear-gradient(
       to top,
-      #ff416cec,
-      #ff00aa 1px
+      var(--base16)ec,
+      var(--base08) 1px
     );
     ---button-destructive-action-active-background: linear-gradient(
       -40deg,
@@ -98,11 +98,11 @@
       #22262dcc,
 	  #17191ebb
     );;
-    ---button-destructive-action-active-border-color: #ff416c;
+    ---button-destructive-action-active-border-color: var(--base16);
     ---button-destructive-action-active-box-shadow: outset 0 1px #17191e33;
 
     /* URL bar */
-    ---urlbar-background: linear-gradient(#161925, #161925);
+    ---urlbar-background: linear-gradient(var(--base30), var(--base30));
     ---urlbar-border-color: var(--base29);
     ---urlbar-box-shadow: outset 0 0 0 1px #22262d22;
     ---urlbar-color: var(--base06);
@@ -140,7 +140,7 @@
     ---switch-active-slider-background: var(--base07);
 
     ---start-gradient-color: #0badff;
-    ---end-gradient-color: #ff00aa;
+    ---end-gradient-color: var(--base08);
     ---start-gradient-color-rgb: 88, 0, 226;
     ---end-gradient-color-rgb: 255, 0, 230;
   }

@@ -87,7 +87,12 @@
       #ff416cec,
       #ff00aa 1px
     );
-    ---button-destructive-action-active-background: #ff416c;
+    ---button-destructive-action-active-background: linear-gradient(
+      -40deg,
+      #3c3f4caa,
+      #22262dcc,
+	  #17191ebb
+    );;
     ---button-destructive-action-active-border-color: #ff416c;
     ---button-destructive-action-active-box-shadow: outset 0 1px #17191e33;
 

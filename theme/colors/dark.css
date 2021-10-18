@@ -64,12 +64,13 @@
     ---button-suggested-action-box-shadow: outset 0 1px #10111466,
       0 1px 2px #17191e22;
     ---button-suggested-action-hover-background: linear-gradient(
-      to top,
-      #0badffec,
-      #ff87d7 1px
+      -40deg,
+      #b2bfd9ce,
+      #8b9cbe,
+	  #b2bfd999
     );
-    ---button-suggested-action-active-background: #0badff;
-    ---button-suggested-action-active-border-color: #0badff;
+    ---button-suggested-action-active-background: #17191e;
+    ---button-suggested-action-active-border-color: #b2bfd9;
     ---button-suggested-action-active-box-shadow: outset 0 1px #17191e33;
     ---button-destructive-action-background: linear-gradient(
       to top,

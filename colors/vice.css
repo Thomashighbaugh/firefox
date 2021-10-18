@@ -4,10 +4,19 @@
   --base0099: #17191e99;
   --base00aa: #17191eaa;
   --base00cc: #17191ecc;
+  --base0000: #17191e00;
 
   --base01: #22262d;
   --base02: #3c3f4c;
+  --base0233: #3c3f4c33;
+  --base0266: #3c3f4c66;
+  --base0299: #3c3f4c99;
+  --base02aa: #3c3f4caa;
+  --base02cc: #3c3f4ccc;
+
   --base03: #555e70;
+  --base03cc: #555e70cc;
+
   --base04: #0b0c0f;
   --base05: #8b9cbe;
   --base06: #b2bfd9;

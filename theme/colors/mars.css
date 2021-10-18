@@ -1,5 +1,5 @@
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
-
+@import "../../colors/vice"
 /* Variables that start with --- are added by me and are assigned
  * to elements somewhere in this code. The rest of the variables are
  * built-in in Firefox, so you need to add an !important if you wanna
@@ -7,51 +7,51 @@
 
 :root {
   /* Browser area before a page starts loading */
-  ---browser-before-load-background: #17191e;
+  ---browser-before-load-background: var(--base00);
 
   /* Toolbars */
-  ---toolbar-background: #17191e;
+  ---toolbar-background: var(--base00);
   ---toolbar-color: #b2bfd9;
-  ---toolbar-border-color: #0f1113;
-  ---inactive-toolbar-background: #17191e;
+  ---toolbar-border-color: var(--base04);
+  ---inactive-toolbar-background: var(--base00);
   ---inactive-toolbar-border-color: #22262d;
 
   /* Sidebar */
-  ---sidebar-background: #17191e;
+  ---sidebar-background: var(--base00);
   ---inactive-sidebar-background: #1b1f22;
 
   /* Popups */
-  ---menu-background: #17191e;
-  ---menu-border-color: #0f1113;
-  ---popover-background: #17191e;
-  ---popover-border-color: #0f1113;
+  ---menu-background: var(--base00);
+  ---menu-border-color: var(--base04);
+  ---popover-background: var(--base00);
+  ---popover-border-color: var(--base04);
   ---popover-shadow: 0 1px 2px #22262d33;
   ---popover-button-hover-background: #22262d33;
-  ---popover-separator-color: #17191e00;
+  ---popover-separator-color: var(--base0000);
 
   /* Header bar */
-  ---headerbar-background: linear-gradient(to top, #17191e, #17191e);
+  ---headerbar-background: linear-gradient(to top, var(--base00), var(--base00));
   ---headerbar-border-color: #21242b;
   ---headerbar-box-shadow: outset 0 1px #10111466;
-  ---inactive-headerbar-background: linear-gradient(#17191e, #17191e);
+  ---inactive-headerbar-background: linear-gradient(var(--base00), var(--base00));
   ---inactive-headerbar-border-color: #22262d;
   ---inactive-headerbar-box-shadow: outset 0 1px #10111466;
 
   /* Buttons */
-  ---button-background: linear-gradient(-32deg, #22262d, , #17191e, #2f303d);
-  ---button-border-color: #0f1113;
+  ---button-background: linear-gradient(-32deg, #22262d, , var(--base00), #2f303d);
+  ---button-border-color: var(--base04);
   ---button-border-accent-color: #21242b;
-  ---button-box-shadow: outset 0 1px #10111466, 0 1px 2px #17191e22;
+  ---button-box-shadow: outset 0 1px #10111466, 0 1px 2px var(--base0033);
   ---button-hover-background: linear-gradient(to top, #1b1f22, #1b1f22 1px);
   ---button-active-background: linear-gradient(45deg, #ff005d, #ff8b26);
-  ---button-active-border-color: #0f1113;
-  ---button-active-border-accent-color: #000000;
+  ---button-active-border-color: var(--base04);
+  ---button-active-border-accent-color: var(--base04);
   ---button-active-box-shadow: outset 0 1px rgba(255, 255, 255, 0);
   ---button-disabled-background: #1b1f22;
-  ---button-disabled-border-color: #17191e;
+  ---button-disabled-border-color: var(--base00);
   ---button-disabled-box-shadow: outset 0 1px rgba(255, 255, 255, 0);
-  ---inactive-button-background: linear-gradient(#17191e, #17191e);
-  ---inactive-button-border-color: #17191e;
+  ---inactive-button-background: linear-gradient(var(--base00), var(--base00));
+  ---inactive-button-border-color: var(--base00);
   ---inactive-button-box-shadow: outset 0 1px rgba(255, 255, 255, 0);
   ---button-suggested-action-background: linear-gradient(
     to top,
@@ -61,7 +61,7 @@
   ---button-suggested-action-border-color: #485563;
   ---button-suggested-action-border-accent-color: #092444;
   ---button-suggested-action-box-shadow: outset 0 1px #10111466,
-    0 1px 2px #17191e22;
+    0 1px 2px var(--base0033);
   ---button-suggested-action-hover-background: linear-gradient(
     to top,
     #485563ec,
@@ -79,7 +79,7 @@
   ---button-destructive-action-border-color: #ff416c;
   ---button-destructive-action-border-accent-color: #570b0e;
   ---button-destructive-action-box-shadow: outset 0 1px #10111466,
-    0 1px 2px #17191e22;
+    0 1px 2px var(--base0033);
   ---button-destructive-action-hover-background: linear-gradient(
     to top,
     #ff416cec,
@@ -92,7 +92,7 @@
 
   /* URL bar */
   ---urlbar-background: linear-gradient(-32deg, #22262d, #2f303d);
-  ---urlbar-border-color: #0f1113;
+  ---urlbar-border-color: var(--base04);
   ---urlbar-box-shadow: outset 0 0 0 1px rgba(21, 83, 58, 0);
   ---urlbar-color: #b2bfd9;
   ---inactive-urlbar-background: linear-gradient(#1b1f22, #1b1f22);
@@ -104,18 +104,18 @@
 
   /* Tabs */
   ---tabbar-tab-color: #b2bfd999;
-  ---tabbar-tab-hover-background: #17191e;
-  ---tabbar-tab-hover-border-bottom-color: #0f1113;
-  ---tabbar-tab-hover-color: #3c3f4c99;
+  ---tabbar-tab-hover-background: var(--base00);
+  ---tabbar-tab-hover-border-bottom-color: var(--base04);
+  ---tabbar-tab-hover-color: var(--base0299);
   ---tabbar-tab-active-background: #1a1e21;
   ---tabbar-tab-active-border-bottom-color: #f67e7d;
   ---tabbar-tab-active-color: #b2bfd9;
-  ---tabbar-tab-active-hover-background: #17191e;
+  ---tabbar-tab-active-hover-background: var(--base00);
   ---inactive-tabbar-tab-color: #b2bfd999;
-  ---inactive-tabbar-tab-active-background: #17191e;
+  ---inactive-tabbar-tab-active-background: var(--base00);
   ---inactive-tabbar-tab-active-border-bottom-color: #f67e7d;
   ---inactive-tabbar-tab-active-color: #b2bfd999;
 
-  ---start-gradient-color: #3c3f4ccc;
+  ---start-gradient-color: var(--base02cc);
   ---end-gradient-color: #555e70cc;
 }

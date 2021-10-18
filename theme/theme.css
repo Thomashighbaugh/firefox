@@ -1,13 +1,23 @@
+@import "parts/buttons-fixed.css";
 @import "parts/buttons.css";
+/*  */
 @import "parts/entries.css";
+
 @import "parts/toolbox.css";
+
+@import "parrts/headerbar-urlbar.css";
+@import "parts/headerbar-private-urlbar.css";
 @import "parts/headerbar.css";
+
 @import "parts/csd.css";
+
 @import "parts/tabsbar.css";
+
 @import "parts/findbar.css";
 @import "parts/sidebar.css";
+
 @import "parts/popups.css";
-@import "parts/remove-white-flash.css";
+z@import "parts/remove-white-flash.css";
 @import "parts/scrollbars.css";
 @import "parts/icons.css";
 @import "colors/light.css";
@@ -15,5 +25,5 @@
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 :root {
-	--space-above-tabbar: 0 !important;
+  --space-above-tabbar: 0 !important;
 }

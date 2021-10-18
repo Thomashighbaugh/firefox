@@ -312,10 +312,10 @@ var AddonbarVertical = {
 		}\
 		/*#tooglebutton_addonbar_v .toolbarbutton-icon { \
 		  list-style-image: url("chrome://browser/skin/forward.svg"); \
-		  fill: #8b9cbe; \
+		  fill: #f4f4f7; \
 		} \
 		#tooglebutton_addonbar_v[checked] .toolbarbutton-icon { \
-		  fill: #b2bfd9;  \
+		  fill: #f4f4f7;  \
 		} \
 		#tooglebutton_addonbar_v { \
 		  background: url("chrome://browser/skin/back.svg") no-repeat; \

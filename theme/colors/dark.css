@@ -68,7 +68,7 @@
   ---inactive-button-box-shadow: outset 0 1px var(--base0000);
   ---button-suggested-action-background: linear-gradient(
     to top,
-    #485563 2px,
+    var(--base03cc) 2px,
     #29323c
   );
   ---button-suggested-action-border-color: var(--base03);
@@ -81,7 +81,7 @@
     var(--base0099) 1px
   );
   ---button-suggested-action-active-background: var(--base03);
-  ---button-suggested-action-active-border-color: #485563;
+  ---button-suggested-action-active-border-color: var(--base03cc);
   ---button-suggested-action-active-box-shadow: outset 0 1px var(--base0000);
   ---button-destructive-action-background: linear-gradient(
     to top,

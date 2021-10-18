@@ -2,15 +2,15 @@
 
 /* Icons light/dark fix coloring hack filters */
 :root {
-	--convert-icon-to-symbolic-hack-filter: invert(100%) sepia(100%) grayscale(100%) brightness(200%) brightness(85%) invert(100%);
+	--sweet-convert-icon-to-symbolic-hack-filter: invert(100%) sepia(100%) grayscale(100%) brightness(200%) brightness(85%) invert(100%);
 }
 @media (prefers-color-scheme: dark) {
 	:root {
-		--convert-icon-to-symbolic-hack-filter: invert(100%) sepia(100%) grayscale(100%) brightness(200%) brightness(85%);
+		--sweet-convert-icon-to-symbolic-hack-filter: invert(100%) sepia(100%) grayscale(100%) brightness(200%) brightness(85%);
 	}
 }
 
 /* Make tab icons look kinda like symbolic icons */
 tab .tab-icon-image {
-	filter: var(--convert-icon-to-symbolic-hack-filter);
+	filter: var(--sweet-convert-icon-to-symbolic-hack-filter);
 }

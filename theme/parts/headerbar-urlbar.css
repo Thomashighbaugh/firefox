@@ -17,7 +17,7 @@ toolbarspring {
 	box-shadow: none !important;
 }
 #urlbar-background {
-	box-shadow: var(entry-box-shadow) !important;
+	box-shadow: var(sweet-entry-box-shadow) !important;
 	border: 0 !important;
 	background: transparent !important;
 }
@@ -42,7 +42,7 @@ toolbarspring {
 /* URL bar results */
 .urlbarView {
 	background: transparent !important;
-	color: var(toolbar-color) !important;
+	color: var(sweet-toolbar-color) !important;
 	margin: -2px 0 0 0 !important;
 	width: 100% !important;
 }
@@ -68,7 +68,7 @@ toolbarspring {
 }
 
 .urlbarView-row-inner:active, .urlbarView-row[selected] .urlbarView-row-inner {
-	background: var(tabbar-tab-active-border-bottom-color) !important;
+	background: var(sweet-tabbar-tab-active-border-bottom-color) !important;
 }
 
 /* Search engines buttons */	
@@ -76,8 +76,8 @@ toolbarspring {
 	margin-top: 6px !important;
 	margin-bottom: 2px !important;
 	padding: 8px !important;
-	background: var(popover-background) !important;
-	border-top: 1px solid var(popover-border-color) !important;
+	background: var(sweet-popover-background) !important;
+	border-top: 1px solid var(sweet-popover-border-color) !important;
 	border-radius: 0 0 5px 5px !important;
 }
 
@@ -85,18 +85,18 @@ toolbarspring {
 	--toolbarbutton-active-background: transparent !important;
 	--toolbarbutton-hover-background: transparent !important;
 	-moz-appearance: none !important;
-	background: var(button-background) !important;
-	box-shadow: var(button-box-shadow) !important;
-	border: 1px solid var(button-border-color) !important;
+	background: var(sweet-button-background) !important;
+	box-shadow: var(sweet-button-box-shadow) !important;
+	border: 1px solid var(sweet-button-border-color) !important;
 	border-left-width: 0 !important;
-	border-bottom-color: var(button-border-accent-color) !important;
+	border-bottom-color: var(sweet-button-border-accent-color) !important;
 	padding: 0 2px !important;
 	min-height: 30px !important;
 	min-width: 30px !important;
 	margin: 0 !important;
 }
 .searchbar-engine-one-off-item:hover, .searchbar-engine-one-off-item[selected] {
-	background: var(button-hover-background) !important;
+	background: var(sweet-button-hover-background) !important;
 	color: unset !important;
 }
 .searchbar-engine-one-off-item:first-child {	
@@ -109,7 +109,7 @@ toolbarspring {
 
 #urlbar-anon-search-settings-compact {
 	border-left-width: 1px !important;
-	border-bottom: 1px solid var(button-border-accent-color) !important;
+	border-bottom: 1px solid var(sweet-button-border-accent-color) !important;
 	border-radius: 5px;	
 	margin-left: 6px !important;
 }

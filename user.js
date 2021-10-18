@@ -1,4 +1,8 @@
-// Enabled for User Chrome
+////////////////////////////////////////////////////
+//   USER.JS
+////////////////////////////////////////////////////
+
+// Enable User Chrome
 user_pref("svg.context-properties.content.enabled", true);
 user_perf("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 
@@ -146,3 +150,15 @@ user_pref("layout.css.xul-tree-pseudos.content.enabled", true);
 user_pref("layout.css.color-mix.enabled", true);
 // other CSS features
 user_pref("layout.css.moz-outline-radius.enabled", true);
+// When double-clicking a word on a page, only copy the word itself, not the space character next to it
+user_pref("layout.word_select.eat_space_to_next_word", false);
+
+// Settings for finding
+user_pref("findbar.highlightAll", true); // Highlight all words on that page
+user_pref("findbar.modalHighlight", true); // Dim the rest of the page
+// Disable Pocket
+user_pref("extensions.pocket.enabled", false);
+// Enable WebM
+user_pref("media.mediasource.webm.enabled", true);
+// Disable Flash
+user_pref("plugin.state.flash", 0);

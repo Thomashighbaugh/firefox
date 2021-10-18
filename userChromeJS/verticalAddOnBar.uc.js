@@ -133,7 +133,7 @@ var AddonbarVertical = {
 
         observer.observe(document.querySelector("#main-window"), {
           attributes: true,
-          attributeFilter: ["customizing"],
+          attributeFilter: ["customizing"]
         });
 
         try {
@@ -194,7 +194,7 @@ var AddonbarVertical = {
               )
                 button.setAttribute("checked", "true");
               return button;
-            },
+            }
           });
         }
 
@@ -288,6 +288,7 @@ var AddonbarVertical = {
 		} \
 		#addonbar_v:-moz-lwtheme { \
 		  background: var(--lwt-header-image) !important; \
+      background-color:#17191e !important; \
 		  background-position: 100vw 50vh !important; \
 		} \
 		#addonbar_v toolbarbutton, \
@@ -374,7 +375,7 @@ var AddonbarVertical = {
       "@mozilla.org/content/style-sheet-service;1"
     ].getService(Components.interfaces.nsIStyleSheetService);
     sss.loadAndRegisterSheet(uri, sss.AGENT_SHEET);
-  },
+  }
 };
 
 /* initialization delay workaround */

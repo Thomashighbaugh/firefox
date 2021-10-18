@@ -15,8 +15,10 @@ user_perf("layers.async-video.enabled", true);
 user_perf("html5.offmainthread", true);
 user_pref("gfx.webrender.all", true);
 user_pref("gfx.webrender.enabled", true);
+// below soles issue of freezing and stuttering
+user_perf("layers.acceleration.force - enabled", true);
 
-// disable those annoying web notifications
+// disable annoying web notifications
 user_pref("dom.webnotifications.enabled", false);
 
 //Disable battery api

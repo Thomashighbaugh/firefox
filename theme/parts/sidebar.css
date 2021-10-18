@@ -38,5 +38,5 @@
 }
 
 #addonbar {
-  background: #17191e;
+  background: var(--sidebar-background) !important;
 }

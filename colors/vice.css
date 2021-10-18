@@ -58,7 +58,6 @@
   --base06: var(--base07);
   --hover-bg: var(--base02);
   --active-bg: var(--base02);
-  --base07: var(--base07);
   --tab-toolbar-bg: var(--base02);
   --tab-selected-bg: var(--base05);
   --urlbar-active-bg: var(--base0);
@@ -67,7 +66,6 @@
   --base02: var(--base02);
   --accent-bg: var(--base05);
   --urlbar-switch-tab-color: var(--base07);
-  --base06: var(--base07);
   --browser-before-load-background: var(--base02);
   /* Toolbars */
   --toolbar-background: var(--base00);
@@ -94,12 +92,14 @@
     var(--base01),
     var(--base01)
   );
-  --inactive-headerbar-border-color: var(--base01);
+  --inactive-headerbar-border-color: var(--base00);
   --inactive-headerbar-box-shadow: outset 2px 1px var(--base01);
   /* Buttons */
   --button-background: linear-gradient(
-    to top,
-    var(--base30) 2px,
+    -32deg,
+    var(--base29),
+    var(--base25),
+    var(--base04),
     var(--base01)
   );
   --button-border-color: var(--base00);
@@ -110,12 +110,14 @@
     var(--base00),
     var(--base01),
     var(--base23),
-    var(--base29)
+    var(--base00)
   );
   --button-active-background: linear-gradient(
     45deg,
     var(--base01),
-    var(--base24)
+    var(--base29),
+    var(--base24),
+    var(--base00)
   );
   --button-active-border-color: var(--base00);
   --button-active-border-accent-color: var(--base24);
@@ -137,9 +139,11 @@
   --button-suggested-action-box-shadow: outset 2px 1px var(--base01),
     0 1px 2px var(--base02);
   --button-suggested-action-hover-background: linear-gradient(
-    to top,
-    var(--base05),
-    #29323cec 1px
+    -45deg,
+    var(--base01),
+    var(--base29),
+    var(--base24),
+    var(--base00)
   );
   --button-suggested-action-active-background: var(--base05);
   --button-suggested-action-active-border-color: var(--base05);
@@ -197,7 +201,7 @@
   --base06: var(--base07);
   --hover-bg: var(--base02);
   --active-bg: var(--base02);
-  --base07: var(--base07);
+
   --tab-toolbar-bg: var(--base02);
   --tab-selected-bg: var(--base05);
   --urlbar-active-bg: var(--base29);
@@ -206,7 +210,6 @@
   --base02: var(--base02);
   --accent-bg: var(--base05);
   --urlbar-switch-tab-color: var(--base07);
-  --base06: var(--base07);
   --browser-before-load-background: var(--base02);
   /* Toolbars */
   --toolbar-background: var(--base00);
@@ -230,15 +233,20 @@
   --headerbar-border-color: var(--base24);
   --headerbar-box-shadow: outset 2px 1px var(--base01);
   --inactive-headerbar-background: linear-gradient(
-    var(--base00),
+    45deg,
+    var(--base01),
+    var(--base29),
+    var(--base24),
     var(--base00)
   );
   --inactive-headerbar-border-color: var(--base01);
   --inactive-headerbar-box-shadow: outset 2px 1px var(--base01);
   /* Buttons */
   --button-background: linear-gradient(
-    to top,
-    var(--base00) 2px,
+    45deg,
+    var(--base01),
+    var(--base29),
+    var(--base24),
     var(--base00)
   );
   --button-border-color: var(--base04);
@@ -251,8 +259,10 @@
   );
   --button-active-background: linear-gradient(
     45deg,
-    var(--base21),
-    var(--base01)
+    var(--base01),
+    var(--base29),
+    var(--base24),
+    var(--base00)
   );
   --button-active-border-color: var(--base04);
   --button-active-border-accent-color: var(--base04);

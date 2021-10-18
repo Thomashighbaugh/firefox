@@ -32,7 +32,7 @@
     /* Header bar */
     ---headerbar-background: linear-gradient(32deg, #101114, #17191e), #2f303d,
       #17191e;
-    ---headerbar-border-color: #21242b;
+    ---headerbar-border-color: #555e70;
     ---headerbar-box-shadow: outset 0 1px #10111466;
     ---inactive-headerbar-background: linear-gradient(#17191e, #17191e);
     ---inactive-headerbar-border-color: #22262d;

@@ -5,10 +5,10 @@
 
 @import "parts/toolbox.css";
 
-//@import "parts/urlbar.css";
-@import "parrts/headerbar-urlbar.css";
+@import "parts/urlbar.css";
+/* @import "parrts/headerbar-urlbar.css";
 @import "parts/headerbar-private-urlbar.css";
-@import "parts/headerbar.css";
+@import "parts/headerbar.css"; */
 
 @import "parts/csd.css";
 

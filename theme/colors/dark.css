@@ -1,41 +1,46 @@
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
+@import "../../colors/vice";
+
 /* Variables that start with --- are added by me and are assigned
  * to elements somewhere in this code. The rest of the variables are
  * built-in in Firefox, so you need to add an !important if you wanna
  * override them. */
-@media (prefers-color-scheme: dark) {
+
+
+
+ @media (prefers-color-scheme: dark) {
   :root {
     /* Browser area before a page starts loading */
-    ---browser-before-load-background: #17191e;
+    ---browser-before-load-background: var(--base00);
 
     /* Toolbars */
-    ---toolbar-background: #17191e;
-    ---toolbar-color: #b2bfd9;
+    ---toolbar-background: var(--base00);
+    ---toolbar-color: var(--base06);
     ---toolbar-border-color: #3c3f4ccc;
-    ---inactive-toolbar-background: #17191e;
-    ---inactive-toolbar-border-color: #22262d;
+    ---inactive-toolbar-background: var(--base00);
+    ---inactive-toolbar-border-color: var(--base02);
 
     /* Sidebar */
-    ---sidebar-background: #17191e;
-    ---inactive-sidebar-background: #181c28;
+    ---sidebar-background: var(--base00);
+    ---inactive-sidebar-background: var(--base00);
 
     /* Popups */
-    ---menu-background: #17191e;
+    ---menu-background: var(--base00);
     ---menu-border-color: #3c3f4ccc;
-    ---popover-background: #17191e;
+    ---popover-background: var(--base00);
     ---popover-border-color: #3c3f4ccc;
     ---popover-shadow: 0 1px 2px #22262d33;
     ---popover-button-hover-background: #2f303d;
     ---popover-separator-color: #17191e00;
 
     /* Header bar */
-    ---headerbar-background: linear-gradient(32deg, #101114, #17191e), #2f303d,
-      #17191e);
+    ---headerbar-background: linear-gradient(32deg, var(--base29), var(--base00)), #2f303d,
+      var(--base00));
     ---headerbar-border-color: #3c3f4ccc;
     ---headerbar-box-shadow: outset 0 1px #10111466;
-    ---inactive-headerbar-background: linear-gradient(#17191e, #17191e);
-    ---inactive-headerbar-border-color: #22262d;
+    ---inactive-headerbar-background: linear-gradient(var(--base00), var(--base00));
+    ---inactive-headerbar-border-color: var(--base02);
     ---inactive-headerbar-box-shadow: outset 0 1px #10111466;
 
     /* Buttons */
@@ -44,34 +49,34 @@
     ---button-border-accent-color: #555e70cc;
     ---button-box-shadow: outset 0 1px #10111466, 0 1px 2px #17191e22;
     ---button-hover-background: linear-gradient(to top, #2f303d, #2f303d 1px);
-    ---button-active-background: linear-gradient(-42deg, #17191e, #22262d, #3c3f4c, #2f303d, #17191e);
+    ---button-active-background: linear-gradient(-42deg, var(--base00), var(--base02), var(--base02), #2f303d, var(--base00));
     ---button-active-border-color: #3c3f4ccc;
-    ---button-active-border-accent-color: #555e70cc;
+    ---button-active-border-accent-color: var(--base03)cc;
     ---button-active-box-shadow: outset 0 1px #17191e33;
-    ---button-disabled-background: #181c28;
-    ---button-disabled-border-color: #22262d;
+    ---button-disabled-background: var(--base00);
+    ---button-disabled-border-color: var(--base02);
     ---button-disabled-box-shadow: outset 0 1px #17191e33;
-    ---inactive-button-background: linear-gradient(#17191e, #17191e);
-    ---inactive-button-border-color: #17191e;
+    ---inactive-button-background: linear-gradient(var(--base00), var(--base00));
+    ---inactive-button-border-color: var(--base00);
     ---inactive-button-box-shadow: outset 0 1px #17191e33;
     ---button-suggested-action-background: linear-gradient(
         -40deg,
       #b2bfd9ce,
-      #8b9cbe,
+      var(--base05),
 	  #b2bfd999
     );
-    ---button-suggested-action-border-color: #8b9cbe;
-    ---button-suggested-action-border-accent-color: #b2bfd9;
+    ---button-suggested-action-border-color: var(--base05);
+    ---button-suggested-action-border-accent-color: var(--base06);
     ---button-suggested-action-box-shadow: outset 0 1px #10111466,
       0 1px 2px #17191e22;
     ---button-suggested-action-hover-background: linear-gradient(
       -40deg,
       #b2bfd9ce,
-      #8b9cbe,
+      var(--base05),
 	  #b2bfd999
     );
-    ---button-suggested-action-active-background: #17191e;
-    ---button-suggested-action-active-border-color: #b2bfd9;
+    ---button-suggested-action-active-background: var(--base00);
+    ---button-suggested-action-active-border-color: var(--base06);
     ---button-suggested-action-active-box-shadow: outset 0 1px #17191e33;
     ---button-destructive-action-background: linear-gradient(
       to top,
@@ -98,41 +103,41 @@
 
     /* URL bar */
     ---urlbar-background: linear-gradient(#161925, #161925);
-    ---urlbar-border-color: #101114;
+    ---urlbar-border-color: var(--base29);
     ---urlbar-box-shadow: outset 0 0 0 1px #22262d22;
-    ---urlbar-color: #b2bfd9;
-    ---inactive-urlbar-background: linear-gradient(#181c28, #181c28);
-    ---inactive-urlbar-border-color: #22262d;
+    ---urlbar-color: var(--base06);
+    ---inactive-urlbar-background: linear-gradient(var(--base00), var(--base00));
+    ---inactive-urlbar-border-color: var(--base02);
     ---inactive-urlbar-box-shadow: none;
-    ---inactive-urlbar-color: #b2bfd9;
-    ---focused-urlbar-border-color: #f4f4f7;
+    ---inactive-urlbar-color: var(--base06);
+    ---focused-urlbar-border-color: var(--base07);
     ---private-urlbar-background: #17191ecc;
 
     /* Tabs */
     ---tabbar-tab-color: #b2bfd999;
-    ---tabbar-tab-hover-background: #17191e;
-    ---tabbar-tab-hover-border-bottom-color: #101114;
+    ---tabbar-tab-hover-background: var(--base00);
+    ---tabbar-tab-hover-border-bottom-color: var(--base29);
     ---tabbar-tab-hover-color: #3c3f4c99;
-    ---tabbar-tab-active-background: #161925;
+    ---tabbar-tab-active-background: var(--base29);
     ---tabbar-tab-active-border-bottom-color: #555e70cc;
-    ---tabbar-tab-active-color: #f4f4f7;
-    ---tabbar-tab-active-hover-background: #101114;
+    ---tabbar-tab-active-color: var(--base07);
+    ---tabbar-tab-active-hover-background: var(--base29);
     ---inactive-tabbar-tab-color: #b2bfd999;
-    ---inactive-tabbar-tab-active-background: #17191e;
+    ---inactive-tabbar-tab-active-background: var(--base00);
     ---inactive-tabbar-tab-active-border-bottom-color: #555e70cc;
     ---inactive-tabbar-tab-active-color: #b2bfd999;
 
     /* Switch */
     ---switch-background: #1e2233;
-    ---switch-border-color: #101114;
+    ---switch-border-color: var(--base29);
     ---switch-slider-background: #151723;
-    ---switch-slider-border-color: #101114;
+    ---switch-slider-border-color: var(--base29);
     ---switch-slider-box-shadow: outset 0 1px #10111466, 0 1px #17191e00,
       0 1px 2px #17191e22;
     ---switch-active-background: linear-gradient(to right, #f7005a, #ffffaf);
-    ---switch-active-border-color: #101114;
+    ---switch-active-border-color: var(--base29);
     ---switch-active-slider-border-color: #3c3f4ccc;
-    ---switch-active-slider-background: #f4f4f7;
+    ---switch-active-slider-background: var(--base07);
 
     ---start-gradient-color: #0badff;
     ---end-gradient-color: #ff00aa;

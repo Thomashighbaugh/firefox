@@ -1,3 +1,8 @@
+@import "../colors/vice.css";
+@import "colors/light.css";
+@import "colors/dark.css";
+@import "colors/mars.css";
+
 @import "parts/buttons-fixed.css";
 @import "parts/buttons.css";
 /*  */
@@ -21,8 +26,7 @@
 @import "parts/remove-white-flash.css";
 @import "parts/scrollbars.css";
 @import "parts/icons.css";
-@import "colors/light.css";
-@import "colors/dark.css";
+
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 :root {

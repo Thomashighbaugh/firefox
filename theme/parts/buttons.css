@@ -187,7 +187,7 @@ menulist[open] .menulist-label-box,
 #viewButton:-moz-window-inactive {
   background: var(---inactive-button-background) !important;
   box-shadow: var(---inactive-button-box-shadow) !important;
-  border-color: var(---inactive-button-border-color) !important;
+  border-color: #00000000 !important;
 }
 
 /* Flat buttons */

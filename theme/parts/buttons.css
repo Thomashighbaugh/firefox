@@ -119,6 +119,7 @@ menulist:hover .menulist-label-box,
 .expander-up:hover {
   outline: 0 !important;
   background: var(---button-hover-background) !important;
+  border-color: transparent !important;
 }
 
 /* Active buttons */
@@ -154,7 +155,7 @@ menulist[open] .menulist-label-box,
     rgba(var(---end-gradient-color-rgb), 0.5)
   ) !important;
   box-shadow: var(---button-active-box-shadow) !important;
-  border-color: var(---button-active-border-color) !important;
+  border-color: transparent !important;
   border-bottom-color: var(---button-active-border-color) !important;
   border-top-color: var(---button-active-border-accent-color) !important;
 }
@@ -164,7 +165,7 @@ menulist[open] .menulist-label-box,
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton[disabled],
 #context-navigation menuitem[disabled] {
   background: var(---button-disabled-background) !important;
-  border-color: var(---button-disabled-border-color) !important;
+  border-color: transparent !important;
   box-shadow: var(---button-disabled-box-shadow) !important;
   opacity: 1 !important;
 }
@@ -177,6 +178,7 @@ menulist[open] .menulist-label-box,
 #nav-bar toolbarbutton:not(#urlbar-zoom-button)[disabled]:hover,
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton[disabled]:hover {
   background: var(---button-disabled-background) !important;
+  border-color: transparent !important;
 }
 
 /* Inactive window buttons */
@@ -187,7 +189,7 @@ menulist[open] .menulist-label-box,
 #viewButton:-moz-window-inactive {
   background: var(---inactive-button-background) !important;
   box-shadow: var(---inactive-button-box-shadow) !important;
-  border-color: #00000000 !important;
+  border-color: transparent !important;
 }
 
 /* Flat buttons */
@@ -258,7 +260,7 @@ button.popup-notification-primary-button,
 #editBookmarkPanelDoneButton {
   color: white !important;
   background: var(---button-suggested-action-background) !important;
-  border-color: var(---button-suggested-action-border-color) !important;
+  border-color: transparent !important;
   border-bottom-color: var(
     ---button-suggested-action-border-accent-color
   ) !important;
@@ -285,7 +287,7 @@ button.popup-notification-primary-button.popup-notification-button:active,
 #editBookmarkPanelRemoveButton {
   color: white !important;
   background: var(---button-destructive-action-background) !important;
-  border-color: var(---button-destructive-action-border-color) !important;
+  border-color: transparent !important;
   border-bottom-color: var(
     ---button-destructive-action-border-accent-color
   ) !important;

@@ -91,7 +91,7 @@
     rgba(255, 255, 255, 0);
 
   /* URL bar */
-  ---urlbar-background: linear-gradient(#1c2023, #1c2023);
+  ---urlbar-background: linear-gradient(-32deg, #22262d, #2f303d);
   ---urlbar-border-color: #0f1113;
   ---urlbar-box-shadow: outset 0 0 0 1px rgba(21, 83, 58, 0);
   ---urlbar-color: #b2bfd9;
@@ -116,6 +116,6 @@
   ---inactive-tabbar-tab-active-border-bottom-color: #f67e7d;
   ---inactive-tabbar-tab-active-color: #b2bfd999;
 
-  ---start-gradient-color: #3c3f4c;
-  ---end-gradient-color: #555e70;
+  ---start-gradient-color: #3c3f4ccc;
+  ---end-gradient-color: #555e70cc;
 }

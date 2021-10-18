@@ -12,7 +12,7 @@
     /* Toolbars */
     ---toolbar-background: #17191e;
     ---toolbar-color: #b2bfd9;
-    ---toolbar-border-color: #101114;
+    ---toolbar-border-color: #555e70;
     ---inactive-toolbar-background: #17191e;
     ---inactive-toolbar-border-color: #22262d;
 
@@ -22,16 +22,16 @@
 
     /* Popups */
     ---menu-background: #17191e;
-    ---menu-border-color: #101114;
+    ---menu-border-color: #555e70;
     ---popover-background: #17191e;
-    ---popover-border-color: #101114;
+    ---popover-border-color: #555e70;
     ---popover-shadow: 0 1px 2px #22262d33;
     ---popover-button-hover-background: #2f303d;
     ---popover-separator-color: #17191e00;
 
     /* Header bar */
     ---headerbar-background: linear-gradient(32deg, #101114, #17191e), #2f303d,
-      #17191e;
+      #17191e);
     ---headerbar-border-color: #555e70;
     ---headerbar-box-shadow: outset 0 1px #10111466;
     ---inactive-headerbar-background: linear-gradient(#17191e, #17191e);
@@ -124,7 +124,7 @@
       0 1px 2px #17191e22;
     ---switch-active-background: linear-gradient(to right, #f7005a, #ffffaf);
     ---switch-active-border-color: #101114;
-    ---switch-active-slider-border-color: #3c3f4c;
+    ---switch-active-slider-border-color: #555e70;
     ---switch-active-slider-background: #ffffff;
 
     ---start-gradient-color: #0badff;

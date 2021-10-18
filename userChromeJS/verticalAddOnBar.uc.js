@@ -281,6 +281,7 @@ var AddonbarVertical = {
 		  min-width: 0px; \
 		  width: 0px; \
 		  max-width: 0px; \
+      background-color:#17191e !important; \
 		} \
 		#main-window[customizing] #addonbar_v { \
 		  outline: 1px dashed !important; \
@@ -294,6 +295,7 @@ var AddonbarVertical = {
 		#addonbar_v toolbarbutton, \
 		#addonbar_v toolbar .toolbarbutton-1 { \
 		  padding: 0 !important; \
+      background-color:#17191e !important; \
 		} \
 		' +
         end_border +
@@ -306,23 +308,25 @@ var AddonbarVertical = {
         '\
 		#tooglebutton_addonbar_v .toolbarbutton-icon { \
 		  list-style-image: url("chrome://browser/skin/sidebars.svg"); \
-		  fill: green; \
+		  fill: #f4f4f7; \
 		}\
 		/*#tooglebutton_addonbar_v .toolbarbutton-icon { \
 		  list-style-image: url("chrome://browser/skin/forward.svg"); \
-		  fill: red; \
+		  fill: #8b9cbe; \
 		} \
 		#tooglebutton_addonbar_v[checked] .toolbarbutton-icon { \
-		  fill: green;  \
+		  fill: #b2bfd9;  \
 		} \
 		#tooglebutton_addonbar_v { \
 		  background: url("chrome://browser/skin/back.svg") no-repeat; \
+      background-color:#17191e !important; \
 		  background-size: 35% !important; \
 		  background-position: 10% 70% !important; \
 		} \
 		#tooglebutton_addonbar_v[checked] { \
 		  transform: rotate(180deg) !important;  \
 		  background: url("chrome://browser/skin/back.svg") no-repeat; \
+      background-color:#17191e !important; \
 		  background-position: 10% 30% !important; \
 		}*/ \
 	  ';
@@ -336,12 +340,14 @@ var AddonbarVertical = {
 		#addonbar_v toolbarbutton .toolbarbutton-icon { \
 		  padding: 0 !important; \
 		  width: 16px !important; \
+    background-color:#17191e !important; \
 		  height: 16px !important; \
 		} \
 		#addonbar_v .toolbarbutton-badge-stack { \
 		  padding: 0 !important; \
 		  margin: 0 !important; \
 		  width: 16px !important; \
+    background-color:#17191e !important; \
 		  min-width: 16px !important; \
 		  height: 16px !important; \
 		  min-height: 16px !important; \
@@ -349,6 +355,7 @@ var AddonbarVertical = {
 		#addonbar_v toolbarbutton .toolbarbutton-badge { \
 		  margin-top: 0px !important; \
 		  font-size: 8px !important; \
+    background-color:#17191e !important; \
 		} \
 	  ";
 

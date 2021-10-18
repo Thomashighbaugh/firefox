@@ -37,6 +37,7 @@
   padding: 6px !important;
 }
 
-#addonbar {
+#addonbar_v,
+.toolbar-primary {
   background: var(--sidebar-background) !important;
 }

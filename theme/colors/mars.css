@@ -1,5 +1,5 @@
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
-@import "../../colors/vice"
+@import "../../colors/vice";
 /* Variables that start with --- are added by me and are assigned
  * to elements somewhere in this code. The rest of the variables are
  * built-in in Firefox, so you need to add an !important if you wanna
@@ -30,15 +30,28 @@
   ---popover-separator-color: var(--base0000);
 
   /* Header bar */
-  ---headerbar-background: linear-gradient(to top, var(--base00), var(--base00));
+  ---headerbar-background: linear-gradient(
+    to top,
+    var(--base00),
+    var(--base00)
+  );
   ---headerbar-border-color: #21242b;
   ---headerbar-box-shadow: outset 0 1px #10111466;
-  ---inactive-headerbar-background: linear-gradient(var(--base00), var(--base00));
+  ---inactive-headerbar-background: linear-gradient(
+    var(--base00),
+    var(--base00)
+  );
   ---inactive-headerbar-border-color: #22262d;
   ---inactive-headerbar-box-shadow: outset 0 1px #10111466;
 
   /* Buttons */
-  ---button-background: linear-gradient(-32deg, #22262d, , var(--base00), #2f303d);
+  ---button-background: linear-gradient(
+    -32deg,
+    #22262d,
+    ,
+    var(--base00),
+    #2f303d
+  );
   ---button-border-color: var(--base04);
   ---button-border-accent-color: #21242b;
   ---button-box-shadow: outset 0 1px #10111466, 0 1px 2px var(--base0033);

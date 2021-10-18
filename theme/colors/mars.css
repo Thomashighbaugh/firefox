@@ -59,31 +59,30 @@
   ---button-active-background: linear-gradient(45deg, #ff005d, #ff8b26);
   ---button-active-border-color: var(--base04);
   ---button-active-border-accent-color: var(--base04);
-  ---button-active-box-shadow: outset 0 1px rgba(255, 255, 255, 0);
+  ---button-active-box-shadow: outset 0 1px var(--base0000);
   ---button-disabled-background: #1b1f22;
   ---button-disabled-border-color: var(--base00);
-  ---button-disabled-box-shadow: outset 0 1px rgba(255, 255, 255, 0);
+  ---button-disabled-box-shadow: outset 0 1px var(--base0000);
   ---inactive-button-background: linear-gradient(var(--base00), var(--base00));
   ---inactive-button-border-color: var(--base00);
-  ---inactive-button-box-shadow: outset 0 1px rgba(255, 255, 255, 0);
+  ---inactive-button-box-shadow: outset 0 1px var(--base0000);
   ---button-suggested-action-background: linear-gradient(
     to top,
     #485563 2px,
     #29323c
   );
-  ---button-suggested-action-border-color: #485563;
+  ---button-suggested-action-border-color: var(--base03);
   ---button-suggested-action-border-accent-color: #092444;
   ---button-suggested-action-box-shadow: outset 0 1px #10111466,
     0 1px 2px var(--base0033);
   ---button-suggested-action-hover-background: linear-gradient(
     to top,
-    #485563ec,
-    #29323cec 1px
+    var(--base03cc),
+    var(--base0099) 1px
   );
-  ---button-suggested-action-active-background: #485563;
+  ---button-suggested-action-active-background: var(--base03);
   ---button-suggested-action-active-border-color: #485563;
-  ---button-suggested-action-active-box-shadow: outset 0 1px
-    rgba(255, 255, 255, 0);
+  ---button-suggested-action-active-box-shadow: outset 0 1px var(--base0000);
   ---button-destructive-action-background: linear-gradient(
     to top,
     #ff416c 2px,
@@ -100,8 +99,7 @@
   );
   ---button-destructive-action-active-background: #ff416c;
   ---button-destructive-action-active-border-color: #ff416c;
-  ---button-destructive-action-active-box-shadow: outset 0 1px
-    rgba(255, 255, 255, 0);
+  ---button-destructive-action-active-box-shadow: outset 0 1px var(--base0000);
 
   /* URL bar */
   ---urlbar-background: linear-gradient(-32deg, #22262d, #2f303d);

@@ -250,7 +250,7 @@ var AddonbarVertical = {
         '\
 		#addonbar_v { \
 		  -moz-appearance: none !important; \
-		  background-color: var(--toolbar-bgcolor); \
+		  background-color:#17191e !important; \
 		  background-image: var(--toolbar-bgimage); \
 		  background-clip: padding-box; \
 		  color: var(--toolbar-color, inherit); \

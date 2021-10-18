@@ -32,16 +32,16 @@
   /* Header bar */
   --sweet-headerbar-background: linear-gradient(to top, #181b1e, #181b1e);
   --sweet-headerbar-border-color: #21242b;
-  --sweet-headerbar-box-shadow: inset 0 1px rgba(238, 238, 236, 0.07);
+  --sweet-headerbar-box-shadow: inset 0 1px #10111466;
   --sweet-inactive-headerbar-background: linear-gradient(#181b1e, #181b1e);
   --sweet-inactive-headerbar-border-color: #22262d;
-  --sweet-inactive-headerbar-box-shadow: inset 0 1px rgba(238, 238, 236, 0.07);
+  --sweet-inactive-headerbar-box-shadow: inset 0 1px #10111466;
 
   /* Buttons */
   --sweet-button-background: linear-gradient(to top, #1c2023 2px, #1c2023);
   --sweet-button-border-color: #0f1113;
   --sweet-button-border-accent-color: #21242b;
-  --sweet-button-box-shadow: inset 0 1px rgba(255, 255, 255, 0.02),
+  --sweet-button-box-shadow: inset 0 1px #10111466,
     0 1px 2px rgba(0, 0, 0, 0.07);
   --sweet-button-hover-background: linear-gradient(
     to top,
@@ -65,8 +65,7 @@
   );
   --sweet-button-suggested-action-border-color: #485563;
   --sweet-button-suggested-action-border-accent-color: #092444;
-  --sweet-button-suggested-action-box-shadow: inset 0 1px
-      rgba(255, 255, 255, 0.02),
+  --sweet-button-suggested-action-box-shadow: inset 0 1px #10111466,
     0 1px 2px rgba(0, 0, 0, 0.07);
   --sweet-button-suggested-action-hover-background: linear-gradient(
     to top,
@@ -84,8 +83,7 @@
   );
   --sweet-button-destructive-action-border-color: #ff416c;
   --sweet-button-destructive-action-border-accent-color: #570b0e;
-  --sweet-button-destructive-action-box-shadow: inset 0 1px
-      rgba(255, 255, 255, 0.02),
+  --sweet-button-destructive-action-box-shadow: inset 0 1px #10111466,
     0 1px 2px rgba(0, 0, 0, 0.07);
   --sweet-button-destructive-action-hover-background: linear-gradient(
     to top,
@@ -110,18 +108,18 @@
   --sweet-private-urlbar-background: #25003e;
 
   /* Tabs */
-  --sweet-tabbar-tab-color: rgb(141, 144, 145);
+  --sweet-tabbar-tab-color: #b2bfd999;
   --sweet-tabbar-tab-hover-background: #181b1e;
   --sweet-tabbar-tab-hover-border-bottom-color: #0f1113;
-  --sweet-tabbar-tab-hover-color: rgb(200, 200, 200);
+  --sweet-tabbar-tab-hover-color: #3c3f4c99;
   --sweet-tabbar-tab-active-background: #1a1e21;
   --sweet-tabbar-tab-active-border-bottom-color: #f67e7d;
   --sweet-tabbar-tab-active-color: #b2bfd9;
   --sweet-tabbar-tab-active-hover-background: #181b1e;
-  --sweet-inactive-tabbar-tab-color: rgb(141, 144, 145);
+  --sweet-inactive-tabbar-tab-color: #b2bfd999;
   --sweet-inactive-tabbar-tab-active-background: #181b1e;
   --sweet-inactive-tabbar-tab-active-border-bottom-color: #f67e7d;
-  --sweet-inactive-tabbar-tab-active-color: rgb(141, 144, 145);
+  --sweet-inactive-tabbar-tab-active-color: #b2bfd999;
 
   --sweet-start-gradient-color: #ff005d;
   --sweet-end-gradient-color: #ff8b26;

@@ -5,6 +5,10 @@ user_perf("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 // Don't reveal your internal IP when WebRTC is enabled (Firefox >= 42)
 user_pref("media.peerconnection.ice.no_host", true); // Firefox >= 52
 
+// enable proton
+user_pref("browser.proton.enabled", true);
+user_pref("browser.proton.places-tooltip.enabled", true);
+
 // prevent names of plugins from leaking
 user_perf("plugins.enumerable_names", "blank");
 
@@ -132,3 +136,13 @@ user_perf("widget.content.gtk-theme-override", "Dhumavati-White-Dark");
 
 // Stop the stupid "be careful lol" warning for about:config
 user_perfs("browser.aboutConfig.showWarning", false);
+
+// keep "all tabs" menu available at all times, useful for all tabs menu expansion pack
+user_pref("browser.tabs.tabmanager.enabled", true);
+
+// allow stylesheets to modify trees in system pages viewed in regular tabs
+user_pref("layout.css.xul-tree-pseudos.content.enabled", true);
+// allow the color-mix() CSS function
+user_pref("layout.css.color-mix.enabled", true);
+// other CSS features
+user_pref("layout.css.moz-outline-radius.enabled", true);

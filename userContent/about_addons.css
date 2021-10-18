@@ -88,7 +88,7 @@
         background-color: var(--base02) !important;
     }
     link+button:focus {
-        box-shadow: 0 0 0 1px var(--base01) inset, 0 0 0 1px var(--base02), 0 0 0 4px var(--hover-bg) !important;
+        box-shadow: 0 0 0 1px var(--base01) outset, 0 0 0 1px var(--base02), 0 0 0 4px var(--hover-bg) !important;
     }
     /* dot badging on update button */
     link+button::after {

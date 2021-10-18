@@ -32,27 +32,27 @@
   /* Header bar */
   ---headerbar-background: linear-gradient(to top, #181b1e, #181b1e);
   ---headerbar-border-color: #21242b;
-  ---headerbar-box-shadow: inset 0 1px #10111466;
+  ---headerbar-box-shadow: outset 0 1px #10111466;
   ---inactive-headerbar-background: linear-gradient(#181b1e, #181b1e);
   ---inactive-headerbar-border-color: #22262d;
-  ---inactive-headerbar-box-shadow: inset 0 1px #10111466;
+  ---inactive-headerbar-box-shadow: outset 0 1px #10111466;
 
   /* Buttons */
   ---button-background: linear-gradient(to top, #1c2023 2px, #1c2023);
   ---button-border-color: #0f1113;
   ---button-border-accent-color: #21242b;
-  ---button-box-shadow: inset 0 1px #10111466, 0 1px 2px #17191e22;
+  ---button-box-shadow: outset 0 1px #10111466, 0 1px 2px #17191e22;
   ---button-hover-background: linear-gradient(to top, #1b1f22, #1b1f22 1px);
   ---button-active-background: linear-gradient(45deg, #ff005d, #ff8b26);
   ---button-active-border-color: #0f1113;
   ---button-active-border-accent-color: #000000;
-  ---button-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
+  ---button-active-box-shadow: outset 0 1px rgba(255, 255, 255, 0);
   ---button-disabled-background: #1b1f22;
   ---button-disabled-border-color: #181b1e;
-  ---button-disabled-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
+  ---button-disabled-box-shadow: outset 0 1px rgba(255, 255, 255, 0);
   ---inactive-button-background: linear-gradient(#181b1e, #181b1e);
   ---inactive-button-border-color: #181b1e;
-  ---inactive-button-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
+  ---inactive-button-box-shadow: outset 0 1px rgba(255, 255, 255, 0);
   ---button-suggested-action-background: linear-gradient(
     to top,
     #485563 2px,
@@ -60,7 +60,7 @@
   );
   ---button-suggested-action-border-color: #485563;
   ---button-suggested-action-border-accent-color: #092444;
-  ---button-suggested-action-box-shadow: inset 0 1px #10111466,
+  ---button-suggested-action-box-shadow: outset 0 1px #10111466,
     0 1px 2px #17191e22;
   ---button-suggested-action-hover-background: linear-gradient(
     to top,
@@ -69,7 +69,7 @@
   );
   ---button-suggested-action-active-background: #485563;
   ---button-suggested-action-active-border-color: #485563;
-  ---button-suggested-action-active-box-shadow: inset 0 1px
+  ---button-suggested-action-active-box-shadow: outset 0 1px
     rgba(255, 255, 255, 0);
   ---button-destructive-action-background: linear-gradient(
     to top,
@@ -78,7 +78,7 @@
   );
   ---button-destructive-action-border-color: #ff416c;
   ---button-destructive-action-border-accent-color: #570b0e;
-  ---button-destructive-action-box-shadow: inset 0 1px #10111466,
+  ---button-destructive-action-box-shadow: outset 0 1px #10111466,
     0 1px 2px #17191e22;
   ---button-destructive-action-hover-background: linear-gradient(
     to top,
@@ -87,13 +87,13 @@
   );
   ---button-destructive-action-active-background: #ff416c;
   ---button-destructive-action-active-border-color: #ff416c;
-  ---button-destructive-action-active-box-shadow: inset 0 1px
+  ---button-destructive-action-active-box-shadow: outset 0 1px
     rgba(255, 255, 255, 0);
 
   /* URL bar */
   ---urlbar-background: linear-gradient(#1c2023, #1c2023);
   ---urlbar-border-color: #0f1113;
-  ---urlbar-box-shadow: inset 0 0 0 1px rgba(21, 83, 158, 0);
+  ---urlbar-box-shadow: outset 0 0 0 1px rgba(21, 83, 158, 0);
   ---urlbar-color: #b2bfd9;
   ---inactive-urlbar-background: linear-gradient(#1b1f22, #1b1f22);
   ---inactive-urlbar-border-color: #22262d;

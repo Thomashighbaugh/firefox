@@ -40,4 +40,5 @@
 #addonbar_v,
 .toolbar-primary {
   background: var(--sidebar-background) !important;
+  opacity: 1;
 }

@@ -6,8 +6,12 @@
 // @shutdown        UC.statusBar.destroy();
 // @onlyonce
 // ==/UserScript==
-
-UC.statusBar = {
+Components.utils.import("resource:///modules/CustomizableUI.jsm");
+var { Services } = Components.utils.import(
+  "resource://gre/modules/Services.jsm",
+  {}
+);
+var statusBar = {
   PREF_ENABLED: "userChromeJS.statusbar.enabled",
   PREF_STATUSTEXT: "userChromeJS.statusbar.appendStatusText",
 
@@ -105,14 +109,14 @@ UC.statusBar = {
 
     win.eval(
       'Object.defineProperty(StatusPanel, "_label", {' +
-        Object.getOwnPropertyDescriptor(StatusPanel, "_label")
-          .set.toString()
-          .replace(/^set _label/, "set")
-          .replace(
-            /((\s+)this\.panel\.setAttribute\("inactive", "true"\);)/,
-            "$2this._labelElement.value = val;$1"
-          ) +
-        ", enumerable: true, configurable: true});"
+      Object.getOwnPropertyDescriptor(StatusPanel, "_label")
+        .set.toString()
+        .replace(/^set _label/, "set")
+        .replace(
+          /((\s+)this\.panel\.setAttribute\("inactive", "true"\);)/,
+          "$2this._labelElement.value = val;$1"
+        ) +
+      ", enumerable: true, configurable: true});"
     );
 
     let bottomBox = document.getElementById("browser-bottombox");
@@ -129,7 +133,7 @@ UC.statusBar = {
     this.STYLE = {
       url: Services.io.newURI(
         "data:text/css;charset=UTF-8," +
-          encodeURIComponent(`
+        encodeURIComponent(`
         @-moz-document url('${_uc.BROWSERCHROME}') {
           #status-bar {
             color: initial !important;
@@ -171,8 +175,8 @@ UC.statusBar = {
     _uc.windows((doc, win) => {
       win.eval(
         'Object.defineProperty(StatusPanel, "_label", {' +
-          this.orig.replace(/^set _label/, "set") +
-          ", enumerable: true, configurable: true});"
+        this.orig.replace(/^set _label/, "set") +
+        ", enumerable: true, configurable: true});"
       );
       let StatusPanel = win.StatusPanel;
       StatusPanel.panel.firstChild.appendChild(StatusPanel._labelElement);
@@ -182,5 +186,5 @@ UC.statusBar = {
     delete UC.statusBar;
   }
 };
+document.addEventListener("DOMContentLoaded", statusBar.init(), false);
 
-UC.statusBar.init();

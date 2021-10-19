@@ -19,49 +19,69 @@
 @import url("userContent/customization-window");
 @import url("userContent/elegant_additions.css");
 
-
+@import url(resources/in-content/root.css);
+@import url(resources/in-content/menus.css);
+@import url(resources/in-content/devtools.css);
+@import url(resources/in-content/picture-in-picture.css);
+@import url(resources/in-content/system.css);
+@import url(resources/in-content/ext-containers.css);
+@import url(resources/in-content/ext-darkreader.css);
+@import url(resources/in-content/ext-nordvpn.css);
+@import url(resources/in-content/ext-mdm.css);
+@import url(resources/in-content/ext-bitwarden.css);
+@import url(resources/in-content/ext-ublock.css);
+@import url(resources/in-content/ext-simpletranslate.css);
+@import url(resources/in-content/ext-tabnotes.css);
+@import url(resources/in-content/ext-sortbookmarks.css);
+@import url(resources/in-content/site-google.css);
+@import url(resources/in-content/site-youtube.css);
+@import url(resources/in-content/site-wiki.css);
+@import url(resources/in-content/site-github.css);
+@import url(resources/in-content/site-reddit.css);
+@import url(resources/in-content/site-subscene.css);
+@import url(resources/in-content/misc-content.css);
+@import url(resources/in-content/custom-content.css);
 /* Set background color of landing pages */
 
 @-moz-document url(about:profiles),
 @-moz-document url(about:newtab),
 @-moz-document url(about:home),
 @-moz-document url(about:blank) {
-    html:not(#ublock0-epicker),
-    html:not(#ublock0-epicker) body,
-    #newtab-customize-overlay {
-        background: var(--tab-toolbar-bg) !important;
-        color: var(--base06) !important;
-    }
+  html:not(#ublock0-epicker),
+  html:not(#ublock0-epicker) body,
+  #newtab-customize-overlay {
+    background: var(--tab-toolbar-bg) !important;
+    color: var(--base06) !important;
+  }
 }
-
 
 /* Sets up minimal scrollbar */
 
 :root {
-    scrollbar-color: var(--base05) transparent !important;
-    /* background: var(--base24) !important; */
-    font-weight: 900;
-    font-family: "Hurmit Nerd Font Mono bold", monospace !important;
+  scrollbar-color: var(--base05) transparent !important;
+  /* background: var(--base24) !important; */
+  font-weight: 900;
+  font-family: "Hurmit Nerd Font Mono bold", monospace !important;
 }
 
 @-moz-document url(about:privatebrowsing) {
-     :root {
-        scrollbar-color: var(--base06) transparent !important;
-        background: var(--tab-toolbar-bg) !important;
-        color: var(--base06) !important;
-    }
+  :root {
+    scrollbar-color: var(--base06) transparent !important;
+    background: var(--tab-toolbar-bg) !important;
+    color: var(--base06) !important;
+  }
 }
 
 #action-box {
-    background: var(--base21) !important;
+  background: var(--base21) !important;
 }
 
 .wide-container button {
-    background: var(--base03) !important;
+  background: var(--base03) !important;
 }
 
 .wide-container th,
 .wide-container td,
 .wide-container tr {
-    background: var(--base21) !important;
+  background: var(--base21) !important;
 }

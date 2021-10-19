@@ -28,7 +28,7 @@ download_ff() {
         cp -r "${FF_THEME}"* "${CHROME_DIRECTORY}"
         sudo cp -r "${FF_THEME}"patches/root/defaults /usr/lib/firefox*
         sudo cp -r  "${FF_THEME}"patches/root/config.js /usr/lib/firefox*
-        cp -rvf "${CHROME_DIRECTORY}"/patches/chrome/* "${CHROME_DIRECTORY}" && rm -rvf "${CHROME_DIRECTORY}"
+        cp -rvf "${CHROME_DIRECTORY}"/patches/chrome/* "${CHROME_DIRECTORY}"
         
         
         message "[>>] Backup user.js instead of overwriting it"

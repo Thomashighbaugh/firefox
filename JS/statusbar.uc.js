@@ -260,7 +260,7 @@ var AddonbarVertical = {
 		} \
 		#main-window[lwtheme-image="true"]:-moz-lwtheme #addonbar_h { \
 		  background: var(--lwt-header-image) !important; \
-		  background-position: 0vw 50vh !important; \
+		  background-position: 50vw 0vh !important; \
 		} \
 		#main-window:not([customizing]) #toolbox_abv:not([collapsed="true"]), \
 		#main-window:not([customizing]) #addonbar_h:not([collapsed="true"]) { \

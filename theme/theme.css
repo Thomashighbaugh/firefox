@@ -26,6 +26,7 @@
 @import "parts/scrollbars.css";
 @import "parts/icons.css";
 
+
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 :root {

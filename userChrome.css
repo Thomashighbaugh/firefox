@@ -6,7 +6,6 @@
  * Enable Browser Modifications
 */
 
-
 /* Limit the URL bar's autocompletion popup's width to the URL bar's width (GNOMISH) */
 
 @import url("theme/matching-autocomplete-width.css");
@@ -22,3 +21,5 @@
 /* Hide single tabs */
 
 @import url("theme/hide-single-tab.css");
+
+@import url("theme/hide-tabbar");

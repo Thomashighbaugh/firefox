@@ -115,14 +115,14 @@ var AddonbarVertical = {
               ) {
                 document
                   .querySelector("#addonbar_h")
-                  .setAttribute("orient", "horizontal");
+                  .setAttribute("orient", "vertical");
                 document
                   .querySelector("#navigator-toolbox")
                   .appendChild(document.querySelector("#addonbar_h"));
               } else {
                 document
                   .querySelector("#addonbar_h")
-                  .setAttribute("orient", "vertical");
+                  .setAttribute("orient", "horizontal");
                 document
                   .querySelector("#toolbox_abv")
                   .appendChild(document.querySelector("#addonbar_h"));
@@ -138,18 +138,18 @@ var AddonbarVertical = {
 
         try {
           Services.prefs
-            .getDefaultBranch("browser.vaddonbar.")
+            .getDefaultBranch("browser.addonbar.")
             .setBoolPref("enabled", true);
           setToolbarVisibility(
             document.getElementById("addonbar_h"),
             Services.prefs
-              .getBranch("browser.vaddonbar.")
+              .getBranch("browser.addonbar.")
               .getBoolPref("enabled")
           );
           setToolbarVisibility(
             document.getElementById("toolbox_abv"),
             Services.prefs
-              .getBranch("browser.vaddonbar.")
+              .getBranch("browser.addonbar.")
               .getBoolPref("enabled")
           );
         } catch (e) { }
@@ -166,17 +166,17 @@ var AddonbarVertical = {
               while (windows.hasMoreElements()) {
                 var win = windows.getNext();
 
-                var vAddonBar = win.document.getElementById("addonbar_h");
-                setToolbarVisibility(vAddonBar, vAddonBar.collapsed);
+                var AddonBar = win.document.getElementById("addonbar_h");
+                setToolbarVisibility(AddonBar, AddonBar.collapsed);
 
-                var vAddonBarBox = win.document.getElementById("toolbox_abv");
-                setToolbarVisibility(vAddonBarBox, vAddonBarBox.collapsed);
+                var AddonBarBox = win.document.getElementById("toolbox_abv");
+                setToolbarVisibility(AddonBarBox, AddonBarBox.collapsed);
 
                 Services.prefs
-                  .getBranch("browser.vaddonbar.")
-                  .setBoolPref("enabled", !vAddonBar.collapsed);
+                  .getBranch("browser.addonbar.")
+                  .setBoolPref("enabled", !AddonBar.collapsed);
 
-                if (!vAddonBar.collapsed)
+                if (!AddonBar.collapsed)
                   win.document
                     .querySelector("#tooglebutton_addonbar_h")
                     .setAttribute("checked", "true");
@@ -189,7 +189,7 @@ var AddonbarVertical = {
             onCreated: function (button) {
               if (
                 Services.prefs
-                  .getBranch("browser.vaddonbar.")
+                  .getBranch("browser.addonbar.")
                   .getBoolPref("enabled")
               )
                 button.setAttribute("checked", "true");
@@ -210,12 +210,12 @@ var AddonbarVertical = {
 		var windows = Services.wm.getEnumerator(null);\
 		while (windows.hasMoreElements()) {\
 		  var win = windows.getNext();  \
-		  var vAddonBar = win.document.getElementById("addonbar_h");\
-		  setToolbarVisibility(vAddonBar, vAddonBar.collapsed);\
-		  var vAddonBarBox = win.document.getElementById("toolbox_abv");\
-		  setToolbarVisibility(vAddonBarBox, vAddonBarBox.collapsed);\
-		  Services.prefs.getBranch("browser.vaddonbar.").setBoolPref("enabled",!vAddonBar.collapsed);\
-		  if(!vAddonBar.collapsed)\
+		  var AddonBar = win.document.getElementById("addonbar_h");\
+		  setToolbarVisibility(AddonBar, AddonBar.collapsed);\
+		  var AddonBarBox = win.document.getElementById("toolbox_abv");\
+		  setToolbarVisibility(AddonBarBox, AddonBarBox.collapsed);\
+		  Services.prefs.getBranch("browser.addonbar.").setBoolPref("enabled",!AddonBar.collapsed);\
+		  if(!AddonBar.collapsed)\
 			win.document.querySelector("#tooglebutton_addonbar_h").setAttribute("checked","true");\
 		  else win.document.querySelector("#tooglebutton_addonbar_h").removeAttribute("checked");\
 		}\
@@ -278,8 +278,8 @@ var AddonbarVertical = {
 		#main-window[chromehidden="menubar toolbar location directories status extrachrome "] #addonbar_h:not([collapsed="true"]), \
 		#main-window[sizemode="fullscreen"] #toolbox_abv:not([collapsed="true"]), \
 		#main-window[sizemode="fullscreen"] #addonbar_h:not([collapsed="true"]) { \
-		  min-width: 0px; \
-		  width: 0px; \
+		  min-height: 0px; \
+		  height: 0px; \
 		  max-width: 0px; \
       background-color:#17191e !important; \
 		} \

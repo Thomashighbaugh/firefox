@@ -1,206 +1,398 @@
-// ==UserScript==
-// @name            Status Bar
-// @author          xiaoxiaoflood
-// @include         main
-// @startup         statusBar.exec(win);
-// @shutdown        statusBar.destroy();
-// @onlyonce
-// ==/UserScript==
+// 'Vertical Add-on Bar' script for Firefox 60+ by Aris
+//
+// no 'close' button
+// 'toggle' toolbar with 'Ctr + Alt + /' on Windows/Linux or 'Cmd + Alt + /' on macOS
+// optional toggle button hides the toolbar temporarily, it gets restored on every restart
+// 'Vertical Add-on Bar' entry is only visible in toolbars context menu when in customizing mode
+//
+// flexible spaces on toolbar work 'vertically'
+// toolbar can be on the bottom or on the right
+// toolbar is display horizontally in customizing mode
+
+// [!] Fix for WebExtensions with own windows by 黒仪大螃蟹 (for 1-N scripts)
+
 Components.utils.import("resource:///modules/CustomizableUI.jsm");
 var { Services } = Components.utils.import(
   "resource://gre/modules/Services.jsm",
   {}
 );
-var statusBar = {
-  PREF_ENABLED: "userChromeJS.statusbar.enabled",
-  PREF_STATUSTEXT: "userChromeJS.statusbar.appendStatusText",
+var appversion = parseInt(Services.appinfo.version);
 
-  get enabled() {
-    return xPref.get(this.PREF_ENABLED);
-  },
-
-  get textInBar() {
-    return this.enabled && xPref.get(this.PREF_STATUSTEXT);
-  },
-
+var AddonbarVertical = {
   init: function () {
-    xPref.set(this.PREF_ENABLED, true, true);
-    xPref.set(this.PREF_STATUSTEXT, true, true);
-    this.enabledListener = xPref.addListener(this.PREF_ENABLED, (isEnabled) => {
-      CustomizableUI.getWidget("status-dummybar").instances.forEach(
-        (dummyBar) => {
-          dummyBar.node.setAttribute("collapsed", !isEnabled);
-        }
-      );
-    });
-    this.textListener = xPref.addListener(this.PREF_STATUSTEXT, (isEnabled) => {
-      if (!statusBar.enabled) return;
+    if (
+      appversion >= 76 &&
+      location != "chrome://browser/content/browser.xhtml"
+    )
+      return;
 
-      var windows = Services.wm.getEnumerator(null);
-      while (windows.hasMoreElements()) {
-        var win = windows.getNext();
+    /* blank tab workaround */
+    try {
+      if (gBrowser.selectedBrowser.getAttribute("blank"))
+        gBrowser.selectedBrowser.removeAttribute("blank");
+    } catch (e) { }
 
-        var vAddonBar = win.document.getElementById("addonbar_v");
-        setToolbarVisibility(vAddonBar, vAddonBar.collapsed);
+    var addonbar_h_label = "Vertical Add-on Bar"; // toolbar name
+    var button_label = "Toggle vertical Add-on Bar"; // Toggle button name
+    var addonbar_h_togglebutton = true; // display toggle button for vertical toolbar (true) or not (false)
+    var addonbar_h_on_the_bottom = true; // display vertical toolbar on the bottom (true) or the right (false)
+    var insert_before_borders = false; // may not always offer a visible change
+    var style_addonbar_h = true; // apply default toolbar appearance/colors to vertical add-on bar
+    var addonbar_h_height = "30px"; // toolbar width
+    var compact_buttons = false; // compact button size (true) or default button size (false)
 
-        var vAddonBarBox = win.document.getElementById("toolbox_abv");
-        setToolbarVisibility(vAddonBarBox, vAddonBarBox.collapsed);
+    try {
+      if (
+        document.getElementById("toolbox_abv") == null &&
+        document.getElementById("addonbar_h") == null
+      ) {
+        if (appversion <= 62)
+          var toolbox_abv = document.createElement("toolbox");
+        else var toolbox_abv = document.createXULElement("toolbox");
+        toolbox_abv.setAttribute("orient", "horizontal");
+        toolbox_abv.setAttribute("id", "toolbox_abv");
+        toolbox_abv.setAttribute("insertbefore", "sidebar-box");
 
-        Services.prefs
-          .getBranch("browser.vaddonbar.")
-          .setBoolPref("enabled", !vAddonBar.collapsed);
+        if (appversion <= 62)
+          var tb_addonbarv = document.createElement("toolbar");
+        else var tb_addonbarv = document.createXULElement("toolbar");
+        tb_addonbarv.setAttribute("id", "addonbar_h");
+        tb_addonbarv.setAttribute("customizable", "true");
+        tb_addonbarv.setAttribute(
+          "class",
+          "toolbar-primary chromeclass-toolbar browser-toolbar customization-target"
+        );
+        tb_addonbarv.setAttribute("mode", "icons");
+        tb_addonbarv.setAttribute("iconsize", "small");
+        tb_addonbarv.setAttribute("toolboxid", "navigator-toolbox");
+        tb_addonbarv.setAttribute("orient", "vertical");
+        tb_addonbarv.setAttribute("flex", "1");
+        tb_addonbarv.setAttribute("context", "toolbar-context-menu");
+        tb_addonbarv.setAttribute("toolbarname", addonbar_h_label);
+        tb_addonbarv.setAttribute("label", addonbar_h_label);
+        tb_addonbarv.setAttribute("lockiconsize", "true");
+        tb_addonbarv.setAttribute("defaultset", "spring");
 
-        if (!vAddonBar.collapsed)
-          win.document
-            .querySelector("#tooglebutton_addonbar_v")
-            .setAttribute("checked", "true");
-        else
-          win.document
-            .querySelector("#tooglebutton_addonbar_v")
-            .removeAttribute("checked");
-      };
-    });
+        toolbox_abv.appendChild(tb_addonbarv);
 
-    this.setStyle();
-    sss.loadAndRegisterSheet(this.STYLE.url, this.STYLE.type);
+        CustomizableUI.registerArea("addonbar_h", { legacy: true });
+        if (appversion >= 65) CustomizableUI.registerToolbarNode(tb_addonbarv);
 
-    CustomizableUI.registerArea("status-bar", {});
-  },
-
-  exec: function (win) {
-    let document = win.document;
-    let StatusPanel = win.StatusPanel;
-
-    let dummystatusbar = createElement(document, "toolbar", {
-      id: "status-dummybar",
-      toolbarname: "Status Bar",
-      hidden: "true"
-    });
-    dummystatusbar.collapsed = !this.enabled;
-    dummystatusbar.setAttribute = function (att, value) {
-      let result = Element.prototype.setAttribute.apply(this, arguments);
-
-      if (att == "collapsed") {
-        let StatusPanel = win.StatusPanel;
-        if (value === true) {
-          xPref.set(statusBar.PREF_ENABLED, false);
-          win.statusbar.node.setAttribute("collapsed", true);
-          StatusPanel.panel.firstChild.appendChild(StatusPanel._labelElement);
-          win.statusbar.node.parentNode.collapsed = true;
+        if (addonbar_h_on_the_bottom) {
+          if (insert_before_borders || appversion >= 86)
+            document
+              .getElementById("browser")
+              .insertBefore(
+                toolbox_abv,
+                document.getElementById("browser").firstChild
+              );
+          else
+            document
+              .getElementById("browser")
+              .insertBefore(
+                toolbox_abv,
+                document.getElementById("browser").firstChild.nextSibling
+              );
         } else {
-          xPref.set(statusBar.PREF_ENABLED, true);
-          win.statusbar.node.setAttribute("collapsed", false);
-          if (statusBar.textInBar)
-            win.statusbar.textNode.appendChild(StatusPanel._labelElement);
-          win.statusbar.node.parentNode.collapsed = false;
+          if (insert_before_borders)
+            document.getElementById("browser").appendChild(toolbox_abv);
+          else
+            document
+              .getElementById("browser")
+              .insertBefore(
+                toolbox_abv,
+                document.getElementById("browser").lastChild
+              );
         }
+
+        var observer = new MutationObserver(function (mutations) {
+          mutations.forEach(function (mutation) {
+            try {
+              if (
+                document
+                  .querySelector("#main-window")
+                  .getAttribute("customizing")
+              ) {
+                document
+                  .querySelector("#addonbar_h")
+                  .setAttribute("orient", "horizontal");
+                document
+                  .querySelector("#navigator-toolbox")
+                  .appendChild(document.querySelector("#addonbar_h"));
+              } else {
+                document
+                  .querySelector("#addonbar_h")
+                  .setAttribute("orient", "vertical");
+                document
+                  .querySelector("#toolbox_abv")
+                  .appendChild(document.querySelector("#addonbar_h"));
+              }
+            } catch (e) { }
+          });
+        });
+
+        observer.observe(document.querySelector("#main-window"), {
+          attributes: true,
+          attributeFilter: ["customizing"]
+        });
+
+        try {
+          Services.prefs
+            .getDefaultBranch("browser.vaddonbar.")
+            .setBoolPref("enabled", true);
+          setToolbarVisibility(
+            document.getElementById("addonbar_h"),
+            Services.prefs
+              .getBranch("browser.vaddonbar.")
+              .getBoolPref("enabled")
+          );
+          setToolbarVisibility(
+            document.getElementById("toolbox_abv"),
+            Services.prefs
+              .getBranch("browser.vaddonbar.")
+              .getBoolPref("enabled")
+          );
+        } catch (e) { }
+
+        if (addonbar_h_togglebutton) {
+          CustomizableUI.createWidget({
+            id: "tooglebutton_addonbar_h", // button id
+            defaultArea: CustomizableUI.AREA_NAVBAR,
+            removable: true,
+            label: button_label, // button title
+            tooltiptext: button_label, // tooltip title
+            onClick: function (event) {
+              var windows = Services.wm.getEnumerator(null);
+              while (windows.hasMoreElements()) {
+                var win = windows.getNext();
+
+                var vAddonBar = win.document.getElementById("addonbar_h");
+                setToolbarVisibility(vAddonBar, vAddonBar.collapsed);
+
+                var vAddonBarBox = win.document.getElementById("toolbox_abv");
+                setToolbarVisibility(vAddonBarBox, vAddonBarBox.collapsed);
+
+                Services.prefs
+                  .getBranch("browser.vaddonbar.")
+                  .setBoolPref("enabled", !vAddonBar.collapsed);
+
+                if (!vAddonBar.collapsed)
+                  win.document
+                    .querySelector("#tooglebutton_addonbar_h")
+                    .setAttribute("checked", "true");
+                else
+                  win.document
+                    .querySelector("#tooglebutton_addonbar_h")
+                    .removeAttribute("checked");
+              }
+            },
+            onCreated: function (button) {
+              if (
+                Services.prefs
+                  .getBranch("browser.vaddonbar.")
+                  .getBoolPref("enabled")
+              )
+                button.setAttribute("checked", "true");
+              return button;
+            }
+          });
+        }
+
+        // 'Ctr + Alt + /' on Windows/Linux or 'Cmd + Alt + /' on macOS to toggle vertical add-on bar
+        var key = document.createXULElement("key");
+        if (appversion < 69) key = document.createElement("key");
+        key.id = "key_toggleVAddonBar";
+        key.setAttribute("key", "/");
+        key.setAttribute("modifiers", "accel,alt");
+        key.setAttribute(
+          "oncommand",
+          '\
+		var windows = Services.wm.getEnumerator(null);\
+		while (windows.hasMoreElements()) {\
+		  var win = windows.getNext();  \
+		  var vAddonBar = win.document.getElementById("addonbar_h");\
+		  setToolbarVisibility(vAddonBar, vAddonBar.collapsed);\
+		  var vAddonBarBox = win.document.getElementById("toolbox_abv");\
+		  setToolbarVisibility(vAddonBarBox, vAddonBarBox.collapsed);\
+		  Services.prefs.getBranch("browser.vaddonbar.").setBoolPref("enabled",!vAddonBar.collapsed);\
+		  if(!vAddonBar.collapsed)\
+			win.document.querySelector("#tooglebutton_addonbar_h").setAttribute("checked","true");\
+		  else win.document.querySelector("#tooglebutton_addonbar_h").removeAttribute("checked");\
+		}\
+	  '
+        );
+        document.getElementById("mainKeyset").appendChild(key);
+      }
+    } catch (e) { }
+
+    // style toolbar & toggle button
+    var addonbar_h_style = "";
+    var tooglebutton_addonbar_h_style = "";
+
+    if (style_addonbar_h) {
+      var end_border =
+        " \
+		#addonbar_h { \
+			-moz-border-end: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.1)) !important; \
+		}\
+	  ";
+
+      if (!addonbar_h_on_the_bottom) {
+        end_border =
+          "\
+		  #addonbar_h { \
+			-moz-border-start: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.1)) !important; \
+		  }\
+		";
       }
 
-      return result;
-    };
-    win.gNavToolbox.appendChild(dummystatusbar);
+      addonbar_h_style =
+        '\
+		#addonbar_h { \
+		  -moz-appearance: none !important; \
+		  background-color:#17191e !important; \
+		  background-image: var(--toolbar-bgimage); \
+		  background-clip: padding-box; \
+		  color: var(--toolbar-color, inherit); \
+		} \
+		#main-window:-moz-lwtheme #addonbar_h { \
+		  background: var(--lwt-accent-color) !important; \
+		} \
+		#main-window[lwtheme-image="true"]:-moz-lwtheme #addonbar_h { \
+		  background: var(--lwt-header-image) !important; \
+		  background-position: 0vw 50vh !important; \
+		} \
+		#main-window:not([customizing]) #toolbox_abv:not([collapsed="true"]), \
+		#main-window:not([customizing]) #addonbar_h:not([collapsed="true"]) { \
+		  min-height: ' +
+        addonbar_h_height +
+        "; \
+		  height: " +
+        addonbar_h_height +
+        "; \
+		  max-height: " +
+        addonbar_h_height +
+        '; \
+		} \
+		#main-window[chromehidden="menubar toolbar location directories status extrachrome "] #toolbox_abv:not([collapsed="true"]), \
+		#main-window[chromehidden="menubar toolbar location directories status extrachrome "] #addonbar_h:not([collapsed="true"]), \
+		#main-window[sizemode="fullscreen"] #toolbox_abv:not([collapsed="true"]), \
+		#main-window[sizemode="fullscreen"] #addonbar_h:not([collapsed="true"]) { \
+		  min-width: 0px; \
+		  width: 0px; \
+		  max-width: 0px; \
+      background-color:#17191e !important; \
+		} \
+		#main-window[customizing] #addonbar_h { \
+		  outline: 1px dashed !important; \
+		  outline-offset: -2px !important; \
+		} \
+		#addonbar_h:-moz-lwtheme { \
+		  background: var(--lwt-header-image) !important; \
+      background-color:#17191e !important; \
+		  background-position: 100vw 50vh !important; \
+		} \
+		#addonbar_h toolbarbutton, \
+		#addonbar_h toolbar .toolbarbutton-1 { \
+		  padding: 0 !important; \
+      background-color:#17191e !important; \
+		} \
+		' +
+        end_border +
+        " \
+	  ";
+    }
 
-    win.statusbar.node = createElement(document, "toolbar", {
-      id: "status-bar",
-      customizable: "true",
-      context: "toolbar-context-menu",
-      mode: "icons"
-    });
+    if (addonbar_h_togglebutton) {
+      tooglebutton_addonbar_h_style =
+        '\
+		#tooglebutton_addonbar_h .toolbarbutton-icon { \
+		  list-style-image: url("chrome://browser/skin/sidebars.svg"); \
+		  fill: #f4f4f7; \
+		}\
+		/*#tooglebutton_addonbar_h .toolbarbutton-icon { \
+		  list-style-image: url("chrome://browser/skin/forward.svg"); \
+		  fill: #f4f4f7; \
+		} \
+		#tooglebutton_addonbar_h[checked] .toolbarbutton-icon { \
+		  fill: #f4f4f7;  \
+		} \
+		#tooglebutton_addonbar_h { \
+		  background: url("chrome://browser/skin/back.svg") no-repeat; \
+      background-color:#17191e !important; \
+		  background-size: 35% !important; \
+		  background-position: 10% 70% !important; \
+		} \
+		#tooglebutton_addonbar_h[checked] { \
+		  transform: rotate(180deg) !important;  \
+		  background: url("chrome://browser/skin/back.svg") no-repeat; \
+      background-color:#17191e !important; \
+		  background-position: 10% 30% !important; \
+		}*/ \
+	  ';
+    }
 
-    win.statusbar.textNode = createElement(document, "toolbaritem", {
-      id: "status-text",
-      flex: "1",
-      width: "100"
-    });
-    if (this.textInBar)
-      win.statusbar.textNode.appendChild(StatusPanel._labelElement);
-    win.statusbar.node.appendChild(win.statusbar.textNode);
+    var compact_buttons_code = "";
 
-    let resizerContainer = createElement(document, "toolbaritem", {
-      id: "resizer-container"
-    });
-    let resizer = createElement(document, "resizer");
-    resizerContainer.appendChild(resizer);
-    win.statusbar.node.appendChild(resizerContainer);
+    if (compact_buttons)
+      compact_buttons_code =
+        "\
+		#addonbar_h toolbarbutton .toolbarbutton-icon { \
+		  padding: 0 !important; \
+		  width: 16px !important; \
+    background-color:#17191e !important; \
+		  height: 16px !important; \
+		} \
+		#addonbar_h .toolbarbutton-badge-stack { \
+		  padding: 0 !important; \
+		  margin: 0 !important; \
+		  width: 16px !important; \
+    background-color:#17191e !important; \
+		  min-width: 16px !important; \
+		  height: 16px !important; \
+		  min-height: 16px !important; \
+		} \
+		#addonbar_h toolbarbutton .toolbarbutton-badge { \
+		  margin-top: 0px !important; \
+		  font-size: 8px !important; \
+    background-color:#17191e !important; \
+		} \
+    		#addonbar_h toolbarbutton  { \
+    background-color:#17191e !important; \
+		} \
+	  ";
 
-    win.eval(
-      'Object.defineProperty(StatusPanel, "_label", {' +
-      Object.getOwnPropertyDescriptor(StatusPanel, "_label")
-        .set.toString()
-        .replace(/^set _label/, "set")
-        .replace(
-          /((\s+)this\.panel\.setAttribute\("inactive", "true"\);)/,
-          "$2this._labelElement.value = val;$1"
-        ) +
-      ", enumerable: true, configurable: true});"
+    var uri = Services.io.newURI(
+      "data:text/css;charset=utf-8," +
+      encodeURIComponent(
+        "\
+	  " +
+        addonbar_h_style +
+        " \
+	  " +
+        tooglebutton_addonbar_h_style +
+        " \
+	  " +
+        compact_buttons_code +
+        " \
+	"
+      ),
+      null,
+      null
     );
 
-    let bottomBox = document.getElementById("browser-bottombox");
-    if (!this.enabled) bottomBox.collapsed = true;
-
-    CustomizableUI.registerToolbarNode(win.statusbar.node);
-    bottomBox.appendChild(win.statusbar.node);
-    win.statusbar.node.parentNode = bottomBox;
-  },
-
-  orig: Object.getOwnPropertyDescriptor(StatusPanel, "_label").set.toString(),
-
-  setStyle: function () {
-    this.STYLE = {
-      url: Services.io.newURI(
-        "data:text/css;charset=UTF-8," +
-        encodeURIComponent(`
-        @-moz-document url('${BROWSERCHROME}') {
-          #status-bar {
-            color: initial !important;
-            background-color: #17191e !important;
-          }
-          #status-text > #statuspanel-label {
-            border-top: 0 !important;
-            background-color: unset !important;
-            color: #8b9cbe !important;
-          }
-          #browser-bottombox:not([collapsed]) {
-            border-top: 1px solid var(--chrome-content-separator-color) !important;
-          }
-          #wrapper-status-text label::after {
-            content: "Status text" !important;
-            color: red !important;
-            border: 1px #17191e solid !important;
-            border-radius: 3px !important;
-            font-weight: bold !important;
-          }
-          #status-bar > #status-text {
-            display: flex !important;
-            justify-content: center !important;
-            align-content: center !important;
-            flex-direction: column !important;
-          }
-        }
-      `)
-      ),
-      type: sss.USER_SHEET
-    };
-  },
-
-  destroy: function () {
-    xPref.removeListener(this.enabledListener);
-    xPref.removeListener(this.textListener);
-    CustomizableUI.unregisterArea("status-bar");
-    sss.unregisterSheet(this.STYLE.url, this.STYLE.type);
-    windows((doc, win) => {
-      win.eval(
-        'Object.defineProperty(StatusPanel, "_label", {' +
-        this.orig.replace(/^set _label/, "set") +
-        ", enumerable: true, configurable: true});"
-      );
-      let StatusPanel = win.StatusPanel;
-      StatusPanel.panel.firstChild.appendChild(StatusPanel._labelElement);
-      doc.getElementById("status-dummybar").remove();
-      win.statusbar.node.remove();
-    });
-    delete statusBar;
+    var sss = Components.classes[
+      "@mozilla.org/content/style-sheet-service;1"
+    ].getService(Components.interfaces.nsIStyleSheetService);
+    sss.loadAndRegisterSheet(uri, sss.AGENT_SHEET);
   }
 };
-document.addEventListener("DOMContentLoaded", statusBar.init(), false);
 
+/* initialization delay workaround */
+document.addEventListener("DOMContentLoaded", AddonbarVertical.init(), false);
+/* Use the below code instead of the one above this line, if issues occur */
+/*
+setTimeout(function(){
+  AddonbarVertical.init();
+},2000);
+*/

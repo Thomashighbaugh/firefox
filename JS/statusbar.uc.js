@@ -49,7 +49,7 @@ var AddonbarVertical = {
         if (appversion <= 62)
           var toolbox_abv = document.createElement("toolbox");
         else var toolbox_abv = document.createXULElement("toolbox");
-        toolbox_abv.setAttribute("orient", "horizontal");
+        toolbox_abv.setAttribute("orient", "vertical");
         toolbox_abv.setAttribute("id", "toolbox_abv");
         toolbox_abv.setAttribute("insertbefore", "sidebar-box");
 

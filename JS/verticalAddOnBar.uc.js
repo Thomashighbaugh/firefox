@@ -357,6 +357,9 @@ var AddonbarVertical = {
 		  font-size: 8px !important; \
     background-color:#17191e !important; \
 		} \
+    		#addonbar_v toolbarbutton  { \
+    background-color:#17191e !important; \
+		} \
 	  ";
 
     var uri = Services.io.newURI(

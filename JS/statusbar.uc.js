@@ -2,8 +2,8 @@
 // @name            Status Bar
 // @author          xiaoxiaoflood
 // @include         main
-// @startup         UC.statusBar.exec(win);
-// @shutdown        UC.statusBar.destroy();
+// @startup         statusBar.exec(win);
+// @shutdown        statusBar.destroy();
 // @onlyonce
 // ==/UserScript==
 Components.utils.import("resource:///modules/CustomizableUI.jsm");
@@ -34,19 +34,35 @@ var statusBar = {
       );
     });
     this.textListener = xPref.addListener(this.PREF_STATUSTEXT, (isEnabled) => {
-      if (!UC.statusBar.enabled) return;
+      if (!statusBar.enabled) return;
 
-      _uc.windows((doc, win) => {
-        let StatusPanel = win.StatusPanel;
-        if (isEnabled)
-          win.statusbar.textNode.appendChild(StatusPanel._labelElement);
+      var windows = Services.wm.getEnumerator(null);
+      while (windows.hasMoreElements()) {
+        var win = windows.getNext();
+
+        var vAddonBar = win.document.getElementById("addonbar_v");
+        setToolbarVisibility(vAddonBar, vAddonBar.collapsed);
+
+        var vAddonBarBox = win.document.getElementById("toolbox_abv");
+        setToolbarVisibility(vAddonBarBox, vAddonBarBox.collapsed);
+
+        Services.prefs
+          .getBranch("browser.vaddonbar.")
+          .setBoolPref("enabled", !vAddonBar.collapsed);
+
+        if (!vAddonBar.collapsed)
+          win.document
+            .querySelector("#tooglebutton_addonbar_v")
+            .setAttribute("checked", "true");
         else
-          StatusPanel.panel.firstChild.appendChild(StatusPanel._labelElement);
-      });
+          win.document
+            .querySelector("#tooglebutton_addonbar_v")
+            .removeAttribute("checked");
+      };
     });
 
     this.setStyle();
-    _uc.sss.loadAndRegisterSheet(this.STYLE.url, this.STYLE.type);
+    sss.loadAndRegisterSheet(this.STYLE.url, this.STYLE.type);
 
     CustomizableUI.registerArea("status-bar", {});
   },
@@ -55,7 +71,7 @@ var statusBar = {
     let document = win.document;
     let StatusPanel = win.StatusPanel;
 
-    let dummystatusbar = _uc.createElement(document, "toolbar", {
+    let dummystatusbar = createElement(document, "toolbar", {
       id: "status-dummybar",
       toolbarname: "Status Bar",
       hidden: "true"
@@ -67,14 +83,14 @@ var statusBar = {
       if (att == "collapsed") {
         let StatusPanel = win.StatusPanel;
         if (value === true) {
-          xPref.set(UC.statusBar.PREF_ENABLED, false);
+          xPref.set(statusBar.PREF_ENABLED, false);
           win.statusbar.node.setAttribute("collapsed", true);
           StatusPanel.panel.firstChild.appendChild(StatusPanel._labelElement);
           win.statusbar.node.parentNode.collapsed = true;
         } else {
-          xPref.set(UC.statusBar.PREF_ENABLED, true);
+          xPref.set(statusBar.PREF_ENABLED, true);
           win.statusbar.node.setAttribute("collapsed", false);
-          if (UC.statusBar.textInBar)
+          if (statusBar.textInBar)
             win.statusbar.textNode.appendChild(StatusPanel._labelElement);
           win.statusbar.node.parentNode.collapsed = false;
         }
@@ -84,14 +100,14 @@ var statusBar = {
     };
     win.gNavToolbox.appendChild(dummystatusbar);
 
-    win.statusbar.node = _uc.createElement(document, "toolbar", {
+    win.statusbar.node = createElement(document, "toolbar", {
       id: "status-bar",
       customizable: "true",
       context: "toolbar-context-menu",
       mode: "icons"
     });
 
-    win.statusbar.textNode = _uc.createElement(document, "toolbaritem", {
+    win.statusbar.textNode = createElement(document, "toolbaritem", {
       id: "status-text",
       flex: "1",
       width: "100"
@@ -100,10 +116,10 @@ var statusBar = {
       win.statusbar.textNode.appendChild(StatusPanel._labelElement);
     win.statusbar.node.appendChild(win.statusbar.textNode);
 
-    let resizerContainer = _uc.createElement(document, "toolbaritem", {
+    let resizerContainer = createElement(document, "toolbaritem", {
       id: "resizer-container"
     });
-    let resizer = _uc.createElement(document, "resizer");
+    let resizer = createElement(document, "resizer");
     resizerContainer.appendChild(resizer);
     win.statusbar.node.appendChild(resizerContainer);
 
@@ -134,7 +150,7 @@ var statusBar = {
       url: Services.io.newURI(
         "data:text/css;charset=UTF-8," +
         encodeURIComponent(`
-        @-moz-document url('${_uc.BROWSERCHROME}') {
+        @-moz-document url('${BROWSERCHROME}') {
           #status-bar {
             color: initial !important;
             background-color: #17191e !important;
@@ -163,7 +179,7 @@ var statusBar = {
         }
       `)
       ),
-      type: _uc.sss.USER_SHEET
+      type: sss.USER_SHEET
     };
   },
 
@@ -171,8 +187,8 @@ var statusBar = {
     xPref.removeListener(this.enabledListener);
     xPref.removeListener(this.textListener);
     CustomizableUI.unregisterArea("status-bar");
-    _uc.sss.unregisterSheet(this.STYLE.url, this.STYLE.type);
-    _uc.windows((doc, win) => {
+    sss.unregisterSheet(this.STYLE.url, this.STYLE.type);
+    windows((doc, win) => {
       win.eval(
         'Object.defineProperty(StatusPanel, "_label", {' +
         this.orig.replace(/^set _label/, "set") +
@@ -183,7 +199,7 @@ var statusBar = {
       doc.getElementById("status-dummybar").remove();
       win.statusbar.node.remove();
     });
-    delete UC.statusBar;
+    delete statusBar;
   }
 };
 document.addEventListener("DOMContentLoaded", statusBar.init(), false);

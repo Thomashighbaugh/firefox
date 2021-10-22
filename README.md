@@ -17,13 +17,23 @@ To install the exact theme I use, run the following command:
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Thomashighbaugh/firefox/script/install.sh | bash -s -- stable
 ```
+### Editions
+If you use another edition of Firefox, just add the flag to the command above. Here's an example   
+
+```
+$ curl -fsSL https://raw.githubusercontent.com/Thomashighbaugh/firefox/script/install.sh | bash -s -- nightly
+```
+and then it will install to Nightly instead of the default Firefox profile. 
+
+### Patching 
+This Firefox customization makes extensive use of Javascript, contained in the JS directory that require firefox be patched both in the profile's directory and the system directory. I have baked this into the script that installs the programs, but if you use another OS or have alternative means of loading these, I would advise commenting this lines of the install script out before proceeding. 
 
 ### Development
 
-In order to install a variant of this theme which you have crafted locally, you can either manually copy the files to a chrome directory within your browser's profile or you may set up your own repository, then use modify the `install.sh` script to download from that repository's url. I would have included the option in a commented out section of the script, but was frustrated in my attempt by the nature of globbing and variable assignment, which if you understand how to do this, I welcome any forks.
+In order to install a variant of this theme which you have crafted locally, you can either manually copy the files to a chrome directory within your browser's profile or you may set up your own repository, then modify the `install.sh` script to download from that repository's url instead of this one's url. Really, steal the thing I actually don't mind at all. All I ask is for a star!
 
 ## Post Installation
 
 After completing the installation, restart firefox _if open_ or open it.
 
-If you want to use a different color scheme, change the `Theme` in the customization tab which is accessed by right clicking in the `findbar` and selecting `Customize`.
+There is a light style that exists and the "System"s style is ok, but this customization was made with dark mode in mind, so it will look and work better if you make sure to set this on the customize page (right click toolbar, click customize)

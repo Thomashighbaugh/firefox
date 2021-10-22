@@ -33,17 +33,17 @@
 .expander-down,
 .expander-up {
   -moz-appearance: none !important;
-  background: var(---button-background) !important;
-  box-shadow: var(---button-box-shadow) !important;
-  border: 1px solid var(---button-border-color) !important;
-  border-bottom-color: var(---button-border-accent-color) !important;
+  background: var(--button-background) !important;
+  box-shadow: var(--button-box-shadow) !important;
+  border: 1px solid var(--button-border-color) !important;
+  border-bottom-color: var(--button-border-accent-color) !important;
   border-radius: 5px !important;
   padding: 0 2px !important;
   height: 30px !important;
   max-height: 30px !important;
   min-height: 30px !important;
   min-width: 30px !important;
-  color: var(---toolbar-color) !important;
+  color: var(--toolbar-color) !important;
 }
 
 /* Buttons with margins */
@@ -118,7 +118,7 @@ menulist:hover .menulist-label-box,
 .expander-down:hover,
 .expander-up:hover {
   outline: 0 !important;
-  background: var(---button-hover-background) !important;
+  background: var(--button-hover-background) !important;
   border-color: transparent !important;
 }
 
@@ -151,22 +151,22 @@ menulist[open] .menulist-label-box,
 .expander-up:active {
   background: linear-gradient(
     45deg,
-    rgba(var(---start-gradient-color-rgb), 0.5),
-    rgba(var(---end-gradient-color-rgb), 0.5)
+    rgba(var(--start-gradient-color-rgb), 0.5),
+    rgba(var(--end-gradient-color-rgb), 0.5)
   ) !important;
-  box-shadow: var(---button-active-box-shadow) !important;
+  box-shadow: var(--button-active-box-shadow) !important;
   border-color: transparent !important;
-  border-bottom-color: var(---button-active-border-color) !important;
-  border-top-color: var(---button-active-border-accent-color) !important;
+  border-bottom-color: var(--button-active-border-color) !important;
+  border-top-color: var(--button-active-border-accent-color) !important;
 }
 
 /* Disabled buttons */
 #nav-bar toolbarbutton:not(#urlbar-zoom-button)[disabled],
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton[disabled],
 #context-navigation menuitem[disabled] {
-  background: var(---button-disabled-background) !important;
+  background: var(--button-disabled-background) !important;
   border-color: transparent !important;
-  box-shadow: var(---button-disabled-box-shadow) !important;
+  box-shadow: var(--button-disabled-box-shadow) !important;
   opacity: 1 !important;
 }
 #nav-bar toolbarbutton:not(#urlbar-zoom-button)[disabled] image,
@@ -177,7 +177,7 @@ menulist[open] .menulist-label-box,
 
 #nav-bar toolbarbutton:not(#urlbar-zoom-button)[disabled]:hover,
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton[disabled]:hover {
-  background: var(---button-disabled-background) !important;
+  background: var(--button-disabled-background) !important;
   border-color: transparent !important;
 }
 
@@ -187,8 +187,8 @@ menulist[open] .menulist-label-box,
 .findbar-container toolbarbutton:-moz-window-inactive,
 #sidebar-switcher-target:-moz-window-inactive,
 #viewButton:-moz-window-inactive {
-  background: var(---inactive-button-background) !important;
-  box-shadow: var(---inactive-button-box-shadow) !important;
+  background: var(--inactive-button-background) !important;
+  box-shadow: var(--inactive-button-box-shadow) !important;
   border-color: transparent !important;
 }
 
@@ -204,9 +204,9 @@ menulist[open] .menulist-label-box,
 .subviewbutton-back:not(#hack):not(:active):hover,
 .close-icon:not(.tab-close-button):not(:active):hover,
 #TabsToolbar .toolbarbutton-1:not(:active):not([open]):hover {
-  box-shadow: var(---button-box-shadow) !important;
-  border-color: var(---button-border-color) !important;
-  border-bottom-color: var(---button-border-accent-color) !important;
+  box-shadow: var(--button-box-shadow) !important;
+  border-color: var(--button-border-color) !important;
+  border-bottom-color: var(--button-border-accent-color) !important;
 }
 
 /* Circle buttons */
@@ -259,52 +259,50 @@ menulist[open] .menulist-label-box,
 button.popup-notification-primary-button,
 #editBookmarkPanelDoneButton {
   color: white !important;
-  background: var(---button-suggested-action-background) !important;
+  background: var(--button-suggested-action-background) !important;
   border-color: transparent !important;
   border-bottom-color: var(
-    ---button-suggested-action-border-accent-color
+    --button-suggested-action-border-accent-color
   ) !important;
-  box-shadow: var(---button-suggested-action-box-shadow) !important;
+  box-shadow: var(--button-suggested-action-box-shadow) !important;
   text-shadow: 0 -1px rgba(0, 0, 0, 0.559216) !important;
 }
 
 #appMenu-popup .panel-banner-item[notificationid="update-restart"]:hover,
 button.popup-notification-primary-button.popup-notification-button:hover,
 #editBookmarkPanelDoneButton:hover {
-  background: var(---button-suggested-action-hover-background) !important;
+  background: var(--button-suggested-action-hover-background) !important;
 }
 
 #appMenu-popup .panel-banner-item[notificationid="update-restart"]:active,
 button.popup-notification-primary-button.popup-notification-button:active,
 #editBookmarkPanelDoneButton:active {
-  background: var(---button-suggested-action-active-background) !important;
-  border-color: var(---button-suggested-action-active-border-color) !important;
-  box-shadow: var(---button-suggested-action-active-box-shadow) !important;
+  background: var(--button-suggested-action-active-background) !important;
+  border-color: var(--button-suggested-action-active-border-color) !important;
+  box-shadow: var(--button-suggested-action-active-box-shadow) !important;
   text-shadow: none !important;
 }
 
 /* Buttons with destructive action */
 #editBookmarkPanelRemoveButton {
   color: white !important;
-  background: var(---button-destructive-action-background) !important;
+  background: var(--button-destructive-action-background) !important;
   border-color: transparent !important;
   border-bottom-color: var(
-    ---button-destructive-action-border-accent-color
+    --button-destructive-action-border-accent-color
   ) !important;
-  box-shadow: var(---button-destructive-action-box-shadow) !important;
+  box-shadow: var(--button-destructive-action-box-shadow) !important;
   text-shadow: 0 -1px rgba(0, 0, 0, 0.558275) !important;
 }
 
 #editBookmarkPanelRemoveButton:hover {
-  background: var(---button-destructive-action-hover-background) !important;
+  background: var(--button-destructive-action-hover-background) !important;
 }
 
 #editBookmarkPanelRemoveButton:active {
-  background: var(---button-destructive-action-active-background) !important;
-  border-color: var(
-    ---button-destructive-action-active-border-color
-  ) !important;
-  box-shadow: var(---button-destructive-action-active-box-shadow) !important;
+  background: var(--button-destructive-action-active-background) !important;
+  border-color: var(--button-destructive-action-active-border-color) !important;
+  box-shadow: var(--button-destructive-action-active-box-shadow) !important;
 }
 
 /* User sync menu, bigger avatar */

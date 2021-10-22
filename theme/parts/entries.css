@@ -9,11 +9,11 @@
 #search-box,
 .findbar-textbox {
   -moz-appearance: none !important;
-  background: var(---urlbar-background) !important;
-  border: 1.5px solid var(---urlbar-border-color) !important;
+  background: var(--urlbar-background) !important;
+  border: 1.5px solid var(--urlbar-border-color) !important;
   border-radius: 5px !important;
-  box-shadow: var(---urlbar-box-shadow) !important;
-  color: var(---urlbar-color) !important;
+  box-shadow: var(--urlbar-box-shadow) !important;
+  color: var(--urlbar-color) !important;
   height: 32px !important;
   max-height: 32px !important;
   margin: 0 !important;
@@ -33,7 +33,7 @@
 #search-box[focused],
 .findbar-textbox[focused],
 .findbar-textbox:focus {
-  outline: 1.5px solid var(---focused-urlbar-border-color) !important;
+  outline: 1.5px solid var(--focused-urlbar-border-color) !important;
   outline-offset: -2px;
   -moz-outline-radius: 5px;
 }
@@ -44,10 +44,10 @@
 #searchbar:-moz-window-inactive,
 #search-box:-moz-window-inactive,
 .findbar-textbox:-moz-window-inactive {
-  background: var(---inactive-urlbar-background) !important;
-  border-color: var(---inactive-urlbar-border-color) !important;
-  box-shadow: var(---inactive-urlbar-box-shadow) !important;
-  color: var(---inactive-urlbar-color) !important;
+  background: var(--inactive-urlbar-background) !important;
+  border-color: var(--inactive-urlbar-border-color) !important;
+  box-shadow: var(--inactive-urlbar-box-shadow) !important;
+  color: var(--inactive-urlbar-color) !important;
 }
 
 /* Entries combined */

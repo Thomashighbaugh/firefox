@@ -71,34 +71,34 @@ tab > stack {
 
 /* Tabs borders */
 .tabbrowser-tab {
-  border-right: 1px solid var(---toolbar-border-color) !important;
+  border-right: 1px solid var(--toolbar-border-color) !important;
 }
 #TabsToolbar {
   margin-right: -1px !important;
 }
 #tabbrowser-tabs[overflow="true"] .tabbrowser-tab[first-visible-unpinned-tab] {
-  border-left: 1px solid var(---toolbar-border-color) !important;
+  border-left: 1px solid var(--toolbar-border-color) !important;
 }
 
 /* Tab labels */
 tab {
-  color: var(---tabbar-tab-color) !important;
+  color: var(--tabbar-tab-color) !important;
   font-family: Cantarell, inherit;
   font-weight: bold;
   font-size: 1em;
 }
 tab:hover {
-  color: var(---tabbar-tab-hover-color) !important;
+  color: var(--tabbar-tab-hover-color) !important;
 }
 tab[selected] {
-  color: var(---tabbar-tab-active-color) !important;
-  text-shadow: 0px 0px 2px var(---focused-urlbar-border-color);
+  color: var(--tabbar-tab-active-color) !important;
+  text-shadow: 0px 0px 2px var(--focused-urlbar-border-color);
 }
 tab:-moz-window-inactive {
-  color: var(---inactive-tabbar-tab-color) !important;
+  color: var(--inactive-tabbar-tab-color) !important;
 }
 tab[selected]:-moz-window-inactive {
-  color: var(---inactive-tabbar-tab-active-color) !important;
+  color: var(--inactive-tabbar-tab-active-color) !important;
 }
 
 /* Reset tab background */
@@ -175,11 +175,11 @@ tab[selected]:-moz-window-inactive {
 
 /* Close tab button */
 :root {
-  ---fill-icon: red !important;
+  --fill-icon: red !important;
 }
 .tab-close-button {
   list-style-image: url("../icons/window-close-symbolic.svg") !important;
-  fill: var(---toolbar-color) !important;
+  fill: var(--toolbar-color) !important;
   fill-opacity: 1 !important;
   -moz-context-properties: fill, fill-opacity !important;
   height: 16px !important;
@@ -192,11 +192,11 @@ tab[selected]:-moz-window-inactive {
 }
 
 :root:not(:-moz-window-inactive) .tab-close-button:active {
-  background-image: var(---button-active-background) !important;
-  box-shadow: var(---button-active-box-shadow) !important;
-  border-color: var(---button-active-border-color) !important;
-  border-bottom-color: var(---button-active-border-color) !important;
-  border-top-color: var(---button-active-border-accent-color) !important;
+  background-image: var(--button-active-background) !important;
+  box-shadow: var(--button-active-box-shadow) !important;
+  border-color: var(--button-active-border-color) !important;
+  border-bottom-color: var(--button-active-border-color) !important;
+  border-top-color: var(--button-active-border-accent-color) !important;
 }
 
 .tab-close-button:active:not(:hover) {
@@ -229,24 +229,24 @@ tab[selected]:-moz-window-inactive {
 
 .tab-background,
 #TabsToolbar .toolbar-items {
-  background: var(---toolbar-background) !important;
+  background: var(--toolbar-background) !important;
 }
 /* Active tab */
 .tab-background[selected="true"] {
   background: linear-gradient(
       to right,
-      var(---start-gradient-color),
-      var(---end-gradient-color)
+      var(--start-gradient-color),
+      var(--end-gradient-color)
     )
-    left bottom var(---tabbar-tab-active-background) no-repeat !important;
+    left bottom var(--tabbar-tab-active-background) no-repeat !important;
   background-size: 100% 3px !important;
   border: 0 !important;
   border-image: none !important;
 }
 .tab-background[selected="true"]:-moz-window-inactive {
-  background-color: var(---inactive-tabbar-tab-active-background) !important;
+  background-color: var(--inactive-tabbar-tab-active-background) !important;
   border-bottom-color: var(
-    ---inactive-tabbar-tab-active-border-bottom-color
+    --inactive-tabbar-tab-active-border-bottom-color
   ) !important;
 }
 
@@ -255,7 +255,7 @@ tab[selected]:-moz-window-inactive {
   .tabbrowser-tab:hover
   > .tab-stack
   > .tab-background[selected="true"] {
-  background-color: var(---tabbar-tab-active-hover-background) !important;
+  background-color: var(--tabbar-tab-active-hover-background) !important;
 }
 .tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected="true"]),
 #TabsToolbar[brighttext]
@@ -275,9 +275,9 @@ tab[selected]:-moz-window-inactive {
   .tabbrowser-tab:hover
   > .tab-stack
   > .tab-background:not([selected="true"]) {
-  background-color: var(---tabbar-tab-hover-background) !important;
+  background-color: var(--tabbar-tab-hover-background) !important;
   border-image: none !important;
-  border-bottom: 3px solid var(---tabbar-tab-hover-border-bottom-color) !important;
+  border-bottom: 3px solid var(--tabbar-tab-hover-border-bottom-color) !important;
 }
 
 /* Full width tabs */

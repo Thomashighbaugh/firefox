@@ -46,8 +46,8 @@
   #stop-reload-button
   toolbarbutton,
 :root:-moz-window-inactive[customizing] #nav-bar #edit-controls toolbarbutton {
-  background-image: var(---inactive-button-background);
-  box-shadow: var(---inactive-button-box-shadow);
+  background-image: var(--inactive-button-background);
+  box-shadow: var(--inactive-button-box-shadow);
 }
 /* Glitch customizing: Reload and Cut / Copy / Paste buttons' icons */
 :root:-moz-window-inactive[customizing]

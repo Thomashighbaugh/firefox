@@ -57,7 +57,7 @@
 /* Window buttons style */
 :root[tabsintitlebar] #titlebar .titlebar-button,
 :root[tabsintitlebar][inFullscreen] #window-controls toolbarbutton {
-  border: 1px solid var(---button-border-color) !important;
+  border: 1px solid var(--button-border-color) !important;
   border-color: transparent !important;
   border-radius: 5px !important;
   height: 30px;
@@ -89,10 +89,10 @@
 :root[tabsintitlebar][inFullscreen]
   #window-controls:not(:-moz-window-inactive)
   toolbarbutton:not([disabled]):hover {
-  background-image: var(---button-hover-background);
-  border-color: var(---button-border-color) !important;
-  border-bottom-color: var(---button-border-accent-color) !important;
-  box-shadow: var(---button-box-shadow);
+  background-image: var(--button-hover-background);
+  border-color: var(--button-border-color) !important;
+  border-bottom-color: var(--button-border-accent-color) !important;
+  box-shadow: var(--button-box-shadow);
 }
 :root[tabsintitlebar]
   #titlebar:not(:-moz-window-inactive)
@@ -100,9 +100,9 @@
 :root[tabsintitlebar][inFullscreen]
   #window-controls:not(:-moz-window-inactive)
   toolbarbutton:not([disabled]):active {
-  background: var(---button-active-background);
-  box-shadow: var(---button-active-box-shadow);
-  border-color: var(---button-active-border-color) !important;
+  background: var(--button-active-background);
+  box-shadow: var(--button-active-box-shadow);
+  border-color: var(--button-active-border-color) !important;
 }
 
 /* Remove close and minimize buttons from fullscreen buttons */

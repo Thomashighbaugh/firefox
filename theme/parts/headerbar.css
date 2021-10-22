@@ -10,13 +10,13 @@
 
 /* Headerbar CSD colors */
 :root[tabsintitlebar] #nav-bar {
-  background: var(---headerbar-background) !important;
+  background: var(--headerbar-background) !important;
   border: none !important;
-  border-bottom: 1px solid var(---headerbar-border-color) !important;
-  box-shadow: var(---headerbar-box-shadow) !important;
+  border-bottom: 1px solid var(--headerbar-border-color) !important;
+  box-shadow: var(--headerbar-box-shadow) !important;
 }
 :root[tabsintitlebar] #nav-bar:-moz-window-inactive {
-  background: var(---inactive-headerbar-background) !important;
-  border-bottom-color: var(---inactive-headerbar-border-color) !important;
-  box-shadow: var(---inactive-headerbar-box-shadow) !important;
+  background: var(--inactive-headerbar-background) !important;
+  border-bottom-color: var(--inactive-headerbar-border-color) !important;
+  box-shadow: var(--inactive-headerbar-box-shadow) !important;
 }

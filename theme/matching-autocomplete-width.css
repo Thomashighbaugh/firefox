@@ -14,14 +14,14 @@
 
 /* Style as regular popover */
 #urlbar-results {
-  background: var(---popover-background) !important;
+  background: var(--popover-background) !important;
   border: 1px solid !important;
-  border-color: var(---popover-border-color) !important;
+  border-color: var(--popover-border-color) !important;
   border-radius: 9px;
   box-shadow: var(
-    ---popover-shadow
+    --popover-shadow
   ) !important; /* BUG: Not showing any shadow at all */
-  color: var(---toolbar-color) !important;
+  color: var(--toolbar-color) !important;
   padding: 8px;
 }
 
@@ -44,7 +44,7 @@
   border: 0 !important;
 }
 #urlbar-results .search-panel-one-offs-header {
-  border-top: 1px solid var(---popover-separator-color) !important;
+  border-top: 1px solid var(--popover-separator-color) !important;
 }
 #urlbar-results .search-panel-one-offs {
   --item-padding-start: 0 !important;
@@ -56,20 +56,20 @@
   -moz-appearance: none !important;
   --toolbarbutton-active-background: transparent !important;
   --toolbarbutton-hover-background: transparent !important;
-  background: var(---button-background) !important;
-  box-shadow: var(---button-box-shadow);
+  background: var(--button-background) !important;
+  box-shadow: var(--button-box-shadow);
   border-width: 1px 1px 1px 0;
   border-style: solid;
-  border-color: var(---button-border-color) !important;
-  border-bottom-color: var(---button-border-accent-color) !important;
+  border-color: var(--button-border-color) !important;
+  border-bottom-color: var(--button-border-accent-color) !important;
   padding: 0 2px !important;
   height: 34px !important;
-  color: var(---toolbar-color) !important;
+  color: var(--toolbar-color) !important;
   box-sizing: border-box !important;
 }
 #urlbar-results .searchbar-engine-one-off-item:hover,
 #urlbar-results .searchbar-engine-one-off-item[selected] {
-  background: var(---button-hover-background) !important;
+  background: var(--button-hover-background) !important;
   color: unset !important;
 }
 #urlbar-results .searchbar-engine-one-off-item:first-child {
@@ -87,7 +87,7 @@
 }
 #urlbar-anon-search-settings-compact {
   border-left-width: 1px !important;
-  border-bottom: 1px solid var(---button-border-accent-color) !important;
+  border-bottom: 1px solid var(--button-border-accent-color) !important;
   border-radius: 5px;
   margin-left: 6px !important;
 }
@@ -96,7 +96,7 @@
 #urlbar-results
   .searchbar-engine-one-off-item:not(.search-setting-button-compact)
   .button-icon {
-  filter: var(---convert-icon-to-symbolic-hack-filter);
+  filter: var(--convert-icon-to-symbolic-hack-filter);
 }
 
 /* Firefox 67 */
@@ -106,14 +106,14 @@
   margin-top: -7px;
 }
 #PopupAutoCompleteRichResult {
-  background: var(---popover-background) !important;
+  background: var(--popover-background) !important;
   border: 1px solid !important;
-  border-color: var(---popover-border-color) !important;
+  border-color: var(--popover-border-color) !important;
   border-radius: 9px;
   box-shadow: var(
-    ---popover-shadow
+    --popover-shadow
   ) !important; /* BUG: Not showing any shadow at all */
-  color: var(---toolbar-color) !important;
+  color: var(--toolbar-color) !important;
   padding: 8px !important;
 }
 #PopupAutoCompleteRichResult .autocomplete-richlistbox {
@@ -137,7 +137,7 @@
   border: 0 !important;
 }
 #PopupAutoCompleteRichResult .search-panel-one-offs-header {
-  border-top: 1px solid var(---popover-separator-color) !important;
+  border-top: 1px solid var(--popover-separator-color) !important;
 }
 #PopupAutoCompleteRichResult .search-panel-one-offs {
   --item-padding-start: 0 !important;
@@ -148,20 +148,20 @@
   -moz-appearance: none !important;
   --toolbarbutton-active-background: transparent !important;
   --toolbarbutton-hover-background: transparent !important;
-  background: var(---button-background) !important;
-  box-shadow: var(---button-box-shadow);
+  background: var(--button-background) !important;
+  box-shadow: var(--button-box-shadow);
   border-width: 1px 1px 1px 0;
   border-style: solid;
-  border-color: var(---button-border-color) !important;
-  border-bottom-color: var(---button-border-accent-color) !important;
+  border-color: var(--button-border-color) !important;
+  border-bottom-color: var(--button-border-accent-color) !important;
   padding: 0 2px !important;
   height: 34px !important;
-  color: var(---toolbar-color) !important;
+  color: var(--toolbar-color) !important;
   box-sizing: border-box !important;
 }
 #PopupAutoCompleteRichResult .searchbar-engine-one-off-item:hover,
 #PopupAutoCompleteRichResult .searchbar-engine-one-off-item[selected] {
-  background: var(---button-hover-background) !important;
+  background: var(--button-hover-background) !important;
   color: unset !important;
 }
 #PopupAutoCompleteRichResult .searchbar-engine-one-off-item:first-child {

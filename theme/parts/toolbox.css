@@ -19,16 +19,16 @@
 #TabsToolbar,
 findbar {
   border: 0 !important;
-  background: var(---toolbar-background) !important;
-  border-bottom: 1px solid var(---toolbar-border-color) !important;
+  background: var(--toolbar-background) !important;
+  border-bottom: 1px solid var(--toolbar-border-color) !important;
 }
 #nav-bar:-moz-window-inactive,
 #PersonalToolbar:-moz-window-inactive,
 #toolbar-menubar:-moz-window-inactive,
 #TabsToolbar:-moz-window-inactive,
 findbar:-moz-window-inactive {
-  background: var(---inactive-toolbar-background) !important;
-  border-bottom: 1px solid var(---inactive-toolbar-border-color) !important;
+  background: var(--inactive-toolbar-background) !important;
+  border-bottom: 1px solid var(--inactive-toolbar-border-color) !important;
 }
 
 #navigator-toolbox:-moz-window-inactive label,

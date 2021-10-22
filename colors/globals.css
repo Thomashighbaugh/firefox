@@ -93,11 +93,11 @@ tooltip {
   --tooltip-border-radius: 2px;
   --tooltip-border-color: var(--uc-menu-border-color);
   --tooltip-box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.2);
-  --global-focus-shadow-color: var(--purple-40-a30);
-  --global-focus-outline-color: var(--purple-40);
+  --global-focus-shadow-color: #22262d;
+  --global-focus-outline-color: #3c3f4c;
   --global-focus-ring: 2px solid var(--global-focus-shadow-color);
-  --global-focus-shadow: 0 0 0 3px var(--global-focus-shadow-color),
-    0 0 0 1px var(--global-focus-outline-color);
+  --global-focus-shadow: 12px 12px 16px 0 var(--global-focus-shadow-color),
+    -8px -8px 12px 0 var(--global-focus-outline-color);
 
   --statuspanel-color: hsla(0, 0%, 100%, 0.85);
   --noise-texture: url(chrome://userchrome/content/texture/lightnoise.png);
@@ -109,20 +109,20 @@ tooltip {
     url(chrome://userchrome/content/checker.svg);
   --general-button-border-radius: 2.6px;
   --dialog-bgcolor: hsla(240, 5.9%, 6.7%, 0.85);
-  --dialog-box-bgcolor: hsla(232, 100%, 75%, 8%);
-  --dialog-box-bgcolor-dim: hsla(240, 100%, 70%, 3%);
-  --dialog-box-border-color: hsla(232, 100%, 85%, 0.2);
-  --dialog-box-border-hover: hsla(232, 100%, 85%, 0.3);
+  --dialog-box-bgcolor: #17191edd;
+  --dialog-box-bgcolor-dim: #22262ddd;
+  --dialog-box-border-color: hsla(223, 100%, 85%, 0.2);
+  --dialog-box-border-hover: hsla(223, 100%, 85%, 0.3);
   --blurred-dialog-border-color: hsla(240, 7%, 20%, 0.8);
   --alertbox-bgcolor: hsla(0, 0%, 14%, 0.97);
-  --notification-menu-color: var(--in-parent-page-color);
-  --context-menu-disabled-color: hsla(213, 43%, 89%, 0.5);
+  --notification-menu-color: #b2bfd9;
+  --context-menu-disabled-color: hsla(223, 43%, 89%, 0.5);
 
   /* this url is for the icon that displays in the identity box when entering text in the urlbar, and on the new tab page.
     you can replace it with chrome://userchrome/content/search-glass.svg if you don't use google */
   --default-search-identity-icon: url(chrome://userchrome/content/engines/google.svg);
-  --identity-box-solid-bg: hsl(233, 34%, 22%);
-  --identity-box-focus-bg: hsl(234, 34%, 23%);
+  --identity-box-solid-bg: #22262d;
+  --identity-box-focus-bg: #22262d;
   --secure-color: hsl(119, 80%, 60%);
   --secure-text-color: hsl(129, 100%, 70%);
   --insecure-text-color: hsla(0, 100%, 50%, 0.867);
@@ -149,9 +149,9 @@ tooltip {
   --eom-error-bg-hover: hsla(2, 100%, 76%, 0.23);
   --eom-error-bg-active: hsla(2, 100%, 80%, 0.27);
 
-  --global-selection-bgcolor: hsla(245, 100%, 76%, 0.5);
+  --global-selection-bgcolor: hsla(223, 100%, 76%, 0.5);
   --global-selection-color: white;
-  --url-selection-bgcolor: hsla(245, 100%, 76%, 0.5);
+  --url-selection-bgcolor: hsla(223, 100%, 76%, 0.5);
   --url-selection-color: white;
   --ui-selection-bgcolor: hsla(0, 0%, 100%, 0.9);
   --ui-selection-color: hsl(236, 20%, 16%);
@@ -165,7 +165,7 @@ tooltip {
   /* controls the color of the little tooltips that appear on search highlighted buttons in about:preferences */
   --aboutPrefs-find-tags: var(--purple-35);
 
-  --badge-color-dark: hsl(218, 24%, 33%);
+  --badge-color-dark: hsl(218, 24%, 53%);
   --badge-color-light: var(--lwt-toolbarbutton-icon-fill-attention);
 
   --tab-background: var(--lwt-accent-color);
@@ -204,9 +204,9 @@ tooltip {
   --search-box-null: hsl(230, 30%, 20%);
   --textbox-button-hidden: hsla(240, 100%, 89%, 0);
   --confirmation-hint-color: var(--ui-text-100);
-  --confirmation-hint-bgcolor: hsl(240, 60%, 59%);
-  --confirmation-hint-border-color: hsl(240, 60%, 59%);
-  --picture-in-picture-toggle-bgcolor: hsl(244, 100%, 63%);
+  --confirmation-hint-bgcolor: hsl(223, 20%, 59%);
+  --confirmation-hint-border-color: hsl(223, 30%, 59%);
+  --picture-in-picture-toggle-bgcolor: hsl(223, 40%, 63%);
 
   --urlbar-base-font-weight: 400;
   --urlbar-result-strong-font-weight: 400;

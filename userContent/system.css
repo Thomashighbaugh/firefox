@@ -4,22 +4,17 @@
 
 @-moz-document regexp("view-source:.*") {
   @font-face {
-    font-family: "Overpass Mono";
     font-style: normal;
     font-weight: 100;
-    src: local("Overpass Mono"), local("Overpass Mono Light"),
-      local("OverpassMono-Light");
   }
 
   :root {
-    font-family: Overpass Mono, -moz-fixed;
     font-size: 12;
   }
 
   xmp,
   pre,
   plaintext {
-    font-family: Overpass Mono, -moz-fixed;
     font-size: 12;
   }
 

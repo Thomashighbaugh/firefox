@@ -635,7 +635,7 @@
       var(--in-content-bg-dark)
     ) !important;
     --active-color: var(--purple-35) !important;
-    --selected-background: var(--attention-color) !important;
+    --selected-background: var(--base07) !important;
     --link-foreground: var(--in-content-link-color) !important;
     --visited-link-foreground: #823afc !important;
     --proportional-width: calc(
@@ -725,7 +725,7 @@
   .all-buttons-container button {
     color: var(--content-principal-page-color) !important;
     background-color: transparent !important;
-    border-radius: var(--general-button-border-radius) !important;
+    border-radius: 6px !important;
     padding: 54px 5px 5px !important;
   }
 

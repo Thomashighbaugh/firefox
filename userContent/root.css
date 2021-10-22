@@ -1,78 +1,77 @@
 /* fundamental content styles, e.g. plaintext pages. */
 
 @media (prefers-color-scheme: dark) {
-  ::selection,
-  ::-moz-selection {
-    background-color: var(--global-selection-bgcolor) !important;
-    color: var(--global-selection-color) !important;
-  }
+    ::selection,
+    ::-moz-selection {
+        background-color: var(--global-selection-bgcolor) !important;
+        color: var(--global-selection-color) !important;
+    }
 
-  /* pdf viewer: selection, findbar highlights */
-  .pdfViewer .textLayer .highlight {
-    background-color: var(--pdf-selection-bgcolor) !important;
-  }
+    /* pdf viewer: selection, findbar highlights */
+    .pdfViewer .textLayer .highlight {
+        background-color: var(--pdf-selection-bgcolor) !important;
+    }
 
-  .pdfViewer .textLayer .highlight.selected {
-    background-color: var(--pdf-highlight-bgcolor) !important;
-  }
+    .pdfViewer .textLayer .highlight.selected {
+        background-color: var(--pdf-highlight-bgcolor) !important;
+    }
 
-  .pdfViewer .textLayer ::selection,
-  .pdfViewer .textLayer ::-moz-selection {
-    background-color: var(--pdf-selection-bgcolor) !important;
-    color: revert !important;
-  }
+    .pdfViewer .textLayer ::selection,
+    .pdfViewer .textLayer ::-moz-selection {
+        background-color: var(--pdf-selection-bgcolor) !important;
+        color: revert !important;
+    }
 }
 
 :read-only:-moz-focusring,
-:not(textarea, [contenteditable]:read-write, input[type="text"], input[type="password"], input[type="date"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"]):-moz-focusring {
-  outline: unset;
-  outline-offset: unset;
+:not(textarea, [contenteditable]:read-write, input[type=text], input[type=password], input[type=date], input[type=datetime-local], input[type=email], input[type=month], input[type=number], input[type=search], input[type=tel], input[type=time], input[type=url], input[type=week]):-moz-focusring {
+    outline: unset;
+    outline-offset: unset;
 }
 
 @-moz-document plain-text-document(), media-document(all) {
-  @font-face {
-    font-family: "Overpass Mono";
-    font-style: normal;
-    font-weight: 100;
-    src: local("Overpass Mono"), local("Overpass Mono Light"),
-      local("OverpassMono-Light");
-  }
+    @font-face {
+        font-family: "Overpass Mono";
+        font-style: normal;
+        font-weight: 100;
+        src: local("Overpass Mono"), local("Overpass Mono Light"), local("OverpassMono-Light");
+    }
 
-  :root {
-    font-family: Overpass Mono, -moz-fixed;
-    font-size: 12;
-  }
-
-  xmp,
-  pre,
-  plaintext {
-    font-family: Overpass Mono, -moz-fixed;
-    font-size: 12;
-  }
-
-  img.transparent {
-    background: var(--transparent-img-background) !important;
-  }
-
-  @media (prefers-color-scheme: dark) {
     :root {
-      color: var(--plaintext-color) !important;
-      background-color: var(--in-content-bg-dark) !important;
+        font-family: Overpass Mono, -moz-fixed;
+        font-size: 12;
     }
 
-    body:not([style*="background"], [class], [id]) {
-      background-color: transparent !important;
+    xmp,
+    pre,
+    plaintext {
+        font-family: Overpass Mono, -moz-fixed;
+        font-size: 12;
     }
 
-    ::selection,
-    ::-moz-selection {
-      color: var(--content-selection-color) !important;
-      background-color: var(--content-selection-bgcolor) !important;
+    img.transparent {
+        background: var(--transparent-img-background) !important;
     }
-  }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            color: var(--plaintext-color) !important;
+            background-color: var(--in-content-bg-dark) !important;
+        }
+
+        body:not([style*="background"], [class], [id]) {
+            background-color: transparent !important;
+        }
+
+        ::selection,
+        ::-moz-selection {
+            color: var(--content-selection-color) !important;
+            background-color: var(--content-selection-bgcolor) !important;
+        }
+    }
 }
 
 :root,
 menupopup {
-  --in-content-category-outline-focus: transparent !important;
+    --in-content-category-outline-focus: transparent !important;
 }

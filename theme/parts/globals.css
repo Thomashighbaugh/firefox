@@ -32,7 +32,7 @@ tooltip {
   --uc-content-text-a50: #b2bfd999;
   --uc-content-text-a80: rgba(255, 255, 255, 0.8);
   --uc-accent-color: #2f303d;
-  --uc-toolbar-bgcolor: #22262d;
+  --uc-toolbar-bgcolor: #17191e;
   --uc-toolbar-color: var(--ui-text-100);
   --uc-arrowpanel-background: #17191e;
   --uc-arrowpanel-color: hsl(213, 43%, 89%);
@@ -170,32 +170,25 @@ tooltip {
 
   --tab-background: var(--lwt-accent-color);
   --tab-selected: var(--toolbar-bgcolor);
-  --tab-hover: linear-gradient(hsl(231, 49%, 11%), hsl(233, 55%, 8%));
-  --tab-pinned: linear-gradient(
-    var(--lwt-accent-color),
-    var(--toolbar-bgcolor)
-  );
-  --tab-multi: linear-gradient(hsl(231, 50%, 11%), hsl(233, 53%, 8%));
-  --tab-multi-hover: linear-gradient(hsl(231, 47%, 13%), hsl(233, 51%, 10%));
+  --tab-hover: linear-gradient(23deg, #353d4d, #3c3f4c);
+  --tab-pinned: linear-gradient(-43deg, #17191e, @121418, #22262d);
+  --tab-multi: linear-gradient(-32deg, #121418, #17191e);
+  --tab-multi-hover: linear-gradient(32deg, #17191e, #22262d, #121418);
   --tab-pinned-hover: var(--toolbar-bgcolor);
-  --tab-focused-highlight: hsl(231, 36%, 22%);
+  --tab-focused-highlight: #3c3f4c;
   --tab-focused-hover: linear-gradient(
-    color-mix(
-      in srgb,
-      var(--tab-focused-highlight) 50%,
-      var(--toolbar-bgcolor)
-    ),
-    var(--toolbar-bgcolor)
+    color-mix(in srgb, #22262d 50%, var(--toolbar-bgcolor)),
+    #2f303d
   );
-  --multiselected-color: hsl(241, 50%, 51%);
+  --multiselected-color: #8b9cbe;
 
   /* width of the spacer between the tabs and the window control buttons */
   --titlebar-spacer-width: 40px;
   /* subtle gradient drawn behind the window control buttons. */
   --titlebar-gradient: radial-gradient(
     circle at 100% 0%,
-    hsl(231, 48%, 12%),
-    var(--uc-accent-color) 140px
+    #22262d,
+    #353d4d 140px
   );
   --titlebar-background: var(--lwt-accent-color) var(--titlebar-gradient);
 

@@ -4,11 +4,11 @@
 
 #sidebar-box,
 .sidebar-panel {
-  background: var(---sidebar-background) !important;
+  background: var(--base00) !important;
 }
 #sidebar-box:-moz-window-inactive,
 .sidebar-panel:-moz-window-inactive {
-  background: var(---inactive-sidebar-background) !important;
+  background: var(--base01) !important;
 }
 #sidebar-box:-moz-window-inactive label,
 #sidebar-box:-moz-window-inactive image,
@@ -18,20 +18,20 @@
   opacity: 0.7 !important;
 }
 .sidebar-placesTreechildren {
-  color: var(---toolbar-color) !important;
+  color: var(--base07) !important;
 }
 #sidebar-splitter {
-  background: var(---toolbar-border-color) !important;
+  background: var(--base02) !important;
   border: 0 !important;
   width: 1px !important;
 }
 #sidebar-splitter:-moz-window-inactive {
-  background: var(---inactive-toolbar-border-color) !important;
+  background: var(--base01) !important;
 }
 
 #sidebar-header {
   padding: 6px !important;
-  border-bottom: 1px solid var(---toolbar-border-color) !important;
+  border-bottom: 1px solid var(--base02) !important;
 }
 #sidebar-search-container {
   padding: 6px !important;

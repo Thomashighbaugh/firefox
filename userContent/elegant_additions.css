@@ -7,16 +7,16 @@
   html:not(#ublock0-epicker)[lwt-newtab-brighttext],
   html:not(#ublock0-epicker) body[lwt-newtab-brighttext],
   #newtab-customize-overlay[lwt-newtab-brighttext] {
-    background-color: var(--base01) !important;
+    background-color: var(--base00) !important;
   }
   html[lwt-newtab-brighttext] {
-    --in-content-page-background: var(--base01) !important;
+    --in-content-page-background: var(--base00) !important;
   }
   [lwt-newtab-brighttext] .wordmark {
     fill: #fefafe !important;
   }
   [lwt-newtab-brighttext] .SnippetBaseContainer {
-    background-color: var(--base02) !important;
+    background-color: var(--base00) !important;
     color: var(--base07) !important;
   }
   [lwt-newtab-brighttext] .ASRouterButton {
@@ -38,7 +38,7 @@
 /*Private*/
 html.private .search-wrapper input {
   transition: all 0.3s ease !important;
-  background: var(--base02) var(--base06) 12px center no-repeat !important;
+  background: var(--base00) var(--base01) 12px center no-repeat !important;
   background-size: 20px !important;
   border: 1px solid !important;
   border-color: #3c3f4c !important;

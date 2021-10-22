@@ -30,6 +30,7 @@ tab > stack {
   --toolbarbutton-active-background: transparent !important;
   --toolbarbutton-hover-background: transparent !important;
   padding: 0 3px !important;
+  height: 20px;
 }
 
 /* New hover effect */

@@ -254,6 +254,9 @@ var AddonbarVertical = {
 		  background-image: var(--toolbar-bgimage); \
 		  background-clip: padding-box; \
 		  color: var(--toolbar-color, inherit); \
+      right:auto; \
+      left:0; \
+      position: fixed;\
 		} \
 		#main-window:-moz-lwtheme #addonbar_v { \
 		  background: var(--lwt-accent-color) !important; \

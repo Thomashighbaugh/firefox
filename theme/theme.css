@@ -2,28 +2,6 @@
 @import "colors/light.css";
 @import "colors/dark.css";
 
-@import "parts/globals.css";
-@import "parts/variables.css";
-@import "parts/extensions.css";
-@import "parts/tabs-bar.css";
-@import "parts/context-menu-icons.css";
-@import "parts/app-menu.css";
-@import "parts/panels.css";
-@import "parts/tabs.css";
-@import "parts/urlbar.css";
-@import "parts/findbar.css";
-@import "parts/navbar.css";
-@import "parts/urlbar-results.css";
-@import "parts/search-one-offs.css";
-@import "parts/ctrl-tab.css";
-@import "parts/sidebar.css";
-@import "parts/bookmarks.css";
-@import "parts/context-menus.css";
-@import "parts/fullscreen.css";
-@import "parts/popups.css";
-@import "parts/search-mode-icons.css";
-@import "parts/misc.css";
-
 @import "parts/buttons-fixed.css";
 @import "parts/buttons.css";
 /*  */

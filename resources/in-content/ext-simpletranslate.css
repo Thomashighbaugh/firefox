@@ -2,155 +2,152 @@
 
 @-moz-document url(moz-extension://482959ea-7a4a-4baa-900a-86fb03b08903/popup/index.html)
 {
-  :root {
-    border-radius: 3px !important;
-    background: none !important;
-  }
+    :root {
+        border-radius: 3px !important;
+        background: none !important;
+    }
 
-  body {
-    --main-text: var(--base07) !important;
-    --line: transparent !important;
-    --main-bg: var(--base00) !important;
-    --sub-text: var(--uc-panel-description-color) !important;
-    --highlight: var(--in-parent-link-color) !important;
-    user-select: none;
-  }
-
-  body {
-    color: var(--base07) !important;
-    border-radius: 3px !important;
-  }
-
-  @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
     body {
-      font-family: SF Pro Text, Segoe UI, sans-serif !important;
-      font-kerning: normal !important;
+        --main-text: var(--uc-arrowpanel-color) !important;
+        --line: transparent !important;
+        --main-bg: var(--uc-arrowpanel-background) !important;
+        --sub-text: var(--uc-panel-description-color) !important;
+        --highlight: var(--in-parent-link-color) !important;
+        user-select: none;
     }
 
-    .title {
-      font-family: SF Pro Display, Segoe UI, sans-serif !important;
+    body {
+        color: var(--uc-arrowpanel-color) !important;
+        border-radius: 3px !important;
     }
-  }
 
-  button:not([disabled="true"], :disabled) {
-    display: flex;
-  }
+    @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
+        body {
+            font-family: SF Pro Text, Segoe UI, sans-serif !important;
+            font-kerning: normal !important;
+        }
 
-  textarea,
-  select {
-    background-color: var(--search-box-color) !important;
-    color: var(--ui-text-100) !important;
-    border: 1px solid transparent !important;
-    outline: none !important;
-  }
+        .title {
+            font-family: SF Pro Display, Segoe UI, sans-serif !important;
+        }
+    }
 
-  :is(textarea, select):focus-within {
-    background-color: var(--search-box-focus) !important;
-    color: var(--ui-text-100) !important;
-    border-color: var(--highlight) !important;
-  }
+    button:not([disabled="true"], :disabled) {
+        display: flex;
+    }
 
-  #footer .selectWrap select {
-    padding-block: 5px !important;
-    height: auto !important;
-    min-height: auto !important;
-  }
+    textarea, select {
+        background-color: var(--search-box-color) !important;
+        color: var(--ui-text-100) !important;
+        border: 1px solid transparent !important;
+        outline: none !important;
+    }
 
-  #footer .selectWrap::before {
-    background: none !important;
-    color: var(--sub-text) !important;
-    fill: currentColor !important;
-    transform: none !important;
-    border: none !important;
-    width: 16px !important;
-    height: 16px !important;
-    -moz-context-properties: fill, fill-opacity !important;
-    background-image: url(chrome://userchrome/content/menu-arrow-down.svg) !important;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    top: 6px !important;
-  }
+    :is(textarea, select):focus-within {
+        background-color: var(--search-box-focus) !important;
+        color: var(--ui-text-100) !important;
+        border-color: var(--highlight) !important;
+    }
 
-  #footer .selectWrap:focus-within::before {
-    color: var(--ui-text-100) !important;
-  }
+    #footer .selectWrap select {
+        padding-block: 5px !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
 
-  #footer .selectWrap select:is(:focus-within, :hover) {
-    background-color: var(--search-box-focus) !important;
-  }
+    #footer .selectWrap::before {
+        background: none !important;
+        color: var(--sub-text) !important;
+        fill: currentColor !important;
+        transform: none !important;
+        border: none !important;
+        width: 16px !important;
+        height: 16px !important;
+        -moz-context-properties: fill, fill-opacity !important;
+        background-image: url(chrome://userchrome/content/menu-arrow-down.svg) !important;
+        background-size: contain !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        top: 6px !important;
+    }
 
-  body hr {
-    border-color: var(--uc-desaturate-dimmed) !important;
-  }
+    #footer .selectWrap:focus-within::before {
+        color: var(--ui-text-100) !important;
+    }
 
-  #resultArea {
-    background-color: transparent !important;
-    color: var(--base07) !important;
-  }
+    #footer .selectWrap select:is(:focus-within, :hover) {
+        background-color: var(--search-box-focus) !important;
+    }
 
-  .resultText,
-  .candidateText,
-  .mediaButtons,
-  .mediaButtons * {
-    background: none !important;
-  }
+    body hr {
+        border-color: var(--uc-desaturate-dimmed) !important;
+    }
 
-  .copy {
-    display: none !important;
-  }
+    #resultArea {
+        background-color: transparent !important;
+        color: var(--uc-arrowpanel-color) !important;
+    }
 
-  a {
-    color: var(--in-parent-link-color) !important;
-  }
+    .resultText,
+    .candidateText,
+    .mediaButtons,
+    .mediaButtons * {
+        background: none !important;
+    }
 
-  a:is(:hover, :focus-visible) {
-    color: var(--in-parent-link-color-hover) !important;
-  }
+    .copy {
+        display: none !important;
+    }
 
-  a:hover:active {
-    color: var(--in-parent-link-color-active) !important;
-  }
+    a {
+        color: var(--in-parent-link-color) !important;
+    }
 
-  .react-toggle .react-toggle-track {
-    background-color: var(--sub-text) !important;
-  }
+    a:is(:hover, :focus-visible) {
+        color: var(--in-parent-link-color-hover) !important;
+    }
 
-  .react-toggle:is(:hover, :focus-within):not(.react-toggle--disabled)
-    .react-toggle-track {
-    background-color: color-mix(in srgb, black 20%, var(--sub-text)) !important;
-  }
+    a:hover:active {
+        color: var(--in-parent-link-color-active) !important;
+    }
 
-  .react-toggle--checked .react-toggle-track {
-    background-color: var(--in-parent-link-color) !important;
-  }
+    .react-toggle .react-toggle-track {
+        background-color: var(--sub-text) !important;
+    }
 
-  .react-toggle--checked:is(:hover, :focus-within):not(.react-toggle--disabled)
-    .react-toggle-track {
-    background-color: var(--in-parent-link-color-hover) !important;
-  }
+    .react-toggle:is(:hover, :focus-within):not(.react-toggle--disabled) .react-toggle-track {
+        background-color: color-mix(in srgb, black 20%, var(--sub-text)) !important;
+    }
 
-  .react-toggle--disabled {
-    cursor: not-allowed !important;
-  }
+    .react-toggle--checked .react-toggle-track {
+        background-color: var(--in-parent-link-color) !important;
+    }
 
-  .react-toggle-thumb {
-    border-color: transparent !important;
-  }
+    .react-toggle--checked:is(:hover, :focus-within):not(.react-toggle--disabled) .react-toggle-track {
+        background-color: var(--in-parent-link-color-hover) !important;
+    }
 
-  #header .rightButtons .settingsButton:is(:hover, :focus-visible) svg {
-    fill: var(--highlight) !important;
-    transform: rotate(90deg) !important;
-  }
+    .react-toggle--disabled {
+        cursor: not-allowed !important;
+    }
 
-  #header .rightButtons .heartButton:is(:hover, :focus-visible) svg {
-    fill: var(--confirm) !important;
-  }
+    .react-toggle-thumb {
+        border-color: transparent !important;
+    }
+
+    #header .rightButtons .settingsButton:is(:hover, :focus-visible) svg {
+        fill: var(--highlight) !important;
+        transform: rotate(90deg) !important;
+    }
+
+    #header .rightButtons .heartButton:is(:hover, :focus-visible) svg {
+        fill: var(--confirm) !important;
+    }
 }
 
 #simple-translate .simple-translate-button {
-  background-color: rgba(48, 48, 50, 0.97) !important;
-  -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity !important;
-  fill: rgba(255, 255, 255, 0.9) !important;
-  box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.23), 0 0 2px 1px rgba(0, 0, 0, 0.02) !important;
+    background-color: rgba(48, 48, 50, 0.97) !important;
+    -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity !important;
+    fill: rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.23), 0 0 2px 1px rgba(0, 0, 0, 0.02) !important;
 }

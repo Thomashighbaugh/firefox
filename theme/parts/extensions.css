@@ -1,0 +1,597 @@
+/* this stylesheet mainly changes icons for specific extensions or websites
+in order to make them look more consistent with the firefox UI
+and/or fit better on a dark theme, e.g. white on a dark background.
+however, this shouldn't disrupt a light theme either,
+it just replaces PNG or explicitly-colored icons with SVGs
+that respond to CSS' "fill" and "stroke" properties.
+individual extensions' popups and other content documents are styled in userContent.css. */
+
+/* extension icon appearance */
+
+/* tree-style-tabs */
+.webextension-browser-action[data-extensionid="treestyletab@piro.sakura.ne.jp"i] .toolbarbutton-icon,
+#sidebarMenu-popup #button_treestyletab_piro_sakura_ne_jp-sidebar-action:not([checked="true"]) {
+    list-style-image: url(chrome://userchrome/content/material/tree-style-tabs-32.svg) !important;
+}
+
+.eom-addon-button[data-extensionid="treestyletab@piro.sakura.ne.jp"i] .toolbarbutton-icon,
+menupopup#viewSidebarMenu
+    menuitem.menuitem-iconic.webextension-menuitem#menu_treestyletab_piro_sakura_ne_jp-sidebar-action[style]:is([type="checkbox"], [type="radio"]):not([checked="true"]) {
+    list-style-image: url(chrome://userchrome/content/material/tree-style-tabs.svg) !important;
+}
+
+/* SVG gobbler */
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="{7962ff4a-5985-4cf2-9777-4bb642ad05b8}"i]
+    .toolbarbutton-icon {
+    list-style-image: url(chrome://userchrome/content/material/svg-gobbler.svg) !important;
+}
+
+/* mendeley web importer */
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="webapps@mendeley.com"i]
+    .toolbarbutton-icon {
+    list-style-image: url(chrome://userchrome/content/material/mendeley.svg) !important;
+}
+
+/* multi-account containers */
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="@testpilot-containers"i]
+    .toolbarbutton-icon {
+    list-style-image: url(chrome://userchrome/content/skin/container-base.svg);
+}
+
+#pageAction-urlbar-_testpilot-containers {
+    --pageAction-image-16px: url(chrome://userchrome/content/skin/container-go.svg) !important;
+    --pageAction-image-32px: url(chrome://userchrome/content/skin/container-go.svg) !important;
+}
+
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="sort-bookmarks@heftig"]
+    .toolbarbutton-icon {
+    list-style-image: url(chrome://userchrome/content/skin/sort.svg);
+}
+
+/* hide gitzip page action since it's pretty useless */
+#page-action-buttons > #pageAction-urlbar-gitzip-firefox-addons_gitzip_org {
+    display: none !important;
+}
+
+/* zotero, an extension for storing articles and auto generating academic citations, etc. */
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="zotero@chnm.gmu.edu"i]
+    .toolbarbutton-icon {
+    list-style-image: url(chrome://userchrome/content/material/zotero.svg) !important;
+}
+
+/* WebNowPlaying Companion. works for the original or for my fork. */
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="{64b2c525-24ed-4c05-aed1-95ff9e6cef70}"i]
+    .toolbarbutton-icon,
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="wnpc@aminomancer"i]
+    .toolbarbutton-icon {
+    list-style-image: url(chrome://userchrome/content/material/rainmeter.svg);
+}
+
+/* Add custom search engine, an extension for creating new search engines with custom parameters */
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="{af37054b-3ace-46a2-ac59-709e4412bec6}"i]
+    .toolbarbutton-icon {
+    list-style-image: url(chrome://userchrome/content/search-glass.svg);
+}
+
+/* mozlz4-edit, an extension for editing mozlz4 files like your profile's search.json.mozlz4 file that contains all your search engines */
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="{0981817c-71b3-4853-a801-481c90af2e8e}"i]
+    .toolbarbutton-icon {
+    list-style-image: url(chrome://userchrome/content/devtools/tool-dom.svg);
+}
+
+/* nordVPN browser extension */
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="nordvpnproxy@nordvpn.com"i]
+    .toolbarbutton-icon {
+    list-style-image: url(chrome://userchrome/content/material/nord.svg) !important;
+}
+
+/* nordVPN while it's active */
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="nordvpnproxy@nordvpn.com"i][badge] {
+    fill: var(--toolbarbutton-icon-fill-attention) !important;
+}
+
+/* cookie remover */
+:is(.webextension-browser-action, .eom-addon-button)[label="Remove cookies for this site"]
+    .toolbarbutton-icon,
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="{3507f56d-2ef5-45c1-b6d7-5297a0ba7642}"i]
+    .toolbarbutton-icon {
+    list-style-image: url(chrome://userchrome/content/skin/3rdpartycookies-disabled.svg);
+}
+
+/* i don't care about cookies */
+:is(.webextension-browser-action, .eom-addon-button)[label="I don't care about cookies"]
+    .toolbarbutton-icon,
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="jid1-KKzOGWgsW3Ao4Q@jetpack"i]
+    .toolbarbutton-icon {
+    list-style-image: url(chrome://userchrome/content/skin/3rdpartycookies.svg);
+}
+
+/* pushbullet, an extension for controlling, sharing stuff with, and receiving notifications from your phone */
+#sidebarMenu-popup
+    #button__6540f1c5-ab3d-4eff-9ad2-79a95aec93d5_-sidebar-action:not([checked="true"]),
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="jid1-BYcQOfYfmBMd9A@jetpack"i],
+menupopup#viewSidebarMenu
+    menuitem.menuitem-iconic.webextension-menuitem#menu__6540f1c5-ab3d-4eff-9ad2-79a95aec93d5_-sidebar-action[style]:is([type="checkbox"], [type="radio"]):not([checked="true"]) {
+    list-style-image: url(chrome://userchrome/content/material/pushbullet-solid.svg) !important;
+}
+
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="{6540f1c5-ab3d-4eff-9ad2-79a95aec93d5}"],
+#sidebar-box[sidebarcommand="_6540f1c5-ab3d-4eff-9ad2-79a95aec93d5_-sidebar-action"]
+    #sidebar-switcher-target
+    > #sidebar-icon {
+    list-style-image: url(chrome://userchrome/content/material/pushbullet-hollow.svg) !important;
+}
+
+/* bitwarden, the password manager */
+#sidebar-box[sidebarcommand="_446900e4-71c2-419f-a6a7-df9c091e268b_-sidebar-action"]
+    #sidebar-switcher-target
+    > #sidebar-icon,
+#sidebarMenu-popup
+    #button__446900e4-71c2-419f-a6a7-df9c091e268b_-sidebar-action:not([checked="true"]),
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="{446900e4-71c2-419f-a6a7-df9c091e268b}"]
+    .toolbarbutton-icon,
+menupopup#viewSidebarMenu
+    menuitem.menuitem-iconic.webextension-menuitem#menu__446900e4-71c2-419f-a6a7-df9c091e268b_-sidebar-action[style]:is([type="checkbox"], [type="radio"]):not([checked="true"]) {
+    /* list-style-image: url(chrome://userchrome/content/material/fingerprint-large.svg) !important; */
+    list-style-image: url(chrome://userchrome/content/material/bitwarden.svg) !important;
+}
+
+/* simple translate and "to google translate" */
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="jid1-93WyvpgvxzGATw@jetpack"i]
+    .toolbarbutton-icon,
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="simple-translate@sienori"i]
+    .toolbarbutton-icon {
+    list-style-image: url(chrome://userchrome/content/material/translate.svg);
+}
+
+/* dark reader */
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="addon@darkreader.org"i]
+    .toolbarbutton-icon {
+    list-style-image: url(chrome://userchrome/content/material/darkmode.svg);
+}
+
+/* dark reader's popup, corresponds to colors set in userContent.css */
+#customizationui-widget-panel[viewId="PanelUI-webext-addon_darkreader_org-browser-action-view"] {
+    --arrowpanel-background: var(--tooltip-bgcolor) !important;
+    --arrowpanel-border-color: var(--tooltip-border-color) !important;
+}
+
+/* uBlock origin */
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="uBlock0@raymondhill.net"i]
+    .toolbarbutton-icon {
+    list-style-image: url(chrome://userchrome/content/show-password.svg);
+}
+
+/* uBlock origin disabled on this site */
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="uBlock0@raymondhill.net"i][style*="icon_16-off.png"]
+    .toolbarbutton-icon {
+    list-style-image: url(chrome://userchrome/content/hide-password.svg);
+}
+
+/* multithreaded download manager, an extension for downloading files more quickly or with fewer restrictions */
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="multithreaded-download-manager@qw.linux-2g64.local"i]
+    .toolbarbutton-icon,
+menupopup#viewSidebarMenu
+    menuitem.menuitem-iconic.webextension-menuitem#menu_multithreaded-download-manager_qw_linux-2g64_local-sidebar-action[style]:is([type="checkbox"], [type="radio"]):not([checked="true"])
+    .menu-iconic-left {
+    list-style-image: url(chrome://userchrome/content/downloads/double-download.svg);
+}
+
+/* firefox private network beta. not available anymore to my knowledge.
+replaced by firefox VPN which is a paid service. this won't work for that, different extensions.
+I was a beta tester and they never shut the beta off for some reason so this still works for me. */
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="secure-proxy@mozilla.com"i] {
+    list-style-image: url(chrome://userchrome/content/skin/vpn-off-dark.svg) !important;
+}
+
+/* firefox private network enabled */
+.webextension-browser-action[data-extensionid="secure-proxy@mozilla.com"i][label="Firefox Private Network is On"] {
+    list-style-image: var(--vpn-on-icon) !important;
+}
+
+/* firefox private network inactive/error */
+.webextension-browser-action[data-extensionid="secure-proxy@mozilla.com"i][label="Firefox Private Network is inactive"] {
+    fill: var(--warning-color) !important;
+}
+
+/* violentmonkey, for injecting scripts into content windows */
+:is(.webextension-browser-action, .eom-addon-button)[label^="Violentmonkey"] .toolbarbutton-icon,
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="{aecec67f-0d10-4fa7-b7c7-609a2db280cf}"i]
+    .toolbarbutton-icon {
+    list-style-image: url(chrome://userchrome/content/devtools/command-console.svg);
+}
+
+.tabbrowser-tab[label$="Violentmonkey"] .tab-icon-image {
+    animation: none !important;
+    background-image: url(chrome://userchrome/content/devtools/command-console.svg) !important;
+    display: block !important;
+    fill: currentColor !important;
+    padding-right: 16px !important;
+    box-sizing: border-box !important;
+}
+
+/* stylus, for injecting inline CSS into content windows.
+more useful than userContent.css when dealing with very complex websites that need elaborate/compiled stylesheets */
+:is(.webextension-browser-action, .eom-addon-button)[label="Stylus"] .toolbarbutton-icon,
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}"i]
+    .toolbarbutton-icon {
+    list-style-image: url(chrome://userchrome/content/devtools/tool-styleeditor.svg);
+}
+
+/* invert some icons in the extension options panel */
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="sponsorBlocker@ajay.app"]
+    .toolbarbutton-icon,
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="@react-devtools"]
+    .toolbarbutton-icon,
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="hide-files-on-github@sindresorhus.com"]
+    .toolbarbutton-icon,
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="bypasspaywalls@bypasspaywalls"]
+    .toolbarbutton-icon,
+.eom-addon-button[data-extensionid="FirefoxColor@mozilla.com"] .toolbarbutton-icon,
+.eom-addon-button[data-extensionid="default-bookmark-folder@gustiaux.com"] .toolbarbutton-icon,
+.eom-addon-button[data-extensionid="{63d150c4-394c-4275-bc32-c464e76a891c}"] .toolbarbutton-icon,
+.eom-addon-button[data-extensionid="{3c078156-979c-498b-8990-85f7987dd929}"] .toolbarbutton-icon,
+.eom-addon-button[data-extensionid="bookmark-menu-container@robwu.nl"] .toolbarbutton-icon,
+.eom-addon-button[data-extensionid="octolinker@stefanbuck.com"] .toolbarbutton-icon,
+.eom-addon-button[data-extensionid="gitzip-firefox-addons@gitzip.org"] .toolbarbutton-icon,
+.eom-addon-button[data-extensionid="{30399a05-ba09-4c3c-b828-dbc9bb3ab8b9}"] .toolbarbutton-icon {
+    filter: grayscale(1) invert(1) brightness(3) !important;
+}
+
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="@react-devtools"]
+    .toolbarbutton-icon {
+    list-style-image: url(chrome://devtools/content/debugger/images/sources/react.svg);
+}
+
+/* context menu stuff */
+
+/* make multithreaded download manager context menu label smaller */
+#multithreaded-download-manager_qw_linux-2g64_local-menuitem-_link-context-menu .menu-iconic-left {
+    -moz-box-flex: 1;
+}
+
+#multithreaded-download-manager_qw_linux-2g64_local-menuitem-_link-context-menu .menu-iconic-text {
+    display: none;
+}
+
+#multithreaded-download-manager_qw_linux-2g64_local-menuitem-_link-context-menu
+    .menu-iconic-left::after {
+    content: "Download (multi-threaded)";
+    display: -moz-inline-box;
+    -moz-box-flex: 1;
+}
+
+/* sort bookmarks menu icon */
+:is(.menu-iconic, .menuitem-iconic)[id^="sort-bookmarks_heftig-menuitem"] .menu-iconic-left:before {
+    width: 16px;
+    height: 16px;
+    margin-inline: var(--context-iconic-margin);
+    fill: currentColor;
+    -moz-context-properties: fill, fill-opacity, stroke;
+    content: "";
+    display: -moz-inline-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(chrome://userchrome/content/skin/sort.svg);
+}
+
+:is(.menu-iconic, .menuitem-iconic)[id^="sort-bookmarks_heftig-menuitem"] .menu-iconic-icon {
+    display: none;
+}
+
+/* simple translate context menu icon */
+:is(.menu-iconic, .menuitem-iconic):is([label="To Google Translate"], [label^="Translate this page"], [label="Translate selected link"], [label="Translate selected text"], [label="Simple Translate"])
+    .menu-iconic-left:before {
+    width: 16px;
+    height: 16px;
+    margin-inline: var(--context-iconic-margin);
+    fill: currentColor;
+    -moz-context-properties: fill, fill-opacity, stroke;
+    content: "";
+    display: -moz-inline-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(chrome://userchrome/content/material/translate-small.svg);
+}
+
+:is(.menu-iconic, .menuitem-iconic):is([label="To Google Translate"], [label^="Translate this page"], [label="Translate selected link"], [label="Translate selected text"], [label="Simple Translate"])
+    .menu-iconic-icon {
+    display: none;
+}
+
+#simple-translate_sienori-menuitem-_translatePage:not(.menuitem-iconic, .menu-iconic):before {
+    background-image: url(chrome://userchrome/content/material/translate-small.svg);
+}
+
+/* hide simple translate menu item in sidebars (e.g. TST, sidebery) */
+@-moz-document regexp("chrome://browser/content/webext-panels.xhtml")
+{
+    :is(menu, menuitem):is([label="To Google Translate"], [label^="Translate this page"], [label="Translate selected link"], [label="Translate selected text"], [label="Simple Translate"]) {
+        display: none;
+    }
+}
+
+/* hide translate this page when right-clicking text input */
+#contentAreaContextMenu
+    #context-cut:not([hidden])
+    ~ :is(.menu-iconic, .menuitem-iconic):is([label^="Translate this page"], [label="Simple Translate"]) {
+    display: none;
+}
+
+/* pushbullet context menu icon */
+#contentAreaContextMenu
+    :is(.menu-iconic, .menuitem-iconic)[label="Pushbullet"]
+    .menu-iconic-left:before {
+    width: 16px;
+    height: 16px;
+    margin-inline: var(--context-iconic-margin);
+    fill: currentColor;
+    -moz-context-properties: fill, fill-opacity, stroke;
+    content: "";
+    display: -moz-inline-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(chrome://userchrome/content/material/pushbullet-solid.svg);
+}
+
+#contentAreaContextMenu :is(.menu-iconic, .menuitem-iconic)[label="Pushbullet"] .menu-iconic-icon {
+    display: none;
+}
+
+#toolbar-context-menu
+    :is(menu, menuitem)[id^="jid1-bycqofyfmbmd9a_jetpack-menuitem"]:not(.menuitem-iconic, .menu-iconic):before {
+    background-image: url(chrome://userchrome/content/material/pushbullet-solid.svg);
+}
+
+/* hide pushbullet when right-clicking dead area, e.g. the page background.
+pushbullet kinda overstays its welcome, you can just use the toolbar button to send the current page,
+there's no need for a context menu item except when right-clicking something particular *on* the page. */
+#contentAreaContextMenu
+    #context-navigation:not([hidden])
+    ~ :is(.menu-iconic, .menuitem-iconic)[label="Pushbullet"] {
+    display: none;
+}
+
+/* multi-account containers menu icon */
+#contentAreaContextMenu
+    :is(.menu-iconic, .menuitem-iconic)[label="Firefox Multi-Account Containers"]
+    .menu-iconic-left:before {
+    width: 16px;
+    height: 16px;
+    margin-inline: var(--context-iconic-margin);
+    fill: currentColor;
+    -moz-context-properties: fill, fill-opacity, stroke;
+    content: "";
+    display: -moz-inline-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(chrome://userchrome/content/skin/container-base.svg);
+}
+
+#contentAreaContextMenu
+    :is(.menu-iconic, .menuitem-iconic)[label="Firefox Multi-Account Containers"]
+    .menu-iconic-icon {
+    display: none;
+}
+
+/* shorten the multi-account containers label */
+#contentAreaContextMenu
+    :is(.menu-iconic, .menuitem-iconic)[label="Firefox Multi-Account Containers"]
+    .menu-iconic-left {
+    -moz-box-flex: 1;
+}
+
+#contentAreaContextMenu
+    :is(.menu-iconic, .menuitem-iconic)[label="Firefox Multi-Account Containers"]
+    .menu-iconic-left::after {
+    content: "Account Containers";
+    display: -moz-inline-box;
+    -moz-box-flex: 1;
+}
+
+#contentAreaContextMenu
+    :is(.menu-iconic, .menuitem-iconic)[label="Firefox Multi-Account Containers"]
+    .menu-iconic-text {
+    display: none;
+}
+
+/* zotero menu icon */
+#contentAreaContextMenu
+    :is(.menu-iconic, .menuitem-iconic)[label="Zotero Connector"]
+    .menu-iconic-left:before {
+    width: 16px;
+    height: 16px;
+    margin-inline: var(--context-iconic-margin);
+    fill: currentColor;
+    -moz-context-properties: fill, fill-opacity, stroke;
+    content: "";
+    display: -moz-inline-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(chrome://userchrome/content/skin/sync.svg);
+}
+
+#contentAreaContextMenu
+    :is(.menu-iconic, .menuitem-iconic)[label="Zotero Connector"]
+    .menu-iconic-icon {
+    display: none;
+}
+
+/* ublock origin context menu icon */
+#contentAreaContextMenu
+    :is(.menu-iconic, .menuitem-iconic):is([label="Block element..."], [label="uBlock Origin"])
+    .menu-iconic-left:before {
+    width: 16px;
+    height: 16px;
+    margin-inline: var(--context-iconic-margin);
+    fill: currentColor;
+    -moz-context-properties: fill, fill-opacity, stroke;
+    content: "";
+    display: -moz-inline-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(chrome://userchrome/content/hide-password.svg);
+}
+
+#contentAreaContextMenu
+    :is(.menu-iconic, .menuitem-iconic):is([label="Block element..."], [label="uBlock Origin"])
+    .menu-iconic-icon {
+    display: none;
+}
+
+#ublock0_raymondhill_net-menuitem-_uBlock0-blockElement:not(.menuitem-iconic, .menu-iconic):before {
+    background-image: url(chrome://userchrome/content/hide-password.svg);
+}
+
+#ublock0_raymondhill_net-menuitem-_uBlock0-blockElementInFrame:not(.menuitem-iconic, .menu-iconic):before {
+    fill-opacity: 0.3;
+    background-image: url(chrome://userchrome/content/devtools/command-frames.svg);
+}
+
+/* bitwarden context menu icon */
+#contentAreaContextMenu
+    :is(.menu-iconic, .menuitem-iconic)[label="Bitwarden"]
+    .menu-iconic-left:before {
+    width: 16px;
+    height: 16px;
+    margin-inline: var(--context-iconic-margin);
+    fill: currentColor;
+    -moz-context-properties: fill, fill-opacity, stroke;
+    content: "";
+    display: -moz-inline-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-image: url(chrome://userchrome/content/material/fingerprint-large.svg); */
+    background-image: url(chrome://userchrome/content/material/bitwarden.svg);
+}
+
+#contentAreaContextMenu :is(.menu-iconic, .menuitem-iconic)[label="Bitwarden"] .menu-iconic-icon {
+    display: none !important;
+}
+
+/* toolbar context menu item */
+#_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root:not(.menuitem-iconic, .menu-iconic):before {
+    background-image: url(chrome://userchrome/content/material/bitwarden.svg);
+}
+
+#contentAreaContextMenu
+    #addon_darkreader_org-menuitem-_DarkReader-top
+    .menu-iconic-left:before {
+    width: 16px;
+    height: 16px;
+    margin-inline: var(--context-iconic-margin);
+    fill: currentColor;
+    -moz-context-properties: fill, fill-opacity, stroke;
+    content: "";
+    display: -moz-inline-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(chrome://userchrome/content/material/darkmode.svg);
+}
+
+#contentAreaContextMenu #addon_darkreader_org-menuitem-_DarkReader-top .menu-iconic-icon {
+    display: none !important;
+}
+
+/* stylus context menu items */
+#_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-menuitem-_open-manager:not(.menuitem-iconic, .menu-iconic):before {
+    background-image: url(chrome://userchrome/content/devtools/tool-styleeditor.svg);
+}
+
+#_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-menuitem-_open-options:not(.menuitem-iconic, .menu-iconic):before {
+    background-image: url(chrome://userchrome/content/settings.svg);
+}
+
+/* make the "Options" menuitem's label more specific */
+#_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-menuitem-_open-options[label="Options"]:not(.menuitem-iconic, .menu-iconic)
+    > .menu-text {
+    display: none !important;
+}
+
+#_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-menuitem-_open-options[label="Options"]:not(.menuitem-iconic, .menu-iconic)
+    > .menu-accel-container:before {
+    content: "Stylus Options";
+    display: -moz-inline-box;
+    -moz-box-flex: 1;
+}
+
+/* tab notes favicon isn't displayed properly in the back/forward menu */
+menupopup menuitem[class^="unified-nav"][uri="moz-extension://e158f52d-b5db-4594-9757-1e526a5df811/newtab.html"]:not([_moz-menuactive="true"])
+{
+    list-style-image: url("moz-extension://e158f52d-b5db-4594-9757-1e526a5df811/favicon.ico") !important;
+}
+
+/* invert github's black icon */
+:is(.menu-iconic-icon, .toolbarbutton-icon, .urlbarView-favicon):-moz-lwtheme-brighttext:is([src^="page-icon:https://github.com"], [src^="page-icon:http://github.com"])
+{
+    filter: invert(1) brightness(10);
+}
+
+/* if icon-only bookmarks toolbar pref is enabled,
+we need to invert the icon differently since we don't want to invert the background color on hovering the icon */
+@supports -moz-bool-pref("userChrome.bookmarks-toolbar.icons-only") {
+    #PersonalToolbar toolbarbutton.bookmark-item:not(.subviewbutton, [id]) .toolbarbutton-icon:is([src^="page-icon:https://github.com"], [src^="page-icon:http://github.com"])
+    {
+        background-image: url(chrome://userchrome/content/engines/github.svg) !important;
+        background-size: 16px !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        padding-left: 28px !important;
+        padding-right: 0 !important;
+        filter: none !important;
+    }
+}
+
+/* reddit enhancement suite urlbar page action button */
+#pageAction-urlbar-jid1-xufzosoflzsoxg_jetpack {
+    list-style-image: url(chrome://userchrome/content/material/filter-css.svg) !important;
+}
+
+#pageAction-urlbar-jid1-xufzosoflzsoxg_jetpack[tooltiptext="Subreddit Style Off"] {
+    list-style-image: url(chrome://userchrome/content/material/filter-css-blocked.svg) !important;
+}
+
+/* replace extension icon with material icon */
+#addons-notification-icon,
+#add-ons-button,
+#appMenu-addons-button {
+    list-style-image: url(chrome://userchrome/content/material/extension.svg) !important;
+}
+
+/* since the following extensions' popup documents have been customized to fit with the theme's colors,
+we can afford to show a border around the popup panel. for other extensions that haven't been customized,
+the border color would probably be inconsistent with the popup doc's colors.
+so by default we hide the border on extension panels (see userChrome.au.css) */
+#customizationui-widget-panel[viewId="PanelUI-webext-sort-bookmarks_heftig-browser-action-view"],
+#customizationui-widget-panel[viewId="PanelUI-webext-_testpilot-containers-browser-action-view"],
+#customizationui-widget-panel[viewId="PanelUI-webext-addon_darkreader_org-browser-action-view"],
+#customizationui-widget-panel[viewId="PanelUI-webext-nordvpnproxy_nordvpn_com-browser-action-view"],
+#customizationui-widget-panel[viewId="PanelUI-webext-simple-translate_sienori-browser-action-view"],
+#customizationui-widget-panel[viewId^="PanelUI-webext-multithreaded-download-manager"] {
+    --customized-webextension-panel-border: 1px solid var(--panel-border-color) !important;
+    --customized-webextension-panel-stroke: var(--panel-border-color);
+    --arrowpanel-border-color: var(--uc-menu-border-color) !important;
+}
+
+#customizationui-widget-panel[viewId="PanelUI-webext-sort-bookmarks_heftig-browser-action-view"][side="top"],
+#customizationui-widget-panel[viewId="PanelUI-webext-_testpilot-containers-browser-action-view"][side="top"],
+#customizationui-widget-panel[viewId="PanelUI-webext-addon_darkreader_org-browser-action-view"][side="top"],
+#customizationui-widget-panel[viewId="PanelUI-webext-nordvpnproxy_nordvpn_com-browser-action-view"][side="top"],
+#customizationui-widget-panel[viewId="PanelUI-webext-simple-translate_sienori-browser-action-view"][side="top"],
+#customizationui-widget-panel[viewId^="PanelUI-webext-multithreaded-download-manager"][side="top"] {
+    --customized-webextension-panel-margin-bottom: -5px;
+}
+
+#customizationui-widget-panel[viewId="PanelUI-webext-sort-bookmarks_heftig-browser-action-view"][side="bottom"],
+#customizationui-widget-panel[viewId="PanelUI-webext-_testpilot-containers-browser-action-view"][side="bottom"],
+#customizationui-widget-panel[viewId="PanelUI-webext-addon_darkreader_org-browser-action-view"][side="bottom"],
+#customizationui-widget-panel[viewId="PanelUI-webext-nordvpnproxy_nordvpn_com-browser-action-view"][side="bottom"],
+#customizationui-widget-panel[viewId="PanelUI-webext-simple-translate_sienori-browser-action-view"][side="bottom"],
+#customizationui-widget-panel[viewId^="PanelUI-webext-multithreaded-download-manager"][side="bottom"] {
+    --customized-webextension-panel-margin-top: -5px;
+}
+
+#customizationui-widget-panel[viewId="PanelUI-webext-nordvpnproxy_nordvpn_com-browser-action-view"],
+#customizationui-widget-panel[viewId^="PanelUI-webext-multithreaded-download-manager"] {
+    --panel-border-color: var(--content-principal-box-background-odd) !important;
+}

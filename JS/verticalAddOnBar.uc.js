@@ -11,98 +11,98 @@
 
 // [!] Fix for WebExtensions with own windows by 黒仪大螃蟹 (for 1-N scripts)
 
-Components.utils.import("resource:///modules/CustomizableUI.jsm");
+Components.utils.import('resource:///modules/CustomizableUI.jsm')
 var { Services } = Components.utils.import(
-  "resource://gre/modules/Services.jsm",
-  {}
-);
-var appversion = parseInt(Services.appinfo.version);
+  'resource://gre/modules/Services.jsm',
+  {},
+)
+var appversion = parseInt(Services.appinfo.version)
 
 var AddonbarVertical = {
   init: function () {
     if (
       appversion >= 76 &&
-      location != "chrome://browser/content/browser.xhtml"
+      location != 'chrome://browser/content/browser.xhtml'
     )
-      return;
+      return
 
     /* blank tab workaround */
     try {
-      if (gBrowser.selectedBrowser.getAttribute("blank"))
-        gBrowser.selectedBrowser.removeAttribute("blank");
-    } catch (e) { }
+      if (gBrowser.selectedBrowser.getAttribute('blank'))
+        gBrowser.selectedBrowser.removeAttribute('blank')
+    } catch (e) {}
 
-    var addonbar_v_label = "Vertical Add-on Bar"; // toolbar name
-    var button_label = "Toggle vertical Add-on Bar"; // Toggle button name
-    var addonbar_v_togglebutton = true; // display toggle button for vertical toolbar (true) or not (false)
-    var addonbar_v_on_the_left = false; // display vertical toolbar on the left (true) or the right (false)
-    var insert_before_borders = false; // may not always offer a visible change
-    var style_addonbar_v = true; // apply default toolbar appearance/colors to vertical add-on bar
-    var addonbar_v_width = "30px"; // toolbar width
-    var compact_buttons = false; // compact button size (true) or default button size (false)
+    var addonbar_v_label = 'Vertical Add-on Bar' // toolbar name
+    var button_label = 'Toggle vertical Add-on Bar' // Toggle button name
+    var addonbar_v_togglebutton = true // display toggle button for vertical toolbar (true) or not (false)
+    var addonbar_v_on_the_left = true // display vertical toolbar on the left (true) or the right (false)
+    var insert_before_borders = false // may not always offer a visible change
+    var style_addonbar_v = true // apply default toolbar appearance/colors to vertical add-on bar
+    var addonbar_v_width = '30px' // toolbar width
+    var compact_buttons = false // compact button size (true) or default button size (false)
 
     try {
       if (
-        document.getElementById("toolbox_abv") == null &&
-        document.getElementById("addonbar_v") == null
+        document.getElementById('toolbox_abv') == null &&
+        document.getElementById('addonbar_v') == null
       ) {
         if (appversion <= 62)
-          var toolbox_abv = document.createElement("toolbox");
-        else var toolbox_abv = document.createXULElement("toolbox");
-        toolbox_abv.setAttribute("orient", "horizontal");
-        toolbox_abv.setAttribute("id", "toolbox_abv");
-        toolbox_abv.setAttribute("insertbefore", "sidebar-box");
+          var toolbox_abv = document.createElement('toolbox')
+        else var toolbox_abv = document.createXULElement('toolbox')
+        toolbox_abv.setAttribute('orient', 'horizontal')
+        toolbox_abv.setAttribute('id', 'toolbox_abv')
+        toolbox_abv.setAttribute('insertbefore', 'sidebar-box')
 
         if (appversion <= 62)
-          var tb_addonbarv = document.createElement("toolbar");
-        else var tb_addonbarv = document.createXULElement("toolbar");
-        tb_addonbarv.setAttribute("id", "addonbar_v");
-        tb_addonbarv.setAttribute("customizable", "true");
+          var tb_addonbarv = document.createElement('toolbar')
+        else var tb_addonbarv = document.createXULElement('toolbar')
+        tb_addonbarv.setAttribute('id', 'addonbar_v')
+        tb_addonbarv.setAttribute('customizable', 'true')
         tb_addonbarv.setAttribute(
-          "class",
-          "toolbar-primary chromeclass-toolbar browser-toolbar customization-target"
-        );
-        tb_addonbarv.setAttribute("mode", "icons");
-        tb_addonbarv.setAttribute("iconsize", "small");
-        tb_addonbarv.setAttribute("toolboxid", "navigator-toolbox");
-        tb_addonbarv.setAttribute("orient", "vertical");
-        tb_addonbarv.setAttribute("flex", "1");
-        tb_addonbarv.setAttribute("context", "toolbar-context-menu");
-        tb_addonbarv.setAttribute("toolbarname", addonbar_v_label);
-        tb_addonbarv.setAttribute("label", addonbar_v_label);
-        tb_addonbarv.setAttribute("lockiconsize", "true");
-        tb_addonbarv.setAttribute("defaultset", "spring");
+          'class',
+          'toolbar-primary chromeclass-toolbar browser-toolbar customization-target',
+        )
+        tb_addonbarv.setAttribute('mode', 'icons')
+        tb_addonbarv.setAttribute('iconsize', 'small')
+        tb_addonbarv.setAttribute('toolboxid', 'navigator-toolbox')
+        tb_addonbarv.setAttribute('orient', 'vertical')
+        tb_addonbarv.setAttribute('flex', '1')
+        tb_addonbarv.setAttribute('context', 'toolbar-context-menu')
+        tb_addonbarv.setAttribute('toolbarname', addonbar_v_label)
+        tb_addonbarv.setAttribute('label', addonbar_v_label)
+        tb_addonbarv.setAttribute('lockiconsize', 'true')
+        tb_addonbarv.setAttribute('defaultset', 'spring')
 
-        toolbox_abv.appendChild(tb_addonbarv);
+        toolbox_abv.appendChild(tb_addonbarv)
 
-        CustomizableUI.registerArea("addonbar_v", { legacy: true });
-        if (appversion >= 65) CustomizableUI.registerToolbarNode(tb_addonbarv);
+        CustomizableUI.registerArea('addonbar_v', { legacy: true })
+        if (appversion >= 65) CustomizableUI.registerToolbarNode(tb_addonbarv)
 
         if (addonbar_v_on_the_left) {
           if (insert_before_borders || appversion >= 86)
             document
-              .getElementById("browser")
+              .getElementById('browser')
               .insertBefore(
                 toolbox_abv,
-                document.getElementById("browser").firstChild
-              );
+                document.getElementById('browser').firstChild,
+              )
           else
             document
-              .getElementById("browser")
+              .getElementById('browser')
               .insertBefore(
                 toolbox_abv,
-                document.getElementById("browser").firstChild.nextSibling
-              );
+                document.getElementById('browser').firstChild.nextSibling,
+              )
         } else {
           if (insert_before_borders)
-            document.getElementById("browser").appendChild(toolbox_abv);
+            document.getElementById('browser').appendChild(toolbox_abv)
           else
             document
-              .getElementById("browser")
+              .getElementById('browser')
               .insertBefore(
                 toolbox_abv,
-                document.getElementById("browser").lastChild
-              );
+                document.getElementById('browser').lastChild,
+              )
         }
 
         var observer = new MutationObserver(function (mutations) {
@@ -110,102 +110,102 @@ var AddonbarVertical = {
             try {
               if (
                 document
-                  .querySelector("#main-window")
-                  .getAttribute("customizing")
+                  .querySelector('#main-window')
+                  .getAttribute('customizing')
               ) {
                 document
-                  .querySelector("#addonbar_v")
-                  .setAttribute("orient", "horizontal");
+                  .querySelector('#addonbar_v')
+                  .setAttribute('orient', 'horizontal')
                 document
-                  .querySelector("#navigator-toolbox")
-                  .appendChild(document.querySelector("#addonbar_v"));
+                  .querySelector('#navigator-toolbox')
+                  .appendChild(document.querySelector('#addonbar_v'))
               } else {
                 document
-                  .querySelector("#addonbar_v")
-                  .setAttribute("orient", "vertical");
+                  .querySelector('#addonbar_v')
+                  .setAttribute('orient', 'vertical')
                 document
-                  .querySelector("#toolbox_abv")
-                  .appendChild(document.querySelector("#addonbar_v"));
+                  .querySelector('#toolbox_abv')
+                  .appendChild(document.querySelector('#addonbar_v'))
               }
-            } catch (e) { }
-          });
-        });
+            } catch (e) {}
+          })
+        })
 
-        observer.observe(document.querySelector("#main-window"), {
+        observer.observe(document.querySelector('#main-window'), {
           attributes: true,
-          attributeFilter: ["customizing"]
-        });
+          attributeFilter: ['customizing'],
+        })
 
         try {
           Services.prefs
-            .getDefaultBranch("browser.vaddonbar.")
-            .setBoolPref("enabled", true);
+            .getDefaultBranch('browser.vaddonbar.')
+            .setBoolPref('enabled', true)
           setToolbarVisibility(
-            document.getElementById("addonbar_v"),
+            document.getElementById('addonbar_v'),
             Services.prefs
-              .getBranch("browser.vaddonbar.")
-              .getBoolPref("enabled")
-          );
+              .getBranch('browser.vaddonbar.')
+              .getBoolPref('enabled'),
+          )
           setToolbarVisibility(
-            document.getElementById("toolbox_abv"),
+            document.getElementById('toolbox_abv'),
             Services.prefs
-              .getBranch("browser.vaddonbar.")
-              .getBoolPref("enabled")
-          );
-        } catch (e) { }
+              .getBranch('browser.vaddonbar.')
+              .getBoolPref('enabled'),
+          )
+        } catch (e) {}
 
         if (addonbar_v_togglebutton) {
           CustomizableUI.createWidget({
-            id: "tooglebutton_addonbar_v", // button id
+            id: 'tooglebutton_addonbar_v', // button id
             defaultArea: CustomizableUI.AREA_NAVBAR,
             removable: true,
             label: button_label, // button title
             tooltiptext: button_label, // tooltip title
             onClick: function (event) {
-              var windows = Services.wm.getEnumerator(null);
+              var windows = Services.wm.getEnumerator(null)
               while (windows.hasMoreElements()) {
-                var win = windows.getNext();
+                var win = windows.getNext()
 
-                var vAddonBar = win.document.getElementById("addonbar_v");
-                setToolbarVisibility(vAddonBar, vAddonBar.collapsed);
+                var vAddonBar = win.document.getElementById('addonbar_v')
+                setToolbarVisibility(vAddonBar, vAddonBar.collapsed)
 
-                var vAddonBarBox = win.document.getElementById("toolbox_abv");
-                setToolbarVisibility(vAddonBarBox, vAddonBarBox.collapsed);
+                var vAddonBarBox = win.document.getElementById('toolbox_abv')
+                setToolbarVisibility(vAddonBarBox, vAddonBarBox.collapsed)
 
                 Services.prefs
-                  .getBranch("browser.vaddonbar.")
-                  .setBoolPref("enabled", !vAddonBar.collapsed);
+                  .getBranch('browser.vaddonbar.')
+                  .setBoolPref('enabled', !vAddonBar.collapsed)
 
                 if (!vAddonBar.collapsed)
                   win.document
-                    .querySelector("#tooglebutton_addonbar_v")
-                    .setAttribute("checked", "true");
+                    .querySelector('#tooglebutton_addonbar_v')
+                    .setAttribute('checked', 'true')
                 else
                   win.document
-                    .querySelector("#tooglebutton_addonbar_v")
-                    .removeAttribute("checked");
+                    .querySelector('#tooglebutton_addonbar_v')
+                    .removeAttribute('checked')
               }
             },
             onCreated: function (button) {
               if (
                 Services.prefs
-                  .getBranch("browser.vaddonbar.")
-                  .getBoolPref("enabled")
+                  .getBranch('browser.vaddonbar.')
+                  .getBoolPref('enabled')
               )
-                button.setAttribute("checked", "true");
-              return button;
-            }
-          });
+                button.setAttribute('checked', 'true')
+              return button
+            },
+          })
         }
 
         // 'Ctr + Alt + /' on Windows/Linux or 'Cmd + Alt + /' on macOS to toggle vertical add-on bar
-        var key = document.createXULElement("key");
-        if (appversion < 69) key = document.createElement("key");
-        key.id = "key_toggleVAddonBar";
-        key.setAttribute("key", "/");
-        key.setAttribute("modifiers", "accel,alt");
+        var key = document.createXULElement('key')
+        if (appversion < 69) key = document.createElement('key')
+        key.id = 'key_toggleVAddonBar'
+        key.setAttribute('key', '/')
+        key.setAttribute('modifiers', 'accel,alt')
         key.setAttribute(
-          "oncommand",
+          'oncommand',
           '\
 		var windows = Services.wm.getEnumerator(null);\
 		while (windows.hasMoreElements()) {\
@@ -219,31 +219,31 @@ var AddonbarVertical = {
 			win.document.querySelector("#tooglebutton_addonbar_v").setAttribute("checked","true");\
 		  else win.document.querySelector("#tooglebutton_addonbar_v").removeAttribute("checked");\
 		}\
-	  '
-        );
-        document.getElementById("mainKeyset").appendChild(key);
+	  ',
+        )
+        document.getElementById('mainKeyset').appendChild(key)
       }
-    } catch (e) { }
+    } catch (e) {}
 
     // style toolbar & toggle button
-    var addonbar_v_style = "";
-    var tooglebutton_addonbar_v_style = "";
+    var addonbar_v_style = ''
+    var tooglebutton_addonbar_v_style = ''
 
     if (style_addonbar_v) {
       var end_border =
-        " \
+        ' \
 		#addonbar_v { \
 			-moz-border-end: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.1)) !important; \
 		}\
-	  ";
+	  '
 
       if (!addonbar_v_on_the_left) {
         end_border =
-          "\
+          '\
 		  #addonbar_v { \
 			-moz-border-start: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.1)) !important; \
 		  }\
-		";
+		'
       }
 
       addonbar_v_style =
@@ -266,11 +266,11 @@ var AddonbarVertical = {
 		#main-window:not([customizing]) #addonbar_v:not([collapsed="true"]) { \
 		  min-width: ' +
         addonbar_v_width +
-        "; \
-		  width: " +
+        '; \
+		  width: ' +
         addonbar_v_width +
-        "; \
-		  max-width: " +
+        '; \
+		  max-width: ' +
         addonbar_v_width +
         '; \
 		} \
@@ -299,8 +299,8 @@ var AddonbarVertical = {
 		} \
 		' +
         end_border +
-        " \
-	  ";
+        ' \
+	  '
     }
 
     if (addonbar_v_togglebutton) {
@@ -329,14 +329,14 @@ var AddonbarVertical = {
       background-color:#17191e !important; \
 		  background-position: 10% 30% !important; \
 		}*/ \
-	  ';
+	  '
     }
 
-    var compact_buttons_code = "";
+    var compact_buttons_code = ''
 
     if (compact_buttons)
       compact_buttons_code =
-        "\
+        '\
 		#addonbar_v toolbarbutton .toolbarbutton-icon { \
 		  padding: 0 !important; \
 		  width: 16px !important; \
@@ -360,36 +360,36 @@ var AddonbarVertical = {
     		#addonbar_v toolbarbutton  { \
     background-color:#17191e !important; \
 		} \
-	  ";
+	  '
 
     var uri = Services.io.newURI(
-      "data:text/css;charset=utf-8," +
-      encodeURIComponent(
-        "\
-	  " +
-        addonbar_v_style +
-        " \
-	  " +
-        tooglebutton_addonbar_v_style +
-        " \
-	  " +
-        compact_buttons_code +
-        " \
-	"
-      ),
+      'data:text/css;charset=utf-8,' +
+        encodeURIComponent(
+          '\
+	  ' +
+            addonbar_v_style +
+            ' \
+	  ' +
+            tooglebutton_addonbar_v_style +
+            ' \
+	  ' +
+            compact_buttons_code +
+            ' \
+	',
+        ),
       null,
-      null
-    );
+      null,
+    )
 
     var sss = Components.classes[
-      "@mozilla.org/content/style-sheet-service;1"
-    ].getService(Components.interfaces.nsIStyleSheetService);
-    sss.loadAndRegisterSheet(uri, sss.AGENT_SHEET);
-  }
-};
+      '@mozilla.org/content/style-sheet-service;1'
+    ].getService(Components.interfaces.nsIStyleSheetService)
+    sss.loadAndRegisterSheet(uri, sss.AGENT_SHEET)
+  },
+}
 
 /* initialization delay workaround */
-document.addEventListener("DOMContentLoaded", AddonbarVertical.init(), false);
+document.addEventListener('DOMContentLoaded', AddonbarVertical.init(), false)
 /* Use the below code instead of the one above this line, if issues occur */
 /*
 setTimeout(function(){

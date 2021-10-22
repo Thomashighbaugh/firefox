@@ -53,17 +53,20 @@
     #2f303d
   );
   ---button-border-color: var(--base04);
-  ---button-border-accent-color: #21242b;
+  ---button-border-accent-color: var(--base01);
   ---button-box-shadow: outset 0 1px #10111466, 0 1px 2px var(--base0033);
   ---button-hover-background: linear-gradient(to top, #1b1f22, #1b1f22 1px);
   ---button-active-background: linear-gradient(45deg, #ff005d, #ff8b26);
   ---button-active-border-color: var(--base04);
   ---button-active-border-accent-color: var(--base04);
   ---button-active-box-shadow: outset 0 1px var(--base0000);
-  ---button-disabled-background: #1b1f22;
+  ---button-disabled-background: var(--base02);
   ---button-disabled-border-color: var(--base00);
   ---button-disabled-box-shadow: outset 0 1px var(--base0000);
-  ---inactive-button-background: linear-gradient(var(--base00), var(--base00));
+  ---inactive-button-background: linear-gradient(
+    var(32deg, --base00),
+    var(--base00)
+  );
   ---inactive-button-border-color: var(--base00);
   ---inactive-button-box-shadow: outset 0 1px var(--base0000);
   ---button-suggested-action-background: linear-gradient(
@@ -76,7 +79,7 @@
   ---button-suggested-action-box-shadow: outset 0 1px #10111466,
     0 1px 2px var(--base0033);
   ---button-suggested-action-hover-background: linear-gradient(
-    to top,
+    -42deg,
     var(--base03cc),
     var(--base0099) 1px
   );
@@ -104,9 +107,9 @@
   /* URL bar */
   ---urlbar-background: linear-gradient(-32deg, #22262d, #2f303d);
   ---urlbar-border-color: var(--base04);
-  ---urlbar-box-shadow: outset 0 0 0 1px rgba(21, 83, 58, 0);
+  ---urlbar-box-shadow: outset 0 0 0 1px #17191eaa;
   ---urlbar-color: #b2bfd9;
-  ---inactive-urlbar-background: linear-gradient(#1b1f22, #1b1f22);
+  ---inactive-urlbar-background: linear-gradient(-32deg, #17191e, #22262d);
   ---inactive-urlbar-border-color: #22262d;
   ---inactive-urlbar-box-shadow: none;
   ---inactive-urlbar-color: #d6d6d6;

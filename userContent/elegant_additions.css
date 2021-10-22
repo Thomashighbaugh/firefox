@@ -2,7 +2,7 @@
 @import "../colors/vice";
 
 /*================== FIREFOX BG COLOR ==================*/
-@-moz-document url("about:newtab"), url("about:home"), url("about:blank"), url("about:support"), url("about:config") {
+@-moz-document url("about:newtab"), url("about:home"), url("about:blank"), url("about:support"), url("about:config"), url("about:profiles") {
   /*Dark*/
   html:not(#ublock0-epicker)[lwt-newtab-brighttext],
   html:not(#ublock0-epicker) body[lwt-newtab-brighttext],
@@ -101,7 +101,7 @@ html.private .search-wrapper input {
     background: var(--base00) !important;
     --blue-40: var(--base07) !important;
     --blue-40-a30: #8265ff !important;
-    --selected-background: #8265ff99!important;
+    --selected-background: #8265ff99 !important;
     --active-color: var(--base07) !important;
   }
 }

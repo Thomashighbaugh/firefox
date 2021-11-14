@@ -9,7 +9,7 @@
   url('about:newtab'),
   url('about:privatebrowsing'),
   url('about:blank') {
-  html:not(#ublock0-epicker) body {
+  html:not(#ublock-epicker) body {
     background-color: var(--base01) !important;
   }
 }

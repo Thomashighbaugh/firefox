@@ -10,33 +10,41 @@
 
 // [!] Fix for WebExtensions with own windows by 黒仪大螃蟹 (for 1-N scripts)
 
-
 Components.utils.import("resource:///modules/CustomizableUI.jsm");
-var { Services } = Components.utils.import("resource://gre/modules/Services.jsm", {});
+var { Services } = Components.utils.import(
+  "resource://gre/modules/Services.jsm",
+  {}
+);
 var appversion = parseInt(Services.appinfo.version);
 
 var compact_buttons = false; // reduced toolbar height and smaller buttons
 
 var AddAddonbar = {
   init: function () {
-
-    if (appversion >= 76 && location != 'chrome://browser/content/browser.xhtml')
+    if (
+      appversion >= 76 &&
+      location != "chrome://browser/content/browser.xhtml"
+    )
       return;
 
     /* blank tab workaround */
     try {
-      if (gBrowser.selectedBrowser.getAttribute('blank')) gBrowser.selectedBrowser.removeAttribute('blank');
-    } catch (e) { }
+      if (gBrowser.selectedBrowser.getAttribute("blank"))
+        gBrowser.selectedBrowser.removeAttribute("blank");
+    } catch (e) {}
 
     try {
-      Services.prefs.getDefaultBranch("browser.addonbar.").setBoolPref("enabled", true);
-    } catch (e) { }
+      Services.prefs
+        .getDefaultBranch("browser.addonbar.")
+        .setBoolPref("enabled", true);
+    } catch (e) {}
 
     var addonbar_label = "Add-on Bar";
     var compact_buttons_code = "";
 
     if (compact_buttons)
-      compact_buttons_code = "\
+      compact_buttons_code =
+        "\
 		#addonbar toolbarbutton .toolbarbutton-icon { \
 		  padding: 0 !important; \
 		  width: 16px !important; \
@@ -57,8 +65,13 @@ var AddAddonbar = {
 	  ";
 
     // style sheet
-    Components.classes["@mozilla.org/content/style-sheet-service;1"].getService(Components.interfaces.nsIStyleSheetService).loadAndRegisterSheet(
-      Services.io.newURI("data:text/css;charset=utf-8," + encodeURIComponent('\
+    Components.classes["@mozilla.org/content/style-sheet-service;1"]
+      .getService(Components.interfaces.nsIStyleSheetService)
+      .loadAndRegisterSheet(
+        Services.io.newURI(
+          "data:text/css;charset=utf-8," +
+            encodeURIComponent(
+              '\
 		  \
 		  #addonbar toolbarpaletteitem[place=toolbar][id^=wrapper-customizableui-special-spring],\
 		  #addonbar toolbarspring {\
@@ -97,14 +110,22 @@ var AddAddonbar = {
 			height: 24px !important; \
 			max-height: 24px !important; \
 		  }*/ \
-		  '+ compact_buttons_code + '\
-	  '), null, null),
-      Components.classes["@mozilla.org/content/style-sheet-service;1"].getService(Components.interfaces.nsIStyleSheetService).AGENT_SHEET
-    );
+		  ' +
+                compact_buttons_code +
+                "\
+	  "
+            ),
+          null,
+          null
+        ),
+        Components.classes[
+          "@mozilla.org/content/style-sheet-service;1"
+        ].getService(Components.interfaces.nsIStyleSheetService).AGENT_SHEET
+      );
 
     // toolbar
     try {
-      if (document.getElementById('addonbar') == null) {
+      if (document.getElementById("addonbar") == null) {
         var tb_addonbar = document.createXULElement("toolbar");
         if (appversion <= 62) tb_addonbar = document.createElement("toolbar");
         tb_addonbar.setAttribute("id", "addonbar");
@@ -116,35 +137,41 @@ var AddAddonbar = {
         tb_addonbar.setAttribute("iconsize", "small");
         tb_addonbar.setAttribute("context", "toolbar-context-menu");
         tb_addonbar.setAttribute("lockiconsize", "true");
-        tb_addonbar.setAttribute("class", "toolbar-primary chromeclass-toolbar browser-toolbar customization-target");
+        tb_addonbar.setAttribute(
+          "class",
+          "toolbar-primary chromeclass-toolbar browser-toolbar customization-target"
+        );
 
         document.getElementById("browser-bottombox").appendChild(tb_addonbar);
 
         CustomizableUI.registerArea("addonbar", { legacy: true });
 
-        if (appversion >= 65) { CustomizableUI.registerToolbarNode(tb_addonbar); }
+        if (appversion >= 65) {
+          CustomizableUI.registerToolbarNode(tb_addonbar);
+        }
 
         // 'Ctr + /' on Windows/Linux or 'Cmd + /' on macOS to toggle add-on bar
-        var key = document.createXULElement('key');
+        var key = document.createXULElement("key");
         if (appversion < 69) key = document.createElement("key");
-        key.id = 'key_toggleAddonBar';
-        key.setAttribute('key', '/');
-        key.setAttribute('modifiers', 'accel');
-        key.setAttribute('oncommand',
-          'var newAddonBar = document.getElementById("addonbar"); setToolbarVisibility(newAddonBar, newAddonBar.collapsed);Services.prefs.getBranch("browser.addonbar.").setBoolPref("enabled",!newAddonBar.collapsed)');
-        document.getElementById('mainKeyset').appendChild(key);
-
+        key.id = "key_toggleAddonBar";
+        key.setAttribute("key", "/");
+        key.setAttribute("modifiers", "accel");
+        key.setAttribute(
+          "oncommand",
+          'var newAddonBar = document.getElementById("addonbar"); setToolbarVisibility(newAddonBar, newAddonBar.collapsed);Services.prefs.getBranch("browser.addonbar.").setBoolPref("enabled",!newAddonBar.collapsed)'
+        );
+        document.getElementById("mainKeyset").appendChild(key);
 
         try {
-          setToolbarVisibility(document.getElementById("addonbar"), Services.prefs.getBranch("browser.addonbar.").getBoolPref("enabled"));
-        } catch (e) { }
-
+          setToolbarVisibility(
+            document.getElementById("addonbar"),
+            Services.prefs.getBranch("browser.addonbar.").getBoolPref("enabled")
+          );
+        } catch (e) {}
       }
-    } catch (e) { }
-
-  }
-
-}
+    } catch (e) {}
+  },
+};
 
 /* initialization delay workaround */
 document.addEventListener("DOMContentLoaded", AddAddonbar.init(), false);

@@ -5,7 +5,8 @@
  * File: userContent/view_source.css
  * Description: styles the output of viewsource
  */
-  @-moz-document url-prefix(view-source:) {
+
+@-moz-document url-prefix(view-source:) {
   html {
     background: (--base00) !important;
     color: var(--base06) !important;

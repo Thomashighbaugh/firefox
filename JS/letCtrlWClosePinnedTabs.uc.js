@@ -7,38 +7,41 @@
 // ==/UserScript==
 
 (() => {
-    function init() {
-        window.AminoCloseTabOrWindow = function AminoCloseTabOrWindow(event) {
-            // If we're not a browser window, just close the window.
-            if (window.location.href != AppConstants.BROWSER_CHROME_URL) {
-                closeWindow(true);
-                return;
-            }
+  function init() {
+    window.AminoCloseTabOrWindow = function AminoCloseTabOrWindow(event) {
+      // If we're not a browser window, just close the window.
+      if (window.location.href != AppConstants.BROWSER_CHROME_URL) {
+        closeWindow(true);
+        return;
+      }
 
-            // In a multi-select context, close all selected tabs
-            if (gBrowser.multiSelectedTabsCount) {
-                gBrowser.removeMultiSelectedTabs();
-                return;
-            }
+      // In a multi-select context, close all selected tabs
+      if (gBrowser.multiSelectedTabsCount) {
+        gBrowser.removeMultiSelectedTabs();
+        return;
+      }
 
-            // If the current tab is the last one, this will close the window.
-            gBrowser.removeCurrentTab({ animate: true });
-        };
+      // If the current tab is the last one, this will close the window.
+      gBrowser.removeCurrentTab({ animate: true });
+    };
 
-        document
-            .getElementById("cmd_close")
-            .setAttribute("oncommand", "AminoCloseTabOrWindow(event);");
-    }
+    document
+      .getElementById("cmd_close")
+      .setAttribute("oncommand", "AminoCloseTabOrWindow(event);");
+  }
 
-    if (gBrowserInit.delayedStartupFinished) {
+  if (gBrowserInit.delayedStartupFinished) {
+    init();
+  } else {
+    let delayedListener = (subject, topic) => {
+      if (topic == "browser-delayed-startup-finished" && subject == window) {
+        Services.obs.removeObserver(delayedListener, topic);
         init();
-    } else {
-        let delayedListener = (subject, topic) => {
-            if (topic == "browser-delayed-startup-finished" && subject == window) {
-                Services.obs.removeObserver(delayedListener, topic);
-                init();
-            }
-        };
-        Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
-    }
+      }
+    };
+    Services.obs.addObserver(
+      delayedListener,
+      "browser-delayed-startup-finished"
+    );
+  }
 })();

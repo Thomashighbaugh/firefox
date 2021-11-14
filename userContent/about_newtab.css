@@ -1,64 +1,61 @@
-      /*
+/*
  * Author: Thomas Leon Highbaugh (thighbaugh@zoho.com)
  * Project: firefox
  * File: userContent/about_newtab.css
  * Description: styles the default homepage I hate so much
  */
-  
-  @-moz-document url('about:home'),
+
+@-moz-document url('about:home'),
   url('about:newtab'),
   url('about:privatebrowsing'),
   url('about:blank') {
-      html:not(#ublock0-epicker) body {
-          background-color: var(--base01) !important;
-      }
-      /* Hide scrollbar */
-       :root {
-          scrollbar-width: none !important;
-      }
+  html:not(#ublock0-epicker) body {
+    background-color: var(--base01) !important;
   }
-  
-  @-moz-document url('about:newtab'),
+}
+
+@-moz-document url('about:newtab'),
   url('about:home') {
-      body {
-          overflow-y: hidden !important;
-          --newtab-card-background-color: var(--base00) !important;
-          /* NewTab background */
-          background-size: cover !important;
-          background-attachment: fixed !important;
-          background-position: center !important;
-          background-color: var(--base01)
-      }
-      /* Hide "Top sites" title */
-      .outer-wrapper .section-top-bar .click-target-container {
-          display: none !important;
-      }
-      /* Hide "pinned" icon */
-      .icon-pin-small {
-          display: none !important;
-      }
-      /* featured cards title text */
-      #snippets,
-      .section-title,
-      .snippetContainer,
-      .card-title,
-      .card-description {
-          color: var(--base07) !important;
-      }
-      .top-site-outer .tile {
-          border-radius: 2px !important;
-      }
-      .top-site-outer .screenshot {
-          background-position: top center !important;
-          background-size: 120px !important;
-          border-radius: 2px !important;
-      }
-      .top-sites-list .top-site-outer .rich-icon {
-          background-size: 86px !important;
-          border-radius: 2px !important;
-      }
-      .card-outer {
-          border-radius: 1px !important;
-          /* sharp edges */
-          box-shadow: 0 14px 38px var(--base00), 0 15px 12px var(--base01) !important;
-      }
+  body {
+    overflow-y: hidden !important;
+    --newtab-card-background-color: var(--base00) !important;
+    /* NewTab background */
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    background-position: center !important;
+    background-color: var(--base01);
+  }
+  /* Hide "Top sites" title */
+  .outer-wrapper .section-top-bar .click-target-container {
+    display: none !important;
+  }
+  /* Hide "pinned" icon */
+  .icon-pin-small {
+    display: none !important;
+  }
+  /* featured cards title text */
+  #snippets,
+  .section-title,
+  .snippetContainer,
+  .card-title,
+  .card-description {
+    color: var(--base07) !important;
+  }
+  .top-site-outer .tile {
+    border-radius: 2px !important;
+  }
+  .top-site-outer .screenshot {
+    background-position: top center !important;
+    background-size: 120px !important;
+    border-radius: 2px !important;
+  }
+  .top-sites-list .top-site-outer .rich-icon {
+    background-size: 86px !important;
+    border-radius: 2px !important;
+  }
+  .card-outer {
+    border-radius: 1px !important;
+    /* sharp edges */
+    box-shadow: 0 14px 38px var(--base00), 0 15px 12px var(--base01) !important;
+  }
+}

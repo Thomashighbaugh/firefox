@@ -9,44 +9,68 @@
 
 // user configuration
 const config = {
-    address: "cfg", // the value to put after "about:" — if this is "cfg" then the final URl will be "about:cfg". if you use this and my appMenuAboutConfigButton.uc.js script, and you want to change this address for whatever reason, be sure to edit the urlOverride setting in that script so it says "about:your-new-address"
-    pathOverride: "", // the script tries to automatically find earthlng's aboutconfig URL, e.g. "chrome://userchrome/content/aboutconfig/config.xhtml" if you followed the instructions on my repo for making it compatible with fx-autoconfig. alternatively, it should also be able to find the URL if you use earthlng's autoconfig loader or xiaoxiaoflood's, and didn't modify anything. if it's unable to find the URL for your particular setup, please find it yourself and paste it here, *inside the quotes*
+  address: "cfg", // the value to put after "about:" — if this is "cfg" then the final URl will be "about:cfg". if you use this and my appMenuAboutConfigButton.uc.js script, and you want to change this address for whatever reason, be sure to edit the urlOverride setting in that script so it says "about:your-new-address"
+  pathOverride: "", // the script tries to automatically find earthlng's aboutconfig URL, e.g. "chrome://userchrome/content/aboutconfig/config.xhtml" if you followed the instructions on my repo for making it compatible with fx-autoconfig. alternatively, it should also be able to find the URL if you use earthlng's autoconfig loader or xiaoxiaoflood's, and didn't modify anything. if it's unable to find the URL for your particular setup, please find it yourself and paste it here, *inside the quotes*
 };
 
 let { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-let { classes: Cc, interfaces: Ci, manager: Cm, utils: Cu, results: Cr } = Components;
+let {
+  classes: Cc,
+  interfaces: Ci,
+  manager: Cm,
+  utils: Cu,
+  results: Cr,
+} = Components;
 let registrar = Cm.QueryInterface(Ci.nsIComponentRegistrar);
-ChromeUtils.defineModuleGetter(this, "FileUtils", "resource://gre/modules/FileUtils.jsm");
+ChromeUtils.defineModuleGetter(
+  this,
+  "FileUtils",
+  "resource://gre/modules/FileUtils.jsm"
+);
 
 function findAboutConfig() {
-    if (config.pathOverride) return config.pathOverride;
-    if (FileUtils.getDir("UChrm", ["resources", "aboutconfig", "config.xhtml"]).exists())
-        return "chrome://userchrome/content/aboutconfig/config.xhtml";
-    if (FileUtils.getDir("UChrm", ["utils", "aboutconfig", "config.xhtml"]).exists())
-        return "chrome://userchromejs/content/aboutconfig/config.xhtml";
-    if (FileUtils.getDir("UChrm", ["utils", "aboutconfig", "aboutconfig.xhtml"]).exists())
-        return "chrome://userchromejs/content/aboutconfig/aboutconfig.xhtml";
-    else return false;
+  if (config.pathOverride) return config.pathOverride;
+  if (
+    FileUtils.getDir("UChrm", [
+      "resources",
+      "aboutconfig",
+      "config.xhtml",
+    ]).exists()
+  )
+    return "chrome://userchrome/content/aboutconfig/config.xhtml";
+  if (
+    FileUtils.getDir("UChrm", ["utils", "aboutconfig", "config.xhtml"]).exists()
+  )
+    return "chrome://userchromejs/content/aboutconfig/config.xhtml";
+  if (
+    FileUtils.getDir("UChrm", [
+      "utils",
+      "aboutconfig",
+      "aboutconfig.xhtml",
+    ]).exists()
+  )
+    return "chrome://userchromejs/content/aboutconfig/aboutconfig.xhtml";
+  else return false;
 }
 
 // generate a unique ID on every app launch. protection against the very unlikely possibility that a future update adds a component with the same class ID, which would break the script.
 function generateFreeCID() {
-    let uuid = Components.ID(
-        Cc["@mozilla.org/uuid-generator;1"]
-            .getService(Ci.nsIUUIDGenerator)
-            .generateUUID()
-            .toString()
+  let uuid = Components.ID(
+    Cc["@mozilla.org/uuid-generator;1"]
+      .getService(Ci.nsIUUIDGenerator)
+      .generateUUID()
+      .toString()
+  );
+  // I can't tell whether generateUUID is guaranteed to produce a unique ID, or just a random ID. so I add this loop to regenerate it in the extremely unlikely (or potentially impossible) event that the UUID is already registered as a CID. I haven't seen this happen yet on about 200 tests but there's no harm in keeping it just in case.
+  while (registrar.isCIDRegistered(uuid)) {
+    uuid = Components.ID(
+      Cc["@mozilla.org/uuid-generator;1"]
+        .getService(Ci.nsIUUIDGenerator)
+        .generateUUID()
+        .toString()
     );
-    // I can't tell whether generateUUID is guaranteed to produce a unique ID, or just a random ID. so I add this loop to regenerate it in the extremely unlikely (or potentially impossible) event that the UUID is already registered as a CID. I haven't seen this happen yet on about 200 tests but there's no harm in keeping it just in case.
-    while (registrar.isCIDRegistered(uuid)) {
-        uuid = Components.ID(
-            Cc["@mozilla.org/uuid-generator;1"]
-                .getService(Ci.nsIUUIDGenerator)
-                .generateUUID()
-                .toString()
-        );
-    }
-    return uuid;
+  }
+  return uuid;
 }
 
 function VintageAboutConfig() {}
@@ -54,52 +78,52 @@ function VintageAboutConfig() {}
 let urlString = findAboutConfig();
 
 VintageAboutConfig.prototype = {
-    get uri() {
-        if (!urlString) return null;
-        return this._uri || (this._uri = Services.io.newURI(urlString));
-    },
-    newChannel: function (_uri, loadInfo) {
-        const ch = Services.io.newChannelFromURIWithLoadInfo(this.uri, loadInfo);
-        ch.owner = Services.scriptSecurityManager.getSystemPrincipal();
-        return ch;
-    },
-    getURIFlags: function (_uri) {
-        return Ci.nsIAboutModule.ALLOW_SCRIPT;
-    },
-    getChromeURI: function (_uri) {
-        return this.uri;
-    },
-    QueryInterface: ChromeUtils.generateQI(["nsIAboutModule"]),
+  get uri() {
+    if (!urlString) return null;
+    return this._uri || (this._uri = Services.io.newURI(urlString));
+  },
+  newChannel: function (_uri, loadInfo) {
+    const ch = Services.io.newChannelFromURIWithLoadInfo(this.uri, loadInfo);
+    ch.owner = Services.scriptSecurityManager.getSystemPrincipal();
+    return ch;
+  },
+  getURIFlags: function (_uri) {
+    return Ci.nsIAboutModule.ALLOW_SCRIPT;
+  },
+  getChromeURI: function (_uri) {
+    return this.uri;
+  },
+  QueryInterface: ChromeUtils.generateQI(["nsIAboutModule"]),
 };
 
 var AboutModuleFactory = {
-    createInstance(aOuter, aIID) {
-        if (aOuter) {
-            throw Components.Exception("", Cr.NS_ERROR_NO_AGGREGATION);
-        }
-        return new VintageAboutConfig().QueryInterface(aIID);
-    },
-    QueryInterface: ChromeUtils.generateQI(["nsIFactory"]),
+  createInstance(aOuter, aIID) {
+    if (aOuter) {
+      throw Components.Exception("", Cr.NS_ERROR_NO_AGGREGATION);
+    }
+    return new VintageAboutConfig().QueryInterface(aIID);
+  },
+  QueryInterface: ChromeUtils.generateQI(["nsIFactory"]),
 };
 
 if (urlString)
-    registrar.registerFactory(
-        generateFreeCID(),
-        `about:${config.address}`,
-        `@mozilla.org/network/protocol/about;1?what=${config.address}`,
-        AboutModuleFactory
-    );
+  registrar.registerFactory(
+    generateFreeCID(),
+    `about:${config.address}`,
+    `@mozilla.org/network/protocol/about;1?what=${config.address}`,
+    AboutModuleFactory
+  );
 
 let onChromeWindow = {
-    observe(win, _top, _data) {
-        eval(
-            "win.gIdentityHandler._secureInternalPages = " +
-                `/${win.gIdentityHandler._secureInternalPages.source.replace(
-                    /\|config\|/,
-                    `|config|${config.address}|`
-                )}/`
-        );
-    },
+  observe(win, _top, _data) {
+    eval(
+      "win.gIdentityHandler._secureInternalPages = " +
+        `/${win.gIdentityHandler._secureInternalPages.source.replace(
+          /\|config\|/,
+          `|config|${config.address}|`
+        )}/`
+    );
+  },
 };
 Services.obs.addObserver(onChromeWindow, "browser-delayed-startup-finished");
 

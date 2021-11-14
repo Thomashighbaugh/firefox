@@ -327,7 +327,10 @@
       if (event.target.classList.contains("tab-close-button")) {
         this.mOverCloseButton = false;
       }
-      if (event.target == this.overlayIcon || event.target == this.soundPlayingIcon) {
+      if (
+        event.target == this.overlayIcon ||
+        event.target == this.soundPlayingIcon
+      ) {
         this.setSecondaryTabTooltipLabel(null);
       }
       this._mouseleave();
@@ -435,10 +438,10 @@
       }
 
       if (
-       event.target.classList.contains("tab-icon-sound") ||
-       (event.target.classList.contains("tab-icon-overlay") &&
-         (this.soundPlaying || this.muted || this.activeMediaBlocked))
-     ) {
+        event.target.classList.contains("tab-icon-sound") ||
+        (event.target.classList.contains("tab-icon-overlay") &&
+          (this.soundPlaying || this.muted || this.activeMediaBlocked))
+      ) {
         if (this.multiselected) {
           gBrowser.toggleMuteAudioOnMultiSelectedTabs(this);
         } else {

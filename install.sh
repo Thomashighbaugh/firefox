@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 FF_USER_DIRECTORY=""
 CHROME_DIRECTORY=""
@@ -68,11 +68,11 @@ download_ff() {
 }
 
 function check_profile() {
-    FF_USER_DIRECTORY="$(find "${HOME}/.mozilla/firefox/" -maxdepth 1 -type d -regextype egrep -regex '.*[a-zA-Z0-9]+.'${1})"
+    FF_USER_DIRECTORY="$(find "${HOME}/.mozilla/firefox/" -maxdepth 1 -type d -regextype egrep -regex '.*[a-zA-Z0-9]+.'"${1}")"
 }
 
 function check_librewolf_profile() {
-    FF_USER_DIRECTORY="$(find "${HOME}/.librewolf/" -maxdepth 1 -type d -regextype egrep -regex '.*[a-zA-Z0-9]+.'${1})"
+    FF_USER_DIRECTORY="$(find "${HOME}/.librewolf/" -maxdepth 1 -type d -regextype egrep -regex '.*[a-zA-Z0-9]+.'"${1}")"
 }
 
 
@@ -94,7 +94,7 @@ function print_help() {
 }
 
 # Check args
-if [[ ! -z "${@}" ]] && [[ ! -z "${1}" ]]; then
+if [[ -n "${*}" ]] && [[ -n "${1}" ]]; then
     
     if [[ "${1}" == "dev" ]]; then
         RELEASE_NAME="Developer Edition"

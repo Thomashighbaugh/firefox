@@ -7,52 +7,64 @@
 // ==/UserScript==
 
 (function () {
-    function init() {
-        gProtectionsHandler.onLocationChange = function onLocationChange() {
-            let currentURL = gBrowser.currentURI.spec;
-            let homeOrNTP =
-                currentURL === HomePage.get(window) || currentURL === AboutNewTab.newTabURL;
-            if (this._showToastAfterRefresh) {
-                this._showToastAfterRefresh = false;
-                if (
-                    this._previousURI == currentURL &&
-                    this._previousOuterWindowID == gBrowser.selectedBrowser.outerWindowID
-                )
-                    this.showProtectionsPopup({ toast: true });
-            }
-            this.hadShieldState = false;
-            if (currentURL.startsWith("view-source:"))
-                this._trackingProtectionIconContainer.setAttribute("view-source", true);
-            else this._trackingProtectionIconContainer.removeAttribute("view-source");
-            // make the identity box unfocusable on new tab page/homepage
-            if (gIdentityHandler._identityIconBox)
-                homeOrNTP
-                    ? (gIdentityHandler._identityIconBox.disabled = true)
-                    : delete gIdentityHandler._identityIconBox.disabled;
-            // hide the TP icon on new tab page/homepage
-            if (!ContentBlockingAllowList.canHandle(gBrowser.selectedBrowser) || homeOrNTP) {
-                this._trackingProtectionIconContainer.hidden = true;
-                return;
-            } else this._trackingProtectionIconContainer.hidden = false;
-            this.hasException = ContentBlockingAllowList.includes(gBrowser.selectedBrowser);
-            if (this._protectionsPopup)
-                this._protectionsPopup.toggleAttribute("hasException", this.hasException);
-            this.iconBox.toggleAttribute("hasException", this.hasException);
-            this.fingerprintersHistogramAdd("pageLoad");
-            this.cryptominersHistogramAdd("pageLoad");
-            this.shieldHistogramAdd(0);
-        };
-    }
-    document.documentElement.setAttribute("hide-tp-icon-on-ntp", true);
-    if (gBrowserInit.delayedStartupFinished) {
+  function init() {
+    gProtectionsHandler.onLocationChange = function onLocationChange() {
+      let currentURL = gBrowser.currentURI.spec;
+      let homeOrNTP =
+        currentURL === HomePage.get(window) ||
+        currentURL === AboutNewTab.newTabURL;
+      if (this._showToastAfterRefresh) {
+        this._showToastAfterRefresh = false;
+        if (
+          this._previousURI == currentURL &&
+          this._previousOuterWindowID == gBrowser.selectedBrowser.outerWindowID
+        )
+          this.showProtectionsPopup({ toast: true });
+      }
+      this.hadShieldState = false;
+      if (currentURL.startsWith("view-source:"))
+        this._trackingProtectionIconContainer.setAttribute("view-source", true);
+      else this._trackingProtectionIconContainer.removeAttribute("view-source");
+      // make the identity box unfocusable on new tab page/homepage
+      if (gIdentityHandler._identityIconBox)
+        homeOrNTP
+          ? (gIdentityHandler._identityIconBox.disabled = true)
+          : delete gIdentityHandler._identityIconBox.disabled;
+      // hide the TP icon on new tab page/homepage
+      if (
+        !ContentBlockingAllowList.canHandle(gBrowser.selectedBrowser) ||
+        homeOrNTP
+      ) {
+        this._trackingProtectionIconContainer.hidden = true;
+        return;
+      } else this._trackingProtectionIconContainer.hidden = false;
+      this.hasException = ContentBlockingAllowList.includes(
+        gBrowser.selectedBrowser
+      );
+      if (this._protectionsPopup)
+        this._protectionsPopup.toggleAttribute(
+          "hasException",
+          this.hasException
+        );
+      this.iconBox.toggleAttribute("hasException", this.hasException);
+      this.fingerprintersHistogramAdd("pageLoad");
+      this.cryptominersHistogramAdd("pageLoad");
+      this.shieldHistogramAdd(0);
+    };
+  }
+  document.documentElement.setAttribute("hide-tp-icon-on-ntp", true);
+  if (gBrowserInit.delayedStartupFinished) {
+    init();
+  } else {
+    let delayedListener = (subject, topic) => {
+      if (topic == "browser-delayed-startup-finished" && subject == window) {
+        Services.obs.removeObserver(delayedListener, topic);
         init();
-    } else {
-        let delayedListener = (subject, topic) => {
-            if (topic == "browser-delayed-startup-finished" && subject == window) {
-                Services.obs.removeObserver(delayedListener, topic);
-                init();
-            }
-        };
-        Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
-    }
+      }
+    };
+    Services.obs.addObserver(
+      delayedListener,
+      "browser-delayed-startup-finished"
+    );
+  }
 })();

@@ -1,16 +1,16 @@
 @-moz-document domain("www.google.com") {
-    scrolling-carousel,
-    scrolling-carousel > div {
-        scrollbar-width: none !important;
-    }
+  scrolling-carousel,
+  scrolling-carousel > div {
+    scrollbar-width: none !important;
+  }
 
-    #islsp {
-        float: left !important;
-    }
+  #islsp {
+    float: left !important;
+  }
 
-    @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
-        * {
-            font-family: SF Pro, Roboto, Arial, sans-serif !important;
-        }
+  @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
+    * {
+      font-family: SF Pro, Roboto, Arial, sans-serif !important;
     }
+  }
 }

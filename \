@@ -1,0 +1,216 @@
+////////////////////////////////////////////////////
+//   USER.JS
+////////////////////////////////////////////////////
+
+// Enable User Chrome
+user_pref('svg.context-properties.content.enabled', true);
+user_perf('toolkit.legacyUserProfileCustomizations.stylesheets', true);
+
+// Don't reveal your internal IP when WebRTC is enabled
+user_pref('media.peerconnection.ice.no_host', true);
+
+// enable proton
+user_pref('browser.proton.enabled', true);
+user_pref('browser.proton.places-tooltip.enabled', true);
+
+// prevent names of plugins from leaking
+user_perf('plugins.enumerable_names', 'blank');
+
+// hardware acceleration
+user_perf('layers.offmainthreadcomposition.enabled', true);
+user_perf('layers.offmainthreadcomposition.async-animations', true);
+user_perf('layers.async-video.enabled', true);
+user_perf('html5.offmainthread', true);
+user_pref('gfx.webrender.all', true);
+user_pref('gfx.webrender.enabled', true);
+// below soles issue of freezing and stuttering
+user_perf('layers.acceleration.force - enabled', true);
+
+// disable annoying web notifications
+user_pref('dom.webnotifications.enabled', false);
+
+//Disable battery api
+user_pref('dom.battery.enabled', false);
+
+//disable speech recognition
+user_pref('media.webspeech.recognition.enable', false);
+
+// disable sensors
+user_pref('device.sensors.enabled', false);
+
+// Disable gamepad API to prevent USB device enumeration
+user_pref('dom.gamepad.enabled', false);
+
+// When webGL is enabled, do not expose information about the graphics driver
+user_pref('webgl.enable-debug-renderer-info', false);
+
+// Disable face detection
+user_pref('camera.control.face_detection.enabled', false);
+
+// Disable GeoIP lookup on your address to set default search engine region
+user_pref('browser.search.countryCode', 'US');
+user_pref('browser.search.region', 'US');
+user_pref('browser.search.geoip.url', ' ');
+
+// Set Accept-Language HTTP header to en-US regardless of Firefox localization
+user_pref('intl.accept_languages', 'en-US, en');
+
+// Prevent leaking application locale/date format using JavaScript
+user_pref('javascript.use_us_english_locale', true);
+
+// Disable sending reports of tab crashes to Mozilla (about:tabcrashed), don't nag user about unsent crash reports
+user_pref('browser.tabs.crashReporting.sendReport', false);
+user_pref('browser.crashReports.unsubmittedCheck.enabled', false);
+user_pref('breakpad.reportURL', '');
+
+// Disable the UITour backend
+user_pref('browser.uitour.enabled', false);
+
+// Disable collection/sending of the health report (healthreport.sqlite*)
+user_pref('datareporting.healthreport.uploadEnabled', false);
+user_pref('datareporting.healthreport.service.enabled', false);
+user_pref('datareporting.policy.dataSubmissionEnabled', false);
+// "Allow Firefox to make personalized extension recommendations"
+user_pref('browser.discovery.enabled', false);
+
+// Do not create screenshots of visited pages (relates to the "new tab page" feature)
+user_pref('browser.pagethumbnails.capturing_disabled', true);
+
+// Disable the "new tab page" feature and show a blank tab instead
+user_pref('browser.newtabpage.enabled', false);
+user_pref('browser.newtab.url', 'https://startpage-zwei.vercel.app/');
+
+// Disable Snippets
+
+// Disable Activity Stream
+user_pref('browser.newtabpage.activity-stream.enabled', false);
+user_pref('browser.newtabpage.activity-stream.feeds.sections', false);
+user_pref('browser.newtabpage.activity-stream.feeds.snippets', false);
+user_perf('browser.newtabpage.activity-stream.feeds.system.topstories', false);
+user_perf('browser.newtabpage.activity-stream.feeds.telemetry', false);
+user_perf('browser.newtabpage.activity-stream.feeds.system.topsites', false);
+user_perf('browser.newtabpage.activity-stream.feeds.topsites', false);
+user_perf(
+  'browser.newtabpage.activity-stream.newNewtabExperience.enabled',
+  false,
+);
+user_perf('browser.newtabpage.activity-stream.showSponsored', false)
+user_perf('browser.newtabpage.activity-stream.showSponsoredTopSites', false)
+
+// Disable new tab tile ads & preload
+user_pref('browser.newtabpage.enhanced', false)
+user_pref('browser.newtab.preload', false)
+user_pref('browser.newtabpage.directory.ping', '')
+user_pref('browser.newtabpage.directory.source', 'data:text/plain,{}')
+
+// For preventing geologic location logging
+user_pref('geo.provider.network.logging.enabled', false)
+
+// Disable remote debugging
+user_pref('devtools.debugger.remote-enabled', false)
+user_pref('devtools.chrome.enabled', false)
+user_pref('devtools.debugger.force-local', true)
+
+// Disable Mozilla telemetry/experiments
+user_pref('toolkit.telemetry.enabled', false)
+user_pref('toolkit.telemetry.unified', false)
+user_pref('toolkit.telemetry.archive.enabled', false)
+user_pref('experiments.supported', false)
+user_pref('experiments.enabled', false)
+user_pref('experiments.manifest.uri', '')
+
+//Ensure the addons can render popups so my dictionary works
+user_pref('privacy.popups.disable_from_plugins', '0')
+user_pref('ui.popup.disable_autohide', true)
+user_pref('devtools.performance.popup.feature-flag',true)
+user_perf('devtools.popup.disable_autohide', true)
+
+// theme perferences
+//################################################################
+
+// insure the toolbar is dark
+user_pref('browser.theme.toolbar-theme', '0')
+// Make devtools dark like everything else
+user_perf('devtools.theme', 'dark')
+// allow variants of GTK themes (Linux)
+user_perf('widget.content.allow-gtk-dark-theme', true)
+// Allow alternative scrollbars with GTK theme
+user_perf('widget.gtk.alt-theme.scrollbar', true)
+user_perf('widget.non-native-theme.gtk.scrollbar.allow-buttons', true)
+// Set my GTK theme to be Firefox's
+user_perf('widget.content.gtk-theme-override', 'Dhumavati-White-Dark')
+
+// Stop the stupid "be careful lol" warning for about:config
+user_perfs('browser.aboutConfig.showWarning', false)
+
+// keep "all tabs" menu available at all times, useful for all tabs menu expansion pack
+user_pref('browser.tabs.tabmanager.enabled', true)
+
+// allow stylesheets to modify trees in system pages viewed in regular tabs
+user_pref('layout.css.xul-tree-pseudos.content.enabled', true)
+// allow the color-mix() CSS function
+user_pref('layout.css.color-mix.enabled', true)
+// other CSS features
+user_pref('layout.css.moz-outline-radius.enabled', true)
+// When double-clicking a word on a page, only copy the word itself, not the space character next to it
+user_pref('layout.word_select.eat_space_to_next_word', false)
+
+// Settings for finding
+user_pref('findbar.highlightAll', true) // Highlight all words on that page
+user_pref('findbar.modalHighlight', true) // Dim the rest of the page
+// Disable Pocket
+user_pref('extensions.pocket.enabled', false)
+// Enable WebM
+user_pref('media.mediasource.webm.enabled', true)
+// Disable Flash
+user_pref('plugin.state.flash', 0)
+//
+
+user_perf('browser.tabs.tabMinWidth', 90)
+user_perf('browser.tabs.tabmanager.enabled', true);
+
+user_perf("browser.tabs.tabmanager.enabled", true);
+user_perf("gfx.font_rendering.cleartype_params.cleartype_level", "100");
+user_perf("browser.display.use_system_colors", false)
+user_perf("browser.display.focus_ring_style", "0")
+user_perf("browser.display.focus_ring_width", 0)
+user_perf("browser.display.windows.non_native_menus", 1)
+user_perf("browser.proton.enabled", true)
+user_perf("browser.proton.places-tooltip.enabled", true)
+user_perf("browser.startup.blankWindow", false)
+user_perf("browser.startup.preXulSkeletonUI", false)
+user_perf("browser.tabs.tabmanager.enabled", true)
+
+user_perf("browser.urlbar.accessibility.tabToSearch.announceResults", false)
+user_perf("browser.urlbar.richSuggestions.tail", false)
+user_perf("browser.urlbar.searchTips", false)
+user_perf("browser.urlbar.trimURLs", false)
+
+user_perf("layout.css.xul-display-values.content.enabled", true)
+user_perf("layout.css.xul-tree-pseudos.content.enabled", true)
+// Dark Mode by Default
+user_perf("reader.color_scheme", "dark")
+
+// make single direction scroll more useful
+user_perf("mousewheel.autodir.enabled", true)
+user_perf("prompts.contentPromptSubDialog", true)
+// make firefox play nice with tiling window manager
+user_perf("ui.key.menuAccessKeyFocuses", false)
+user_perf("ui.submenuDelay", 100)
+user_perf("ui.prefersReducedMotion", 0)
+user_perf("ui.tooltipDelay", 300)
+user_perf("ui.skipNavigatingDisabledMenuItem", 1)
+user_perf("ui.SpellCheckerUnderlineStyle", 1)
+
+// Font configuration
+// TODO check if this is actually helping(especially on Google where the font issues persist and enrage)
+ /* user_perf("gfx.font_rendering.cleartype_params.force_gdi_classic_for_families", "<empty>")
+ user_perf("gfx.font_rendering.cleartype_params.force_gdi_classic_max_size", 6)
+ user_perf("gfx.font_rendering.cleartype_params.pixel_structure", 1) */
+ // user_perf("gfx.font_rendering.cleartype_params.rendering_mode", 5)
+//user_perf("gfx.font_rendering.directwrite.use_gdi_table_loading", false)
+// user_perf("gfx.font_rendering.cleartype_params.cleartype_level", 100)
+user_perf("layout.css.backdrop-filter.enabled", true)
+user_perf("layout.css.cached-scrollbar-styles.enabled", false)
+user_perf("layout.css.moz-document.content.enabled", true)
+user_perf("layout.css.xul-box-display-values.content.enabled", true)

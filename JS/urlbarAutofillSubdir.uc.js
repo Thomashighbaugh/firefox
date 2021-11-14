@@ -7,92 +7,105 @@
 // ==/UserScript==
 
 (function () {
-    function init() {
-        const { UrlbarResult } = ChromeUtils.import("resource:///modules/UrlbarResult.jsm");
-        let autofiller = gURLBar.controller.manager.providers.find((p) => p.name === "Autofill");
-        let pUniComp = gURLBar.controller.manager.providers.find(
-            (p) => (p.name = "UnifiedComplete")
-        );
+  function init() {
+    const { UrlbarResult } = ChromeUtils.import(
+      "resource:///modules/UrlbarResult.jsm"
+    );
+    let autofiller = gURLBar.controller.manager.providers.find(
+      (p) => p.name === "Autofill"
+    );
+    let pUniComp = gURLBar.controller.manager.providers.find(
+      (p) => (p.name = "UnifiedComplete")
+    );
 
-        autofiller._matchKnownUrl = async function (queryContext) {
-            let tempResults = [];
-            await pUniComp.startQuery(queryContext, (_o, result) => {
-                tempResults.push(result);
-            });
+    autofiller._matchKnownUrl = async function (queryContext) {
+      let tempResults = [];
+      await pUniComp.startQuery(queryContext, (_o, result) => {
+        tempResults.push(result);
+      });
 
-            let firstResult = tempResults[0];
-            if (firstResult) {
-                let trimmedURL = UrlbarUtils.stripPrefixAndTrim(firstResult.payload.url, {
-                    stripHttp: true,
-                    stripHttps: true,
-                    stripWww: true,
-                })[0];
-                if (trimmedURL.startsWith(queryContext.trimmedSearchString))
-                    return this._processUrlRow(tempResults[0], queryContext);
-            }
+      let firstResult = tempResults[0];
+      if (firstResult) {
+        let trimmedURL = UrlbarUtils.stripPrefixAndTrim(
+          firstResult.payload.url,
+          {
+            stripHttp: true,
+            stripHttps: true,
+            stripWww: true,
+          }
+        )[0];
+        if (trimmedURL.startsWith(queryContext.trimmedSearchString))
+          return this._processUrlRow(tempResults[0], queryContext);
+      }
 
-            let conn = await PlacesUtils.promiseLargeCacheDBConnection();
-            if (!conn) return null;
+      let conn = await PlacesUtils.promiseLargeCacheDBConnection();
+      if (!conn) return null;
 
-            let query, params;
-            if (
-                UrlbarTokenizer.looksLikeOrigin(this._searchString, {
-                    ignoreKnownDomains: true,
-                })
-            )
-                [query, params] = this._getOriginQuery(queryContext);
-            else [query, params] = this._getUrlQuery(queryContext);
+      let query, params;
+      if (
+        UrlbarTokenizer.looksLikeOrigin(this._searchString, {
+          ignoreKnownDomains: true,
+        })
+      )
+        [query, params] = this._getOriginQuery(queryContext);
+      else [query, params] = this._getUrlQuery(queryContext);
 
-            if (query) {
-                let rows = await conn.executeCached(query, params);
-                if (rows.length) return this._processRow(rows[0], queryContext);
-            }
-            return null;
-        };
+      if (query) {
+        let rows = await conn.executeCached(query, params);
+        if (rows.length) return this._processRow(rows[0], queryContext);
+      }
+      return null;
+    };
 
-        autofiller._processUrlRow = function (row, queryContext) {
-            let autofilledValue, finalCompleteValue;
-            let url = row.payload.url;
-            let strippedURL = queryContext.trimmedSearchString;
+    autofiller._processUrlRow = function (row, queryContext) {
+      let autofilledValue, finalCompleteValue;
+      let url = row.payload.url;
+      let strippedURL = queryContext.trimmedSearchString;
 
-            let strippedURLIndex = url.toLowerCase().indexOf(strippedURL.toLowerCase());
-            let strippedPrefix = url.substr(0, strippedURLIndex);
-            autofilledValue = url.substr(strippedURLIndex);
-            finalCompleteValue = strippedPrefix + autofilledValue;
+      let strippedURLIndex = url
+        .toLowerCase()
+        .indexOf(strippedURL.toLowerCase());
+      let strippedPrefix = url.substr(0, strippedURLIndex);
+      autofilledValue = url.substr(strippedURLIndex);
+      finalCompleteValue = strippedPrefix + autofilledValue;
 
-            let [title] = UrlbarUtils.stripPrefixAndTrim(finalCompleteValue, {
-                stripHttp: true,
-                trimEmptyQuery: true,
-                trimSlash: false,
-            });
-            let result = new UrlbarResult(
-                UrlbarUtils.RESULT_TYPE.URL,
-                UrlbarUtils.RESULT_SOURCE.HISTORY,
-                ...UrlbarResult.payloadAndSimpleHighlights(queryContext.tokens, {
-                    title: [title, UrlbarUtils.HIGHLIGHT.TYPED],
-                    url: [finalCompleteValue, UrlbarUtils.HIGHLIGHT.TYPED],
-                    icon: row.payload.icon,
-                })
-            );
-            autofilledValue =
-                queryContext.searchString + autofilledValue.substring(this._searchString.length);
-            result.autofill = {
-                value: autofilledValue,
-                selectionStart: queryContext.searchString.length,
-                selectionEnd: autofilledValue.length,
-            };
-            return result;
-        };
-    }
+      let [title] = UrlbarUtils.stripPrefixAndTrim(finalCompleteValue, {
+        stripHttp: true,
+        trimEmptyQuery: true,
+        trimSlash: false,
+      });
+      let result = new UrlbarResult(
+        UrlbarUtils.RESULT_TYPE.URL,
+        UrlbarUtils.RESULT_SOURCE.HISTORY,
+        ...UrlbarResult.payloadAndSimpleHighlights(queryContext.tokens, {
+          title: [title, UrlbarUtils.HIGHLIGHT.TYPED],
+          url: [finalCompleteValue, UrlbarUtils.HIGHLIGHT.TYPED],
+          icon: row.payload.icon,
+        })
+      );
+      autofilledValue =
+        queryContext.searchString +
+        autofilledValue.substring(this._searchString.length);
+      result.autofill = {
+        value: autofilledValue,
+        selectionStart: queryContext.searchString.length,
+        selectionEnd: autofilledValue.length,
+      };
+      return result;
+    };
+  }
 
-    if (gBrowserInit.delayedStartupFinished) init();
-    else {
-        let delayedListener = (subject, topic) => {
-            if (topic == "browser-delayed-startup-finished" && subject == window) {
-                Services.obs.removeObserver(delayedListener, topic);
-                init();
-            }
-        };
-        Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
-    }
+  if (gBrowserInit.delayedStartupFinished) init();
+  else {
+    let delayedListener = (subject, topic) => {
+      if (topic == "browser-delayed-startup-finished" && subject == window) {
+        Services.obs.removeObserver(delayedListener, topic);
+        init();
+      }
+    };
+    Services.obs.addObserver(
+      delayedListener,
+      "browser-delayed-startup-finished"
+    );
+  }
 })();

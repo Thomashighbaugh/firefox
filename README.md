@@ -17,16 +17,20 @@ To install the exact theme I use, run the following command:
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Thomashighbaugh/firefox/script/install.sh | bash -s -- stable
 ```
+
 ### Editions
-If you use another edition of Firefox, just add the flag to the command above. Here's an example   
+
+If you use another edition of Firefox, just add the flag to the command above. Here's an example
 
 ```
 $ curl -fsSL https://raw.githubusercontent.com/Thomashighbaugh/firefox/script/install.sh | bash -s -- nightly
 ```
-and then it will install to Nightly instead of the default Firefox profile. 
 
-### Patching 
-This Firefox customization makes extensive use of Javascript, contained in the JS directory that require firefox be patched both in the profile's directory and the system directory. I have baked this into the script that installs the programs, but if you use another OS or have alternative means of loading these, I would advise commenting this lines of the install script out before proceeding. 
+and then it will install to Nightly instead of the default Firefox profile.
+
+### Patching
+
+This Firefox customization makes extensive use of Javascript, contained in the JS directory that require firefox be patched both in the profile's directory and the system directory. I have baked this into the script that installs the programs, but if you use another OS or have alternative means of loading these, I would advise commenting this lines of the install script out before proceeding.
 
 ### Development
 

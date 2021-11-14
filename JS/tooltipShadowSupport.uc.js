@@ -7,23 +7,23 @@
 // ==/UserScript==
 
 (function () {
-    function create(aDoc, tag, props, isHTML = false) {
-        let el = isHTML ? aDoc.createElement(tag) : aDoc.createXULElement(tag);
-        for (let prop in props) el.setAttribute(prop, props[prop]);
-        return el;
-    }
-    [
-        document.getElementById("back-button-tooltip"),
-        document.getElementById("forward-button-tooltip"),
-    ].forEach((tip) => {
-        let box = create(document, "vbox", {
-            id: tip.id + "-box",
-            class: "uc-tooltip-box",
-            flex: 1,
-        });
-        Array.from(tip.children).forEach((elt) => box.appendChild(elt));
-        tip.appendChild(box);
-        tip.setAttribute("shadow-support", true);
+  function create(aDoc, tag, props, isHTML = false) {
+    let el = isHTML ? aDoc.createElement(tag) : aDoc.createXULElement(tag);
+    for (let prop in props) el.setAttribute(prop, props[prop]);
+    return el;
+  }
+  [
+    document.getElementById("back-button-tooltip"),
+    document.getElementById("forward-button-tooltip"),
+  ].forEach((tip) => {
+    let box = create(document, "vbox", {
+      id: tip.id + "-box",
+      class: "uc-tooltip-box",
+      flex: 1,
     });
-    document.documentElement.setAttribute("tooltip-shadow-support", true);
+    Array.from(tip.children).forEach((elt) => box.appendChild(elt));
+    tip.appendChild(box);
+    tip.setAttribute("shadow-support", true);
+  });
+  document.documentElement.setAttribute("tooltip-shadow-support", true);
 })();

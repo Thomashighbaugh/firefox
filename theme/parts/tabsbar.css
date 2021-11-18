@@ -19,6 +19,7 @@
 #tabbrowser-tabs arrowscrollbox {
   height: auto !important;
   min-height: auto !important;
+  display: none !important;
 }
 tab > stack {
   height: 36px !important;
@@ -35,6 +36,7 @@ tab > stack {
 /* New hover effect */
 #TabsToolbar toolbarbutton {
   fill-opacity: 0.6 !important;
+  display: none !important;
 }
 #TabsToolbar toolbarbutton:not([disabled]):hover,
 #TabsToolbar toolbarbutton[open="true"] {
@@ -44,7 +46,7 @@ tab > stack {
 /* Remove shadow next to tab scroll buttons */
 .arrowscrollbox-overflow-start-indicator,
 .arrowscrollbox-overflow-end-indicator {
-  display: none;
+  display: none !important;
 }
 
 /* Remove tab separators */

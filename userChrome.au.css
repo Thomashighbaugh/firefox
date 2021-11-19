@@ -2,6 +2,8 @@
 and to override built-in rules without using the "!important" tag.
 the last 75% or so of this stylesheet is dedicated to restoring pre-proton content. */
 
+
+
 :root {
   --avatar-image-url: url(chrome://userchrome/content/fxa/avatar-big.svg);
 }

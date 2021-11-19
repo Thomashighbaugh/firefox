@@ -7,14 +7,14 @@ but other than that these variables should be available everywhere. */
 
 :root,
 tooltip {
-  --ui-text-30: rgba(244, 244, 244, 0.3);
-  --ui-text-40: rgba(244, 244, 244, 0.4);
-  --ui-text-50: rgba(244, 244, 244, 0.5);
-  --ui-text-60: rgba(244, 244, 244, 0.6);
-  --ui-text-70: rgba(244, 244, 244, 0.7);
-  --ui-text-80: rgba(244, 244, 244, 0.8);
-  --ui-text-90: rgba(244, 244, 244, 0.9);
-  --ui-text-100: #f4f4f7;
+  --ui-text-30: var(--base0733);
+  --ui-text-40: var(--base0766);
+  --ui-text-50: var(--base0799);
+  --ui-text-60: var(--base07aa);
+  --ui-text-70: var(--base07bb);
+  --ui-text-80: var(--base07cc);
+  --ui-text-90: var(--base07dd);
+  --ui-text-100: var(--base07);
 
   --uc-arrowpanel-darker: hsla(236, 70%, 73%, 0.17);
   --uc-arrowpanel-faint: hsla(236, 100%, 83%, 0.1);

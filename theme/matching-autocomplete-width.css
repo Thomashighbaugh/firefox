@@ -99,8 +99,6 @@
   filter: var(--convert-icon-to-symbolic-hack-filter);
 }
 
-/* Firefox 67 */
-/* TODO: Remove when FF =< 67 is deprecated or merge 69+ code. */
 #PopupAutoCompleteRichResult {
   margin-left: 0 !important;
   margin-top: -7px;

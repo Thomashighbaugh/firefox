@@ -16,16 +16,16 @@ tooltip {
   --ui-text-90: var(--base07dd);
   --ui-text-100: var(--base07);
 
-  --uc-arrowpanel-darker: hsla(236, 70%, 73%, 0.17);
-  --uc-arrowpanel-faint: hsla(236, 100%, 83%, 0.1);
-  --uc-arrowpanel-dimmed: hsla(236, 100%, 83%, 0.17);
-  --uc-arrowpanel-dimmed-further: hsla(236, 100%, 83%, 0.25);
-  --uc-arrowpanel-dimmed-even-further: hsla(236, 100%, 85%, 0.3);
-  --uc-desaturate-faint: hsla(236, 60%, 83%, 0.1);
+  --uc-arrowpanel-darker: var(--base00);
+  --uc-arrowpanel-faint: var(--base0099);
+  --uc-arrowpanel-dimmed: var(--base0066);
+  --uc-arrowpanel-dimmed-further: var(--base0033);
+  --uc-arrowpanel-dimmed-even-further: var(--base0022);
+  --uc-desaturate-faint: var(--base03cc);
   --uc-desaturate-dimmed: hsla(236, 60%, 83%, 0.17);
   --uc-desaturate-dimmed-further: hsla(236, 60%, 83%, 0.25);
   --uc-desaturate-dimmed-even-further: hsla(236, 60%, 85%, 0.3);
-  --uc-panel-button-solid: rgba(244, 244, 244, 0.8);
+  --uc-panel-button-solid: var(--ui-text-80);
   --uc-panel-box-solid: #3c3f4c;
   --uc-menu-border-color: #202229;
   --uc-smooth-timing-function: cubic-bezier(0.07, 0.78, 0.21, 0.95);

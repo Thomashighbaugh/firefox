@@ -190,11 +190,13 @@ user_perf("browser.display.focus_ring_width", 0);
 user_perf("browser.display.windows.non_native_menus", 1);
 
 // Enable the visual refresh of Firefox UI (disable if porting CSS from before, this config is using it as the base its CSS modifies so its on)
-user_perf("browser.proton.enabled", true);
 user_perf("browser.proton.places-tooltip.enabled", true);
 user_perf("browser.startup.blankWindow", false);
 user_perf("browser.startup.preXulSkeletonUI", false);
 user_perf("browser.tabs.tabmanager.enabled", true);
+user_pref("widget.disable-native-theme-for-content", true);
+
+
 
 user_perf("browser.urlbar.accessibility.tabToSearch.announceResults", false);
 user_perf("browser.urlbar.richSuggestions.tail", false);
@@ -225,15 +227,15 @@ user_perf("ui.skipNavigatingDisabledMenuItem", 1);
 // Double Underline Spelling Errors for Visual Cue Purpose http://kb.mozillazine.org/Ui.SpellCheckerUnderlineStyle
 user_perf("ui.SpellCheckerUnderlineStyle", 4);
 
-// Font configuration
-// TODO check if this is actually helping(especially on Google where the font issues persist and enrage)
-/* user_perf("gfx.font_rendering.cleartype_params.force_gdi_classic_for_families", "<empty>")
- user_perf("gfx.font_rendering.cleartype_params.force_gdi_classic_max_size", 6)
- user_perf("gfx.font_rendering.cleartype_params.pixel_structure", 1) */
-// user_perf("gfx.font_rendering.cleartype_params.rendering_mode", 5)
-//user_perf("gfx.font_rendering.directwrite.use_gdi_table_loading", false)
-// user_perf("gfx.font_rendering.cleartype_params.cleartype_level", 100)
+// More situating of the css and js especially enabling xul stuff
 user_perf("layout.css.backdrop-filter.enabled", true);
 user_perf("layout.css.cached-scrollbar-styles.enabled", false);
 user_perf("layout.css.moz-document.content.enabled", true);
 user_perf("layout.css.xul-box-display-values.content.enabled", true);
+
+// Insure this is set for the sake of not being blinded
+user_pref("ui.systemUsesDarkTheme", 1);
+
+// UI 
+user_pref("ui.selecteditem", "#2F303d");
+user_pref("ui.selecteditemtext", "#F4F4F7CC");

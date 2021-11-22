@@ -306,14 +306,14 @@ tooltip {
 
   --content-principal-page-background: hsl(270, 3%, 12%);
   --content-principal-page-color: var(--in-parent-page-color);
-  --content-principal-box-background: hsl(300, 2%, 16%);
-  --content-principal-box-background-odd: hsl(320, 3%, 21%);
-  --content-principal-box-background-dim: hsl(300, 2%, 12%);
-  --content-principal-box-border-color: hsla(270, 7%, 98%, 0.1);
-  --content-principal-button-background: hsla(0, 20%, 90%, 0.08);
-  --content-principal-button-background-hover: hsla(0, 20%, 90%, 0.15);
-  --content-principal-button-background-active: hsla(0, 20%, 90%, 0.19);
-  --content-principal-button-background-solid: hsl(270, 2%, 20%);
+  --content-principal-box-background: var(--base25);
+  --content-principal-box-background-odd: var(--base00);
+  --content-principal-box-background-dim: var(--base30);
+  --content-principal-box-border-color: var(--base0099);
+  --content-principal-button-background: var(--base30);
+  --content-principal-button-background-hover: var(--base00);
+  --content-principal-button-background-active: var(--base01);
+  --content-principal-button-background-solid: var(--base30);
   --content-principal-border-hover: var(
     --content-principal-button-background-hover
   );
@@ -336,10 +336,10 @@ tooltip {
     --in-parent-primary-button-background-active
   );
 
-  --switch-off-background: hsl(233, 15%, 32%);
-  --switch-off-hover-background: hsl(233, 18%, 27%);
-  --switch-off-active-background: hsl(233, 19%, 24.5%);
-  --switch-off-hover-border: hsl(233, 15%, 32%);
+  --switch-off-background: var(--base30);
+  --switch-off-hover-background: var(--base02);
+  --switch-off-active-background: var(--base01);
+  --switch-off-hover-border: var(--base05);
 }
 
 :root[fxastatus="not_configured"] {

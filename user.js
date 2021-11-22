@@ -1,7 +1,9 @@
-////////////////////////////////////////////////////
+// ##################################################################### 
 //   USER.JS
-////////////////////////////////////////////////////
-
+// ##################################################################### 
+// Provides user preferences to browser without reliance on 
+// Firefox Sync alone. 
+// ##################################################################### 
 // Enable User Chrome
 user_pref("svg.context-properties.content.enabled", true);
 user_perf("toolkit.legacyUserProfileCustomizations.stylesheets", true);
@@ -239,3 +241,9 @@ user_pref("ui.systemUsesDarkTheme", 1);
 // UI 
 user_pref("ui.selecteditem", "#2F303d");
 user_pref("ui.selecteditemtext", "#F4F4F7CC");
+
+// Enable popups from plugins, useful for dictionary add-on I
+// use and other reasons, addons should change this themselves
+// I would think but don't/can't
+user_perf("privacy.popups.disable_from_plugins", 0);
+

@@ -64,6 +64,7 @@ tooltip {
     --base28: #25003e;
     --base29: #101114;
     --base30: #1a1e21;
+    --base31: #00ffcc;
     
     --ui-text-10: rgba(244, 244, 247, 0.1);
     --ui-text-20: rgba(244, 244, 247, 0.2);
@@ -155,8 +156,8 @@ tooltip {
     --tooltip-border-radius: 2px;
     --tooltip-border-color: var(--uc-menu-border-color);
     --tooltip-box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.2);
-    --global-focus-shadow-color: var(--purple-40-a30);
-    --global-focus-outline-color: var(--purple-40);
+    --global-focus-shadow-color: var(--base02aa);
+    --global-focus-outline-color: var(--base02);
     --global-focus-ring: 2px solid var(--global-focus-shadow-color);
     --global-focus-shadow: 0 0 0 3px var(--global-focus-shadow-color),
         0 0 0 1px var(--global-focus-outline-color);
@@ -172,13 +173,13 @@ tooltip {
     --transparent-img-background-context: center/16px repeat
         url(chrome://userchrome/content/checker-context.svg);
     --general-button-border-radius: 2.6px;
-    --dialog-bgcolor: hsla(240, 5.9%, 6.7%, 0.85);
+    --dialog-bgcolor: var(--base19);
     --dialog-box-bgcolor: hsla(232, 100%, 75%, 8%);
     --dialog-box-bgcolor-dim: hsla(240, 100%, 70%, 3%);
     --dialog-box-border-color: hsla(232, 100%, 85%, 0.2);
     --dialog-box-border-hover: hsla(232, 100%, 85%, 0.3);
-    --blurred-dialog-border-color: hsla(240, 7%, 20%, 0.8);
-    --alertbox-bgcolor: hsla(0, 0%, 14%, 0.97);
+    --blurred-dialog-border-color: var(--base25);
+    --alertbox-bgcolor: var(--base01);
     --notification-menu-color: var(--in-parent-page-color);
     --ui-disabled-alpha: 0.5;
     --context-menu-disabled-color: hsla(213, 43%, 89%, var(--ui-disabled-alpha, 0.5));
@@ -186,15 +187,15 @@ tooltip {
     /* this url is for the icon that displays in the identity box when entering text in the urlbar, and on the new tab page.
     you can replace it with chrome://userchrome/content/search-glass.svg if you don't use google */
     --default-search-identity-icon: url(chrome://userchrome/content/engines/google.svg);
-    --identity-box-solid-bg: hsl(233, 34%, 22%);
-    --identity-box-focus-bg: hsl(234, 34%, 23%);
-    --secure-color: hsl(119, 80%, 60%);
-    --secure-text-color: hsl(129, 100%, 70%);
-    --insecure-text-color: hsla(0, 100%, 50%, 0.867);
-    --warning-color: hsl(355, 100%, 66%);
-    --uc-warning-background: hsla(2, 100%, 66%, 25%);
-    --warning-icon-background: hsl(358, 86%, 63%);
-    --warning-icon-detail: hsl(354, 69%, 30%);
+    --identity-box-solid-bg: var(--base24);
+    --identity-box-focus-bg: var(--base21);
+    --secure-color: var(--base31);
+    --secure-text-color: var(--base31);
+    --insecure-text-color:var(--base08);
+    --warning-color: var(--base08);
+    --uc-warning-background: var(--base26);
+    --warning-icon-background:var(--base16);
+    --warning-icon-detail: var(--base26);
     --low-warning-background: hsla(48, 100%, 66%, 0.2);
     --low-warning-color: hsl(40, 100%, 57%);
     --low-warning-text-color: hsl(40, 100%, 70%);
@@ -203,10 +204,10 @@ tooltip {
     --low-warning-icon-detail: hsl(32, 52%, 35%);
     --protection-idle-color: hsl(205, 100%, 67%);
     --protection-active-color: hsl(358, 98%, 66%);
-    --update-badge-bg: hsl(125, 81%, 57%);
-    --update-badge-color: hsl(118, 89%, 24%);
+    --update-badge-bg: var(--base31);
+    --update-badge-color: var(--base04);
     --update-badge-inactive: hsl(227, 19%, 48%);
-    --attention-color: hsl(224, 100%, 71%);
+    --attention-color: var(--base09);
     --eom-warning-bg: hsla(48, 100%, 66%, 0.15);
     --eom-warning-bg-hover: hsla(48, 100%, 75%, 0.23);
     --eom-warning-bg-active: hsla(48, 100%, 80%, 0.27);
@@ -214,7 +215,7 @@ tooltip {
     --eom-error-bg-hover: hsla(2, 100%, 76%, 0.23);
     --eom-error-bg-active: hsla(2, 100%, 80%, 0.27);
 
-    --global-selection-bgcolor: hsla(245, 100%, 76%, 0.5);
+    --global-selection-bgcolor: var(--base28);
     --global-selection-color: white;
     --global-selection-bgcolor-disabled: hsla(245, 30%, 70%, 0.4);
     --ui-selection-bgcolor: hsla(0, 0%, 100%, 0.9);
@@ -229,7 +230,7 @@ tooltip {
     /* controls the color of the search highlights in about:preferences */
     --solid-selection-bgcolor: var(--pink-action);
     /* controls the color of the little tooltips that appear on search highlighted buttons in about:preferences */
-    --aboutPrefs-find-tags: var(--purple-35);
+    --aboutPrefs-find-tags: var(--base02);
 
     --badge-color-dark: hsl(236, 13%, 42%);
     --badge-color-light: var(--lwt-toolbarbutton-icon-fill-attention);
@@ -346,19 +347,19 @@ tooltip {
     --in-parent-button-background: var(--uc-arrowpanel-faint);
     --in-parent-button-background-hover: var(--uc-arrowpanel-dimmed);
     --in-parent-button-background-active: var(--uc-arrowpanel-dimmed-further);
-    --in-parent-item-selected: var(--purple-40);
+    --in-parent-item-selected: var(--base02);
     --in-parent-item-hover: var(--uc-arrowpanel-dimmed);
-    --in-parent-border-highlight: var(--purple-40);
+    --in-parent-border-highlight: var(--base02);
     --in-parent-border-hover: var(--dialog-box-border-hover);
-    --in-parent-border-focus: var(--purple-40);
-    --in-parent-border-active: var(--purple-40);
-    --in-parent-border-active-shadow: var(--purple-40-a30);
+    --in-parent-border-focus: var(--base02);
+    --in-parent-border-active: var(--base02);
+    --in-parent-border-active-shadow: var(--base02aa);
     --in-parent-category-outline-focus: 1px solid transparent;
-    --in-parent-link-color: var(--purple-35);
+    --in-parent-link-color: var(--base02);
     --in-parent-link-color-hover: var(--purple-30);
     --in-parent-link-color-active: var(--purple-30);
-    --in-parent-primary-button-background: var(--purple-40);
-    --in-parent-primary-button-background-hover: var(--purple-35);
+    --in-parent-primary-button-background: var(--base02);
+    --in-parent-primary-button-background-hover: var(--base02);
     --in-parent-primary-button-background-active: var(--purple-30);
     --in-parent-primary-button-text-color: var(--in-parent-page-color);
     --ui-textbox-bgcolor: hsl(233, 24%, 28%);
@@ -428,8 +429,8 @@ popupnotification,
 }
 
 #protections-popup {
-    --button-primary-bgcolor: var(--purple-45) !important;
-    --button-primary-hover-bgcolor: var(--purple-35) !important;
+    --button-primary-bgcolor: var(--base01) !important;
+    --button-primary-hover-bgcolor: var(--base02) !important;
     --button-primary-active-bgcolor: var(--purple-30) !important;
     --protections-popup-switch-off-background: color-mix(in srgb, currentColor 15%, transparent);
     --protections-popup-switch-off-hover-background-custom: color-mix(
@@ -447,10 +448,10 @@ popupnotification,
         currentColor 5%,
         transparent
     );
-    --protections-popup-switch-on-background: var(--purple-40);
-    --protections-popup-switch-on-hover-background-custom: var(--purple-50);
+    --protections-popup-switch-on-background: var(--base02);
+    --protections-popup-switch-on-hover-background-custom: var(--base19);
     --protections-popup-switch-on-active-background-custom: var(--purple-55);
-    --protections-popup-switch-on-hover-border-custom: var(--purple-40);
+    --protections-popup-switch-on-hover-border-custom: var(--base02);
 }
 
 :root[lwt-popup-brighttext] #protections-popup {

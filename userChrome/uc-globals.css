@@ -238,10 +238,10 @@ tooltip {
 
     --tab-background: var(--lwt-accent-color);
     --tab-selected: var(--toolbar-bgcolor);
-    --tab-hover: linear-gradient(hsl(231, 49%, 11%), hsl(233, 55%, 8%));
+    --tab-hover: linear-gradient(var(--base01),var(--base00));
     --tab-pinned: linear-gradient(var(--lwt-accent-color), var(--toolbar-bgcolor));
-    --tab-multi: linear-gradient(hsl(231, 50%, 11%), hsl(233, 53%, 8%));
-    --tab-multi-hover: linear-gradient(hsl(231, 47%, 13%), hsl(233, 51%, 10%));
+    --tab-multi: linear-gradient(var(--base02),var(--base01));
+    --tab-multi-hover: linear-gradient(var(--base00),var(--base19));
     --tab-pinned-hover: var(--toolbar-bgcolor);
     --tab-focused-highlight:var(--base01);
     --tab-focused-hover: linear-gradient(
@@ -261,8 +261,7 @@ tooltip {
         var(--base00) 55%,
 
     );
-    --titlebar-background: var(--lwt-accent-color) var(--titlebar-gradient);
-
+    --titlebar-background: var(--titlebar-gradient);
     --search-box-color: var(--base01);
     --search-box-focus: var(--base01);
     --search-box-null: var(--base00);
@@ -398,7 +397,7 @@ tooltip {
     --uc-checkbox-checked-bgcolor: var(--in-parent-primary-button-background);
     --uc-checkbox-checked-color: var(--in-parent-primary-button-text-color);
     --uc-checkbox-checked-hover-bgcolor: var(--in-parent-primary-button-background-hover);
-    --uc-checkbox-checked-active-bgcolor: var(--in-parent-primary-button-background-active);
+    --uc-checkbox-checked-active-bgcolor: var(--base01);
 
     --switch-off-background:var(--base02);
     --switch-off-hover-background: var(--base01);

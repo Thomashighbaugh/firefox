@@ -150,34 +150,34 @@
     --in-content-button-background-solid: var(
       --content-principal-button-background-solid
     );
-    --in-content-item-selected: var(--purple-40) !important;
-    --in-content-border-highlight: var(--purple-40) !important;
+    --in-content-item-selected: var(--base05) !important;
+    --in-content-border-highlight: var(--base05) !important;
     --in-content-border-hover: var(--content-principal-border-hover) !important;
-    --in-content-border-focus: var(--purple-40) !important;
-    --in-content-border-active: var(--purple-40) !important;
+    --in-content-border-focus: var(--base05) !important;
+    --in-content-border-active: var(--base05) !important;
     --in-content-border-active-shadow: var(--purple-40-a30) !important;
     --in-content-category-outline-focus: 1px solid transparent !important;
-    --in-content-link-color: var(--purple-30) !important;
-    --in-content-link-color-hover: var(--purple-25) !important;
-    --in-content-link-color-active: var(--purple-20) !important;
+    --in-content-link-color: var(--base05) !important;
+    --in-content-link-color-hover: var(--base06) !important;
+    --in-content-link-color-active: var(--base07) !important;
     --in-content-link-visited-color: var(--pink-40) !important;
     --in-content-link-visited-color-hover: var(--pink-35) !important;
     --in-content-link-visited-color-active: var(--pink-30) !important;
-    --in-content-primary-button-background: var(--purple-40) !important;
-    --in-content-primary-button-background-hover: var(--purple-35) !important;
-    --in-content-primary-button-background-active: var(--purple-30) !important;
+    --in-content-primary-button-background: var(--base05) !important;
+    --in-content-primary-button-background-hover: var(--base03) !important;
+    --in-content-primary-button-background-active: var(--base03) !important;
     --in-content-primary-button-text-color: var(
       --in-content-page-color
     ) !important;
     --in-content-button-border-radius: var(
       --general-button-border-radius
     ) !important;
-    --in-content-accent-color: var(--purple-35) !important;
-    --in-content-table-background: var(--in-content-box-background) !important;
-    --in-content-table-header-background: var(--purple-40-a30) !important;
+    --in-content-accent-color: var(--base19) !important;
+    --in-content-table-background: var(--base01) !important;
+    --in-content-table-header-background: var(--base01) !important;
     --newtab-background-color: var(--in-content-page-background) !important;
     --newtab-text-primary-color: var(--in-content-page-color) !important;
-    --lwt-sidebar-background-color: var(--in-content-box-background) !important;
+    --lwt-sidebar-background-color: var(--base01) !important;
     --lwt-sidebar-text-color: var(--in-content-page-color) !important;
     --newtab-search-header-background-color: color-mix(
       in srgb,
@@ -195,7 +195,7 @@
     --newtab-modal-color: var(--in-content-box-background) !important;
     --newtab-focus-outline: var(--in-content-border-active-shadow) !important;
     --newtab-focus-border: var(--in-content-border-focus) !important;
-    --newtab-focus-border-selected: var(--purple-30) !important;
+    --newtab-focus-border-selected: var(--base03) !important;
     --newtab-textbox-background-color: var(
       --in-content-button-background
     ) !important;
@@ -205,12 +205,12 @@
     ) !important;
     --newtab-primary-action-background-hover: color-mix(
       in srgb,
-      var(--purple-30) 60%,
+      var(--base03) 60%,
       var(--newtab-primary-action-background)
     ) !important;
     --newtab-primary-action-background-active: color-mix(
       in srgb,
-      var(--purple-25) 60%,
+      var(--base06) 60%,
       var(--newtab-primary-action-background)
     ) !important;
     --newtab-primary-element-text-color: var(--ui-text-80) !important;
@@ -350,7 +350,7 @@
   .showPrivate .info {
     background-image: url(chrome://userchrome/content/skin/privateBrowsing.svg) !important;
     -moz-context-properties: fill, fill-opacity;
-    fill: hsl(235, 100%, 71%);
+    fill: var(--base05);
   }
 
   .search-tooltip {
@@ -547,9 +547,9 @@
       --button-color: var(--ui-text-100) !important;
       --button-hover-background-color: var(--button-bg-hover) !important;
       --primary-button-color: var(--ui-text-100) !important;
-      --primary-button-background-color: var(--purple-40) !important;
-      --primary-button-hover-background-color: var(--purple-35) !important;
-      --primary-button-active-background-color: var(--purple-30) !important;
+      --primary-button-background-color: var(--base05) !important;
+      --primary-button-hover-background-color: var(--base03) !important;
+      --primary-button-active-background-color: var(--base03) !important;
     }
 
     .card {
@@ -639,7 +639,7 @@
       black 40%,
       var(--in-content-bg-dark)
     ) !important;
-    --active-color: var(--purple-35) !important;
+    --active-color: var(--base03) !important;
     --selected-background: var(--attention-color) !important;
     --link-foreground: var(--in-content-link-color) !important;
     --visited-link-foreground: #823afc !important;
@@ -689,7 +689,7 @@
   select:focus-visible,
   button:focus-visible,
   textarea:focus-visible {
-    outline-color: var(--purple-35) !important;
+    outline-color: var(--base03) !important;
     outline-style: solid !important;
     outline-width: 2px !important;
   }

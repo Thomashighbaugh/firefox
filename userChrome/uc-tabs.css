@@ -1,5 +1,9 @@
 /* controls the appearance of individual tabs and elements inside a tab. */
 
+#TabsToolbar{
+    display: none !important;
+}
+
 #TabsToolbar .tabbrowser-tab {
     background-color: var(--lwt-accent-color) !important;
     padding: 0 !important;

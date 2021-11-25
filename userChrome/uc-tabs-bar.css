@@ -6,7 +6,6 @@ this sheet controls their appearance as well. */
 #toolbar-menubar[inactive="true"] ~ #TabsToolbar,
 #toolbar-menubar:not([inactive="true"]) {
     padding-inline-end: 6px !important;
-    display:none;
 }
 
 .titlebar-spacer[type="pre-tabs"] {
@@ -175,7 +174,7 @@ this sheet controls their appearance as well. */
     background-color: transparent !important;
     width: 20px !important;
     margin-right: -20px !important;
-    height: 46px !important;
+    height: 23px !important;
     margin-block: -8px !important;
     z-index: 11 !important;
 }
@@ -393,7 +392,7 @@ this sheet controls their appearance as well. */
     border-radius: var(--arrowpanel-menuitem-border-radius) !important;
     box-shadow: none !important;
     margin-inline: 4px !important;
-    min-height: 28px !important;
+    min-height: 23px !important;
     -moz-box-align: center;
     padding-inline-end: 2px;
 }

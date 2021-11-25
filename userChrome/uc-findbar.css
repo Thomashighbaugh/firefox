@@ -1,0 +1,338 @@
+/* controls the basic appearance of the findbar. uc-fullscreen further adjusts it */
+
+.browserContainer {
+    position: relative;
+}
+
+.browserContainer > findbar {
+    -moz-box-ordinal-group: 0;
+    position: absolute !important;
+    display: flex !important;
+    flex-flow: row nowrap;
+    align-items: center;
+    top: 0 !important;
+    left: 1.5em;
+    border: 0px solid transparent !important;
+    border-bottom-left-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+    border-top: none !important;
+    box-shadow: 0px 0px 7px -2px hsla(240, 4%, 0%, 0.6), 0px 0px 15px 0px hsla(0, 0%, 0%, 0.2) !important;
+    background-image: none !important;
+    transition: 0.2s ease-in-out opacity, 0.2s ease-in-out transform !important;
+    transform-style: preserve-3d !important;
+    backface-visibility: hidden !important;
+    z-index: 1 !important;
+    animation: 0.2s ease-in-out findbar-down;
+    overflow: hidden !important;
+}
+
+@keyframes findbar-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-2em);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+findbar[hidden] {
+    margin-bottom: auto !important;
+    visibility: visible !important;
+    transition: all 0.2s ease-in-out 0s !important;
+    pointer-events: none;
+    transform: translateY(-2em);
+}
+
+@supports -moz-bool-pref("userChrome.findbar.hide-on-unfocus") {
+    findbar:not(:focus-within) {
+        margin-bottom: auto !important;
+        visibility: visible !important;
+        transition: all 0.2s ease-in-out 0s !important;
+        pointer-events: none;
+        transform: translateY(-2em);
+        opacity: 0;
+    }
+}
+
+#sidebar-box[hidden="true"] ~ #appcontent findbar,
+#sidebar-box:not([positionend="true"]) ~ #appcontent findbar {
+    left: auto !important;
+    right: 1.5em !important;
+}
+
+.findbar-closebutton {
+    padding: 0 0 0 4px !important;
+    margin-inline: 3px 0 !important;
+    margin-block: 0 !important;
+    background: none !important;
+    -moz-box-ordinal-group: 2 !important;
+    /* I use findbarMods.uc.js to actually move the icon to the right side, so the tab index will be correct.
+    But -moz-box-ordinal-group is a decent, (purely visual) alternative if you don't use scripts. */
+}
+
+.findbar-closebutton .toolbarbutton-icon {
+    border-radius: var(--toolbarbutton-border-radius) !important;
+    fill-opacity: 0 !important;
+    width: var(--findbar-height);
+    height: var(--findbar-height);
+    padding: 5px;
+    /* list-style-image: url(chrome://userchrome/content/textbox-clear.svg) !important; */
+    list-style-image: url(chrome://userchrome/content/window-controls/close.svg) !important;
+    stroke: white !important;
+    -moz-context-properties: fill, fill-opacity, stroke !important;
+}
+
+.findbar-closebutton:is(:hover, :focus-visible):not([disabled]) .toolbarbutton-icon {
+    background-color: var(--toolbarbutton-hover-background) !important;
+}
+
+.findbar-closebutton:is(:hover, :focus-visible):not([disabled]):active .toolbarbutton-icon {
+    background-color: var(--toolbarbutton-active-background) !important;
+}
+
+[anonid="findbar-textbox-wrapper"] {
+    border-radius: var(--toolbarbutton-border-radius) !important;
+    overflow: hidden !important;
+    height: var(--findbar-height) !important;
+    -moz-box-flex: 1 !important;
+}
+
+.findbar-textbox {
+    border: none !important;
+    transition: 300ms !important;
+    width: 20em;
+    border-radius: 0 !important;
+    outline: none !important;
+    max-height: var(--findbar-height) !important;
+    padding-inline: 6px !important;
+    -moz-box-flex: 1 !important;
+}
+
+.findbar-textbox input > .anonymous-div {
+    color: white !important;
+    opacity: 1 !important;
+}
+
+.findbar-textbox,
+.findbar-textbox:-moz-lwtheme {
+    background-color: var(--search-box-color) !important;
+    color: var(--ui-text-80) !important;
+}
+
+.findbar-textbox::placeholder {
+    color: var(--ui-text-50) !important;
+}
+
+.findbar-textbox:focus {
+    background-color: var(--search-box-focus) !important;
+    color: var(--lwt-toolbar-field-color) !important;
+    transition: 300ms !important;
+}
+
+.findbar-textbox[status="notfound"] {
+    background-color: var(--search-box-null) !important;
+    color: var(--ui-text-80) !important;
+    transition: 400ms !important;
+}
+
+[anonid="findbar-textbox-wrapper"]:focus-within .findbar-textbox:not([status="notfound"]) {
+    background-color: var(--search-box-focus) !important;
+    color: var(--lwt-toolbar-field-color) !important;
+    transition: 300ms !important;
+}
+
+findbar .matches-indicator {
+    background-color: var(--search-box-color);
+    transition: 300ms background-color;
+    mask-image: linear-gradient(to right, transparent 0px, black 20px);
+    line-height: var(--findbar-height) !important;
+    height: var(--findbar-height) !important;
+}
+
+@supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
+    findbar .matches-indicator {
+        font-weight: var(--uc-font-weight-thin, 300) !important;
+        line-height: var(--findbar-height, 22px) !important;
+    }
+}
+
+.findbar-textbox:focus ~ .matches-indicator {
+    background-color: var(--search-box-focus);
+}
+
+.findbar-textbox[status="notfound"] ~ .matches-indicator {
+    background-color: var(--search-box-null);
+    transition-duration: 400ms;
+}
+
+[anonid="findbar-textbox-wrapper"]:focus-within
+    .findbar-textbox:not([status="notfound"])
+    ~ .matches-indicator {
+    background-color: var(--search-box-focus);
+}
+
+.findbar-find-previous,
+.findbar-find-next {
+    border: none !important;
+    padding: 0 !important;
+    background: var(--search-box-color) !important;
+    fill: rgba(255, 255, 255, 1) !important;
+    transition: 300ms !important;
+}
+
+.findbar-find-previous > .toolbarbutton-icon,
+.findbar-find-next > .toolbarbutton-icon {
+    background: none !important;
+    padding: 0 !important;
+    width: 12px !important;
+    margin-inline: 2px !important;
+    opacity: 0.5 !important;
+}
+
+.findbar-find-previous {
+    padding-inline: 0 !important;
+    margin-inline: 0 !important;
+    list-style-image: url(chrome://userchrome/content/menu-arrow-left-tiny.svg) !important;
+}
+
+.findbar-find-next {
+    padding-inline: 0 !important;
+    margin-inline: 0 !important;
+    list-style-image: url(chrome://userchrome/content/menu-arrow-tiny.svg) !important;
+}
+
+:is(.findbar-find-previous, .findbar-find-next):not([disabled], [hidden]):is(:hover, :focus-visible)
+    > .toolbarbutton-icon {
+    background: none !important;
+    opacity: 1 !important;
+}
+
+:is(.findbar-entire-word, .findbar-case-sensitive):not([disabled], [hidden]):is(:hover, :focus-visible, [checked])
+    :is(.toolbarbutton-icon, .checkbox-icon) {
+    background: none !important;
+    opacity: 0.8 !important;
+}
+
+:is(.findbar-find-previous, .findbar-find-next, .findbar-entire-word, .findbar-case-sensitive):not([disabled], [hidden]):hover:active {
+    box-shadow: none !important;
+}
+
+:is(.findbar-find-previous, .findbar-find-next, .findbar-entire-word, .findbar-case-sensitive):not([disabled], [hidden]):where([checked]:hover, [checked]:focus-visible, :hover:active, :focus-visible:hover)
+    :is(.toolbarbutton-icon, .checkbox-icon) {
+    background: none !important;
+    opacity: 1 !important;
+}
+
+.findbar-textbox[status="notfound"]
+    ~ :is(.findbar-find-previous, .findbar-find-next)
+    > .toolbarbutton-icon,
+.findbar-textbox[status="notfound"]
+    ~ :is(.findbar-find-previous, .findbar-find-next)
+    > .toolbarbutton-icon,
+:is(.findbar-find-previous, .findbar-find-next, .findbar-entire-word, .findbar-case-sensitive):is([disabled="true"], [hidden])
+    :is(.toolbarbutton-icon, .checkbox-icon) {
+    fill: rgba(255, 255, 255, 1) !important;
+    opacity: 0.25 !important;
+}
+
+.findbar-textbox:focus
+    ~ :is(.findbar-find-previous, .findbar-find-next, .findbar-entire-word, .findbar-case-sensitive) {
+    background-color: var(--search-box-focus) !important;
+    transition: 300ms !important;
+}
+
+.findbar-textbox[status="notfound"]
+    ~ :is(.findbar-find-previous, .findbar-find-next, .findbar-entire-word, .findbar-case-sensitive) {
+    background-color: var(--search-box-null) !important;
+    transition: 400ms !important;
+}
+
+.findbar-entire-word,
+.findbar-case-sensitive {
+    -moz-context-properties: fill, fill-opacity;
+    padding-inline: 2px !important;
+    appearance: none !important;
+    border: none !important;
+    margin: 0 !important;
+    background: var(--search-box-color) !important;
+    fill: hsl(0, 0%, 100%) !important;
+    transition: 300ms !important;
+    border-radius: 0 !important;
+    display: -moz-box !important;
+}
+
+[anonid="findbar-textbox-wrapper"] checkbox {
+    opacity: 1 !important;
+}
+
+[anonid="findbar-textbox-wrapper"] checkbox[hidden]:not([disabled]) {
+    pointer-events: none !important;
+    -moz-user-focus: none !important;
+}
+
+.findbar-entire-word {
+    list-style-image: url(chrome://userchrome/content/material/entire-word.svg);
+}
+
+.findbar-case-sensitive {
+    list-style-image: url(chrome://userchrome/content/material/case-sensitive.svg);
+}
+
+.findbar-case-sensitive :is(.toolbarbutton-icon, .checkbox-icon) {
+    transform: translateY(0.5px);
+}
+
+:is(.findbar-entire-word, .findbar-case-sensitive) :is(.toolbarbutton-icon, .checkbox-icon) {
+    margin: 0 !important;
+    background: none !important;
+    width: 16px !important;
+    opacity: 0.4 !important;
+    appearance: none !important;
+    display: -moz-inline-box !important;
+}
+
+.findbar-textbox.minimal
+    ~ :is(.findbar-case-sensitive, .findbar-entire-word, .findbar-find-previous, .findbar-find-next) {
+    display: none !important;
+}
+
+.findbar-textbox.minimal ~ .matches-indicator {
+    margin-inline-end: 6px !important;
+}
+
+:is(.findbar-entire-word, .findbar-case-sensitive) :is(.checkbox-check, .checkbox-label) {
+    display: none !important;
+}
+
+[anonid="findbar-textbox-wrapper"]:focus-within
+    .findbar-textbox:not([status="notfound"])
+    ~ :is(.findbar-find-previous, .findbar-find-next, .findbar-entire-word, .findbar-case-sensitive) {
+    background-color: var(--search-box-focus) !important;
+    transition: 300ms !important;
+}
+
+.browserContainer > findbar {
+    min-height: unset !important;
+    padding-block: 8px !important;
+}
+
+.findbar-container {
+    -moz-box-orient: horizontal !important;
+    height: var(--findbar-height) !important;
+    min-width: revert !important;
+}
+
+#findbar-close-container {
+    display: none !important;
+}
+
+.findbar-find-status,
+.found-matches,
+.find-status-icon,
+.findbar-label,
+.findbar-highlight,
+.findbar-match-diacritics {
+    display: none !important;
+}

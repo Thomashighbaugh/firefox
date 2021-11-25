@@ -1,25 +1,3 @@
 /* Import theme */
 
-@import url("theme/theme.css");
-
-/*
- * Enable Browser Modifications
-*/
-
-/* Limit the URL bar's autocompletion popup's width to the URL bar's width (GNOMISH) */
-
-@import url("theme/matching-autocomplete-width.css");
-
-/* Use system theme icons instead of Adwaita icons included by theme */
-
-@import url("theme/system-icons.css");
-
-/* Make all tab icons look kinda like symbolic icons */
-
-@import url("theme/symbolic-tab-icons.css");
-
-/* Hide single tabs */
-
-@import url("theme/hide-single-tab.css");
-
-@import url("theme/hide-tabbar.css");
+@import url(userChrome/uc);

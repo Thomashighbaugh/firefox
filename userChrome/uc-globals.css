@@ -253,10 +253,13 @@ tooltip {
     /* width of the spacer between the tabs and the window control buttons */
     --titlebar-spacer-width: 40px;
     /* subtle gradient drawn behind the window control buttons. */
-    --titlebar-gradient: radial-gradient(
-        circle at 100% 0%,
-        hsl(231, 48%, 12%),
-        var(--uc-accent-color) 140px
+    --titlebar-gradient:linear-gradient(
+        -32deg,
+        var(--base00),
+        var(--base01) 10%,
+        var(--base02) 35%,
+        var(--base00) 55%,
+
     );
     --titlebar-background: var(--lwt-accent-color) var(--titlebar-gradient);
 
@@ -265,7 +268,7 @@ tooltip {
     --search-box-null: var(--base00);
     --textbox-button-hidden: hsla(240, 100%, 89%, 0);
     --confirmation-hint-color: var(--ui-text-100);
-    --confirmation-hint-bgcolor: var(--base02);
+    --confirmation-hint-bgcolor: var(--base00);
     --confirmation-hint-border-color: var(--base02aa);
     --picture-in-picture-toggle-bgcolor: var(--base01);
 

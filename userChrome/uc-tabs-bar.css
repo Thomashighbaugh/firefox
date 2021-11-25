@@ -6,7 +6,7 @@ this sheet controls their appearance as well. */
 #toolbar-menubar[inactive="true"] ~ #TabsToolbar,
 #toolbar-menubar:not([inactive="true"]) {
     padding-inline-end: 6px !important;
-    display: none !important;
+    display:none;
 }
 
 .titlebar-spacer[type="pre-tabs"] {

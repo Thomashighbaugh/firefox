@@ -243,12 +243,12 @@ tooltip {
     --tab-multi: linear-gradient(hsl(231, 50%, 11%), hsl(233, 53%, 8%));
     --tab-multi-hover: linear-gradient(hsl(231, 47%, 13%), hsl(233, 51%, 10%));
     --tab-pinned-hover: var(--toolbar-bgcolor);
-    --tab-focused-highlight: hsl(231, 36%, 22%);
+    --tab-focused-highlight:var(--base01);
     --tab-focused-hover: linear-gradient(
         color-mix(in srgb, var(--tab-focused-highlight) 50%, var(--toolbar-bgcolor)),
         var(--toolbar-bgcolor)
     );
-    --multiselected-color: hsl(241, 50%, 51%);
+    --multiselected-color: var(--base01);
 
     /* width of the spacer between the tabs and the window control buttons */
     --titlebar-spacer-width: 40px;
@@ -260,9 +260,9 @@ tooltip {
     );
     --titlebar-background: var(--lwt-accent-color) var(--titlebar-gradient);
 
-    --search-box-color: var(--base19);
-    --search-box-focus: var(--base25);
-    --search-box-null: var(--base21);
+    --search-box-color: var(--base01);
+    --search-box-focus: var(--base01);
+    --search-box-null: var(--base00);
     --textbox-button-hidden: hsla(240, 100%, 89%, 0);
     --confirmation-hint-color: var(--ui-text-100);
     --confirmation-hint-bgcolor: var(--base02);
@@ -284,7 +284,7 @@ tooltip {
     --busy-throbber-fill: var(--base06);
     --sanitize-border-color: var(--base0266);
     --menu-separator-color: var(--base0666);
-    --urlbar-input-bgcolor: var(--base00);
+    --urlbar-input-bgcolor: var(--base01);
     --urlbar-input-bgcolor-brighter: var(--base02);
     --urlbar-input-bgcolor-disabled: var(--base04);
     --uc-urlbar-container-height: 38px;
@@ -364,7 +364,7 @@ tooltip {
     --in-parent-primary-button-background-active: var(--base05);
     --in-parent-primary-button-text-color: var(--in-parent-page-color);
     --ui-textbox-bgcolor: var(--base01);
-    --ui-textbox-focus-bgcolor: var(--base19);
+    --ui-textbox-focus-bgcolor: var(--base01);
     --ebp-menulist-background-color: var(--base24);
     --ebp-menulist-menuitem-hover-background-color: var(--base25);
     --ebp-menulist-separator-color:var(--base02aa);

@@ -92,7 +92,7 @@ menupopup {
     --ctrlTab-panel-disabled-focused-bgcolor: hsla(240, 8%, 3%, 0.9) !important;
     --ctrlTab-panel-bgcolor: hsla(240, 3%, 4%, 0.9) !important;
     --ctrlTab-panel-focused-bgcolor: hsla(10, 12%, 2%, 0.99) !important;
-    --in-content-box-background: hsl(232, 32%, 14%) !important;
+    --in-content-box-background: var(--base01) !important;
     --in-content-box-border-color: rgba(249, 249, 250, 0.1) !important;
     --in-content-button-background: var(--arrowpanel-dimmed) !important;
     --in-content-button-background-hover: var(--arrowpanel-dimmed-further) !important;

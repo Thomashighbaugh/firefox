@@ -87,20 +87,20 @@ tooltip {
     --uc-desaturate-dimmed: hsla(223, 8%, 12%,, 0.17);
     --uc-desaturate-dimmed-further: hsla(223, 8%, 12%,, 0.25);
     --uc-desaturate-dimmed-even-further: hsla(236, 60%, 85%, 0.3);
-    --uc-panel-button-solid: var(--base01);
+    --uc-panel-button-solid: var(--base00);
     --uc-panel-box-solid: var(--base00);
     --uc-menu-border-color: var(--base0299);
     --uc-smooth-timing-function: cubic-bezier(0.07, 0.78, 0.21, 0.95);
     --uc-content-text-a50: hsla(244, 26%, 47%,, 0.5);
     --uc-content-text-a80: rgba(244, 244, 247, 0.8);
     --uc-accent-color: var(--base30);
-    --uc-toolbar-bgcolor: var(--base19);
+    --uc-toolbar-bgcolor: var(--base00);
     --uc-toolbar-color: var(--ui-text-100);
     --uc-arrowpanel-background:var(--base00);
     --uc-arrowpanel-color: hsl(213, 43%, 89%);
     --button-solid-hover-background: var(--base02);
-    --button-solid-active-background:var(--base01);
-    --button-solid-checked-background: var(--base01);
+    --button-solid-active-background:var(--base00);
+    --button-solid-checked-background: var(--base00);
     --uc-toolbarbutton-hover-background:var(--base01);
     --uc-toolbarbutton-active-background: var(--base01);
     --uc-toolbarbutton-checked-background: hsla(236, 82%, 83%, 0.13);
@@ -110,7 +110,7 @@ tooltip {
     --uc-panel-description-color: hsl(235, 48%, 89%, 70%);
     --uc-panel-shortcut-color: hsl(235, 27%, 73%, 70%);
     --uc-panel-shortcut-focus: hsl(235, 32%, 75%, 90%);
-    --uc-places-cell-focus-bgcolor: var(--base03);
+    --uc-places-cell-focus-bgcolor: var(--base01);
     --uc-places-cell-hover-bgcolor: var(--base02);
 
     --menupopup-inner-box-margin: 0px;
@@ -149,15 +149,15 @@ tooltip {
 
     --popup-on-popup-contrast-bg: var(--base30);
     --autocomplete-background: var(--popup-on-popup-contrast-bg);
-    --ui-secondary-bg:var(--base30);
-    --ui-tertiary-bg: var(--base19);
-    --tooltip-bgcolor: var(--base30);
-    --tooltip-color: white;
+    --ui-secondary-bg:var(--base19);
+    --ui-tertiary-bg: var(--base00aa);
+    --tooltip-bgcolor: var(--base19);
+    --tooltip-color: var(--base07);
     --tooltip-border-radius: 2px;
     --tooltip-border-color: var(--uc-menu-border-color);
     --tooltip-box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.2);
     --global-focus-shadow-color: var(--base02aa);
-    --global-focus-outline-color: var(--base02);
+    --global-focus-outline-color: var(--base02aa);
     --global-focus-ring: 2px solid var(--global-focus-shadow-color);
     --global-focus-shadow: 0 0 0 3px var(--global-focus-shadow-color),
         0 0 0 1px var(--global-focus-outline-color);

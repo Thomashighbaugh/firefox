@@ -224,11 +224,11 @@ tooltip {
     --content-selection-bgcolor: hsla(0, 0%, 100%, 0.8);
     --content-selection-color: hsl(240, 4%, 10%);
     --content-selection-bgcolor-disabled: hsla(0, 0%, 100%, 0.7);
-    --pdf-selection-bgcolor: hsl(245, 100%, 46.7%) !important;
-    --pdf-highlight-bgcolor: hsl(345, 100%, 40%) !important;
+    --pdf-selection-bgcolor: var(--base14) !important;
+    --pdf-highlight-bgcolor: var(--base09) !important;
 
     /* controls the color of the search highlights in about:preferences */
-    --solid-selection-bgcolor: var(--pink-action);
+    --solid-selection-bgcolor: var(--base08);
     /* controls the color of the little tooltips that appear on search highlighted buttons in about:preferences */
     --aboutPrefs-find-tags: var(--base02);
 
@@ -259,14 +259,14 @@ tooltip {
     );
     --titlebar-background: var(--lwt-accent-color) var(--titlebar-gradient);
 
-    --search-box-color: hsl(229, 32%, 23%);
-    --search-box-focus: hsl(229, 27%, 27%);
-    --search-box-null: hsl(230, 30%, 20%);
+    --search-box-color: var(--base19);
+    --search-box-focus: var(--base25);
+    --search-box-null: var(--base21);
     --textbox-button-hidden: hsla(240, 100%, 89%, 0);
     --confirmation-hint-color: var(--ui-text-100);
-    --confirmation-hint-bgcolor: hsl(240, 60%, 59%);
-    --confirmation-hint-border-color: hsl(240, 60%, 59%);
-    --picture-in-picture-toggle-bgcolor: hsl(244, 100%, 63%);
+    --confirmation-hint-bgcolor: var(--base02);
+    --confirmation-hint-border-color: var(--base02aa);
+    --picture-in-picture-toggle-bgcolor: var(--base01);
 
     --urlbar-base-font-weight: 400;
     --urlbar-result-strong-font-weight: 400;
@@ -279,11 +279,11 @@ tooltip {
     --urlbar-one-offs-width: calc(
         var(--urlbar-one-offs-engine-width) * var(--urlbar-one-offs-engines-per-scroll)
     );
-    --loading-throbber-fill: hsl(225, 100%, 75%);
-    --busy-throbber-fill: hsl(218, 90%, 85%);
-    --sanitize-border-color: hsla(0, 0%, 5%, 0.2);
-    --menu-separator-color: hsl(233, 25%, 23%);
-    --urlbar-input-bgcolor: hsl(233, 28%, 25%);
+    --loading-throbber-fill:var(--base05);
+    --busy-throbber-fill: var(--base06);
+    --sanitize-border-color: var(--base0266);
+    --menu-separator-color: var(--base0666);
+    --urlbar-input-bgcolor: var(--base25);
     --urlbar-input-bgcolor-brighter: hsl(233, 26%, 27%);
     --urlbar-input-bgcolor-disabled: hsl(233, 30%, 21%);
     --uc-urlbar-container-height: 38px;
@@ -356,11 +356,11 @@ tooltip {
     --in-parent-border-active-shadow: var(--base02aa);
     --in-parent-category-outline-focus: 1px solid transparent;
     --in-parent-link-color: var(--base02);
-    --in-parent-link-color-hover: var(--purple-30);
-    --in-parent-link-color-active: var(--purple-30);
+    --in-parent-link-color-hover: var(--base05);
+    --in-parent-link-color-active: var(--base05);
     --in-parent-primary-button-background: var(--base02);
     --in-parent-primary-button-background-hover: var(--base02);
-    --in-parent-primary-button-background-active: var(--purple-30);
+    --in-parent-primary-button-background-active: var(--base05);
     --in-parent-primary-button-text-color: var(--in-parent-page-color);
     --ui-textbox-bgcolor: hsl(233, 24%, 28%);
     --ui-textbox-focus-bgcolor: hsl(232, 22%, 34%);
@@ -431,7 +431,7 @@ popupnotification,
 #protections-popup {
     --button-primary-bgcolor: var(--base01) !important;
     --button-primary-hover-bgcolor: var(--base02) !important;
-    --button-primary-active-bgcolor: var(--purple-30) !important;
+    --button-primary-active-bgcolor: var(--base05) !important;
     --protections-popup-switch-off-background: color-mix(in srgb, currentColor 15%, transparent);
     --protections-popup-switch-off-hover-background-custom: color-mix(
         in srgb,
@@ -450,7 +450,7 @@ popupnotification,
     );
     --protections-popup-switch-on-background: var(--base02);
     --protections-popup-switch-on-hover-background-custom: var(--base19);
-    --protections-popup-switch-on-active-background-custom: var(--purple-55);
+    --protections-popup-switch-on-active-background-custom: var(--base21);
     --protections-popup-switch-on-hover-border-custom: var(--base02);
 }
 

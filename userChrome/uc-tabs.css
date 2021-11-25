@@ -3,49 +3,59 @@
 #TabsToolbar .tabbrowser-tab {
     background-color: var(--lwt-accent-color) !important;
     padding: 0 !important;
+    display: none !important;
 }
 
 /* different tab background colors in various states */
 .tabbrowser-tab:not([selected]):is(:hover, .keyboard-focused-tab, [open]) .tab-background {
     background: var(--tab-hover) !important;
+    display: none !important;
 }
 
 .tabbrowser-tab:is([visuallyselected], [selected]) .tab-background {
     background: var(--tab-selected) !important;
+    display: none !important;
 }
 
 .tabbrowser-tab:focus:not([aria-activedescendant]) > .tab-stack > .tab-background,
 .tabbrowser-tab.keyboard-focused-tab[selected] > .tab-stack > .tab-background {
     background: var(--tab-focused-hover) !important;
+    display: none !important;
 }
 
 .tabbrowser-tab:not([selected])[pinned]:is(:hover, .keyboard-focused-tab, [open]) .tab-background {
     background: var(--tab-pinned-hover) !important;
+    display: none !important;
 }
 
 .tabbrowser-tab:not([selected], [pinned], [multiselected], :hover, .keyboard-focused-tab, [open])
     .tab-background {
     background: var(--tab-background) !important;
+    display: none !important;
 }
 
 .tabbrowser-tab:not([selected])[pinned] .tab-background {
     background: var(--tab-pinned) !important;
+    display: none !important;
 }
 
 .tabbrowser-tab[multiselected]:not([selected], [pinned], :hover, .keyboard-focused-tab, [open])
     .tab-background {
     background: var(--tab-multi) !important;
+    display: none !important;
 }
 
 .tabbrowser-tab[multiselected]:not([selected], [pinned]):is(:hover, .keyboard-focused-tab, [open])
     .tab-background {
     background: var(--tab-multi-hover) !important;
+    display: none !important;
 }
 
 /* block our animations while tabs are being dragged & dropped */
 #tabbrowser-tabs[movingtab] .tabbrowser-tab *,
 #tabbrowser-tabs .tabbrowser-tab[justmoved] * {
     transform: none !important;
+    display: none !important;
 }
 
 .tab-background {
@@ -54,6 +64,7 @@
     box-shadow: none !important;
     opacity: 1 !important;
     z-index: 1;
+    display: none !important;
 }
 
 /* different tab shadows in various states. to produce the illusion of modulated depth */
@@ -86,6 +97,7 @@
 .tabbrowser-tab[usercontextid] .tab-context-line {
     opacity: 0 !important;
     transition: none !important;
+    display: none !important;
 }
 
 .tabbrowser-tab[usercontextid]:is(:hover, [selected], [multiselected], .keyboard-focused-tab, [open])
@@ -161,6 +173,7 @@
     .tabbrowser-tab:not([selected]):is(:hover, .keyboard-focused-tab, [open])
     :is(.tab-stack, .tab-background, .tab-content, .tab-loading-burst) {
     border-top-right-radius: 5px !important;
+    display: none !important;
 }
 
 /* unround top left/right corner for first/last tab.

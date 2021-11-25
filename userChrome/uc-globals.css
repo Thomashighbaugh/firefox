@@ -7,6 +7,7 @@ but other than that these variables should be available everywhere. */
 
 :root,
 tooltip {
+    --base00: #17191e;
     --base0022: #17191e22;
     --base0033: #17191e33;
     --base0066: #17191e66;
@@ -15,7 +16,7 @@ tooltip {
     --base00cc: #17191ecc;
     --base0000: #17191e00;
   
-    --base01: #22262d;
+    --base01:#121417;
     --base02: #3c3f4c;
     --base0233: #3c3f4c33;
     --base0266: #3c3f4c66;
@@ -149,7 +150,7 @@ tooltip {
 
     --popup-on-popup-contrast-bg: var(--base30);
     --autocomplete-background: var(--popup-on-popup-contrast-bg);
-    --ui-secondary-bg:var(--base19);
+    --ui-secondary-bg:var(--base01);
     --ui-tertiary-bg: var(--base00aa);
     --tooltip-bgcolor: var(--base19);
     --tooltip-color: var(--base07);

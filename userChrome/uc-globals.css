@@ -93,7 +93,7 @@ tooltip {
     --uc-content-text-a50: hsla(244, 26%, 47%,, 0.5);
     --uc-content-text-a80: rgba(244, 244, 247, 0.8);
     --uc-accent-color: var(--base30);
-    --uc-toolbar-bgcolor: var(--base29);
+    --uc-toolbar-bgcolor: var(--base19);
     --uc-toolbar-color: var(--ui-text-100);
     --uc-arrowpanel-background:var(--base00);
     --uc-arrowpanel-color: hsl(213, 43%, 89%);
@@ -149,7 +149,7 @@ tooltip {
     --popup-on-popup-contrast-bg: var(--base30);
     --autocomplete-background: var(--popup-on-popup-contrast-bg);
     --ui-secondary-bg:var(--base30);
-    --ui-tertiary-bg: var(--base29);
+    --ui-tertiary-bg: var(--base19);
     --tooltip-bgcolor: var(--base30);
     --tooltip-color: white;
     --tooltip-border-radius: 2px;

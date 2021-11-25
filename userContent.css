@@ -59,7 +59,7 @@
 
 :root {
   scrollbar-color: var(--base05) transparent !important;
-  /* background: var(--base24) !important; */
+  background: var(--base24) !important;
   font-weight: 900;
   font-family: "Hurmit Nerd Font Mono bold", monospace !important;
 }
@@ -82,6 +82,7 @@
 
 .wide-container th,
 .wide-container td,
-.wide-container tr {
+.wide-container tr.
+.wide-container {
   background: var(--base21) !important;
 }

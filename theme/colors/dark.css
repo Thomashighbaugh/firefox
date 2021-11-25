@@ -43,10 +43,9 @@
   /* Buttons */
   --button-background: linear-gradient(
     -32deg,
-    #22262d,
-    ,
+    var(--base02),
     var(--base00),
-    #2f303d
+    var(--base01)
   );
   --button-border-color: var(--base04);
   --button-border-accent-color: var(--base01);

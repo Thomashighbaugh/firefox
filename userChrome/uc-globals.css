@@ -118,7 +118,7 @@ tooltip {
     --panel-shadow: none;
     --webextension-panel-border-radius: 5px;
     --menupopup-margin: calc(0px - var(--menupopup-inner-box-margin));
-    --menupopup-background: var(--base02cc);
+    --menupopup-background: var(--base00cc);
     --menupopup-child-margin-block-start: calc(-4px - var(--menupopup-inner-box-margin));
     --menupopup-child-margin-inline-start: calc(2px - var(--menupopup-inner-box-margin));
     --menupopup-padding: 0px;
@@ -283,9 +283,9 @@ tooltip {
     --busy-throbber-fill: var(--base06);
     --sanitize-border-color: var(--base0266);
     --menu-separator-color: var(--base0666);
-    --urlbar-input-bgcolor: var(--base24);
+    --urlbar-input-bgcolor: var(--base00);
     --urlbar-input-bgcolor-brighter: var(--base02);
-    --urlbar-input-bgcolor-disabled: var(--base25);
+    --urlbar-input-bgcolor-disabled: var(--base04);
     --uc-urlbar-container-height: 38px;
     --uc-menubar-searchbar-width: 256px;
     --uc-tab-min-height: 35px;

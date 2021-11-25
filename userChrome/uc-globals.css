@@ -283,9 +283,9 @@ tooltip {
     --busy-throbber-fill: var(--base06);
     --sanitize-border-color: var(--base0266);
     --menu-separator-color: var(--base0666);
-    --urlbar-input-bgcolor: var(--base25);
-    --urlbar-input-bgcolor-brighter: hsl(233, 26%, 27%);
-    --urlbar-input-bgcolor-disabled: hsl(233, 30%, 21%);
+    --urlbar-input-bgcolor: var(--base24);
+    --urlbar-input-bgcolor-brighter: var(--base02);
+    --urlbar-input-bgcolor-disabled: var(--base25);
     --uc-urlbar-container-height: 38px;
     --uc-menubar-searchbar-width: 256px;
     --uc-tab-min-height: 35px;
@@ -362,23 +362,23 @@ tooltip {
     --in-parent-primary-button-background-hover: var(--base02);
     --in-parent-primary-button-background-active: var(--base05);
     --in-parent-primary-button-text-color: var(--in-parent-page-color);
-    --ui-textbox-bgcolor: hsl(233, 24%, 28%);
-    --ui-textbox-focus-bgcolor: hsl(232, 22%, 34%);
-    --ebp-menulist-background-color: hsl(232, 24%, 32%);
-    --ebp-menulist-menuitem-hover-background-color: hsl(232, 21%, 40%);
-    --ebp-menulist-separator-color: hsl(232, 21%, 43%);
+    --ui-textbox-bgcolor: var(--base01);
+    --ui-textbox-focus-bgcolor: var(--base19);
+    --ebp-menulist-background-color: var(--base24);
+    --ebp-menulist-menuitem-hover-background-color: var(--base25);
+    --ebp-menulist-separator-color:var(--base02aa);
     --ebp-favicon-background-color: var(--dialog-bgcolor);
     --ui-solid-button-bgcolor: var(--uc-arrowpanel-dimmed);
     --ui-solid-button-hover-bgcolor: var(--uc-arrowpanel-dimmed-further);
     --ui-solid-button-active-bgcolor: var(--uc-arrowpanel-dimmed-even-further);
-    --ebmp-hover-bgcolor: hsl(233, 24%, 33%);
-    --ebmp-focus-bgcolor: hsl(233, 24%, 38%);
+    --ebmp-hover-bgcolor: var(--base19)
+    --ebmp-focus-bgcolor: var(--base25);
 
     --content-principal-page-background: hsl(270, 3%, 12%);
     --content-principal-page-color: var(--in-parent-page-color);
     --content-principal-box-background: hsl(300, 2%, 16%);
-    --content-principal-box-background-odd: hsl(320, 3%, 21%);
-    --content-principal-box-background-dim: hsl(300, 2%, 12%);
+    --content-principal-box-background-odd: var(--base30);
+    --content-principal-box-background-dim: var(--base19);
     --content-principal-box-border-color: hsla(270, 7%, 98%, 0.1);
     --content-principal-button-background: hsla(0, 20%, 90%, 0.08);
     --content-principal-button-background-hover: hsla(0, 20%, 90%, 0.15);
@@ -396,10 +396,10 @@ tooltip {
     --uc-checkbox-checked-hover-bgcolor: var(--in-parent-primary-button-background-hover);
     --uc-checkbox-checked-active-bgcolor: var(--in-parent-primary-button-background-active);
 
-    --switch-off-background: hsl(233, 15%, 32%);
-    --switch-off-hover-background: hsl(233, 18%, 27%);
-    --switch-off-active-background: hsl(233, 19%, 24.5%);
-    --switch-off-hover-border: hsl(233, 15%, 32%);
+    --switch-off-background:var(--base02);
+    --switch-off-hover-background: var(--base01);
+    --switch-off-active-background: var(--base19);
+    --switch-off-hover-border: var(--base02aa);
 }
 
 :root[fxastatus="not_configured"] {

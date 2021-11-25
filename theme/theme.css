@@ -2,8 +2,9 @@
 @import "colors/light.css";
 @import "colors/dark.css";
 
-@import "parts/buttons-fixed.css";
 @import "parts/buttons.css";
+
+@import "parts/buttons-fixed.css";
 /*  */
 @import "parts/entries.css";
 

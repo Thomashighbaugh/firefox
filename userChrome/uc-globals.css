@@ -118,7 +118,7 @@ tooltip {
     --panel-shadow: none;
     --webextension-panel-border-radius: 5px;
     --menupopup-margin: calc(0px - var(--menupopup-inner-box-margin));
-    --menupopup-background: transparent;
+    --menupopup-background: var(--base02aa);
     --menupopup-child-margin-block-start: calc(-4px - var(--menupopup-inner-box-margin));
     --menupopup-child-margin-inline-start: calc(2px - var(--menupopup-inner-box-margin));
     --menupopup-padding: 0px;

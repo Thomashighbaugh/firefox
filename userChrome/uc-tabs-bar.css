@@ -51,6 +51,7 @@ this sheet controls their appearance as well. */
 
 #tabbrowser-tabs {
   background-color: var(--lwt-accent-color) !important;
+  display: none !important;
 }
 
 /* menubar next to tabs (merge tabs bar with titlebar menubar and flow them horizontally) */
@@ -173,7 +174,8 @@ this sheet controls their appearance as well. */
 
 #tabbrowser-tabs::after {
   position: relative !important;
-  display: block !important;
+  /* display: block !important; */
+  display: none !important;
   content: "" !important;
   pointer-events: none !important;
   box-shadow: -7px 0px 7px 0px rgba(0, 0, 0, 0.1) !important;
@@ -189,6 +191,7 @@ this sheet controls their appearance as well. */
   padding-left: 4px !important;
   z-index: 1 !important;
   position: relative !important;
+  display: none !important;
 }
 
 #tabbrowser-tabs {
@@ -207,6 +210,7 @@ this sheet controls their appearance as well. */
 #TabsToolbar .customization-target {
   min-width: 0 !important;
   overflow-x: clip !important;
+  display: none !important;
 }
 
 :root:not([sizemode="normal"]) .arrowscrollbox-overflow-end-indicator,
@@ -227,11 +231,13 @@ this sheet controls their appearance as well. */
   border-image: unset !important;
   border-image-slice: unset !important;
   width: unset !important;
+  display: none !important;
 }
 
 .tabbrowser-tab::after,
 .tabbrowser-tab::before {
   border-left: none !important;
+  display: none !important;
 }
 
 /* toolbar buttons */

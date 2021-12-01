@@ -676,6 +676,7 @@ panelview .all-tabs-button:not([disabled], [open]):focus {
   #toolbar-menubar[inactive="true"]
   ~ #TabsToolbar {
   padding-inline: 4px 3px !important;
+  display: none !important;
 }
 
 :root:is([operatingsystem="macosx"], [operatingsystem="linux"])
@@ -689,7 +690,8 @@ panelview .all-tabs-button:not([disabled], [open]):focus {
 :root:is([operatingsystem="macosx"], [operatingsystem="linux"])
   .titlebar-spacer[type="pre-tabs"] {
   width: 8px !important;
-  display: -moz-box !important;
+  /* display: -moz-box !important; */
+  display: none !important;
 }
 
 :root:is([operatingsystem="macosx"], [operatingsystem="linux"])

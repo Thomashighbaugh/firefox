@@ -168,6 +168,7 @@
   border-top-right-radius: 5px !important;
   border-top-left-radius: 5px !important;
   overflow: hidden;
+  display: none !important;
 }
 
 #TabsToolbar .tabbrowser-tab[selected],
@@ -176,6 +177,7 @@
   :is(.tab-stack, .tab-background, .tab-content, .tab-loading-burst) {
   border-top-right-radius: 5px !important;
   border-top-left-radius: 5px !important;
+  display: none !important;
 }
 
 #TabsToolbar .tabbrowser-tab[multiselected]:not([pinned]),
@@ -183,6 +185,7 @@
   .tabbrowser-tab[multiselected]:not([pinned])
   :is(.tab-stack, .tab-background, .tab-content, .tab-loading-burst) {
   border-top-left-radius: 5px !important;
+  display: none !important;
   border-top-right-radius: 5px !important;
 }
 
@@ -215,6 +218,7 @@ because in this condition tabs are prevented from flexing to the end by the clos
   .tabbrowser-tab[last-visible-tab]:not([justmoved], [style*="transform"]):is(:hover, .keyboard-focused-tab, [open])
   :is(.tab-stack, .tab-background, .tab-content, .tab-loading-burst) {
   border-top-right-radius: 0 !important;
+  display: none !important;
 }
 
 #TabsToolbar
@@ -232,6 +236,7 @@ because in this condition tabs are prevented from flexing to the end by the clos
   .tabbrowser-tab[first-visible-tab]:not([justmoved], [style*="transform"]):is(:hover, .keyboard-focused-tab, [open])
   :is(.tab-stack, .tab-background, .tab-content, .tab-loading-burst) {
   border-top-left-radius: 0 !important;
+  display: none !important;
 }
 
 #TabsToolbar
@@ -260,7 +265,8 @@ otherwise they won't overlap with other tabs, they'll just push tabs 10px away f
 .tabbrowser-tab .tab-stack:after {
   bottom: 0;
   content: "";
-  display: block;
+  /* display: block; */
+  display: none !important;
   position: absolute;
   pointer-events: none;
   width: 5px;
@@ -275,6 +281,7 @@ otherwise they won't overlap with other tabs, they'll just push tabs 10px away f
     linear-gradient(#fff, #fff);
   mask-composite: exclude;
   left: -5px;
+  display: none !important;
 }
 
 .tabbrowser-tab .tab-stack:after {
@@ -283,6 +290,7 @@ otherwise they won't overlap with other tabs, they'll just push tabs 10px away f
     linear-gradient(#fff, #fff);
   mask-composite: exclude;
   right: -5px;
+  display: none !important;
 }
 
 .tabbrowser-tab[usercontextid]:is(:hover, .keyboard-focused-tab, [selected], [visuallyselected], [open]):not([multiselected])
@@ -319,10 +327,12 @@ or else they'll end up being covered up or showing through things they shouldn't
 .tabbrowser-tab[pinned] .tab-stack:before,
 .tabbrowser-tab[pinned] .tab-stack:after {
   z-index: 6;
+  display: none !important;
 }
 
 .tab-icon-stack {
   z-index: -1;
+  display: none !important;
 }
 
 /* hide the corners on first/last visible tabs, just like we unround the top corners */
@@ -332,7 +342,7 @@ or else they'll end up being covered up or showing through things they shouldn't
 #tabbrowser-tabs:not([movingtab], [using-closing-tabs-spacer])
   .tabbrowser-tab[last-visible-tab]:not([justmoved], [style*="transform"])
   .tab-stack:after {
-  display: none;
+  display: none !important;
 }
 
 #TabsToolbar
@@ -354,6 +364,7 @@ they must have a 1px tall stripe at the bottom, the color of the bottom line (sh
     var(--tab-bg-current),
     var(--tab-bg-current)
   );
+  display: none !important;
 }
 
 .tabbrowser-tab[selected] .tab-stack:after,
@@ -373,6 +384,7 @@ they must have a 1px tall stripe at the bottom, the color of the bottom line (sh
     var(--multiselected-color) 1px,
     var(--tab-bg-current) 1px
   );
+  display: none !important;
 }
 
 .tabbrowser-tab[usercontextid]:is([selected], :hover, .keyboard-focused-tab, [open])
@@ -385,6 +397,7 @@ they must have a 1px tall stripe at the bottom, the color of the bottom line (sh
     var(--identity-tab-color) 1px,
     var(--tab-bg-current) 1px
   );
+  display: none !important;
 }
 
 .tabbrowser-tab[usercontextid][multiselected] .tab-stack:after,
@@ -395,16 +408,19 @@ they must have a 1px tall stripe at the bottom, the color of the bottom line (sh
     var(--multiselected-color) 1px,
     var(--tab-bg-current) 1px
   );
+  display: none !important;
 }
 
 /* the corners inherit these variables from the tab, just like they do with --identity-tab-color */
 .tabbrowser-tab:not([selected], [pinned]) {
   --tab-bg-current: var(--lwt-accent-color);
+  display: none !important;
 }
 
 .tabbrowser-tab[selected],
 .tabbrowser-tab[pinned]:not([selected]) {
   --tab-bg-current: var(--toolbar-bgcolor);
+  display: none !important;
 }
 
 .tabbrowser-tab:not([selected], [pinned], [multiselected]):is(:hover, .keyboard-focused-tab, [open]) {
@@ -424,12 +440,13 @@ they must have a 1px tall stripe at the bottom, the color of the bottom line (sh
 @supports -moz-bool-pref("userChrome.tabs.rounded-outer-corners.disabled") {
   .tabbrowser-tab .tab-stack:before,
   .tabbrowser-tab .tab-stack:after {
-    display: none;
+    display: none !important;
   }
 
   #TabsToolbar .tabbrowser-tab,
   #TabsToolbar .tabbrowser-tab .tab-stack {
     overflow: hidden;
+    display: none !important;
   }
 }
 
@@ -449,6 +466,7 @@ they must have a 1px tall stripe at the bottom, the color of the bottom line (sh
 so shadows are cast to the left but not to the right. */
 .tabbrowser-tab {
   position: relative;
+  display: none !important;
 }
 
 /* hovered tabs stack on top of normal tabs in either direction.

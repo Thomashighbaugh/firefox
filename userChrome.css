@@ -1,7 +1,11 @@
 /* Import theme */
 
-@import url(userChrome/uc.css);
-tabs, tab, tabpanel{
-  display: none !important;
-
+#main-window[tabsintitlebar="true"]:not([extradragspace="true"])
+  #TabsToolbar
+  > .toolbar-items {
+  opacity: 0;
+  display: none !important;
+}
+#main-window:not([tabsintitlebar="true"]) #TabsToolbar {
+  display: none !important;
 }

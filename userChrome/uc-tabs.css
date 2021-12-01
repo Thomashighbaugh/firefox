@@ -225,6 +225,7 @@ because in this condition tabs are prevented from flexing to the end by the clos
     .tabbrowser-tab[last-visible-tab][pinned]
     :is(.tab-stack, .tab-background, .tab-content, .tab-loading-burst) {
     border-top-right-radius: 5px !important;
+    display: none !important;
 }
 
 /* set rounded outside corners on tabs so they look like folder labels.
@@ -237,6 +238,7 @@ otherwise they won't overlap with other tabs, they'll just push tabs 10px away f
 #TabsToolbar .tabbrowser-tab,
 #TabsToolbar .tabbrowser-tab .tab-stack {
     overflow: visible;
+    display: none !important;
 }
 
 .tabbrowser-tab .tab-stack:before,
@@ -249,6 +251,7 @@ otherwise they won't overlap with other tabs, they'll just push tabs 10px away f
     width: 5px;
     height: 5px;
     z-index: 2;
+    display: none !important;
 }
 
 .tabbrowser-tab .tab-stack:before {
@@ -283,14 +286,17 @@ or else they'll end up being covered up or showing through things they shouldn't
 .tabbrowser-tab :is(.tab-line, .tab-context-line) {
     z-index: 3;
     position: relative !important;
+    display: none !important;
 }
 
 .tabbrowser-tab {
     z-index: 0;
+    display: none !important;
 }
 
 .tabbrowser-tab .tab-content {
     z-index: 1;
+    display: none !important;
 }
 
 .tabbrowser-tab[pinned] .tab-stack:before,
@@ -318,6 +324,7 @@ or else they'll end up being covered up or showing through things they shouldn't
     .tabbrowser-tab[last-visible-tab][pinned]
     .tab-stack:after {
     display: block;
+    display: none !important;
 }
 
 /* how the background color is applied. it's not as convoluted as it looks,
@@ -332,6 +339,7 @@ they must have a 1px tall stripe at the bottom, the color of the bottom line (sh
 .tabbrowser-tab[selected] .tab-stack:after,
 .tabbrowser-tab[selected] .tab-stack:before {
     background-image: linear-gradient(var(--tab-bg-current), var(--tab-bg-current));
+    display: none !important;
 }
 
 .tabbrowser-tab[multiselected] .tab-stack:after,
@@ -386,6 +394,7 @@ they must have a 1px tall stripe at the bottom, the color of the bottom line (sh
 
 .tabbrowser-tab[multiselected]:not([selected], [pinned]):is(:hover, .keyboard-focused-tab, [open]) {
     --tab-bg-current: hsl(233, 51%, 10%);
+    display: none !important;
 }
 
 /* disable the corners if the pref is enabled */

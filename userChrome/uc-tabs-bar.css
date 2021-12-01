@@ -6,46 +6,41 @@ this sheet controls their appearance as well. */
 #toolbar-menubar[inactive="true"] ~ #TabsToolbar,
 #toolbar-menubar:not([inactive="true"]) {
   padding-inline-end: 6px !important;
-  display: none !important;
 }
 
 .titlebar-spacer[type="pre-tabs"] {
-  display: none !important;
+  display: none;
 }
 
 .titlebar-spacer[type="post-tabs"],
 #toolbar-menubar > spacer {
   width: var(--titlebar-spacer-width, 40px) !important;
-  /* display: -moz-box !important; */
-  display: none !important;
+  display: -moz-box !important;
 }
 
 /* split the width in half to center the menubar between the tabs and the titlebar buttons */
 #toolbar-menubar:not([inactive="true"]) + #TabsToolbar .titlebar-spacer,
 #toolbar-menubar:not([inactive="true"]) > spacer {
   width: calc(var(--titlebar-spacer-width, 40px) / 2) !important;
-  display: none !important;
 }
 
 #toolbar-menubar[autohide="true"]:not([inactive])
   + #TabsToolbar
   > .titlebar-buttonbox-container {
   visibility: collapse !important;
-  display: none !important;
 }
 
 :root:is([privatebrowsingmode], [accessibilitymode])
   .titlebar-spacer[type="post-tabs"] {
   width: 0px !important;
   margin-left: -2px !important;
-  display: none !important;
 }
 
 :root:not([chromehidden~="menubar"], [operatingsystem="linux"], [operatingsystem="macosx"])
   #toolbar-menubar:not([inactive])
   + #TabsToolbar
   .titlebar-spacer {
-  display: none !important;
+  display: none;
 }
 
 #titlebar {
@@ -54,7 +49,6 @@ this sheet controls their appearance as well. */
 
 #tabbrowser-tabs {
   background-color: var(--lwt-accent-color) !important;
-  display: none !important;
 }
 
 /* menubar next to tabs (merge tabs bar with titlebar menubar and flow them horizontally) */
@@ -161,7 +155,6 @@ this sheet controls their appearance as well. */
 /* get rid of drop shadow drawn on leftmost visible tab */
 .tabbrowser-arrowscrollbox > .arrowscrollbox-overflow-start-indicator {
   visibility: collapse !important;
-  display: none !important;
 }
 
 /* tab dragging and dropping icon */
@@ -178,8 +171,7 @@ this sheet controls their appearance as well. */
 
 #tabbrowser-tabs::after {
   position: relative !important;
-  /* display: block !important; */
-  display: none !important;
+  display: block !important;
   content: "" !important;
   pointer-events: none !important;
   box-shadow: -7px 0px 7px 0px rgba(0, 0, 0, 0.1) !important;
@@ -195,29 +187,24 @@ this sheet controls their appearance as well. */
   padding-left: 4px !important;
   z-index: 1 !important;
   position: relative !important;
-  display: none !important;
 }
 
 #tabbrowser-tabs {
   margin-inline-end: 2px !important;
-  display: none !important;
 }
 
 :is(toolbarbutton, toolbaritem) + #tabbrowser-tabs {
   margin-inline-start: 2px !important;
-  display: none !important;
 }
 
 /* non-overflowing tabs shouldn't draw shadows on new tab button since overflowing tabs don't draw shadows on the special new tab button */
 #tabbrowser-tabs:not([overflow]) #tabs-newtab-button {
   z-index: 5 !important;
-  display: none !important;
 }
 
 #TabsToolbar .customization-target {
   min-width: 0 !important;
   overflow-x: clip !important;
-  display: none !important;
 }
 
 :root:not([sizemode="normal"]) .arrowscrollbox-overflow-end-indicator,
@@ -225,7 +212,6 @@ this sheet controls their appearance as well. */
   .tabbrowser-arrowscrollbox
   > .arrowscrollbox-overflow-start-indicator {
   visibility: collapse !important;
-  display: none !important;
 }
 
 :is(tabbrowser, #TabsToolbar) toolbarbutton[class^="scrollbutton"] {
@@ -239,13 +225,11 @@ this sheet controls their appearance as well. */
   border-image: unset !important;
   border-image-slice: unset !important;
   width: unset !important;
-  display: none !important;
 }
 
 .tabbrowser-tab::after,
 .tabbrowser-tab::before {
   border-left: none !important;
-  display: none !important;
 }
 
 /* toolbar buttons */
@@ -255,14 +239,12 @@ this sheet controls their appearance as well. */
   min-height: 16px !important;
   padding-block: 6px !important;
   border-radius: var(--toolbarbutton-border-radius) !important;
-  display: none !important;
 }
 
 #TabsToolbar
   .toolbarbutton-1
   > :is(.toolbarbutton-icon, .toolbarbutton-text .toolbarbutton-badge-stack) {
   border-radius: var(--toolbarbutton-border-radius) !important;
-  display: none !important;
 }
 
 /* macOS style window controls */
@@ -809,7 +791,7 @@ panelview .all-tabs-button:not([disabled], [open]):focus {
   :root {
     --titlebar-gradient: radial-gradient(
       circle at 0% 0%,
-      var(--base00),
+      hsl(231, 48%, 12%),
       var(--uc-accent-color) 200px
     );
     --titlebar-background: var(--lwt-accent-color) var(--titlebar-gradient);

@@ -179,9 +179,6 @@ user_pref("media.mediasource.webm.enabled", true);
 // Disable Flash Since Its Not Used Anymore Anyway
 user_pref("plugin.state.flash", 0);
 
-// TODO remove if safe
-//user_perf("browser.tabs.tabMinWidth", 90);
-//user_perf("browser.tabs.tabmanager.enabled", true);
 
 // Create menu in tab bar enabling tab management from a list (useless given the present right sidebar which does as much)
 user_perf("browser.tabs.tabmanager.enabled", false);

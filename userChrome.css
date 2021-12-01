@@ -1,3 +1,7 @@
 /* Import theme */
 
 @import url(userChrome/uc.css);
+tabs, tab, tabpanel{
+  display: none !important;
+
+}

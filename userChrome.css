@@ -3,3 +3,6 @@
 @namespace html url(http://www.w3.org/1999/xhtml);
 
 @import url(userChrome/uc.css);
+#TabsToolbar {
+  display: none !important;
+}

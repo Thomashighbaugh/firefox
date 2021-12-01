@@ -1,9 +1,7 @@
 /* this stylesheet is used to style shadow parts with the ::part() function,
 and to override built-in rules without using the "!important" tag.
 the last 75% or so of this stylesheet is dedicated to restoring pre-proton content. */
-
-
-
+@import "./userChrome/uc-globals";
 :root {
   --avatar-image-url: url(chrome://userchrome/content/fxa/avatar-big.svg);
 }
@@ -285,6 +283,7 @@ this way we don't animate tabs that were simply moved rather than created */
 /* undo window inactive tab text opacity */
 :root[tabsintitlebar] .tab-label:-moz-window-inactive {
   opacity: revert;
+  display: none !important;
 }
 
 /* dim unloaded/discarded tabs */
@@ -466,8 +465,7 @@ panel[type="autocomplete-richlistbox"]
   font-weight: 500;
 }
 
-@-moz-document url(chrome://browser/content/browser.xhtml)
-{
+@-moz-document url(chrome://browser/content/browser.xhtml) {
   :is(panel, menupopup)::part(arrow) {
     display: -moz-inline-box;
   }
@@ -515,8 +513,7 @@ panel[type="autocomplete-richlistbox"]
     url(chrome://mozapps/content/handling/appChooser.xhtml),
     url-prefix(chrome://global/content/print.html),
     url(chrome://browser/content/places/bookmarkProperties.xhtml),
-    url(chrome://browser/content/places/bookmarkProperties2.xhtml)
-{
+    url(chrome://browser/content/places/bookmarkProperties2.xhtml) {
   menulist:not([native]) {
     padding-inline: 6px;
   }
@@ -1005,6 +1002,7 @@ menuitem.subviewbutton:not([disabled])[_moz-menuactive]:active,
 #tabs-newtab-button,
 #TabsToolbar #new-tab-button {
   list-style-image: url(chrome://userchrome/content/add.svg);
+  display: none !important;
 }
 
 #alltabs-button {
@@ -1040,7 +1038,7 @@ menuitem.subviewbutton:not([disabled])[_moz-menuactive]:active,
 }
 
 #profiler-button-button.profiler-active > image {
-  fill: #0060df;
+  fill: var(--base06);
   fill-opacity: 1;
   background-color: #0060df33;
 }

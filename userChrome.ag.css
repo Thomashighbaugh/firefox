@@ -32,10 +32,10 @@ scrollbar[orient="horizontal"] {
 
 /* reduce the scrollbar edge padding on menupopup arrowscrollboxes
 (not the gutter — e.g. for a vertical scrollbox, reduce the padding-block) */
-scrollbox > scrollbar[orient="horizontal"],
+/* scrollbox > scrollbar[orient="horizontal"],
 scrollbox > scrollbar[orient="vertical"] {
   padding: 0;
-}
+} */
 
 scrollbar thumb {
   appearance: none !important;

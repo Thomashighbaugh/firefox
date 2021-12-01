@@ -1,11 +1,5 @@
 /* Import theme */
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+@namespace html url(http://www.w3.org/1999/xhtml);
 
-#main-window[tabsintitlebar="true"]:not([extradragspace="true"])
-  #TabsToolbar
-  > .toolbar-items {
-  opacity: 0;
-  display: none !important;
-}
-#main-window:not([tabsintitlebar="true"]) #TabsToolbar {
-  display: none !important;
-}
+@import url(userChrome/uc.css);

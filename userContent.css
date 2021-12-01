@@ -59,9 +59,9 @@
 
 :root {
   scrollbar-color: var(--base05) transparent !important;
-  background: var(--base24) !important;
+  background: var(--tab-toolbar-bg) !important;
   font-weight: 900;
-  font-family: "Hurmit Nerd Font Mono bold", monospace !important;
+  /* font-family: "Hurmit Nerd Font Mono bold", monospace !important; */
 }
 
 @-moz-document url(about:privatebrowsing) {
@@ -73,16 +73,16 @@
 }
 
 #action-box {
-  background: var(--base21) !important;
+  /* background: var(--base21) !important; */
+  background: var(--tab-toolbar-bg) !important;
 }
 
 .wide-container button {
-  background: var(--base03) !important;
+  background: var(--tab-toolbar-bg) !important;
 }
 
 .wide-container th,
 .wide-container td,
-.wide-container tr.
-.wide-container {
-  background: var(--base21) !important;
+.wide-container tr. .wide-container {
+  background: var(--tab-toolbar-bg) !important;
 }

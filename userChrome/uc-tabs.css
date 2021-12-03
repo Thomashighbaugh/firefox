@@ -5,6 +5,10 @@
 ##======================================================================================== */
 
 
+#TabsToolbar{
+  display: none !important;
+}
+
 /* remove gap after pinned tabs */
 #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
     > #tabbrowser-arrowscrollbox

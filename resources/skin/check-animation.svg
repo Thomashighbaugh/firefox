@@ -1,149 +1,110 @@
-<!-- This Source Code Form is subject to the terms of the Mozilla Public
-   - License, v. 2.0. If a copy of the MPL was not distributed with this
-   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
-<svg xmlns="http://www.w3.org/2000/svg" width="266" height="14">
-  <svg x="14">
-    <defs>
-      <mask id="b">
-        <path fill="#fff" stroke="#fff" stroke-width="1.881" d="M-2.91 5.508v7.07h4.488v-7.07H-2.91"/>
-      </mask>
-    </defs>
-    <path fill="#FFF" d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" mask="url(#b)" transform="translate(-.938 -.938)"/>
-  </svg>
-  <svg x="28">
-    <defs>
-      <mask id="c">
-        <path fill="#fff" stroke="#fff" stroke-width="3.877" d="M-2.91 5.508v7.07h4.488v-7.07H-2.91"/>
-      </mask>
-    </defs>
-    <path fill="#FFF" d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" mask="url(#c)" transform="translate(-.938 -.938)"/>
-  </svg>
-  <svg x="42">
-    <defs>
-      <mask id="d">
-        <path fill="#fff" stroke="#fff" stroke-width="5.732" d="M-2.91 5.508v7.07h4.488v-7.07H-2.91"/>
-      </mask>
-    </defs>
-    <path fill="#FFF" d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" mask="url(#d)" transform="translate(-.938 -.938)"/>
-  </svg>
-  <svg x="56">
-    <defs>
-      <mask id="e">
-        <path fill="#fff" stroke="#fff" stroke-width="7.323" d="M-2.91 5.508v7.07h4.488v-7.07H-2.91"/>
-      </mask>
-    </defs>
-    <path fill="#FFF" d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" mask="url(#e)" transform="translate(-.938 -.938)"/>
-  </svg>
-  <svg x="70">
-    <defs>
-      <mask id="f">
-        <path fill="#fff" stroke="#fff" stroke-width="8.501" d="M-2.91 5.508v7.07h4.488v-7.07H-2.91"/>
-      </mask>
-    </defs>
-    <path fill="#FFF" d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" mask="url(#f)" transform="translate(-.938 -.938)"/>
-  </svg>
-  <svg x="84">
-    <defs>
-      <mask id="g">
-        <path fill="#fff" stroke="#fff" stroke-width="9" d="M-2.91 5.508v7.07h4.488v-7.07H-2.91"/>
-      </mask>
-    </defs>
-    <path fill="#FFF" d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" mask="url(#g)" transform="translate(-.938 -.938)"/>
-  </svg>
-  <svg x="98">
-    <defs>
-      <mask id="h">
-        <path fill="#fff" stroke="#fff" stroke-width="13.388" d="M-2.91 5.508v7.07h4.488v-7.07H-2.91"/>
-      </mask>
-    </defs>
-    <path fill="#FFF" d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" mask="url(#h)" transform="translate(-1.19 -1.19) scale(1.03134)"/>
-  </svg>
-  <svg x="112">
-    <defs>
-      <mask id="i">
-        <path fill="#fff" stroke="#fff" stroke-width="18.046" d="M-2.91 5.508v7.07h4.488v-7.07H-2.91"/>
-      </mask>
-    </defs>
-    <path fill="#FFF" d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" mask="url(#i)" transform="translate(-1.455 -1.455) scale(1.0646)"/>
-  </svg>
-  <svg x="126">
-    <defs>
-      <mask id="j">
-        <path fill="#fff" stroke="#fff" stroke-width="22.375" d="M-2.91 5.508v7.07h4.488v-7.07H-2.91"/>
-      </mask>
-    </defs>
-    <path fill="#FFF" d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" mask="url(#j)" transform="translate(-1.702 -1.702) scale(1.09553)"/>
-  </svg>
-  <svg x="140">
-    <defs>
-      <mask id="k">
-        <path fill="#fff" stroke="#fff" stroke-width="26.086" d="M-2.91 5.508v7.07h4.488v-7.07H-2.91"/>
-      </mask>
-    </defs>
-    <path fill="#FFF" d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" mask="url(#k)" transform="translate(-1.914 -1.914) scale(1.12205)"/>
-  </svg>
-  <svg x="154">
-    <defs>
-      <mask id="l">
-        <path fill="#fff" stroke="#fff" stroke-width="28.836" d="M-2.91 5.508v7.07h4.488v-7.07H-2.91"/>
-      </mask>
-    </defs>
-    <path fill="#FFF" d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" mask="url(#l)" transform="translate(-2.07 -2.07) scale(1.14168)"/>
-  </svg>
-  <svg x="168">
-    <defs>
-      <mask id="m">
-        <path fill="#fff" stroke="#fff" stroke-width="30" d="M-2.91 5.508v7.07h4.488v-7.07H-2.91"/>
-      </mask>
-    </defs>
-    <path fill="#FFF" d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" mask="url(#m)" transform="matrix(1.15 0 0 1.15 -2.14 -2.14)"/>
-  </svg>
-  <svg x="182">
-    <defs>
-      <mask id="n">
-        <path fill="#fff" stroke="#fff" stroke-width="30" d="M-2.91 5.508v7.07h4.488v-7.07H-2.91"/>
-      </mask>
-    </defs>
-    <path fill="#FFF" d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" mask="url(#n)" transform="matrix(1.12 0 0 1.12 -1.89 -1.89)"/>
-  </svg>
-  <svg x="196">
-    <defs>
-      <mask id="o">
-        <path fill="#fff" stroke="#fff" stroke-width="30" d="M-2.91 5.508v7.07h4.488v-7.07H-2.91"/>
-      </mask>
-    </defs>
-    <path fill="#FFF" d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" mask="url(#o)" transform="matrix(1.1 0 0 1.1 -1.62 -1.62)"/>
-  </svg>
-  <svg x="210">
-    <defs>
-      <mask id="p">
-        <path fill="#fff" stroke="#fff" stroke-width="30" d="M-2.91 5.508v7.07h4.488v-7.07H-2.91"/>
-      </mask>
-    </defs>
-    <path fill="#FFF" d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" mask="url(#p)" transform="matrix(1.05 0 0 1.05 -1.37 -1.37)"/>
-  </svg>
-  <svg x="224">
-    <defs>
-      <mask id="q">
-        <path fill="#fff" stroke="#fff" stroke-width="30" d="M-2.91 5.508v7.07h4.488v-7.07H-2.91"/>
-      </mask>
-    </defs>
-    <path fill="#FFF" d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" mask="url(#q)" transform="matrix(1.03 0 0 1.03 -1.16 -1.16)"/>
-  </svg>
-  <svg x="238">
-    <defs>
-      <mask id="r">
-        <path fill="#fff" stroke="#fff" stroke-width="30" d="M-2.91 5.508v7.07h4.488v-7.07H-2.91"/>
-      </mask>
-    </defs>
-    <path fill="#FFF" d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" mask="url(#r)" transform="matrix(1 0 0 1 -1 -1)"/>
-  </svg>
-  <svg x="252">
-    <defs>
-      <mask id="s">
-        <path fill="#fff" stroke="#fff" stroke-width="30" d="M-2.91 5.508v7.07h4.488v-7.07H-2.91"/>
-      </mask>
-    </defs>
-    <path fill="#FFF" d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" mask="url(#s)" transform="translate(-.94 -.94)"/>
-  </svg>
+<svg height="14" width="266" xmlns="http://www.w3.org/2000/svg">
+    <mask id="a">
+        <path d="M-2.91 5.508v7.07h4.488v-7.07z" fill="#fff" stroke="#fff" stroke-width="1.881"/>
+    </mask>
+    <mask id="b">
+        <path d="M-2.91 5.508v7.07h4.488v-7.07z" fill="#fff" stroke="#fff" stroke-width="3.877"/>
+    </mask>
+    <mask id="c">
+        <path d="M-2.91 5.508v7.07h4.488v-7.07z" fill="#fff" stroke="#fff" stroke-width="5.732"/>
+    </mask>
+    <mask id="d">
+        <path d="M-2.91 5.508v7.07h4.488v-7.07z" fill="#fff" stroke="#fff" stroke-width="7.323"/>
+    </mask>
+    <mask id="e">
+        <path d="M-2.91 5.508v7.07h4.488v-7.07z" fill="#fff" stroke="#fff" stroke-width="8.501"/>
+    </mask>
+    <mask id="f">
+        <path d="M-2.91 5.508v7.07h4.488v-7.07z" fill="#fff" stroke="#fff" stroke-width="9"/>
+    </mask>
+    <mask id="g">
+        <path d="M-2.91 5.508v7.07h4.488v-7.07z" fill="#fff" stroke="#fff" stroke-width="13.388"/>
+    </mask>
+    <mask id="h">
+        <path d="M-2.91 5.508v7.07h4.488v-7.07z" fill="#fff" stroke="#fff" stroke-width="18.046"/>
+    </mask>
+    <mask id="i">
+        <path d="M-2.91 5.508v7.07h4.488v-7.07z" fill="#fff" stroke="#fff" stroke-width="22.375"/>
+    </mask>
+    <mask id="j">
+        <path d="M-2.91 5.508v7.07h4.488v-7.07z" fill="#fff" stroke="#fff" stroke-width="26.086"/>
+    </mask>
+    <mask id="k">
+        <path d="M-2.91 5.508v7.07h4.488v-7.07z" fill="#fff" stroke="#fff" stroke-width="28.836"/>
+    </mask>
+    <mask id="l">
+        <path d="M-2.91 5.508v7.07h4.488v-7.07z" fill="#fff" stroke="#fff" stroke-width="30"/>
+    </mask>
+    <mask id="m">
+        <path d="M-2.91 5.508v7.07h4.488v-7.07z" fill="#fff" stroke="#fff" stroke-width="30"/>
+    </mask>
+    <mask id="n">
+        <path d="M-2.91 5.508v7.07h4.488v-7.07z" fill="#fff" stroke="#fff" stroke-width="30"/>
+    </mask>
+    <mask id="o">
+        <path d="M-2.91 5.508v7.07h4.488v-7.07z" fill="#fff" stroke="#fff" stroke-width="30"/>
+    </mask>
+    <mask id="p">
+        <path d="M-2.91 5.508v7.07h4.488v-7.07z" fill="#fff" stroke="#fff" stroke-width="30"/>
+    </mask>
+    <mask id="q">
+        <path d="M-2.91 5.508v7.07h4.488v-7.07z" fill="#fff" stroke="#fff" stroke-width="30"/>
+    </mask>
+    <mask id="r">
+        <path d="M-2.91 5.508v7.07h4.488v-7.07z" fill="#fff" stroke="#fff" stroke-width="30"/>
+    </mask>
+    <svg x="14">
+        <path d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" fill="#fff" mask="url(#a)" transform="translate(-.938 -.938)"/>
+    </svg>
+    <svg x="28">
+        <path d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" fill="#fff" mask="url(#b)" transform="translate(-.938 -.938)"/>
+    </svg>
+    <svg x="42">
+        <path d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" fill="#fff" mask="url(#c)" transform="translate(-.938 -.938)"/>
+    </svg>
+    <svg x="56">
+        <path d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" fill="#fff" mask="url(#d)" transform="translate(-.938 -.938)"/>
+    </svg>
+    <svg x="70">
+        <path d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" fill="#fff" mask="url(#e)" transform="translate(-.938 -.938)"/>
+    </svg>
+    <svg x="84">
+        <path d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" fill="#fff" mask="url(#f)" transform="translate(-.938 -.938)"/>
+    </svg>
+    <svg x="98">
+        <path d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" fill="#fff" mask="url(#g)" transform="translate(-1.19 -1.19) scale(1.03134)"/>
+    </svg>
+    <svg x="112">
+        <path d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" fill="#fff" mask="url(#h)" transform="translate(-1.455 -1.455) scale(1.0646)"/>
+    </svg>
+    <svg x="126">
+        <path d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" fill="#fff" mask="url(#i)" transform="translate(-1.702 -1.702) scale(1.09553)"/>
+    </svg>
+    <svg x="140">
+        <path d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" fill="#fff" mask="url(#j)" transform="translate(-1.914 -1.914) scale(1.12205)"/>
+    </svg>
+    <svg x="154">
+        <path d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" fill="#fff" mask="url(#k)" transform="translate(-2.07 -2.07) scale(1.14168)"/>
+    </svg>
+    <svg x="168">
+        <path d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" fill="#fff" mask="url(#l)" transform="matrix(1.15 0 0 1.15 -2.14 -2.14)"/>
+    </svg>
+    <svg x="182">
+        <path d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" fill="#fff" mask="url(#m)" transform="matrix(1.12 0 0 1.12 -1.89 -1.89)"/>
+    </svg>
+    <svg x="196">
+        <path d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" fill="#fff" mask="url(#n)" transform="matrix(1.1 0 0 1.1 -1.62 -1.62)"/>
+    </svg>
+    <svg x="210">
+        <path d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" fill="#fff" mask="url(#o)" transform="matrix(1.05 0 0 1.05 -1.37 -1.37)"/>
+    </svg>
+    <svg x="224">
+        <path d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" fill="#fff" mask="url(#p)" transform="matrix(1.03 0 0 1.03 -1.16 -1.16)"/>
+    </svg>
+    <svg x="238">
+        <path d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" fill="#fff" mask="url(#q)" transform="translate(-1 -1)"/>
+    </svg>
+    <svg x="252">
+        <path d="M6 14a.997.997 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.157 2.157 6.316-9.023a1 1 0 0 1 1.64 1.146l-7 10a1 1 0 0 1-.733.427A1.262 1.262 0 0 1 6 14z" fill="#fff" mask="url(#r)" transform="translate(-.94 -.94)"/>
+    </svg>
 </svg>

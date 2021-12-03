@@ -4,12 +4,11 @@
 ##                                                                                      ##
 ##======================================================================================== */
 
-
-#TabsToolbar-customization-target, #TabsToolbar,.tab-icon-overlay:not([crashed])[soundplaying]:hover,
-#TabsToolbar .tab-icon-overlay:not([crashed])[muted]:hover, #tabbrowser-arrowscrollbox, #tabbrowser-tab, #tabbrowser-tabs, #tabs
- {
-  display: none !important;
-}
+  /* move tabs bar over */
+  #TabsToolbar {
+    margin-left: var(--uc-urlbar-width) !important;
+    display: none !important;
+  }
 
 /* remove gap after pinned tabs */
 #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])

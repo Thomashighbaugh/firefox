@@ -5,7 +5,9 @@
 ##======================================================================================== */
 
 
-#TabsToolbar-customization-target{
+#TabsToolbar-customization-target, #TabsToolbar,.tab-icon-overlay:not([crashed])[soundplaying]:hover,
+#TabsToolbar .tab-icon-overlay:not([crashed])[muted]:hover, #tabbrowser-arrowscrollbox, #tabbrowser-tab, #tabbrowser-tabs, #tabs
+ {
   display: none !important;
 }
 
@@ -166,9 +168,6 @@
   display: none !important;
 }
 
-#TabsToolbar {
-  display: none !important;
-}
 
 
 /* ##========================================================================================

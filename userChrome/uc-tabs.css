@@ -65,7 +65,7 @@
 
 
 /* container tabs indicator */
-.tabbrowser-tab[usercontextid]
+/* .tabbrowser-tab[usercontextid]
     > .tab-stack
     > .tab-background
     > .tab-context-line {
@@ -73,13 +73,13 @@
   border-radius: var(--tab-border-radius) !important;
   display: none !important;
 }
-
+ */
 
 /* show favicon when media is playing but tab is hovered */
-.tab-icon-image:not([pinned]) {
+/* .tab-icon-image:not([pinned]) {
   opacity: 1 !important;
   display: none !important;
-}
+} */
 
 
 /* Makes the speaker icon to always appear if the tab is playing (not only on hover) */

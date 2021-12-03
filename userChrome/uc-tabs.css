@@ -3,169 +3,36 @@
 ##                                         TABS                                         ##
 ##                                                                                      ##
 ##======================================================================================== */
-
-  /* move tabs bar over */
-  #TabsToolbar {
-    margin-left: var(--uc-urlbar-width) !important;
-    display: none !important;
-  }
-
-/* remove gap after pinned tabs
-#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
-    > #tabbrowser-arrowscrollbox
-    > .tabbrowser-tab[first-visible-unpinned-tab] {
-  margin-inline-start: 0 !important;
-  display: none !important;
-} */
-
-
-/* remove tab shadow */
-/* .tabbrowser-tab > .tab-stack > .tab-background {
-  box-shadow: none !important;
-  display: none !important;
-} */
-
-
-/* tab background */
-/* .tabbrowser-tab > .tab-stack > .tab-background {
-  background: var(--uc-theme-color) !important;
-  display: none !important;
-} */
-
-
-/* active tab background */
-/* .tabbrowser-tab[selected]
-    > .tab-stack
-    > .tab-background {
-  background: var(--uc-hover-color) !important;
-  display: none !important;
-} */
-
-
-/* tab close button options */
-/* .tabbrowser-tab:not([pinned]) .tab-close-button {
-  display: none !important;
+#TabsToolbar {
+  height: 22px !important;
+  visibility: collapse;
+}
+.tabbrowser-tabs {
+  height: 22px !important;
+  visibility: collapse;
+}
+#tabbrowser-tabs {
+  visibility: collapse;
+  height: 22px !important;
+}
+#nav-bar{
+  border-top-width: 0px !important;
+  padding: 0px 5px 0px 75px !important; /*The 75px is a fix for MacOS to make room for the window controls*/
+  margin-top: -5px !important; /*This is a dumb hack to get rid of the "collapsed" tab bar that still shows up.  IDK why it's persistant, but this is the only thing that got rid of it.*/
 }
 
-.tabbrowser-tab:not([pinned]):hover .tab-close-button {
-  display: none !important;
-} */
-
-
-/* adaptive tab width */
-/* .tabbrowser-tab[selected][fadein]:not([pinned]) {
-  max-width: var(--uc-active-tab-width) !important;
-  display: none !important;
+/*position window controls.  Only for MacOS*/
+#titlebar-buttonbox-container {
+  margin-left: 5px !important;
+  margin-top: 5px !important;
 }
 
-.tabbrowser-tab[fadein]:not([selected]):not([pinned]) {
-  max-width: var(--uc-inactive-tab-width) !important;
-  display: none !important;
-} */
+/* Hide tabs on Linux, Windoows, any with titlebar.
+ * Doesn't work right with MacOS, use the other one instead */
 
-
-/* container tabs indicator */
-/* .tabbrowser-tab[usercontextid]
-    > .tab-stack
-    > .tab-background
-    > .tab-context-line {
-  margin: -1px var(--container-tabs-indicator-margin) 0 var(--container-tabs-indicator-margin) !important;
-  border-radius: var(--tab-border-radius) !important;
-  display: none !important;
+#TabsToolbar {
+	visibility: collapse !important;
 }
- */
-
-/* show favicon when media is playing but tab is hovered */
-/* .tab-icon-image:not([pinned]) {
-  opacity: 1 !important;
-  display: none !important;
-} */
-
-
-/* Makes the speaker icon to always appear if the tab is playing (not only on hover) */
-/* .tab-icon-overlay:not([crashed]),
-.tab-icon-overlay[pinned][crashed][selected] {
-  top: 5px !important;
-  z-index: 1 !important;
-  padding: 1.5px !important;
-  inset-inline-end: -8px !important;
-  width: 16px !important;
-  height: 16px !important;
-  border-radius: 10px !important;
-  display: none !important;
-} */
-
-
-/* style and position speaker icon */
-/* .tab-icon-overlay:not([sharing], [crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
-  stroke: transparent !important;
-  background: transparent !important;
-  opacity: 1 !important;
-  fill-opacity: 0.8 !important;
-  color: currentColor !important;
-  stroke: var(--uc-theme-color) !important;
-  background-color: var(--uc-theme-color) !important;
-  display: none !important;
-}
- */
-
-/* change the colors of the speaker icon on active tab to match tab colors */
-/* .tabbrowser-tab[selected] .tab-icon-overlay:not([sharing], [crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
-  stroke: var(--uc-hover-color) !important;
-  background-color: var(--uc-hover-color) !important;
-  display: none !important;
-}
-
-.tab-icon-overlay:not([pinned], [sharing], [crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
-  margin-inline-end: 9.5px !important;
-  display: none !important;
-}
-
-.tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing], [crashed]) {
-  top: 0 !important;
-  padding: 0 !important;
-  margin-inline-end: 5.5px !important;
-  inset-inline-end: 0 !important;
-  display: none !important;
-}
-
-.tab-icon-overlay:not([crashed])[soundplaying]:hover,
-.tab-icon-overlay:not([crashed])[muted]:hover,
-.tab-icon-overlay:not([crashed])[activemedia-blocked]:hover {
-  color: currentColor !important;
-  stroke: var(--uc-inverted-color) !important;
-  background-color: var(--uc-inverted-color) !important;
-  fill-opacity: 0.95 !important;
-  display: none !important;
-}
-
-.tabbrowser-tab[selected] .tab-icon-overlay:not([crashed])[soundplaying]:hover,
-.tabbrowser-tab[selected] .tab-icon-overlay:not([crashed])[muted]:hover,
-.tabbrowser-tab[selected] .tab-icon-overlay:not([crashed])[activemedia-blocked]:hover {
-  color: currentColor !important;
-  stroke: var(--uc-inverted-color) !important;
-  background-color: var(--uc-inverted-color) !important;
-  fill-opacity: 0.95 !important;
-  display: none !important;
-} */
-
-
-/* speaker icon color fix */
-/* #TabsToolbar .tab-icon-overlay:not([crashed])[soundplaying],
-#TabsToolbar .tab-icon-overlay:not([crashed])[muted],
-#TabsToolbar .tab-icon-overlay:not([crashed])[activemedia-blocked] {
-  color: var(--uc-inverted-color) !important;
-  display: none !important;
-} */
-
-
-/* speaker icon color fix on hover */
-/* .tab-icon-overlay:not([crashed])[soundplaying]:hover,
-#TabsToolbar .tab-icon-overlay:not([crashed])[muted]:hover,
-#TabsToolbar .tab-icon-overlay:not([crashed])[activemedia-blocked]:hover {
-  color: var(--uc-theme-color) !important;
-} */
-
 
 
 /* ##========================================================================================

@@ -4,8 +4,8 @@
 menupopup.in-menulist {
   --arrowpanel-menuitem-border-radius: 3px !important;
   --menu-background-color: var(--arrowpanel-background) !important;
-  --menu-color: var(--ui-text-80) !important;
-  --menuitem-hover-background-color: var(--arrowpanel-dimmed) !important;
+  --menu-color: var(--inverted-color)!important;
+  --secondary-color: var(--arrowpanel-dimmed) !important;
   --menuitem-disabled-hover-background-color: initial !important;
   --menu-disabled-color: var(--panel-disabled-color) !important;
   --menu-border-color: var(--uc-menu-border-color) !important;
@@ -17,9 +17,7 @@ menupopup.in-menulist {
   --arrowpanel-faint: var(--uc-arrowpanel-faint);
   --arrowpanel-dimmed: var(--uc-arrowpanel-dimmed) !important;
   --arrowpanel-dimmed-further: var(--uc-arrowpanel-dimmed-further) !important;
-  --arrowpanel-dimmed-even-further: var(
-    --uc-arrowpanel-dimmed-even-further
-  ) !important;
+  --arrowpanel-dimmed-even-further: var(--uc-arrowpanel-dimmed-even-further) !important;
   --desaturate-faint: var(--uc-desaturate-faint);
   --desaturate-dimmed: var(--uc-desaturate-dimmed);
   --desaturate-dimmed-further: var(--uc-desaturate-dimmed-further);
@@ -30,15 +28,12 @@ menupopup.in-menulist {
   --panel-disabled-color: var(--context-menu-disabled-color) !important;
   --panel-separator-color: var(--desaturate-dimmed) !important;
   --button-hover-bgcolor: var(--arrowpanel-dimmed) !important;
-  --button-active-bgcolor: var(--arrowpanel-dimmed-further) !important;
+  --base02: var(--arrowpanel-dimmed-further) !important;
   user-select: none !important;
   -moz-user-select: none !important;
 }
 
-#ContentSelectDropdown
-  > menupopup
-  > :where(menucaption, menuitem)
-  > .menu-iconic-text,
+#ContentSelectDropdown > menupopup > :where(menucaption, menuitem) > .menu-iconic-text,
 menupopup.in-menulist > :where(menucaption, menuitem) > .menu-iconic-text {
   padding-block: unset !important;
 }
@@ -51,13 +46,8 @@ menupopup.in-menulist > :where(menucaption, menuitem) {
 
 #ContentSelectDropdown > menupopup .menu-text,
 menupopup.in-menulist .menu-text,
-#ContentSelectDropdown
-  > menupopup
-  > :where(menucaption, menuitem)
-  > :where(.menu-text, .menu-iconic-text, .menu-iconic-highlightable-text),
-menupopup.in-menulist
-  > :where(menucaption, menuitem)
-  > :where(.menu-text, .menu-iconic-text, .menu-iconic-highlightable-text) {
+#ContentSelectDropdown > menupopup > :where(menucaption, menuitem) > :where(.menu-text, .menu-iconic-text, .menu-iconic-highlightable-text),
+menupopup.in-menulist > :where(menucaption, menuitem) > :where(.menu-text, .menu-iconic-text, .menu-iconic-highlightable-text) {
   padding-inline: var(--context-padding-inline) !important;
 }
 
@@ -66,13 +56,9 @@ menupopup.in-menulist
   padding-inline-start: 0 !important;
 }
 
-#ContentSelectDropdown
-  > menupopup
-  :where(menucaption, menuitem)
-  > :is(label, .menu-iconic-text, .menu-text),
-menupopup.in-menulist
-  > :where(menucaption, menuitem)
-  > :is(label, .menu-iconic-text, .menu-text) {
+#ContentSelectDropdown > menupopup
+  :where(menucaption, menuitem) > :is(label, .menu-iconic-text, .menu-text),
+menupopup.in-menulist > :where(menucaption, menuitem) > :is(label, .menu-iconic-text, .menu-text) {
   font: menu !important;
 }
 
@@ -91,23 +77,15 @@ menupopup.in-menulist > menucaption:first-child {
   border-bottom: 1px solid var(--menu-separator-color) !important;
 }
 
-#ContentSelectDropdown
-  > menupopup
-  menucaption
-  > :is(label, .menu-iconic-text, .menu-text),
-menupopup.in-menulist
-  > menucaption
-  > :is(label, .menu-iconic-text, .menu-text) {
+#ContentSelectDropdown > menupopup
+  menucaption > :is(label, .menu-iconic-text, .menu-text),
+menupopup.in-menulist > menucaption > :is(label, .menu-iconic-text, .menu-text) {
   font-weight: 600 !important;
 }
 
-#ContentSelectDropdown
-  > menupopup
-  menucaption:first-child
-  > :is(label, .menu-iconic-text, .menu-text),
-menupopup.in-menulist
-  > menucaption:first-child
-  > :is(label, .menu-iconic-text, .menu-text) {
+#ContentSelectDropdown > menupopup
+  menucaption:first-child > :is(label, .menu-iconic-text, .menu-text),
+menupopup.in-menulist > menucaption:first-child > :is(label, .menu-iconic-text, .menu-text) {
   margin-block: -3px 0 !important;
 }
 
@@ -129,13 +107,13 @@ menupopup.in-menulist {
   appearance: none !important;
   border: none !important;
   background-color: transparent !important;
-  border-radius: var(--menupopup-border-radius) !important;
-  margin: var(--menupopup-margin) !important;
+  border-radius: var(--uc-border-radius) !important;
+  margin: var(--uc-margin) !important;
   overflow: hidden !important;
   color: var(--menu-color) !important;
   background-image: unset !important;
   /* --menu-background-color: var(--ui-secondary-bg) !important; */
-  padding: var(--menupopup-padding) !important;
+  padding: var(--uc-padding) !important;
   border-color: transparent !important;
 }
 
@@ -145,7 +123,7 @@ menupopup.in-menulist .contentSelectDropdown-searchbox {
   color: inherit !important;
   border-radius: var(--context-menuitem-border-radius);
   margin-block: 0 !important;
-  margin-inline: var(--menupopup-inner-padding-magnitude) !important;
+  margin-inline: var(--uc-inner-padding-magnitude) !important;
   padding-inline-start: 3px !important;
   background-color: var(--arrowpanel-dimmed) !important;
   padding-block: 0 !important;
@@ -154,28 +132,24 @@ menupopup.in-menulist .contentSelectDropdown-searchbox {
   -moz-user-modify: read-write !important;
 }
 
-#ContentSelectDropdown
-  > menupopup
+#ContentSelectDropdown > menupopup
   .contentSelectDropdown-searchbox:focus-within,
 menupopup.in-menulist .contentSelectDropdown-searchbox:focus-within {
-  background-color: var(--search-box-focus) !important;
+  background-color: var(--secondary-color) !important;
   transition: 300ms background-color !important;
 }
 
-#ContentSelectDropdown
-  > menupopup
-  .contentSelectDropdown-searchbox
-  + :is(menu, menuitem, menucaption),
+#ContentSelectDropdown > menupopup
+  .contentSelectDropdown-searchbox + :is(menu, menuitem, menucaption),
 menupopup.in-menulist
-  .contentSelectDropdown-searchbox
-  + :is(menu, menuitem, menucaption) {
+  .contentSelectDropdown-searchbox + :is(menu, menuitem, menucaption) {
   margin-top: 4px;
 }
 
 #ContentSelectDropdown > menupopup menu > menupopup,
 menupopup.in-menulist menu > menupopup {
-  margin-inline-start: var(--menupopup-child-margin-inline-start) !important;
-  margin-block-start: var(--menupopup-child-margin-block-start) !important;
+  margin-inline-start: var(--uc-margin) !important;
+  margin-block-start: var(--uc-margin) !important;
 }
 
 #ContentSelectDropdown > menupopup :is(menu, menuitem, menucaption),
@@ -203,8 +177,7 @@ menupopup.in-menulist .menuitem-iconic {
   fill: currentColor;
 }
 
-#ContentSelectDropdown
-  > menupopup
+#ContentSelectDropdown > menupopup
   :is(menu, menuitem, menucaption)
   .menu-iconic-icon,
 menupopup.in-menulist :is(menu, menuitem, menucaption) .menu-iconic-icon {
@@ -283,14 +256,14 @@ menupopup.in-menulist menuitem:is([type="checkbox"], [type="radio"])::before {
   display: -moz-inline-box;
   width: 14px;
   height: 14px;
-  margin-inline: var(--context-checkbox-margin);
+  margin-inline: var(--uc-margin);
   fill: currentColor;
   -moz-context-properties: fill, fill-opacity, stroke;
   content: "";
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  border: 1px solid var(--checkbox-border-color);
+  border: 1px solid var(--base0099);
   background-color: var(--checkbox-unchecked-bgcolor);
   color: var(--in-parent-primary-button-text-color);
 }
@@ -305,7 +278,7 @@ menupopup.in-menulist menuitem[type="checkbox"]::before {
   menuitem:is([type="checkbox"], [type="radio"])[_moz-menuactive="true"]::before,
 menupopup.in-menulist
   menuitem:is([type="checkbox"], [type="radio"])[_moz-menuactive="true"]::before {
-  background-color: var(--checkbox-unchecked-hover-bgcolor);
+  background-color: var(--base03);
 }
 
 #ContentSelectDropdown
@@ -321,7 +294,7 @@ menupopup.in-menulist
   menuitem:is([type="checkbox"], [type="radio"])[checked="true"][_moz-menuactive="true"]::before,
 menupopup.in-menulist
   menuitem:is([type="checkbox"], [type="radio"])[checked="true"][_moz-menuactive="true"]::before {
-  background-color: var(--checkbox-checked-hover-bgcolor);
+  background-color: var(--uc-hover-bgcolor);
 }
 
 #ContentSelectDropdown
@@ -329,7 +302,7 @@ menupopup.in-menulist
   menuitem:is([type="checkbox"], [type="radio"])[checked="true"][_moz-menuactive="true"]:active::before,
 menupopup.in-menulist
   menuitem:is([type="checkbox"], [type="radio"])[checked="true"][_moz-menuactive="true"]:active::before {
-  background-color: var(--checkbox-checked-active-bgcolor);
+  background-color: var(--uc-active-bgcolor);
 }
 
 #ContentSelectDropdown
@@ -337,8 +310,8 @@ menupopup.in-menulist
   menuitem[type="checkbox"][checked="true"]::before,
 menupopup.in-menulist menuitem[type="checkbox"][checked="true"]::before {
   background-image: url(chrome://userchrome/content/check.svg);
-  border-color: var(--checkbox-checked-border-color);
-  background-color: var(--checkbox-checked-bgcolor);
+  border-color: var(--uc-border-color);
+  background-color: var(--base01);
 }
 
 #ContentSelectDropdown > menupopup menuitem[type="radio"]::before,
@@ -351,8 +324,8 @@ menupopup.in-menulist menuitem[type="radio"]::before {
   menuitem[type="radio"][checked="true"]::before,
 menupopup.in-menulist menuitem[type="radio"][checked="true"]::before {
   background-image: url(chrome://userchrome/content/radio.svg);
-  border-color: var(--checkbox-checked-border-color);
-  background-color: var(--checkbox-checked-bgcolor);
+  border-color: var(--uc-border-color);
+  background-color: var(--base01);
 }
 
 #ContentSelectDropdown
@@ -375,21 +348,17 @@ menupopup.in-menulist[menu-api]
   display: none !important;
 }
 
-#ContentSelectDropdown
-  > menupopup
-  > :is(menuitem, menu, menucaption, menugroup, menuseparator, search-textbox),
-menupopup.in-menulist
-  > :is(menuitem, menu, menucaption, menugroup, menuseparator, search-textbox),
+#ContentSelectDropdown > menupopup > :is(menuitem, menu, menucaption, menugroup, menuseparator, search-textbox),
+menupopup.in-menulist > :is(menuitem, menu, menucaption, menugroup, menuseparator, search-textbox),
 #PopupAutoComplete > richlistbox > richlistitem {
-  margin-inline: var(--menupopup-inner-padding-magnitude);
+  margin-inline: var(--uc-inner-padding-magnitude);
 }
 
-link[href="chrome://global/skin/global.css"] ~ .menupopup-arrowscrollbox
-{
+link[href="chrome://global/skin/global.css"] ~ .menupopup-arrowscrollbox {
   background-color: var(--menu-background-color) !important;
   color: var(--menu-color) !important;
-  border-radius: var(--menupopup-border-radius) !important;
-  box-shadow: var(--menupopup-shadow) !important;
+  border-radius: var(--uc-border-radius) !important;
+  box-shadow: var(--uc-shadow) !important;
 }
 
 #ContentSelectDropdown > menupopup :is(.menu-accel, .menu-iconic-accel)[value],
@@ -423,7 +392,7 @@ menupopup.in-menulist menuseparator {
   appearance: none !important;
   border-color: var(--menu-separator-color) !important;
   margin: var(--menu-separator-margin) !important;
-  margin-inline: var(--menupopup-inner-padding-magnitude) !important;
+  margin-inline: var(--uc-inner-padding-magnitude) !important;
   padding: 0 !important;
 }
 
@@ -497,21 +466,16 @@ menulist[indicator="true"]
     font-kerning: normal !important;
   }
 
-  #ContentSelectDropdown
-    > menupopup
-    :where(menucaption, menuitem)
-    > :is(label, .menu-iconic-text, .menu-text, .menu-iconic-highlightable-text),
-  menupopup.in-menulist
-    > :where(menucaption, menuitem)
-    > :is(label, .menu-iconic-text, .menu-text, .menu-iconic-highlightable-text) {
+  #ContentSelectDropdown > menupopup
+    :where(menucaption, menuitem) > :is(label, .menu-iconic-text, .menu-text, .menu-iconic-highlightable-text),
+  menupopup.in-menulist > :where(menucaption, menuitem) > :is(label, .menu-iconic-text, .menu-text, .menu-iconic-highlightable-text) {
     font-family: SF Pro Text, Segoe UI, sans-serif !important;
     font-kerning: normal !important;
   }
 }
 
 @supports -moz-bool-pref("userChrome.css.remove-menu-borders") {
-  link[href="chrome://global/skin/global.css"] ~ .menupopup-arrowscrollbox
-  {
+  link[href="chrome://global/skin/global.css"] ~ .menupopup-arrowscrollbox {
     border: none !important;
   }
 }

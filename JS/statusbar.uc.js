@@ -86,7 +86,7 @@ var AddAddonbar = {
 		  } \
 		  #addonbar { \
 			border-top: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.1)) !important; \
-			background-color: var(--toolbar-bgcolor); \
+			background-color: var(--window-color); \
 			background-image: var(--toolbar-bgimage); \
 			-moz-window-dragging: no-drag !important; \
 		  }\

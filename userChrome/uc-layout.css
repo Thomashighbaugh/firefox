@@ -1,0 +1,45 @@
+/* ##========================================================================================
+##*                                                                                     ##
+##                                                                                      ##
+##                                        LAYOUT                                        ##
+##                                                                                      ##
+##======================================================================================== */
+
+
+
+window,
+#main-window,
+#toolbar-menubar,
+#TabsToolbar,
+#PersonalToolbar,
+#navigator-toolbox,
+#sidebar-box,
+#nav-bar {
+  -moz-appearance: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: var(--uc-theme-color) !important;
+}
+
+
+
+
+
+/* Grays out icons */
+#PersonalToolbar toolbarbutton:not(:hover),
+#bookmarks-toolbar-button:not(:hover) {
+  filter: grayscale(1) !important;
+}
+
+
+/* remove window control buttons */
+.titlebar-buttonbox-container {
+  display: none !important;
+}
+
+
+/* remove "padding" left and right from tabs */
+.titlebar-spacer {
+  display: none !important;
+}
+

@@ -1,7 +1,6 @@
 /* uBlock Origin dark theme */
 
-@-moz-document regexp("moz-extension://8d413415-fec4-4612-9717-941c64de177b/.*")
-{
+@-moz-document regexp("moz-extension://8d413415-fec4-4612-9717-941c64de177b/.*") {
   @media (prefers-color-scheme: dark) {
     :root {
       --link-ink: hsl(266.9, 95.2%, 75.7%) !important;
@@ -157,13 +156,13 @@
     }
 
     .checkbox > input[type="checkbox"]:checked + svg {
-      background-color: var(--checkbox-checked-ink);
-      border-color: var(--checkbox-checked-ink) !important;
+      background-color: var(--uc-ink);
+      border-color: var(--uc-ink) !important;
       stroke: var(--default-surface);
     }
 
     .checkbox > input[type="checkbox"]:not(:checked):hover + svg {
-      border-color: var(--checkbox-checked-ink) !important;
+      border-color: var(--uc-ink) !important;
       background-color: var(--checkbox-hover-ink) !important;
       stroke: transparent !important;
     }

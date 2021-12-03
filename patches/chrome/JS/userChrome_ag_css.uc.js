@@ -4,7 +4,7 @@
 // @version        0.0.6
 // @description    Load userChrome.ag.css as agent sheet from resources folder using chrome: uri
 // @backgroundmodule
-// ==/UserScript==
+
 
 let EXPORTED_SYMBOLS = [];
 (function () {

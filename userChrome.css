@@ -1,9 +1,3 @@
-/* Import theme */
 @namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
 @namespace html url(http://www.w3.org/1999/xhtml);
-
 @import url(userChrome/uc.css);
-/* TODO Find a more elegant way of eliminating the useless tabtoolbar */
-#TabsToolbar {
-  display: none !important;
-}

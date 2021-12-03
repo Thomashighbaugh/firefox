@@ -6,12 +6,13 @@
 @namespace url(http://www.w3.org/1999/xhtml); /* set default namespace to HTML */
 
 *|*:root {
-  background-color: white;
-  color: black;
+  background-color: #23252e;
+  color: #f4f4f7;
   direction: ltr;
   -moz-control-character-visibility: visible;
   height: 100%;
 }
+
 #viewsource {
   font-family: -moz-fixed;
   font-weight: normal;
@@ -22,16 +23,19 @@
   margin: 0;
   padding: 8px;
 }
+
 #viewsource.wrap {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
+
 pre {
   font: inherit;
   color: inherit;
   white-space: inherit;
   margin: 0 0 0 5ch;
 }
+
 pre[id]:before,
 span[id]:before {
   content: counter(line) " ";
@@ -45,59 +49,72 @@ span[id]:before {
   font-weight: normal;
   font-style: normal;
 }
+
 .highlight .start-tag {
   color: purple;
   font-weight: bold;
 }
+
 .highlight .end-tag {
   color: purple;
   font-weight: bold;
 }
+
 .highlight .comment {
   color: green;
   font-style: italic;
 }
+
 .highlight .cdata {
   color: #cc0066;
 }
+
 .highlight .doctype {
   color: steelblue;
   font-style: italic;
 }
+
 .highlight .pi {
   color: orchid;
   font-style: italic;
 }
+
 .highlight .entity {
   color: #ff4500;
   font-weight: normal;
 }
+
 .highlight .text {
   font-weight: normal;
 }
+
 .highlight .attribute-name {
   color: black;
   font-weight: bold;
 }
+
 .highlight .attribute-value {
   color: blue;
   font-weight: normal;
 }
+
 .highlight .markupdeclaration {
   color: steelblue;
   font-style: italic;
 }
+
 span:not(.error),
 a:not(.error) {
   unicode-bidi: embed;
 }
+
 span[id] {
   unicode-bidi: isolate;
 }
+
 .highlight .error,
 .highlight
-  .error
-  > :is(.start-tag, .end-tag, .comment, .cdata, .doctype, .pi, .entity, .attribute-name, .attribute-value) {
+  .error > :is(.start-tag, .end-tag, .comment, .cdata, .doctype, .pi, .entity, .attribute-name, .attribute-value) {
   color: red;
   font-weight: bold;
 }

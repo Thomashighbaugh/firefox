@@ -1,7 +1,6 @@
 /* simple translate extension by sienori */
 
-@-moz-document url(moz-extension://482959ea-7a4a-4baa-900a-86fb03b08903/popup/index.html)
-{
+@-moz-document url(moz-extension://482959ea-7a4a-4baa-900a-86fb03b08903/popup/index.html) {
   :root {
     border-radius: 3px !important;
     background: none !important;
@@ -45,7 +44,7 @@
   }
 
   :is(textarea, select):focus-within {
-    background-color: var(--search-box-focus) !important;
+    background-color: var(--secondary-color) !important;
     color: var(--ui-text-100) !important;
     border-color: var(--highlight) !important;
   }
@@ -77,7 +76,7 @@
   }
 
   #footer .selectWrap select:is(:focus-within, :hover) {
-    background-color: var(--search-box-focus) !important;
+    background-color: var(--secondary-color) !important;
   }
 
   body hr {

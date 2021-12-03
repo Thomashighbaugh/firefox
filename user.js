@@ -6,6 +6,120 @@
 // ##################################################################### 
 // Enable User Chrome
 user_pref("svg.context-properties.content.enabled", true);
+// required prefs
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+user_pref("browser.proton.enabled", true);
+user_pref("browser.proton.places-tooltip.enabled", true);
+user_pref("layout.css.moz-document.content.enabled", true);
+user_pref("layout.css.xul-box-display-values.content.enabled", true);
+user_pref("layout.css.xul-display-values.content.enabled", true);
+// required for icons with data URLs
+user_pref("svg.context-properties.content.enabled", true);
+// required for acrylic gaussian blur
+user_pref("layout.css.backdrop-filter.enabled", true);
+// prevent bugs that would otherwise be caused by the custom scrollbars in the user-agent sheet
+user_pref("layout.css.cached-scrollbar-styles.enabled", false);
+user_pref("ui.systemUsesDarkTheme", 1);
+// allow stylesheets to modify trees in system pages viewed in regular tabs
+user_pref("layout.css.xul-tree-pseudos.content.enabled", true);
+// allow the color-mix() CSS function
+user_pref("layout.css.color-mix.enabled", true);
+// other CSS features
+user_pref("layout.css.moz-outline-radius.enabled", true);
+// avoid native styling
+user_pref("browser.display.windows.non_native_menus", 1);
+user_pref("widget.disable-native-theme-for-content", true);
+user_pref("widget.non-native-theme.win.scrollbar.use-system-size", false);
+user_pref("widget.content.allow-gtk-dark-theme", true);
+// keep "all tabs" menu available at all times, useful for all tabs menu expansion pack
+user_pref("browser.tabs.tabmanager.enabled", true);
+// Background for selected <option> elements and others
+user_pref("ui.selecteditem", "#2F3456");
+// Text color for selected <option> elements and others
+user_pref("ui.selecteditemtext", "#FFFFFFCC");
+
+// REQUIRED on macOS
+// user_pref("widget.macos.native-context-menus", false);
+
+// recommended prefs
+// functionality oriented prefs
+user_pref("browser.display.use_system_colors", false);
+user_pref("browser.display.focus_ring_style", 0);
+user_pref("browser.display.focus_ring_width", 0);
+user_pref("browser.startup.blankWindow", false);
+user_pref("browser.startup.preXulSkeletonUI", false);
+user_pref("browser.tabs.tabMinWidth", 90);
+user_pref("browser.urlbar.accessibility.tabToSearch.announceResults", false);
+user_pref("browser.urlbar.richSuggestions.tail", false);
+user_pref("browser.urlbar.searchTips", false);
+user_pref("browser.urlbar.trimURLs", false);
+user_pref("full-screen-api.transition-duration.enter", "0 0");
+user_pref("full-screen-api.transition-duration.leave", "0 0");
+user_pref("full-screen-api.warning.delay", -1);
+user_pref("full-screen-api.warning.timeout", 0);
+user_pref("prompts.contentPromptSubDialog", true);
+user_pref("ui.skipNavigatingDisabledMenuItem", 1);
+user_pref("ui.prefersReducedMotion", 0);
+user_pref("ui.submenuDelay", 100);
+user_pref("ui.tooltipDelay", 300);
+user_pref("ui.key.menuAccessKeyFocuses", false);
+
+// style oriented prefs
+user_pref("reader.color_scheme", "dark");
+user_pref("browser.anchor_color", "#8b9cbe");
+user_pref("browser.active_color", "#b2bfd9");
+user_pref("browser.visited_color", "#b2bfd9");
+user_pref("ui.textHighlightBackground", "#555e70");
+user_pref("ui.textHighlightForeground", "#FFFFFF");
+user_pref("ui.textSelectBackground", "#FFFFFF");
+user_pref("ui.textSelectAttentionBackground", "#FF00aa");
+user_pref("ui.textSelectAttentionForeground", "#FFFFFF");
+user_pref("ui.textSelectDisabledBackground", "#555e70");
+user_pref("ui.textSelectBackgroundAttention", "#8b9cbe");
+user_pref("ui.textSelectBackgroundDisabled", "#555e70");
+user_pref("ui.SpellCheckerUnderline", "#8b9cbe");
+user_pref("ui.SpellCheckerUnderlineStyle", 1);
+user_pref("ui.IMERawInputBackground", "#17191e");
+user_pref("ui.IMESelectedRawTextBackground", "#17191e");
+
+// windows font settings - does nothing on macOS or linux
+user_pref("gfx.font_rendering.cleartype_params.cleartype_level", 100);
+user_pref("gfx.font_rendering.cleartype_params.force_gdi_classic_for_families", "");
+user_pref("gfx.font_rendering.cleartype_params.force_gdi_classic_max_size", 6);
+user_pref("gfx.font_rendering.cleartype_params.pixel_structure", 1);
+user_pref("gfx.font_rendering.cleartype_params.rendering_mode", 5);
+user_pref("gfx.font_rendering.directwrite.use_gdi_table_loading", false);
+
+// recommended userChrome... prefs created by the theme or scripts.
+// there are many more not included here, to allow a lot more customization.
+// these are just the ones I'm pretty certain 90% of users will want.
+// see the prefs list at https://github.com/aminomancer/uc.css.js
+
+user_pref("userChrome.tabs.new-loading-spinner-animation", true);
+user_pref("userChrome.tabs.pinned-tabs.close-buttons.disabled", true);
+user_pref("userChrome.urlbar-results.hide-help-button", true);
+
+// these are more subjective prefs, but they're important ones
+// display the all tabs menu in reverse order (newer tabs on top, like history)
+ user_pref("userChrome.tabs.all-tabs-menu.reverse-order", true);
+
+// turn bookmarks on the toolbar into small square buttons with only icons, no text
+// user_pref("userChrome.bookmarks-toolbar.icons-only", false);
+
+// replace UI font with SF Pro, the system font for macOS.
+// recommended for all operating systems, but not required.
+// must have the fonts installed. check the repo's readme for more details.
+ user_pref("userChrome.css.mac-ui-fonts", true);
+
+// custom wikipedia dark mode theme
+ user_pref("userChrome.css.wikipedia.dark-theme-enabled", true);
+
+// Enable popups from plugins, useful for dictionary add-on I
+// use and other reasons, addons should change this themselves
+// I would think but don't/can't
+user_perf("privacy.popups.disable_from_plugins", 0);
+
+user_pref("svg.context-properties.content.enabled", true);
 user_perf("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 
 // Don't reveal your internal IP when WebRTC is enabled
@@ -25,7 +139,7 @@ user_perf("layers.async-video.enabled", true);
 user_perf("html5.offmainthread", true);
 user_pref("gfx.webrender.all", true);
 user_pref("gfx.webrender.enabled", true);
-// below soles issue of freezing and stuttering
+// below solves issue of freezing and stuttering
 user_perf("layers.acceleration.force - enabled", true);
 
 // disable annoying web notifications
@@ -82,7 +196,6 @@ user_pref("browser.pagethumbnails.capturing_disabled", true);
 user_pref("browser.newtabpage.enabled", false);
 user_pref("browser.newtab.url", "https://startpage-zwei.vercel.app/");
 
-// Disable Snippets
 
 // Disable Activity Stream
 user_pref("browser.newtabpage.activity-stream.enabled", false);
@@ -121,27 +234,16 @@ user_pref("experiments.supported", false);
 user_pref("experiments.enabled", false);
 user_pref("experiments.manifest.uri", "");
 
-//Ensure the addons can render popups so my dictionary works
-user_pref("privacy.popups.disable_from_plugins", "0");
-user_pref("ui.popup.disable_autohide", true);
-user_pref("devtools.performance.popup.feature-flag", true);
-user_perf("devtools.popup.disable_autohide", true);
 
 // theme perferences
 //################################################################
 
-// insure the toolbar is dark
-user_pref("browser.theme.toolbar-theme", "0");
 
 // Make devtools dark like everything else
 user_perf("devtools.theme", "dark");
 
 // allow variants of GTK themes (Linux)
 user_perf("widget.content.allow-gtk-dark-theme", true);
-
-// Allow alternative scrollbars with GTK theme
-user_perf("widget.gtk.alt-theme.scrollbar", true);
-user_perf("widget.non-native-theme.gtk.scrollbar.allow-buttons", true);
 
 // Set my GTK theme to be Firefox's
 user_perf("widget.content.gtk-theme-override", "Dhumavati-White-Dark");
@@ -160,9 +262,6 @@ user_pref("layout.css.color-mix.enabled", true);
 
 // other CSS features
 user_pref("layout.css.moz-outline-radius.enabled", true);
-
-// When double-clicking a word on a page, only copy the word itself, not the space character next to it
-user_pref("layout.word_select.eat_space_to_next_word", false);
 
 // When Finding Highlight all words on that page
 user_pref("findbar.highlightAll", true);
@@ -192,33 +291,21 @@ user_perf("browser.display.windows.non_native_menus", 1);
 user_perf("browser.proton.places-tooltip.enabled", true);
 user_perf("browser.startup.blankWindow", false);
 user_perf("browser.startup.preXulSkeletonUI", false);
-user_perf("browser.tabs.tabmanager.enabled", true);
 user_pref("widget.disable-native-theme-for-content", true);
 
 
 
-user_perf("browser.urlbar.accessibility.tabToSearch.announceResults", false);
-user_perf("browser.urlbar.richSuggestions.tail", false);
-user_perf("browser.urlbar.searchTips", false);
-// Don't make copying the url more of a pain than it needs to be
-user_perf("browser.urlbar.trimURLs", false);
 
 // Enable XUL, which we need for the patches this config applies
 user_perf("layout.css.xul-display-values.content.enabled", true);
 user_perf("layout.css.xul-tree-pseudos.content.enabled", true);
 user_perf("reader.color_scheme", "dark");
 
-// make single direction scroll more useful
-user_perf("mousewheel.autodir.enabled", true);
-user_perf("prompts.contentPromptSubDialog", true);
-
-// make firefox play nice with tiling window manager
-user_perf("ui.key.menuAccessKeyFocuses", false);
 
 // Delay before displaying submenu
-user_perf("ui.submenuDelay", 50);
+user_perf("ui.submenuDelay", 0);
 user_perf("ui.prefersReducedMotion", 0);
-user_perf("ui.tooltipDelay", 50);
+user_perf("ui.tooltipDelay", 0);
 
 //When using arrow keys to navigate a menu, don't even focus that which is disable
 user_perf("ui.skipNavigatingDisabledMenuItem", 1);
@@ -235,9 +322,6 @@ user_perf("layout.css.xul-box-display-values.content.enabled", true);
 // Insure this is set for the sake of not being blinded
 user_pref("ui.systemUsesDarkTheme", 1);
 
-// UI 
-user_pref("ui.selecteditem", "#2F303d");
-user_pref("ui.selecteditemtext", "#F4F4F7CC");
 
 // Enable popups from plugins, useful for dictionary add-on I
 // use and other reasons, addons should change this themselves

@@ -34,8 +34,7 @@
     font-family: "Overpass Mono";
     font-style: normal;
     font-weight: 100;
-    src: local("Overpass Mono"), local("Overpass Mono Light"),
-      local("OverpassMono-Light");
+    src: local("Overpass Mono"), local("Overpass Mono Light"), local("OverpassMono-Light");
   }
 
   :root {
@@ -57,7 +56,7 @@
   @media (prefers-color-scheme: dark) {
     :root {
       color: var(--plaintext-color) !important;
-      background-color: var(--in-content-bg-dark) !important;
+      background-color: var(--window-color) !important;
     }
 
     body:not([style*="background"], [class], [id]) {

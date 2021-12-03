@@ -3,6 +3,8 @@
 pre {
   white-space: pre-wrap;
   word-wrap: break-word;
+  background-color: #23252e;
+  color: #f4f4f7;
   -moz-control-character-visibility: visible;
 }
 
@@ -12,13 +14,15 @@ pre {
 
 html:not([dir]) pre {
   unicode-bidi: plaintext;
+  background-color: #23252e;
+  color: #f4f4f7;
 }
 
 @-moz-document unobservable-document() {
   @media (prefers-color-scheme: dark) {
     :root {
-      background-color: var(--in-content-bg-dark);
-      color: var(--plaintext-color);
+      background-color: #23252e;
+      color: #f4f4f7;
     }
   }
 }

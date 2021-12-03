@@ -54,26 +54,30 @@
         <hbox class="title" flex="1">
           <label
             id="warningTitle"
-            value="This might void your warranty!"
+            value="Please Do Not Turn Off Our Telemetry"
             class="title-text"
             flex="1"
           ></label>
         </hbox>
         <vbox class="description" flex="1">
           <label id="warningText"
-            >Changing these advanced settings can be harmful to the stability,
-            security, and performance of this application. You should only
-            continue if you are sure of what you are doing.</label
-          >
+            >At Mozilla, we claim we care about your privacy, yet write our
+            browser in Javascript mostly then expose all kinds of functionality
+            malicious actors could use to spy on you in every imaginable way.
+            The parts of your data that we acquire we definitely sell to
+            advertisers, like our "nemesis" Google or Zuckerburg's TrashBook. We
+            need to be rich and you don't need privacy, don't you dare turn any
+            of that telemetry off, you hear me?!
+          </label>
           <checkbox
             id="showWarningNextTime"
-            label="Show this warning next time"
+            label="Irritate Me Again!"
             checked="true"
           />
           <hbox class="button-container">
             <button
               id="warningButton"
-              label="I accept the risk!"
+              label="I would use something else but this is the only browser allowing this level of control!"
               class="primary"
             />
           </hbox>

@@ -1,7 +1,6 @@
 /* dark reader */
 
-@-moz-document url-prefix("moz-extension://54964627-cc4e-4a5b-9a5a-bc3c14858102/ui/")
-{
+@-moz-document url-prefix("moz-extension://54964627-cc4e-4a5b-9a5a-bc3c14858102/ui/") {
   body,
   html,
   :root {
@@ -62,9 +61,7 @@
   }
 
   .m-donate-button:hover {
-    background-color: var(
-      --in-parent-primary-button-background-hover
-    ) !important;
+    background-color: var(--in-parent-primary-button-background-hover) !important;
   }
 
   input::placeholder,
@@ -115,8 +112,7 @@
   .mobile .theme-preset-picker .dropdown__list,
   .preview .theme-preset-picker .dropdown__list {
     border: none;
-    box-shadow: 0 0 0 0.125rem var(--uc-panel-button-solid),
-      0 0 0.25rem 0.1875rem hsla(0, 0%, 0%, 0.5) !important;
+    box-shadow: 0 0 0 0.125rem var(--uc-panel-button-solid), 0 0 0.25rem 0.1875rem hsla(0, 0%, 0%, 0.5) !important;
   }
 
   .color-picker__wrapper {
@@ -167,15 +163,15 @@
 
   .news-section__main-link {
     font-weight: initial !important;
-    color: var(--in-content-link-color) !important;
+    color: var(--base05) !important;
   }
 
   .news-section__main-link:is(:hover, :focus-visible) {
-    color: var(--in-content-link-color-hover) !important;
+    color: var(--base06) !important;
   }
 
   .news-section__main-link:active {
-    color: var(--in-content-link-color-active) !important;
+    color: var(--base06) !important;
   }
 
   .m-donate-button__text {

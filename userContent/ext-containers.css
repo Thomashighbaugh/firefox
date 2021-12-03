@@ -1,7 +1,6 @@
 /* firefox multi-account containers extension */
 
-@-moz-document url-prefix("moz-extension://14960f03-eca3-472b-b4d2-0b7f831ebe41/pageActionPopup.html")
-{
+@-moz-document url-prefix("moz-extension://14960f03-eca3-472b-b4d2-0b7f831ebe41/pageActionPopup.html") {
   :root {
     --arrowpanel-background: var(--uc-arrowpanel-background);
     --panel-separator-margin: 0px 4px;
@@ -25,7 +24,7 @@
     font-size: 12px !important;
     color: inherit !important;
     letter-spacing: inherit !important;
-    padding: var(--menupopup-inner-padding-magnitude) !important;
+    padding: var(--uc-inner-padding-magnitude) !important;
     padding-top: 0 !important;
   }
 
@@ -53,7 +52,7 @@
 
   hr {
     padding: 0 !important;
-    margin: var(--menupopup-inner-padding) !important;
+    margin: var(--uc-inner-padding) !important;
   }
 
   .identities-list {
@@ -96,8 +95,7 @@
   }
 }
 
-@-moz-document url-prefix("moz-extension://14960f03-eca3-472b-b4d2-0b7f831ebe41/popup.html")
-{
+@-moz-document url-prefix("moz-extension://14960f03-eca3-472b-b4d2-0b7f831ebe41/popup.html") {
   :root {
     --arrowpanel-background: var(--uc-arrowpanel-background);
     --panel-separator-margin: 0px 4px;
@@ -227,11 +225,11 @@
   .info-icon {
     fill-opacity: 0.8;
     -moz-context-properties: fill, fill-opacity;
-    fill: var(--ui-text-80);
+    fill: var(--inverted-color);
     cursor: default !important;
     width: 24px !important;
     height: 24px !important;
-    border-radius: var(--general-button-border-radius);
+    border-radius: var(--uc-border-radius);
     display: flex !important;
     align-items: center;
     justify-content: center;
@@ -264,7 +262,7 @@
   }
 
   hr {
-    margin: var(--menupopup-inner-padding-magnitude) !important;
+    margin: var(--uc-inner-padding-magnitude) !important;
     padding-block: 0 !important;
   }
 
@@ -278,14 +276,14 @@
 
   .identities-list {
     margin: 0 !important;
-    margin-inline: var(--menupopup-inner-padding-magnitude) !important;
+    margin-inline: var(--uc-inner-padding-magnitude) !important;
     inline-size: unset !important;
     max-block-size: 600px !important;
-    padding-bottom: var(--menupopup-inner-padding-magnitude) !important;
+    padding-bottom: var(--uc-inner-padding-magnitude) !important;
   }
 
   #edit-container-assignments > .scrollable {
-    padding-bottom: var(--menupopup-inner-padding-magnitude) !important;
+    padding-bottom: var(--uc-inner-padding-magnitude) !important;
   }
 
   #container-panel .identities-list {
@@ -297,7 +295,7 @@
     height: revert !important;
     line-height: 28px !important;
     min-height: 28px !important;
-    margin: var(--menupopup-inner-padding-magnitude) !important;
+    margin: var(--uc-inner-padding-magnitude) !important;
     padding-inline-start: 8px !important;
     cursor: default !important;
     border: none !important;
@@ -314,7 +312,7 @@
     height: 28px !important;
     user-select: none !important;
     inline-size: -moz-available !important;
-    margin-inline: var(--menupopup-inner-padding-magnitude) !important;
+    margin-inline: var(--uc-inner-padding-magnitude) !important;
     display: block !important;
   }
 
@@ -430,11 +428,7 @@
   }
 
   .menu-item.drag-over td {
-    background-image: linear-gradient(
-      180deg,
-      var(--uc-desaturate-dimmed-even-further) 1.5px,
-      transparent 1.5px
-    ) !important;
+    background-image: linear-gradient(180deg, var(--uc-desaturate-dimmed-even-further) 1.5px, transparent 1.5px) !important;
   }
 
   .move-button img {
@@ -464,7 +458,7 @@
   }
 
   #edit-container-panel > .edit-form {
-    padding-block: var(--menupopup-inner-padding-magnitude) 2px !important;
+    padding-block: var(--uc-inner-padding-magnitude) 2px !important;
   }
 
   #edit-container-options > .container-options > input[type="checkbox"] {
@@ -478,7 +472,7 @@
   .manage-assigned-sites-list {
     cursor: pointer !important;
     width: max-content !important;
-    color: var(--in-content-link-color-hover) !important;
+    color: var(--base06) !important;
   }
 
   #manage-assigned-sites-list:is(:hover, :focus-visible, :-moz-focusring) {
@@ -487,9 +481,9 @@
 
   .delete-container {
     background-color: transparent !important;
-    margin-inline: var(--menupopup-inner-padding-magnitude) !important;
-    padding: var(--menupopup-inner-padding-magnitude) !important;
-    padding-block: 0 calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
+    margin-inline: var(--uc-inner-padding-magnitude) !important;
+    padding: var(--uc-inner-padding-magnitude) !important;
+    padding-block: 0 calc(var(--uc-inner-padding-magnitude) * 2) !important;
     border-block-start: 0 !important;
     block-size: unset !important;
     display: flex;
@@ -499,8 +493,8 @@
   }
 
   .panel-footer {
-    padding: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
-    padding-top: var(--menupopup-inner-padding-magnitude) !important;
+    padding: calc(var(--uc-inner-padding-magnitude) * 2) !important;
+    padding-top: var(--uc-inner-padding-magnitude) !important;
     background: none !important;
     border: none !important;
     block-size: revert !important;
@@ -516,7 +510,7 @@
     min-height: 28px !important;
     width: 100% !important;
     inline-size: -moz-available !important;
-    margin-block-start: var(--menupopup-inner-padding-magnitude) !important;
+    margin-block-start: var(--uc-inner-padding-magnitude) !important;
     padding-inline-start: 8px !important;
     cursor: default !important;
     background-color: var(--uc-arrowpanel-dimmed) !important;
@@ -551,11 +545,8 @@
     background-color: var(--in-parent-primary-button-background) !important;
   }
 
-  .panel-footer
-    > .button.primary:is(:hover, :focus-visible, :-moz-focusring):active {
-    background-color: var(
-      --in-parent-primary-button-background-hover
-    ) !important;
+  .panel-footer > .button.primary:is(:hover, :focus-visible, :-moz-focusring):active {
+    background-color: var(--in-parent-primary-button-background-hover) !important;
   }
 
   #delete-container-button {
@@ -571,11 +562,11 @@
   }
 
   [type="radio"]:checked + [data-identity-color="grey"] {
-    --identity-icon-color: var(--in-content-bg-dark) !important;
+    --identity-icon-color: var(--window-color) !important;
   }
 
   .panel-content.delete-container-confirm {
-    padding-block: var(--menupopup-inner-padding-magnitude) 0 !important;
+    padding-block: var(--uc-inner-padding-magnitude) 0 !important;
     padding-inline: 16px 0 !important;
     display: flex;
     flex-flow: column;

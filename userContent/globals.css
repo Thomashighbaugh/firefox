@@ -118,13 +118,13 @@ tooltip {
     --menupopup-shadow: none;
     --panel-shadow: none;
     --webextension-panel-border-radius: 5px;
-    --menupopup-margin: calc(0px - var(--menupopup-inner-box-margin));
+    --menupopup-margin: calc(0px - var(--uc-inner-box-margin));
     --menupopup-background: var(--base00cc);
-    --menupopup-child-margin-block-start: calc(-4px - var(--menupopup-inner-box-margin));
-    --menupopup-child-margin-inline-start: calc(2px - var(--menupopup-inner-box-margin));
+    --menupopupmargin-block-start: calc(-4px - var(--uc-inner-box-margin));
+    --menupopupmargin-inline-start: calc(2px - var(--uc-inner-box-margin));
     --menupopup-padding: 0px;
     --menupopup-inner-padding-magnitude: 4px;
-    --menupopup-inner-padding: var(--menupopup-inner-padding-magnitude) 0;
+    --menupopup-inner-padding: var(--uc-inner-padding-magnitude) 0;
     --context-checkbox-margin: 6px 7px;
     --context-iconic-margin-start: 5px;
     --context-iconic-margin-end: 6px;
@@ -237,16 +237,16 @@ tooltip {
     --badge-color-light: var(--lwt-toolbarbutton-icon-fill-attention);
 
     --tab-background: var(--lwt-accent-color);
-    --tab-selected: var(--toolbar-bgcolor);
+    --tab-selected: var(--window-color);
     --tab-hover: linear-gradient(var(--base01),var(--base00));
-    --tab-pinned: linear-gradient(var(--lwt-accent-color), var(--toolbar-bgcolor));
+    --tab-pinned: linear-gradient(var(--lwt-accent-color), var(--window-color));
     --tab-multi: linear-gradient(var(--base02),var(--base01));
     --tab-multi-hover: linear-gradient(var(--base00),var(--base19));
-    --tab-pinned-hover: var(--toolbar-bgcolor);
+    --tab-pinned-hover: var(--window-color);
     --tab-focused-highlight:var(--base01);
     --tab-focused-hover: linear-gradient(
-        color-mix(in srgb, var(--tab-focused-highlight) 50%, var(--toolbar-bgcolor)),
-        var(--toolbar-bgcolor)
+        color-mix(in srgb, var(--tab-focused-highlight) 50%, var(--window-color)),
+        var(--window-color)
     );
     --multiselected-color: var(--base01);
 
@@ -263,7 +263,7 @@ tooltip {
     );
     --titlebar-background: var(--titlebar-gradient);
     --search-box-color: var(--base01);
-    --search-box-focus: var(--base01);
+    --secondary-color: var(--base01);
     --search-box-null: var(--base00);
     --textbox-button-hidden: hsla(240, 100%, 89%, 0);
     --confirmation-hint-color: var(--ui-text-100);
@@ -368,7 +368,7 @@ tooltip {
     --ui-textbox-bgcolor: var(--base01);
     --ui-textbox-focus-bgcolor: var(--base01);
     --ebp-menulist-background-color: var(--base24);
-    --ebp-menulist-menuitem-hover-background-color: var(--base25);
+    --ebp-menulist-secondary-color: var(--base25);
     --ebp-menulist-separator-color:var(--base02aa);
     --ebp-favicon-background-color: var(--dialog-bgcolor);
     --ui-solid-button-bgcolor: var(--uc-arrowpanel-dimmed);

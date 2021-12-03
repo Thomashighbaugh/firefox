@@ -48,7 +48,7 @@ html.private .search-wrapper input {
   border: 1px solid !important;
   border-color: #3c3f4c !important;
   box-shadow: none !important;
-  color: #fff5ff !important;
+  color: var(--inverted-color) 5ff !important;
 }
 /*Dark*/
 [lwt-newtab-brighttext] .search-wrapper .search-inner-wrapper:hover input,

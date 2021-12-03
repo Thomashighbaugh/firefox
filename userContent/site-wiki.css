@@ -15,9 +15,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Code Pro";
       font-style: normal;
       font-weight: 400;
-      src: local("Source Code Pro"), local("SourceCodePro-Regular"),
-        url(https://fonts.gstatic.com/s/sourcecodepro/v7/mrl8jkM18OlOQN8JLgasDy2Q8seG17bfDXYR_jUsrzg.woff2)
-          format("woff2");
+      src: local("Source Code Pro"), local("SourceCodePro-Regular"), url(https://fonts.gstatic.com/s/sourcecodepro/v7/mrl8jkM18OlOQN8JLgasDy2Q8seG17bfDXYR_jUsrzg.woff2) format("woff2");
     }
 
     /* latin */
@@ -25,9 +23,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Code Pro";
       font-style: normal;
       font-weight: 400;
-      src: local("Source Code Pro"), local("SourceCodePro-Regular"),
-        url(https://fonts.gstatic.com/s/sourcecodepro/v7/mrl8jkM18OlOQN8JLgasD9V_2ngZ8dMf8fLgjYEouxg.woff2)
-          format("woff2");
+      src: local("Source Code Pro"), local("SourceCodePro-Regular"), url(https://fonts.gstatic.com/s/sourcecodepro/v7/mrl8jkM18OlOQN8JLgasD9V_2ngZ8dMf8fLgjYEouxg.woff2) format("woff2");
     }
 
     /* latin */
@@ -35,9 +31,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Code Pro";
       font-style: normal;
       font-weight: 700;
-      src: local("Source Code Pro Bold"), local("SourceCodePro-Bold"),
-        url(https://fonts.gstatic.com/s/sourcecodepro/v7/leqv3v-yTsJNC7nFznSMqUo0As1BFRXtCDhS66znb_k.woff2)
-          format("woff2");
+      src: local("Source Code Pro Bold"), local("SourceCodePro-Bold"), url(https://fonts.gstatic.com/s/sourcecodepro/v7/leqv3v-yTsJNC7nFznSMqUo0As1BFRXtCDhS66znb_k.woff2) format("woff2");
     }
 
     /* cyrillic */
@@ -45,9 +39,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Sans Pro";
       font-style: italic;
       font-weight: 400;
-      src: local("Source Sans Pro Italic"), local("SourceSansPro-Italic"),
-        url(https://fonts.gstatic.com/s/sourcesanspro/v11/M2Jd71oPJhLKp0zdtTvoMywVDUTj8DgJRSuHEKdySfs.woff2)
-          format("woff2");
+      src: local("Source Sans Pro Italic"), local("SourceSansPro-Italic"), url(https://fonts.gstatic.com/s/sourcesanspro/v11/M2Jd71oPJhLKp0zdtTvoMywVDUTj8DgJRSuHEKdySfs.woff2) format("woff2");
     }
 
     /* greek */
@@ -55,9 +47,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Sans Pro";
       font-style: italic;
       font-weight: 400;
-      src: local("Source Sans Pro Italic"), local("SourceSansPro-Italic"),
-        url(https://fonts.gstatic.com/s/sourcesanspro/v11/M2Jd71oPJhLKp0zdtTvoM2qPyaMejTZ925Ro5CnyJwc.woff2)
-          format("woff2");
+      src: local("Source Sans Pro Italic"), local("SourceSansPro-Italic"), url(https://fonts.gstatic.com/s/sourcesanspro/v11/M2Jd71oPJhLKp0zdtTvoM2qPyaMejTZ925Ro5CnyJwc.woff2) format("woff2");
     }
 
     /* latin-ext */
@@ -65,9 +55,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Sans Pro";
       font-style: italic;
       font-weight: 400;
-      src: local("Source Sans Pro Italic"), local("SourceSansPro-Italic"),
-        url(https://fonts.gstatic.com/s/sourcesanspro/v11/M2Jd71oPJhLKp0zdtTvoM40tgx99jmYGv_xzYuwd1rU.woff2)
-          format("woff2");
+      src: local("Source Sans Pro Italic"), local("SourceSansPro-Italic"), url(https://fonts.gstatic.com/s/sourcesanspro/v11/M2Jd71oPJhLKp0zdtTvoM40tgx99jmYGv_xzYuwd1rU.woff2) format("woff2");
     }
 
     /* latin */
@@ -75,9 +63,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Sans Pro";
       font-style: italic;
       font-weight: 400;
-      src: local("Source Sans Pro Italic"), local("SourceSansPro-Italic"),
-        url(https://fonts.gstatic.com/s/sourcesanspro/v11/M2Jd71oPJhLKp0zdtTvoMxgy2Fsj5sj3EzlXpqVXRKo.woff2)
-          format("woff2");
+      src: local("Source Sans Pro Italic"), local("SourceSansPro-Italic"), url(https://fonts.gstatic.com/s/sourcesanspro/v11/M2Jd71oPJhLKp0zdtTvoMxgy2Fsj5sj3EzlXpqVXRKo.woff2) format("woff2");
     }
 
     /* cyrillic */
@@ -85,9 +71,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Sans Pro";
       font-style: normal;
       font-weight: 400;
-      src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
-        url(https://fonts.gstatic.com/s/sourcesanspro/v11/ODelI1aHBYDBqgeIAH2zlMgmx_L9kV4w6g8dYQOLFUI.woff2)
-          format("woff2");
+      src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"), url(https://fonts.gstatic.com/s/sourcesanspro/v11/ODelI1aHBYDBqgeIAH2zlMgmx_L9kV4w6g8dYQOLFUI.woff2) format("woff2");
     }
 
     /* greek */
@@ -95,9 +79,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Sans Pro";
       font-style: normal;
       font-weight: 400;
-      src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
-        url(https://fonts.gstatic.com/s/sourcesanspro/v11/ODelI1aHBYDBqgeIAH2zlFjqPhnWKseBf12Mt9_m7kc.woff2)
-          format("woff2");
+      src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"), url(https://fonts.gstatic.com/s/sourcesanspro/v11/ODelI1aHBYDBqgeIAH2zlFjqPhnWKseBf12Mt9_m7kc.woff2) format("woff2");
     }
 
     /* vietnamese */
@@ -105,9 +87,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Sans Pro";
       font-style: normal;
       font-weight: 400;
-      src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
-        url(https://fonts.gstatic.com/s/sourcesanspro/v11/ODelI1aHBYDBqgeIAH2zlNOAHFN6BivSraYkjhveRHY.woff2)
-          format("woff2");
+      src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"), url(https://fonts.gstatic.com/s/sourcesanspro/v11/ODelI1aHBYDBqgeIAH2zlNOAHFN6BivSraYkjhveRHY.woff2) format("woff2");
     }
 
     /* latin-ext */
@@ -115,9 +95,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Sans Pro";
       font-style: normal;
       font-weight: 400;
-      src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
-        url(https://fonts.gstatic.com/s/sourcesanspro/v11/ODelI1aHBYDBqgeIAH2zlC2Q8seG17bfDXYR_jUsrzg.woff2)
-          format("woff2");
+      src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"), url(https://fonts.gstatic.com/s/sourcesanspro/v11/ODelI1aHBYDBqgeIAH2zlC2Q8seG17bfDXYR_jUsrzg.woff2) format("woff2");
     }
 
     /* latin */
@@ -125,9 +103,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Sans Pro";
       font-style: normal;
       font-weight: 400;
-      src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
-        url(https://fonts.gstatic.com/s/sourcesanspro/v11/ODelI1aHBYDBqgeIAH2zlNV_2ngZ8dMf8fLgjYEouxg.woff2)
-          format("woff2");
+      src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"), url(https://fonts.gstatic.com/s/sourcesanspro/v11/ODelI1aHBYDBqgeIAH2zlNV_2ngZ8dMf8fLgjYEouxg.woff2) format("woff2");
     }
 
     /* cyrillic-ext */
@@ -135,9 +111,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Sans Pro";
       font-style: normal;
       font-weight: 700;
-      src: local("Source Sans Pro Bold"), local("SourceSansPro-Bold"),
-        url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGH2tx1iQUBYLA4fTJZSoO3U.woff2)
-          format("woff2");
+      src: local("Source Sans Pro Bold"), local("SourceSansPro-Bold"), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGH2tx1iQUBYLA4fTJZSoO3U.woff2) format("woff2");
     }
 
     /* cyrillic */
@@ -145,9 +119,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Sans Pro";
       font-style: normal;
       font-weight: 700;
-      src: local("Source Sans Pro Bold"), local("SourceSansPro-Bold"),
-        url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGJaoTU19aO7Bfv-FLfOt5YM.woff2)
-          format("woff2");
+      src: local("Source Sans Pro Bold"), local("SourceSansPro-Bold"), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGJaoTU19aO7Bfv-FLfOt5YM.woff2) format("woff2");
     }
 
     /* greek */
@@ -155,9 +127,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Sans Pro";
       font-style: normal;
       font-weight: 700;
-      src: local("Source Sans Pro Bold"), local("SourceSansPro-Bold"),
-        url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGO4f2SQTi4oYi3kh3bYmG2Y.woff2)
-          format("woff2");
+      src: local("Source Sans Pro Bold"), local("SourceSansPro-Bold"), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGO4f2SQTi4oYi3kh3bYmG2Y.woff2) format("woff2");
     }
 
     /* vietnamese */
@@ -165,9 +135,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Sans Pro";
       font-style: normal;
       font-weight: 700;
-      src: local("Source Sans Pro Bold"), local("SourceSansPro-Bold"),
-        url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGDovqjS_dXPZszO_XltPdNg.woff2)
-          format("woff2");
+      src: local("Source Sans Pro Bold"), local("SourceSansPro-Bold"), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGDovqjS_dXPZszO_XltPdNg.woff2) format("woff2");
     }
 
     /* latin-ext */
@@ -175,9 +143,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Sans Pro";
       font-style: normal;
       font-weight: 700;
-      src: local("Source Sans Pro Bold"), local("SourceSansPro-Bold"),
-        url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGFxe-GPfKKFmiXaJ_Q0GFr8.woff2)
-          format("woff2");
+      src: local("Source Sans Pro Bold"), local("SourceSansPro-Bold"), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGFxe-GPfKKFmiXaJ_Q0GFr8.woff2) format("woff2");
     }
 
     /* latin */
@@ -185,9 +151,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Sans Pro";
       font-style: normal;
       font-weight: 700;
-      src: local("Source Sans Pro Bold"), local("SourceSansPro-Bold"),
-        url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGEo0As1BFRXtCDhS66znb_k.woff2)
-          format("woff2");
+      src: local("Source Sans Pro Bold"), local("SourceSansPro-Bold"), url(https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGEo0As1BFRXtCDhS66znb_k.woff2) format("woff2");
     }
 
     /* latin-ext */
@@ -195,9 +159,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Serif Pro";
       font-style: normal;
       font-weight: 400;
-      src: local("Source Serif Pro"), local("SourceSerifPro-Regular"),
-        url(https://fonts.gstatic.com/s/sourceserifpro/v5/CeUM4np2c42DV49nanp55Q_BUM40eMa9-jBVStC9wY0.woff2)
-          format("woff2");
+      src: local("Source Serif Pro"), local("SourceSerifPro-Regular"), url(https://fonts.gstatic.com/s/sourceserifpro/v5/CeUM4np2c42DV49nanp55Q_BUM40eMa9-jBVStC9wY0.woff2) format("woff2");
     }
 
     /* latin */
@@ -205,9 +167,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Serif Pro";
       font-style: normal;
       font-weight: 400;
-      src: local("Source Serif Pro"), local("SourceSerifPro-Regular"),
-        url(https://fonts.gstatic.com/s/sourceserifpro/v5/CeUM4np2c42DV49nanp55fETq2ZMMnErnN6OL83eMrU.woff2)
-          format("woff2");
+      src: local("Source Serif Pro"), local("SourceSerifPro-Regular"), url(https://fonts.gstatic.com/s/sourceserifpro/v5/CeUM4np2c42DV49nanp55fETq2ZMMnErnN6OL83eMrU.woff2) format("woff2");
     }
 
     /* latin-ext */
@@ -215,9 +175,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Serif Pro";
       font-style: normal;
       font-weight: 700;
-      src: local("Source Serif Pro Bold"), local("SourceSerifPro-Bold"),
-        url(https://fonts.gstatic.com/s/sourceserifpro/v5/yd5lDMt8Sva2PE17yiLarKwVIEQt96q_HGoOJQzfwxw.woff2)
-          format("woff2");
+      src: local("Source Serif Pro Bold"), local("SourceSerifPro-Bold"), url(https://fonts.gstatic.com/s/sourceserifpro/v5/yd5lDMt8Sva2PE17yiLarKwVIEQt96q_HGoOJQzfwxw.woff2) format("woff2");
     }
 
     /* latin */
@@ -225,9 +183,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-family: "Source Serif Pro";
       font-style: normal;
       font-weight: 700;
-      src: local("Source Serif Pro Bold"), local("SourceSerifPro-Bold"),
-        url(https://fonts.gstatic.com/s/sourceserifpro/v5/yd5lDMt8Sva2PE17yiLarPgHLTi6vdOOFgNDwEC6JgI.woff2)
-          format("woff2");
+      src: local("Source Serif Pro Bold"), local("SourceSerifPro-Bold"), url(https://fonts.gstatic.com/s/sourceserifpro/v5/yd5lDMt8Sva2PE17yiLarPgHLTi6vdOOFgNDwEC6JgI.woff2) format("woff2");
     }
 
     /* root variables */
@@ -280,7 +236,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
 
     a:hover {
       text-decoration: none !important;
-      color: #fff !important;
+      color: var(--inverted-color) !important;
       opacity: 1 !important;
     }
 
@@ -529,18 +485,13 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     #mw-panel > .portal > h3 {
-      color: #fff !important;
+      color: var(--inverted-color) !important;
       font-size: 1rem !important;
       margin-left: 5px !important;
       padding-bottom: 1px !important;
       background: none !important;
       border-bottom: 1px solid transparent !important;
-      border-image: linear-gradient(
-        to right,
-        hsla(0, 0%, 100%, 0.05) 0,
-        hsla(0, 0%, 100%, 0.2) 10%,
-        transparent 100%
-      ) !important;
+      border-image: linear-gradient(to right, hsla(0, 0%, 100%, 0.05) 0, hsla(0, 0%, 100%, 0.2) 10%, transparent 100%) !important;
       border-image-slice: 1 !important;
     }
 
@@ -801,8 +752,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
 
     #bodyContent h4:before {
       counter-increment: headingThree !important;
-      content: counter(headingOne) "." counter(headingTwo) "."
-        counter(headingThree) !important;
+      content: counter(headingOne) "." counter(headingTwo) "." counter(headingThree) !important;
       font-size: 14px !important;
     }
 
@@ -812,8 +762,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
 
     #bodyContent h5:before {
       counter-increment: headingFour !important;
-      content: counter(headingOne) "." counter(headingTwo) "."
-        counter(headingThree) "." counter(headingFour) !important;
+      content: counter(headingOne) "." counter(headingTwo) "." counter(headingThree) "." counter(headingFour) !important;
       font-size: 13px !important;
     }
 
@@ -823,8 +772,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
 
     #bodyContent h6:before {
       counter-increment: headingFive !important;
-      content: counter(headingOne) "." counter(headingTwo) "."
-        counter(headingThree) "." counter(headingFour) "." counter(headingFive) !important;
+      content: counter(headingOne) "." counter(headingTwo) "." counter(headingThree) "." counter(headingFour) "." counter(headingFive) !important;
       font-size: 12px !important;
     }
 
@@ -1521,8 +1469,8 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     .save.mw-ui-button.mw-ui-progressive {
-      background-color: #fff0 !important;
-      color: #fff !important;
+      background-color: var(--inverted-color) 0 !important;
+      color: var(--inverted-color) !important;
       border: none !important;
     }
 
@@ -1542,8 +1490,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     .oo-ui-toolbar-position-top > .oo-ui-toolbar-bar {
-      box-shadow: 0 0 7px -1px hsla(0, 0%, 0%, 0.1),
-        0 0 2px 1px hsla(0, 0%, 0%, 0.2) !important;
+      box-shadow: 0 0 7px -1px hsla(0, 0%, 0%, 0.1), 0 0 2px 1px hsla(0, 0%, 0%, 0.2) !important;
     }
 
     .oo-ui-toolbar-bar .oo-ui-toolbar-bar {
@@ -1555,15 +1502,14 @@ userChrome.css.wikipedia.dark-theme-enabled */
       border-right: 1px solid var(--uc-wiki-popup-bg) !important;
     }
 
-    .oo-ui-popupToolGroup.oo-ui-widget-enabled
-      > .oo-ui-popupToolGroup-handle:hover,
+    .oo-ui-popupToolGroup.oo-ui-widget-enabled > .oo-ui-popupToolGroup-handle:hover,
     .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover {
       background-color: var(--uc-wiki-popup-bg) !important;
     }
 
     :is(.oo-ui-toolbar-bar, .ve-ce-branchNode-slug, .toolbar.section-main)
       .oo-ui-iconElement-icon,
-    :is(.oo-ui-toolbar-bar, .ve-ce-branchNode-slug, .toolbar.section-main)
+:is(.oo-ui-toolbar-bar, .ve-ce-branchNode-slug, .toolbar.section-main)
       .oo-ui-indicatorElement-indicator {
       filter: invert();
     }
@@ -1576,8 +1522,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       filter: none !important;
     }
 
-    :is(.oo-ui-popupToolGroup-active, .oo-ui-popupToolGroup-active-tools)
-      > .oo-ui-popupToolGroup-handle {
+    :is(.oo-ui-popupToolGroup-active, .oo-ui-popupToolGroup-active-tools) > .oo-ui-popupToolGroup-handle {
       background-color: var(--uc-wiki-popup-bg) !important;
       color: var(--uc-wiki-text-90) !important;
     }
@@ -1597,8 +1542,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     .oo-ui-toolbar-actions
-      .oo-ui-popupToolGroup.oo-ui-widget-enabled
-      > .oo-ui-popupToolGroup-handle:hover {
+      .oo-ui-popupToolGroup.oo-ui-widget-enabled > .oo-ui-popupToolGroup-handle:hover {
       border-right: 1px solid transparent !important;
     }
 
@@ -1610,21 +1554,18 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     .oo-ui-menuToolGroup-tools .oo-ui-tool.oo-ui-tool-active,
-    .oo-ui-toolGroup-tools
-      .oo-ui-tool.oo-ui-widget-enabled.oo-ui-tool-active
-      > .oo-ui-tool-link:hover,
-    .oo-ui-tool.oo-ui-widget-enabled.oo-ui-tool-active > .oo-ui-tool-link {
+.oo-ui-toolGroup-tools
+      .oo-ui-tool.oo-ui-widget-enabled.oo-ui-tool-active > .oo-ui-tool-link:hover,
+.oo-ui-tool.oo-ui-widget-enabled.oo-ui-tool-active > .oo-ui-tool-link {
       background-color: hsl(240, 1.4%, 28%) !important;
     }
 
     .oo-ui-toolGroup-tools
-      .oo-ui-menuToolGroup-tools
-      > .oo-ui-tool.oo-ui-widget-enabled:hover,
-    .oo-ui-toolGroup-tools
-      .oo-ui-tool.oo-ui-widget-enabled
-      > .oo-ui-tool-link:hover,
-    .oo-ui-menuToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled:hover,
-    .oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled:hover {
+      .oo-ui-menuToolGroup-tools > .oo-ui-tool.oo-ui-widget-enabled:hover,
+.oo-ui-toolGroup-tools
+      .oo-ui-tool.oo-ui-widget-enabled > .oo-ui-tool-link:hover,
+.oo-ui-menuToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled:hover,
+.oo-ui-listToolGroup-tools .oo-ui-tool.oo-ui-widget-enabled:hover {
       background-color: hsl(240, 1.4%, 25%) !important;
     }
 
@@ -1633,16 +1574,14 @@ userChrome.css.wikipedia.dark-theme-enabled */
       opacity: 0.5 !important;
     }
 
-    .oo-ui-widget.oo-ui-tool:is(.oo-ui-widget-enabled, .oo-ui-tool-active)
-      > .oo-ui-tool-link.ve-ui-toolbar-saveButton {
+    .oo-ui-widget.oo-ui-tool:is(.oo-ui-widget-enabled, .oo-ui-tool-active) > .oo-ui-tool-link.ve-ui-toolbar-saveButton {
       background-color: hsl(228.9, 100%, 68%) !important;
       color: white !important;
       opacity: 1 !important;
       border: none !important;
     }
 
-    .oo-ui-widget.oo-ui-tool:is(.oo-ui-widget-enabled, .oo-ui-tool-active)
-      > .oo-ui-tool-link.ve-ui-toolbar-saveButton:hover {
+    .oo-ui-widget.oo-ui-tool:is(.oo-ui-widget-enabled, .oo-ui-tool-active) > .oo-ui-tool-link.ve-ui-toolbar-saveButton:hover {
       background-color: hsl(228.9, 93%, 62%) !important;
       color: white !important;
     }
@@ -1776,16 +1715,12 @@ userChrome.css.wikipedia.dark-theme-enabled */
       border: 1px solid hsl(228.9, 100%, 74%) !important;
     }
 
-    .oo-ui-processDialog-actions-primary
-      > .oo-ui-buttonElement
-      > .oo-ui-buttonElement-button {
+    .oo-ui-processDialog-actions-primary > .oo-ui-buttonElement > .oo-ui-buttonElement-button {
       background-color: hsl(228.9, 100%, 68%) !important;
       border: none !important;
     }
 
-    .oo-ui-processDialog-actions-primary
-      > .oo-ui-buttonElement
-      > .oo-ui-buttonElement-button:hover {
+    .oo-ui-processDialog-actions-primary > .oo-ui-buttonElement > .oo-ui-buttonElement-button:hover {
       background-color: hsl(228.9, 93%, 62%) !important;
       border: none !important;
     }
@@ -1796,21 +1731,18 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     .oo-ui-processDialog-actions-other
-      .oo-ui-buttonElement-framed.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button {
+      .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button {
       background-color: hsl(240, 1.4%, 30%) !important;
       color: var(--uc-wiki-text-90) !important;
       border-color: transparent !important;
     }
 
     .oo-ui-processDialog-actions-other
-      .oo-ui-buttonElement-framed.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button:hover {
+      .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover {
       background-color: hsl(240, 1.4%, 35%) !important;
     }
 
-    .oo-ui-buttonElement-framed.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button:focus {
+    .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:focus {
       border-color: transparent !important;
       box-shadow: none !important;
       outline: none !important;
@@ -1822,8 +1754,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     .oo-ui-processDialog-actions-safe
-      .oo-ui-buttonElement-button:hover
-      > .oo-ui-iconElement-icon {
+      .oo-ui-buttonElement-button:hover > .oo-ui-iconElement-icon {
       opacity: 1 !important;
     }
 
@@ -1831,9 +1762,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       background-color: hsla(0, 0%, 0%, 0.8) !important;
     }
 
-    .oo-ui-windowManager-modal.oo-ui-windowManager-floating
-      > .oo-ui-dialog
-      > .oo-ui-window-frame {
+    .oo-ui-windowManager-modal.oo-ui-windowManager-floating > .oo-ui-dialog > .oo-ui-window-frame {
       background-color: hsl(0, 0%, 3.6%) !important;
       border: none !important;
       border-radius: 4px !important;
@@ -1880,9 +1809,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
 
     select {
       appearance: none;
-      background: hsl(240, 4.3%, 8.5%)
-        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="context-fill" viewBox="0 0 16 16"><path d="M12.085 4.943L8.05 8.803l-3.947-3.86L3.05 5.996l5 5 5-5z"/></svg>')
-        right 4px center no-repeat;
+      background: hsl(240, 4.3%, 8.5%) url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f4f4f7" viewBox="0 0 16 16"><path d="M12.085 4.943L8.05 8.803l-3.947-3.86L3.05 5.996l5 5 5-5z"/></svg>') right 4px center no-repeat;
       -moz-context-properties: fill;
       color: var(--uc-wiki-text-80);
       fill: currentColor;
@@ -1911,8 +1838,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
 
     .mwe-popups {
       background: unset !important;
-      box-shadow: 0 0 25px 2px hsla(0, 0%, 0%, 0.1),
-        0 0 5px 1px hsla(0, 0%, 0%, 0.25) !important;
+      box-shadow: 0 0 25px 2px hsla(0, 0%, 0%, 0.1), 0 0 5px 1px hsla(0, 0%, 0%, 0.25) !important;
       border-radius: 3px !important;
       border: 1px solid hsla(230, 3.9%, 18%, 0.5) !important;
       background-image: var(--acrylic-texture) !important;
@@ -2090,7 +2016,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       position: absolute !important;
       border: 11px solid transparent !important;
       border-top: 0 !important;
-      border-bottom: 11px solid #ffffff !important;
+      border-bottom: 11px solid var(--inverted-color) fff !important;
       top: -7px !important;
       left: 7px !important;
       visibility: collapse !important;
@@ -2123,7 +2049,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       position: absolute !important;
       border: 12px solid transparent !important;
       border-top: 0 !important;
-      border-bottom: 12px solid #ffffff !important;
+      border-bottom: 12px solid var(--inverted-color) fff !important;
       top: -8px !important;
       left: 6px !important;
       z-index: 112 !important;
@@ -2145,7 +2071,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       position: absolute !important;
       border: 12px solid transparent !important;
       border-top: 0 !important;
-      border-bottom: 12px solid #ffffff !important;
+      border-bottom: 12px solid var(--inverted-color) fff !important;
       top: -8px !important;
       left: 290px !important;
       visibility: collapse !important;
@@ -2198,7 +2124,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       position: absolute !important;
       border: 12px solid transparent !important;
       border-bottom: 0 !important;
-      border-top: 12px solid #ffffff !important;
+      border-top: 12px solid var(--inverted-color) fff !important;
       bottom: -8px !important;
       left: 290px !important;
       z-index: 112 !important;
@@ -2224,7 +2150,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       position: absolute !important;
       border: 12px solid transparent !important;
       border-bottom: 0 !important;
-      border-top: 12px solid #ffffff !important;
+      border-top: 12px solid var(--inverted-color) fff !important;
       bottom: -8px !important;
       left: 417px !important;
       visibility: collapse !important;
@@ -2342,20 +2268,9 @@ userChrome.css.wikipedia.dark-theme-enabled */
       width: 100% !important;
       height: 20px !important;
       background-color: transparent !important;
-      background-image: -webkit-linear-gradient(
-        top,
-        hsla(0, 0%, 100%, 0),
-        #ffffff
-      ) !important;
-      background-image: -moz-linear-gradient(
-        top,
-        hsla(0, 0%, 100%, 0),
-        #ffffff
-      ) !important;
-      background-image: linear-gradient(
-        hsla(0, 0%, 100%, 0),
-        #ffffff
-      ) !important;
+      background-image: -webkit-linear-gradient(top, hsla(0, 0%, 100%, 0), var(--inverted-color) fff) !important;
+      background-image: -moz-linear-gradient(top, hsla(0, 0%, 100%, 0), var(--inverted-color) fff) !important;
+      background-image: linear-gradient(hsla(0, 0%, 100%, 0), var(--inverted-color) fff) !important;
       opacity: 0 !important;
       pointer-events: none !important;
       -webkit-transition: opacity 250ms ease !important;
@@ -2414,7 +2329,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
     .mw-interlanguage-selector.mw-ui-button:hover,
     .mw-interlanguage-selector.mw-ui-button:active {
       background-color: hsla(0, 0%, 0%, 0.2) !important;
-      color: #fff !important;
+      color: var(--inverted-color) !important;
       border-color: transparent !important;
       border: none !important;
     }
@@ -2431,8 +2346,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       font-size: 13px !important;
       line-height: 1.48em !important;
       background: hsla(0, 0%, 2%, 0.95) !important;
-      box-shadow: 0 0 25px 2px hsla(0, 0%, 0%, 0.1),
-        0 0 5px 1px hsla(0, 0%, 0%, 0.25) !important;
+      box-shadow: 0 0 25px 2px hsla(0, 0%, 0%, 0.1), 0 0 5px 1px hsla(0, 0%, 0%, 0.25) !important;
       border: none !important;
       overflow-wrap: break-word !important;
     }
@@ -2475,7 +2389,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     .rt-tooltipContent a:hover {
-      color: #fff !important;
+      color: var(--inverted-color) !important;
     }
 
     .rt-settingsLink {
@@ -2672,8 +2586,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     table.wikitable.sortable.jquery-tablesorter thead tr th.headerSort {
-      background-image: linear-gradient(transparent, transparent),
-        url(chrome://userchrome/content/in-content/wiki-sort.svg) !important;
+      background-image: linear-gradient(transparent, transparent), url(chrome://userchrome/content/in-content/wiki-sort.svg) !important;
       background-repeat: no-repeat !important;
       background-position: center right !important;
     }
@@ -2771,8 +2684,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       padding-bottom: 7px !important;
       border-radius: 3px !important;
       background-color: var(--uc-wiki-box-bg) !important;
-      box-shadow: 0 0 15px 2px hsla(0, 0%, 0%, 0.1),
-        0 0 3px 1px hsla(0, 0%, 0%, 0.2) !important;
+      box-shadow: 0 0 15px 2px hsla(0, 0%, 0%, 0.1), 0 0 3px 1px hsla(0, 0%, 0%, 0.2) !important;
     }
 
     .plainlinks.hlist.navbar.mini ul {
@@ -2796,8 +2708,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
     #bodyContent div.thumb {
       border-radius: 3px !important;
       background-color: var(--uc-wiki-box-bg) !important;
-      box-shadow: 0 0 15px 2px hsla(0, 0%, 0%, 0.1),
-        0 0 3px 1px hsla(0, 0%, 0%, 0.2) !important;
+      box-shadow: 0 0 15px 2px hsla(0, 0%, 0%, 0.1), 0 0 3px 1px hsla(0, 0%, 0%, 0.2) !important;
       border: none !important;
     }
 
@@ -2808,8 +2719,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
 
     #content :where(.infobox),
     #bodyContent :where(table.ambox) {
-      box-shadow: 0 0 15px 2px hsla(0, 0%, 0%, 0.1),
-        0 0 3px 1px hsla(0, 0%, 0%, 0.2) !important;
+      box-shadow: 0 0 15px 2px hsla(0, 0%, 0%, 0.1), 0 0 3px 1px hsla(0, 0%, 0%, 0.2) !important;
     }
 
     #bodyContent table :is(table, .infobox, .thumb) {
@@ -2828,9 +2738,8 @@ userChrome.css.wikipedia.dark-theme-enabled */
     #bodyContent .portal ul {
       border-radius: 4px !important;
       background-color: var(--uc-wiki-box-bg) !important;
-      color: #fff !important;
-      box-shadow: 0 0 15px 2px hsla(0, 0%, 0%, 0.1),
-        0 0 3px 1px hsla(0, 0%, 0%, 0.2) !important;
+      color: var(--inverted-color) !important;
+      box-shadow: 0 0 15px 2px hsla(0, 0%, 0%, 0.1), 0 0 3px 1px hsla(0, 0%, 0%, 0.2) !important;
     }
 
     #bodyContent .portal a {
@@ -2838,12 +2747,12 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     #mw-content-text .portal a:hover {
-      color: #fff !important;
+      color: var(--inverted-color) !important;
       text-decoration: none !important;
     }
 
     #mw-content-text .portal a:active {
-      color: #fff !important;
+      color: var(--inverted-color) !important;
       text-decoration: none !important;
     }
 
@@ -2853,7 +2762,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
     #mw-navigation .portal ul li:active {
       border-radius: 3px !important;
       background-color: hsla(0, 0%, 100%, 0.075) !important;
-      color: #fff !important;
+      color: var(--inverted-color) !important;
     }
 
     #mw-navigation .portal ul li,
@@ -2882,8 +2791,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     #content .gallery {
-      box-shadow: 0 0 15px 2px hsla(0, 0%, 0%, 0.1),
-        0 0 3px 1px hsla(0, 0%, 0%, 0.2) !important;
+      box-shadow: 0 0 15px 2px hsla(0, 0%, 0%, 0.1), 0 0 3px 1px hsla(0, 0%, 0%, 0.2) !important;
       display: inline-block !important;
     }
 
@@ -2992,10 +2900,8 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     #bodyContent
-      .oo-ui-buttonElement-framed.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button,
-    .oo-ui-buttonElement-framed.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button {
+      .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button,
+    .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button {
       background-color: var(--uc-wiki-box-bg) !important;
       color: inherit !important;
       border-color: transparent !important;
@@ -3054,8 +2960,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       fill: currentColor !important;
       filter: none !important;
       -moz-context-properties: fill, fill-opacity !important;
-      background-image: linear-gradient(transparent, transparent),
-        url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22context-fill%22 fill-opacity=%22context-fill-opacity%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22%3E%3Ctitle%3Eclose%3C/title%3E%3Cpath d=%22M4.34 2.93l12.73 12.73-1.41 1.41L2.93 4.35z%22/%3E%3Cpath d=%22M17.07 4.34L4.34 17.07l-1.41-1.41L15.66 2.93z%22/%3E%3C/svg%3E") !important;
+      background-image: linear-gradient(transparent, transparent), url("data:image/svg+xml, %3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22context-fill%22 fill-opacity=%22context-fill-opacity%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22%3E%3Ctitle%3Eclose%3C/title%3E%3Cpath d=%22M4.34 2.93l12.73 12.73-1.41 1.41L2.93 4.35z%22/%3E%3Cpath d=%22M17.07 4.34L4.34 17.07l-1.41-1.41L15.66 2.93z%22/%3E%3C/svg%3E") !important;
     }
 
     .oo-ui-indicator-down {
@@ -3063,8 +2968,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       fill: currentColor !important;
       filter: none !important;
       -moz-context-properties: fill, fill-opacity !important;
-      background-image: linear-gradient(transparent, transparent),
-        url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22context-fill%22 fill-opacity=%22context-fill-opacity%22 width=%2212%22 height=%2212%22 viewBox=%220 0 12 12%22%3E%3Ctitle%3Edown%3C/title%3E%3Cpath d=%22M10.085 2.943L6.05 6.803l-3.947-3.86L1.05 3.996l5 5 5-5z%22/%3E%3C/svg%3E") !important;
+      background-image: linear-gradient(transparent, transparent), url("data:image/svg+xml, %3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22context-fill%22 fill-opacity=%22context-fill-opacity%22 width=%2212%22 height=%2212%22 viewBox=%220 0 12 12%22%3E%3Ctitle%3Edown%3C/title%3E%3Cpath d=%22M10.085 2.943L6.05 6.803l-3.947-3.86L1.05 3.996l5 5 5-5z%22/%3E%3C/svg%3E") !important;
     }
 
     .oo-ui-icon-menu,
@@ -3076,8 +2980,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       background-size: 16px !important;
       width: 16px !important;
       min-width: 16px !important;
-      background-image: linear-gradient(transparent, transparent),
-        url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22context-fill%22 fill-opacity=%22context-fill-opacity%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22%3E%3Ctitle%3Emenu%3C/title%3E%3Cpath d=%22M1 3v2h18V3zm0 8h18V9H1zm0 6h18v-2H1z%22/%3E%3C/svg%3E") !important;
+      background-image: linear-gradient(transparent, transparent), url("data:image/svg+xml, %3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22context-fill%22 fill-opacity=%22context-fill-opacity%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22%3E%3Ctitle%3Emenu%3C/title%3E%3Cpath d=%22M1 3v2h18V3zm0 8h18V9H1zm0 6h18v-2H1z%22/%3E%3C/svg%3E") !important;
     }
 
     .mw-advancedSearch-namespace-border {
@@ -3095,10 +2998,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
 
     .mw-advancedSearch-namespace-selection,
     .mw-advancedSearch-fieldContainer {
-      background: linear-gradient(
-        hsla(0, 0%, 0%, 0.1),
-        var(--uc-wiki-box-bg) 0.5em
-      ) !important;
+      background: linear-gradient(hsla(0, 0%, 0%, 0.1), var(--uc-wiki-box-bg) 0.5em) !important;
       border: solid 1px transparent !important;
     }
 
@@ -3107,9 +3007,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     .mw-advancedSearch-fieldContainer
-      .oo-ui-labelElement
-      > .oo-ui-fieldsetLayout-header
-      > .oo-ui-labelElement-label {
+      .oo-ui-labelElement > .oo-ui-fieldsetLayout-header > .oo-ui-labelElement-label {
       background: var(--uc-wiki-box-bg) !important;
       color: hsl(240, 1.4%, 75%) !important;
       height: 1em !important;
@@ -3150,7 +3048,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     .oo-ui-dropdownInputWidget,
-    .oo-ui-dropdownWidget.oo-ui-dropdownWidget-open
+.oo-ui-dropdownWidget.oo-ui-dropdownWidget-open
       .oo-ui-dropdownWidget-handle {
       background-color: hsl(210, 6.7%, 5.9%) !important;
       border-radius: 2px !important;
@@ -3213,8 +3111,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     .oo-ui-tagMultiselectWidget-handle
-      .oo-ui-tagMultiselectWidget-group
-      > input {
+      .oo-ui-tagMultiselectWidget-group > input {
       margin-block: 0 !important;
     }
 
@@ -3225,15 +3122,14 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     .oo-ui-tagMultiselectWidget-handle
-      .oo-ui-tagMultiselectWidget-group
-      > input {
+      .oo-ui-tagMultiselectWidget-group > input {
       color: inherit !important;
     }
 
     .mw-mmv-reuse-dialog
       .mw-mmv-reuse-tabs
       .oo-ui-optionWidget.oo-ui-optionWidget-selected,
-    .mw-mmv-reuse-dialog
+.mw-mmv-reuse-dialog
       .mw-mmv-reuse-tabs
       .oo-ui-optionWidget.oo-ui-optionWidget-highlighted.oo-ui-optionWidget-selected {
       border-bottom: 3px solid var(--uc-wiki-text-90) !important;
@@ -3259,8 +3155,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     .mw-mmv-share-pane
-      .oo-ui-buttonElement-framed.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button {
+      .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button {
       background-color: hsl(0, 0%, 6%) !important;
       color: var(--uc-wiki-text-60) !important;
       border: none !important;
@@ -3268,45 +3163,32 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     .mw-mmv-share-pane
-      .oo-ui-buttonElement-framed.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button:hover {
+      .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover {
       background-color: hsl(0, 0%, 6%) !important;
       color: var(--uc-wiki-text-60) !important;
       border: none !important;
     }
 
     .mw-mmv-share-pane
-      .oo-ui-buttonElement-framed.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button
-      > .oo-ui-iconElement-icon:not(.oo-ui-image-invert),
-    .mw-mmv-share-pane
-      .oo-ui-buttonElement-framed.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button
-      > .oo-ui-indicatorElement-indicator:not(.oo-ui-image-invert) {
+      .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon:not(.oo-ui-image-invert),
+.mw-mmv-share-pane
+      .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button > .oo-ui-indicatorElement-indicator:not(.oo-ui-image-invert) {
       filter: invert(1) !important;
       opacity: 0.2 !important;
       cursor: pointer !important;
     }
 
     .mw-mmv-share-pane
-      .oo-ui-buttonElement-framed.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button:hover
-      > .oo-ui-iconElement-icon:not(.oo-ui-image-invert):hover,
-    .mw-mmv-share-pane
-      .oo-ui-buttonElement-framed.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button:hover
-      > .oo-ui-indicatorElement-indicator:not(.oo-ui-image-invert):hover {
+      .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover > .oo-ui-iconElement-icon:not(.oo-ui-image-invert):hover,
+.mw-mmv-share-pane
+      .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover > .oo-ui-indicatorElement-indicator:not(.oo-ui-image-invert):hover {
       opacity: 0.3 !important;
     }
 
     .mw-mmv-share-pane
-      .oo-ui-buttonElement-framed.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button:hover
-      > .oo-ui-iconElement-icon:not(.oo-ui-image-invert),
-    .mw-mmv-share-pane
-      .oo-ui-buttonElement-framed.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button:hover
-      > .oo-ui-indicatorElement-indicator:not(.oo-ui-image-invert) {
+      .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover > .oo-ui-iconElement-icon:not(.oo-ui-image-invert),
+.mw-mmv-share-pane
+      .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover > .oo-ui-indicatorElement-indicator:not(.oo-ui-image-invert) {
       opacity: 0.2 !important;
     }
 
@@ -3317,12 +3199,9 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     .mw-mmv-embed-select
-      .oo-ui-buttonElement.oo-ui-labelElement
-      > input.oo-ui-buttonElement-button,
-    .mw-mmv-embed-select
-      .oo-ui-buttonElement.oo-ui-labelElement
-      > .oo-ui-buttonElement-button
-      > .oo-ui-labelElement-label {
+      .oo-ui-buttonElement.oo-ui-labelElement > input.oo-ui-buttonElement-button,
+.mw-mmv-embed-select
+      .oo-ui-buttonElement.oo-ui-labelElement > .oo-ui-buttonElement-button > .oo-ui-labelElement-label {
       line-height: 1.6em !important;
     }
 
@@ -3333,19 +3212,16 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     .mw-mmv-embed-select
-      .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active
-      > .oo-ui-buttonElement-button,
-    .mw-mmv-embed-select
-      .oo-ui-buttonElement-framed.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button:hover {
+      .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-buttonElement-active > .oo-ui-buttonElement-button,
+.mw-mmv-embed-select
+      .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover {
       background-color: hsl(215, 8%, 9%) !important;
       color: var(--uc-wiki-text-90) !important;
       border: none !important;
     }
 
     .mw-mmv-embed-select
-      .oo-ui-buttonElement-framed.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button {
+      .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button {
       background-color: hsl(215, 8%, 7%) !important;
       color: var(--uc-wiki-text-60) !important;
       border: none !important;
@@ -3389,35 +3265,23 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     .mw-mmv-embed-pane
-      .oo-ui-buttonElement-framed.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button
-      > .oo-ui-iconElement-icon:not(.oo-ui-image-invert),
-    .mw-mmv-embed-pane
-      .oo-ui-buttonElement-framed.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button
-      > .oo-ui-indicatorElement-indicator:not(.oo-ui-image-invert) {
+      .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon:not(.oo-ui-image-invert),
+.mw-mmv-embed-pane
+      .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button > .oo-ui-indicatorElement-indicator:not(.oo-ui-image-invert) {
       filter: invert(1) !important;
       opacity: 0.3 !important;
       cursor: pointer !important;
     }
 
     .mw-mmv-embed-pane
-      .oo-ui-buttonElement-framed.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button:hover
-      > .oo-ui-iconElement-icon:not(.oo-ui-image-invert),
-    .mw-mmv-embed-pane
-      .oo-ui-buttonElement-framed.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button:hover
-      > .oo-ui-indicatorElement-indicator:not(.oo-ui-image-invert) {
+      .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover > .oo-ui-iconElement-icon:not(.oo-ui-image-invert),
+.mw-mmv-embed-pane
+      .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover > .oo-ui-indicatorElement-indicator:not(.oo-ui-image-invert) {
       opacity: 0.45 !important;
     }
 
-    .oo-ui-buttonElement.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button
-      > .oo-ui-iconElement-icon,
-    .oo-ui-buttonElement.oo-ui-widget-enabled
-      > .oo-ui-buttonElement-button
-      > .oo-ui-indicatorElement-indicator {
+    .oo-ui-buttonElement.oo-ui-widget-enabled > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon,
+    .oo-ui-buttonElement.oo-ui-widget-enabled > .oo-ui-buttonElement-button > .oo-ui-indicatorElement-indicator {
       transition: none !important;
     }
 
@@ -3596,8 +3460,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
     .catlinks,
     .hintergrundfarbe1,
     .navbox {
-      box-shadow: 0 0 15px 2px hsla(0, 0%, 0%, 0.1),
-        0 0 3px 1px hsla(0, 0%, 0%, 0.2) !important;
+      box-shadow: 0 0 15px 2px hsla(0, 0%, 0%, 0.1), 0 0 3px 1px hsla(0, 0%, 0%, 0.2) !important;
     }
 
     table .mergedtoprow {
@@ -3626,7 +3489,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
     .ui-widget-header.ui-corner-all.ui-helper-clearfix {
       border: none !important;
       background: var(--uc-wiki-box-bg) !important;
-      color: #fff !important;
+      color: var(--inverted-color) !important;
       font-family: "Source Sans Pro" !important;
       font-weight: normal !important;
       font-size: 18px !important;
@@ -3638,13 +3501,12 @@ userChrome.css.wikipedia.dark-theme-enabled */
     body .ui-dialog {
       border: none !important;
       background: var(--uc-wiki-box-bg) !important;
-      color: #fff !important;
+      color: var(--inverted-color) !important;
       font-family: "Source Sans Pro" !important;
       font-size: 14px !important;
       padding: 5px !important;
       padding-left: 10px !important;
-      box-shadow: 0 0 15px 2px hsla(0, 0%, 0%, 0.2),
-        0 0 3px 1px hsla(0, 0%, 0%, 0.2) !important;
+      box-shadow: 0 0 15px 2px hsla(0, 0%, 0%, 0.2), 0 0 3px 1px hsla(0, 0%, 0%, 0.2) !important;
     }
 
     .ui-widget-overlay {
@@ -3695,7 +3557,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       border: none !important;
       background: var(--uc-wiki-box-bg) !important;
       background-image: none !important;
-      color: #fff !important;
+      color: var(--inverted-color) !important;
     }
 
     .ui-widget-header.ui-helper-clearfix.control-bar:not(.block) .k-options,
@@ -3708,7 +3570,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
     .ui-widget-header.ui-helper-clearfix.control-bar:not(.block) .time-disp {
       float: left !important;
       position: relative !important;
-      color: #fffa !important;
+      color: var(--inverted-color) a !important;
       bottom: 2px !important;
     }
 
@@ -3726,8 +3588,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       bottom: 4px !important;
       border: none !important;
       background: hsla(0, 0%, 100%, 0.2) !important;
-      box-shadow: 0 0 10px 0px hsla(0, 0%, 0%, 0.2),
-        0 0 2px 0px hsla(0, 0%, 0%, 0.2) !important;
+      box-shadow: 0 0 10px 0px hsla(0, 0%, 0%, 0.2), 0 0 2px 0px hsla(0, 0%, 0%, 0.2) !important;
     }
 
     .ui-widget-header.ui-helper-clearfix.control-bar:not(.block) {
@@ -3753,15 +3614,13 @@ userChrome.css.wikipedia.dark-theme-enabled */
       width: 9.5px !important;
       background-image: none !important;
       /*! background: hsl(0, 0%, 80.4%) !important; */
-      box-shadow: 0 0 10px 0px hsla(0, 0%, 0%, 0.1),
-        0 0 2px 0px hsla(0, 0%, 0%, 0.2) !important;
+      box-shadow: 0 0 10px 0px hsla(0, 0%, 0%, 0.1), 0 0 2px 0px hsla(0, 0%, 0%, 0.2) !important;
     }
 
     .ui-widget-header.ui-helper-clearfix.control-bar:not(.block)
       .ui-slider-handle:is(:hover) {
       background: hsl(0, 0%, 96.1%) !important;
-      box-shadow: 0 0 10px 0px hsla(0, 0%, 0%, 0.1),
-        0 0 2px 0px hsla(0, 0%, 0%, 0.2) !important;
+      box-shadow: 0 0 10px 0px hsla(0, 0%, 0%, 0.1), 0 0 2px 0px hsla(0, 0%, 0%, 0.2) !important;
     }
 
     .k-player,
@@ -3827,14 +3686,14 @@ userChrome.css.wikipedia.dark-theme-enabled */
 
     #pt-notifications-notice
       .mw-echo-notifications-badge.oo-ui-flaggedElement-unseen::after,
-    #pt-notifications-notice
+#pt-notifications-notice
       .mw-echo-notifications-badge.mw-echo-unseen-notifications::after {
       background-color: hsla(0, 0%, 100%, 0.3) !important;
     }
 
     #pt-notifications-notice
       .mw-echo-notifications-badge.oo-ui-flaggedElement-unseen:hover::after,
-    #pt-notifications-notice
+#pt-notifications-notice
       .mw-echo-notifications-badge.mw-echo-unseen-notifications:hover::after {
       background-color: hsla(0, 0%, 100%, 0.4) !important;
     }
@@ -3905,8 +3764,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
     .suggestions {
       border-bottom-left-radius: 3px !important;
       border-bottom-right-radius: 3px !important;
-      box-shadow: 0 0 25px 2px hsla(0, 0%, 0%, 0.1),
-        0 0 5px 1px hsla(0, 0%, 0%, 0.25) !important;
+      box-shadow: 0 0 25px 2px hsla(0, 0%, 0%, 0.1), 0 0 5px 1px hsla(0, 0%, 0%, 0.25) !important;
       z-index: 4 !important;
       margin-right: 0.5px !important;
       position: absolute !important;
@@ -3959,14 +3817,14 @@ userChrome.css.wikipedia.dark-theme-enabled */
     .suggestions-special:focus .special-label,
     .suggestions-result-current .special-query,
     .suggestions-result-current .special-label {
-      color: #fff !important;
+      color: var(--inverted-color) !important;
     }
 
     .suggestions-result:hover,
     .suggestions-result:active,
     .suggestions-result:focus,
     .suggestions-result-current {
-      color: #fff !important;
+      color: var(--inverted-color) !important;
       background-color: hsl(180, 2%, 10%) !important;
       border-radius: 2px !important;
     }
@@ -3982,11 +3840,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
     .mw-mmv-permission-box
       .mw-mmv-permission-text
       .mw-mmv-permission-text-fader {
-      background-image: linear-gradient(
-        to bottom,
-        #0000 0%,
-        hsl(0, 0%, 9.4%) 100%
-      ) !important;
+      background-image: linear-gradient(to bottom, #0000 0%, hsl(0, 0%, 9.4%) 100%) !important;
     }
 
     .mw-mmv-info-box {
@@ -4004,11 +3858,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
       a {
       padding: 0px 0 0 2em !important;
       background-color: transparent !important;
-      background-image: linear-gradient(
-        to right,
-        #0000 0%,
-        hsl(0, 0%, 9.4%) 25%
-      ) !important;
+      background-image: linear-gradient(to right, #0000 0%, hsl(0, 0%, 9.4%) 25%) !important;
       font-size: 1em !important;
     }
 
@@ -4032,7 +3882,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
 
     .mw-ui-button.mw-ui-progressive {
       background-color: hsl(0, 0%, 17.3%) !important;
-      color: #fff !important;
+      color: var(--inverted-color) !important;
       border: 1px solid transparent !important;
       opacity: 0.7 !important;
       transition: 0.15s ease-in-out !important;
@@ -4044,7 +3894,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
 
     .mw-ui-button.mw-ui-progressive:hover {
       background-color: hsl(0, 0%, 17.3%) !important;
-      color: #fff !important;
+      color: var(--inverted-color) !important;
       border: 1px solid transparent !important;
       opacity: 1 !important;
     }
@@ -4145,8 +3995,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
 
     /* translate page arrow */
     img[src*="Translation_to_english_arrow"] {
-      filter: invert(1) hue-rotate(190deg) brightness(0.8) brightness(0.8)
-        contrast(2) saturate(2) brightness(1.6);
+      filter: invert(1) hue-rotate(190deg) brightness(0.8) brightness(0.8) contrast(2) saturate(2) brightness(1.6);
     }
 
     /* pdf external link */
@@ -4156,16 +4005,14 @@ userChrome.css.wikipedia.dark-theme-enabled */
     .mw-parser-output a[href$=".PDF"].external,
     .mw-parser-output a[href*=".PDF?"].external,
     .mw-parser-output a[href*=".PDF#"].external {
-      background: url(chrome://userchrome/content/in-content/wiki-acrobat.svg)
-        no-repeat right !important;
+      background: url(chrome://userchrome/content/in-content/wiki-acrobat.svg) no-repeat right !important;
       background-size: 14px 15px !important;
       padding-right: 17px !important;
     }
 
     /* commons logo */
     img[src*="Commons-logo.svg" i] {
-      filter: brightness(4) invert(1) hue-rotate(195deg) contrast(0.3)
-        saturate(10);
+      filter: brightness(4) invert(1) hue-rotate(195deg) contrast(0.3) saturate(10);
     }
 
     /* references formatting */
@@ -4513,8 +4360,7 @@ userChrome.css.wikipedia.dark-theme-enabled */
     }
 
     .mw-parser-output .chess-board > img {
-      filter: invert(1) contrast(0.9) hue-rotate(180deg) sepia(0.8)
-        brightness(0.8) !important;
+      filter: invert(1) contrast(0.9) hue-rotate(180deg) sepia(0.8) brightness(0.8) !important;
     }
 
     .mw-parser-output .chess-board > div {

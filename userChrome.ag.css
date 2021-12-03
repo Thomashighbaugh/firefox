@@ -1,16 +1,21 @@
+/* ##========================================================================================
+##                                                                                      ##
+##                                   ANONYMOUS CONTENT                                  ##
+##                                                                                      ##
+##======================================================================================== */
+
 /* this stylesheet is used to style native anonymous content
-and in particular, tooltips and scrollbars. */
+, like tooltips and scrollbars. */
 
 @import url(uc-globals.css);
 
 @namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
 @namespace html url(http://www.w3.org/1999/xhtml);
 
 /* browser scrollbars */
 scrollbar {
-  appearance: none !important;
   position: relative;
-  background-color: transparent;
   background-image: none;
   z-index: 3;
   padding: 0px;
@@ -38,9 +43,7 @@ scrollbox > scrollbar[orient="vertical"] {
 } */
 
 scrollbar thumb {
-  appearance: none !important;
   border-width: 0px;
-  background-color: transparent;
   opacity: 0.3;
   transition: opacity 0.4s ease-in-out, transform 0.2s ease-in-out;
 }
@@ -76,7 +79,7 @@ scrollbar[orient="vertical"]:not(:hover) thumb:not(:active) {
 scrollbar thumb:before {
   content: "";
   display: -moz-box;
-  background-color: rgba(124, 124, 131, 1);
+  background-color: var(--base0099);
   -moz-box-flex: 1;
   border-radius: 5px;
 }
@@ -229,8 +232,8 @@ tooltip > description {
   color: var(--tooltip-color);
   border: 1px solid var(--uc-menu-border-color);
   border-radius: var(--tooltip-border-radius);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  padding: var(--uc-tooltip-inner-padding, 2px 6px 4px 6px);
+  box-shadow: 0 0 5px var(--base00);
+  padding: 2px 6px 4px 6px;
   margin: 0;
 }
 
@@ -241,7 +244,8 @@ tooltip > description {
 }
 
 @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
-  @-moz-document url(chrome://browser/content/browser.xhtml) {
+  @-moz-document url(chrome://browser/content/browser.xhtml)
+  {
     tooltip {
       font-family: SF Pro Text, Segoe UI, sans-serif;
       font-kerning: normal;
@@ -252,7 +256,10 @@ tooltip > description {
 
 /* print preview background */
 ::-moz-page-sequence {
-  background-image: linear-gradient(hsl(240, 4%, 12%), hsl(240, 4%, 20%));
+  background-image: linear-gradient(
+    var(--secondary-color),
+    var(--window-color)
+  );
 }
 
 html|input[type="number"]::-moz-number-spin-box {
@@ -275,85 +282,4 @@ html|input[type="number"]::-moz-number-spin-down {
   fill: currentColor;
   fill-opacity: 0.4;
   appearance: none;
-}
-
-html|input[type="number"]::-moz-number-spin-up {
-  scale: 1 -1;
-}
-
-html|input[type="number"]::-moz-number-spin-down:hover,
-html|input[type="number"]::-moz-number-spin-up:hover {
-  fill-opacity: 0.7;
-}
-
-html|meter {
-  appearance: none;
-  border-radius: 45px;
-  overflow: hidden;
-  height: 16px;
-  background: linear-gradient(
-    var(--base05) 5%,
-    var(--base03) 15%,
-    var(--base02) 35%,
-    var(--base19) 55%,
-    var(--base30) 75%,
-    var(--base20) 90%
-  );
-}
-
-html|*::-moz-meter-bar {
-  appearance: none;
-}
-
-html|*:-moz-meter-optimum::-moz-meter-bar {
-  background: linear-gradient(
-    -27deg,
-    #44ffdd,
-    #36ccb1 20%,
-    #299985 45%,
-    #1b6658 65%
-  );
-}
-
-html|*:-moz-meter-sub-optimum::-moz-meter-bar {
-  background: linear-gradient(28deg, #ffffaf, #f0ffaa 65%, #fff0fa 95%);
-}
-
-html|*:-moz-meter-sub-sub-optimum::-moz-meter-bar {
-  background: linear-gradient(-32deg, #ff87d7, #ff00aa 45%, #570b0e 65%);
-}
-
-html|progress {
-  appearance: none;
-  border: 1px solid transparent;
-  border-radius: 100px;
-  height: 9px;
-  background-color: var(--content-principal-box-background-odd);
-  overflow: hidden;
-}
-
-html|progress::-moz-progress-bar {
-  background: linear-gradient(
-    var(--base06) 20%,
-    var(--base05) 55%,
-    var(--base03) 85%
-  );
-}
-
-html|progress[paused]::-moz-progress-bar {
-  background: linear-gradient(
-    65deg,
-    var(--base03) 20%,
-    var(--base06) 55%,
-    var(--base18) 85%
-  );
-}
-
-/* animate the bar when its progress is stalled or unknown. this vector file is in resources/layout/contentaccessible/ */
-html|progress:not([value]):indeterminate::-moz-progress-bar {
-  background-image: url("resource://content-accessible/progress-bar-indeterminate.svg");
-}
-
-html|*.videocontrols .controlBar {
-  background-color: var(--content-principal-box-background);
 }

@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg">
     <defs>
         <linearGradient id="grad" x2="0" y2="1">
-            <stop offset=".2" stop-color="hsl(230, 34%, 55%)" />
-            <stop offset=".55" stop-color="hsl(236, 45%, 45%)" />
-            <stop offset=".85" stop-color="hsl(246, 50%, 35%)" />
+            <stop offset=".2" stop-color="#8b9cbe" />
+            <stop offset=".55" stop-color="#3c3f4c" />
+            <stop offset=".85" stop-color="#555e70" />
         </linearGradient>
         <linearGradient id="fade">
             <stop offset="0" stop-color="white" stop-opacity="0" />

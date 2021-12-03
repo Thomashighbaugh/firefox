@@ -1,14 +1,11 @@
 /* handles context menus opened in devtools processes,
 and a few elements like checkboxes */
 
-@-moz-document url-prefix("chrome://devtools/content/")
-{
+@-moz-document url-prefix("chrome://devtools/content/") {
   :root,
   menupopup {
-    --toolbarbutton-border-radius: var(
-      --general-button-border-radius
-    ) !important;
-    --urlbar-icon-border-radius: var(--general-button-border-radius) !important;
+    --toolbarbutton-border-radius: var(--uc-border-radius) !important;
+    --urlbar-icon-border-radius: var(--uc-border-radius) !important;
     --lwt-accent-color: var(--uc-accent-color) !important;
     --lwt-text-color: var(--uc-arrowpanel-color) !important;
     --lwt-toolbar-field-background-color: hsla(233, 25%, 28%, 85%) !important;
@@ -18,7 +15,7 @@ and a few elements like checkboxes */
     --toolbar-bgcolor: hsl(233, 42%, 15%) !important;
     --toolbar-color: hsl(0, 0%, 100%) !important;
     --lwt-toolbarbutton-icon-fill: hsl(0, 0%, 100%) !important;
-    --lwt-toolbarbutton-icon-fill-attention: var(--attention-color) !important;
+    --lwt-toolbarbutton-icon-fill-attention: var(--secondary-color) !important;
     --lwt-background-alignment: top !important;
     --lwt-background-tiling: repeat !important;
     --arrowpanel-background: var(--uc-arrowpanel-background) !important;
@@ -28,9 +25,7 @@ and a few elements like checkboxes */
     --arrowpanel-faint: var(--uc-arrowpanel-faint);
     --arrowpanel-dimmed: var(--uc-arrowpanel-dimmed) !important;
     --arrowpanel-dimmed-further: var(--uc-arrowpanel-dimmed-further) !important;
-    --arrowpanel-dimmed-even-further: var(
-      --uc-arrowpanel-dimmed-even-further
-    ) !important;
+    --arrowpanel-dimmed-even-further: var(--uc-arrowpanel-dimmed-even-further) !important;
     --desaturate-faint: var(--uc-desaturate-faint);
     --desaturate-dimmed: var(--uc-desaturate-dimmed);
     --desaturate-dimmed-further: var(--uc-desaturate-dimmed-further);
@@ -48,27 +43,21 @@ and a few elements like checkboxes */
     --desaturate-checked-background: hsla(236, 60%, 83%, 0.13) !important;
     --button-bgcolor: var(--arrowpanel-dimmed) !important;
     --button-hover-bgcolor: var(--arrowpanel-dimmed-further) !important;
-    --button-active-bgcolor: var(--arrowpanel-dimmed-even-further) !important;
+    --base02: var(--arrowpanel-dimmed-even-further) !important;
     --button-primary-bgcolor: var(--purple-45) !important;
     --button-primary-hover-bgcolor: var(--purple-40) !important;
     --button-primary-active-bgcolor: var(--purple-35) !important;
     --button-primary-color: var(--button-color) !important;
-    --focus-outline-color: var(--attention-color) !important;
+    --focus-outline-color: var(--secondary-color) !important;
     --focus-outline-width: 2px;
-    --places-cell-focus-bgcolor: hsl(232, 30%, 19%) !important;
+    --window-color: hsl(232, 30%, 19%) !important;
     --places-cell-hover-bgcolor: hsl(232, 30%, 23%) !important;
-    --in-content-box-background: hsl(232, 32%, 14%) !important;
-    --in-content-box-border-color: rgba(249, 249, 250, 0.1) !important;
-    --in-content-button-background: var(--arrowpanel-dimmed) !important;
-    --in-content-button-background-hover: var(
-      --arrowpanel-dimmed-further
-    ) !important;
-    --in-content-button-background-active: var(
-      --arrowpanel-dimmed-even-further
-    ) !important;
-    --in-content-button-border-radius: var(
-      --general-button-border-radius
-    ) !important;
+    --base00: hsl(232, 32%, 14%) !important;
+    --base0099: rgba(249, 249, 250, 0.1) !important;
+    --base01: var(--arrowpanel-dimmed) !important;
+    --base02: var(--arrowpanel-dimmed-further) !important;
+    --base01-active: var(--arrowpanel-dimmed-even-further) !important;
+    --in-content-button-border-radius: var(--uc-border-radius) !important;
     --in-content-item-selected: var(--purple-40) !important;
     --in-content-border-highlight: var(--purple-40) !important;
     --in-content-border-focus: var(--purple-40) !important;
@@ -82,66 +71,40 @@ and a few elements like checkboxes */
     --in-content-primary-button-background-hover: var(--purple-35) !important;
     --in-content-primary-button-background-active: var(--purple-30) !important;
     --autocomplete-popup-background: var(--arrowpanel-background) !important;
-    --autocomplete-popup-color: var(--lwt-text-color) !important;
-    --autocomplete-popup-separator-color: var(
-      --panel-separator-color
-    ) !important;
+    --autocomplete-popup-color: var(--inverted-color) !important;
+    --autocomplete-popup-separator-color: var(--panel-separator-color) !important;
     --ui-textbox-bgcolor: hsl(233, 24%, 28%) !important;
     --ui-textbox-focus-bgcolor: hsl(232, 22%, 34%) !important;
     --ui-solid-button-bgcolor: var(--arrowpanel-dimmed) !important;
-    --ui-solid-button-hover-bgcolor: var(
-      --arrowpanel-dimmed-further
-    ) !important;
-    --ui-solid-button-active-bgcolor: var(
-      --arrowpanel-dimmed-even-further
-    ) !important;
+    --ui-solid-button-hover-bgcolor: var(--arrowpanel-dimmed-further) !important;
+    --ui-solid-button-active-bgcolor: var(--arrowpanel-dimmed-even-further) !important;
     --ebmp-hover-bgcolor: hsl(233, 24%, 33%) !important;
     --ebmp-focus-bgcolor: hsl(233, 24%, 38%) !important;
     --urlbar-popup-url-color: hsl(251, 100%, 64%) !important;
     --urlbar-popup-action-color: hsl(340, 73%, 58%) !important;
-    --lwt-popup-brighttext-url-color: var(
-      --urlbar-popup-action-color
-    ) !important;
+    --lwt-popup-brighttext-url-color: var(--urlbar-popup-action-color) !important;
     --toolbarbutton-icon-fill-opacity: 1 !important;
     --menu-background-color: var(--arrowpanel-background) !important;
-    --menu-color: var(--ui-text-80) !important;
-    --menuitem-hover-background-color: var(--arrowpanel-dimmed) !important;
+    --menu-color: var(--inverted-color)!important;
+    --secondary-color: var(--arrowpanel-dimmed) !important;
     --menuitem-disabled-hover-background-color: initial !important;
     --menu-disabled-color: var(--panel-disabled-color) !important;
     --menu-border-color: var(--uc-menu-border-color) !important;
     --menu-icon-opacity: 1 !important;
     --buttons-secondary-hover-bgcolor: var(--arrowpanel-dimmed) !important;
-    --buttons-secondary-active-bgcolor: var(
-      --arrowpanel-dimmed-further
-    ) !important;
+    --buttons-secondary-active-bgcolor: var(--arrowpanel-dimmed-further) !important;
     --vpn-on-icon: url(chrome://userchrome/content/skin/vpn-on-light.svg);
     --checkbox-border-color: var(--uc-checkbox-border-color) !important;
-    --checkbox-checked-border-color: var(
-      --uc-checkbox-checked-border-color
-    ) !important;
-    --checkbox-unchecked-bgcolor: var(
-      --uc-checkbox-unchecked-bgcolor
-    ) !important;
-    --checkbox-unchecked-hover-bgcolor: var(
-      --uc-checkbox-unchecked-hover-bgcolor
-    ) !important;
-    --checkbox-unchecked-active-bgcolor: var(
-      --uc-checkbox-unchecked-active-bgcolor
-    ) !important;
+    --checkbox-checked-border-color: var(--uc-checkbox-checked-border-color) !important;
+    --checkbox-unchecked-bgcolor: var(--uc-checkbox-unchecked-bgcolor) !important;
+    --checkbox-unchecked-hover-bgcolor: var(--uc-checkbox-unchecked-hover-bgcolor) !important;
+    --checkbox-unchecked-active-bgcolor: var(--uc-checkbox-unchecked-active-bgcolor) !important;
     --checkbox-checked-bgcolor: var(--uc-checkbox-checked-bgcolor) !important;
     --checkbox-checked-color: var(--uc-checkbox-checked-color) !important;
-    --checkbox-checked-hover-bgcolor: var(
-      --uc-checkbox-checked-hover-bgcolor
-    ) !important;
-    --checkbox-checked-active-bgcolor: var(
-      --uc-checkbox-checked-active-bgcolor
-    ) !important;
-    --panelview-toolbarbutton-hover-bgcolor: var(
-      --arrowpanel-dimmed
-    ) !important;
-    --panelview-toolbarbutton-active-bgcolor: var(
-      --arrowpanel-dimmed-further
-    ) !important;
+    --checkbox-checked-hover-bgcolor: var(--uc-checkbox-checked-hover-bgcolor) !important;
+    --checkbox-checked-active-bgcolor: var(--uc-checkbox-checked-active-bgcolor) !important;
+    --panelview-toolbarbutton-hover-bgcolor: var(--arrowpanel-dimmed) !important;
+    --panelview-toolbarbutton-active-bgcolor: var(--arrowpanel-dimmed-further) !important;
     --panelview-toolbarbutton-focus-box-shadow: none !important;
     --panel-banner-item-color: HSL(240, 9.1%, 97.8%);
     --panel-banner-item-background-color: hsla(109.9, 90.9%, 47.3%, 0.1);
@@ -152,24 +115,14 @@ and a few elements like checkboxes */
     --arrowpanel-menuitem-padding-block: 6px !important;
     --arrowpanel-menuitem-padding-inline: 6px !important;
     --arrowpanel-padding: 12px !important;
-    --panel-subview-body-padding-magnitude: var(
-      --arrowpanel-menuitem-inline-margin
-    );
+    --panel-subview-body-padding-magnitude: var(--arrowpanel-menuitem-inline-margin);
     --panel-subview-body-padding: var(--panel-subview-body-padding-magnitude) 0 !important;
     --arrowpanel-menuitem-border-radius: 3px !important;
     --error-text-color: var(--warning-color) !important;
-    --buttons-primary-button-bgcolor: var(
-      --in-parent-primary-button-background
-    ) !important;
-    --buttons-primary-button-hover-bgcolor: var(
-      --in-parent-primary-button-background-hover
-    ) !important;
-    --buttons-primary-button-active-bgcolor: var(
-      --in-parent-primary-button-background-active
-    ) !important;
-    --buttons-primary-button-color: var(
-      --in-parent-primary-button-text-color
-    ) !important;
+    --buttons-primary-button-bgcolor: var(--in-parent-primary-button-background) !important;
+    --buttons-primary-button-hover-bgcolor: var(--in-parent-primary-button-background-hover) !important;
+    --buttons-primary-button-active-bgcolor: var(--in-parent-primary-button-background-active) !important;
+    --buttons-primary-button-color: var(--in-parent-primary-button-text-color) !important;
   }
 
   .theme-light {
@@ -179,10 +132,9 @@ and a few elements like checkboxes */
     --checkbox-unchecked-active-bgcolor: #ddd !important;
   }
 
-  menupopup
-    > :is(menuitem, menu, menucaption, menugroup, menuseparator, search-textbox),
+  menupopup > :is(menuitem, menu, menucaption, menugroup, menuseparator, search-textbox),
   panel > richlistbox > richlistitem {
-    margin-inline: var(--menupopup-inner-padding-magnitude);
+    margin-inline: var(--uc-inner-padding-magnitude);
   }
 
   input:is([type="checkbox"], [type="radio"]) {
@@ -194,7 +146,7 @@ and a few elements like checkboxes */
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    border: 1px solid var(--checkbox-border-color);
+    border: 1px solid var(--base0099);
     background-color: var(--checkbox-unchecked-bgcolor);
     color: var(--in-parent-primary-button-text-color);
   }
@@ -215,7 +167,7 @@ and a few elements like checkboxes */
   }
 
   input:is([type="checkbox"], [type="radio"]):is(:hover, :focus-visible) {
-    background-color: var(--checkbox-unchecked-hover-bgcolor);
+    background-color: var(--base03);
   }
 
   input:is([type="checkbox"], [type="radio"]):is(:hover, :focus-visible):active {
@@ -223,17 +175,17 @@ and a few elements like checkboxes */
   }
 
   input:is([type="checkbox"], [type="radio"]):is([checked="true"], :checked):is(:hover, :focus-visible) {
-    background-color: var(--checkbox-checked-hover-bgcolor);
+    background-color: var(--uc-hover-bgcolor);
   }
 
   input:is([type="checkbox"], [type="radio"]):is([checked="true"], :checked):is(:hover, :focus-visible):active {
-    background-color: var(--checkbox-checked-active-bgcolor);
+    background-color: var(--uc-active-bgcolor);
   }
 
   input[type="checkbox"]:is([checked="true"], :checked) {
     background-image: url(chrome://userchrome/content/check.svg);
-    border-color: var(--checkbox-checked-border-color);
-    background-color: var(--checkbox-checked-bgcolor);
+    border-color: var(--uc-border-color);
+    background-color: var(--base01);
   }
 
   input[type="radio"] {
@@ -243,22 +195,22 @@ and a few elements like checkboxes */
 
   input[type="radio"]:is([checked="true"], :checked) {
     background-image: url(chrome://userchrome/content/radio.svg);
-    border-color: var(--checkbox-checked-border-color);
-    background-color: var(--checkbox-checked-bgcolor);
+    border-color: var(--uc-border-color);
+    background-color: var(--base01);
   }
 
   menupopup {
     appearance: none !important;
-    background: var(--menupopup-background) !important;
+    background: var(--window-color) !important;
     border: none !important;
-    border-radius: var(--menupopup-border-radius) !important;
-    margin: var(--menupopup-margin) !important;
+    border-radius: var(--uc-border-radius) !important;
+    margin: var(--uc-margin) !important;
     overflow: hidden !important;
   }
 
   menupopup menu > menupopup {
-    margin-inline-start: var(--menupopup-child-margin-inline-start) !important;
-    margin-block-start: var(--menupopup-child-margin-block-start) !important;
+    margin-inline-start: var(--uc-margin) !important;
+    margin-block-start: var(--uc-margin) !important;
   }
 
   menupopup:not([height], .in-menulist) {
@@ -268,15 +220,12 @@ and a few elements like checkboxes */
   .menupopup-arrowscrollbox {
     background-color: var(--menu-background-color) !important;
     color: var(--menu-color) !important;
-    border-radius: var(--menupopup-border-radius) !important;
-    box-shadow: var(--menupopup-shadow) !important;
+    border-radius: var(--uc-border-radius) !important;
+    box-shadow: var(--uc-shadow) !important;
   }
 
   .menupopup-arrowscrollbox[orient="vertical"][overflowing="true"] {
-    margin-block: var(
-      --menupopup-overflowing-inner-box-margin,
-      var(--menupopup-inner-box-margin)
-    ) !important;
+    margin-block: var(--uc-overflowing-inner-box-margin, var(--uc-inner-box-margin)) !important;
   }
 
   :is(menuitem, menu),
@@ -289,7 +238,7 @@ and a few elements like checkboxes */
   }
 
   :is(menuitem, menu)[disabled="true"],
-  panel[type="autocomplete-richlistbox"]
+panel[type="autocomplete-richlistbox"]
     > richlistbox
     > richlistitem[disabled="true"] {
     appearance: none !important;
@@ -343,7 +292,7 @@ and a few elements like checkboxes */
 
   :is(menu, menuitem)[_moz-menuactive="true"]:not([disabled="true"]) {
     appearance: none !important;
-    background-color: var(--menuitem-hover-background-color) !important;
+    background-color: var(--secondary-color) !important;
   }
 
   :is(menu, menuitem)[_moz-menuactive="true"][disabled="true"] {
@@ -356,7 +305,7 @@ and a few elements like checkboxes */
   }
 
   menu.subviewbutton:not([disabled="true"])[_moz-menuactive="true"]:active {
-    background: var(--menuitem-hover-background-color) !important;
+    background: var(--secondary-color) !important;
     box-shadow: none !important;
   }
 
@@ -365,14 +314,14 @@ and a few elements like checkboxes */
     display: -moz-inline-box;
     width: 14px;
     height: 14px;
-    margin-inline: var(--context-checkbox-margin);
+    margin-inline: var(--uc-margin);
     fill: currentColor;
     -moz-context-properties: fill, fill-opacity, stroke;
     content: "";
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    border: 1px solid var(--checkbox-border-color);
+    border: 1px solid var(--base0099);
     background-color: var(--checkbox-unchecked-bgcolor);
     color: var(--in-parent-primary-button-text-color);
   }
@@ -383,7 +332,7 @@ and a few elements like checkboxes */
 
   menupopup
     menuitem:is([type="checkbox"], [type="radio"])[_moz-menuactive="true"]::before {
-    background-color: var(--checkbox-unchecked-hover-bgcolor);
+    background-color: var(--base03);
   }
 
   menupopup
@@ -393,18 +342,18 @@ and a few elements like checkboxes */
 
   menupopup
     menuitem:is([type="checkbox"], [type="radio"])[checked="true"][_moz-menuactive="true"]::before {
-    background-color: var(--checkbox-checked-hover-bgcolor);
+    background-color: var(--uc-hover-bgcolor);
   }
 
   menupopup
     menuitem:is([type="checkbox"], [type="radio"])[checked="true"][_moz-menuactive="true"]:active::before {
-    background-color: var(--checkbox-checked-active-bgcolor);
+    background-color: var(--uc-active-bgcolor);
   }
 
   menupopup menuitem[type="checkbox"][checked="true"]::before {
     background-image: url(chrome://userchrome/content/check.svg);
-    border-color: var(--checkbox-checked-border-color);
-    background-color: var(--checkbox-checked-bgcolor);
+    border-color: var(--uc-border-color);
+    background-color: var(--base01);
   }
 
   menupopup menuitem[type="radio"]::before {
@@ -413,18 +362,15 @@ and a few elements like checkboxes */
 
   menupopup menuitem[type="radio"][checked="true"]::before {
     background-image: url(chrome://userchrome/content/radio.svg);
-    border-color: var(--checkbox-checked-border-color);
-    background-color: var(--checkbox-checked-bgcolor);
+    border-color: var(--uc-border-color);
+    background-color: var(--base01);
   }
 
   menupopup menuitem:is([type="checkbox"], [type="radio"]) .menu-iconic-left {
     display: none;
   }
 
-  #ContentSelectDropdown
-    > menupopup
-    > :where(menucaption, menuitem)
-    > .menu-iconic-text,
+  #ContentSelectDropdown > menupopup > :where(menucaption, menuitem) > .menu-iconic-text,
   menupopup.in-menulist > :where(menucaption, menuitem) > .menu-iconic-text {
     padding-block: unset !important;
   }
@@ -438,8 +384,7 @@ and a few elements like checkboxes */
   }
 
   :is(#ContentSelectDropdown, menupopup.in-menulist, .contentSelectDropdown-ingroup)
-    :is(menu, menuitem, menucaption)
-    > :is(label, .menu-iconic-text, .menu-text) {
+    :is(menu, menuitem, menucaption) > :is(label, .menu-iconic-text, .menu-text) {
     padding-inline: 0 !important;
     font: menu !important;
   }
@@ -460,14 +405,12 @@ and a few elements like checkboxes */
   }
 
   :is(#ContentSelectDropdown, menupopup.in-menulist, .contentSelectDropdown-ingroup)
-    menucaption
-    > :is(label, .menu-iconic-text, .menu-text) {
+    menucaption > :is(label, .menu-iconic-text, .menu-text) {
     font-weight: 600 !important;
   }
 
   :is(#ContentSelectDropdown, menupopup.in-menulist, .contentSelectDropdown-ingroup)
-    menucaption:first-child
-    > :is(label, .menu-iconic-text, .menu-text) {
+    menucaption:first-child > :is(label, .menu-iconic-text, .menu-text) {
     margin-block: -3px 0 !important;
   }
 
@@ -494,8 +437,8 @@ and a few elements like checkboxes */
   menupopup.in-menulist {
     appearance: none !important;
     border: none !important;
-    border-radius: var(--menupopup-border-radius) !important;
-    margin: var(--menupopup-margin) !important;
+    border-radius: var(--uc-border-radius) !important;
+    margin: var(--uc-margin) !important;
     overflow: hidden !important;
     color: var(--menu-color) !important;
     background-image: unset !important;
@@ -507,26 +450,23 @@ and a few elements like checkboxes */
     color: inherit !important;
     border-radius: var(--context-menuitem-border-radius);
     margin-block: 0 !important;
-    margin-inline: var(--menupopup-inner-padding-magnitude) !important;
+    margin-inline: var(--uc-inner-padding-magnitude) !important;
     padding-inline-start: 3px !important;
-    background-color: var(--menuitem-hover-background-color) !important;
+    background-color: var(--secondary-color) !important;
     padding-block: 0 !important;
     transition: 300ms background-color !important;
     min-height: var(--menuitem-height) !important;
     -moz-user-modify: read-write !important;
   }
 
-  #ContentSelectDropdown
-    > menupopup
+  #ContentSelectDropdown > menupopup
     .contentSelectDropdown-searchbox:focus-within {
-    background-color: var(--search-box-focus) !important;
+    background-color: var(--secondary-color) !important;
     transition: 300ms background-color !important;
   }
 
-  #ContentSelectDropdown
-    > menupopup
-    .contentSelectDropdown-searchbox
-    + :is(menu, menuitem) {
+  #ContentSelectDropdown > menupopup
+    .contentSelectDropdown-searchbox + :is(menu, menuitem) {
     margin-top: 4px;
   }
 
@@ -561,7 +501,7 @@ and a few elements like checkboxes */
     appearance: none !important;
     border-color: var(--menu-separator-color) !important;
     margin: var(--menu-separator-margin) !important;
-    margin-inline: var(--menupopup-inner-padding-magnitude) !important;
+    margin-inline: var(--uc-inner-padding-magnitude) !important;
     padding: 0 !important;
   }
 
@@ -603,10 +543,9 @@ and a few elements like checkboxes */
   /* highlight stylesheets owned by the user so they're easier to find */
   #style-editor-chrome-window
         .stylesheet-name
-        label:is([value^="uc-"], [value^="userChrome"], [value^="userContent"], [value="custom-chrome.css"], [value="custom-content.css"], [tooltiptext^="chrome://userchrome/"], [tooltiptext^="file://"])
-  {
+        label:is([value^="uc-"], [value^="userChrome"], [value^="userContent"], [value="custom-chrome.css"], [value="custom-content.css"], [tooltiptext^="chrome://userchrome/"], [tooltiptext^="file://"]) {
     text-decoration: underline !important;
-    color: var(--attention-color) !important;
+    color: var(--secondary-color) !important;
   }
 
   @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
@@ -616,8 +555,7 @@ and a few elements like checkboxes */
     }
 
     :is(#ContentSelectDropdown, menupopup.in-menulist, .contentSelectDropdown-ingroup)
-      :is(menu, menuitem, menucaption)
-      > :is(label, .menu-iconic-text, .menu-text) {
+      :is(menu, menuitem, menucaption) > :is(label, .menu-iconic-text, .menu-text) {
       font-family: SF Pro Text, Segoe UI, sans-serif !important;
       font-kerning: normal !important;
     }

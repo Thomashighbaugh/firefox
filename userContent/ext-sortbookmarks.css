@@ -1,7 +1,6 @@
 /* popup content styles for the addon Sort Bookmarks */
 
-@-moz-document url-prefix("moz-extension://18d76235-7e4d-46e3-961a-2bce21e96472/popup.html")
-{
+@-moz-document url-prefix("moz-extension://18d76235-7e4d-46e3-961a-2bce21e96472/popup.html") {
   body {
     background: var(--uc-arrowpanel-background) !important;
     color: var(--uc-arrowpanel-color) !important;
@@ -35,24 +34,22 @@
   }
 
   #sort-form {
-    margin: var(--menupopup-inner-padding-magnitude) !important;
-    padding-block: var(--menupopup-inner-padding-magnitude) !important;
+    margin: var(--uc-inner-padding-magnitude) !important;
+    padding-block: var(--uc-inner-padding-magnitude) !important;
     border-top: 1px solid var(--uc-desaturate-dimmed) !important;
   }
 
   #sort-form p {
-    margin: var(--menupopup-inner-padding-magnitude) 6px !important;
+    margin: var(--uc-inner-padding-magnitude) 6px !important;
   }
 
   select {
     appearance: none;
-    border-radius: var(--general-button-border-radius);
+    border-radius: var(--uc-border-radius);
     margin: 0;
     border: none !important;
     padding: 4px 20px 4px 3px !important;
-    background: var(--uc-arrowpanel-dimmed)
-      url(chrome://userchrome/content/arrow-dropdown-12.svg) no-repeat center
-      right 5px/12px !important;
+    background: var(--uc-arrowpanel-dimmed) url(chrome://userchrome/content/arrow-dropdown-12.svg) no-repeat center right 5px/12px !important;
     color: inherit !important;
     fill: currentColor;
     -moz-context-properties: fill, fill-opacity;
@@ -61,7 +58,7 @@
 
   select:is(:hover, :focus, :active) {
     appearance: none;
-    border-radius: var(--general-button-border-radius);
+    border-radius: var(--uc-border-radius);
     margin: 0;
     border: none !important;
     padding: 4px 20px 4px 3px !important;
@@ -174,7 +171,7 @@
     min-height: 28px !important;
     width: 100% !important;
     inline-size: -moz-available !important;
-    margin-top: var(--menupopup-inner-padding-magnitude);
+    margin-top: var(--uc-inner-padding-magnitude);
     margin-inline: 6px;
     padding-inline-start: 8px !important;
     border: 1px solid transparent !important;
@@ -194,9 +191,7 @@
   }
 
   button[type="submit"]:is(:hover, :focus-visible, :-moz-focusring):active:not([disabled]) {
-    background-color: var(
-      --in-parent-primary-button-background-hover
-    ) !important;
+    background-color: var(--in-parent-primary-button-background-hover) !important;
     border-color: transparent !important;
   }
 
@@ -206,9 +201,9 @@
 
   @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
     * {
-      font-family: -apple-system, BlinkMacSystemFont, SF Pro Text, "segoe ui",
-        "helvetica neue", helvetica, ubuntu, roboto, noto, arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, SF Pro Text, "segoe ui", "helvetica neue", helvetica, ubuntu, roboto, noto, arial, sans-serif;
     }
+
     #context {
       font-weight: var(--uc-font-weight-bold) !important;
     }

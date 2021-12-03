@@ -107,7 +107,7 @@ td:not(:first-child) {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    background-color: var(--in-content-bg-dark);
+    background-color: var(--window-color);
     color: var(--plaintext-color);
   }
 
@@ -123,6 +123,6 @@ td:not(:first-child) {
 
   body > table > tbody > tr:hover {
     outline: 1px solid var(--in-content-separator-dim);
-    background-color: var(--in-content-button-highlight-dark);
+    background-color: var(--base03);
   }
 }

@@ -24,10 +24,14 @@ download_ff() {
     if [[ $? -eq 0 ]]; then
         message "[>>] Copying..."
 
-        FF_THEME="/tmp/firefox-master/"
-        cp -r "${FF_THEME}"* "${CHROME_DIRECTORY}"
-        sudo cp -r "${FF_THEME}"patches/root/defaults /usr/lib/firefox*
-        sudo cp -r "${FF_THEME}"patches/root/config.js /usr/lib/firefox*
+        FF_THEME="/tmp/firefox-master"
+        cp -r "${FF_THEME}"/* "${CHROME_DIRECTORY}"
+        sudo cp -rvf "${FF_THEME}"/patches/root/* /usr/lib/firefox*
+
+        # Minimize chances there is a boot.jsm injection attack by changing the permissions to what you would expect them to be. Not a promise of safety, but probably enough for me and my Linux machine.
+        sudo chmod -Rv 644 /usr/lib/firefox*
+
+
         cp -rvf "${CHROME_DIRECTORY}"/patches/chrome/* "${CHROME_DIRECTORY}"
 
         message "[>>] Backup user.js instead of overwriting it"

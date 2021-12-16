@@ -126,14 +126,6 @@
       --content-principal-page-background
     ) !important;
     --in-content-page-color: var(--content-principal-page-color) !important;
-    --base00: var(--content-principal-box-background) !important;
-    --base00-odd: var(--content-principal-box-background-odd) !important;
-    --base00-dim: var(--content-principal-box-background-dim) !important;
-    --base0099: var(--content-principal-box-border-color) !important;
-    --base01-active: var(
-      --content-principal-button-background-active
-    ) !important;
-    --base01-solid: var(--content-principal-button-background-solid);
     --in-content-item-selected: var(--base05) !important;
     --in-content-border-highlight: var(--base05) !important;
     --in-content-border-hover: var(--content-principal-border-hover) !important;

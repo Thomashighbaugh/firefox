@@ -51,7 +51,7 @@
   html:not(#ublock0-epicker),
   html:not(#ublock0-epicker) body,
   #newtab-customize-overlay {
-    background: var(--tab-toolbar-bg) !important;
+    background: var(--base01) !important;
     color: var(--base06) !important;
   }
 }

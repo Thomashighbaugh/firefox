@@ -5,8 +5,8 @@
   :root {
     --in-content-border-hover: var(--dialog-box-border-hover) !important;
     --in-content-border-focus: var(--base01) !important;
-    --in-content-border-active: var(--purple-40) !important;
-    --in-content-border-active-shadow: var(--purple-40-a30) !important;
+    --in-content-border-active: var(--base00aa) !important;
+    --in-content-border-active-shadow: var(--base00aa) !important;
     --organizer-color: var(--plaintext-color) !important;
     --organizer-deemphasized-color: color-mix(
       in srgb,

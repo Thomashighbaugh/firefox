@@ -1,8 +1,6 @@
-@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
-@namespace html url(http://www.w3.org/1999/xhtml);
 @import url(userChrome/uc.css);
 
-/* move tabs bar over */
+/* I am assuming because  */
 #TabsToolbar {
   margin-left: var(--uc-urlbar-width) !important;
   display: none !important;

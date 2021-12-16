@@ -100,10 +100,10 @@ tooltip {
   --uc-arrowpanel-background: var(--base00);
   --uc-arrowpanel-color: hsl(213, 43%, 89%);
   --button-solid-hover-background: var(--base02);
-  --button-solid-active-background: var(--base0033);
-  --button-solid-checked-background: var(--base0033);
+  --button-solid-active-background: transparent;
+  --button-solid-checked-background: transparent;
   --uc-toolbarbutton-hover-background: var(--base01);
-  --uc-toolbarbutton-active-background: var(--base01);
+  --uc-toolbarbutton-active-background: transparent;
   --uc-toolbarbutton-checked-background: hsla(236, 82%, 83%, 0.13);
   --uc-desaturate-hover-background: var(--base03);
   --uc-desaturate-active-background: var(--base03);
@@ -142,7 +142,7 @@ tooltip {
   --menu-right-size: 14px;
   --menu-separator-margin: 4px;
 
-  --uc-font-weight-extrabold: 700;
+  --uc-font-weight-extrabold: 900;
   --uc-font-weight-bold: 600;
   --uc-font-weight-semibold: 500;
   --uc-font-weight-thin: 400;

@@ -54,7 +54,7 @@ html.private .search-wrapper input {
 [lwt-newtab-brighttext] .search-wrapper .search-inner-wrapper:hover input,
 [lwt-newtab-brighttext] .search-wrapper .search-inner-wrapper:active input,
 [lwt-newtab-brighttext] .search-wrapper input:focus {
-  border-color: var(--base04) !important;
+  border-color: var(--base01) !important;
 }
 /*Private*/
 [private] .search-wrapper .search-inner-wrapper:hover input,
@@ -77,7 +77,7 @@ html.private .search-wrapper input {
 /*Dark*/
 [lwt-newtab-brighttext] .search-wrapper .search-button:focus,
 [lwt-newtab-brighttext] .search-wrapper .search-button:hover {
-  background-color: var(--base04) !important;
+  background-color: var(--base01) !important;
 }
 /*Private*/
 [private] .search-wrapper .search-button:focus,

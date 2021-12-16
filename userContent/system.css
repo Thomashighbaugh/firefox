@@ -430,9 +430,6 @@
   @-moz-document regexp("^about:blocked.*") {
     html:root,
     html:root * {
-      --base01: transparent !important;
-      --base02: #5a0002 !important;
-      --base01-active: #3e0200 !important;
       --in-content-button-border-color: white !important;
       --in-content-primary-button-background: var(--ui-text-90) !important;
       --in-content-primary-button-background-hover: var(

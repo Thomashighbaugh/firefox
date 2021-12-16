@@ -46,7 +46,7 @@ and a few elements like checkboxes */
     --desaturate-checked-background: hsla(236, 60%, 83%, 0.13) !important;
     --button-bgcolor: var(--arrowpanel-dimmed) !important;
     --button-hover-bgcolor: var(--arrowpanel-dimmed-further) !important;
-    --base02: var(--arrowpanel-dimmed-even-further) !important;
+
     --button-primary-bgcolor: var(--purple-45) !important;
     --button-primary-hover-bgcolor: var(--purple-40) !important;
     --button-primary-active-bgcolor: var(--purple-35) !important;

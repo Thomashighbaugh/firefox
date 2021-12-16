@@ -3,9 +3,6 @@
 @-moz-document url-prefix("chrome://browser/content/places/places.xhtml")
 {
   :root {
-    --base01-disabled: hsla(0, 20%, 80%, 0.12);
-    --base02: hsla(0, 20%, 90%, 0.15);
-    --base01-active: hsla(0, 20%, 90%, 0.19);
     --in-content-border-hover: var(--dialog-box-border-hover) !important;
     --in-content-border-focus: var(--base05) !important;
     --in-content-border-active: var(--base05) !important;

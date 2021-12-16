@@ -10,6 +10,7 @@
 visibility: collapse !important;
 
 }
+#TabsToolbar { visibility: collapse !important; }
   @media screen and (-moz-os-version:windows-win7) {
     window {
       background-color: var(--tone-8)!important;

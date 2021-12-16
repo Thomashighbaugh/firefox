@@ -7,7 +7,8 @@
     font-family: "Commodore 64 Rounded Bold";
     font-style: normal;
     font-weight: 100;
-    src: local("Overpass Mono"), local("Overpass Mono Light"), local("OverpassMono-Light");
+    src: local("Overpass Mono"), local("Overpass Mono Light"),
+      local("OverpassMono-Light");
   }
 
   :root {
@@ -111,7 +112,9 @@
     --checkbox-checked-bgcolor: var(--uc-checkbox-checked-bgcolor);
     --checkbox-checked-color: var(--uc-checkbox-checked-color);
     --checkbox-checked-hover-bgcolor: var(--uc-checkbox-checked-hover-bgcolor);
-    --checkbox-checked-active-bgcolor: var(--uc-checkbox-checked-active-bgcolor);
+    --checkbox-checked-active-bgcolor: var(
+      --uc-checkbox-checked-active-bgcolor
+    );
   }
 
   html:not([role="dialog"]),
@@ -119,15 +122,17 @@
   html:not([role="dialog"]) body.activity-stream,
   window:not([chromehidden]),
   window:not([chromehidden]) > dialog {
-    --in-content-page-background: var(--content-principal-page-background) !important;
+    --in-content-page-background: var(
+      --content-principal-page-background
+    ) !important;
     --in-content-page-color: var(--content-principal-page-color) !important;
     --base00: var(--content-principal-box-background) !important;
     --base00-odd: var(--content-principal-box-background-odd) !important;
     --base00-dim: var(--content-principal-box-background-dim) !important;
     --base0099: var(--content-principal-box-border-color) !important;
-    --base01: var(--content-principal-button-background) !important;
-    --base02: var(--content-principal-button-background-hover) !important;
-    --base01-active: var(--content-principal-button-background-active) !important;
+    --base01-active: var(
+      --content-principal-button-background-active
+    ) !important;
     --base01-solid: var(--content-principal-button-background-solid);
     --in-content-item-selected: var(--base05) !important;
     --in-content-border-highlight: var(--base05) !important;
@@ -154,8 +159,16 @@
     --newtab-text-primary-color: var(--secondary-color) !important;
     --lwt-sidebar-background-color: var(--base01) !important;
     --lwt-sidebar-text-color: var(--secondary-color) !important;
-    --newtab-search-header-background-color: color-mix(in srgb, var(--content-principal-page-background) 70%, transparent) !important;
-    --newtab-search-header-background-intermediate: color-mix(in srgb, var(--content-principal-page-background) 80%, transparent) !important;
+    --newtab-search-header-background-color: color-mix(
+      in srgb,
+      var(--content-principal-page-background) 70%,
+      transparent
+    ) !important;
+    --newtab-search-header-background-intermediate: color-mix(
+      in srgb,
+      var(--content-principal-page-background) 80%,
+      transparent
+    ) !important;
     --newtab-seperator-line-color: var(--base02) !important;
     --newtab-modal-color: var(--base00) !important;
     --newtab-focus-outline: var(--in-content-border-active-shadow) !important;
@@ -163,14 +176,34 @@
     --newtab-focus-border-selected: var(--base03) !important;
     --newtab-textbox-background-color: var(--base01) !important;
     --newtab-textbox-focus-color: var(--in-content-border-focus) !important;
-    --newtab-primary-action-background: var(--in-content-primary-button-background-hover) !important;
-    --newtab-primary-action-background-hover: color-mix(in srgb, var(--base03) 60%, var(--newtab-primary-action-background)) !important;
-    --newtab-primary-action-background-active: color-mix(in srgb, var(--base06) 60%, var(--newtab-primary-action-background)) !important;
-    --newtab-primary-element-text-color: var(--inverted-color)!important;
+    --newtab-primary-action-background: var(
+      --in-content-primary-button-background-hover
+    ) !important;
+    --newtab-primary-action-background-hover: color-mix(
+      in srgb,
+      var(--base03) 60%,
+      var(--newtab-primary-action-background)
+    ) !important;
+    --newtab-primary-action-background-active: color-mix(
+      in srgb,
+      var(--base06) 60%,
+      var(--newtab-primary-action-background)
+    ) !important;
+    --newtab-primary-element-text-color: var(--inverted-color) !important;
     --newtab-element-secondary-color: var(--base02) !important;
-    --newtab-element-secondary-color-hover: color-mix(in srgb, var(--ui-text-40) 50%, var(--base01-solid)) !important;
-    --newtab-element-secondary-color-active: color-mix(in srgb, var(--ui-text-50) 50%, var(--base01-solid)) !important;
-    --newtab-button-primary-color: var(--in-content-primary-button-background-hover) !important;
+    --newtab-element-secondary-color-hover: color-mix(
+      in srgb,
+      var(--ui-text-40) 50%,
+      var(--base01-solid)
+    ) !important;
+    --newtab-element-secondary-color-active: color-mix(
+      in srgb,
+      var(--ui-text-50) 50%,
+      var(--base01-solid)
+    ) !important;
+    --newtab-button-primary-color: var(
+      --in-content-primary-button-background-hover
+    ) !important;
     --newtab-border-primary-color: var(--base01-active) !important;
     --newtab-background-color-secondary: var(--base01-solid) !important;
     --newtab-card-active-outline-color: var(--base01) !important;
@@ -179,11 +212,17 @@
     --newtab-topsites-background-color: var(--base01) !important;
     --customize-menu-background: var(--base00) !important;
     --customize-menu-secondary-action-background: var(--base01) !important;
-    --customize-menu-secondary-action-background-hover: var(--base02) !important;
-    --customize-menu-secondary-action-background-active: var(--base01-active) !important;
+    --customize-menu-secondary-action-background-hover: var(
+      --base02
+    ) !important;
+    --customize-menu-secondary-action-background-active: var(
+      --base01-active
+    ) !important;
     --customize-menu-first-shadow: hsla(250, 3%, 2%, 0.2) !important;
     --customize-menu-second-shadow: hsla(250, 3%, 2%, 0.4) !important;
-    --newtab-contextmenu-background-color: var(--in-content-table-background) !important;
+    --newtab-contextmenu-background-color: var(
+      --in-content-table-background
+    ) !important;
     --newtab-contextmenu-button-color: var(--base00) !important;
     --newtab-card-background-color: var(--base00) !important;
     --newtab-card-placeholder-color: var(--base00) !important;
@@ -193,7 +232,12 @@
   }
 
   body:not(.inline-onboarding) .fixed-search .search-wrapper {
-    background-image: linear-gradient(180deg, var(--in-content-page-background) 0%, var(--newtab-search-header-background-intermediate) 50%, var(--newtab-search-header-background-color) 100%) !important;
+    background-image: linear-gradient(
+      180deg,
+      var(--in-content-page-background) 0%,
+      var(--newtab-search-header-background-intermediate) 50%,
+      var(--newtab-search-header-background-color) 100%
+    ) !important;
     background-color: transparent !important;
     backdrop-filter: blur(12px);
   }
@@ -242,7 +286,8 @@
 
   .showPrivate .search-handoff-button {
     background-color: var(--newtab-textbox-background-color) !important;
-    box-shadow: 0 3px 8px var(--newtab-search-first-shadow), 0 0 2px var(--newtab-search-second-shadow) !important;
+    box-shadow: 0 3px 8px var(--newtab-search-first-shadow),
+      0 0 2px var(--newtab-search-second-shadow) !important;
     border: 1px solid transparent !important;
     color: var(--newtab-search-text-color) !important;
   }
@@ -271,11 +316,19 @@
   .search-tooltip {
     color: var(--global-selection-color) !important;
     background-color: var(--aboutPrefs-find-tags) !important;
-    border-color: color-mix(in srgb, black 18%, var(--aboutPrefs-find-tags)) !important;
+    border-color: color-mix(
+      in srgb,
+      black 18%,
+      var(--aboutPrefs-find-tags)
+    ) !important;
   }
 
   .search-tooltip::before {
-    border-top-color: color-mix(in srgb, black 18%, var(--aboutPrefs-find-tags)) !important;
+    border-top-color: color-mix(
+      in srgb,
+      black 18%,
+      var(--aboutPrefs-find-tags)
+    ) !important;
   }
 
   .search-tooltip::after {
@@ -296,12 +349,14 @@
     margin-inline: -15.5px !important;
   }
 
-  link[rel="stylesheet"][href="chrome://global/content/elements/message-bar.css"] ~ .container {
+  link[rel="stylesheet"][href="chrome://global/content/elements/message-bar.css"] ~ .container
+  {
     padding: 8px !important;
     border-radius: 0 !important;
   }
 
-  link[rel="stylesheet"][href="chrome://global/content/elements/message-bar.css"] ~ .container .content {
+  link[rel="stylesheet"][href="chrome://global/content/elements/message-bar.css"] ~ .container .content
+  {
     display: flex !important;
     flex-flow: row nowrap;
     justify-content: space-between !important;
@@ -336,12 +391,20 @@
   }
 
   message-bar[type="error"]:not([message-bar-type="infobar"]) {
-    --message-bar-background-color: color-mix(in srgb, transparent 15%, var(--uc-warning-background)) !important;
+    --message-bar-background-color: color-mix(
+      in srgb,
+      transparent 15%,
+      var(--uc-warning-background)
+    ) !important;
     --message-bar-text-color: var(--text-color) !important;
   }
 
   message-bar[type="critical"]:not([message-bar-type="infobar"]) {
-    --message-bar-background-color: color-mix(in srgb, hsla(-2, 100%, 60%, 0.5) 45%, var(--uc-warning-background)) !important;
+    --message-bar-background-color: color-mix(
+      in srgb,
+      hsla(-2, 100%, 60%, 0.5) 45%,
+      var(--uc-warning-background)
+    ) !important;
     --message-bar-text-color: var(--text-color) !important;
   }
 
@@ -380,8 +443,12 @@
       --base01-active: #3e0200 !important;
       --in-content-button-border-color: white !important;
       --in-content-primary-button-background: var(--ui-text-90) !important;
-      --in-content-primary-button-background-hover: var(--inverted-color)!important;
-      --in-content-primary-button-background-active: var(--inverted-color) !important;
+      --in-content-primary-button-background-hover: var(
+        --inverted-color
+      ) !important;
+      --in-content-primary-button-background-active: var(
+        --inverted-color
+      ) !important;
       --in-content-primary-button-text-color: black !important;
     }
 
@@ -508,8 +575,16 @@
     }
 
     .message--level-error {
-      --message-background-color: color-mix(in srgb, transparent 15%, var(--uc-warning-background)) !important;
-      --message-border-color: color-mix(in srgb, transparent 30%, var(--uc-warning-background)) !important;
+      --message-background-color: color-mix(
+        in srgb,
+        transparent 15%,
+        var(--uc-warning-background)
+      ) !important;
+      --message-border-color: color-mix(
+        in srgb,
+        transparent 30%,
+        var(--uc-warning-background)
+      ) !important;
       --message-color: var(--text-color) !important;
       --message-icon-color: var(--warning-color) !important;
     }
@@ -519,13 +594,22 @@
 @-moz-document url-prefix("about:reader") {
   body.dark {
     --main-background: var(--window-color) !important;
-    --tooltip-background: color-mix(in srgb, black 40%, var(--window-color)) !important;
+    --tooltip-background: color-mix(
+      in srgb,
+      black 40%,
+      var(--window-color)
+    ) !important;
     --active-color: var(--base03) !important;
     --selected-background: var(--secondary-color) !important;
     --link-foreground: var(--base05) !important;
     --visited-link-foreground: #823afc !important;
-    --proportional-width: calc(100% - (122.5em - (var(--content-width, 60em) * 2)));
-    --final-content-width: max(var(--content-width, 60em), var(--proportional-width, var(--content-width, 60em)));
+    --proportional-width: calc(
+      100% - (122.5em - (var(--content-width, 60em) * 2))
+    );
+    --final-content-width: max(
+      var(--content-width, 60em),
+      var(--proportional-width, var(--content-width, 60em))
+    );
   }
 
   .container {
@@ -596,7 +680,8 @@
 }
 
 /* firefox screenshots addon overlay */
-@-moz-document url("moz-extension://bc8fcf05-0a6f-40d5-a068-b452be394b53/blank.html") {
+@-moz-document url("moz-extension://bc8fcf05-0a6f-40d5-a068-b452be394b53/blank.html")
+{
   .all-buttons-container {
     background-color: var(--content-principal-box-background) !important;
     height: 88px !important;
@@ -630,7 +715,8 @@
   @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
     .pixel-dimensions {
       font-weight: var(--uc-font-weight-bold) !important;
-      font-family: -apple-system, BlinkMacSystemFont, SF Pro, "segoe ui", "helvetica neue", helvetica, ubuntu, roboto, noto, arial, sans-serif !important;
+      font-family: -apple-system, BlinkMacSystemFont, SF Pro, "segoe ui",
+        "helvetica neue", helvetica, ubuntu, roboto, noto, arial, sans-serif !important;
       font-size: normal !important;
     }
   }

@@ -16,7 +16,7 @@ tooltip {
     --base00cc: #17191ecc;
     --base0000: #17191e00;
   
-    --base01: #23252E;
+    --base01: #23252E !important;
     --base02: #3c3f4c;
     --base0233: #3c3f4c33;
     --base0266: #3c3f4c66;

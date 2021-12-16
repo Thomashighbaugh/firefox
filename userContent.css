@@ -60,7 +60,7 @@
 
 :root {
   scrollbar-color: var(--base05) transparent !important;
-  background: var(--tab-toolbar-bg) !important;
+  background: var(--base01) !important;
   font-weight: 900;
   /* font-family: "Hurmit Nerd Font Mono bold", monospace !important; */
 }
@@ -68,7 +68,7 @@
 @-moz-document url(about:privatebrowsing) {
   :root {
     scrollbar-color: var(--base06) transparent !important;
-    background: var(--tab-toolbar-bg) !important;
+    background: var(--base01) !important;
     color: var(--base06) !important;
   }
 }

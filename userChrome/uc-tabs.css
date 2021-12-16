@@ -1,0 +1,83 @@
+/* ##========================================================================================
+##                                                                                      ##
+##                                         TABS                                         ##
+##                                                                                      ##
+##======================================================================================== */
+#TabsToolbar {
+  height: 22px !important;
+  visibility: collapse;
+}
+.tabbrowser-tabs {
+  height: 22px !important;
+  visibility: collapse;
+}
+#tabbrowser-tabs {
+  visibility: collapse;
+  height: 22px !important;
+}
+#nav-bar{
+  border-top-width: 0px !important;
+  padding: 0px 5px 0px 75px !important; /*The 75px is a fix for MacOS to make room for the window controls*/
+  margin-top: -5px !important; /*This is a dumb hack to get rid of the "collapsed" tab bar that still shows up.  IDK why it's persistant, but this is the only thing that got rid of it.*/
+}
+
+/*position window controls.  Only for MacOS*/
+#titlebar-buttonbox-container {
+  margin-left: 5px !important;
+  margin-top: 5px !important;
+}
+
+/* Hide tabs on Linux, Windoows, any with titlebar.
+ * Doesn't work right with MacOS, use the other one instead */
+
+#TabsToolbar {
+	visibility: collapse !important;
+}
+
+
+/* ##========================================================================================
+##                                                                                      ##
+##                                    Container Tabs                                    ##
+##                                                                                      ##
+##======================================================================================== */
+
+.identity-color-blue {
+  --identity-tab-color: var(--uc-identity-color-blue) !important;
+  --identity-icon-color: var(--uc-identity-color-blue) !important;
+}
+
+.identity-color-turquoise {
+  --identity-tab-color: var(--uc-identity-color-turquoise) !important;
+  --identity-icon-color: var(--uc-identity-color-turquoise) !important;
+}
+
+.identity-color-green {
+  --identity-tab-color: var(--uc-identity-color-green) !important;
+  --identity-icon-color: var(--uc-identity-color-green) !important;
+}
+
+.identity-color-yellow {
+  --identity-tab-color: var(--uc-identity-color-yellow) !important;
+  --identity-icon-color: var(--uc-identity-color-yellow) !important;
+}
+
+.identity-color-orange {
+  --identity-tab-color: var(--uc-identity-color-orange) !important;
+  --identity-icon-color: var(--uc-identity-color-orange) !important;
+}
+
+.identity-color-red {
+  --identity-tab-color: var(--uc-identity-color-red) !important;
+  --identity-icon-color: var(--uc-identity-color-red) !important;
+}
+
+.identity-color-pink {
+  --identity-tab-color: var(--uc-identity-color-pink) !important;
+  --identity-icon-color: var(--uc-identity-color-pink) !important;
+}
+
+.identity-color-purple {
+  --identity-tab-color: var(--uc-identity-color-purple) !important;
+  --identity-icon-color: var(--uc-identity-color-purple) !important;
+}
+

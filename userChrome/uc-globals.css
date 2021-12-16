@@ -1,0 +1,71 @@
+/* ##========================================================================================
+##                                                                                      ##
+##                                        Globals                                       ##
+##                                                                                      ##
+## Description: These are the variables used elsewhere. Firefox is a hideous mess of    ##
+## variables all with hideous names, which we will override in another file with these  ##
+## values.                                                                              ##
+##======================================================================================== */
+
+/* Used by plaintext for style, provides base */
+@import url(chrome://userchrome/content/layout/uc-low-globals.css);
+@import url(../colors/vice.css);
+
+:root {
+  /* ##========================================================================================
+##*                                                                                     ##
+##                                        COLORS                                        ##
+##                                                                                      ##
+##======================================================================================== */
+
+  /* Comment this block out if you want to keep the default theme color. */
+  /* This will also work with custom colors from color.firefox.com. */
+
+  /* Theme color Suggestions*/
+  --window-color: var(--base00);
+  --secondary-color: var(--base01);
+  --secondary-color-hover: var(--base02);
+  --secondary-color-active: var(--secondary-color-hover);
+  --inverted-color: var(--base07);
+
+  /* Containter Tab colors */
+  --uc-identity-color-blue: var(--base14);
+  --uc-identity-color-turquoise: var(--base12);
+  --uc-identity-color-green: var(--base15);
+  --uc-identity-color-yellow: var(--base10);
+  --uc-identity-color-orang: var(--base17);
+  --uc-identity-color-red: var(--base08);
+  --uc-identity-color-pink: var(--base16);
+  --uc-identity-color-purple: var(--base11);
+  --uc-identity-color-gray: var(--base05);
+
+  /* URL color in URL bar suggestions */
+  --urlbar-popup-url-color: var(--uc-identity-color-gray) !important;
+
+  /* ##========================================================================================
+##*                                                                                     ##
+##                                                                                      ##
+##                                      AESTHETICS                                      ##
+##                                                                                      ##
+##======================================================================================== */
+
+  /* global border radius */
+  --uc-border-radius: 6px;
+  --uc-border-color: var(--base0099);
+  /* dynamic url bar width settings */
+  --uc-urlbar-width: clamp(200px, 40vw, 500px);
+
+  /* dynamic tab width settings */
+  --uc-active-tab-width: clamp(100px, 20vw, 300px);
+  --uc-inactive-tab-width: clamp(50px, 15vw, 200px);
+
+  /* if active always shows the tab close button */
+  --show-tab-close-button: none; /* DEFAULT: -moz-inline-box; */
+
+  /* if active only shows the tab close button on hover*/
+  --show-tab-close-button-hover: none; /* DEFAULT: -moz-inline-box; */
+
+  /* adds left and right margin to the container-tabs indicator */
+  --container-tabs-indicator-margin: 10px;
+  --uc-margin: 3px;
+}

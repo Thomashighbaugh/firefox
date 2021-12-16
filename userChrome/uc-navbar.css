@@ -1,0 +1,50 @@
+/* ##========================================================================================
+##*                                                                                     ##
+##                                        NAVBAR                                        ##
+##                                                                                      ##
+##======================================================================================== */
+
+#nav-bar {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+
+/* remove border below whole nav */
+#navigator-toolbox {
+  border-bottom: none !important;
+}
+
+#urlbar,
+#urlbar * {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+#urlbar-background {
+  border: var(--uc-hover-color) !important;
+}
+
+#urlbar[focused="true"]
+    > #urlbar-background,
+#urlbar:not([open])
+    > #urlbar-background {
+  background: transparent !important;
+}
+
+#urlbar[open]
+    > #urlbar-background {
+  background: var(--uc-theme-color) !important;
+}
+
+.urlbarView-row:hover > .urlbarView-row-inner,
+.urlbarView-row[selected]
+    > .urlbarView-row-inner {
+  background: var(--uc-hover-color) !important;
+}
+
+/* transition to oneline */
+
+
+

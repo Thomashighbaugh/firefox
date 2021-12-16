@@ -1,5 +1,1 @@
-.DS_Store
-internal_UUIDs.txt
-node_modules
-.cache
-ShadowFox.xcodeproj
+.vscode

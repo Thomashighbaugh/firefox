@@ -1,8 +1,0 @@
-/*! Alters the webextension Dark Mode
-  IMPORTANT: change the Internal UUID */
-  .title {
-    background-color: var(--in-content-category-header-background)!important
-  }
-  .highlight {
-    background-color: var(--in-content-box-border-color)!important
-  }

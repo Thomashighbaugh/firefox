@@ -2,11 +2,12 @@
   .browser-toolbar.titlebar-color:-moz-lwtheme-brighttext,
   .tab-background:not([selected]):-moz-lwtheme-brighttext {
     background-color: var(--tab-background-color)!important;
-    color: var(--tab-color)!important
+    color: var(--tab-color)!important;
+    display:none;
   }
   @media screen and (-moz-os-version:windows-win7) {
     window {
-      background-color: var(--tone-9)!important;
+      background-color: var(--tone-8)!important;
       color: var(--in-content-page-color)!important
     }
   }

@@ -8,8 +8,8 @@
 and replaces some icons that may already exist. */
 
 menupopup
-    menuitem:is([type="checkbox"], [type="radio"], [checked])
-    :is(.menu-text, .menu-iconic-text),
+  menuitem:is([type="checkbox"], [type="radio"], [checked])
+  :is(.menu-text, .menu-iconic-text),
 #context-inspect-a11y .menu-text,
 #context-inspect .menu-text,
 #context-viewsource .menu-text,
@@ -24,7 +24,8 @@ menu#pageStyleMenu > .menu-text,
 #viewSidebarMenuMenu > .menu-text,
 #menu_showAllHistory > .menu-text,
 menuitem#sanitizeItem > .menu-text,
-:is(#sync-tabs-menuitem, #syncedTabsRefresh, #syncedTabsRefreshFilter) > .menu-text,
+:is(#sync-tabs-menuitem, #syncedTabsRefresh, #syncedTabsRefreshFilter)
+  > .menu-text,
 #historyRestoreLastSession > .menu-text,
 #hiddenTabsMenu > .menu-text,
 #context-sendpagetodevice > .menu-text,
@@ -57,7 +58,7 @@ menuitem#sanitizeItem > .menu-text,
 #context-copylink .menu-text,
 #menu_copy .menu-text,
 :is(#placesContext_show_bookmark\:info, #placesContext_show_folder\:info, #placesContext_show\:info)
-    .menu-text,
+  .menu-text,
 #placesContext_showInFolder .menu-text,
 #menu_openLocation .menu-text,
 #context-copyvideourl .menu-text,
@@ -71,21 +72,23 @@ menuitem#sanitizeItem > .menu-text,
 #context-openlinkintab .menu-text,
 #context-openlinkinunloadedtab .menu-text,
 :is(#placesContext_open\:unloaded, #placesContext_openContainer\:unloaded, #placesContext_openLinks\:unloaded, #syncedTabsOpenUnloaded, #syncedTabsOpenAllUnloaded)
-    .menu-text,
+  .menu-text,
 #placesContext_open\:newwindow .menu-text,
 #syncedTabsOpenSelectedInWindow .menu-text,
 #placesContext_open\:newprivatewindow .menu-text,
 #syncedTabsOpenSelectedInPrivateWindow .menu-text,
 :is(#placesContext_new\:bookmark, #placesContext_createBookmark, #syncedTabsBookmarkSelected)
-    .menu-text,
+  .menu-text,
 #placesContext_new\:folder .menu-text,
 #placesContext_new\:separator .menu-text,
-:is(#placesContext_open\:container, #placesContext_openContainer\:container, #placesContext_openLinks\:container) > .menu-text,
+:is(#placesContext_open\:container, #placesContext_openContainer\:container, #placesContext_openLinks\:container)
+  > .menu-text,
 :is(#syncedTabsOpenAllInContainer, #syncedTabsOpenInContainer) > .menu-text,
-#bookmark-menu-container_robwu_nl-menuitem-_bookmark-menu-item:not(.menuitem-iconic) > .menu-text,
+#bookmark-menu-container_robwu_nl-menuitem-_bookmark-menu-item:not(.menuitem-iconic)
+  > .menu-text,
 #placesContext
-    > :is(menu, menuitem)[label="Open in a New Container Tab"]:not(.menuitem-iconic)
-    > .menu-text,
+  > :is(menu, menuitem)[label="Open in a New Container Tab"]:not(.menuitem-iconic)
+  > .menu-text,
 #menu_FileQuitItem .menu-text,
 #context_openANewTab .menu-text,
 #toolbar-context-openANewTab .menu-text,
@@ -100,7 +103,7 @@ menuitem#sanitizeItem > .menu-text,
 #menu_find .menu-text,
 #menu_findAgain .menu-text,
 :is(menuitem#textfieldDirection-swap, #context-bidi-text-direction-toggle, #context-bidi-page-direction-toggle, #documentDirection-swap)
-    .menu-text,
+  .menu-text,
 menuitem#repair-text-encoding .menu-text,
 #context-viewpartialsource-selection .menu-text,
 #placesContext_sortBy\:name .menu-text,
@@ -118,9 +121,9 @@ menuitem#repair-text-encoding .menu-text,
 #menu_delete .menu-text,
 #syncedTabsCopySelected .menu-text,
 :is(#placesContext_cut, #placesContext_copy, #placesContext_paste, #placesContext_paste_group)
-    .menu-text,
+  .menu-text,
 :is(#placesContext_deleteBookmark, #placesContext_deleteFolder, #placesContext_delete, #placesContext_delete_history)
-    .menu-text,
+  .menu-text,
 #placesContext_deleteHost .menu-text,
 #context-keywordfield .menu-text,
 #context-printframe .menu-text,
@@ -183,7 +186,7 @@ menuitem[data-l10n-id="full-screen-exit"] .menu-text,
 .searchbar-clear-history .menu-text,
 #spell-check-enabled .menu-iconic-text,
 :is(#spell-add-to-dictionary, #spell-add-dictionaries, #spell-add-dictionaries-main, #spell-dictionaries)
-    .menu-text,
+  .menu-text,
 #context_reopenInContainer > .menu-text,
 #context_reloadTab .menu-text,
 #context_reloadSelectedTabs .menu-text,
@@ -201,9 +204,10 @@ menuitem[data-l10n-id="full-screen-exit"] .menu-text,
 #syncedTabsOpenSelectedInTab .menu-text,
 #placesContext_open\:newtab .menu-text,
 #syncedTabsOpenSelected .menu-text,
-:is(#placesContext_openBookmarkContainer\:tabs, #placesContext_openBookmarkLinks\:tabs) .menu-text,
+:is(#placesContext_openBookmarkContainer\:tabs, #placesContext_openBookmarkLinks\:tabs)
+  .menu-text,
 :is(#placesContext_openContainer\:tabs, #placesContext_openLinks\:tabs, #syncedTabsOpenAllInTabs)
-    .menu-text,
+  .menu-text,
 #placesContext_showAllBookmarks .menu-text,
 #syncedTabsManageDevices .menu-text,
 #context-markAsRead .menu-text,
@@ -218,7 +222,8 @@ menuitem[data-l10n-id="full-screen-exit"] .menu-text,
 #context_shareTabURL > .menu-text,
 menuitem.share-tab-url-item > .menu-text,
 #context_closeTabOptions > .menu-text,
-:is(#context_closeTabsToTheStart, #context_closeTabsToTheEnd, #context_closeOtherTabs) .menu-text,
+:is(#context_closeTabsToTheStart, #context_closeTabsToTheEnd, #context_closeOtherTabs)
+  .menu-text,
 #context_undoCloseTab .menu-text,
 #toolbar-context-undoCloseTab .menu-text,
 #context_closeTab .menu-text,
@@ -246,48 +251,56 @@ menuitem#enableDeveloperTools .menu-text,
 #toolbar-context-menu-tabContextUndoList > .menu-text,
 #tabContextMenu menuitem.restoreallitem .menu-text,
 :is(#context_sendTabToDevicePopupMenu, #context-sendpagetodevice-popup, #context-sendlinktodevice)
-    .sendtab-target:is([clientType="phone"], [clientType="mobile"], [clientType="desktop"])
-    .menu-text,
+  .sendtab-target:is([clientType="phone"], [clientType="mobile"], [clientType="desktop"])
+  .menu-text,
 #userScriptsMenu > .menu-text,
 #toggle_PersonalToolbar > .menu-text,
 menu#fill-login > .menu-text,
 menuitem#manage-saved-logins > .menu-text,
 menuitem#fill-login-generated-password > .menu-text,
 :is(#contentAreaContextMenu, #toolbar-context-menu)
-    #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
-    :is(menu, menuitem)[id$="-menuitem-_autofill"]
-    > .menu-text,
+  #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
+  :is(menu, menuitem)[id$="-menuitem-_autofill"]
+  > .menu-text,
 :is(#contentAreaContextMenu, #toolbar-context-menu)
-    #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
-    :is(menu, menuitem)[id$="-menuitem-_copy-username"]
-    > .menu-text,
+  #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
+  :is(menu, menuitem)[id$="-menuitem-_copy-username"]
+  > .menu-text,
 :is(#contentAreaContextMenu, #toolbar-context-menu)
-    #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
-    :is(menu, menuitem)[id$="-menuitem-_copy-password"]
-    > .menu-text,
+  #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
+  :is(menu, menuitem)[id$="-menuitem-_copy-password"]
+  > .menu-text,
 :is(#contentAreaContextMenu, #toolbar-context-menu)
-    #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
-    :is(menu, menuitem)[id$="-menuitem-_generate-password"]
-    > .menu-text,
+  #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
+  :is(menu, menuitem)[id$="-menuitem-_generate-password"]
+  > .menu-text,
 :is(#contentAreaContextMenu, #toolbar-context-menu)
-    #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
-    :is(menu, menuitem)[id$="-menuitem-_copy-identifier"]
-    > .menu-text,
-#_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root:not(.menuitem-iconic, .menu-iconic) > .menu-text,
-#_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-menuitem-_open-manager:not(.menuitem-iconic, .menu-iconic) > .menu-text,
-#_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-menuitem-_open-options:not(.menuitem-iconic, .menu-iconic) > .menu-text,
-#simple-translate_sienori-menuitem-_translatePage:not(.menuitem-iconic, .menu-iconic) > .menu-text,
+  #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
+  :is(menu, menuitem)[id$="-menuitem-_copy-identifier"]
+  > .menu-text,
+#_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root:not(.menuitem-iconic, .menu-iconic)
+  > .menu-text,
+#_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-menuitem-_open-manager:not(.menuitem-iconic, .menu-iconic)
+  > .menu-text,
+#_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-menuitem-_open-options:not(.menuitem-iconic, .menu-iconic)
+  > .menu-text,
+#simple-translate_sienori-menuitem-_translatePage:not(.menuitem-iconic, .menu-iconic)
+  > .menu-text,
 #toolbar-context-menu
-    :is(menu, menuitem)[id^="jid1-bycqofyfmbmd9a_jetpack-menuitem"]:not(.menuitem-iconic, .menu-iconic)
-    > .menu-text,
-#ublock0_raymondhill_net-menuitem-_uBlock0-blockElement:not(.menuitem-iconic, .menu-iconic) > .menu-text,
-#ublock0_raymondhill_net-menuitem-_uBlock0-blockElementInFrame:not(.menuitem-iconic, .menu-iconic) > .menu-text,
+  :is(menu, menuitem)[id^="jid1-bycqofyfmbmd9a_jetpack-menuitem"]:not(.menuitem-iconic, .menu-iconic)
+  > .menu-text,
+#ublock0_raymondhill_net-menuitem-_uBlock0-blockElement:not(.menuitem-iconic, .menu-iconic)
+  > .menu-text,
+#ublock0_raymondhill_net-menuitem-_uBlock0-blockElementInFrame:not(.menuitem-iconic, .menu-iconic)
+  > .menu-text,
 :is(menu, menuitem)[id^="multithreaded-download-manager"]:is([label="Open in new tab"], [label="Open in new window"], [label="Open in sidebar"])
-    > .menu-iconic-text,
+  > .menu-iconic-text,
 #menu_customizeToolbars .menu-text,
 menuitem.viewCustomizeToolbar > .menu-text,
 #addon_darkreader_org-menuitem-_DarkReader-switchEngine .menu-text,
-menupopup:not(#contentAreaContextMenu) > #addon_darkreader_org-menuitem-_DarkReader-top:not(.menuitem-iconic, .menu-iconic) > .menu-text,
+menupopup:not(#contentAreaContextMenu)
+  > #addon_darkreader_org-menuitem-_DarkReader-top:not(.menuitem-iconic, .menu-iconic)
+  > .menu-text,
 menuitem.customize-context-removeFromToolbar > .menu-text,
 menuitem.customize-context-removeFromPanel > .menu-text,
 menuitem.customize-context-moveToToolbar > .menu-text,
@@ -468,7 +481,7 @@ menuitem#repair-text-encoding:before,
 :is(#syncedTabsOpenAllInContainer, #syncedTabsOpenInContainer):before,
 #bookmark-menu-container_robwu_nl-menuitem-_bookmark-menu-item:not(.menuitem-iconic):before,
 #placesContext
-    > :is(menu, menuitem)[label="Open in a New Container Tab"]:not(.menuitem-iconic):before,
+  > :is(menu, menuitem)[label="Open in a New Container Tab"]:not(.menuitem-iconic):before,
 #context-markAsRead:before,
 #context-markAsUnread:before,
 :is(#context_bookmarkTab, #context_bookmarkSelectedTabs, #toolbar-context-bookmarkSelectedTab, #toolbar-context-bookmarkSelectedTabs):before,
@@ -506,7 +519,7 @@ menuitem#enableDeveloperTools:before,
 #toolbar-context-menu-tabContextUndoList:before,
 #tabContextMenu menuitem.restoreallitem:before,
 :is(#context_sendTabToDevicePopupMenu, #context-sendpagetodevice-popup, #context-sendlinktodevice)
-    .sendtab-target:is([clientType="phone"], [clientType="mobile"], [clientType="desktop"]):before,
+  .sendtab-target:is([clientType="phone"], [clientType="mobile"], [clientType="desktop"]):before,
 :is(#spell-add-to-dictionary, #spell-add-dictionaries, #spell-add-dictionaries-main, #spell-dictionaries):before,
 #context-showonlythisframe:before,
 #contentAreaContextMenu #frame:before,
@@ -535,33 +548,34 @@ menu#fill-login:before,
 menuitem#manage-saved-logins:before,
 menuitem#fill-login-generated-password:before,
 :is(#contentAreaContextMenu, #toolbar-context-menu)
-    #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
-    :is(menu, menuitem)[id$="-menuitem-_autofill"]:before,
+  #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
+  :is(menu, menuitem)[id$="-menuitem-_autofill"]:before,
 :is(#contentAreaContextMenu, #toolbar-context-menu)
-    #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
-    :is(menu, menuitem)[id$="-menuitem-_copy-username"]:before,
+  #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
+  :is(menu, menuitem)[id$="-menuitem-_copy-username"]:before,
 :is(#contentAreaContextMenu, #toolbar-context-menu)
-    #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
-    :is(menu, menuitem)[id$="-menuitem-_copy-password"]:before,
+  #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
+  :is(menu, menuitem)[id$="-menuitem-_copy-password"]:before,
 :is(#contentAreaContextMenu, #toolbar-context-menu)
-    #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
-    :is(menu, menuitem)[id$="-menuitem-_generate-password"]:before,
+  #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
+  :is(menu, menuitem)[id$="-menuitem-_generate-password"]:before,
 :is(#contentAreaContextMenu, #toolbar-context-menu)
-    #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
-    :is(menu, menuitem)[id$="-menuitem-_copy-identifier"]:before,
+  #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
+  :is(menu, menuitem)[id$="-menuitem-_copy-identifier"]:before,
 #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root:not(.menuitem-iconic, .menu-iconic):before,
 #_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-menuitem-_open-manager:not(.menuitem-iconic, .menu-iconic):before,
 #_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-menuitem-_open-options:not(.menuitem-iconic, .menu-iconic):before,
 #simple-translate_sienori-menuitem-_translatePage:not(.menuitem-iconic, .menu-iconic):before,
 #toolbar-context-menu
-    :is(menu, menuitem)[id^="jid1-bycqofyfmbmd9a_jetpack-menuitem"]:not(.menuitem-iconic, .menu-iconic):before,
+  :is(menu, menuitem)[id^="jid1-bycqofyfmbmd9a_jetpack-menuitem"]:not(.menuitem-iconic, .menu-iconic):before,
 #ublock0_raymondhill_net-menuitem-_uBlock0-blockElement:not(.menuitem-iconic, .menu-iconic):before,
 #ublock0_raymondhill_net-menuitem-_uBlock0-blockElementInFrame:not(.menuitem-iconic, .menu-iconic):before,
 :is(menu, menuitem)[id^="multithreaded-download-manager"]:is([label="Open in new tab"], [label="Open in new window"], [label="Open in sidebar"]):before,
 #menu_customizeToolbars:before,
 menuitem.viewCustomizeToolbar:before,
 #addon_darkreader_org-menuitem-_DarkReader-switchEngine:before,
-menupopup:not(#contentAreaContextMenu) > #addon_darkreader_org-menuitem-_DarkReader-top:not(.menuitem-iconic, .menu-iconic):before,
+menupopup:not(#contentAreaContextMenu)
+  > #addon_darkreader_org-menuitem-_DarkReader-top:not(.menuitem-iconic, .menu-iconic):before,
 menuitem.customize-context-removeFromToolbar:before,
 menuitem.customize-context-removeFromPanel:before,
 menuitem.customize-context-moveToToolbar:before,
@@ -596,6 +610,7 @@ menuitem.customize-context-reportExtension:before {
   background-position: center;
   background-size: 16px;
   background-repeat: no-repeat;
+  background-color: tramsparent;
 }
 
 #context_moveToStart:before,
@@ -814,36 +829,36 @@ menuitem#menu_preferences:before {
 
 /* view > sidebar menu */
 menupopup#viewSidebarMenu
-    menuitem:is([type="checkbox"], [type="radio"]):not([checked="true"], .webextension-menuitem:not(.menuitem-iconic))
-    .menu-iconic-left {
+  menuitem:is([type="checkbox"], [type="radio"]):not([checked="true"], .webextension-menuitem:not(.menuitem-iconic))
+  .menu-iconic-left {
   display: revert;
   fill: currentColor;
   -moz-context-properties: fill, fill-opacity;
 }
 
 menupopup#viewSidebarMenu
-    menuitem:is([type="checkbox"], [type="radio"]):not([checked="true"], .webextension-menuitem:not(.menuitem-iconic))
-    .menu-iconic-icon {
+  menuitem:is([type="checkbox"], [type="radio"]):not([checked="true"], .webextension-menuitem:not(.menuitem-iconic))
+  .menu-iconic-icon {
   display: revert !important;
 }
 
 menupopup#viewSidebarMenu
-    menuitem:is([type="checkbox"], [type="radio"]):not([checked="true"], .webextension-menuitem:not(.menuitem-iconic)):before {
+  menuitem:is([type="checkbox"], [type="radio"]):not([checked="true"], .webextension-menuitem:not(.menuitem-iconic)):before {
   display: none;
 }
 
 menupopup#viewSidebarMenu
-    #menu_bookmarksSidebar:is([type="checkbox"], [type="radio"]):not([checked="true"]) {
+  #menu_bookmarksSidebar:is([type="checkbox"], [type="radio"]):not([checked="true"]) {
   list-style-image: url(chrome://userchrome/content/skin/bookmark.svg) !important;
 }
 
 menupopup#viewSidebarMenu
-    #menu_historySidebar:is([type="checkbox"], [type="radio"]):not([checked="true"]) {
+  #menu_historySidebar:is([type="checkbox"], [type="radio"]):not([checked="true"]) {
   list-style-image: url(chrome://userchrome/content/skin/history.svg) !important;
 }
 
 menupopup#viewSidebarMenu
-    #menu_tabsSidebar:is([type="checkbox"], [type="radio"]):not([checked="true"]) {
+  #menu_tabsSidebar:is([type="checkbox"], [type="radio"]):not([checked="true"]) {
   list-style-image: url(chrome://userchrome/content/skin/tab.svg) !important;
 }
 
@@ -929,7 +944,8 @@ menuitem.customize-context-CopyID:before {
   background-image: url(chrome://userchrome/content/skin/edit-paste.svg);
 }
 
-.textbox-contextmenu menuitem:is([label="Paste and Go"], [label="Paste & Search"]):before {
+.textbox-contextmenu
+  menuitem:is([label="Paste and Go"], [label="Paste & Search"]):before {
   background-image: url(chrome://userchrome/content/skin/edit-paste-and-go.svg);
 }
 
@@ -975,7 +991,7 @@ menuitem.customize-context-CopyID:before {
 :is(#syncedTabsOpenAllInContainer, #syncedTabsOpenInContainer):before,
 #bookmark-menu-container_robwu_nl-menuitem-_bookmark-menu-item:not(.menuitem-iconic):before,
 #placesContext
-    > :is(menu, menuitem)[label="Open in a New Container Tab"]:not(.menuitem-iconic):before,
+  > :is(menu, menuitem)[label="Open in a New Container Tab"]:not(.menuitem-iconic):before,
 #context-openlinkincontainertab:before {
   background-image: url(chrome://userchrome/content/skin/container-go.svg);
 }
@@ -1210,50 +1226,50 @@ menuitem#enableDeveloperTools:before {
 }
 
 :is(#context_sendTabToDevicePopupMenu, #context-sendpagetodevice-popup, #context-sendlinktodevice)
-    .sendtab-target:is([clientType="phone"], [clientType="mobile"]):before {
+  .sendtab-target:is([clientType="phone"], [clientType="mobile"]):before {
   background-image: url(chrome://userchrome/content/skin/device-phone.svg);
 }
 
 :is(#context_sendTabToDevicePopupMenu, #context-sendpagetodevice-popup, #context-sendlinktodevice)
-    .sendtab-target[clientType="desktop"]:before {
+  .sendtab-target[clientType="desktop"]:before {
   background-image: url(chrome://userchrome/content/skin/device-desktop.svg);
 }
 
 :is(#contentAreaContextMenu, #toolbar-context-menu)
-    #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
-    :is(menu, menuitem)[id$="-menuitem-_autofill"]:before {
+  #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
+  :is(menu, menuitem)[id$="-menuitem-_autofill"]:before {
   background-image: url(chrome://userchrome/content/formfill.svg);
 }
 
 menuitem#manage-saved-logins:before,
 :is(#contentAreaContextMenu, #toolbar-context-menu)
-    #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
-    :is(menu, menuitem)[id$="-menuitem-_copy-username"]:before {
+  #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
+  :is(menu, menuitem)[id$="-menuitem-_copy-username"]:before {
   background-image: url(chrome://userchrome/content/fxa/avatar-empty.svg);
 }
 
 menu#fill-login:before,
 :is(#contentAreaContextMenu, #toolbar-context-menu)
-    #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
-    :is(menu, menuitem)[id$="-menuitem-_copy-password"]:before {
+  #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
+  :is(menu, menuitem)[id$="-menuitem-_copy-password"]:before {
   background-image: url(chrome://userchrome/content/skin/login.svg);
 }
 
 menuitem#fill-login-generated-password:before,
 :is(#contentAreaContextMenu, #toolbar-context-menu)
-    #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
-    :is(menu, menuitem)[id$="-menuitem-_generate-password"]:before {
+  #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
+  :is(menu, menuitem)[id$="-menuitem-_generate-password"]:before {
   background-image: url(chrome://userchrome/content/generate-password.svg);
 }
 
 :is(#contentAreaContextMenu, #toolbar-context-menu)
-    #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
-    :is(menu, menuitem)[id$="-menuitem-_copy-identifier"]:before {
+  #_446900e4-71c2-419f-a6a7-df9c091e268b_-menuitem-_root
+  :is(menu, menuitem)[id$="-menuitem-_copy-identifier"]:before {
   background-image: url(chrome://userchrome/content/devtools/tool-dom.svg);
 }
 
 :is(menu, menuitem)[id^="multithreaded-download-manager"]:is([label="Open in new tab"], [label="Open in new window"], [label="Open in sidebar"])
-    .menu-iconic-left {
+  .menu-iconic-left {
   display: none;
 }
 
@@ -1368,7 +1384,7 @@ menuitem.customize-context-reportExtension:before {
 :is(#context-redo, #menu_redo, #undobookmarksmenuRedo):-moz-locale-dir(ltr):before,
 menuitem:is(.customize-context-removeFromToolbar, .customize-context-removeFromPanel):-moz-locale-dir(rtl):before,
 .textbox-contextmenu
-    menuitem:is([label="Paste and Go"], [label="Paste & Search"]):-moz-locale-dir(rtl):before,
+  menuitem:is([label="Paste and Go"], [label="Paste & Search"]):-moz-locale-dir(rtl):before,
 .textbox-contextmenu menuitem[label="Undo"]:-moz-locale-dir(rtl):before,
 .textbox-contextmenu menuitem[label="Redo"]:-moz-locale-dir(ltr):before,
 #placesContext_deleteHost:-moz-locale-dir(rtl):before,
@@ -1377,10 +1393,9 @@ menuitem#sanitizeItem:-moz-locale-dir(rtl):before,
   transform: scaleX(-1);
 }
 
-
 /* multi-account containers */
 :is(.webextension-browser-action, .eom-addon-button)[data-extensionid="@testpilot-containers"i]
-    .toolbarbutton-icon {
+  .toolbarbutton-icon {
   list-style-image: url(chrome://userchrome/content/skin/container-base.svg);
 }
 
@@ -1390,21 +1405,19 @@ menuitem#sanitizeItem:-moz-locale-dir(rtl):before,
 }
 
 :is(.webextension-browser-action, .eom-addon-button)[data-extensionid="sort-bookmarks@heftig"]
-    .toolbarbutton-icon {
+  .toolbarbutton-icon {
   list-style-image: url(chrome://userchrome/content/skin/sort.svg);
 }
 
-
-
 /* Add custom search engine, an extension for creating new search engines with custom parameters */
 :is(.webextension-browser-action, .eom-addon-button)[data-extensionid="{af37054b-3ace-46a2-ac59-709e4412bec6}"i]
-    .toolbarbutton-icon {
+  .toolbarbutton-icon {
   list-style-image: url(chrome://userchrome/content/search-glass.svg);
 }
 
 /* nordVPN browser extension */
 :is(.webextension-browser-action, .eom-addon-button)[data-extensionid="nordvpnproxy@nordvpn.com"i]
-    .toolbarbutton-icon {
+  .toolbarbutton-icon {
   list-style-image: url(chrome://userchrome/content/material/nord.svg) !important;
 }
 
@@ -1413,70 +1426,67 @@ menuitem#sanitizeItem:-moz-locale-dir(rtl):before,
   fill: var(--toolbarbutton-icon-fill-attention) !important;
 }
 
-
 /* i don't care about cookies */
 :is(.webextension-browser-action, .eom-addon-button)[label="I don't care about cookies"]
-    .toolbarbutton-icon,
+  .toolbarbutton-icon,
 :is(.webextension-browser-action, .eom-addon-button)[data-extensionid="jid1-KKzOGWgsW3Ao4Q@jetpack"i]
-    .toolbarbutton-icon {
+  .toolbarbutton-icon {
   list-style-image: url(chrome://userchrome/content/skin/3rdpartycookies.svg);
 }
 
 /* uBlock origin */
 :is(.webextension-browser-action, .eom-addon-button)[data-extensionid="uBlock0@raymondhill.net"i]
-    .toolbarbutton-icon {
+  .toolbarbutton-icon {
   list-style-image: url(chrome://userchrome/content/show-password.svg);
 }
 
 /* uBlock origin disabled on this site */
 :is(.webextension-browser-action, .eom-addon-button)[data-extensionid="uBlock0@raymondhill.net"i][style*="icon_16-off.png"]
-    .toolbarbutton-icon {
+  .toolbarbutton-icon {
   list-style-image: url(chrome://userchrome/content/hide-password.svg);
 }
 
-
-
-
-
 /* multi-account containers menu icon */
 #contentAreaContextMenu
-    :is(.menu-iconic, .menuitem-iconic)[label="Firefox Multi-Account Containers"]
-    .menu-iconic-left:before,
-#_testpilot-containers-menuitem-_open-bookmark-in-container-tab > .menu-iconic-left:before {
+  :is(.menu-iconic, .menuitem-iconic)[label="Firefox Multi-Account Containers"]
+  .menu-iconic-left:before,
+#_testpilot-containers-menuitem-_open-bookmark-in-container-tab
+  > .menu-iconic-left:before {
   background-image: url(chrome://userchrome/content/skin/container-base.svg);
 }
 
-
 /* shorten the multi-account containers label */
 #contentAreaContextMenu
-    :is(.menu-iconic, .menuitem-iconic)[label="Firefox Multi-Account Containers"]
-    .menu-iconic-left {
+  :is(.menu-iconic, .menuitem-iconic)[label="Firefox Multi-Account Containers"]
+  .menu-iconic-left {
   -moz-box-flex: 1;
 }
 
 #contentAreaContextMenu
-    :is(.menu-iconic, .menuitem-iconic)[label="Firefox Multi-Account Containers"]
-    .menu-iconic-left::after {
+  :is(.menu-iconic, .menuitem-iconic)[label="Firefox Multi-Account Containers"]
+  .menu-iconic-left::after {
   content: "Multi-Account Containers";
   display: -moz-inline-box;
   -moz-box-flex: 1;
 }
 
 #contentAreaContextMenu
-    :is(.menu-iconic, .menuitem-iconic)[label="Firefox Multi-Account Containers"]
-    .menu-iconic-text {
+  :is(.menu-iconic, .menuitem-iconic)[label="Firefox Multi-Account Containers"]
+  .menu-iconic-text {
   display: none;
 }
 
-#_testpilot-containers-menuitem-_open-bookmark-in-container-tab menupopup .menu-iconic-icon {
+#_testpilot-containers-menuitem-_open-bookmark-in-container-tab
+  menupopup
+  .menu-iconic-icon {
   filter: invert(1);
   opacity: 0.8;
 }
 
 /* zotero menu icon */
 #contentAreaContextMenu
-    :is(.menu-iconic, .menuitem-iconic)[label="Zotero Connector"]
-    .menu-iconic-left:before {
+  :is(.menu-iconic, .menuitem-iconic)[label="Zotero Connector"]
+  .menu-iconic-left:before {
   width: 16px;
   height: 16px;
   margin-inline: var(--context-iconic-margin);
@@ -1490,15 +1500,15 @@ menuitem#sanitizeItem:-moz-locale-dir(rtl):before,
 }
 
 #contentAreaContextMenu
-    :is(.menu-iconic, .menuitem-iconic)[label="Zotero Connector"]
-    .menu-iconic-icon {
+  :is(.menu-iconic, .menuitem-iconic)[label="Zotero Connector"]
+  .menu-iconic-icon {
   display: none;
 }
 
 /* ublock origin context menu icon */
 #contentAreaContextMenu
-    :is(.menu-iconic, .menuitem-iconic):is([label="Block element..."], [label="uBlock Origin"])
-    .menu-iconic-left:before {
+  :is(.menu-iconic, .menuitem-iconic):is([label="Block element..."], [label="uBlock Origin"])
+  .menu-iconic-left:before {
   width: 16px;
   height: 16px;
   margin-inline: var(--context-iconic-margin);
@@ -1512,8 +1522,8 @@ menuitem#sanitizeItem:-moz-locale-dir(rtl):before,
 }
 
 #contentAreaContextMenu
-    :is(.menu-iconic, .menuitem-iconic):is([label="Block element..."], [label="uBlock Origin"])
-    .menu-iconic-icon {
+  :is(.menu-iconic, .menuitem-iconic):is([label="Block element..."], [label="uBlock Origin"])
+  .menu-iconic-icon {
   display: none;
 }
 
@@ -1526,7 +1536,6 @@ menuitem#sanitizeItem:-moz-locale-dir(rtl):before,
   background-image: url(chrome://userchrome/content/devtools/command-frames.svg);
 }
 
-
 /* stylus context menu items */
 #_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-menuitem-_open-manager:not(.menuitem-iconic, .menu-iconic):before {
   background-image: url(chrome://userchrome/content/devtools/tool-styleeditor.svg);
@@ -1536,10 +1545,10 @@ menuitem#sanitizeItem:-moz-locale-dir(rtl):before,
   background-image: url(chrome://userchrome/content/settings.svg);
 }
 /* invert github's black icon */
-:is(.menu-iconic-icon, .toolbarbutton-icon, .urlbarView-favicon):-moz-lwtheme-brighttext:is([src^="page-icon:https://github.com"], [src^="page-icon:http://github.com"]) {
+:is(.menu-iconic-icon, .toolbarbutton-icon, .urlbarView-favicon):-moz-lwtheme-brighttext:is([src^="page-icon:https://github.com"], [src^="page-icon:http://github.com"])
+{
   filter: invert(1) brightness(80);
 }
-
 
 /* reddit enhancement suite urlbar page action button */
 #pageAction-urlbar-jid1-xufzosoflzsoxg_jetpack {
@@ -1556,4 +1565,3 @@ menuitem#sanitizeItem:-moz-locale-dir(rtl):before,
 #appMenu-addons-button {
   list-style-image: url(chrome://userchrome/content/material/extension.svg) !important;
 }
-

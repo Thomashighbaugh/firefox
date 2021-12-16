@@ -102,7 +102,7 @@ tooltip {
   --button-solid-hover-background: var(--base02);
   --button-solid-active-background: transparent;
   --button-solid-checked-background: transparent;
-  --uc-toolbarbutton-hover-background: var(--base01);
+  --uc-toolbarbutton-hover-background: transparent;
   --uc-toolbarbutton-active-background: transparent;
   --uc-toolbarbutton-checked-background: hsla(236, 82%, 83%, 0.13);
   --uc-desaturate-hover-background: var(--base03);

@@ -22,8 +22,8 @@
   /* This will also work with custom colors from color.firefox.com. */
 
   /* Theme color Suggestions*/
-  --window-color: var(--base00);
-  --secondary-color: var(--base01);
+  --window-color: var(--base01);
+  --secondary-color: var(--base19);
   --secondary-color-hover: var(--base02);
   --secondary-color-active: var(--secondary-color-hover);
   --inverted-color: var(--base07);

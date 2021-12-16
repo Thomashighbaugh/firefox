@@ -1,0 +1,75 @@
+#sidebar-header,
+#sidebar-search-container,
+#sidebar-search-container #viewButton,
+.content-header,
+.sidebar-header {
+  background: var(--in-content-category-header-background)!important;
+  color: var(--in-content-page-color)!important
+}
+.sidebar-search-container.tabs-container.sync-state.selected .search-box,
+hbox#sidebar-search-container textbox#search-box {
+  -moz-appearance: none!important;
+  background-color: var(--in-content-box-background)!important;
+  color: var(--in-content-page-color)!important;
+  min-height: 20px!important;
+  padding: 0 0 0 4px!important;
+  border: 1px solid!important;
+  border-color: var(--in-content-box-border-color)!important;
+  border-radius: 3px!important
+}
+.sidebar-search-container.tabs-container.sync-state.selected .search-box .textbox-input-box {
+  padding: 2px
+}
+#sidebar,
+#sidebar-box,
+#template-container,
+#webext-panels-browser,
+#webextpanels-window {
+  background: var(--in-content-page-background)!important
+}
+.sidebar-placesTree {
+  -moz-appearance: none!important;
+  color: var(--in-content-page-color)!important;
+  background-color: var(--in-content-page-background)!important;
+  opacity: 1!important
+}
+#sidebar-box[sidebarcommand=_bbb81fb3-49c1-4a42-bcc9-94bc93e19fb8_-sidebar-action] #sidebar-icon,
+#sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action] #sidebar-icon {
+  filter: invert(60%)
+}
+#button__bbb81fb3-49c1-4a42-bcc9-94bc93e19fb8_-sidebar-action .toolbarbutton-icon,
+#button_treestyletab_piro_sakura_ne_jp-sidebar-action .toolbarbutton-icon {
+  filter: invert(87%)
+}
+.button-menu-dropmarker,
+.button-menubutton-dropmarker {
+  filter: invert(65%)
+}
+.item.client.device-image-desktop > .item-title-container > .item-icon-container,
+.sidebar-placesTree::-moz-tree-image,
+.sidebar-placesTreechildren::-moz-tree-image {
+  fill: var(--in-content-page-color)!important
+}
+#sidebar-header {
+  border-color: hsla(240,5%,5%,.1)!important
+}
+.sidebar-splitter {
+  border-color: var(--tone-9)!important
+}
+.deck .instructions,
+.item-title {
+  color: var(--in-content-page-color)!important
+}
+@-moz-document url-prefix(chrome://browser/content/places) {
+  ::-moz-tree-row(selected) {
+    -moz-appearance: none!important;
+    background-color: var(--theme-selection-background)!important
+  }
+}
+@-moz-document url(chrome://browser/content/places/bookmarksSidebar.xul) {
+  @media screen and (-moz-os-version:windows-win7) {
+    treechildren {
+      --treechildren-outline: none!important
+    }
+  }
+}

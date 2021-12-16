@@ -1,0 +1,50 @@
+/*! Alters the webextension Tridactyl
+  IMPORTANT: change the Internal UUID */
+@-moz-document url-prefix("moz-extension://tridactyl.vim@cmcaine.co.uk/") {
+  .container-main,
+  body,
+  html {
+    background: var(--in-content-page-background)!important
+  }
+  .tsd-panel {
+    background: var(--in-content-box-background)!important
+  }
+  .tsd-page-title,
+  .tsd-page-toolbar,
+  footer {
+    background: var(--in-content-category-header-background)!important;
+    border-color: var(--in-content-category-header-background)!important
+  }
+  body,
+  table {
+    color: var(--in-content-page-color)!important
+  }
+  a:link {
+    color: var(--in-content-link-color)!important
+  }
+  #completions .sectionHeader {
+    background: var(--in-content-category-header-background)!important;
+    color: var(--in-content-text-color)!important
+  }
+  #completions {
+    background: var(--in-content-page-background)!important;
+    border-color: var(--in-content-box-border-color)!important
+  }
+  .option:not(.focused) .url {
+    color: var(--code-green)!important;
+    background: var(--in-content-page-background)!important
+  }
+  input {
+    background: var(--in-content-category-header-background)!important;
+    color: var(--in-content-text-color)!important
+  }
+  .focused,
+  .focused .url {
+    background: var(--warning-background-color)!important;
+    color: var(--warning-color)!important
+  }
+  .spoiler {
+    background-color: var(--in-content-box-background)!important;
+    border-color: var(--in-content-box-border-color)!important
+  }
+}

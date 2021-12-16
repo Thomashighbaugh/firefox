@@ -1,0 +1,519 @@
+/*! Alters the webextension uBlock Origin
+  IMPORTANT: change the Internal UUID */
+@-moz-document url-prefix("moz-extension://uBlock0@raymondhill.net/") {
+  button.custom {
+    background-color: var(--in-content-page-background)!important;
+    background-image: none!important;
+    border-color: var(--in-content-box-border-color)!important;
+    color: var(--in-content-text-color)!important/*! opacity: 1!important/**/
+  }
+  button#bye,
+  button#proceedPermanent,
+  button#proceedTemporary {
+    -moz-appearance: none!important;
+    background-image: none!important;
+    background-color: var(--in-content-page-background)!important;
+    color: var(--in-content-page-color)!important;
+    border: 1px solid!important;
+    border-color: var(--in-content-box-border-color)!important;
+    border-radius: 3px!important
+  }
+  button#bye:hover,
+  button#proceedPermanent:hover,
+  button#proceedTemporary:hover,
+  button.custom:hover {
+    background-color: var(--in-content-box-background-hover)!important
+  }
+  button.custom.disabled,
+  button.custom[disabled] {
+    opacity: .5!important
+  }
+  #appinfo {
+    background-color: var(--tone-8)!important;
+    color: var(--tone-4)!important
+  }
+  #panes,
+  body,
+  body[dir=ltr] #panes > div {
+    background: var(--tone-7)!important;
+    color: var(--tone-3)!important
+  }
+  #diff {
+    border-color: var(--tone-5)!important
+  }
+  #whyex a,
+  label a,
+  p a,
+  ul a,
+  ul#userSettings .subgroup > span {
+    color: var(--accent-1)!important
+  }
+  #whyex a:visited,
+  .content:visited {
+    color: var(--in-content-link-color-visited)!important
+  }
+  #dashboard-nav-widgets span {
+    color: var(--tone-4)!important
+  }
+  a.info {
+    color: var(--tone-4)!important;
+    opacity: .5
+  }
+  li.listEntry span.status {
+    color: var(--tone-4)!important
+  }
+  li.listEntry > a.remove,
+  li.listEntry > a.remove:visited {
+    color: var(--red-80)!important
+  }
+  #switch .fa {
+    color: var(--accent-1)!important
+  }
+  .tool,
+  body.off #switch .fa {
+    color: var(--tone-4)!important
+  }
+  #extraTools > span:hover,
+  .tool.enabled:hover,
+  body.dirty #refresh:hover {
+    color: var(--tone-2)!important
+  }
+  #extraTools,
+  #extraTools > span > span.badge,
+  h2 {
+    background-color: var(--tone-8)!important;
+    color: var(--tone-4)!important
+  }
+  #refresh {
+    background-color: var(--tone-8)!important;
+    border-color: var(--tone-5)!important
+  }
+  #firewallContainer > div {
+    background-color: var(--tone-6)!important
+  }
+  #firewallContainer > div > span {
+    color: var(--tone-4)!important;
+    border-color: var(--tone-5)!important
+  }
+  #netFilteringDialog .dialog > div.containers > div.dynamic tr.entry > td > div.action.own.block,
+  body.advancedUser #firewallContainer > div > span.blockRule.ownRule {
+    background-color: #ab0000!important;
+    color: var(--tone-2)!important
+  }
+  #netFilteringDialog .dialog > div.containers > div.dynamic tr.entry > td > div.action > span.block,
+  body.advancedUser #firewallContainer > div > span.blockRule {
+    background-color: #dda0a2!important;
+    color: var(--tone-2)!important
+  }
+  #firewallContainer > div.blocked > span:first-of-type::before,
+  #firewallContainer.minimized > div.isDomain.totalBlocked > span:first-of-type::before {
+    background-color: #c87576!important;
+    opacity: 1!important;
+    color: var(--tone-2)!important
+  }
+  #netFilteringDialog .dialog > div.containers > div.dynamic tr.entry > td > div.action.own.allow,
+  body.advancedUser #firewallContainer > div > span.allowRule.ownRule {
+    background-color: #229400!important;
+    color: var(--tone-2)!important
+  }
+  #netFilteringDialog .dialog > div.containers > div.dynamic tr.entry > td > div.action > span.allow,
+  body.advancedUser #firewallContainer > div > span.allowRule {
+    background-color: #95ca8a!important;
+    color: var(--tone-2)!important
+  }
+  #firewallContainer > div.allowed > span:first-of-type::before,
+  #firewallContainer.minimized > div.isDomain.totalAllowed > span:first-of-type::before {
+    background-color: #7ec26f!important;
+    color: var(--tone-2)!important;
+    opacity: 1!important
+  }
+  #actionSelector > span:nth-of-type(2),
+  #netFilteringDialog .dialog > div.containers > div.dynamic tr.entry > td > div.action.own.noop,
+  body.advancedUser #firewallContainer > div > span.noopRule.ownRule {
+    background-color: #0c46a7!important;
+    color: var(--tone-2)!important
+  }
+  #netFilteringDialog .dialog > div.containers > div.dynamic tr.entry > td > div.action > span.noop,
+  body.advancedUser #firewallContainer > div > span.noopRule {
+    background-color: #65bdfb!important;
+    color: var(--tone-2)!important
+  }
+  #firewallContainer > div.allowed.blocked > span:first-of-type::before,
+  #firewallContainer.minimized > div.isDomain.totalAllowed.totalBlocked > span:first-of-type::before {
+    background-color: #cdc16e!important;
+    opacity: 1!important
+  }
+  #dashboard-nav-widgets {
+    border-color: var(--tone-5)!important;
+    background-color: var(--tone-8)!important
+  }
+  .tabButton {
+    background-color: var(--tone-7)!important;
+    color: var(--tone-4)!important;
+    border-bottom: 1px solid!important;
+    border-color: var(--tone-5)!important
+  }
+  .tabButton.selected {
+    background-color: var(--tone-8)!important;
+    border-color: var(--tone-5)!important
+  }
+  #ruleFilter input,
+  input[type=number] {
+    -moz-appearance: none!important;
+    background-color: var(--tone-6)!important;
+    border: 1px solid!important;
+    border-color: var(--tone-5)!important;
+    color: var(--tone-4)!important
+  }
+  li.listEntry .content {
+    color: var(--accent-1)!important
+  }
+  #diff .pane {
+    color: var(--tone-4)!important;
+    background: var(--tone-7)!important
+  }
+  #diff li,
+  code {
+    background-color: var(--tone-6)!important
+  }
+  #diff li:nth-child(2n) {
+    background-color: var(--tone-7)!important
+  }
+  #whitelist textarea {
+    background: var(--tone-6)!important;
+    color: var(--tone-4)!important
+  }
+  textarea#externalLists,
+  textarea#userFilters.userFilters {
+    -moz-appearance: none!important;
+    background: var(--tone-6)!important;
+    color: var(--tone-4)!important;
+    border: 1px solid!important;
+    border-color: var(--tone-4)!important
+  }
+  .permatoolbar {
+    background-color: var(--tone-7)!important
+  }
+  .permatoolbar #refresh,
+  .permatoolbar .button {
+    background-color: transparent!important
+  }
+  .permatoolbar #refresh,
+  .permatoolbar .button:hover {
+    background-color: var(--grey-60)!important
+  }
+  .modalDialog .dialog {
+    background-color: var(--tone-8)!important;
+    border-color: var(--tone-5)!important
+  }
+  li.listEntry > a.remove,
+  li.listEntry > a.remove:visited,
+  li.listEntry span.failed,
+  li.listEntry span.unsecure {
+    color: #de7474!important
+  }
+  a.fa.support,
+  a.mustread {
+    color: var(--in-content-page-color)!important
+  }
+  li.listEntry.mustread > a.mustread:hover {
+    color: var(--accent-2)!important
+  }
+  li.listEntry span.obsolete {
+    color: var(--warning-color)!important
+  }
+  input[type=text] {
+    -moz-appearance: none!important;
+    background: var(--tone-6)!important;
+    color: var(--in-content-page-color)!important;
+    border: none!important
+  }
+  #modalOverlay > div > div:nth-of-type(2):hover svg {
+    stroke: var(--tone-1)!important
+  }
+  /*! COLORBLIND MODE START 
+       Colors can be replaced by changing the first 6 digits of the 8 digit RGBA Hex value
+       #00136e = dark blue */
+body.colorBlind #netFilteringDialog > .panes > .details > div[data-status="1"],
+  body.colorBlind #vwRenderer .logEntry > div.cosmetic,
+  body.colorBlind #vwRenderer .logEntry > div.redirect,
+  body.colorBlind #vwRenderer .logEntry > div[data-status="1"] {
+    background-color: #00136e1a!important
+  }
+  body.colorBlind #netFilteringDialog > .panes > .details > div[data-status="1"] b,
+  body.colorBlind #vwRenderer .logEntry > div[data-status="1"] > span:nth-of-type(7) b {
+    background-color: #00136e33!important
+  }
+  body.advancedUser #firewallContainer.colorBlind > div > span.blockRule,
+  body.colorBlind #netFilteringDialog > div.panes > .dynamic .entry > .action.block {
+    background-color: #00136e66!important
+  }
+  #actionSelector.colorBlind > span:nth-of-type(3),
+  #firewallContainer.colorBlind > div.blocked > span:first-of-type::before,
+  #firewallContainer.colorBlind.minimized > div.isDomain.totalBlocked > span:first-of-type::before,
+  body.advancedUser #firewallContainer.colorBlind > div > span.blockRule.ownRule,
+  body.colorBlind #netFilteringDialog > div.panes > .dynamic .entry > .action > .block,
+  body.colorBlind #netFilteringDialog > div.panes > .dynamic .entry > .action.own.block {
+    background-color: #00136eff!important
+  }
+  /*! #606060 = grey */
+body.colorBlind #vwRenderer .logEntry > div[data-status="3"] {
+    background-color: #6060601a!important
+  }
+  body.colorBlind #vwRenderer .logEntry > div[data-status="3"] > span:nth-of-type(7) b {
+    background-color: #60606033!important
+  }
+  body.advancedUser #firewallContainer.colorBlind > div > span.noopRule,
+  body.colorBlind #netFilteringDialog > div.panes > .dynamic .entry > .action.noop {
+    background-color: #60606066!important
+  }
+  /*! #6c6c6c = light grey */
+#netFilteringDialog > div.panes > .dynamic .entry > .action.own.noop,
+  body.colorBlind #netFilteringDialog > div.panes > .dynamic .entry > .action.own.noop {
+    background-color: #6c6c6cff!important
+  }
+  /*! #ffc239 = yellow */
+body.colorBlind #netFilteringDialog > .panes > .details > div[data-status="2"],
+  body.colorBlind #vwRenderer .logEntry > div[data-status="2"] {
+    background-color: #ffc2391a!important
+  }
+  body.colorBlind #netFilteringDialog > .panes > .details > div[data-status="2"] b,
+  body.colorBlind #vwRenderer .logEntry > div[data-status="2"] > span:nth-of-type(7) b {
+    background-color: #ffc23933!important
+  }
+  body.advancedUser #firewallContainer.colorBlind > div > span.allowRule,
+  body.colorBlind #netFilteringDialog > div.panes > .dynamic .entry > .action.allow {
+    background-color: #ffc23966!important
+  }
+  #actionSelector.colorBlind > span:first-of-type,
+  #firewallContainer.colorBlind > div.allowed > span:first-of-type::before,
+  #firewallContainer.colorBlind.minimized > div.isDomain.totalAllowed > span:first-of-type::before,
+  body.advancedUser #firewallContainer.colorBlind > div > span.allowRule.ownRule,
+  body.colorBlind #netFilteringDialog > div.panes > .dynamic .entry > .action > .allow,
+  body.colorBlind #netFilteringDialog > div.panes > .dynamic .entry > .action.own.allow {
+    background-color: #ffc239ff!important
+  }
+  /*! COLORBLIND MODE END */
+
+}
+@-moz-document url-prefix("moz-extension://uBlock0@raymondhill.net/logger-ui") {
+  .fa-icon > svg,
+  .ubo-icon > svg {
+    fill: var(--in-content-page-color)!important
+  }
+  .permatoolbar .button.active {
+    fill: var(--in-content-link-color)!important
+  }
+  textarea {
+    -moz-appearance: none;
+    background: var(--in-content-box-background)!important;
+    color: var(--in-content-text-color)!important;
+    border: 1px solid!important
+  }
+  #netFilteringDialog > .panes > .details > div[data-status="1"],
+  #vwRenderer .logEntry > div[data-status="1"] {
+    background-color: #463237!important
+  }
+  a {
+    color: var(--in-content-link-color)
+  }
+  select {
+    color: var(--in-content-selected-text)!important;
+    border-color: var(--in-content-box-border-color)!important;
+    background: var(--tone-6)!important;
+    -moz-appearance: none!important;
+    /*! remove default arrow *//*! add custom arrow */padding-right: 18px!important;
+    background-image: url(data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%3E%3Cpath%20d%3D%22M20%2020l10%2010%2010-10z%22%20fill%3D%22%23ccc%22%2F%3E%3C%2Fsvg%3E)!important;
+    background-position: center right!important;
+    background-repeat: no-repeat!important;
+    background-size: contain!important
+  }
+  select#pageSelector {
+    color: var(--in-content-selected-text)!important;
+    border-color: var(--in-content-box-border-color)!important;
+    background: var(--tone-6)!important;
+    -moz-appearance: none!important;
+    /*! remove default arrow *//*! add custom arrow */padding-right: 25px!important;
+    background-image: url(data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%3E%3Cpath%20d%3D%22M20%2020l10%2010%2010-10z%22%20fill%3D%22%23ccc%22%2F%3E%3C%2Fsvg%3E)!important;
+    background-position: center right!important;
+    background-repeat: no-repeat!important;
+    background-size: contain!important
+  }
+  /*! #netInspector */
+#netInspector tr.blocked {
+    background-color: #4b3137!important;
+    color: #ff9494!important
+  }
+  #netInspector #filterInput,
+  #netInspector #maxEntries {
+    -moz-appearance: none!important;
+    background: var(--tone-6)!important;
+    color: var(--tone-4)!important;
+    border: 1px solid!important;
+    padding: 5px!important
+  }
+  #netInspector tr.cosmetic,
+  #netInspector tr.redirect {
+    background-color: #44391f!important;
+    color: #fce19f!important
+  }
+  #netInspector tr.cat_net td:nth-of-type(4):hover,
+  body:not(.popupOn) #netInspector tr.canMtx td:nth-of-type(2):hover {
+    background: var(--tone-8)!important
+  }
+  body #netInspector td {
+    border-color: var(--tone-5)!important
+  }
+  #netInspector tr.maindoc {
+    background-color: var(--tone-8)!important;
+    color: var(--grey-30)!important
+  }
+  #netInspector #filterExprPicker {
+    background-color: var(--in-content-box-background)!important;
+    color: var(--tone-3)!important;
+    border-color: var(--in-content-box-border-color)!important
+  }
+  #netInspector #filterExprPicker > div {
+    border: none!important;
+    border-top: 1px solid!important
+  }
+  #netInspector #filterExprPicker > div:first-of-type {
+    border: none!important
+  }
+  #netInspector #filterInput > input {
+    background: var(--in-content-box-background)!important;
+    -moz-appearance: none
+  }
+  #netInspector #filterInput {
+    border-color: var(--in-content-box-border-color)!important
+  }
+  #netInspector #filterExprPicker span.on[data-filtex] {
+    background-color: var(--in-content-primary-button-background)!important;
+    border: 1px solid!important;
+    color: var(--in-content-selected-text)!important
+  }
+  #netInspector #filterExprPicker span[data-filtex]:hover {
+    background-color: var(--in-content-primary-button-background-hover)!important;
+    border: 1px solid!important;
+    color: var(--in-content-selected-text)!important
+  }
+  #netInspector #filterExprButton {
+    top: 0!important
+  }
+  #netInspector #filterExprButton:hover {
+    background-color: transparent!important
+  }
+  #netInspector #vwRenderer .logEntry > div.canDetails:hover > span {
+    background-color: var(--accent-3)!important
+  }
+  /*! #netFilteringDialog */
+#netFilteringDialog .dialog > div.headers > span.header.selected {
+    background-color: var(--tone-8)!important;
+    color: var(--tone-4)!important;
+    border-color: var(--tone-6)!important
+  }
+  #netFilteringDialog .dialog > div.headers > span.header {
+    background-color: var(--tone-7)!important;
+    border-color: var(--tone-6)!important
+  }
+  #netFilteringDialog .dialog > div.containers > div.dynamic tr.entry {
+    background-color: var(--tone-6)!important;
+    border-color: var(--tone-5)!important
+  }
+  #netFilteringDialog .dialog > div.containers > div.dynamic tr.entry > td:first-of-type {
+    border-color: var(--tone-5)!important
+  }
+  #netFilteringDialog .dialog > div.containers > div.dynamic > table.toolbar #saveRules {
+    background-color: var(--tone-6)!important;
+    border: none!important
+  }
+  body[dir=ltr] #netFilteringDialog > .panes > .details > div > span:nth-of-type(1) {
+    border-color: var(--in-content-box-border-color)!important
+  }
+  #netFilteringDialog > .headers > .header {
+    background-color: var(--in-content-box-background)!important;
+    border-color: var(--in-content-box-border-color)!important
+  }
+  #netFilteringDialog[data-pane=details] > .headers > [data-pane=details],
+  #netFilteringDialog[data-pane=dynamic] > .headers > [data-pane=dynamic],
+  #netFilteringDialog[data-pane=static] > .headers > [data-pane=static] {
+    background-color: var(--in-content-box-background)!important;
+    border-color: var(--in-content-box-border-color)!important;
+    color: var(--in-content-selected-text)!important
+  }
+  #netFilteringDialog > .panes > .details > div,
+  #netFilteringDialog > div.panes > .dynamic .entry {
+    background-color: var(--in-content-box-background)!important;
+    border-color: var(--in-content-box-border-color)!important
+  }
+  /*! domInspector */
+#domInspector li > span:first-child {
+    color: var(--in-content-page-color)!important
+  }
+  #domInspector li.isCosmeticHide,
+  #domInspector li.isCosmeticHide li,
+  #domInspector li.isCosmeticHide ul {
+    background-color: var(--red-90)!important
+  }
+  /*! #modalOverlay */
+#modalOverlay > div > div:nth-of-type(1),
+  #modalOverlay > div > div:nth-of-type(2) {
+    background-color: var(--in-content-page-background)!important
+  }
+  #modalOverlay > div > div:nth-of-type(2) svg {
+    stroke: var(--tone-4)!important
+  }
+  /*! #loggerExportDialog */
+#loggerExportDialog .options span.on[data-i18n],
+  #loggerExportDialog .options span.pushbutton:active {
+    background-color: var(--in-content-primary-button-background)!important;
+    color: var(--in-content-selected-text)!important
+  }
+  #loggerExportDialog .options span[data-i18n] {
+    border: 1px solid!important
+  }
+  #loggerExportDialog .options span[data-i18n]:hover {
+    background-color: var(--in-content-primary-button-background-hover)!important;
+    color: var(--in-content-selected-text)!important;
+    border-color: var(--in-content-primary-button-background-hover)!important
+  }
+}
+@-moz-document url-prefix("about:blank") {
+  aside {
+    background-color: var(--in-content-page-background)!important;
+    border-color: var(--tone-8)!important;
+    color: var(--in-content-page-color)!important
+  }
+  ul > li > ul > li:hover {
+    background-color: var(--in-content-box-background)!important
+  }
+  section > div:first-child > textarea {
+    background-color: var(--in-content-box-background)!important;
+    color: var(--in-content-page-color)!important
+  }
+  section > div:first-child {
+    border-color: var(--in-content-box-border-color)!important
+  }
+  section.invalidFilter > div:first-child {
+    border-color: red!important
+  }
+  button {
+    background-color: var(--in-content-page-background)!important;
+    border-color: var(--in-content-box-border-color)!important;
+    color: var(--in-content-page-color)!important
+  }
+  button:disabled {
+    color: var(--tone-5)!important
+  }
+  button:not(:disabled):hover {
+    background-color: var(--in-content-box-background-hover)!important
+  }
+  #create:not(:disabled) {
+    background-color: var(--theme-highlight-yellow)!important;
+    color: #000!important
+  }
+  body.preview #preview {
+    background-color: var(--theme-highlight-blue)!important;
+    color: #000!important
+  }
+}

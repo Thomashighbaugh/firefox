@@ -4,20 +4,20 @@
 {
   :root {
     --in-content-border-hover: var(--dialog-box-border-hover) !important;
-    --in-content-border-focus: var(--base05) !important;
-    --in-content-border-active: var(--base05) !important;
-    --in-content-border-active-shadow: var(--base02aa) !important;
+    --in-content-border-focus: var(--color05) !important;
+    --in-content-border-active: var(--color05) !important;
+    --in-content-border-active-shadow: var(--color02aa) !important;
     --organizer-color: var(--plaintext-color) !important;
     --organizer-deemphasized-color: color-mix(
       in srgb,
       var(--plaintext-color) 75%,
       transparent
     ) !important;
-    --organizer-toolbar-background: var(--base03) !important;
+    --organizer-toolbar-background: var(--color03) !important;
     --organizer-pane-background: var(--in-content-box-bg-dark) !important;
     --organizer-content-background: var(--window-color) !important;
-    --organizer-hover-background: var(--base02) !important;
-    --organizer-selected-background: var(--base01-active) !important;
+    --organizer-hover-background: var(--color02) !important;
+    --organizer-selected-background: var(--color01-active) !important;
     --organizer-outline-color: var(--in-content-border-active) !important;
     --organizer-border-color: var(--in-content-border-color-dim) !important;
     --organizer-toolbar-field-background: var(--window-color) !important;

@@ -94,7 +94,7 @@
 }
 
 #viewButton:is(:active, [open]) {
-  background-color: var(--base02) !important;
+  background-color: var(--color02) !important;
 }
 
 #sidebarMenu-popup {
@@ -132,7 +132,7 @@
 }
 
 #sidebar-switcher-target.active {
-  background: var(--base02) !important;
+  background: var(--color02) !important;
 }
 
 #sidebar-close {
@@ -152,7 +152,7 @@
 }
 
 #sidebar-close:is(:hover, :focus-visible):active {
-  background-color: var(--base02) !important;
+  background-color: var(--color02) !important;
 }
 
 .sidebar-placesTreechildren::-moz-tree-cell {
@@ -437,18 +437,18 @@ there are normally no twistys in sorted trees so it is relatively safe to collap
 
   .item-title-container:hover {
     appearance: none !important;
-    background-color: var(--base02) !important;
+    background-color: var(--color02) !important;
     color: var(--inverted-color) !important;
   }
 
   .item.empty .item-title-container {
-    color: var(--base06) !important;
+    color: var(--color06) !important;
     background: none !important;
   }
 
   ::selection {
-    background-color: var(--base05) !important;
-    color: var(--base07) !important;
+    background-color: var(--color05) !important;
+    color: var(--color07) !important;
   }
 
   :where(input, textarea):not(:focus, :focus-within):-moz-lwtheme::selection {

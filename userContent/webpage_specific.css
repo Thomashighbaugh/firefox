@@ -4,8 +4,8 @@
 {
   /* Prevent whiteflash before Youtube dark theme loads */
   html {
-    background-color: var(--base00);
-    color: var(--base06);
+    background-color: var(--color00);
+    color: var(--color06);
   }
   /* Smaller font for fullscreen video title */
   .ytp-big-mode .ytp-title-text {

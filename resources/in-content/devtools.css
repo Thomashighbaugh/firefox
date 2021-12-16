@@ -31,7 +31,7 @@ and a few elements like checkboxes */
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    border: 1px solid var(--base0099);
+    border: 1px solid var(--color0099);
     background-color: var(--checkbox-unchecked-bgcolor);
     color: var(--in-parent-primary-button-text-color);
   }
@@ -52,7 +52,7 @@ and a few elements like checkboxes */
   }
 
   input:is([type="checkbox"], [type="radio"]):is(:hover, :focus-visible) {
-    background-color: var(--base03);
+    background-color: var(--color03);
   }
 
   input:is([type="checkbox"], [type="radio"]):is(:hover, :focus-visible):active {
@@ -70,7 +70,7 @@ and a few elements like checkboxes */
   input[type="checkbox"]:is([checked="true"], :checked) {
     background-image: url(chrome://userchrome/content/check.svg);
     border-color: var(--uc-border-color);
-    background-color: var(--base01);
+    background-color: var(--color01);
   }
 
   input[type="radio"] {
@@ -81,7 +81,7 @@ and a few elements like checkboxes */
   input[type="radio"]:is([checked="true"], :checked) {
     background-image: url(chrome://userchrome/content/radio.svg);
     border-color: var(--uc-border-color);
-    background-color: var(--base01);
+    background-color: var(--color01);
   }
 
   menupopup {
@@ -209,7 +209,7 @@ and a few elements like checkboxes */
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    border: 1px solid var(--base0099);
+    border: 1px solid var(--color0099);
     background-color: var(--checkbox-unchecked-bgcolor);
     color: var(--in-parent-primary-button-text-color);
   }
@@ -220,7 +220,7 @@ and a few elements like checkboxes */
 
   menupopup
     menuitem:is([type="checkbox"], [type="radio"])[_moz-menuactive="true"]::before {
-    background-color: var(--base03);
+    background-color: var(--color03);
   }
 
   menupopup
@@ -241,7 +241,7 @@ and a few elements like checkboxes */
   menupopup menuitem[type="checkbox"][checked="true"]::before {
     background-image: url(chrome://userchrome/content/check.svg);
     border-color: var(--uc-border-color);
-    background-color: var(--base01);
+    background-color: var(--color01);
   }
 
   menupopup menuitem[type="radio"]::before {
@@ -251,7 +251,7 @@ and a few elements like checkboxes */
   menupopup menuitem[type="radio"][checked="true"]::before {
     background-image: url(chrome://userchrome/content/radio.svg);
     border-color: var(--uc-border-color);
-    background-color: var(--base01);
+    background-color: var(--color01);
   }
 
   menupopup menuitem:is([type="checkbox"], [type="radio"]) .menu-iconic-left {

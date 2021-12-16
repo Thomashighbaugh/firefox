@@ -126,30 +126,30 @@
       --content-principal-page-background
     ) !important;
     --in-content-page-color: var(--content-principal-page-color) !important;
-    --in-content-item-selected: var(--base05) !important;
-    --in-content-border-highlight: var(--base05) !important;
+    --in-content-item-selected: var(--color05) !important;
+    --in-content-border-highlight: var(--color05) !important;
     --in-content-border-hover: var(--content-principal-border-hover) !important;
-    --in-content-border-focus: var(--base05) !important;
-    --in-content-border-active: var(--base05) !important;
+    --in-content-border-focus: var(--color05) !important;
+    --in-content-border-active: var(--color05) !important;
     --in-content-border-active-shadow: var(--purple-40-a30) !important;
     --in-content-category-outline-focus: 1px solid transparent !important;
-    --in-content-link-color: var(--base05) !important;
-    --in-content-link-color-hover: var(--base06) !important;
-    --in-content-link-color-active: var(--base07) !important;
+    --in-content-link-color: var(--color05) !important;
+    --in-content-link-color-hover: var(--color06) !important;
+    --in-content-link-color-active: var(--color07) !important;
     --in-content-link-visited-color: var(--pink-40) !important;
     --in-content-link-visited-color-hover: var(--pink-35) !important;
     --in-content-link-visited-color-active: var(--pink-30) !important;
-    --in-content-primary-button-background: var(--base05) !important;
-    --in-content-primary-button-background-hover: var(--base03) !important;
-    --in-content-primary-button-background-active: var(--base03) !important;
+    --in-content-primary-button-background: var(--color05) !important;
+    --in-content-primary-button-background-hover: var(--color03) !important;
+    --in-content-primary-button-background-active: var(--color03) !important;
     --in-content-primary-button-text-color: var(--secondary-color) !important;
     --in-content-button-border-radius: var(--uc-border-radius) !important;
-    --in-content-accent-color: var(--base19) !important;
-    --in-content-table-background: var(--base01) !important;
-    --in-content-table-header-background: var(--base01) !important;
+    --in-content-accent-color: var(--color19) !important;
+    --in-content-table-background: var(--color01) !important;
+    --in-content-table-header-background: var(--color01) !important;
     --newtab-background-color: var(--in-content-page-background) !important;
     --newtab-text-primary-color: var(--secondary-color) !important;
-    --lwt-sidebar-background-color: var(--base01) !important;
+    --lwt-sidebar-background-color: var(--color01) !important;
     --lwt-sidebar-text-color: var(--secondary-color) !important;
     --newtab-search-header-background-color: color-mix(
       in srgb,
@@ -161,63 +161,63 @@
       var(--content-principal-page-background) 80%,
       transparent
     ) !important;
-    --newtab-seperator-line-color: var(--base02) !important;
-    --newtab-modal-color: var(--base00) !important;
+    --newtab-seperator-line-color: var(--color02) !important;
+    --newtab-modal-color: var(--color00) !important;
     --newtab-focus-outline: var(--in-content-border-active-shadow) !important;
     --newtab-focus-border: var(--in-content-border-focus) !important;
-    --newtab-focus-border-selected: var(--base03) !important;
-    --newtab-textbox-background-color: var(--base01) !important;
+    --newtab-focus-border-selected: var(--color03) !important;
+    --newtab-textbox-background-color: var(--color01) !important;
     --newtab-textbox-focus-color: var(--in-content-border-focus) !important;
     --newtab-primary-action-background: var(
       --in-content-primary-button-background-hover
     ) !important;
     --newtab-primary-action-background-hover: color-mix(
       in srgb,
-      var(--base03) 60%,
+      var(--color03) 60%,
       var(--newtab-primary-action-background)
     ) !important;
     --newtab-primary-action-background-active: color-mix(
       in srgb,
-      var(--base06) 60%,
+      var(--color06) 60%,
       var(--newtab-primary-action-background)
     ) !important;
     --newtab-primary-element-text-color: var(--inverted-color) !important;
-    --newtab-element-secondary-color: var(--base02) !important;
+    --newtab-element-secondary-color: var(--color02) !important;
     --newtab-element-secondary-color-hover: color-mix(
       in srgb,
       var(--ui-text-40) 50%,
-      var(--base01-solid)
+      var(--color01-solid)
     ) !important;
     --newtab-element-secondary-color-active: color-mix(
       in srgb,
       var(--ui-text-50) 50%,
-      var(--base01-solid)
+      var(--color01-solid)
     ) !important;
     --newtab-button-primary-color: var(
       --in-content-primary-button-background-hover
     ) !important;
-    --newtab-border-primary-color: var(--base01-active) !important;
-    --newtab-background-color-secondary: var(--base01-solid) !important;
-    --newtab-card-active-outline-color: var(--base01) !important;
-    --newtab-link-primary-color: var(--base06) !important;
-    --newtab-link-secondary-color: var(--base05) !important;
-    --newtab-topsites-background-color: var(--base01) !important;
-    --customize-menu-background: var(--base00) !important;
-    --customize-menu-secondary-action-background: var(--base01) !important;
+    --newtab-border-primary-color: var(--color01-active) !important;
+    --newtab-background-color-secondary: var(--color01-solid) !important;
+    --newtab-card-active-outline-color: var(--color01) !important;
+    --newtab-link-primary-color: var(--color06) !important;
+    --newtab-link-secondary-color: var(--color05) !important;
+    --newtab-topsites-background-color: var(--color01) !important;
+    --customize-menu-background: var(--color00) !important;
+    --customize-menu-secondary-action-background: var(--color01) !important;
     --customize-menu-secondary-action-background-hover: var(
-      --base02
+      --color02
     ) !important;
     --customize-menu-secondary-action-background-active: var(
-      --base01-active
+      --color01-active
     ) !important;
     --customize-menu-first-shadow: hsla(250, 3%, 2%, 0.2) !important;
     --customize-menu-second-shadow: hsla(250, 3%, 2%, 0.4) !important;
     --newtab-contextmenu-background-color: var(
       --in-content-table-background
     ) !important;
-    --newtab-contextmenu-button-color: var(--base00) !important;
-    --newtab-card-background-color: var(--base00) !important;
-    --newtab-card-placeholder-color: var(--base00) !important;
+    --newtab-contextmenu-button-color: var(--color00) !important;
+    --newtab-card-background-color: var(--color00) !important;
+    --newtab-card-placeholder-color: var(--color00) !important;
     --newtab-search-text-color: var(--inverted-color) !important;
     --newtab-search-first-shadow: rgba(21, 20, 26, 0.5);
     --newtab-search-second-shadow: rgba(21, 20, 26, 0.75);
@@ -237,7 +237,7 @@
   body:not(.inline-onboarding)
     .fixed-search.newtab-experience
     .search-handoff-button {
-    background-color: var(--base01-solid) !important;
+    background-color: var(--color01-solid) !important;
   }
 
   .top-site-outer .top-site-icon {
@@ -252,11 +252,11 @@
   [lwt-newtab-brighttext]
     .ds-card-grid.ds-card-grid-border
     .ds-card:not(.placeholder) {
-    background: var(--base00) !important;
+    background: var(--color00) !important;
   }
 
   [lwt-newtab-brighttext] .ds-card .ds-card-link:hover header {
-    color: var(--base06) !important;
+    color: var(--color06) !important;
   }
 
   radio[focused="true"] > .radio-label-box {
@@ -302,7 +302,7 @@
   .showPrivate .info {
     background-image: url(chrome://userchrome/content/skin/privateBrowsing.svg) !important;
     -moz-context-properties: fill, fill-opacity;
-    fill: var(--base05);
+    fill: var(--color05);
   }
 
   .search-tooltip {
@@ -328,7 +328,7 @@
   }
 
   #errorPageContainer .button-container button {
-    border-color: var(--base0099) !important;
+    border-color: var(--color0099) !important;
   }
 
   #errorPageContainer .button-container button.primary {
@@ -496,9 +496,9 @@
       --button-color: var(--ui-text-100) !important;
       --button-hover-background-color: var(--button-bg-hover) !important;
       --primary-button-color: var(--ui-text-100) !important;
-      --primary-button-background-color: var(--base05) !important;
-      --primary-button-hover-background-color: var(--base03) !important;
-      --primary-button-active-background-color: var(--base03) !important;
+      --primary-button-background-color: var(--color05) !important;
+      --primary-button-hover-background-color: var(--color03) !important;
+      --primary-button-active-background-color: var(--color03) !important;
     }
 
     .card {
@@ -538,7 +538,7 @@
     }
 
     .sidebar__footer__support-help {
-      column-gap: calc(var(--base-unit) * 1.5) !important;
+      column-gap: calc(var(--color-unit) * 1.5) !important;
     }
 
     .icon-label--info {
@@ -588,9 +588,9 @@
       black 40%,
       var(--window-color)
     ) !important;
-    --active-color: var(--base03) !important;
+    --active-color: var(--color03) !important;
     --selected-background: var(--secondary-color) !important;
-    --link-foreground: var(--base05) !important;
+    --link-foreground: var(--color05) !important;
     --visited-link-foreground: #823afc !important;
     --proportional-width: calc(
       100% - (122.5em - (var(--content-width, 60em) * 2))
@@ -619,8 +619,8 @@
   }
 
   .toolbar {
-    border-color: var(--base0099) !important;
-    background-color: var(--base00-dim) !important;
+    border-color: var(--color0099) !important;
+    background-color: var(--color00-dim) !important;
     box-shadow: 0 0 12px hsla(0, 0%, 0%, 0.4) !important;
   }
 
@@ -638,21 +638,21 @@
   select:focus-visible,
   button:focus-visible,
   textarea:focus-visible {
-    outline-color: var(--base03) !important;
+    outline-color: var(--color03) !important;
     outline-style: solid !important;
     outline-width: 2px !important;
   }
 
   .moz-reader-content a:link {
-    color: var(--base05) !important;
+    color: var(--color05) !important;
   }
 
   .moz-reader-content a:link:hover {
-    color: var(--base06) !important;
+    color: var(--color06) !important;
   }
 
   .moz-reader-content a:link:hover:active {
-    color: var(--base06) !important;
+    color: var(--color06) !important;
   }
 
   .moz-reader-content a:visited {

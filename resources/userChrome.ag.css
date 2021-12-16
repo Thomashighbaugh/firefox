@@ -79,7 +79,7 @@ scrollbar[orient="vertical"]:not(:hover) thumb:not(:active) {
 scrollbar thumb:before {
   content: "";
   display: -moz-box;
-  background-color: var(--base0099);
+  background-color: var(--color0099);
   -moz-box-flex: 1;
   border-radius: 5px;
 }
@@ -232,7 +232,7 @@ tooltip > description {
   color: var(--tooltip-color);
   border: 1px solid var(--uc-menu-border-color);
   border-radius: var(--tooltip-border-radius);
-  box-shadow: 0 0 5px var(--base00);
+  box-shadow: 0 0 5px var(--color00);
   padding: 2px 6px 4px 6px;
   margin: 0;
 }

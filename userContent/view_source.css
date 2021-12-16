@@ -8,18 +8,18 @@
 
 @-moz-document url-prefix(view-source:) {
   html {
-    background: (--base00) !important;
-    color: var(--base06) !important;
+    background: (--color00) !important;
+    color: var(--color06) !important;
   }
 
   .attribute-name {
-    color: var(--base15) !important;
+    color: var(--color15) !important;
   }
   .start-tag,
   .end-tag {
-    color: var(--base16) !important;
+    color: var(--color16) !important;
   }
   .attribute-value {
-    color: var(--base14) !important;
+    color: var(--color14) !important;
   }
 }

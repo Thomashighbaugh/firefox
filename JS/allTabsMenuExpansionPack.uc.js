@@ -839,7 +839,7 @@
 #allTabsMenu-allTabsViewTabs > .all-tabs-item[selected] {
     font-weight: normal;
     background-color: var(--arrowpanel-dimmed-further) !important;
-    --main-stripe-color: var(--base0033);
+    --main-stripe-color: var(--color0033);
 }
 #allTabsMenu-allTabsViewTabs > .all-tabs-item .all-tabs-button {
     min-height: revert;
@@ -1004,8 +1004,8 @@
     border-image: linear-gradient(
         to right,
         transparent,
-        var(--base0033) 1%,
-        var(--base0033) 25%,
+        var(--color0033) 1%,
+        var(--color0033) 25%,
         transparent 90%
     );
     border-image-slice: 1;
@@ -1013,11 +1013,11 @@
 }
 #allTabsMenu-allTabsViewTabs > .all-tabs-item[dragpos="before"]::before {
     inset-block-start: 0;
-    border-top: 1px solid var(--base0033);
+    border-top: 1px solid var(--color0033);
 }
 #allTabsMenu-allTabsViewTabs > .all-tabs-item[dragpos="after"]::before {
     inset-block-end: 0;
-    border-bottom: 1px solid var(--base0033);
+    border-bottom: 1px solid var(--color0033);
 }
 #allTabsMenu-allTabsViewTabs
     > .all-tabs-item[pinned]

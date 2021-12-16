@@ -4,25 +4,25 @@
 /*================== FIREFOX BG COLOR ==================*/
 @-moz-document url("about:newtab"), url("about:home"), url("about:blank"), url("about:support"), url("about:config"), url("about:profiles") {
   * {
-    background: var(--base00);
-    color: var(--base07);
+    background: var(--color00);
+    color: var(--color07);
   }
 
   /*Dark*/
   html:not(#ublock0-epicker)[lwt-newtab-brighttext],
   html:not(#ublock0-epicker) body[lwt-newtab-brighttext],
   #newtab-customize-overlay[lwt-newtab-brighttext] {
-    background-color: var(--base00) !important;
+    background-color: var(--color00) !important;
   }
   html[lwt-newtab-brighttext] {
-    --in-content-page-background: var(--base00) !important;
+    --in-content-page-background: var(--color00) !important;
   }
   [lwt-newtab-brighttext] .wordmark {
     fill: #fefafe !important;
   }
   [lwt-newtab-brighttext] .SnippetBaseContainer {
-    background-color: var(--base00) !important;
-    color: var(--base07) !important;
+    background-color: var(--color00) !important;
+    color: var(--color07) !important;
   }
   [lwt-newtab-brighttext] .ASRouterButton {
     border-radius: 3px !important;
@@ -33,17 +33,17 @@
 /*Dark*/
 [lwt-newtab-brighttext] .search-wrapper input {
   transition: all 0.3s ease !important;
-  background: var(--base02) var(--base06) 12px center no-repeat !important;
+  background: var(--color02) var(--color06) 12px center no-repeat !important;
   background-size: 20px !important;
   border: 1px solid !important;
-  border-color: var(--base03) !important;
+  border-color: var(--color03) !important;
   box-shadow: none !important;
-  color: var(--base07) !important;
+  color: var(--color07) !important;
 }
 /*Private*/
 html.private .search-wrapper input {
   transition: all 0.3s ease !important;
-  background: var(--base00) var(--base01) 12px center no-repeat !important;
+  background: var(--color00) var(--color01) 12px center no-repeat !important;
   background-size: 20px !important;
   border: 1px solid !important;
   border-color: #3c3f4c !important;
@@ -54,7 +54,7 @@ html.private .search-wrapper input {
 [lwt-newtab-brighttext] .search-wrapper .search-inner-wrapper:hover input,
 [lwt-newtab-brighttext] .search-wrapper .search-inner-wrapper:active input,
 [lwt-newtab-brighttext] .search-wrapper input:focus {
-  border-color: var(--base01) !important;
+  border-color: var(--color01) !important;
 }
 /*Private*/
 [private] .search-wrapper .search-inner-wrapper:hover input,
@@ -66,7 +66,7 @@ html.private .search-wrapper input {
 [lwt-newtab-brighttext] .search-wrapper .search-button,
 [lwt-newtab-brighttext] .search-wrapper .search-button {
   transition: all 0.3s ease !important;
-  fill: var(--base07) !important;
+  fill: var(--color07) !important;
 }
 /*Private*/
 [private] .search-wrapper .search-button,
@@ -77,7 +77,7 @@ html.private .search-wrapper input {
 /*Dark*/
 [lwt-newtab-brighttext] .search-wrapper .search-button:focus,
 [lwt-newtab-brighttext] .search-wrapper .search-button:hover {
-  background-color: var(--base01) !important;
+  background-color: var(--color01) !important;
 }
 /*Private*/
 [private] .search-wrapper .search-button:focus,
@@ -88,7 +88,7 @@ html.private .search-wrapper input {
 /*================== READER VIEW ==================*/
 @-moz-document url-prefix("about:reader") {
   html {
-    background: var(--base00);
+    background: var(--color00);
   }
   toolbar > reader-toolbar {
     border-radius: 3px !important;
@@ -96,17 +96,17 @@ html.private .search-wrapper input {
 
   /*Dark*/
   body.loaded.dark {
-    --toolbar-bgcolor: var(--base00) !important;
-    --toolbar-border: var(--base01) !important;
-    --toolbar-hover: var(--base02) !important;
-    --popup-bgcolor: var(--base01) !important;
-    --popup-border: var(--base03) !important;
-    --font-color: var(--base07) !important;
-    --icon-fill: var(--base07) !important;
-    background: var(--base00) !important;
-    --blue-40: var(--base07) !important;
+    --toolbar-bgcolor: var(--color00) !important;
+    --toolbar-border: var(--color01) !important;
+    --toolbar-hover: var(--color02) !important;
+    --popup-bgcolor: var(--color01) !important;
+    --popup-border: var(--color03) !important;
+    --font-color: var(--color07) !important;
+    --icon-fill: var(--color07) !important;
+    background: var(--color00) !important;
+    --blue-40: var(--color07) !important;
     --blue-40-a30: #8b9cbe !important;
     --selected-background: #8b9cbe99 !important;
-    --active-color: var(--base07) !important;
+    --active-color: var(--color07) !important;
   }
 }

@@ -51,30 +51,30 @@
   html:not(#ublock0-epicker),
   html:not(#ublock0-epicker) body,
   #newtab-customize-overlay {
-    background: var(--base01) !important;
-    color: var(--base06) !important;
+    background: var(--color01) !important;
+    color: var(--color06) !important;
   }
 }
 
 /* Sets up minimal scrollbar */
 
 :root {
-  scrollbar-color: var(--base05) transparent !important;
-  background: var(--base01) !important;
+  scrollbar-color: var(--color05) transparent !important;
+  background: var(--color01) !important;
   font-weight: 900;
   /* font-family: "Hurmit Nerd Font Mono bold", monospace !important; */
 }
 
 @-moz-document url(about:privatebrowsing) {
   :root {
-    scrollbar-color: var(--base06) transparent !important;
-    background: var(--base01) !important;
-    color: var(--base06) !important;
+    scrollbar-color: var(--color06) transparent !important;
+    background: var(--color01) !important;
+    color: var(--color06) !important;
   }
 }
 
 #action-box {
-  /* background: var(--base21) !important; */
+  /* background: var(--color21) !important; */
   background: var(--tab-toolbar-bg) !important;
 }
 

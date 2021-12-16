@@ -1,6 +1,7 @@
 /* nord VPN extension */
 
-@-moz-document url-prefix("moz-extension://54896d1f-a658-4fd5-ab86-4ad739b06f69") {
+@-moz-document url-prefix("moz-extension://54896d1f-a658-4fd5-ab86-4ad739b06f69")
+{
   @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
     body {
       font-family: SF Pro Text, Segoe UI, sans-serif !important;
@@ -19,7 +20,7 @@
 
   .c-bw-12,
   .CountryItem .Text {
-    color: var(--inverted-color)!important;
+    color: var(--inverted-color) !important;
   }
 
   .text-grey-darkest {
@@ -60,7 +61,9 @@
 
   .Button--blue:hover,
   .nord-button--v-contained.nord-button--c-blue:is(:hover, :focus-visible):not([disabled]) {
-    background-color: var(--in-content-primary-button-background-active) !important;
+    background-color: var(
+      --in-content-primary-button-background-active
+    ) !important;
     border-color: transparent !important;
   }
 
@@ -72,7 +75,11 @@
   .Link--alt.Link--active,
   .Link--alt:hover,
   .text-blue:hover {
-    color: color-mix(in srgb, var(--secondary-color) 50%, var(--purple-30)) !important;
+    color: color-mix(
+      in srgb,
+      var(--secondary-color) 50%,
+      var(--purple-30)
+    ) !important;
   }
 
   .c-blu-6,
@@ -82,7 +89,11 @@
   }
 
   .Link--alt:is(:active, :focus, :hover) .SVG--inline:not(.SVG--no-hover) * {
-    fill: color-mix(in srgb, var(--secondary-color) 50%, var(--purple-30)) !important;
+    fill: color-mix(
+      in srgb,
+      var(--secondary-color) 50%,
+      var(--purple-30)
+    ) !important;
   }
 
   .Link--dark.Link--active,
@@ -92,25 +103,25 @@
 
   .CountryItem--active,
   .CountryItem:hover {
-    background: var(--base01) !important;
+    background: var(--color01) !important;
   }
 
   hr {
     background: none !important;
-    border-bottom: 1px solid var(--base01) !important;
+    border-bottom: 1px solid var(--color01) !important;
     height: 0 !important;
   }
 
   .Toggle__track {
-    background-color: var(--base02) !important;
+    background-color: var(--color02) !important;
   }
 
   .Toggle:hover:not(.Toggle--disabled) .Toggle__track {
-    background-color: var(--base01-active) !important;
+    background-color: var(--color01-active) !important;
   }
 
   .Toggle__thumb {
-    background-color: var(--inverted-color)!important;
+    background-color: var(--inverted-color) !important;
     border-color: transparent !important;
     background-clip: content-box !important;
   }
@@ -124,7 +135,9 @@
   }
 
   .Toggle--checked:hover:not(.Toggle--disabled) .Toggle__track {
-    background-color: var(--in-content-primary-button-background-hover) !important;
+    background-color: var(
+      --in-content-primary-button-background-hover
+    ) !important;
   }
 
   .Toggle--checked .Toggle__thumb {
@@ -137,25 +150,25 @@
   }
 
   .Button--destructive.Button--outline:not(:hover) {
-    background-color: var(--base01) !important;
+    background-color: var(--color01) !important;
   }
 
   .nord-button.text-red:not(:hover) {
-    background-color: var(--base01) !important;
+    background-color: var(--color01) !important;
   }
 
   .nord-button.text-red:hover {
-    background-color: var(--base02) !important;
+    background-color: var(--color02) !important;
   }
 
   .form-control,
   .nord-input {
-    background-color: var(--base01) !important;
+    background-color: var(--color01) !important;
   }
 
   .TextField__element,
   .nord-input {
-    border-color: var(--base0099) !important;
+    border-color: var(--color0099) !important;
   }
 
   .form-control:focus,

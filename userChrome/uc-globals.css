@@ -22,22 +22,22 @@
   /* This will also work with custom colors from color.firefox.com. */
 
   /* Theme color Suggestions*/
-  --window-color: var(--base01);
-  --secondary-color: var(--base25);
-  --secondary-color-hover: var(--base02);
+  --window-color: var(--color01);
+  --secondary-color: var(--color25);
+  --secondary-color-hover: var(--color02);
   --secondary-color-active: var(--secondary-color-hover);
-  --inverted-color: var(--base07);
+  --inverted-color: var(--color07);
 
   /* Containter Tab colors */
-  --uc-identity-color-blue: var(--base14);
-  --uc-identity-color-turquoise: var(--base12);
-  --uc-identity-color-green: var(--base15);
-  --uc-identity-color-yellow: var(--base10);
-  --uc-identity-color-orang: var(--base17);
-  --uc-identity-color-red: var(--base08);
-  --uc-identity-color-pink: var(--base16);
-  --uc-identity-color-purple: var(--base11);
-  --uc-identity-color-gray: var(--base05);
+  --uc-identity-color-blue: var(--color14);
+  --uc-identity-color-turquoise: var(--color12);
+  --uc-identity-color-green: var(--color15);
+  --uc-identity-color-yellow: var(--color10);
+  --uc-identity-color-orang: var(--color17);
+  --uc-identity-color-red: var(--color08);
+  --uc-identity-color-pink: var(--color16);
+  --uc-identity-color-purple: var(--color11);
+  --uc-identity-color-gray: var(--color05);
 
   /* URL color in URL bar suggestions */
   --urlbar-popup-url-color: var(--uc-identity-color-gray) !important;
@@ -51,7 +51,7 @@
 
   /* global border radius */
   --uc-border-radius: 6px;
-  --uc-border-color: var(--base0099);
+  --uc-border-color: var(--color0099);
   /* dynamic url bar width settings */
   --uc-urlbar-width: clamp(200px, 40vw, 500px);
 

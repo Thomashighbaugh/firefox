@@ -1,6 +1,7 @@
 /* multithreaded download manager */
 
-@-moz-document url-prefix("moz-extension://0163b722-07ea-4fbd-80d6-7b5de657bb9e") {
+@-moz-document url-prefix("moz-extension://0163b722-07ea-4fbd-80d6-7b5de657bb9e")
+{
   :root {
     --selected-bg: color-mix(in srgb, #23252e 60%, #17191e);
   }
@@ -11,7 +12,7 @@
   }
 
   #toolbar {
-    background-color: var(--base00) !important;
+    background-color: var(--color00) !important;
     display: flex !important;
     flex-flow: row nowrap !important;
     column-gap: 3px !important;
@@ -28,7 +29,7 @@
 
   #toolbar > button:not([disabled]):hover,
   .summary-row > button:not([disabled]):hover {
-    background-color: var(--base02) !important;
+    background-color: var(--color02) !important;
   }
 
   #toolbar > button:not([disabled]):focus-visible,
@@ -39,7 +40,7 @@
 
   #toolbar > button:not([disabled]):hover:active,
   .summary-row > button:not([disabled]):hover:active {
-    background-color: var(--base01-active) !important;
+    background-color: var(--color01-active) !important;
   }
 
   #tasks-wrapper {
@@ -55,7 +56,7 @@
   }
 
   .task {
-    border-color: var(--base0099) !important;
+    border-color: var(--color0099) !important;
   }
 
   :root[data-path="panel/panel"] .task.selected {

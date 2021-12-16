@@ -1,4 +1,4 @@
 @import "../../colors/vice";
 :root {
-  --global-selection-bgcolor: var(--base03);
+  --global-selection-bgcolor: var(--color03);
 }

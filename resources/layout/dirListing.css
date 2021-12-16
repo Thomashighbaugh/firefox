@@ -123,6 +123,6 @@ td:not(:first-child) {
 
   body > table > tbody > tr:hover {
     outline: 1px solid var(--in-content-separator-dim);
-    background-color: var(--base03);
+    background-color: var(--color03);
   }
 }

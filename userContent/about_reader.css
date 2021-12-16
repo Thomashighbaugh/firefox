@@ -8,31 +8,31 @@
 @-moz-document url-prefix("about:reader") {
   /* Buttons and Toolbar to match browser's navbar color */
   .toolbar {
-    background-color: var(--base00) !important;
+    background-color: var(--color00) !important;
     border: none !important;
   }
   .button {
     height: 52px !important;
-    background-color: var(--base00) !important;
-    fill: var(--base06) !important;
+    background-color: var(--color00) !important;
+    fill: var(--color06) !important;
     border: none !important;
   }
   .button:hover {
-    background-color: var(--base00) !important;
-    fill: var(--base06) !important;
+    background-color: var(--color00) !important;
+    fill: var(--color06) !important;
   }
   .close-button {
     height: 68px !important;
   }
   .close-button:hover {
-    background-color: var(--base00) !important;
-    fill: var(--base06) !important;
+    background-color: var(--color00) !important;
+    fill: var(--color06) !important;
   }
   .dropdown.narrate-dropdown {
     display: none !important;
   }
   /* Text colors */
   .moz-reader-content a:visited {
-    color: var(--base06) !important;
+    color: var(--color06) !important;
   }
 }

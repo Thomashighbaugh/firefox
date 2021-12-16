@@ -290,7 +290,7 @@ menupopup.in-menulist menuitem:is([type="checkbox"], [type="radio"])::before {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  border: 1px solid var(--base0099);
+  border: 1px solid var(--color0099);
   background-color: var(--checkbox-unchecked-bgcolor);
   color: var(--in-parent-primary-button-text-color);
 }
@@ -305,7 +305,7 @@ menupopup.in-menulist menuitem[type="checkbox"]::before {
   menuitem:is([type="checkbox"], [type="radio"])[_moz-menuactive="true"]::before,
 menupopup.in-menulist
   menuitem:is([type="checkbox"], [type="radio"])[_moz-menuactive="true"]::before {
-  background-color: var(--base03);
+  background-color: var(--color03);
 }
 
 #ContentSelectDropdown
@@ -338,7 +338,7 @@ menupopup.in-menulist
 menupopup.in-menulist menuitem[type="checkbox"][checked="true"]::before {
   background-image: url(chrome://userchrome/content/check.svg);
   border-color: var(--uc-border-color);
-  background-color: var(--base01);
+  background-color: var(--color01);
 }
 
 #ContentSelectDropdown > menupopup menuitem[type="radio"]::before,
@@ -352,7 +352,7 @@ menupopup.in-menulist menuitem[type="radio"]::before {
 menupopup.in-menulist menuitem[type="radio"][checked="true"]::before {
   background-image: url(chrome://userchrome/content/radio.svg);
   border-color: var(--uc-border-color);
-  background-color: var(--base01);
+  background-color: var(--color01);
 }
 
 #ContentSelectDropdown

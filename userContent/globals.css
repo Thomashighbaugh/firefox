@@ -7,65 +7,65 @@ but other than that these variables should be available everywhere. */
 
 :root,
 tooltip {
-  --base00: #17191e !important;
-  --base0022: #17191e22 !important;
-  --base0033: #17191e33 !important;
-  --base0066: #17191e66 !important;
-  --base0099: #17191e99 !important;
-  --base00aa: #17191eaa !important;
-  --base00cc: #17191ecc !important;
-  --base0000: #17191e00 !important;
+  --color00: #17191e !important;
+  --color0022: #17191e22 !important;
+  --color0033: #17191e33 !important;
+  --color0066: #17191e66 !important;
+  --color0099: #17191e99 !important;
+  --color00aa: #17191eaa !important;
+  --color00cc: #17191ecc !important;
+  --color0000: #17191e00 !important;
 
-  --base01: #23252e !important !important;
-  --base02: #3c3f4c !important;
-  --base0233: #3c3f4c33 !important;
-  --base0266: #3c3f4c66 !important;
-  --base0299: #3c3f4c99 !important;
-  --base02aa: #3c3f4caa !important;
-  --base02cc: #3c3f4ccc !important;
+  --color01: #23252e !important !important;
+  --color02: #3c3f4c !important;
+  --color0233: #3c3f4c33 !important;
+  --color0266: #3c3f4c66 !important;
+  --color0299: #3c3f4c99 !important;
+  --color02aa: #3c3f4caa !important;
+  --color02cc: #3c3f4ccc !important;
 
-  --base03: #555e70 !important;
-  --base03cc: #555e70cc !important;
+  --color03: #555e70 !important;
+  --color03cc: #555e70cc !important;
 
-  --base04: #0b0c0f !important;
-  --base05: #8b9cbe !important;
-  --base06: #b2bfd9 !important;
-  --base0633: #b2bfd933 !important;
-  --base0666: #b2bfd966 !important;
+  --color04: #0b0c0f !important;
+  --color05: #8b9cbe !important;
+  --color06: #b2bfd9 !important;
+  --color0633: #b2bfd933 !important;
+  --color0666: #b2bfd966 !important;
 
-  --base07: #f4f4f7 !important;
-  --base0733: #f4f4f733 !important;
-  --base0766: #f4f4f766 !important;
-  --base0799: #f4f4f799 !important;
-  --base07aa: #f4f4f7aa !important;
-  --base07bb: #f4f4f7bb !important;
-  --base07cc: #f4f4f7cc !important;
-  --base07dd: #f4f4f7dd !important;
+  --color07: #f4f4f7 !important;
+  --color0733: #f4f4f733 !important;
+  --color0766: #f4f4f766 !important;
+  --color0799: #f4f4f799 !important;
+  --color07aa: #f4f4f7aa !important;
+  --color07bb: #f4f4f7bb !important;
+  --color07cc: #f4f4f7cc !important;
+  --color07dd: #f4f4f7dd !important;
 
-  --base08: #ff00aa !important;
-  --base09: #8265ff !important;
-  --base10: #ffffaf !important;
-  --base11: #878eff !important;
-  --base12: #87ffff !important;
-  --base13: #0badff !important;
-  --base14: #209afe !important;
-  --base15: #44ffdd !important;
-  --base16: #ff87d7 !important;
-  --base17: #af9dfc !important;
-  --base18: #555566 !important;
-  --base19: #1b1d24 !important;
-  --base20: #0b0c0f !important;
-  --base21: #3c3f4c !important;
-  --base22: #555566 !important;
-  --base23: #727f96 !important;
-  --base24: #383a47 !important;
-  --base25: #2f303d !important;
-  --base26: #570b0e !important;
-  --base27: #092444 !important;
-  --base28: #25003e !important;
-  --base29: #101114 !important;
-  --base30: #1a1e21 !important;
-  --base31: #00ffcc !important;
+  --color08: #ff00aa !important;
+  --color09: #8265ff !important;
+  --color10: #ffffaf !important;
+  --color11: #878eff !important;
+  --color12: #87ffff !important;
+  --color13: #0badff !important;
+  --color14: #209afe !important;
+  --color15: #44ffdd !important;
+  --color16: #ff87d7 !important;
+  --color17: #af9dfc !important;
+  --color18: #555566 !important;
+  --color19: #1b1d24 !important;
+  --color20: #0b0c0f !important;
+  --color21: #3c3f4c !important;
+  --color22: #555566 !important;
+  --color23: #727f96 !important;
+  --color24: #383a47 !important;
+  --color25: #2f303d !important;
+  --color26: #570b0e !important;
+  --color27: #092444 !important;
+  --color28: #25003e !important;
+  --color29: #101114 !important;
+  --color30: #1a1e21 !important;
+  --color31: #00ffcc !important;
 
   --ui-text-10: rgba(244, 244, 247, 0.1);
   --ui-text-20: rgba(244, 244, 247, 0.2);
@@ -79,47 +79,47 @@ tooltip {
   --ui-text-100: #f4f4f7;
 
   --uc-arrowpanel-darker: hsla(236, 70%, 73%, 0.17);
-  --uc-arrowpanel-very-faint: var(--base0033);
-  --uc-arrowpanel-faint: var(--base0066);
-  --uc-arrowpanel-dimmed: var(--base02cc);
-  --uc-arrowpanel-dimmed-further: var(--base02aa);
-  --uc-arrowpanel-dimmed-even-further: var(--base0299);
-  --uc-desaturate-faint: var(--base02cc);
-  --uc-desaturate-dimmed: var(--base02aa);
-  --uc-desaturate-dimmed-further: var(--base0299);
-  --uc-desaturate-dimmed-even-further: var(--base0266);
-  --uc-panel-button-solid: var(--base00);
-  --uc-panel-box-solid: var(--base0033);
-  --uc-menu-border-color: var(--base0299);
+  --uc-arrowpanel-very-faint: var(--color0033);
+  --uc-arrowpanel-faint: var(--color0066);
+  --uc-arrowpanel-dimmed: var(--color02cc);
+  --uc-arrowpanel-dimmed-further: var(--color02aa);
+  --uc-arrowpanel-dimmed-even-further: var(--color0299);
+  --uc-desaturate-faint: var(--color02cc);
+  --uc-desaturate-dimmed: var(--color02aa);
+  --uc-desaturate-dimmed-further: var(--color0299);
+  --uc-desaturate-dimmed-even-further: var(--color0266);
+  --uc-panel-button-solid: var(--color00);
+  --uc-panel-box-solid: var(--color0033);
+  --uc-menu-border-color: var(--color0299);
   --uc-smooth-timing-function: cubic-bezier(0.07, 0.78, 0.21, 0.95);
   --uc-content-text-a50: rgba(244, 244, 247, 0.5);
   --uc-content-text-a80: rgba(244, 244, 247, 0.8);
-  --uc-accent-color: var(--base30);
-  --uc-toolbar-bgcolor: var(--base00);
+  --uc-accent-color: var(--color30);
+  --uc-toolbar-bgcolor: var(--color00);
   --uc-toolbar-color: var(--ui-text-100);
-  --uc-arrowpanel-background: var(--base00);
+  --uc-arrowpanel-background: var(--color00);
   --uc-arrowpanel-color: hsl(213, 43%, 89%);
-  --button-solid-hover-background: var(--base02);
+  --button-solid-hover-background: var(--color02);
   --button-solid-active-background: transparent;
   --button-solid-checked-background: transparent;
   --uc-toolbarbutton-hover-background: transparent;
   --uc-toolbarbutton-active-background: transparent;
   --uc-toolbarbutton-checked-background: hsla(236, 82%, 83%, 0.13);
-  --uc-desaturate-hover-background: var(--base03);
-  --uc-desaturate-active-background: var(--base03);
+  --uc-desaturate-hover-background: var(--color03);
+  --uc-desaturate-active-background: var(--color03);
   --uc-desaturate-checked-background: hsla(223, 8%, 12%, , 0.13);
   --uc-panel-description-color: hsl(235, 48%, 89%, 70%);
-  --uc-panel-shortcut-color: var(--base07);
-  --uc-panel-shortcut-focus: var(--base07);
-  --uc-places-cell-focus-bgcolor: var(--base01);
-  --uc-places-cell-hover-bgcolor: var(--base02);
+  --uc-panel-shortcut-color: var(--color07);
+  --uc-panel-shortcut-focus: var(--color07);
+  --uc-places-cell-focus-bgcolor: var(--color01);
+  --uc-places-cell-hover-bgcolor: var(--color02);
 
   --menupopup-inner-box-margin: 0px;
   --menupopup-shadow: none;
   --panel-shadow: none;
   --webextension-panel-border-radius: 5px;
   --menupopup-margin: calc(0px - var(--uc-inner-box-margin));
-  --menupopup-background: var(--base00cc);
+  --menupopup-background: var(--color00cc);
   --menupopupmargin-block-start: calc(-4px - var(--uc-inner-box-margin));
   --menupopupmargin-inline-start: calc(2px - var(--uc-inner-box-margin));
   --menupopup-padding: 0px;
@@ -148,17 +148,17 @@ tooltip {
   --uc-font-weight-thin: 400;
   --subdialog-font-size: 1em !important;
 
-  --popup-on-popup-contrast-bg: var(--base30);
+  --popup-on-popup-contrast-bg: var(--color30);
   --autocomplete-background: var(--popup-on-popup-contrast-bg);
-  --ui-secondary-bg: var(--base01);
-  --ui-tertiary-bg: var(--base00aa);
-  --tooltip-bgcolor: var(--base19);
-  --tooltip-color: var(--base07);
+  --ui-secondary-bg: var(--color01);
+  --ui-tertiary-bg: var(--color00aa);
+  --tooltip-bgcolor: var(--color19);
+  --tooltip-color: var(--color07);
   --tooltip-border-radius: 2px;
   --tooltip-border-color: var(--uc-menu-border-color);
   --tooltip-box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.2);
-  --global-focus-shadow-color: var(--base02aa);
-  --global-focus-outline-color: var(--base02aa);
+  --global-focus-shadow-color: var(--color02aa);
+  --global-focus-outline-color: var(--color02aa);
   --global-focus-ring: 2px solid var(--global-focus-shadow-color);
   --global-focus-shadow: 0 0 0 3px var(--global-focus-shadow-color),
     0 0 0 1px var(--global-focus-outline-color);
@@ -174,13 +174,13 @@ tooltip {
   --transparent-img-background-context: center/16px repeat
     url(chrome://userchrome/content/checker-context.svg);
   --general-button-border-radius: 2.6px;
-  --dialog-bgcolor: var(--base19);
+  --dialog-bgcolor: var(--color19);
   --dialog-box-bgcolor: hsla(232, 100%, 75%, 8%);
   --dialog-box-bgcolor-dim: hsla(240, 100%, 70%, 3%);
   --dialog-box-border-color: hsla(232, 100%, 85%, 0.2);
   --dialog-box-border-hover: hsla(232, 100%, 85%, 0.3);
-  --blurred-dialog-border-color: var(--base25);
-  --alertbox-bgcolor: var(--base01);
+  --blurred-dialog-border-color: var(--color25);
+  --alertbox-bgcolor: var(--color01);
   --notification-menu-color: var(--in-parent-page-color);
   --ui-disabled-alpha: 0.5;
   --context-menu-disabled-color: hsla(
@@ -193,15 +193,15 @@ tooltip {
   /* this url is for the icon that displays in the identity box when entering text in the urlbar, and on the new tab page.
     you can replace it with chrome://userchrome/content/search-glass.svg if you don't use google */
   --default-search-identity-icon: url(chrome://userchrome/content/engines/google.svg);
-  --identity-box-solid-bg: var(--base24);
-  --identity-box-focus-bg: var(--base21);
-  --secure-color: var(--base31);
-  --secure-text-color: var(--base31);
-  --insecure-text-color: var(--base08);
-  --warning-color: var(--base08);
-  --uc-warning-background: var(--base26);
-  --warning-icon-background: var(--base16);
-  --warning-icon-detail: var(--base26);
+  --identity-box-solid-bg: var(--color24);
+  --identity-box-focus-bg: var(--color21);
+  --secure-color: var(--color31);
+  --secure-text-color: var(--color31);
+  --insecure-text-color: var(--color08);
+  --warning-color: var(--color08);
+  --uc-warning-background: var(--color26);
+  --warning-icon-background: var(--color16);
+  --warning-icon-detail: var(--color26);
   --low-warning-background: hsla(48, 100%, 66%, 0.2);
   --low-warning-color: hsl(40, 100%, 57%);
   --low-warning-text-color: hsl(40, 100%, 70%);
@@ -210,10 +210,10 @@ tooltip {
   --low-warning-icon-detail: hsl(32, 52%, 35%);
   --protection-idle-color: hsl(205, 100%, 67%);
   --protection-active-color: hsl(358, 98%, 66%);
-  --update-badge-bg: var(--base31);
-  --update-badge-color: var(--base04);
+  --update-badge-bg: var(--color31);
+  --update-badge-color: var(--color04);
   --update-badge-inactive: hsl(227, 19%, 48%);
-  --attention-color: var(--base09);
+  --attention-color: var(--color09);
   --eom-warning-bg: hsla(48, 100%, 66%, 0.15);
   --eom-warning-bg-hover: hsla(48, 100%, 75%, 0.23);
   --eom-warning-bg-active: hsla(48, 100%, 80%, 0.27);
@@ -221,7 +221,7 @@ tooltip {
   --eom-error-bg-hover: hsla(2, 100%, 76%, 0.23);
   --eom-error-bg-active: hsla(2, 100%, 80%, 0.27);
 
-  --global-selection-bgcolor: var(--base28);
+  --global-selection-bgcolor: var(--color28);
   --global-selection-color: white;
   --global-selection-bgcolor-disabled: hsla(245, 30%, 70%, 0.4);
   --ui-selection-bgcolor: hsla(0, 0%, 100%, 0.9);
@@ -230,50 +230,50 @@ tooltip {
   --content-selection-bgcolor: hsla(0, 0%, 100%, 0.8);
   --content-selection-color: hsl(240, 4%, 10%);
   --content-selection-bgcolor-disabled: hsla(0, 0%, 100%, 0.7);
-  --pdf-selection-bgcolor: var(--base14) !important;
-  --pdf-highlight-bgcolor: var(--base09) !important;
+  --pdf-selection-bgcolor: var(--color14) !important;
+  --pdf-highlight-bgcolor: var(--color09) !important;
 
   /* controls the color of the search highlights in about:preferences */
-  --solid-selection-bgcolor: var(--base08);
+  --solid-selection-bgcolor: var(--color08);
   /* controls the color of the little tooltips that appear on search highlighted buttons in about:preferences */
-  --aboutPrefs-find-tags: var(--base02);
+  --aboutPrefs-find-tags: var(--color02);
 
   --badge-color-dark: hsl(236, 13%, 42%);
   --badge-color-light: var(--lwt-toolbarbutton-icon-fill-attention);
 
   --tab-background: var(--lwt-accent-color);
   --tab-selected: var(--window-color);
-  --tab-hover: linear-gradient(var(--base01), var(--base00));
+  --tab-hover: linear-gradient(var(--color01), var(--color00));
   --tab-pinned: linear-gradient(var(--lwt-accent-color), var(--window-color));
-  --tab-multi: linear-gradient(var(--base02), var(--base01));
-  --tab-multi-hover: linear-gradient(var(--base00), var(--base19));
+  --tab-multi: linear-gradient(var(--color02), var(--color01));
+  --tab-multi-hover: linear-gradient(var(--color00), var(--color19));
   --tab-pinned-hover: var(--window-color);
-  --tab-focused-highlight: var(--base01);
+  --tab-focused-highlight: var(--color01);
   --tab-focused-hover: linear-gradient(
     color-mix(in srgb, var(--tab-focused-highlight) 50%, var(--window-color)),
     var(--window-color)
   );
-  --multiselected-color: var(--base01);
+  --multiselected-color: var(--color01);
 
   /* width of the spacer between the tabs and the window control buttons */
   --titlebar-spacer-width: 40px;
   /* subtle gradient drawn behind the window control buttons. */
   --titlebar-gradient: linear-gradient(
     -32deg,
-    var(--base00),
-    var(--base01) 10%,
-    var(--base02) 35%,
-    var(--base00) 55%
+    var(--color00),
+    var(--color01) 10%,
+    var(--color02) 35%,
+    var(--color00) 55%
   );
   --titlebar-background: var(--titlebar-gradient);
-  --search-box-color: var(--base01);
-  --secondary-color: var(--base01);
-  --search-box-null: var(--base00);
+  --search-box-color: var(--color01);
+  --secondary-color: var(--color01);
+  --search-box-null: var(--color00);
   --textbox-button-hidden: hsla(240, 100%, 89%, 0);
   --confirmation-hint-color: var(--ui-text-100);
-  --confirmation-hint-bgcolor: var(--base00);
-  --confirmation-hint-border-color: var(--base02aa);
-  --picture-in-picture-toggle-bgcolor: var(--base01);
+  --confirmation-hint-bgcolor: var(--color00);
+  --confirmation-hint-border-color: var(--color02aa);
+  --picture-in-picture-toggle-bgcolor: var(--color01);
 
   --urlbar-base-font-weight: 400;
   --urlbar-result-strong-font-weight: 400;
@@ -287,13 +287,13 @@ tooltip {
     var(--urlbar-one-offs-engine-width) *
       var(--urlbar-one-offs-engines-per-scroll)
   );
-  --loading-throbber-fill: var(--base05);
-  --busy-throbber-fill: var(--base06);
-  --sanitize-border-color: var(--base0266);
-  --menu-separator-color: var(--base0666);
-  --urlbar-input-bgcolor: var(--base01);
-  --urlbar-input-bgcolor-brighter: var(--base02);
-  --urlbar-input-bgcolor-disabled: var(--base04);
+  --loading-throbber-fill: var(--color05);
+  --busy-throbber-fill: var(--color06);
+  --sanitize-border-color: var(--color0266);
+  --menu-separator-color: var(--color0666);
+  --urlbar-input-bgcolor: var(--color01);
+  --urlbar-input-bgcolor-brighter: var(--color02);
+  --urlbar-input-bgcolor-disabled: var(--color04);
   --uc-urlbar-container-height: 38px;
   --uc-menubar-searchbar-width: 256px;
   --uc-tab-min-height: 35px;
@@ -351,47 +351,47 @@ tooltip {
   --in-parent-page-color: hsl(212, 43%, 90%);
   --in-parent-box-background: var(--dialog-box-bgcolor);
   --in-parent-box-background-dim: var(--dialog-box-bgcolor-dim);
-  --in-parent-box-border-color: var(--base02aa);
+  --in-parent-box-border-color: var(--color02aa);
   --in-parent-button-background: var(--uc-arrowpanel-faint);
   --in-parent-button-background-hover: var(--uc-arrowpanel-dimmed);
   --in-parent-button-background-active: var(--uc-arrowpanel-dimmed-further);
-  --in-parent-item-selected: var(--base02);
+  --in-parent-item-selected: var(--color02);
   --in-parent-item-hover: var(--uc-arrowpanel-dimmed);
-  --in-parent-border-highlight: var(--base02);
+  --in-parent-border-highlight: var(--color02);
   --in-parent-border-hover: var(--dialog-box-border-hover);
-  --in-parent-border-focus: var(--base02);
-  --in-parent-border-active: var(--base02);
-  --in-parent-border-active-shadow: var(--base02aa);
+  --in-parent-border-focus: var(--color02);
+  --in-parent-border-active: var(--color02);
+  --in-parent-border-active-shadow: var(--color02aa);
   --in-parent-category-outline-focus: 1px solid transparent;
-  --in-parent-link-color: var(--base02);
-  --in-parent-link-color-hover: var(--base05);
-  --in-parent-link-color-active: var(--base05);
-  --in-parent-primary-button-background: var(--base02);
-  --in-parent-primary-button-background-hover: var(--base02);
-  --in-parent-primary-button-background-active: var(--base05);
+  --in-parent-link-color: var(--color02);
+  --in-parent-link-color-hover: var(--color05);
+  --in-parent-link-color-active: var(--color05);
+  --in-parent-primary-button-background: var(--color02);
+  --in-parent-primary-button-background-hover: var(--color02);
+  --in-parent-primary-button-background-active: var(--color05);
   --in-parent-primary-button-text-color: var(--in-parent-page-color);
-  --ui-textbox-bgcolor: var(--base01);
-  --ui-textbox-focus-bgcolor: var(--base01);
-  --ebp-menulist-background-color: var(--base24);
-  --ebp-menulist-secondary-color: var(--base25);
-  --ebp-menulist-separator-color: var(--base02aa);
+  --ui-textbox-bgcolor: var(--color01);
+  --ui-textbox-focus-bgcolor: var(--color01);
+  --ebp-menulist-background-color: var(--color24);
+  --ebp-menulist-secondary-color: var(--color25);
+  --ebp-menulist-separator-color: var(--color02aa);
   --ebp-favicon-background-color: var(--dialog-bgcolor);
-  --ui-solid-button-bgcolor: var(--base02);
-  --ui-solid-button-hover-bgcolor: var(--base03);
-  --ui-solid-button-active-bgcolor: var(--base01);
-  --ebmp-hover-bgcolor: var(--base19);
-  --ebmp-focus-bgcolor: var(--base25);
+  --ui-solid-button-bgcolor: var(--color02);
+  --ui-solid-button-hover-bgcolor: var(--color03);
+  --ui-solid-button-active-bgcolor: var(--color01);
+  --ebmp-hover-bgcolor: var(--color19);
+  --ebmp-focus-bgcolor: var(--color25);
 
   --content-principal-page-background: hsl(270, 3%, 12%);
   --content-principal-page-color: var(--in-parent-page-color);
-  --content-principal-box-background: var(--base01);
-  --content-principal-box-background-odd: var(--base19);
-  --content-principal-box-background-dim: var(--base02);
-  --content-principal-box-border-color: var(--base03);
-  --content-principal-button-background: var(--base01);
-  --content-principal-button-background-hover: var(--base03);
-  --content-principal-button-background-active: var(--base01);
-  --content-principal-button-background-solid: var(--base01);
+  --content-principal-box-background: var(--color01);
+  --content-principal-box-background-odd: var(--color19);
+  --content-principal-box-background-dim: var(--color02);
+  --content-principal-box-border-color: var(--color03);
+  --content-principal-button-background: var(--color01);
+  --content-principal-button-background-hover: var(--color03);
+  --content-principal-button-background-active: var(--color01);
+  --content-principal-button-background-solid: var(--color01);
   --content-principal-border-hover: var(
     --content-principal-button-background-hover
   );
@@ -410,12 +410,12 @@ tooltip {
   --uc-checkbox-checked-hover-bgcolor: var(
     --in-parent-primary-button-background-hover
   );
-  --uc-checkbox-checked-active-bgcolor: var(--base01);
+  --uc-checkbox-checked-active-bgcolor: var(--color01);
 
-  --switch-off-background: var(--base02);
-  --switch-off-hover-background: var(--base01);
-  --switch-off-active-background: var(--base19);
-  --switch-off-hover-border: var(--base02aa);
+  --switch-off-background: var(--color02);
+  --switch-off-hover-background: var(--color01);
+  --switch-off-active-background: var(--color19);
+  --switch-off-hover-border: var(--color02aa);
 }
 
 :root[fxastatus="not_configured"] {
@@ -455,9 +455,9 @@ popupnotification,
 }
 
 #protections-popup {
-  --button-primary-bgcolor: var(--base01) !important;
-  --button-primary-hover-bgcolor: var(--base02) !important;
-  --button-primary-active-bgcolor: var(--base05) !important;
+  --button-primary-bgcolor: var(--color01) !important;
+  --button-primary-hover-bgcolor: var(--color02) !important;
+  --button-primary-active-bgcolor: var(--color05) !important;
   --protections-popup-switch-off-background: color-mix(
     in srgb,
     currentColor 15%,
@@ -478,10 +478,10 @@ popupnotification,
     currentColor 5%,
     transparent
   );
-  --protections-popup-switch-on-background: var(--base02);
-  --protections-popup-switch-on-hover-background-custom: var(--base19);
-  --protections-popup-switch-on-active-background-custom: var(--base21);
-  --protections-popup-switch-on-hover-border-custom: var(--base02);
+  --protections-popup-switch-on-background: var(--color02);
+  --protections-popup-switch-on-hover-background-custom: var(--color19);
+  --protections-popup-switch-on-active-background-custom: var(--color21);
+  --protections-popup-switch-on-hover-border-custom: var(--color02);
 }
 
 :root[lwt-popup-brighttext] #protections-popup {

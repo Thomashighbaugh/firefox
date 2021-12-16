@@ -1,6 +1,7 @@
 /* firefox multi-account containers extension */
 
-@-moz-document url-prefix("moz-extension://14960f03-eca3-472b-b4d2-0b7f831ebe41/pageActionPopup.html") {
+@-moz-document url-prefix("moz-extension://14960f03-eca3-472b-b4d2-0b7f831ebe41/pageActionPopup.html")
+{
   :root {
     --arrowpanel-background: var(--uc-arrowpanel-background);
     --panel-separator-margin: 0px 4px;
@@ -95,7 +96,8 @@
   }
 }
 
-@-moz-document url-prefix("moz-extension://14960f03-eca3-472b-b4d2-0b7f831ebe41/popup.html") {
+@-moz-document url-prefix("moz-extension://14960f03-eca3-472b-b4d2-0b7f831ebe41/popup.html")
+{
   :root {
     --arrowpanel-background: var(--uc-arrowpanel-background);
     --panel-separator-margin: 0px 4px;
@@ -428,7 +430,11 @@
   }
 
   .menu-item.drag-over td {
-    background-image: linear-gradient(180deg, var(--uc-desaturate-dimmed-even-further) 1.5px, transparent 1.5px) !important;
+    background-image: linear-gradient(
+      180deg,
+      var(--uc-desaturate-dimmed-even-further) 1.5px,
+      transparent 1.5px
+    ) !important;
   }
 
   .move-button img {
@@ -472,7 +478,7 @@
   .manage-assigned-sites-list {
     cursor: pointer !important;
     width: max-content !important;
-    color: var(--base06) !important;
+    color: var(--color06) !important;
   }
 
   #manage-assigned-sites-list:is(:hover, :focus-visible, :-moz-focusring) {
@@ -545,8 +551,11 @@
     background-color: var(--in-parent-primary-button-background) !important;
   }
 
-  .panel-footer > .button.primary:is(:hover, :focus-visible, :-moz-focusring):active {
-    background-color: var(--in-parent-primary-button-background-hover) !important;
+  .panel-footer
+    > .button.primary:is(:hover, :focus-visible, :-moz-focusring):active {
+    background-color: var(
+      --in-parent-primary-button-background-hover
+    ) !important;
   }
 
   #delete-container-button {

@@ -127,9 +127,9 @@
     ) !important;
     --in-content-page-color: var(--content-principal-page-color) !important;
 
-    --base01-odd: var(--content-principal-box-background-odd) !important;
-    --base01-dim: var(--content-principal-box-background-dim) !important;
-    --base0099: var(--content-principal-box-border-color) !important;
+    --color01-odd: var(--content-principal-box-background-odd) !important;
+    --color01-dim: var(--content-principal-box-background-dim) !important;
+    --color0099: var(--content-principal-box-border-color) !important;
     --in-content-button-background: var(
       --content-principal-button-background
     ) !important;
@@ -161,11 +161,11 @@
     --in-content-primary-button-text-color: var(--secondary-color) !important;
     --in-content-button-border-radius: var(--uc-border-radius) !important;
     --in-content-accent-color: var(--purple-35) !important;
-    --in-content-table-background: var(--base01) !important;
+    --in-content-table-background: var(--color01) !important;
     --in-content-table-header-background: var(--purple-40-a30) !important;
     --newtab-background-color: var(--in-content-page-background) !important;
     --newtab-text-primary-color: var(--secondary-color) !important;
-    --lwt-sidebar-background-color: var(--base01) !important;
+    --lwt-sidebar-background-color: var(--color01) !important;
     --lwt-sidebar-text-color: var(--secondary-color) !important;
     --newtab-search-header-background-color: color-mix(
       in srgb,
@@ -177,12 +177,12 @@
       var(--content-principal-page-background) 80%,
       transparent
     ) !important;
-    --newtab-seperator-line-color: var(--base02) !important;
-    --newtab-modal-color: var(--base01) !important;
+    --newtab-seperator-line-color: var(--color02) !important;
+    --newtab-modal-color: var(--color01) !important;
     --newtab-focus-outline: var(--in-content-border-active-shadow) !important;
     --newtab-focus-border: var(--in-content-border-focus) !important;
     --newtab-focus-border-selected: var(--purple-30) !important;
-    --newtab-textbox-background-color: var(--base01) !important;
+    --newtab-textbox-background-color: var(--color01) !important;
     --newtab-textbox-focus-color: var(--in-content-border-focus) !important;
     --newtab-primary-action-background: var(
       --in-content-primary-button-background-hover
@@ -198,42 +198,42 @@
       var(--newtab-primary-action-background)
     ) !important;
     --newtab-primary-element-text-color: var(--inverted-color) !important;
-    --newtab-element-secondary-color: var(--base02) !important;
+    --newtab-element-secondary-color: var(--color02) !important;
     --newtab-element-secondary-color-hover: color-mix(
       in srgb,
       var(--ui-text-40) 50%,
-      var(--base01)
+      var(--color01)
     ) !important;
     --newtab-element-secondary-color-active: color-mix(
       in srgb,
       var(--ui-text-50) 50%,
-      var(--base01)
+      var(--color01)
     ) !important;
     --newtab-button-primary-color: var(
       --in-content-primary-button-background-hover
     ) !important;
-    --newtab-border-primary-color: var(--base02) !important;
-    --newtab-background-color-secondary: var(--base01) !important;
-    --newtab-card-active-outline-color: var(--base01) !important;
-    --newtab-link-primary-color: var(--base06) !important;
-    --newtab-link-secondary-color: var(--base05) !important;
-    --newtab-topsites-background-color: var(--base01) !important;
-    --customize-menu-background: var(--base01) !important;
-    --customize-menu-secondary-action-background: var(--base01) !important;
+    --newtab-border-primary-color: var(--color02) !important;
+    --newtab-background-color-secondary: var(--color01) !important;
+    --newtab-card-active-outline-color: var(--color01) !important;
+    --newtab-link-primary-color: var(--color06) !important;
+    --newtab-link-secondary-color: var(--color05) !important;
+    --newtab-topsites-background-color: var(--color01) !important;
+    --customize-menu-background: var(--color01) !important;
+    --customize-menu-secondary-action-background: var(--color01) !important;
     --customize-menu-secondary-action-background-hover: var(
-      --base02
+      --color02
     ) !important;
     --customize-menu-secondary-action-background-active: var(
-      --base02
+      --color02
     ) !important;
     --customize-menu-first-shadow: hsla(250, 3%, 2%, 0.2) !important;
     --customize-menu-second-shadow: hsla(250, 3%, 2%, 0.4) !important;
     --newtab-contextmenu-background-color: var(
       --in-content-table-background
     ) !important;
-    --newtab-contextmenu-button-color: var(--base01) !important;
-    --newtab-card-background-color: var(--base01) !important;
-    --newtab-card-placeholder-color: var(--base01) !important;
+    --newtab-contextmenu-button-color: var(--color01) !important;
+    --newtab-card-background-color: var(--color01) !important;
+    --newtab-card-placeholder-color: var(--color01) !important;
     --newtab-search-text-color: var(--inverted-color) !important;
     --newtab-search-first-shadow: rgba(21, 20, 26, 0.5);
     --newtab-search-second-shadow: rgba(21, 20, 26, 0.75);
@@ -253,7 +253,7 @@
   body:not(.inline-onboarding)
     .fixed-search.newtab-experience
     .search-handoff-button {
-    background-color: var(--base01) !important;
+    background-color: var(--color01) !important;
   }
 
   .top-site-outer .top-site-icon {
@@ -268,11 +268,11 @@
   [lwt-newtab-brighttext]
     .ds-card-grid.ds-card-grid-border
     .ds-card:not(.placeholder) {
-    background: var(--base01) !important;
+    background: var(--color01) !important;
   }
 
   [lwt-newtab-brighttext] .ds-card .ds-card-link:hover header {
-    color: var(--base06) !important;
+    color: var(--color06) !important;
   }
 
   radio[focused="true"] > .radio-label-box {
@@ -344,7 +344,7 @@
   }
 
   #errorPageContainer .button-container button {
-    border-color: var(--base0099) !important;
+    border-color: var(--color0099) !important;
   }
 
   #errorPageContainer .button-container button.primary {
@@ -557,7 +557,7 @@
     }
 
     .sidebar__footer__support-help {
-      column-gap: calc(var(--base-unit) * 1.5) !important;
+      column-gap: calc(var(--color-unit) * 1.5) !important;
     }
 
     .icon-label--info {
@@ -609,7 +609,7 @@
     ) !important;
     --active-color: var(--purple-35) !important;
     --selected-background: var(--secondary-color) !important;
-    --link-foreground: var(--base05) !important;
+    --link-foreground: var(--color05) !important;
     --visited-link-foreground: #823afc !important;
     --proportional-width: calc(
       100% - (122.5em - (var(--content-width, 60em) * 2))
@@ -638,8 +638,8 @@
   }
 
   .toolbar {
-    border-color: var(--base0099) !important;
-    background-color: var(--base01-dim) !important;
+    border-color: var(--color0099) !important;
+    background-color: var(--color01-dim) !important;
     box-shadow: 0 0 12px hsla(0, 0%, 0%, 0.4) !important;
   }
 
@@ -663,15 +663,15 @@
   }
 
   .moz-reader-content a:link {
-    color: var(--base05) !important;
+    color: var(--color05) !important;
   }
 
   .moz-reader-content a:link:hover {
-    color: var(--base06) !important;
+    color: var(--color06) !important;
   }
 
   .moz-reader-content a:link:hover:active {
-    color: var(--base06) !important;
+    color: var(--color06) !important;
   }
 
   .moz-reader-content a:visited {

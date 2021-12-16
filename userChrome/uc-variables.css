@@ -9,7 +9,7 @@ but find that it's missing because docs do not inherit from <browser> elements. 
   --uc-theme-color: var(--window-color);
   --uc-hover-color: var(--secondary-color);
   --uc-inverted-color: var(--inverted-color);
-  --button-bgcolor: var(--uc-theme-color) !important;
+  --button-bgcolor: transparent !important;
   --button-hover-bgcolor: var(--uc-hover-color) !important;
   --button-active-bgcolor: var(--uc-hover-color) !important;
   --toolbar-bgcolor: var(--uc-theme-color) !important;
@@ -40,10 +40,10 @@ but find that it's missing because docs do not inherit from <browser> elements. 
   --uc-theme-color: var(--window-color);
   --uc-hover-color: var(--secondary-color);
   --uc-inverted-color: var(--inverted-color);
-  --button-bgcolor: var(--uc-theme-color) !important;
+  --button-bgcolor: transparent !important;
   --button-hover-bgcolor: var(--uc-hover-color) !important;
   --button-active-bgcolor: var(--uc-hover-color) !important;
-  --toolbar-bgcolor: var(--uc-theme-color) !important;
+  --toolbar-bgcolor: var(--window-color) !important;
   --toolbarbutton-hover-background: var(--uc-hover-color) !important;
   --toolbarbutton-active-background: var(--uc-hover-color) !important;
   --toolbarbutton-border-radius: var(--uc-border-radius) !important;

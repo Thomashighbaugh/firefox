@@ -38,9 +38,3 @@
 .urlbarView-row[selected] > .urlbarView-row-inner {
   background: var(--uc-hover-color) !important;
 }
-/* move tabs bar over */
-#TabsToolbar {
-  margin-left: var(--uc-urlbar-width) !important;
-  display: none !important;
-  background: transparent !important;
-}

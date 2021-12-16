@@ -10,3 +10,10 @@
 @import url(uc-tabs.css);
 @import url(uc-icons.css);
 @import url(uc-buttons.css);
+
+/* move tabs bar over */
+#TabsToolbar {
+  margin-left: var(--uc-urlbar-width) !important;
+  display: none !important;
+  background: transparent !important;
+}

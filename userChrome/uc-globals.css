@@ -8,7 +8,7 @@
 ##======================================================================================== */
 
 /* Used by plaintext for style, provides base */
-@import url(chrome://userchrome/content/layout/uc-low-globals.css);
+//@import url(chrome://userchrome/content/layout/uc-low-globals.css);
 @import url(../colors/vice.css);
 
 :root {

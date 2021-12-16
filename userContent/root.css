@@ -3,7 +3,7 @@
 @media (prefers-color-scheme: dark) {
   ::selection,
   ::-moz-selection {
-    background-color: var(--global-selection-bgcolor) !important;
+    background-color: var(--base01) !important;
     color: var(--global-selection-color) !important;
   }
 
@@ -34,7 +34,8 @@
     font-family: "Overpass Mono";
     font-style: normal;
     font-weight: 100;
-    src: local("Overpass Mono"), local("Overpass Mono Light"), local("OverpassMono-Light");
+    src: local("Overpass Mono"), local("Overpass Mono Light"),
+      local("OverpassMono-Light");
   }
 
   :root {

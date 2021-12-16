@@ -8,8 +8,9 @@
 @import url("colors/vice.css");
 @import url("userChrome.css");
 
-@import url("userContent/globals.css");
 @import url("userContent/library.css");
+@import url("userContent/globals.css");
+
 @import url("userContent/root.css");
 @import url("userContent/menus.css");
 @import url("userContent/devtools.css");

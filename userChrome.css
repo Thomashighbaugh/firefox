@@ -1,8 +1,1 @@
 @import url(userChrome/uc.css);
-
-/* I am assuming because  */
-#TabsToolbar {
-  margin-left: var(--uc-urlbar-width) !important;
-  display: none !important;
-  background: transparent !important;
-}

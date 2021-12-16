@@ -3,8 +3,13 @@
   .tab-background:not([selected]):-moz-lwtheme-brighttext {
     background-color: var(--tab-background-color)!important;
     color: var(--tab-color)!important;
-    display:none;
+    display:none !important;
   }
+  #tabbrowser-tabs {
+
+visibility: collapse !important;
+
+}
   @media screen and (-moz-os-version:windows-win7) {
     window {
       background-color: var(--tone-8)!important;

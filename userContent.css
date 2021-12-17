@@ -8,8 +8,7 @@
 @import url(colors/vice.css);
 /* @import url("userChrome.css"); */
 
-@import url(uc-globals.css);
-
+@import url(userChrome/uc-globals.css);
 @import url(userContent/root.css);
 @import url(userContent/menus.css);
 @import url(userContent/devtools.css);
@@ -23,6 +22,7 @@
 @import url(userContent/ext-ublock.css);
 @import url(userContent/ext-simpletranslate.css);
 @import url(userContent/ext-tabnotes.css);
+@import url(userContent/ext-firefoxnotes.css);
 @import url(userContent/ext-sortbookmarks.css);
 @import url(userContent/site-google.css);
 @import url(userContent/site-youtube.css);
@@ -31,58 +31,3 @@
 @import url(userContent/site-reddit.css);
 @import url(userContent/site-subscene.css);
 @import url(userContent/misc-content.css);
-
-@import url(userContent/about_newtab);
-@import url(userContent/about_reader);
-@import url(userContent/addon_styling);
-@import url(userContent/error_pages);
-@import url(userContent/view_source);
-@import url(userContent/webpage_specific);
-@import url(userContent/customization-window);
-@import url(userContent/elegant_additions.css);
-
-/* Set background color of landing pages */
-
-@-moz-document url(about:profiles),
-@-moz-document url(about:newtab),
-@-moz-document url(about:home),
-@-moz-document url(about:blank) {
-  html:not(#ublock0-epicker),
-  html:not(#ublock0-epicker) body,
-  #newtab-customize-overlay {
-    background: var(--color01) !important;
-    color: var(--color06) !important;
-  }
-}
-
-/* Sets up minimal scrollbar */
-
-:root {
-  scrollbar-color: var(--color05) transparent !important;
-  background: var(--color01) !important;
-  font-weight: 900;
-  /* font-family: "Hurmit Nerd Font Mono bold", monospace !important; */
-}
-
-@-moz-document url(about:privatebrowsing) {
-  :root {
-    scrollbar-color: var(--color06) transparent !important;
-    background: var(--color01) !important;
-    color: var(--color06) !important;
-  }
-}
-
-#action-box {
-  /* background: var(--color21) !important; */
-  background: var(--tab-toolbar-bg) !important;
-}
-
-.wide-container button {
-  background: var(--tab-toolbar-bg) !important;
-}
-
-.wide-container th,
-.wide-container td,
-.wide-container tr. .wide-container {
-  background: var(--tab-toolbar-bg) !important;
-}

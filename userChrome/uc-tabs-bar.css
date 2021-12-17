@@ -75,54 +75,54 @@ this sheet controls their appearance as well. */
 
 :root[inFullscreen] #toolbar-menubar {
   /* visibility: visible !important; */
-  visibility: collapse;
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 :root[inFullscreen] #titlebar {
   background: var(--titlebar-background);
-  visibility: collapse;
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 #toolbar-menubar[autohide="true"][inactive="true"]:not([customizing="true"])
   ~ #TabsToolbar {
   background: var(--titlebar-background);
-  visibility: collapse;
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 #toolbar-menubar:not([inactive="true"]) {
   background: var(--titlebar-background);
-  visibility: collapse;
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 /* menubar buttons */
 #main-menubar {
   -moz-box-flex: 1 !important;
-  visibility: collapse;
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 #toolbar-menubar #menubar-items {
   -moz-box-pack: center !important;
-  visibility: collapse;
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 #main-menubar > menu > menupopup {
   margin-block-start: -5px !important;
-  visibility: collapse;
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 #toolbar-menubar #main-menubar > menu {
   appearance: none !important;
   background-color: transparent !important;
   padding-inline: 2px;
-  visibility: collapse;
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 #toolbar-menubar #main-menubar > menu > label {
@@ -130,20 +130,20 @@ this sheet controls their appearance as well. */
   margin: 0 !important;
   padding: 4px 6px 5px 6px !important;
   border-radius: var(--toolbarbutton-border-radius) !important;
-  visibility: collapse;
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 #toolbar-menubar #main-menubar > menu[_moz-menuactive="true"] > label {
   background-color: var(--toolbarbutton-hover-background) !important;
-  visibility: collapse;
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 #toolbar-menubar #main-menubar > menu[open] > label {
   background-color: var(--toolbarbutton-active-background) !important;
-  visibility: collapse;
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 #toolbar-menubar #search-container {
@@ -154,22 +154,22 @@ this sheet controls their appearance as well. */
   resize: horizontal !important;
   height: 100% !important;
   box-sizing: border-box !important;
-  visibility: collapse;
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 #toolbar-menubar #searchbar {
   min-height: 28px !important;
   border: none !important;
   box-shadow: none !important;
-  visibility: collapse;
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 #toolbar-menubar #searchbar .searchbar-search-icon {
   margin-left: 5px !important;
-  visibility: collapse;
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 #toolbar-menubar .searchbar-textbox {
@@ -252,7 +252,8 @@ this sheet controls their appearance as well. */
 }
 
 :is(tabbrowser, #TabsToolbar) toolbarbutton[class^="scrollbutton"] {
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 /* hide tab separators */
@@ -299,7 +300,8 @@ this sheet controls their appearance as well. */
   :is(.titlebar-restore, .uc-titlebar-restore),
 :root:is([sizemode="maximized"], [inFullscreen])
   :is(.titlebar-max, .uc-titlebar-max) {
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 :root:-moz-window-inactive:not([customizing])
@@ -778,28 +780,30 @@ panelview .all-tabs-button:not([disabled], [open]):focus {
   .titlebar-spacer[type="pre-tabs"] {
   width: 8px !important;
   /* display: -moz-box !important; */
-  visibility: collapse;
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 :root:is([operatingsystem="macosx"], [operatingsystem="linux"])
   .titlebar-spacer[type="post-tabs"] {
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 :root:is([operatingsystem="macosx"], [operatingsystem="linux"])
   #toolbar-menubar:not([inactive="true"])
   > spacer {
   width: 8px !important;
-  visibility: collapse;
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 :root:is([operatingsystem="macosx"], [operatingsystem="linux"])
   #toolbar-menubar:not([inactive="true"])
   + #TabsToolbar
   .titlebar-spacer[type="pre-tabs"] {
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 :root:is([operatingsystem="macosx"], [operatingsystem="linux"]) {
@@ -815,15 +819,15 @@ panelview .all-tabs-button:not([disabled], [open]):focus {
   #toolbar-menubar[inactive="true"]
   ~ #TabsToolbar {
   background: var(--titlebar-background) !important;
-  visibility: collapse;
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 :root:is([operatingsystem="macosx"], [operatingsystem="linux"]):not([inFullscreen])
   #toolbar-menubar:not([inactive="true"]) {
   background: var(--titlebar-background);
-  visibility: collapse;
-  display: none !important;
+  //visibility: collapse;
+  // display: none !important;
 }
 
 /* move titlebar buttons to the left if user sets the preference for it */
@@ -831,15 +835,15 @@ panelview .all-tabs-button:not([disabled], [open]):focus {
   .titlebar-buttonbox-container,
   #toolbar-menubar > .titlebar-buttonbox-container {
     -moz-box-ordinal-group: 0 !important;
-    visibility: collapse;
-    display: none !important;
+    //visibility: collapse;
+    // display: none !important;
   }
 
   .titlebar-min,
   .uc-titlebar-min {
     -moz-box-ordinal-group: 2 !important;
-    visibility: collapse;
-    display: none !important;
+    //visibility: collapse;
+    // display: none !important;
   }
 
   .titlebar-max,
@@ -847,67 +851,67 @@ panelview .all-tabs-button:not([disabled], [open]):focus {
   .titlebar-restore,
   .uc-titlebar-restore {
     -moz-box-ordinal-group: 3 !important;
-    visibility: collapse;
-    display: none !important;
+    //visibility: collapse;
+    // display: none !important;
   }
 
   .titlebar-close,
   .uc-titlebar-close {
     -moz-box-ordinal-group: 1 !important;
-    visibility: collapse;
-    display: none !important;
+    //visibility: collapse;
+    // display: none !important;
   }
 
   #toolbar-menubar > spacer,
   .titlebar-spacer[type="pre-tabs"] {
     -moz-box-ordinal-group: 1 !important;
-    visibility: collapse;
-    display: none !important;
+    //visibility: collapse;
+    // display: none !important;
   }
 
   #toolbar-menubar > * {
     -moz-box-ordinal-group: 2 !important;
-    visibility: collapse;
-    display: none !important;
+    //visibility: collapse;
+    // display: none !important;
   }
 
   #toolbar-menubar {
     -moz-box-ordinal-group: 0 !important;
-    visibility: collapse;
-    display: none !important;
+    //visibility: collapse;
+    // display: none !important;
   }
 
   #TabsToolbar,
   #toolbar-menubar[inactive="true"] ~ #TabsToolbar {
-    visibility: collapse;
-    display: none !important;
+    //visibility: collapse;
+    // display: none !important;
     padding-inline: 4px 3px !important;
   }
 
   #toolbar-menubar:not([inactive="true"]) {
     padding-inline: 4px !important;
-    visibility: collapse;
-    display: none !important;
+    //visibility: collapse;
+    // display: none !important;
   }
 
   #toolbar-menubar > spacer,
   .titlebar-spacer[type="pre-tabs"] {
     width: 8px !important;
     /* display: -moz-box !important; */
-    visibility: collapse;
-    display: none !important;
+    //visibility: collapse;
+    // display: none !important;
   }
 
   .titlebar-spacer[type="post-tabs"] {
     display: none !important;
-    visibility: collapse;
-    display: none !important;
+    /* visibility: collapse;
+    display: none !important; */
   }
 
   #toolbar-menubar:not([inactive="true"]) > spacer {
     width: 8px !important;
-    visibility: collapse;
-    display: none !important;
+    /* visibility: collapse; */
+    /* display: none !important; */
   }
 
   #toolbar-menubar:not([inactive="true"])
@@ -923,19 +927,19 @@ panelview .all-tabs-button:not([disabled], [open]):focus {
       var(--uc-accent-color) 200px
     );
     --titlebar-background: var(--lwt-accent-color) var(--titlebar-gradient);
-    visibility: collapse;
-    display: none !important;
+    /* visibility: collapse;
+    display: none !important; */
   }
 
   :root:not([inFullscreen]) #toolbar-menubar[inactive="true"] ~ #TabsToolbar {
     background: var(--titlebar-background) !important;
-    visibility: collapse;
-    display: none !important;
+    // visibility: collapse;
+    //  display: none !important;
   }
 
   :root:not([inFullscreen]) #toolbar-menubar:not([inactive="true"]) {
     background: var(--titlebar-background);
-    visibility: collapse;
-    display: none !important;
+    // visibility: collapse;
+    //display: none !important;
   }
 }

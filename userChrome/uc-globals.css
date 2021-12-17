@@ -18,10 +18,10 @@ tooltip {
   --ui-text-90: rgba(244, 244, 247, 0.9);
   --ui-text-100: #f4f4f7;
 
-  --uc-arrowpanel-darker: hsla(223, 13%, 10%, 0.45);
-  --uc-arrowpanel-very-faint: hsla(225, 13%, 13%, 0.65);
-  --uc-arrowpanel-faint: hsla(225, 13%, 13%, 0.55);
-  --uc-arrowpanel-dimmed: hsla(225, 13%, 13%, 0.55);
+  --uc-arrowpanel-darker: hsl(223, 13%, 10%);
+  --uc-arrowpanel-very-faint: hsl(225, 13%, 13%);
+  --uc-arrowpanel-faint: hsl(225, 13%, 13%);
+  --uc-arrowpanel-dimmed: hsl(225, 13%, 13%)
   --uc-arrowpanel-dimmed-further: hsla(225, 13%, 13%, 0.65);
   --uc-arrowpanel-dimmed-even-further: hsla(225, 13%, 13%, 0.3);
   --uc-desaturate-faint: hsla(223, 13%, 10%, 0.55);
@@ -155,8 +155,8 @@ tooltip {
     if the script still doesn't work, you can override this directly in custom-chrome.css by adding this rule:
     :root{--default-search-identity-icon:url(chrome://userchrome/content/engines/my-engine-icon.svg)!important; */
   --default-search-identity-icon: url(chrome://userchrome/content/search-glass.svg);
-  --identity-box-solid-bg: hsl(233, 34%, 22%);
-  --identity-box-focus-bg: hsl(234, 34%, 23%);
+  --identity-box-solid-bg: hsl(223, 14%, 8%);
+  --identity-box-focus-bg: hsl(224, 14%, 13%);
   --secure-color: hsl(169, 100%, 63%);
   --secure-text-color: hsl(168, 100%, 50%);
   --insecure-text-color: hsla(320, 100%, 50%, 0.867);

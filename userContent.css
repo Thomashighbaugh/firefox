@@ -6,7 +6,7 @@
  */
 
 @import url("colors/vice.css");
-@import url("userChrome.css");
+/* @import url("userChrome.css"); */
 
 @import url("userContent/library.css");
 @import url("userContent/globals.css");

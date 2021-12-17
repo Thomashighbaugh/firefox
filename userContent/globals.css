@@ -67,7 +67,7 @@ tooltip {
   --color30: #1a1e21 !important;
   --color31: #00ffcc !important;
 
-  --ui-text-10: rgba(244, 244, 247, 0.1);
+  --ui-text-10: rgba(244, 244, 247, 0.55);
   --ui-text-20: rgba(244, 244, 247, 0.2);
   --ui-text-30: rgba(244, 244, 247, 0.3);
   --ui-text-40: rgba(244, 244, 247, 0.4);
@@ -78,7 +78,7 @@ tooltip {
   --ui-text-90: rgba(244, 244, 247, 0.9);
   --ui-text-100: #f4f4f7;
 
-  --uc-arrowpanel-darker: hsla(223, 13%, 10%, 0.17);
+  --uc-arrowpanel-darker: hsla(223, 13%, 10%, 0.45);
   --uc-arrowpanel-very-faint: var(--color0033);
   --uc-arrowpanel-faint: var(--color0066);
   --uc-arrowpanel-dimmed: var(--color02cc);

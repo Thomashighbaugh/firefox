@@ -414,7 +414,7 @@ class FindbarMods {
     findbar._tinyIndicator = this.create(document, "label", {
       class: "matches-indicator",
       style:
-        "box-sizing: border-box; display: inline-block; -moz-box-align: center; margin: 0; line-height: 20px; position: absolute; font-size: 10px; right: 110px; color: hsla(0, 0%, 100%, 0.25); pointer-events: none; padding-inline-start: 20px; mask-image: linear-gradient(to right, transparent 0px, black 20px);",
+        "box-sizing: border-box; display: inline-block; -moz-box-align: center; margin: 0; line-height: 20px; position: absolute; font-size: 10px; right: 110px; color: hsla(0, 0%, 100%, 0.65); pointer-events: none; padding-inline-start: 20px; mask-image: linear-gradient(to right, transparent 0px, black 20px);",
       empty: true,
     });
     let caseSensitiveButton = findbar.querySelector(".findbar-case-sensitive");

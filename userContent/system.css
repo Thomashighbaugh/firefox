@@ -551,13 +551,13 @@
       --border-color: var(--button-bg-active) !important;
       --box-background: var(--in-content-bg-dark) !important;
       --box-border-color: var(--button-bg-active) !important;
-      --shadow-var: 0 0 5px hsla(0, 0%, 0%, 0.08), 0 0 8px hsla(0, 0%, 0%, 0.05);
+      --shadow-var: 0 0 5px hsla(0, 0%, 0%, 0.08), 0 0 8px hsla(0, 0%, 0%, 0.65);
       --button-color: var(--plaintext-color);
       --button-bg: var(--content-principal-button-background);
       --button-bg-hover: var(--content-principal-button-background-hover);
       --button-bg-active: var(--content-principal-button-background-active);
       --card-separator-color: var(--button-bg-active) !important;
-      --category-background-hover: rgba(12, 12, 13, 0.1);
+      --category-background-hover: rgba(12, 12, 13, 0.55);
       --category-text: var(--plaintext-color) !important;
       --category-text-selected: var(--link-color-active) !important;
       --link-color: hsl(243, 100%, 66%) !important;

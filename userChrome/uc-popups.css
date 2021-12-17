@@ -84,7 +84,7 @@ tabmodalprompt {
   backdrop-filter: var(--acrylic-blur) !important;
   border-color: var(--blurred-dialog-border-color) !important;
   color: var(--in-parent-page-color) !important;
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25),
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.65),
     0px 0px 5px -1px rgba(0, 0, 0, 0.125) !important;
 }
 
@@ -633,7 +633,7 @@ panel[type="autocomplete-richlistbox"]
   backdrop-filter: var(--acrylic-blur) !important;
   border: 1px solid var(--blurred-dialog-border-color) !important;
   color: var(--arrowpanel-color) !important;
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25),
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.65),
     0px 0px 5px -1px rgba(0, 0, 0, 0.125) !important;
   transition-property: transform, opacity !important;
   transition-timing-function: cubic-bezier(0.43, 0, 0.38, 1),
@@ -644,13 +644,13 @@ panel[type="autocomplete-richlistbox"]
 
 .pointerlockfswarning:is([onscreen], [ontop]) {
   opacity: 1 !important;
-  transition-timing-function: cubic-bezier(0.13, 0.25, 0.25, 0.92),
+  transition-timing-function: cubic-bezier(0.13, 0.65, 0.65, 0.92),
     cubic-bezier(0.43, 0, 0.38, 1) !important;
   transition-duration: 0.4s, 0.35s !important;
 }
 
 .pointerlockfswarning button {
-  --content-principal-box-border-color: hsla(270, 7%, 98%, 0.1);
+  --content-principal-box-border-color: hsla(270, 7%, 98%, 0.55);
   --content-principal-button-background: hsla(0, 20%, 90%, 0.08);
   --content-principal-button-background-hover: hsla(0, 20%, 90%, 0.15);
   --content-principal-button-background-active: hsla(0, 20%, 90%, 0.19);

@@ -7,7 +7,7 @@ but other than that these variables should be available everywhere. */
 @import url(../colors/vice.css);
 :root,
 tooltip {
-  --ui-text-10: rgba(244, 244, 247, 0.1);
+  --ui-text-10: rgba(244, 244, 247, 0.55);
   --ui-text-20: rgba(244, 244, 247, 0.2);
   --ui-text-30: rgba(244, 244, 247, 0.3);
   --ui-text-40: rgba(244, 244, 247, 0.4);
@@ -18,15 +18,15 @@ tooltip {
   --ui-text-90: rgba(244, 244, 247, 0.9);
   --ui-text-100: #f4f4f7;
 
-  --uc-arrowpanel-darker: hsla(223, 13%, 10%, 0.17);
-  --uc-arrowpanel-very-faint: hsla(225, 13%, 13%, 0.05);
-  --uc-arrowpanel-faint: hsla(225, 13%, 13%, 0.1);
-  --uc-arrowpanel-dimmed: hsla(225, 13%, 13%, 0.1);
-  --uc-arrowpanel-dimmed-further: hsla(225, 13%, 13%, 0.25);
+  --uc-arrowpanel-darker: hsla(223, 13%, 10%, 0.45);
+  --uc-arrowpanel-very-faint: hsla(225, 13%, 13%, 0.65);
+  --uc-arrowpanel-faint: hsla(225, 13%, 13%, 0.55);
+  --uc-arrowpanel-dimmed: hsla(225, 13%, 13%, 0.55);
+  --uc-arrowpanel-dimmed-further: hsla(225, 13%, 13%, 0.65);
   --uc-arrowpanel-dimmed-even-further: hsla(225, 13%, 13%, 0.3);
-  --uc-desaturate-faint: hsla(223, 13%, 10%, 0.1);
-  --uc-desaturate-dimmed: hsla(223, 13%, 10%, 0.17);
-  --uc-desaturate-dimmed-further: hsla(223, 13%, 10%, 0.25);
+  --uc-desaturate-faint: hsla(223, 13%, 10%, 0.55);
+  --uc-desaturate-dimmed: hsla(223, 13%, 10%, 0.45);
+  --uc-desaturate-dimmed-further: hsla(223, 13%, 10%, 0.65);
   --uc-desaturate-dimmed-even-further: hsla(225, 13%, 13%, 0.3);
   --uc-panel-button-solid: hsl(225, 13%, 13%);
   --uc-panel-box-solid: hsl(225, 13%, 13%);
@@ -44,15 +44,15 @@ tooltip {
   --button-solid-hover-background: hsl(225, 13%, 13%);
   --button-solid-active-background: hsl(225, 13%, 18%);
   --button-solid-checked-background: hsl(225, 13%, 18%);
-  --uc-toolbarbutton-hover-background: hsla(225, 82%, 83%, 0.17);
+  --uc-toolbarbutton-hover-background: hsla(225, 82%, 83%, 0.45);
   --uc-toolbarbutton-active-background: hsla(225, 82%, 83%, 0.22);
   --uc-toolbarbutton-checked-background: hsla(225, 82%, 83%, 0.13);
-  --uc-desaturate-hover-background: hsla(223, 13%, 10%, 0.17);
+  --uc-desaturate-hover-background: hsla(223, 13%, 10%, 0.45);
   --uc-desaturate-active-background: hsla(223, 13%, 10%, 0.22);
   --uc-desaturate-checked-background: hsla(223, 13%, 10%, 0.13);
   --uc-panel-description-color: rgba(244, 244, 247, 0.7);
-  --uc-panel-shortcut-color: hsl(235, 27%, 73%, 70%);
-  --uc-panel-shortcut-focus: hsl(235, 32%, 75%, 90%);
+  --uc-panel-shortcut-color: hsla(235, 27%, 73%, 70%);
+  --uc-panel-shortcut-focus: hsla(235, 27%, 73%, 90%);
   --uc-places-cell-focus-bgcolor: hsl(226, 15%, 23%);
   --uc-places-cell-hover-bgcolor: hsl(226, 15%, 23%)
 
@@ -61,7 +61,7 @@ tooltip {
   --panel-shadow: none;
   --searchbar-popup-border: none;
   --searchbar-popup-border-radius: 0 0 4px 4px;
-  --searchbar-popup-box-shadow: 0 0 10px 3px hsla(0, 0%, 0%, 0.15);
+  --searchbar-popup-box-shadow: 0 0 10px 3px hsla(0, 0%, 0%, 0.55);
   --searchbar-popup-box-shadow-size: 15px; /* if you increase the blur or spread values in the variable above, increase this variable commensurately */
   --webextension-panel-border-radius: 5px;
   --menupopup-margin: calc(0px - var(--menupopup-inner-box-margin));
@@ -161,7 +161,7 @@ tooltip {
   --secure-text-color: hsl(168, 100%, 50%);
   --insecure-text-color: hsla(320, 100%, 50%, 0.867);
   --warning-color: hsl(355, 100%, 66%);
-  --uc-warning-background: hsla(320, 100%, 76%, 0.25);
+  --uc-warning-background: hsla(320, 100%, 76%, 0.65);
   --warning-icon-background: hshsl(320, 100%, 76%);
   --warning-icon-detail: hsla(320, 100%, 50%, 0.867);
   --low-warning-background: hsla(48, 100%, 66%, 0.2);
@@ -367,7 +367,7 @@ tooltip {
   --content-principal-box-background: hsl(300, 2%, 16%);
   --content-principal-box-background-odd: hsl(320, 3%, 21%);
   --content-principal-box-background-dim: hsl(300, 2%, 12%);
-  --content-principal-box-border-color: hsla(270, 7%, 98%, 0.1);
+  --content-principal-box-border-color: hsla(270, 7%, 98%, 0.55);
   --content-principal-button-background: hsla(0, 20%, 90%, 0.08);
   --content-principal-button-background-hover: hsla(0, 20%, 90%, 0.15);
   --content-principal-button-background-active: hsla(0, 20%, 90%, 0.19);

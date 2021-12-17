@@ -162,7 +162,7 @@
     --in-content-button-border-radius: var(--uc-border-radius) !important;
     --in-content-accent-color: var(--purple-35) !important;
     --in-content-table-background: var(--color01) !important;
-    --in-content-table-header-background: var(--purple-40-a30) !important;
+    --in-content-table-header-background: var(--color01) !important;
     --newtab-background-color: var(--in-content-page-background) !important;
     --newtab-text-primary-color: var(--secondary-color) !important;
     --lwt-sidebar-background-color: var(--color01) !important;
@@ -703,7 +703,9 @@
   }
 
   .all-buttons-container button:hover {
-    background-color: var(--content-principal-button-background) !important;
+    /* background-color: var(--content-principal-button-background) !important;
+     */
+    background-color: transparent !important;
     border: 1px solid var(--content-principal-button-background) !important;
   }
 

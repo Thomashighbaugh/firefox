@@ -7,7 +7,7 @@
 
 *|*:root {
   background-color: #23252e;
-  color: #f4f4f7;
+  color: #f4f4f7 !important;
   direction: ltr;
   -moz-control-character-visibility: visible;
   height: 100%;
@@ -114,7 +114,8 @@ span[id] {
 
 .highlight .error,
 .highlight
-  .error > :is(.start-tag, .end-tag, .comment, .cdata, .doctype, .pi, .entity, .attribute-name, .attribute-value) {
+  .error
+  > :is(.start-tag, .end-tag, .comment, .cdata, .doctype, .pi, .entity, .attribute-name, .attribute-value) {
   color: red;
   font-weight: bold;
 }

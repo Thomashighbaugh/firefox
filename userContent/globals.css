@@ -88,7 +88,7 @@ tooltip {
   --uc-desaturate-dimmed: var(--color02aa);
   --uc-desaturate-dimmed-further: var(--color0299);
   --uc-desaturate-dimmed-even-further: var(--color0266);
-  --uc-panel-button-solid: var(--color00);
+  --uc-panel-button-solid: transparent;
   --uc-panel-box-solid: var(--color0033);
   --uc-menu-border-color: var(--color0299);
   --uc-smooth-timing-function: cubic-bezier(0.07, 0.78, 0.21, 0.95);
@@ -97,14 +97,14 @@ tooltip {
   --uc-accent-color: var(--color30);
   --uc-toolbar-bgcolor: var(--color00);
   --uc-toolbar-color: var(--ui-text-100);
-  --uc-arrowpanel-background: var(--color00);
+  --uc-arrowpanel-background: var(--color01);
   --uc-arrowpanel-color: hsl(213, 43%, 89%);
   --button-solid-hover-background: var(--color02);
-  --button-solid-active-background: transparent;
-  --button-solid-checked-background: transparent;
-  --uc-toolbarbutton-hover-background: transparent;
-  --uc-toolbarbutton-active-background: transparent;
-  --uc-toolbarbutton-checked-background: hsla(236, 82%, 83%, 0.13);
+  --button-solid-active-background: transparent !important;
+  --button-solid-checked-background: transparent !important;
+  --uc-toolbarbutton-hover-background: transparent !important;
+  --uc-toolbarbutton-active-background: transparent !important;
+  --uc-toolbarbutton-checked-background: transparent !important;
   --uc-desaturate-hover-background: var(--color03);
   --uc-desaturate-active-background: var(--color03);
   --uc-desaturate-checked-background: hsla(223, 8%, 12%, , 0.13);
@@ -352,9 +352,9 @@ tooltip {
   --in-parent-box-background: var(--dialog-box-bgcolor);
   --in-parent-box-background-dim: var(--dialog-box-bgcolor-dim);
   --in-parent-box-border-color: var(--color02aa);
-  --in-parent-button-background: var(--uc-arrowpanel-faint);
-  --in-parent-button-background-hover: var(--uc-arrowpanel-dimmed);
-  --in-parent-button-background-active: var(--uc-arrowpanel-dimmed-further);
+  --in-parent-button-background: transparent !important;
+  --in-parent-button-background-hover: transparent !important;
+  --in-parent-button-background-active: transparent !important;
   --in-parent-item-selected: var(--color02);
   --in-parent-item-hover: var(--uc-arrowpanel-dimmed);
   --in-parent-border-highlight: var(--color02);
@@ -366,9 +366,9 @@ tooltip {
   --in-parent-link-color: var(--color02);
   --in-parent-link-color-hover: var(--color05);
   --in-parent-link-color-active: var(--color05);
-  --in-parent-primary-button-background: var(--color02);
-  --in-parent-primary-button-background-hover: var(--color02);
-  --in-parent-primary-button-background-active: var(--color05);
+  --in-parent-primary-button-background: transparent !important;
+  --in-parent-primary-button-background-hover: transparent !important;
+  --in-parent-primary-button-background-active: transparent !important;
   --in-parent-primary-button-text-color: var(--in-parent-page-color);
   --ui-textbox-bgcolor: var(--color01);
   --ui-textbox-focus-bgcolor: var(--color01);
@@ -376,9 +376,9 @@ tooltip {
   --ebp-menulist-secondary-color: var(--color25);
   --ebp-menulist-separator-color: var(--color02aa);
   --ebp-favicon-background-color: var(--dialog-bgcolor);
-  --ui-solid-button-bgcolor: var(--color02);
-  --ui-solid-button-hover-bgcolor: var(--color03);
-  --ui-solid-button-active-bgcolor: var(--color01);
+  --ui-solid-button-bgcolor: transparent !important;
+  --ui-solid-button-hover-bgcolor: transparent !important;
+  --ui-solid-button-active-bgcolor: transparent !important;
   --ebmp-hover-bgcolor: var(--color19);
   --ebmp-focus-bgcolor: var(--color25);
 
@@ -388,10 +388,10 @@ tooltip {
   --content-principal-box-background-odd: var(--color19);
   --content-principal-box-background-dim: var(--color02);
   --content-principal-box-border-color: var(--color03);
-  --content-principal-button-background: var(--color01);
-  --content-principal-button-background-hover: var(--color03);
-  --content-principal-button-background-active: var(--color01);
-  --content-principal-button-background-solid: var(--color01);
+  --content-principal-button-background: transparent !important;
+  --content-principal-button-background-hover: transparent !important;
+  --content-principal-button-background-active: transparent !important;
+  --content-principal-button-background-solid: transparent !important;
   --content-principal-border-hover: var(
     --content-principal-button-background-hover
   );
@@ -455,9 +455,9 @@ popupnotification,
 }
 
 #protections-popup {
-  --button-primary-bgcolor: var(--color01) !important;
-  --button-primary-hover-bgcolor: var(--color02) !important;
-  --button-primary-active-bgcolor: var(--color05) !important;
+  --button-primary-bgcolor: transparent !important;
+  --button-primary-hover-bgcolor: transparent !important;
+  --button-primary-active-bgcolor: transparent !important;
   --protections-popup-switch-off-background: color-mix(
     in srgb,
     currentColor 15%,

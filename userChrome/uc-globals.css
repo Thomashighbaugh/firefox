@@ -27,7 +27,7 @@
   --secondary-color-hover: var(--color02);
   --secondary-color-active: var(--secondary-color-hover);
   --inverted-color: var(--color07);
-
+  --acrylic-texture: url(chrome://userchrome/content/texture/lightnoise.png);
   /* Containter Tab colors */
   --uc-identity-color-blue: var(--color14);
   --uc-identity-color-turquoise: var(--color12);

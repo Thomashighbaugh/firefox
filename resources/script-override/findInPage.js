@@ -26,12 +26,15 @@ var gSearchResultsPane = {
   listSearchMenuitemIndicators: new Set(),
   searchInput: null,
   // A map of DOM Elements to a string of keywords used in search
+  // XXX: We should invalidate this cache on `intl:app-locales-changed`
   searchKeywords: new WeakMap(),
   inited: false,
+
   // A (node -> boolean) map of subitems to be made visible or hidden.
   subItems: new Map(),
 
   init() {
+      
     if (this.inited) {
       return;
     }
@@ -202,17 +205,17 @@ var gSearchResultsPane = {
     if (this._hex) return this._hex;
     let temp = document.createElement("div");
     document.body.appendChild(temp);
-    temp.style.color = "var(--solid-selection-bgcolor, hsl(240, 1%, 97%))";
+    temp.style.color = "var(--solid-selection-bgcolor, hsl(320, 100%, 50%))";
     let rgb = getComputedStyle(temp).color;
     temp.remove();
     rgb = rgb
-      .split("(")[1]
-      .split(")")[0]
-      .split(rgb.indexOf(",") > -1 ? "," : " ");
+        .split("(")[1]
+        .split(")")[0]
+        .split(rgb.indexOf(",") > -1 ? "," : " ");
     rgb.length = 3;
     rgb.forEach((c, i) => {
-      c = (+c).toString(16);
-      rgb[i] = c.length === 1 ? "0" + c : c.slice(0, 2);
+        c = (+c).toString(16);
+        rgb[i] = c.length === 1 ? "0" + c : c.slice(0, 2);
     });
     return (this._hex = "#" + rgb.join(""));
   },
@@ -224,17 +227,15 @@ var gSearchResultsPane = {
    *   The window object points to frame's window
    */
   getFindSelection(win) {
-    let docShell = win.docShell;
-    let controller = docShell
-      .QueryInterface(Ci.nsIInterfaceRequestor)
-      .getInterface(Ci.nsISelectionDisplay)
-      .QueryInterface(Ci.nsISelectionController);
-    let selection = controller.getSelection(
-      Ci.nsISelectionController.SELECTION_FIND
-    );
+      let docShell = win.docShell;
+      let controller = docShell
+          .QueryInterface(Ci.nsIInterfaceRequestor)
+          .getInterface(Ci.nsISelectionDisplay)
+          .QueryInterface(Ci.nsISelectionController);
+      let selection = controller.getSelection(Ci.nsISelectionController.SELECTION_FIND);
 
-    selection.setColors("white", this.hex, "white", this.hex);
-    return selection;
+      selection.setColors("white", this.hex, "white", this.hex);
+      return selection;
   },
 
   /**
@@ -282,7 +283,7 @@ var gSearchResultsPane = {
         // Since the previous query is a subset of the current query,
         // there is no need to check elements that is hidden already.
         rootPreferencesChildren = rootPreferencesChildren.filter(
-          (el) => !el.hidden
+          el => !el.hidden
         );
       }
 
@@ -304,7 +305,7 @@ var gSearchResultsPane = {
           for (let anchorNode of this.listSearchTooltips) {
             this.createSearchTooltip(anchorNode, this.query);
           }
-          ts = await new Promise((resolve) =>
+          ts = await new Promise(resolve =>
             window.requestAnimationFrame(resolve)
           );
           if (query !== this.query) {
@@ -343,7 +344,7 @@ var gSearchResultsPane = {
 
       noResultsEl.hidden = !!resultsFound;
       noResultsEl.setAttribute("query", this.query);
-
+      // XXX: This is potentially racy in case where Fluent retranslates the
       // message and ereases the query within.
       // The feature is not yet supported, but we should fix for it before
       // we enable it. See bug 1446389 for details.
@@ -591,11 +592,11 @@ var gSearchResultsPane = {
       const refs = nodeObject
         .getAttribute("search-l10n-ids")
         .split(",")
-        .map((s) => s.trim().split("."))
-        .filter((s) => !!s[0].length);
+        .map(s => s.trim().split("."))
+        .filter(s => !!s[0].length);
 
       const messages = await document.l10n.formatMessages(
-        refs.map((ref) => ({ id: ref[0] }))
+        refs.map(ref => ({ id: ref[0] }))
       );
 
       // Map the localized messages taking value or a selected attribute and
@@ -609,7 +610,7 @@ var gSearchResultsPane = {
           }
           if (refAttr) {
             let attr =
-              msg.attributes && msg.attributes.find((a) => a.name === refAttr);
+              msg.attributes && msg.attributes.find(a => a.name === refAttr);
             if (!attr) {
               console.error(`Missing search l10n id "${refId}.${refAttr}"`);
               return null;
@@ -626,7 +627,7 @@ var gSearchResultsPane = {
           }
           return msg.value;
         })
-        .filter((keyword) => keyword !== null)
+        .filter(keyword => keyword !== null)
         .join(" ");
 
       this.searchKeywords.set(nodeObject, keywords);

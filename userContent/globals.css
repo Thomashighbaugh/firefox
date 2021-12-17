@@ -78,7 +78,7 @@ tooltip {
   --ui-text-90: rgba(244, 244, 247, 0.9);
   --ui-text-100: #f4f4f7;
 
-  --uc-arrowpanel-darker: hsla(236, 70%, 73%, 0.17);
+  --uc-arrowpanel-darker: hsla(223, 13%, 10%, 0.17);
   --uc-arrowpanel-very-faint: var(--color0033);
   --uc-arrowpanel-faint: var(--color0066);
   --uc-arrowpanel-dimmed: var(--color02cc);
@@ -98,7 +98,7 @@ tooltip {
   --uc-toolbar-bgcolor: var(--color00);
   --uc-toolbar-color: var(--ui-text-100);
   --uc-arrowpanel-background: var(--color01);
-  --uc-arrowpanel-color: hsl(213, 43%, 89%);
+  --uc-arrowpanel-color: hsl(225, 43%, 89%);
   --button-solid-hover-background: var(--color02);
   --button-solid-active-background: transparent !important;
   --button-solid-checked-background: transparent !important;
@@ -108,7 +108,7 @@ tooltip {
   --uc-desaturate-hover-background: var(--color03);
   --uc-desaturate-active-background: var(--color03);
   --uc-desaturate-checked-background: hsla(223, 8%, 12%, , 0.13);
-  --uc-panel-description-color: hsl(235, 48%, 89%, 70%);
+  --uc-panel-description-color: rgba(244, 244, 247, 0.7);
   --uc-panel-shortcut-color: var(--color07);
   --uc-panel-shortcut-focus: var(--color07);
   --uc-places-cell-focus-bgcolor: var(--color01);
@@ -167,7 +167,7 @@ tooltip {
   --noise-texture: url(chrome://userchrome/content/texture/lightnoise.png);
   --acrylic-blur: blur(15px);
   --acrylic-texture: url(chrome://userchrome/content/texture/lightnoise.png);
-  --acrylic-blue: hsla(233.3, 39.1%, 9%, 0.58);
+  --acrylic-blue: hsla(223, 13%, 10%, 0.58);
   --blur-bgcolor: var(--acrylic-blue);
   --transparent-img-background: center/16px repeat hsla(0, 0%, 80%)
     url(chrome://userchrome/content/checker.svg);
@@ -208,7 +208,7 @@ tooltip {
   --low-warning-border-color: hsla(35, 70%, 76%, 0.2);
   --low-warning-icon-background: hsl(44, 95%, 60%);
   --low-warning-icon-detail: hsl(32, 52%, 35%);
-  --protection-idle-color: hsl(205, 100%, 67%);
+  --protection-idle-color: hsl(193, 66%, 51%);
   --protection-active-color: hsl(358, 98%, 66%);
   --update-badge-bg: var(--color31);
   --update-badge-color: var(--color04);
@@ -327,25 +327,25 @@ tooltip {
         hsla(var(--download-button-hue), 90%, 73.94%, 0.005) 96.3%
     ); */
 
-  --pink-action: hsl(340, 73%, 58%);
-  --purple-20: hsl(240, 100%, 80%) !important;
-  --purple-25: hsl(240, 100%, 75%) !important;
-  --purple-30: hsl(239, 100%, 70%) !important;
+  --pink-action: hsl(320, 100%, 50%);
+  --purple-20: hsl(220, 28%, 65%) !important;
+  --purple-25: hsl(220, 28%, 65%) !important;
+  --purple-30: hsl(220, 28%, 75%) !important;
   --purple-30-a50: hsla(240, 100%, 70%, 0.5) !important;
-  --purple-35: hsl(245, 100%, 65%) !important;
-  --purple-40: hsl(250, 100%, 60%) !important;
+  --purple-35: hsl(236, 100%, 65%) !important;
+  --purple-40: hsl(225, 100%, 60%) !important;
   --purple-40-a10: hsla(250, 100%, 60%, 0.1) !important;
   --purple-40-a30: hsla(250, 100%, 60%, 0.5) !important;
-  --purple-45: hsl(250, 87%, 55%) !important;
-  --purple-50: hsl(256, 87%, 50%) !important;
-  --purple-55: hsl(256, 87%, 45%) !important;
+  --purple-45: hsl(225, 87%, 55%) !important;
+  --purple-50: hsl(224, 87%, 50%) !important;
+  --purple-55: hsl(224, 87%, 45%) !important;
   --purple-50-a30: hsla(256, 87%, 50%, 0.3) !important;
-  --purple-60: hsl(258, 95%, 40%) !important;
-  --purple-70: hsl(256, 97%, 30%) !important;
-  --purple-80: hsl(254, 100%, 20%) !important;
-  --pink-40: hsl(340, 73%, 60%);
-  --pink-35: hsl(340, 73%, 65%);
-  --pink-30: hsl(340, 73%, 70%);
+  --purple-60: hsl(225, 95%, 40%) !important;
+  --purple-70: hsl(225, 13%, 30%) !important;
+  --purple-80: hsl(225, 13%, 20%) !important;
+  --pink-40: hsl(236, 13%, 60%);
+  --pink-35: hsl(236, 13%, 65%);
+  --pink-30: hsl(236, 13%, 70%);
 
   --in-parent-page-background: transparent;
   --in-parent-page-color: hsl(212, 43%, 90%);

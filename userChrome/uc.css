@@ -1,12 +1,29 @@
 @import url(uc-globals.css);
 @import url(uc-variables.css);
+
+@import url(uc-app-menu.css);
+@import url(uc-bookmarks.css);
+@import url(uc-buttons.css);
+@import url(uc-context-menu-icons);
+@import url(uc-context-menus);
+@import url(uc-ctrl-tab.css);
+@import url(uc-extensions.css);
+@import url(uc-findbar.css);
+@import url(uc-fullscreen.css);
+@import url(uc-icons.css);
+@import url(uc-layout.css);
+@import url(uc-misc.css);
 @import url(uc-navbar.css);
+@import url(uc-panels.css);
+@import url(uc-popups.css);
+@import url(uc-search-one-offs.css);
+@import url(uc-search-mode-icons.css);
 @import url(uc-sidebar.css);
 @import url(uc-statusbar.css);
-@import url(uc-layout.css);
+@import url(uc-tabs-bar.css);
 @import url(uc-tabs.css);
-@import url(uc-icons.css);
-@import url(uc-buttons.css);
+@import url(uc-urlbar-results.css);
+@import url(uc-urlbar.css);
 
 @namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
 @namespace html url(http://www.w3.org/1999/xhtml);

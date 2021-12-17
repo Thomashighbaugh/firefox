@@ -4839,7 +4839,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
     }
 
     .mw-parser-output .vanchor > :target ~ .vanchor-text {
-      background-color: var(--purple-35) !important;
+      background-color: var(--uc-arrowpanel-darker) !important;
     }
 
     .mw-parser-output .thumbinner > table {

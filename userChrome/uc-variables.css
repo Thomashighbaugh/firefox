@@ -69,7 +69,7 @@ menupopup {
   --button-active-bgcolor: var(--in-parent-button-background-active) !important;
   --button-primary-bgcolor: var(--purple-45) !important;
   --button-primary-hover-bgcolor: hsl(223, 13%, 10%) !important;
-  --button-primary-active-bgcolor: var(--purple-35) !important;
+  --button-primary-active-bgcolor: var(--uc-arrowpanel-darker) !important;
   --button-primary-color: var(--button-color) !important;
   --urlbar-toolbar-height: var(--uc-urlbar-container-height) !important;
   --urlbar-container-height: var(--uc-urlbar-container-height) !important;
@@ -78,7 +78,7 @@ menupopup {
   --urlbar-icon-border-radius: var(--general-button-border-radius) !important;
   --urlbar-icon-fill-opacity: 0.6 !important;
   --identity-box-label-opacity: var(--urlbar-icon-fill-opacity) !important;
-  --urlbar-popup-url-color: var(--purple-35) !important;
+  --urlbar-popup-url-color: var(--uc-arrowpanel-darker) !important;
   --urlbar-popup-action-color: var(--pink-action) !important;
   --urlbarView-item-inline-padding: 8px !important;
   --tab-min-height: var(--uc-tab-min-height) !important;
@@ -125,11 +125,13 @@ menupopup {
   --in-content-border-active: hsl(223, 13%, 10%) !important;
   --in-content-border-active-shadow: hsla(223, 13%, 10%, 0.3) !important;
   --in-content-category-outline-focus: 1px solid transparent !important;
-  --in-content-link-color: var(--purple-35) !important;
+  --in-content-link-color: var(--uc-arrowpanel-darker) !important;
   --in-content-link-color-hover: var(--purple-30) !important;
   --in-content-link-color-active: var(--purple-30) !important;
   --in-content-primary-button-background: hsl(223, 13%, 10%) !important;
-  --in-content-primary-button-background-hover: var(--purple-35) !important;
+  --in-content-primary-button-background-hover: var(
+    --uc-arrowpanel-darker
+  ) !important;
   --in-content-primary-button-background-active: var(--purple-30) !important;
 
   --menu-background-color: var(--arrowpanel-background) !important;

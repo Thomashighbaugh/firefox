@@ -22,11 +22,13 @@ tabmodalprompt {
   --in-content-border-active: hsl(223, 13%, 10%) !important;
   --in-content-border-active-shadow: hsla(223, 13%, 10%, 0.3) !important;
   --in-content-category-outline-focus: 1px solid transparent !important;
-  --in-content-link-color: var(--purple-35) !important;
+  --in-content-link-color: var(--uc-arrowpanel-darker) !important;
   --in-content-link-color-hover: var(--purple-30) !important;
   --in-content-link-color-active: var(--purple-30) !important;
   --in-content-primary-button-background: hsl(223, 13%, 10%) !important;
-  --in-content-primary-button-background-hover: var(--purple-35) !important;
+  --in-content-primary-button-background-hover: var(
+    --uc-arrowpanel-darker
+  ) !important;
   --in-content-primary-button-background-active: var(--purple-30) !important;
   --in-content-primary-button-text-color: var(
     --in-content-page-color
@@ -786,11 +788,13 @@ panel[type="autocomplete-richlistbox"]
     --in-content-border-active: hsl(223, 13%, 10%) !important;
     --in-content-border-active-shadow: hsla(223, 13%, 10%, 0.3) !important;
     --in-content-category-outline-focus: 1px solid transparent !important;
-    --in-content-link-color: var(--purple-35) !important;
+    --in-content-link-color: var(--uc-arrowpanel-darker) !important;
     --in-content-link-color-hover: var(--purple-30) !important;
     --in-content-link-color-active: var(--purple-30) !important;
     --in-content-primary-button-background: hsl(223, 13%, 10%) !important;
-    --in-content-primary-button-background-hover: var(--purple-35) !important;
+    --in-content-primary-button-background-hover: var(
+      --uc-arrowpanel-darker
+    ) !important;
     --in-content-primary-button-background-active: var(--purple-30) !important;
     --in-content-primary-button-text-color: var(
       --in-content-page-color
@@ -1139,7 +1143,9 @@ panel[type="autocomplete-richlistbox"]
     --in-content-link-visited-color-hover: var(--pink-35) !important;
     --in-content-link-visited-color-active: var(--pink-30) !important;
     --in-content-primary-button-background: hsl(223, 13%, 10%) !important;
-    --in-content-primary-button-background-hover: var(--purple-35) !important;
+    --in-content-primary-button-background-hover: var(
+      --uc-arrowpanel-darker
+    ) !important;
     --in-content-primary-button-background-active: var(--purple-30) !important;
     --in-content-primary-button-text-color: var(
       --in-content-page-color
@@ -1147,7 +1153,7 @@ panel[type="autocomplete-richlistbox"]
     --in-content-button-border-radius: var(
       --general-button-border-radius
     ) !important;
-    --in-content-accent-color: var(--purple-35) !important;
+    --in-content-accent-color: var(--uc-arrowpanel-darker) !important;
     --in-content-table-background: var(--in-content-box-background) !important;
     --in-content-table-header-background: hsla(223, 13%, 10%, 0.3) !important;
   }
@@ -1232,11 +1238,13 @@ panel[type="autocomplete-richlistbox"]
     --in-content-border-active: hsl(223, 13%, 10%) !important;
     --in-content-border-active-shadow: hsla(223, 13%, 10%, 0.3) !important;
     --in-content-category-outline-focus: 1px solid transparent !important;
-    --in-content-link-color: var(--purple-35) !important;
+    --in-content-link-color: var(--uc-arrowpanel-darker) !important;
     --in-content-link-color-hover: var(--purple-30) !important;
     --in-content-link-color-active: var(--purple-30) !important;
     --in-content-primary-button-background: hsl(223, 13%, 10%) !important;
-    --in-content-primary-button-background-hover: var(--purple-35) !important;
+    --in-content-primary-button-background-hover: var(
+      --uc-arrowpanel-darker
+    ) !important;
     --in-content-primary-button-background-active: var(--purple-30) !important;
     --in-content-primary-button-text-color: var(
       --in-content-page-color

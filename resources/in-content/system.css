@@ -163,7 +163,9 @@
     --in-content-link-visited-color-hover: var(--pink-35) !important;
     --in-content-link-visited-color-active: var(--pink-30) !important;
     --in-content-primary-button-background: hsl(223, 13%, 10%) !important;
-    --in-content-primary-button-background-hover: var(--purple-35) !important;
+    --in-content-primary-button-background-hover: var(
+      --uc-arrowpanel-darker
+    ) !important;
     --in-content-primary-button-background-active: var(--purple-30) !important;
     --in-content-primary-button-text-color: var(
       --in-content-page-color
@@ -171,7 +173,7 @@
     --in-content-button-border-radius: var(
       --general-button-border-radius
     ) !important;
-    --in-content-accent-color: var(--purple-35) !important;
+    --in-content-accent-color: var(--uc-arrowpanel-darker) !important;
     --in-content-table-background: var(--in-content-box-background) !important;
     --in-content-table-header-background: hsla(223, 13%, 10%, 0.3) !important;
     --newtab-background-color: var(--in-content-page-background) !important;
@@ -571,7 +573,9 @@
       --button-hover-background-color: var(--button-bg-hover) !important;
       --primary-button-color: var(--ui-text-100) !important;
       --primary-button-background-color: hsl(223, 13%, 10%) !important;
-      --primary-button-hover-background-color: var(--purple-35) !important;
+      --primary-button-hover-background-color: var(
+        --uc-arrowpanel-darker
+      ) !important;
       --primary-button-active-background-color: var(--purple-30) !important;
     }
 
@@ -662,7 +666,7 @@
       black 40%,
       var(--in-content-bg-dark)
     ) !important;
-    --active-color: var(--purple-35) !important;
+    --active-color: var(--uc-arrowpanel-darker) !important;
     --selected-background: var(--attention-color) !important;
     --link-foreground: var(--in-content-link-color) !important;
     --visited-link-foreground: #823afc !important;
@@ -712,7 +716,7 @@
   select:focus-visible,
   button:focus-visible,
   textarea:focus-visible {
-    outline-color: var(--purple-35) !important;
+    outline-color: var(--uc-arrowpanel-darker) !important;
     outline-style: solid !important;
     outline-width: 2px !important;
   }

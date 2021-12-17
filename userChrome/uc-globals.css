@@ -35,7 +35,7 @@ tooltip {
   --uc-content-text-a50: rgba(244, 244, 247, 0.5);
   --uc-content-text-a80: rgba(244, 244, 247, 0.8);
   --uc-accent-color: hsl(226, 15%, 23%);
-  --uc-frame-color: var(--uc-accent-color);
+  --uc-frame-color: var(--uc-arrowpanel-darker);
   --uc-toolbar-bgcolor: hsl(225, 13%, 13%);
   --uc-toolbar-color: var(--ui-text-100);
   --uc-toolbar-field-color: hsl(240, 60%, 99%);
@@ -343,11 +343,11 @@ tooltip {
   --in-parent-border-active: hsl(223, 13%, 10%);
   --in-parent-border-active-shadow: hsla(223, 13%, 10%, 0.3);
   --in-parent-category-outline-focus: 1px solid transparent;
-  --in-parent-link-color: var(--purple-35);
+  --in-parent-link-color: var(--uc-arrowpanel-darker);
   --in-parent-link-color-hover: var(--purple-30);
   --in-parent-link-color-active: var(--purple-30);
   --in-parent-primary-button-background: hsl(223, 13%, 10%);
-  --in-parent-primary-button-background-hover: var(--purple-35);
+  --in-parent-primary-button-background-hover: var(--uc-arrowpanel-darker);
   --in-parent-primary-button-background-active: var(--purple-30);
   --in-parent-primary-button-text-color: var(--in-parent-page-color);
   --ui-textbox-bgcolor: hsl(233, 24%, 28%);
@@ -438,7 +438,7 @@ popupnotification,
 
 #protections-popup {
   --button-primary-bgcolor: var(--purple-45) !important;
-  --button-primary-hover-bgcolor: var(--purple-35) !important;
+  --button-primary-hover-bgcolor: var(--uc-arrowpanel-darker) !important;
   --button-primary-active-bgcolor: var(--purple-30) !important;
   --protections-popup-switch-off-background: color-mix(
     in srgb,

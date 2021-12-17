@@ -6,7 +6,7 @@
     --selected-bg: color-mix(
       in srgb,
       hsla(200, 40%, 70%, 0.65) 60%,
-      var(--purple-35)
+      var(--uc-arrowpanel-darker)
     );
   }
 

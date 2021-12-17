@@ -51,7 +51,7 @@ and a few elements like checkboxes */
     --button-active-bgcolor: var(--arrowpanel-dimmed-even-further) !important;
     --button-primary-bgcolor: var(--purple-45) !important;
     --button-primary-hover-bgcolor: hsl(223, 13%, 10%) !important;
-    --button-primary-active-bgcolor: var(--purple-35) !important;
+    --button-primary-active-bgcolor: var(--uc-arrowpanel-darker) !important;
     --button-primary-color: var(--button-color) !important;
     --focus-outline-color: var(--attention-color) !important;
     --focus-outline-width: 2px;
@@ -75,11 +75,13 @@ and a few elements like checkboxes */
     --in-content-border-active: hsl(223, 13%, 10%) !important;
     --in-content-border-active-shadow: hsla(223, 13%, 10%, 0.3) !important;
     --in-content-category-outline-focus: 1px solid transparent !important;
-    --in-content-link-color: var(--purple-35) !important;
+    --in-content-link-color: var(--uc-arrowpanel-darker) !important;
     --in-content-link-color-hover: var(--purple-30) !important;
     --in-content-link-color-active: var(--purple-30) !important;
     --in-content-primary-button-background: hsl(223, 13%, 10%) !important;
-    --in-content-primary-button-background-hover: var(--purple-35) !important;
+    --in-content-primary-button-background-hover: var(
+      --uc-arrowpanel-darker
+    ) !important;
     --in-content-primary-button-background-active: var(--purple-30) !important;
     --autocomplete-popup-background: var(--arrowpanel-background) !important;
     --autocomplete-popup-color: var(--lwt-text-color) !important;

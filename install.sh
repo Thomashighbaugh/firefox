@@ -101,7 +101,7 @@ if [[ ! -z "${@}" ]] && [[ ! -z "${1}" ]]; then
     check_profile "default-nightly"
   elif [[ "${1}" == "stable" ]]; then
     RELEASE_NAME="Stable"
-    check_profile "default-release"
+    check_profile "default-default"
   elif [[ "${1}" == "esr" ]]; then
     RELEASE_NAME="ESR"
     check_profile "default-esr"
@@ -143,6 +143,7 @@ if [[ -n "$FF_USER_DIRECTORY" ]]; then
     fi
     # Download theme
     download_ff
+    patch
   else
     message "[>>] Chrome folder does not exist! Creating one..."
     mkdir "${FF_USER_DIRECTORY}/chrome"
@@ -152,7 +153,9 @@ if [[ -n "$FF_USER_DIRECTORY" ]]; then
       CHROME_DIRECTORY="${FF_USER_DIRECTORY}/chrome"
 
       # Download theme
+
       download_ff
+      patch
     else
       message "[!!] There was a problem while creating the directory. Terminating..."
       exit 1

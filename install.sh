@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-
+shopt -s nullglob dotglob
 FF_USER_DIRECTORY=""
 
 RELEASE_NAME=""
@@ -33,9 +33,7 @@ download_ff() {
     message "[>>] Backup user.js instead of overwriting it"
 
     # Move user.js to the main profile directory
-    mv "${FF_THEME}/user.js" "${CHROME_DIRECTORY}/../"
-
-    rm -rf "/tmp/firefox-master"
+    mv "${FF_THEME}/user.js" "${FF_USER_DIRECTORY}"
 
     message ""
     message "[!!] Firefox customization has been successfully installed, please restart your browser to view your new interface."
@@ -103,7 +101,7 @@ fi
 
 if [[ -n "$FF_USER_DIRECTORY" ]]; then
     message "[>>] Firefox user profile directory located..."
-    shopt -s nullglob dotglob
+
     mkdir -p "${FF_USER_DIRECTORY}/chrome"
     CHROME_DIRECTORY="$FF_USER_DIRECTORY/chrome"
 

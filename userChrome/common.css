@@ -1,0 +1,492 @@
+
+
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";
+
+/*= Proton Commons ===========================================================*/
+@-moz-document url("chrome://global/content/commonDialog.xhtml"),
+  url("chrome://pippki/content/editcacert.xhtml"),
+  url("chrome://pippki/content/deletecert.xhtml"),
+  url("chrome://pippki/content/exceptionDialog.xhtml"),
+  url("chrome://mozapps/content/downloads/unknownContentType.xhtml"),
+  url("chrome://global/content/appPicker.xhtml"),
+  url("chrome://browser/content/pageinfo/pageInfo.xhtml") {
+  /*- Overwrite --------------------------------------------------------------*/
+  @media (-moz-toolbar-prefers-color-scheme: dark),
+    (prefers-color-scheme: dark) {
+    :root {
+      --in-content-page-background: #42414d;
+    }
+  }
+
+  :root:not(:-moz-lwtheme),
+  :root[lwt-default-theme-in-dark-mode] {
+    --checkbox-unchecked-bgcolor: var(
+      --in-content-button-background
+    ) !important;
+    --checkbox-unchecked-hover-bgcolor: var(
+      --in-content-button-background-hover
+    ) !important;
+    --checkbox-unchecked-active-bgcolor: var(
+      --in-content-button-background-active
+    ) !important;
+    --checkbox-checked-bgcolor: var(
+      --in-content-primary-button-background
+    ) !important;
+    --checkbox-checked-color: var(
+      --in-content-primary-button-text-color
+    ) !important;
+    --checkbox-checked-hover-bgcolor: var(
+      --in-content-primary-button-background-hover
+    ) !important;
+    --checkbox-checked-active-bgcolor: var(
+      --in-content-primary-button-background-active
+    ) !important;
+  }
+
+  /*- Dialog -----------------------------------------------------------------*/
+  #commonDialog,
+    #editCaCert,
+    #deleteCertificate,
+    #exceptiondialog,
+    #unknownContentType,
+    #app-picker,
+    #topBar, /* #topBar, #mainDeck: Page Info */
+    #mainDeck {
+    -moz-appearance: none !important; /* For Mac */
+    color: var(--in-content-page-color) !important;
+    background-color: var(--in-content-page-background) !important;
+    /* border-radius: 0 0 8px 8px !important; */
+  }
+
+  /*- Button -----------------------------------------------------------------*/
+  button {
+    -moz-appearance: none !important;
+    color: var(--in-content-button-text-color) !important;
+    background-color: var(--in-content-button-background) !important;
+    font: inherit;
+    font-size: 1em !important;
+    font-weight: 600 !important;
+    min-height: 32px !important;
+    border: 1px solid transparent !important; /* shows up in high-contrast mode */
+    border-radius: var(--in-content-button-border-radius) !important;
+    padding: var(--in-content-button-vertical-padding)
+      var(--in-content-button-horizontal-padding) !important;
+
+    min-height: 32px !important;
+    /* Use the same margin of other elements for the alignment */
+    margin-inline: 4px !important;
+    min-width: 6.3em !important;
+  }
+
+  /* Medium and small buttons get sized to 7/14 and 6/12px padding (when adding
+     * the 1px border): */
+  button.medium {
+    padding: 6px 13px !important;
+    min-height: 28px !important;
+    font-size: 0.95em !important;
+  }
+  button.small {
+    padding: 5px 11px !important;
+    min-height: 24px !important;
+    font-size: 0.9em !important;
+  }
+
+  /* Remove margin added by button.css */
+  xul|button > .button-box > .button-text {
+    margin: 0 !important;
+  }
+
+  button:-moz-focusring,
+    xul|menulist:-moz-focusring,
+    xul|checkbox:-moz-focusring > .checkbox-check, /* :not([native]) to win specificity over checkbox.css */
+    xul|radio[focused="true"]:-moz-focusring {
+    box-shadow: none !important;
+    outline: 2px solid var(--in-content-focus-outline-color) !important;
+    outline-offset: 2px !important;
+  }
+  button:not([disabled="true"]):hover {
+    background-color: var(--in-content-button-background-hover) !important;
+    color: var(--in-content-button-text-color-hover) !important;
+    border-color: transparent !important;
+  }
+
+  xul|button:not([disabled="true"]):hover:active,
+  xul|button[open],
+  xul|button[open]:hover,
+  xul|menulist[open="true"]:not([disabled="true"]) {
+    background-color: var(--in-content-button-background-active) !important;
+  }
+
+  xul|button[default] {
+    background-color: var(--in-content-primary-button-background) !important;
+    color: var(--in-content-primary-button-text-color) !important;
+  }
+  xul|button[default]:not([disabled="true"]):hover {
+    background-color: var(
+      --in-content-primary-button-background-hover
+    ) !important;
+    color: var(--in-content-primary-button-text-color) !important;
+  }
+  xul|button[default]:not([disabled="true"]):hover:active {
+    background-color: var(
+      --in-content-primary-button-background-active
+    ) !important;
+  }
+
+  xul|button[disabled="true"],
+  xul|menulist[disabled="true"] {
+    opacity: 0.4 !important;
+  }
+  xul|button:not([disabled="true"]):hover,
+  xul|menulist:not([disabled="true"]):hover {
+    background-color: var(--in-content-button-background-hover) !important;
+    color: var(--in-content-button-text-color-hover) !important;
+    border-color: transparent !important;
+  }
+
+  @media (prefers-contrast) {
+    xul|button[default]:not([disabled="true"]):hover {
+      border-color: currentColor !important;
+    }
+
+    button:focus {
+      color: var(--in-content-button-text-color) !important;
+    }
+
+    xul|button[default]:focus,
+    button.primary:focus {
+      color: var(--in-content-primary-button-text-color) !important;
+    }
+  }
+
+  /*- Radio Button -----------------------------------------------------------*/
+  xul|radio {
+    /* margin-inline-start: 0 !important; */
+    appearance: none !important;
+  }
+
+  xul|*.radio-check {
+    appearance: none !important;
+    width: 16px !important;
+    height: 16px !important;
+    padding: 0 !important;
+    border: 1px solid var(--in-content-box-border-color) !important;
+    border-radius: 100% !important;
+    margin-block: 2px !important; /* extend the vertical clicktarget */
+    margin-inline: 0 6px !important;
+    background-color: var(--in-content-button-background) !important;
+    background-position: center !important;
+    flex-shrink: 0 !important; /* avoid shrinking inside flex container */
+  }
+
+  xul|radio:not([disabled="true"]):hover > xul|*.radio-check {
+    background-color: var(--in-content-button-background-hover) !important;
+    color: var(--in-content-button-text-color-hover) !important;
+  }
+
+  xul|radio:not([disabled="true"]):hover:active > xul|*.radio-check {
+    background-color: var(--in-content-button-background-active) !important;
+  }
+
+  xul|*.radio-check[selected] {
+    -moz-context-properties: fill !important;
+    fill: currentColor !important;
+    color: var(--in-content-primary-button-text-color) !important;
+    background-color: var(--in-content-primary-button-background) !important;
+    background-image: url("chrome://global/skin/icons/radio.svg") !important;
+    border-color: transparent !important;
+
+    /* Style the button also when printing with "Print Backgrounds" unchecked */
+    color-adjust: exact !important;
+  }
+
+  xul|radio:not([disabled="true"])[selected]:hover > xul|*.radio-check {
+    background-color: var(
+      --in-content-primary-button-background-hover
+    ) !important;
+    color: var(--in-content-primary-button-text-color-hover) !important;
+  }
+
+  xul|radio:not([disabled="true"])[selected]:hover:active > xul|*.radio-check {
+    background-color: var(
+      --in-content-primary-button-background-active
+    ) !important;
+  }
+
+  xul|*.radio-label-box {
+    margin-inline: 0 8px !important;
+    padding-inline-start: 0 !important;
+  }
+
+  /* Disabled checkboxes, radios and labels */
+  xul|checkbox[disabled="true"],
+  xul|radio[disabled="true"],
+  xul|label[disabled="true"] {
+    color: inherit !important;
+  }
+
+  xul|checkbox[disabled="true"],
+  xul|radio[disabled="true"],
+  xul|label[disabled="true"] {
+    opacity: 0.5 !important;
+  }
+
+  /*- Check Box --------------------------------------------------------------*/
+  /* From checkbox.css */
+  checkbox {
+    appearance: none !important;
+    -moz-box-align: center !important;
+    margin: 4px 2px !important;
+  }
+
+  .checkbox-icon[src] {
+    margin-inline-end: 2px !important;
+  }
+  .checkbox-label {
+    margin: 1px 0 !important;
+  }
+
+  checkbox[disabled="true"] {
+    opacity: 0.4 !important;
+  }
+
+  .checkbox-check {
+    appearance: none !important;
+    color: var(--checkbox-border-color, ThreeDDarkShadow) !important;
+    background-color: var(--checkbox-unchecked-bgcolor, Field) !important;
+    border: 1px solid currentColor !important;
+    border-radius: 2px !important;
+    margin-inline-end: 6px !important;
+  }
+
+  .checkbox-check {
+    height: 16px !important;
+    width: 16px !important;
+  }
+
+  checkbox:not([disabled="true"]):hover > .checkbox-check {
+    background-color: var(
+      --checkbox-unchecked-hover-bgcolor,
+      color-mix(in srgb, -moz-accent-color 4%, Field)
+    ) !important;
+  }
+
+  checkbox:not([disabled="true"]):hover:active > .checkbox-check {
+    background-color: var(
+      --checkbox-unchecked-active-bgcolor,
+      color-mix(in srgb, -moz-accent-color 8%, Field)
+    ) !important;
+  }
+
+  .checkbox-check[checked] {
+    border-color: var(--checkbox-checked-border-color, transparent) !important;
+    background-color: var(
+      --checkbox-checked-bgcolor,
+      -moz-accent-color
+    ) !important;
+    background-image: url("chrome://global/skin/icons/check.svg") !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    -moz-context-properties: fill !important;
+    fill: currentColor !important;
+    color: var(
+      --checkbox-checked-color,
+      -moz-accent-color-foreground
+    ) !important;
+    /* Style the button also when printing with "Print Backgrounds" unchecked */
+    color-adjust: exact !important;
+  }
+
+  checkbox:not([disabled="true"]):hover > .checkbox-check[checked] {
+    background-color: var(
+      --checkbox-checked-hover-bgcolor,
+      color-mix(in srgb, currentColor 12.5%, -moz-accent-color)
+    ) !important;
+  }
+
+  checkbox:not([disabled="true"]):hover:active > .checkbox-check[checked] {
+    background-color: var(
+      --checkbox-checked-active-bgcolor,
+      color-mix(in srgb, currentColor 25%, -moz-accent-color)
+    ) !important;
+  }
+
+  checkbox:-moz-focusring > .checkbox-check {
+    outline: 2px solid var(--focus-outline-color, -moz-accent-color) !important;
+    outline-offset: var(--focus-outline-offset, 2px) !important;
+  }
+
+  @media (prefers-contrast) {
+    checkbox:not([disabled="true"]):hover > .checkbox-check {
+      /* color will set the border-color on the check due to how HCM works for in-content pages. */
+      color: var(
+        --checkbox-checked-border-color,
+        color-mix(in srgb, -moz-accent-color 4%, Field)
+      ) !important;
+    }
+
+    .checkbox-check[checked] {
+      color: var(--checkbox-checked-border-color, currentColor) !important;
+      fill: var(
+        --checkbox-checked-color,
+        -moz-accent-color-foreground
+      ) !important;
+    }
+
+    checkbox:not([disabled="true"]):hover:active > .checkbox-check[checked],
+    checkbox:not([disabled="true"]):hover > .checkbox-check[checked] {
+      color: var(
+        --checkbox-checked-border-color-hover,
+        -moz-accent-color-foreground
+      ) !important;
+      fill: var(
+        --checkbox-checked-border-color-hover,
+        -moz-accent-color-foreground
+      ) !important;
+    }
+  }
+
+  /* From common.css */
+  xul|*.checkbox-check {
+    margin-block: 2px !important;
+  }
+  xul|richlistitem > xul|*.checkbox-check {
+    margin: 3px 6px !important;
+  }
+
+
+  /*- Each OS ----------------------------------------------------------------*/
+  @media (-moz-os-version: windows-win7),
+    (-moz-os-version: windows-win8),
+    (-moz-os-version: windows-win10) {
+    xul|checkbox,
+    xul|radio {
+      padding-inline-start: 0 !important;
+    }
+
+    /* Override menulist.css */
+    xul|menulist[disabled="true"] {
+      background-color: var(--in-content-button-background) !important;
+    }
+
+    xul|menulist:-moz-focusring > xul|*.menulist-label-box {
+      outline: none !important;
+    }
+  }
+
+  @media (-moz-gtk-csd-available) {
+    /* Overriding appearance also avoids incorrect selection background color with light text. */
+    xul|button > xul|*.button-box,
+    xul|menulist::part(label-box),
+    xul|*.radio-label-box,
+    xul|*.checkbox-label-box {
+      appearance: none !important;
+    }
+
+    xul|button[type="menu"] > xul|*.button-box > xul|*.button-menu-dropmarker {
+      appearance: none !important;
+    }
+    xul|menulist {
+      font-size: inherit !important;
+    }
+    xul|menulist::part(dropmarker) {
+      display: -moz-box;
+      margin-block: 6px !important;
+    }
+    xul|menulist:-moz-focusring::part(label-box) {
+      outline: none !important;
+    }
+  }
+
+  @supports -moz-bool-pref("layout.css.osx-font-smoothing.enabled") {
+    xul|menulist > xul|menupopup > xul|menuitem[checked="true"]::before,
+    xul|menulist > xul|menupopup > xul|menuitem[selected="true"]::before {
+      display: none !important;
+    }
+
+    xul|menulist::part(dropmarker) {
+      display: -moz-box !important;
+      margin-block: 1px !important;
+    }
+
+    xul|menulist > xul|menupopup xul|menu,
+    xul|menulist > xul|menupopup xul|menuitem {
+      padding-inline-end: 34px !important;
+    }
+
+    xul|*.checkbox-icon,
+    xul|*.radio-icon {
+      margin-inline-end: 0 !important;
+    }
+
+    xul|*.text-link:-moz-focusring {
+      box-shadow: none !important;
+    }
+  }
+}
+
+/*= Delete Cert ==============================================================*/
+@-moz-document url("chrome://pippki/content/deletecert.xhtml") {
+  :root {
+    --in-content-border-color: color-mix(
+      in srgb,
+      currentColor 41%,
+      transparent
+    ) !important;
+  }
+  #certlist {
+    border: 1px solid var(--in-content-border-color) !important;
+    border-radius: 4px !important;
+  }
+}
+
+/*= Cert Exeption Dialog =====================================================*/
+@-moz-document url("chrome://pippki/content/exceptionDialog.xhtml") {
+  :root {
+    --in-content-border-color: color-mix(
+      in srgb,
+      currentColor 41%,
+      transparent
+    ) !important;
+  }
+  #locationTextBox {
+    appearance: none !important;
+    border: 1px solid var(--in-content-box-border-color) !important;
+    border-radius: 4px !important;
+    color: inherit !important;
+    background-color: var(--in-content-box-background) !important;
+
+    font-family: inherit !important;
+    font-size: inherit !important;
+    padding: 8px !important;
+    margin: 2px 4px !important;
+  }
+  #locationTextBox:focus {
+    border-color: transparent !important;
+    outline: 2px solid var(--in-content-focus-outline-color) !important;
+    outline-offset: -1px !important; /* Prevents antialising around the corners */
+  }
+  #locationTextBox:-moz-ui-invalid {
+    border-color: transparent !important;
+    outline: 2px solid var(--in-content-border-invalid) !important;
+    outline-offset: -1px !important; /* Prevents antialising around the corners */
+  }
+  #locationTextBox:disabled {
+    opacity: 0.4 !important;
+  }
+
+  #exceptiondialog:first-child > hbox > vbox:not([flex="1"]) {
+    width: 48px !important;
+    height: 48px !important;
+    background-image: url("chrome://global/skin/icons/warning.svg") !important;
+    background-size: 48px !important;
+    background-repeat: no-repeat !important;
+
+    -moz-context-properties: fill !important;
+    fill: currentColor !important;
+  }
+  #exceptiondialog:first-child > hbox > vbox > image {
+    display: none !important;
+  }
+}

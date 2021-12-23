@@ -1,88 +1,29 @@
-/*
- * Author: Thomas Leon Highbaugh (thighbaugh@zoho.com)
- * Project: Firefox
- * File: userContent.css
- * Description: This file changes the things within the browser window.
- */
+/*                       ______               __                __   
+.--.--.-----.-----.----.|      |.-----.-----.|  |_.-----.-----.|  |_ 
+|  |  |__ --|  -__|   _||   ---||  _  |     ||   _|  -__|     ||   _|
+|_____|_____|_____|__|  |______||_____|__|__||____|_____|__|__||____|*/
+/*#############################################################################*/
+/*#############################################################################*/
+/*#############################################################################*/
+/* The userContent.css file styles the content displayed by Firefox, typically 
+as in this case, this is mainly constrained to the styling of the internal
+pages of Firefox like the about:config page. */
 
-@import url("colors/vice.css");
-@import url("userChrome.css");
+@import url("userContent/color");
 
-@import url("userContent/globals.css");
-@import url("userContent/library.css");
-@import url("userContent/root.css");
-@import url("userContent/menus.css");
-@import url("userContent/devtools.css");
-@import url("userContent/picture-in-picture.css");
-@import url("userContent/system.css");
-@import url("userContent/ext-containers.css");
-@import url("userContent/ext-darkreader.css");
-@import url("userContent/ext-nordvpn.css");
-@import url("userContent/ext-mdm.css");
-@import url("userContent/ext-bitwarden.css");
-@import url("userContent/ext-ublock.css");
-@import url("userContent/ext-simpletranslate.css");
-@import url("userContent/ext-tabnotes.css");
-@import url("userContent/ext-sortbookmarks.css");
-@import url("userContent/site-google.css");
-@import url("userContent/site-youtube.css");
-@import url("userContent/site-wiki.css");
-@import url("userContent/site-github.css");
-@import url("userContent/site-reddit.css");
-@import url("userContent/site-subscene.css");
-@import url("userContent/misc-content.css");
+@import url("userContent/about-home");
+@import url("userContent/accounts");
+@import url("userContent/activity-stream");
+@import url("userContent/addons");
+@import url("userContent/common");
+@import url("userContent/error-page");
+@import url("userContent/places");
+@import url("userContent/proton-fixes");
+@import url("userContent/support");
+@import url("userContent/view-source");
 
-@import url("userContent/about_newtab");
-@import url("userContent/about_reader");
-@import url("userContent/addon_styling");
-@import url("userContent/error_pages");
-@import url("userContent/view_source");
-@import url("userContent/webpage_specific");
-@import url("userContent/customization-window");
-@import url("userContent/elegant_additions.css");
+/* Imports should always precede namespace calls, these two are reflected in all
+ of the above components as well */
 
-/* Set background color of landing pages */
-
-@-moz-document url(about:profiles),
-@-moz-document url(about:newtab),
-@-moz-document url(about:home),
-@-moz-document url(about:blank) {
-  html:not(#ublock0-epicker),
-  html:not(#ublock0-epicker) body,
-  #newtab-customize-overlay {
-    background: var(--tab-toolbar-bg) !important;
-    color: var(--color06) !important;
-  }
-}
-
-/* Sets up minimal scrollbar */
-
-:root {
-  scrollbar-color: var(--color05) transparent !important;
-  background: var(--tab-toolbar-bg) !important;
-  font-weight: 900;
-  /* font-family: "Hurmit Nerd Font Mono bold", monospace !important; */
-}
-
-@-moz-document url(about:privatebrowsing) {
-  :root {
-    scrollbar-color: var(--color06) transparent !important;
-    background: var(--tab-toolbar-bg) !important;
-    color: var(--color06) !important;
-  }
-}
-
-#action-box {
-  /* background: var(--color21) !important; */
-  background: var(--tab-toolbar-bg) !important;
-}
-
-.wide-container button {
-  background: var(--tab-toolbar-bg) !important;
-}
-
-.wide-container th,
-.wide-container td,
-.wide-container tr. .wide-container {
-  background: var(--tab-toolbar-bg) !important;
-}
+ @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");

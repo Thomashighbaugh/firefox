@@ -1,117 +1,168 @@
-#!/usr/bin/bash
-shopt -s nullglob dotglob
-FF_USER_DIRECTORY=""
+#!/usr/bin/env bash
 
+FF_USER_DIRECTORY=""
+CHROME_DIRECTORY=""
 RELEASE_NAME=""
 
 message() {
-    printf "%s" "$*" >&2
+  printf "%s\n" "$*" >&2
 }
 
 download_ff() {
 
-    message "[>>] Begin: Downloading Theme"
+  message "[>>] Downloading theme..."
 
-    curl -LJ0 https://github.com/Thomashighbaugh/firefox/archive/master.tar.gz | tar -xz -C /tmp
+  curl -LJ0 https://github.com/Thomashighbaugh/firefox/archive/master.tar.gz | tar -xz -C /tmp/
 
-    message "[>>] Download success!"
-    message "[>>]"
-    message "[>>]"
-    message "[>>]"
-    message "[>>]"
-    message "[>>] Begin: Installation Phase"
-
+  # Download success!
+  if [[ $? -eq 0 ]]; then
     message "[>>] Copying..."
 
     FF_THEME="/tmp/firefox-master/"
-    cp -rvf "${FF_THEME}"* "${CHROME_DIRECTORY}"
-    sudo cp -rvf "${FF_THEME}patches/root/defaults" /usr/lib/firefox*
-    sudo cp -rvf "${FF_THEME}patches/root/config.js" /usr/lib/firefox*
-    cp -rvf "${FF_THEME}patches/chrome/resources/*" "${CHROME_DIRECTORY}"
-    cp -rvf "${FF_THEME}patches/chrome/*" "${CHROME_DIRECTORY}"
+    cp -r "${FF_THEME}"* "${CHROME_DIRECTORY}"
 
-    message "[>>] Backup user.js instead of overwriting it"
+    # Backup user.js instead of overwriting it
+    if [ -e "${CHROME_DIRECTORY}/../user.js" ]; then
+      message "[>>] Existing user.js detected! Creating backup to user-prefs-backup/..."
+      user_pref_backup_dir="${CHROME_DIRECTORY}/../user-prefs-backup"
+
+      if [[ ! -d "${user_pref_backup_dir}" ]]; then
+        message "[>>] user-prefs-backup/ folder does not exist! Creating..."
+        mkdir "${user_pref_backup_dir}"
+      fi
+
+      mv --backup=t "${CHROME_DIRECTORY}/../user.js" "${user_pref_backup_dir}"
+    fi
 
     # Move user.js to the main profile directory
-    mv "${FF_THEME}/user.js" "${FF_USER_DIRECTORY}"
+    mv "${CHROME_DIRECTORY}/user.js" "${CHROME_DIRECTORY}/../"
 
-    message ""
-    message "[!!] Firefox customization has been successfully installed, please restart your browser to view your new interface."
+    if [[ $? -eq 0 ]]; then
+      rm -rf "/tmp/blurredfox-master"
+    else
+      message " [!!] There was a problem while copying the files. Terminating..."
+      exit
+    fi
+  else
+    # Download failed
+    message " [!!] There was a problem while downloading the theme. Terminating..."
+    exit
+  fi
+  echo " _______ __                      "
+  echo "|   |   |__|.-----.-----.-----.  "
+  echo "|       |  ||  _  |  _  |__ --|  "
+  echo "|___|___|__||___  |___  |_____|  "
+  echo "            |_____|_____|        "
+  echo " ______                          "
+  echo "|   __ \.-----.-----.-----.-----."
+  echo "|   __ <|  _  |__ --|  _  |     |"
+  echo "|______/|_____|_____|_____|__|__|"
+  echo "############################################################"
+  message "Higgs Boson successfully installed! Enjoy!"
 }
 
 function check_profile() {
-    FF_USER_DIRECTORY="$(find "${HOME}/.mozilla/firefox/" -maxdepth 1 -type d -regextype egrep -regex '.*[a-zA-Z0-9]+.'"${1}")"
-}
-
-function check_librewolf_profile() {
-    FF_USER_DIRECTORY="$(find "${HOME}/.librewolf/" -maxdepth 1 -type d -regextype egrep -regex '.*[a-zA-Z0-9]+.'"${1}")"
+  FF_USER_DIRECTORY="$(find "${HOME}/.mozilla/firefox/" -maxdepth 1 -type d -regextype egrep -regex '.*[a-zA-Z0-9]+.'${1})"
 }
 
 function print_help() {
-    message "Usage: run this script followed by the variant of firefox you are installing to"
-    message "/path/to/this/script/install.sh "
-    message "[++] help  - Print this help"
-    message "[++] stable    - Firefox Stable Build"
-    message "[++] dev   - Firefox Developer Edition"
-    message "[++] beta  - Firefox Beta"
-    message "[++] nightly - Firefox Nightly"
-    message "[++] esr   - Firefox Extended Support Release"
-    message "[++]"
-    message "[!!] Example:"
-
-    message "[$$] $ curl -fsSL https://raw.githubusercontent.com/Thomashighbaugh/firefox/script/install.sh | bash -s -- stable"
-    message ""
-    message "[!!] The script will default to 'stable' if no option is provided to it, for sake of simplicity and the most common use case."
+  echo "Usage:"
+  echo ""
+  echo "help	    - Show this message"
+  echo "stable	  - Firefox Stable Build"
+  echo "dev 	    - Firefox Developer Edition"
+  echo "beta 	    - Firefox Beta"
+  echo "nightly   - Firefox Nightly"
+  echo "esr 	    - Firefox Extended Support Release"
+  echo ""
+  echo "Example:"
+  echo "$ ./install stable"
+  echo "$ ./install dev"
+  echo ""
+  echo "Defaults to 'stable' if empty."
 }
+function patch() {
+  sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox
+  sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox-nightly
+  sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox-developer
 
+}
 # Check args
-if [[ -n "${*}" ]] && [[ -n "${1}" ]]; then
+if [[ ! -z "${@}" ]] && [[ ! -z "${1}" ]]; then
 
-    if [[ "${1}" == "dev" ]]; then
-        RELEASE_NAME="Developer Edition"
-        check_profile "dev-edition-default"
-    elif [[ "${1}" == "beta" ]]; then
-        RELEASE_NAME="Beta"
-        check_profile "default-beta"
-    elif [[ "${1}" == "nightly" ]]; then
-        RELEASE_NAME="Nightly"
-        check_profile "default-nightly"
-    elif [[ "${1}" == "stable" ]]; then
-        RELEASE_NAME="Stable"
-        check_profile "default-release"
-    elif [[ "${1}" == "esr" ]]; then
-        RELEASE_NAME="ESR"
-        check_profile "default-esr"
-    elif [[ "${1}" == "librewolf" ]]; then
-        RELEASE_NAME="librewolf"
-        check_librewolf_profile "default-release"
-    elif [[ "${1}" == "help" ]]; then
-        print_help
-        exit
-    else
-        message -ne "[!!] Invalid parameter provided, please try using one of the valid parameters as specified in the help message."
-        print_help
-        exit
-    fi
-else
-    check_profile "(dev-edition|default)-(release|beta|nightly|default|esr)"
+  if [[ "${1}" == "dev" ]]; then
+    RELEASE_NAME="Developer Edition"
+    check_profile "dev-edition-default"
+  elif [[ "${1}" == "beta" ]]; then
+    RELEASE_NAME="Beta"
+    check_profile "default-beta"
+  elif [[ "${1}" == "nightly" ]]; then
+    RELEASE_NAME="Nightly"
+    check_profile "default-nightly"
+  elif [[ "${1}" == "stable" ]]; then
     RELEASE_NAME="Stable"
-    #  check_profile "default-release"
+    check_profile "default-default"
+  elif [[ "${1}" == "esr" ]]; then
+    RELEASE_NAME="ESR"
+    check_profile "default-esr"
+  elif [[ "${1}" == "help" ]]; then
+    print_help
+    exit
+  else
+    echo -ne "Invalid parameter!\n"
+    print_help
+    exit
+  fi
+else
+  # check_profile "(dev-edition|default)-(release|beta|nightly|default|esr)"
+  RELEASE_NAME="Stable"
+  check_profile "default-release"
 fi
 
 if [[ -n "$FF_USER_DIRECTORY" ]]; then
-    message "[>>] Firefox user profile directory located..."
+  message "[>>] Firefox user profile directory located..."
+  CHROME_DIRECTORY="$(find "$FF_USER_DIRECTORY/" -maxdepth 1 -type d -name 'chrome')"
+  if [[ -n "$CHROME_DIRECTORY" ]]; then
+    # Check if the chrome folder is not empty
+    shopt -s nullglob dotglob
+    content="${CHROME_DIRECTORY}/"
 
-    mkdir -p "${FF_USER_DIRECTORY}/chrome"
-    CHROME_DIRECTORY="$FF_USER_DIRECTORY/chrome"
+    # If there's a current theme, make a backup
+    if [ ${#content[@]} -gt 0 ]; then
+      message "[>>] Existing chrome folder detected! Creating a backup to chrome-backup/..."
+      backup_dir="${CHROME_DIRECTORY}-backup"
 
+      # Create backup folder
+      if [[ ! -d "${backup_dir}" ]]; then
+        message "[>>] chrome-backup/ folder does not exist! Creating..."
+        mkdir "${backup_dir}"
+      fi
+
+      mv --backup=t "${CHROME_DIRECTORY}" "${backup_dir}"
+      mkdir "${CHROME_DIRECTORY}"
+    fi
     # Download theme
     download_ff
-    message "[!!] An Error Has Prevented the Directory From Being Created  Terminating..."
-    exit 1
+    patch
+  else
+    message "[>>] Chrome folder does not exist! Creating one..."
+    mkdir "${FF_USER_DIRECTORY}/chrome"
+
+    # Check if backup folder exist
+    if [[ $? -eq 0 ]]; then
+      CHROME_DIRECTORY="${FF_USER_DIRECTORY}/chrome"
+
+      # Download theme
+
+      download_ff
+      patch
+    else
+      message "[!!] There was a problem while creating the directory. Terminating..."
+      exit 1
+    fi
+  fi
 
 else
-
-    message "[!!] No Firefox ${RELEASE_NAME} user profile detected! Make sure to run Firefox ${RELEASE_NAME} atleast once!  Terminating..."
-    exit 1
+  message "[!!] No Firefox ${RELEASE_NAME} user profile detected! Make sure to run Firefox ${RELEASE_NAME} atleast once! Terminating..."
+  exit 1
 fi

@@ -1,9 +1,42 @@
-// ##################################################################### 
-//   USER.JS
-// ##################################################################### 
-// Provides user preferences to browser without reliance on 
-// Firefox Sync alone. 
-// ##################################################################### 
+// ** Theme Related Options ****************************************************
+// userchrome.css usercontent.css activate
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+
+// Proton Enabled #127
+user_pref("browser.proton.enabled", true);
+
+// Proton Tooltip
+user_pref("browser.proton.places-tooltip.enabled", true);
+
+// Fill SVG Color
+user_pref("svg.context-properties.content.enabled", true);
+
+// CSS Color Mix - 88 Above
+user_pref("layout.css.color-mix.enabled", true);
+
+// CSS Blur Filter - 88 Above
+user_pref("layout.css.backdrop-filter.enabled", true);
+
+// Restore Compact Mode - 89 Above
+user_pref("browser.compactmode.show", true);
+
+// about:home Search Bar - 89 Above
+user_pref("browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar", false);
+
+// Browser Theme Based Scheme - Will be activate 95 Above
+// user_pref("layout.css.prefers-color-scheme.content-override", 3);
+
+// ** Useful Options ***********************************************************
+// Integrated calculator at urlbar
+user_pref("browser.urlbar.suggest.calculator", true);
+
+// Integrated unit convertor at urlbar
+// user_pref("browser.urlbar.unitConversion.enabled", true);
+
+// Draw in Titlebar
+// user_pref("browser.tabs.drawInTitlebar", true);
+// user_pref("browser.tabs.inTitlebar",        1); // Nightly, 96 Above
+
 // Enable User Chrome
 user_pref("svg.context-properties.content.enabled", true);
 // required prefs
@@ -101,7 +134,7 @@ user_pref("userChrome.urlbar-results.hide-help-button", true);
 
 // these are more subjective prefs, but they're important ones
 // display the all tabs menu in reverse order (newer tabs on top, like history)
- user_pref("userChrome.tabs.all-tabs-menu.reverse-order", true);
+user_pref("userChrome.tabs.all-tabs-menu.reverse-order", true);
 
 // turn bookmarks on the toolbar into small square buttons with only icons, no text
 // user_pref("userChrome.bookmarks-toolbar.icons-only", false);
@@ -109,10 +142,10 @@ user_pref("userChrome.urlbar-results.hide-help-button", true);
 // replace UI font with SF Pro, the system font for macOS.
 // recommended for all operating systems, but not required.
 // must have the fonts installed. check the repo's readme for more details.
- user_pref("userChrome.css.mac-ui-fonts", true);
+user_pref("userChrome.css.mac-ui-fonts", true);
 
 // custom wikipedia dark mode theme
- user_pref("userChrome.css.wikipedia.dark-theme-enabled", true);
+user_pref("userChrome.css.wikipedia.dark-theme-enabled", true);
 
 // Enable popups from plugins, useful for dictionary add-on I
 // use and other reasons, addons should change this themselves
@@ -206,8 +239,8 @@ user_perf("browser.newtabpage.activity-stream.feeds.telemetry", false);
 user_perf("browser.newtabpage.activity-stream.feeds.system.topsites", false);
 user_perf("browser.newtabpage.activity-stream.feeds.topsites", false);
 user_perf(
-  "browser.newtabpage.activity-stream.newNewtabExperience.enabled",
-  false
+    "browser.newtabpage.activity-stream.newNewtabExperience.enabled",
+    false
 );
 user_perf("browser.newtabpage.activity-stream.showSponsored", false);
 user_perf("browser.newtabpage.activity-stream.showSponsoredTopSites", false);

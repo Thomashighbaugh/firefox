@@ -1,10 +1,18 @@
-@import url(userChrome/uc.css);
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";
 
-@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
-@namespace html url(http://www.w3.org/1999/xhtml);
+@import url("userChrome/colors");
+@import url("userChrome/theme");
 
-/* move tabs bar over */
-#TabsToolbar {
-  margin-left: var(--uc-urlbar-width) !important;
-  display: none !important;
-}
+
+@import url("userChrome/animate");
+@import url("userChrome/borders");
+@import url("userChrome/common");
+@import url("userChrome/cursor");
+@import url("userChrome/icons");
+@import url("userChrome/menu");
+@import url("userChrome/panels");
+@import url("userChrome/popup");
+@import url("userChrome/sidebar");
+@import url("userChrome/tabs");
+

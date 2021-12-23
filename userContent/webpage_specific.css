@@ -1,0 +1,19 @@
+/* Youtube */
+
+@-moz-document url-prefix('https://www.youtube.com')
+{
+  /* Prevent whiteflash before Youtube dark theme loads */
+  html {
+    background-color: var(--color00);
+    color: var(--color06);
+  }
+  /* Smaller font for fullscreen video title */
+  .ytp-big-mode .ytp-title-text {
+    font-size: 22px !important;
+  }
+  /* Remove scroll down button and text */
+  .ytp-fullerscreen-edu-button,
+  .ytp-fullerscreen-edu-chevron {
+    display: none !important;
+  }
+}

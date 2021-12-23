@@ -1,0 +1,25 @@
+/
+  /*
+ * Author: Thomas Leon Highbaugh (thighbaugh@zoho.com)
+ * Project: firefox
+ * File: userContent/view_source.css
+ * Description: styles the output of viewsource
+ */
+
+@-moz-document url-prefix(view-source:) {
+  html {
+    background: (--color00) !important;
+    color: var(--color06) !important;
+  }
+
+  .attribute-name {
+    color: var(--color15) !important;
+  }
+  .start-tag,
+  .end-tag {
+    color: var(--color16) !important;
+  }
+  .attribute-value {
+    color: var(--color14) !important;
+  }
+}

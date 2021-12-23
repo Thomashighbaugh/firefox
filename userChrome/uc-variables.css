@@ -1,0 +1,71 @@
+/* this is where we override firefox's built-in variables.
+often we'll make our own variable in uc-globals, with a prefix like --uc-
+and override a built-in variable to reference the new custom variable.
+this way we get to share all the variables with content stylesheets.
+otherwise you might want to use --arrowpanel-dimmed in a webextension popup,
+but find that it's missing because docs do not inherit from <browser> elements. */
+
+:root {
+  --uc-theme-color: var(--window-color);
+  --uc-hover-color: var(--secondary-color);
+  --uc-inverted-color: var(--inverted-color);
+  --button-bgcolor: var(--uc-theme-color) !important;
+  --button-hover-bgcolor: var(--uc-hover-color) !important;
+  --button-active-bgcolor: var(--uc-hover-color) !important;
+  --toolbar-bgcolor: var(--uc-theme-color) !important;
+  --toolbarbutton-hover-background: var(--uc-hover-color) !important;
+  --toolbarbutton-active-background: var(--uc-hover-color) !important;
+  --toolbarbutton-border-radius: var(--uc-border-radius) !important;
+  --lwt-toolbar-field-focus: var(--uc-theme-color) !important;
+  --toolbarbutton-icon-fill: var(--uc-inverted-color) !important;
+  --toolbar-field-focus-background-color: var(--secondary-color) !important;
+  --toolbar-field-color: var(--uc-inverted-color) !important;
+  --toolbar-field-focus-color: var(--uc-inverted-color) !important;
+  --tabs-border-color: var(--uc-theme-color) !important;
+  --tab-border-radius: var(--uc-border-radius) !important;
+  --lwt-text-color: var(--uc-inverted-color) !important;
+  --lwt-tab-text: var(--uc-inverted-color) !important;
+  --lwt-sidebar-background-color: var(--uc-hover-color) !important;
+  --lwt-sidebar-text-color: var(--uc-inverted-color) !important;
+  --arrowpanel-border-color: var(--uc-theme-color) !important;
+  --arrowpanel-border-radius: var(--uc-border-radius) !important;
+  --arrowpanel-background: var(--uc-theme-color) !important;
+  --arrowpanel-color: var(--inverted-color) !important;
+  --autocomplete-popup-highlight-background: var(
+    --uc-inverted-color
+  ) !important;
+  --autocomplete-popup-highlight-color: var(--uc-inverted-color) !important;
+  --autocomplete-popup-hover-background: var(--uc-inverted-color) !important;
+  --tab-block-margin: 2px !important;
+  --uc-theme-color: var(--window-color);
+  --uc-hover-color: var(--secondary-color);
+  --uc-inverted-color: var(--inverted-color);
+  --button-bgcolor: var(--uc-theme-color) !important;
+  --button-hover-bgcolor: var(--uc-hover-color) !important;
+  --button-active-bgcolor: var(--uc-hover-color) !important;
+  --toolbar-bgcolor: var(--uc-theme-color) !important;
+  --toolbarbutton-hover-background: var(--uc-hover-color) !important;
+  --toolbarbutton-active-background: var(--uc-hover-color) !important;
+  --toolbarbutton-border-radius: var(--uc-border-radius) !important;
+  --lwt-toolbar-field-focus: var(--uc-theme-color) !important;
+  --toolbarbutton-icon-fill: var(--uc-inverted-color) !important;
+  --toolbar-field-focus-background-color: var(--secondary-color) !important;
+  --toolbar-field-color: var(--uc-inverted-color) !important;
+  --toolbar-field-focus-color: var(--uc-inverted-color) !important;
+  --tabs-border-color: var(--uc-theme-color) !important;
+  --tab-border-radius: var(--uc-border-radius) !important;
+  --lwt-text-color: var(--uc-inverted-color) !important;
+  --lwt-tab-text: var(--uc-inverted-color) !important;
+  --lwt-sidebar-background-color: var(--uc-hover-color) !important;
+  --lwt-sidebar-text-color: var(--uc-inverted-color) !important;
+  --arrowpanel-border-color: var(--uc-theme-color) !important;
+  --arrowpanel-border-radius: var(--uc-border-radius) !important;
+  --arrowpanel-background: var(--uc-theme-color) !important;
+  --arrowpanel-color: var(--inverted-color) !important;
+  --autocomplete-popup-highlight-background: var(
+    --uc-inverted-color
+  ) !important;
+  --autocomplete-popup-highlight-color: var(--uc-inverted-color) !important;
+  --autocomplete-popup-hover-background: var(--uc-inverted-color) !important;
+  --tab-block-margin: 2px !important;
+}

@@ -1,0 +1,23 @@
+/*
+ * Author: Thomas Leon Highbaugh (thighbaugh@zoho.com)
+ * Project: firefox
+ * File: userContent/error_pages.css
+ * Description: styles the error pages to match the overall theme
+ */
+
+body.neterror,
+body.certerror {
+  background-color: var(--color00) !important;
+  color: var(--color06) !important;
+}
+
+body.neterror #errorPageContainer h1,
+body.certerror #errorPageContainer h1,
+body.neterror #errorPageContainer button,
+body.certerror #errorPageContainer button {
+  color: inherit !important;
+}
+
+body.certerror #badCertAdvancedPanel {
+  background-color: var(--color00) !important;
+}

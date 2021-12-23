@@ -82,9 +82,9 @@ function print_help() {
   echo "Defaults to 'stable' if empty."
 }
 function patch() {
-  cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox
-  cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox-nightly
-  cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox-developer
+  sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox
+  sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox-nightly
+  sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox-developer
 
 }
 # Check args

@@ -543,6 +543,8 @@ tab[visuallyselected] > stack::after {
   .tabbrowser-tab:hover
   .tab-close-button {
   visibility: visible !important;
+  display:none !important;
+ 
   opacity: 1;
 }
 
@@ -553,6 +555,8 @@ tab[visuallyselected] > stack::after {
     .tabbrowser-tab:not([visuallyselected])
     .tab-close-button {
     transition: opacity 0.1s var(--animation-easing-function) !important;
+    display:none !important;
+ 
   }
 
   /* Fade in */
@@ -560,21 +564,29 @@ tab[visuallyselected] > stack::after {
     .tabbrowser-tab:hover
     .tab-close-button {
     transition: opacity 0.25s var(--animation-easing-function) !important;
+    display:none !important;
+ 
   }
 }
 
 /* Closed Button's icon thicker */
 .tabbrowser-tab .tab-content > .close-icon {
+  display:none !important;
+ 
   list-style-image: url("./icons/dismiss-filled.svg") !important;
 }
 
 /* Closed Button's icon larger */
 .tab-close-button {
   padding: 6px !important; /* Original: 7px */
+  display:none !important;
+ 
 }
 .tabbrowser-tab:not(:hover) > .tab-stack > .tab-content > .tab-close-button {
   padding-inline-start: 1px !important; /* Original: 0px */
   width: 19px !important; /* Original: 17px */
+  display:none !important;
+ 
 }
 
 /* Closed Button's padding reduce */
@@ -585,6 +597,8 @@ tab[visuallyselected] > stack::after {
   padding: 4px !important; /* Original: 7px */
   width: 20px !important; /* Original: 24px */
   height: 20px !important; /* Original: 24px */
+  display:none !important;
+ 
 }
 #tabbrowser-tabs[closebuttons="activetab"]
   .tabbrowser-tab:not(:hover)
@@ -593,6 +607,8 @@ tab[visuallyselected] > stack::after {
   > .tab-close-button {
   padding-inline-start: 3px !important; /* Original: 0px */
   width: 19px !important; /* Redefine from 19px !important, Original: 17px = (width - padding)  */
+  display:none !important;
+ 
 }
 
 /** Sound Tab - Hide Label ****************************************************/
@@ -604,6 +620,8 @@ tab[visuallyselected] > stack::after {
 /* Makes the favicons always visible (also on hover) */
 .tab-icon-image:not([pinned]) {
   opacity: 1 !important;
+  display:none !important;
+ 
 }
 
 /* Makes the speaker icon to always appear if the tab is playing (not only on hover) */
@@ -619,6 +637,8 @@ tab[visuallyselected] > stack::after {
   padding: 1.5px !important;
   border-radius: 10px !important;
   width: 17px !important;
+  display:none !important;
+ 
   height: 17px !important;
 }
 .tab-icon-overlay:not([sharing], [crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
@@ -627,6 +647,8 @@ tab[visuallyselected] > stack::after {
   stroke: transparent !important;
   background: transparent !important;
   fill-opacity: 0.8 !important;
+  display:none !important;
+ 
   opacity: 1 !important;
 }
 .tabbrowser-tab:not([pinned], [sharing], [crashed]):is([soundplaying], [muted], [activemedia-blocked])

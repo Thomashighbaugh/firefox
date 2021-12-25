@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 FF_USER_DIRECTORY=""
 CHROME_DIRECTORY=""

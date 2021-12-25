@@ -1,7 +1,4 @@
 
-@-moz-document url(chrome://browser/content/browser.xul),
-               url(chrome://browser/content/browser.xhtml) {
-
 
   /* hide horizontal tabs at the top of the window */
   #TabsToolbar > * {
@@ -18,4 +15,3 @@
 
   
 
-}

@@ -1,4 +1,6 @@
 
+@-moz-document url(chrome://browser/content/browser.xul),
+               url(chrome://browser/content/browser.xhtml) {
 
 #generalTab {
     --viewgroup-image: url(chrome://global/skin/icons/page-portrait.svg);
@@ -955,8 +957,6 @@ tab[visuallyselected] > stack::after {
     visibility: collapse !important;
 }
 
-@-moz-document url(chrome://browser/content/browser.xul),
-               url(chrome://browser/content/browser.xhtml) {
 
   /* hide horizontal tabs at the top of the window */
   #TabsToolbar > * {
@@ -971,9 +971,6 @@ tab[visuallyselected] > stack::after {
     transition: 0.2s margin-top ease-out;
   }
 
-  /* hide the "Tree Style Tab" header at the top of the sidebar (only Tree Style Tab sidebar) */
-  #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
-    display: none;
-  }
+  
 
 }

@@ -531,6 +531,8 @@ tab[visuallyselected] > stack::after {
   > .tab-content
   > .tab-close-button:not([selected="true"]) {
   display: -moz-inline-box !important;
+  display:none !important;
+ 
 }
 
 #tabbrowser-tabs[closebuttons="activetab"]
@@ -538,6 +540,8 @@ tab[visuallyselected] > stack::after {
   .tab-close-button {
   visibility: collapse !important;
   opacity: 0;
+  display:none !important;
+ 
 }
 #tabbrowser-tabs[closebuttons="activetab"]
   .tabbrowser-tab:hover

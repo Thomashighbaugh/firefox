@@ -3,6 +3,7 @@
   /* hide horizontal tabs at the top of the window */
   #TabsToolbar > * {
     visibility: collapse  !important;
+    display: none !important;
   }
 
   /* hide navigation bar when it is not focused; use Ctrl+L to get focus */

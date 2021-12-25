@@ -283,3 +283,26 @@ html|input[type="number"]::-moz-number-spin-down {
   fill-opacity: 0.4;
   appearance: none;
 }
+
+@-moz-document url(chrome://browser/content/browser.xul),
+               url(chrome://browser/content/browser.xhtml) {
+
+  /* hide horizontal tabs at the top of the window */
+  #TabsToolbar > * {
+    visibility: collapse;
+  }
+
+  /* hide navigation bar when it is not focused; use Ctrl+L to get focus */
+  #main-window:not([customizing]) #navigator-toolbox:not(:focus-within):not(:hover) {
+    margin-top: -45px;
+  }
+  #navigator-toolbox {
+    transition: 0.2s margin-top ease-out;
+  }
+
+  /* hide the "Tree Style Tab" header at the top of the sidebar (only Tree Style Tab sidebar) */
+  #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+    display: none;
+  }
+
+}

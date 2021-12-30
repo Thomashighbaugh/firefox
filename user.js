@@ -1,8 +1,7 @@
-// ** Theme Related Options ****************************************************
 // userchrome.css usercontent.css activate
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 
-// Proton Enabled #127
+// Proton Enabled 
 user_pref("browser.proton.enabled", true);
 
 // Proton Tooltip
@@ -11,71 +10,53 @@ user_pref("browser.proton.places-tooltip.enabled", true);
 // Fill SVG Color
 user_pref("svg.context-properties.content.enabled", true);
 
-// CSS Color Mix - 88 Above
-user_pref("layout.css.color-mix.enabled", true);
 
-// CSS Blur Filter - 88 Above
+
+// CSS Blur Filter 
 user_pref("layout.css.backdrop-filter.enabled", true);
 
-// Restore Compact Mode - 89 Above
+// Restore Compact Mode 
 user_pref("browser.compactmode.show", true);
 
-// about:home Search Bar - 89 Above
+// about:home Search Bar 
 user_pref("browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar", false);
 
-// Browser Theme Based Scheme - Will be activate 95 Above
-// user_pref("layout.css.prefers-color-scheme.content-override", 3);
 
-// ** Useful Options ***********************************************************
 // Integrated calculator at urlbar
 user_pref("browser.urlbar.suggest.calculator", true);
 
 // Integrated unit convertor at urlbar
-// user_pref("browser.urlbar.unitConversion.enabled", true);
+user_pref("browser.urlbar.unitConversion.enabled", true);
 
-// Draw in Titlebar
-// user_pref("browser.tabs.drawInTitlebar", true);
-// user_pref("browser.tabs.inTitlebar",        1); // Nightly, 96 Above
-
-// Enable User Chrome
-user_pref("svg.context-properties.content.enabled", true);
 // required prefs
-user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
-user_pref("browser.proton.enabled", true);
-user_pref("browser.proton.places-tooltip.enabled", true);
+
 user_pref("layout.css.moz-document.content.enabled", true);
 user_pref("layout.css.xul-box-display-values.content.enabled", true);
 user_pref("layout.css.xul-display-values.content.enabled", true);
-// required for icons with data URLs
-user_pref("svg.context-properties.content.enabled", true);
-// required for acrylic gaussian blur
-user_pref("layout.css.backdrop-filter.enabled", true);
+
+
 // prevent bugs that would otherwise be caused by the custom scrollbars in the user-agent sheet
 user_pref("layout.css.cached-scrollbar-styles.enabled", false);
-user_pref("ui.systemUsesDarkTheme", 1);
+
 // allow stylesheets to modify trees in system pages viewed in regular tabs
 user_pref("layout.css.xul-tree-pseudos.content.enabled", true);
 // allow the color-mix() CSS function
 user_pref("layout.css.color-mix.enabled", true);
 // other CSS features
-user_pref("layout.css.moz-outline-radius.enabled", true);
+
 // avoid native styling
 user_pref("browser.display.windows.non_native_menus", 1);
-user_pref("widget.disable-native-theme-for-content", true);
+
 user_pref("widget.non-native-theme.win.scrollbar.use-system-size", false);
 user_pref("widget.content.allow-gtk-dark-theme", true);
 // keep "all tabs" menu available at all times, useful for all tabs menu expansion pack
-user_pref("browser.tabs.tabmanager.enabled", true);
+
 // Background for selected <option> elements and others
-user_pref("ui.selecteditem", "#2F3456");
+user_pref("ui.selecteditem", "#2F303d");
 // Text color for selected <option> elements and others
-user_pref("ui.selecteditemtext", "#FFFFFFCC");
+user_pref("ui.selecteditemtext", "#8b9cbe");
 
-// REQUIRED on macOS
-// user_pref("widget.macos.native-context-menus", false);
 
-// recommended prefs
-// functionality oriented prefs
 user_pref("browser.display.use_system_colors", false);
 user_pref("browser.display.focus_ring_style", 0);
 user_pref("browser.display.focus_ring_width", 0);
@@ -91,13 +72,12 @@ user_pref("full-screen-api.transition-duration.leave", "0 0");
 user_pref("full-screen-api.warning.delay", -1);
 user_pref("full-screen-api.warning.timeout", 0);
 user_pref("prompts.contentPromptSubDialog", true);
-user_pref("ui.skipNavigatingDisabledMenuItem", 1);
+
 user_pref("ui.prefersReducedMotion", 0);
 user_pref("ui.submenuDelay", 100);
 user_pref("ui.tooltipDelay", 300);
 user_pref("ui.key.menuAccessKeyFocuses", false);
 
-// style oriented prefs
 user_pref("reader.color_scheme", "dark");
 user_pref("browser.anchor_color", "#8b9cbe");
 user_pref("browser.active_color", "#b2bfd9");
@@ -111,11 +91,10 @@ user_pref("ui.textSelectDisabledBackground", "#555e70");
 user_pref("ui.textSelectBackgroundAttention", "#8b9cbe");
 user_pref("ui.textSelectBackgroundDisabled", "#555e70");
 user_pref("ui.SpellCheckerUnderline", "#8b9cbe");
-user_pref("ui.SpellCheckerUnderlineStyle", 1);
+
 user_pref("ui.IMERawInputBackground", "#17191e");
 user_pref("ui.IMESelectedRawTextBackground", "#17191e");
 
-// windows font settings - does nothing on macOS or linux
 user_pref("gfx.font_rendering.cleartype_params.cleartype_level", 100);
 user_pref("gfx.font_rendering.cleartype_params.force_gdi_classic_for_families", "");
 user_pref("gfx.font_rendering.cleartype_params.force_gdi_classic_max_size", 6);
@@ -123,10 +102,6 @@ user_pref("gfx.font_rendering.cleartype_params.pixel_structure", 1);
 user_pref("gfx.font_rendering.cleartype_params.rendering_mode", 5);
 user_pref("gfx.font_rendering.directwrite.use_gdi_table_loading", false);
 
-// recommended userChrome... prefs created by the theme or scripts.
-// there are many more not included here, to allow a lot more customization.
-// these are just the ones I'm pretty certain 90% of users will want.
-// see the prefs list at https://github.com/aminomancer/uc.css.js
 
 user_pref("userChrome.tabs.new-loading-spinner-animation", true);
 user_pref("userChrome.tabs.pinned-tabs.close-buttons.disabled", true);
@@ -136,8 +111,6 @@ user_pref("userChrome.urlbar-results.hide-help-button", true);
 // display the all tabs menu in reverse order (newer tabs on top, like history)
 user_pref("userChrome.tabs.all-tabs-menu.reverse-order", true);
 
-// turn bookmarks on the toolbar into small square buttons with only icons, no text
-// user_pref("userChrome.bookmarks-toolbar.icons-only", false);
 
 // replace UI font with SF Pro, the system font for macOS.
 // recommended for all operating systems, but not required.
@@ -152,15 +125,13 @@ user_pref("userChrome.css.wikipedia.dark-theme-enabled", true);
 // I would think but don't/can't
 user_perf("privacy.popups.disable_from_plugins", 0);
 
-user_pref("svg.context-properties.content.enabled", true);
-user_perf("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+
 
 // Don't reveal your internal IP when WebRTC is enabled
 user_pref("media.peerconnection.ice.no_host", true);
 
-// enable proton
-user_pref("browser.proton.enabled", true);
-user_pref("browser.proton.places-tooltip.enabled", true);
+
+
 
 // prevent names of plugins from leaking
 user_perf("plugins.enumerable_names", "blank");
@@ -268,9 +239,6 @@ user_pref("experiments.enabled", false);
 user_pref("experiments.manifest.uri", "");
 
 
-// theme perferences
-//################################################################
-
 
 // Make devtools dark like everything else
 user_perf("devtools.theme", "dark");
@@ -287,11 +255,6 @@ user_perfs("browser.aboutConfig.showWarning", false);
 // keep "all tabs" menu available at all times, useful for all tabs menu expansion pack
 user_pref("browser.tabs.tabmanager.enabled", true);
 
-// allow stylesheets to modify trees in system pages viewed in regular tabs
-user_pref("layout.css.xul-tree-pseudos.content.enabled", true);
-
-// allow the color-mix() CSS function
-user_pref("layout.css.color-mix.enabled", true);
 
 // other CSS features
 user_pref("layout.css.moz-outline-radius.enabled", true);
@@ -316,7 +279,7 @@ user_pref("plugin.state.flash", 0);
 user_perf("browser.tabs.tabmanager.enabled", false);
 //  Allow porting over GTK theme directly (was false but TODO, does setting it true help at all?)
 user_perf("browser.display.use_system_colors", true);
-user_perf("browser.display.focus_ring_style", 0);
+user_perf("layout.css.moz-document.content.enabled", true);
 user_perf("browser.display.focus_ring_width", 0);
 user_perf("browser.display.windows.non_native_menus", 1);
 
@@ -329,9 +292,6 @@ user_pref("widget.disable-native-theme-for-content", true);
 
 
 
-// Enable XUL, which we need for the patches this config applies
-user_perf("layout.css.xul-display-values.content.enabled", true);
-user_perf("layout.css.xul-tree-pseudos.content.enabled", true);
 user_perf("reader.color_scheme", "dark");
 
 
@@ -346,11 +306,9 @@ user_perf("ui.skipNavigatingDisabledMenuItem", 1);
 // Double Underline Spelling Errors for Visual Cue Purpose http://kb.mozillazine.org/Ui.SpellCheckerUnderlineStyle
 user_perf("ui.SpellCheckerUnderlineStyle", 4);
 
-// More situating of the css and js especially enabling xul stuff
-user_perf("layout.css.backdrop-filter.enabled", true);
-user_perf("layout.css.cached-scrollbar-styles.enabled", false);
-user_perf("layout.css.moz-document.content.enabled", true);
-user_perf("layout.css.xul-box-display-values.content.enabled", true);
+
+
+
 
 // Insure this is set for the sake of not being blinded
 user_pref("ui.systemUsesDarkTheme", 1);

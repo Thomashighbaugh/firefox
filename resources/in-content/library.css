@@ -1,3 +1,9 @@
+/* This Source Code Form is subject to the terms of the Creative Commons
+* Attribution-NonCommercial-ShareAlike International License, v. 4.0.
+* If a copy of the CC BY-NC-SA 4.0 was not distributed with this
+* file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/
+* or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. */
+
 /* for the places organizer, e.g. "Manage Bookmarks" */
 
 @-moz-document url-prefix("chrome://browser/content/places/places.xhtml")
@@ -7,9 +13,6 @@
         --in-content-button-background-hover: hsla(0, 20%, 90%, 0.15) !important;
         --in-content-button-background-active: hsla(0, 20%, 90%, 0.19) !important;
         --in-content-border-hover: var(--dialog-box-border-hover) !important;
-        --in-content-border-focus: var(--purple-40) !important;
-        --in-content-border-active: var(--purple-40) !important;
-        --in-content-border-active-shadow: var(--purple-40-a30) !important;
         --organizer-color: var(--plaintext-color) !important;
         --organizer-deemphasized-color: color-mix(
             in srgb,
@@ -21,7 +24,7 @@
         --organizer-content-background: var(--in-content-bg-dark) !important;
         --organizer-hover-background: var(--in-content-button-background-hover) !important;
         --organizer-selected-background: var(--in-content-button-background-active) !important;
-        --organizer-outline-color: var(--in-content-border-active) !important;
+        --organizer-outline-color: var(--purple-40) !important;
         --organizer-border-color: var(--in-content-border-color-dim) !important;
         --organizer-toolbar-field-background: var(--in-content-bg-dark) !important;
         --organizer-toolbar-field-background-focused: var(--in-content-box-bg-dark) !important;
@@ -78,5 +81,9 @@
     menubar > menu[_moz-menuactive="true"]:not([disabled="true"]) {
         background-color: var(--organizer-hover-background) !important;
         color: var(--organizer-hover-color) !important;
+    }
+
+    #downloadsRichListBox {
+        border: none !important;
     }
 }

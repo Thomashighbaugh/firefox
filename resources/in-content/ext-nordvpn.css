@@ -1,3 +1,9 @@
+/* This Source Code Form is subject to the terms of the Creative Commons
+* Attribution-NonCommercial-ShareAlike International License, v. 4.0.
+* If a copy of the CC BY-NC-SA 4.0 was not distributed with this
+* file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/
+* or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. */
+
 /* nord VPN extension */
 
 @-moz-document url-prefix("moz-extension://54896d1f-a658-4fd5-ab86-4ad739b06f69")
@@ -18,6 +24,14 @@
         color: var(--in-content-page-color) !important;
     }
 
+    .Container {
+        min-height: auto !important;
+    }
+
+    .Container__wrapper {
+        min-height: 350px !important;
+    }
+
     .c-bw-12,
     .CountryItem .Text {
         color: var(--ui-text-80) !important;
@@ -34,7 +48,7 @@
     .TopBar .py-5 > .nord-image {
         stroke: var(--in-content-primary-button-background-hover);
         fill: var(--in-content-page-color);
-        background-image: url(chrome://icons/content/nordvpn-logo.svg) !important;
+        background-image: url(chrome://userchrome/content/in-content/nordvpn-logo.svg) !important;
         background-size: contain;
         background-repeat: no-repeat;
         padding-top: 31px;
@@ -151,7 +165,7 @@
 
     .form-control,
     .nord-input {
-        background-color: var(--in-content-button-background) !important;
+        background-color: var(--in-content-box-background) !important;
     }
 
     .TextField__element,
@@ -162,6 +176,6 @@
     .form-control:focus,
     .TextField__element:focus,
     .nord-input:focus {
-        border-color: var(--in-content-border-focus) !important;
+        border-color: var(--purple-40) !important;
     }
 }

@@ -1,3 +1,9 @@
+/* This Source Code Form is subject to the terms of the Creative Commons
+* Attribution-NonCommercial-ShareAlike International License, v. 4.0.
+* If a copy of the CC BY-NC-SA 4.0 was not distributed with this
+* file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/
+* or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. */
+
 /* handles system pages and injects some important global variables into extension pages */
 
 @import url(library.css);
@@ -12,14 +18,12 @@
 
     :root {
         font-family: Overpass Mono, -moz-fixed;
-        font-size: 12;
     }
 
     xmp,
     pre,
     plaintext {
         font-family: Overpass Mono, -moz-fixed;
-        font-size: 12;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -47,54 +51,54 @@
             background-color: var(--content-selection-bgcolor-disabled) !important;
         }
 
-        .attribute-name {
+        .highlight .attribute-name {
             color: lightskyblue !important;
         }
 
-        .attribute-name::selection {
+        .highlight .attribute-name::selection {
             color: darkcyan !important;
         }
 
-        .attribute-value {
+        .highlight .attribute-value {
             color: lightgreen !important;
         }
 
-        .attribute-value::selection {
+        .highlight .attribute-value::selection {
             color: darkgreen !important;
         }
 
-        .start-tag {
+        .highlight .start-tag {
             color: tan !important;
         }
 
-        .start-tag::selection {
+        .highlight .start-tag::selection {
             color: darkgoldenrod !important;
         }
 
-        .end-tag {
+        .highlight .end-tag {
             color: indianred !important;
         }
 
-        .end-tag::selection {
+        .highlight .end-tag::selection {
             color: sienna !important;
         }
 
-        .error {
+        .highlight .error {
             color: white !important;
             background-color: rgba(178, 34, 34, 0.5) !important;
         }
 
-        .error::selection,
-        .error > *::selection {
+        .highlight .error::selection,
+        .highlight .error > *::selection {
             color: firebrick !important;
             background-color: var(--content-selection-bgcolor) !important;
         }
 
-        .entity {
+        .highlight .entity {
             color: mediumorchid !important;
         }
 
-        .entity::selection {
+        .highlight .entity::selection {
             color: darkorchid !important;
         }
     }
@@ -133,12 +137,7 @@
         ) !important;
         --in-content-button-background-solid: var(--content-principal-button-background-solid);
         --in-content-item-selected: var(--purple-40) !important;
-        --in-content-border-highlight: var(--purple-40) !important;
         --in-content-border-hover: var(--content-principal-border-hover) !important;
-        --in-content-border-focus: var(--purple-40) !important;
-        --in-content-border-active: var(--purple-40) !important;
-        --in-content-border-active-shadow: var(--purple-40-a30) !important;
-        --in-content-category-outline-focus: 1px solid transparent !important;
         --in-content-link-color: var(--purple-30) !important;
         --in-content-link-color-hover: var(--purple-25) !important;
         --in-content-link-color-active: var(--purple-20) !important;
@@ -148,11 +147,16 @@
         --in-content-primary-button-background: var(--purple-40) !important;
         --in-content-primary-button-background-hover: var(--purple-35) !important;
         --in-content-primary-button-background-active: var(--purple-30) !important;
-        --in-content-primary-button-text-color: var(--in-content-page-color) !important;
+        --in-content-primary-button-text-color: var(--light-on-dark-button-text-color) !important;
         --in-content-button-border-radius: var(--general-button-border-radius) !important;
         --in-content-accent-color: var(--purple-35) !important;
+        --in-content-item-hover: color-mix(in srgb, var(--purple-30) 45%, transparent) !important;
+        --in-content-item-hover-text: var(--light-on-dark-button-text-color) !important;
         --in-content-table-background: var(--in-content-box-background) !important;
         --in-content-table-header-background: var(--purple-40-a30) !important;
+        --in-content-box-info-background: var(--in-content-button-background-solid) !important;
+        --focus-outline-offset: 2px !important;
+        --default-focusring: var(--default-focusring-width) solid var(--in-parent-border-focus) !important;
         --newtab-background-color: var(--in-content-page-background) !important;
         --newtab-text-primary-color: var(--in-content-page-color) !important;
         --lwt-sidebar-background-color: var(--in-content-box-background) !important;
@@ -169,11 +173,11 @@
         ) !important;
         --newtab-seperator-line-color: var(--in-content-button-background-hover) !important;
         --newtab-modal-color: var(--in-content-box-background) !important;
-        --newtab-focus-outline: var(--in-content-border-active-shadow) !important;
-        --newtab-focus-border: var(--in-content-border-focus) !important;
+        --newtab-focus-outline: var(--purple-40-a30) !important;
+        --newtab-focus-border: var(--purple-40) !important;
         --newtab-focus-border-selected: var(--purple-30) !important;
         --newtab-textbox-background-color: var(--in-content-button-background) !important;
-        --newtab-textbox-focus-color: var(--in-content-border-focus) !important;
+        --newtab-textbox-focus-color: var(--purple-40) !important;
         --newtab-primary-action-background: var(
             --in-content-primary-button-background-hover
         ) !important;
@@ -227,15 +231,58 @@
         --newtab-search-second-shadow: rgba(21, 20, 26, 0.75);
     }
 
+    html:not([role="dialog"]) richlistitem[selected] * {
+        --in-content-button-background: inherit !important;
+        --in-content-button-background-hover: inherit !important;
+        --in-content-button-background-active: inherit !important;
+        --in-content-button-text-color: inherit !important;
+        --in-content-button-text-color-hover: inherit !important;
+        --in-content-button-text-color-active: inherit !important;
+        --in-content-focus-outline-color: inherit !important;
+        --in-content-button-background: var(--purple-50) !important;
+        --in-content-button-background-hover: var(--purple-55) !important;
+        --in-content-button-background-active: var(--purple-60) !important;
+        --in-content-button-text-color: var(--in-content-item-selected-text) !important;
+        --in-content-button-text-color-hover: var(--in-content-item-selected-text) !important;
+        --in-content-button-text-color-active: var(--in-content-button-text-color-hover) !important;
+        --in-content-focus-outline-color: var(--in-content-item-selected-text) !important;
+    }
+
+    richlistitem menulist {
+        border-radius: 0 !important;
+        outline-offset: var(--focus-outline-offset, 2px) !important;
+        outline: none !important;
+    }
+
     body:not(.inline-onboarding) .fixed-search .search-wrapper {
-        background-image: linear-gradient(
+        /* temporarily disabled due to backdrop-filter being disabled. see https://bugzilla.mozilla.org/show_bug.cgi?id=1741779 */
+
+        /* background-image: linear-gradient(
             180deg,
             var(--in-content-page-background) 0%,
             var(--newtab-search-header-background-intermediate) 50%,
             var(--newtab-search-header-background-color) 100%
         ) !important;
         background-color: transparent !important;
-        backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px); */
+
+        background-image: linear-gradient(
+            180deg,
+            var(--in-content-page-background) 0%,
+            color-mix(
+                    in srgb,
+                    var(--content-principal-page-background) 80%,
+                    var(--in-content-page-background)
+                )
+                50%,
+            color-mix(
+                    in srgb,
+                    var(--content-principal-page-background) 70%,
+                    var(--in-content-page-background)
+                )
+                100%
+        ) !important;
+        background-color: transparent !important;
     }
 
     body:not(.inline-onboarding) .fixed-search.newtab-experience .search-handoff-button {
@@ -264,7 +311,7 @@
     }
 
     #category-experimental > .category-icon {
-        list-style-image: url(chrome://icons/content/potion-large.svg) !important;
+        list-style-image: url(chrome://userchrome/content/material/test-tube-45-large.svg) !important;
     }
 
     .top-site-outer {
@@ -300,7 +347,7 @@
     }
 
     .showPrivate .info {
-        background-image: url(chrome://icons/content//privateBrowsing.svg) !important;
+        background-image: url(chrome://userchrome/content/skin/privateBrowsing.svg) !important;
         -moz-context-properties: fill, fill-opacity;
         fill: hsl(235, 100%, 71%);
     }
@@ -417,8 +464,29 @@
         background-color: var(--newtab-primary-action-background-active) !important;
     }
 
+    .info-box-container > :is(.sync-engines-list, label) {
+        padding-inline: 4px;
+    }
+
+    listheader {
+        padding-bottom: revert !important;
+    }
+
+    treechildren::-moz-tree-row(current, focus) {
+        outline: revert !important;
+        outline-offset: revert !important;
+    }
+
+    :is(listheader, treecols) > treecol {
+        box-shadow: none !important;
+    }
+
     #engineList treechildren::-moz-tree-image {
         fill: currentColor !important;
+    }
+
+    #handlersView {
+        word-wrap: anywhere;
     }
 
     @-moz-document regexp("^about:blocked.*") {
@@ -593,7 +661,7 @@
 
 @-moz-document url-prefix("about:reader") {
     body.dark {
-        --main-background: var(--in-content-bg-dark) !important;
+        --main-background: var(--in-content-page-background) !important;
         --tooltip-background: color-mix(in srgb, black 40%, var(--in-content-bg-dark)) !important;
         --active-color: var(--purple-35) !important;
         --selected-background: var(--attention-color) !important;
@@ -624,9 +692,22 @@
     }
 
     .toolbar {
+        box-shadow: 0 0 12px hsla(0, 0%, 0%, 0.4) !important;
+    }
+
+    body.dark .toolbar {
         border-color: var(--in-content-box-border-color) !important;
         background-color: var(--in-content-box-background-dim) !important;
-        box-shadow: 0 0 12px hsla(0, 0%, 0%, 0.4) !important;
+    }
+
+    body > .container > .header > .domain {
+        border: none !important;
+    }
+
+    body.dark hr,
+    body.dark > .container > .header > .domain {
+        border-color: var(--in-content-button-background-active) !important;
+        border-block-width: 0 1px !important;
     }
 
     .toolbar-container.scrolled .toolbar:not(:hover, :focus-within) {
@@ -717,6 +798,15 @@
             font-family: -apple-system, BlinkMacSystemFont, SF Pro, "segoe ui", "helvetica neue",
                 helvetica, ubuntu, roboto, noto, arial, sans-serif !important;
             font-size: normal !important;
+        }
+    }
+}
+
+@-moz-document regexp("^(about:|chrome:\/\/).*") {
+    @supports -moz-bool-pref("userChrome.css.hide-promotion") {
+        .promo,
+        .vpn-banner {
+            display: none !important;
         }
     }
 }

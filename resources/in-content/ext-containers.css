@@ -1,15 +1,15 @@
+/* This Source Code Form is subject to the terms of the Creative Commons
+* Attribution-NonCommercial-ShareAlike International License, v. 4.0.
+* If a copy of the CC BY-NC-SA 4.0 was not distributed with this
+* file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/
+* or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. */
+
 /* firefox multi-account containers extension */
 
 @-moz-document url-prefix("moz-extension://14960f03-eca3-472b-b4d2-0b7f831ebe41/pageActionPopup.html")
 {
     :root {
-        --arrowpanel-background: var(--uc-arrowpanel-background);
-        --panel-separator-margin: 0px 4px;
-        --arrowpanel-menuitem-padding-block: 6px;
-        --arrowpanel-menuitem-padding-inline: 6px;
-        --arrowpanel-padding: 12px !important;
-        --arrowpanel-menuitem-border-radius: 3px;
-        background-color: var(--arrowpanel-background) !important;
+        background-color: var(--uc-arrowpanel-background) !important;
         font-size: 12px !important;
         color: var(--uc-arrowpanel-color) !important;
         letter-spacing: 0 !important;
@@ -32,30 +32,22 @@
         padding: var(--menupopup-inner-padding-magnitude) !important;
         padding-top: 0 !important;
         min-inline-size: 0px !important;
-        inline-size: calc(var(--overflow-size) + 199px) !important;
+        inline-size: calc(var(--overflow-size) + 249px) !important;
         max-inline-size: 300px !important;
         box-sizing: border-box !important;
         background: none !important;
     }
 
-    @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
-        body {
-            font-family: SF Pro Text, Segoe UI, sans-serif !important;
-            font-kerning: normal !important;
-        }
-    }
-
     h3.title {
-        line-height: normal !important;
-        padding-block: calc((44px - 1.1em) / 2) !important;
-        block-size: 34px !important;
-        min-height: 44px !important;
+        padding-block: 8px 4px !important;
+        block-size: 40px !important;
+        min-height: 40px !important;
         white-space: nowrap !important;
-        padding-inline: 10px 16px !important;
         font-family: inherit !important;
         font-weight: normal !important;
         font-size: 1.1em !important;
-        text-align: start !important;
+        line-height: 28px !important;
+        text-align: center !important;
         user-select: none;
         color: inherit !important;
         letter-spacing: inherit !important;
@@ -87,6 +79,11 @@
         user-select: none !important;
     }
 
+    .controller,
+    .hover-highlight {
+        transition: none !important;
+    }
+
     .hover-highlight:is(:focus):not(:hover, :focus-visible) {
         background: revert !important;
         color: inherit !important;
@@ -111,18 +108,26 @@
         margin-inline: 6px 8px !important;
         inline-size: 16px !important;
     }
+
+    @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
+        body {
+            font-family: SF Pro Text, Segoe UI, sans-serif !important;
+            font-kerning: normal !important;
+        }
+
+        h3.title {
+            font-family: SF Pro Display, Segoe UI, sans-serif !important;
+            font-kerning: normal !important;
+            font-size: 1.1em !important;
+            font-weight: var(--uc-font-weight-bold, 600) !important;
+        }
+    }
 }
 
 @-moz-document url-prefix("moz-extension://14960f03-eca3-472b-b4d2-0b7f831ebe41/popup.html")
 {
     :root {
-        --arrowpanel-background: var(--uc-arrowpanel-background);
-        --panel-separator-margin: 0px 4px;
-        --arrowpanel-menuitem-padding-block: 6px;
-        --arrowpanel-menuitem-padding-inline: 6px;
-        --arrowpanel-padding: 12px !important;
-        --arrowpanel-menuitem-border-radius: 3px;
-        background-color: var(--arrowpanel-background) !important;
+        background-color: var(--uc-arrowpanel-background) !important;
         font-size: 12px !important;
         color: var(--uc-arrowpanel-color) !important;
         letter-spacing: 0 !important;
@@ -145,17 +150,6 @@
         color: inherit !important;
         letter-spacing: inherit !important;
         background: none !important;
-    }
-
-    @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
-        body {
-            font-family: SF Pro Text, Segoe UI, sans-serif !important;
-            font-kerning: normal !important;
-        }
-
-        h4 {
-            font-weight: 500 !important;
-        }
     }
 
     div {
@@ -219,7 +213,7 @@
     }
 
     input[type="checkbox"]:is([checked="true"], :checked) {
-        background-image: url(chrome://icons/content/check.svg) !important;
+        background-image: url(chrome://userchrome/content/check.svg) !important;
         border-color: var(--uc-checkbox-checked-border-color) !important;
         background-color: var(--uc-checkbox-checked-bgcolor) !important;
     }
@@ -235,16 +229,17 @@
     h3.title,
     .proxy-panel-title {
         background: none !important;
-        line-height: normal !important;
-        padding-block: calc((44px - 1.1em) / 2) !important;
-        block-size: 44px !important;
+        padding-block: 8px 4px !important;
+        block-size: 40px !important;
         max-block-size: unset !important;
-        min-height: 44px !important;
+        min-height: 40px !important;
         white-space: nowrap !important;
-        padding-inline: 9px 16px !important;
+        padding-inline: 16px !important;
         font-family: inherit !important;
         font-weight: normal !important;
         font-size: 1.1em !important;
+        line-height: 28px !important;
+        text-align: center !important;
         user-select: none;
         color: inherit !important;
         letter-spacing: inherit !important;
@@ -253,9 +248,9 @@
 
     h3.proxy-panel-title {
         padding-bottom: calc(
-            ((44px - 1.1em) / 2) + var(--menupopup-inner-padding-magnitude)
+            ((40px - 1.1em) / 2) + var(--menupopup-inner-padding-magnitude)
         ) !important;
-        min-height: 48.5px !important;
+        min-height: 44.5px !important;
         margin-inline: var(--menupopup-inner-padding-magnitude) !important;
         inline-size: calc(100% - (var(--menupopup-inner-padding-magnitude) * 2)) !important;
     }
@@ -308,7 +303,7 @@
         display: block;
         width: 16px;
         height: 16px;
-        background-image: url(chrome://icons/content/info.svg);
+        background-image: url(chrome://userchrome/content/info.svg);
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
@@ -480,7 +475,7 @@
 
     .menu-icon[src="/img/container-openin-16.svg"] {
         padding-left: 16px !important;
-        background-image: url(chrome://icons/content/skin/container-go.svg) !important;
+        background-image: url(chrome://userchrome/content/skin/container-go.svg) !important;
     }
 
     .radio-choice > .radio-container > [type="radio"]:checked + label {
@@ -510,7 +505,7 @@
     tr > td > .trash-button {
         visibility: hidden !important;
         display: block !important;
-        background-image: url(chrome://icons/content/close.svg) !important;
+        background-image: url(chrome://userchrome/content/close.svg) !important;
         filter: none !important;
         fill: currentColor !important;
         -moz-context-properties: fill, fill-opacity;
@@ -575,7 +570,7 @@
 
     .btn-return {
         background-color: transparent !important;
-        background-image: url(chrome://icons/content/menu-arrow-left-big.svg) !important;
+        background-image: url(chrome://userchrome/content/menu-arrow-left.svg) !important;
         background-size: 16px !important;
         background-position: center !important;
         background-repeat: no-repeat !important;
@@ -583,15 +578,17 @@
         fill: currentColor;
         color: inherit;
         fill-opacity: 0.6;
-        padding: 8px !important;
+        padding: var(--uc-toolbarbutton-inner-padding, 8px) !important;
         margin: 0 !important;
         top: 8px !important;
         left: 8px !important;
-        min-height: 32px !important;
-        min-width: 32px !important;
+        min-height: var(--subviewbutton-height) !important;
+        min-width: var(--subviewbutton-height) !important;
+        block-size: var(--subviewbutton-height) !important;
+        inline-size: var(--subviewbutton-height) !important;
         filter: none !important;
         cursor: default !important;
-        border-radius: var(--arrowpanel-menuitem-border-radius) !important;
+        border-radius: var(--context-menuitem-border-radius) !important;
         background-color: transparent;
     }
 
@@ -689,13 +686,7 @@
     }
 
     .slider {
-        --protections-popup-switch-off-background: var(--switch-off-background);
-        --protections-popup-switch-off-hover-background-custom: var(--switch-off-hover-background);
-        --protections-popup-switch-off-active-background-custom: var(
-            --switch-off-active-background
-        );
-        --protections-popup-switch-off-hover-border-custom: var(--switch-off-hover-border);
-        background-color: var(--switch-off-background) !important;
+        background-color: var(--uc-switch-off-background) !important;
         border-radius: 14px !important;
         inset-block-end: 0;
         box-shadow: none !important;
@@ -707,11 +698,11 @@
     }
 
     .slider:hover {
-        background-color: var(--switch-off-hover-background) !important;
+        background-color: var(--uc-switch-off-hover-background) !important;
     }
 
     .slider:hover:active {
-        background-color: var(--switch-off-active-background) !important;
+        background-color: var(--uc-switch-off-active-background) !important;
     }
 
     .slider::before {
@@ -882,7 +873,7 @@
 
     .moz-vpn-logo,
     .moz-vpn-logotype {
-        background-image: url("chrome://icons/content/firefox-vpn.svg") !important;
+        background-image: url("chrome://userchrome/content/material/firefox-vpn.svg") !important;
         color: inherit !important;
         font-family: inherit !important;
         fill: currentColor !important;
@@ -913,7 +904,7 @@
         line-height: normal !important;
         text-align: initial !important;
         padding-inline-start: 30px !important;
-        background-image: url(chrome://icons/content/settings.svg), var(--iconArrowRight) !important;
+        background-image: url(chrome://userchrome/content/settings.svg), var(--iconArrowRight) !important;
         -moz-context-properties: fill, fill-opacity;
         fill: currentColor !important;
         background-position: 6px center, calc(100% - 10px) center !important;
@@ -948,7 +939,7 @@
     #clear-advanced-proxy-input {
         inset-inline-end: 6px !important;
         inset-block-start: 6px !important;
-        background-image: url(chrome://icons/content/textbox-clear.svg) !important;
+        background-image: url(chrome://userchrome/content/textbox-clear.svg) !important;
         background-color: transparent !important;
         background-size: contain !important;
         background-position: center !important;
@@ -985,6 +976,25 @@
         background-color: var(--warning-icon-background) !important;
         inset-inline-start: 8px !important;
     }
+
+    @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
+        body {
+            font-family: SF Pro Text, Segoe UI, sans-serif !important;
+            font-kerning: normal !important;
+        }
+
+        h3.title,
+        .proxy-panel-title {
+            font-family: SF Pro Display, Segoe UI, sans-serif !important;
+            font-kerning: normal !important;
+            font-size: 1.1em !important;
+            font-weight: var(--uc-font-weight-bold, 600) !important;
+        }
+
+        h4 {
+            font-weight: 500 !important;
+        }
+    }
 }
 
 /* little message that pops up on top of pages when you use "always open in x container" */
@@ -994,7 +1004,7 @@ body > .container-notification::before {
     block-size: 16px;
     inline-size: 16px;
     margin-inline-end: 3px;
-    background-image: url(chrome://icons/content/skin/container-plus.svg);
+    background-image: url(chrome://userchrome/content/skin/container-plus.svg);
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
     color: inherit !important;

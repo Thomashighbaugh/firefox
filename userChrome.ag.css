@@ -277,7 +277,7 @@ html|input[type="number"]::-moz-number-spin-down {
   -moz-context-properties: fill, fill-opacity !important;
   border: 0;
   border-radius: 0;
-  background-image: url(chrome://icons/content/arrow-dropdown-16.svg);
+  background-image: url(chrome://userchrome/content/arrow-dropdown-16.svg);
   background-size: 8px;
   background-position: center 0px;
   -moz-context-properties: fill;

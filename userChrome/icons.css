@@ -426,7 +426,7 @@ panelMenuBookmarkThisPage[starred] {
 /* Browser Console */
 #appmenu-developer-tools-view .subviewbutton:nth-last-child(5),
 #PanelUI-developer-tools-view .subviewbutton:nth-last-child(5) {
-  list-style-image: url("chrome://devtools/skin/images/command-console.svg");
+  list-style-image: url("chrome://icons/content/command-console.svg");
 }
 /* Responsive Design Mode */
 #appmenu-developer-tools-view .subviewbutton:nth-last-child(4),
@@ -436,7 +436,7 @@ panelMenuBookmarkThisPage[starred] {
 /* Eyedropper */
 #appmenu-developer-tools-view .subviewbutton:nth-last-child(3),
 #PanelUI-developer-tools-view .subviewbutton:nth-last-child(3) {
-  list-style-image: url("chrome://devtools/skin/images/command-eyedropper.svg");
+  list-style-image: url("chrome://icons/content/command-eyedropper.svg");
 }
 /* Page Source - Edge file-search.svg */
 #appmenu-developer-tools-view .subviewbutton:nth-last-child(2),
@@ -446,7 +446,7 @@ panelMenuBookmarkThisPage[starred] {
 /* Extensions for Devel */
 #appmenu-developer-tools-view .subviewbutton:nth-last-child(1),
 #PanelUI-developer-tools-view .subviewbutton:nth-last-child(1) {
-  list-style-image: url("chrome://devtools/skin/images/debugging-addons.svg");
+  list-style-image: url("chrome://icons/content/debugging-addons.svg");
 }
 #appmenu-developer-tools-view .subviewbutton:last-child {
   margin-bottom: 6px !important;
@@ -460,7 +460,7 @@ panelMenuBookmarkThisPage[starred] {
   list-style-image: url("./icons/send.svg");
 }
 #appMenu_helpSafeMode {
-  list-style-image: url("chrome://devtools/skin/images/debugging-workers.svg");
+  list-style-image: url("chrome://icons/content/debugging-workers.svg");
 }
 #appMenu_troubleShooting {
   list-style-image: url("chrome://global/skin/icons/more.svg");
@@ -1045,10 +1045,10 @@ menuitem.viewCustomizeToolbar {
   --menuitem-image: url("./icons/document-search.svg");
 }
 #context-inspect-a11y {
-  --menuitem-image: url("chrome://devtools/skin/images/tool-accessibility.svg");
+  --menuitem-image: url("chrome://icons/content/tool-accessibility.svg");
 }
 #context-inspect {
-  --menuitem-image: url("chrome://devtools/skin/images/command-pick.svg");
+  --menuitem-image: url("chrome://icons/content/command-pick.svg");
 }
 
 #context-media-eme-learnmore {
@@ -1175,7 +1175,7 @@ menuitem.viewCustomizeToolbar {
 
 /*= customizationPaletteItemContextMenu ======================================*/
 .customize-context-addToToolbar {
-  --menuitem-image: url("chrome://devtools/skin/images/dock-bottom.svg");
+  --menuitem-image: url("chrome://icons/content/dock-bottom.svg");
 }
 .customize-context-addToPanel {
   --menuitem-image: url("chrome://browser/skin/menu.svg");
@@ -1632,7 +1632,7 @@ menupopup:is(#context_sendTabToDevicePopupMenu, #context-sendpagetodevice-popup)
   --menuitem-image: url("./icons/command-frames.svg");
 }
 #menu_browserConsole {
-  --menuitem-image: url("chrome://devtools/skin/images/command-console.svg");
+  --menuitem-image: url("chrome://icons/content/command-console.svg");
 }
 #menu_responsiveUI {
 }
@@ -1642,7 +1642,7 @@ menupopup:is(#context_sendTabToDevicePopupMenu, #context-sendpagetodevice-popup)
   --menuitem-image: url("./icons/document-search.svg");
 }
 #extensionsForDevelopers {
-  --menuitem-image: url("chrome://devtools/skin/images/debugging-addons.svg");
+  --menuitem-image: url("chrome://icons/content/debugging-addons.svg");
 }
 
 /*= menu_HelpPopup ===========================================================*/
@@ -1653,7 +1653,7 @@ menupopup:is(#context_sendTabToDevicePopupMenu, #context-sendpagetodevice-popup)
   --menuitem-image: url("./icons/send.svg");
 }
 #helpSafeMode {
-  --menuitem-image: url("chrome://devtools/skin/images/debugging-workers.svg");
+  --menuitem-image: url("chrome://icons/content/debugging-workers.svg");
 }
 #troubleShooting {
   --menuitem-image: url("chrome://global/skin/icons/more.svg");
@@ -1723,7 +1723,7 @@ menupopup:is(#context_sendTabToDevicePopupMenu, #context-sendpagetodevice-popup)
 
 /*= maintenanceButtonPopup ===================================================*/
 #backupBookmarks {
-  --menuitem-image: url("chrome://devtools/skin/images/datastore.svg");
+  --menuitem-image: url("chrome://icons/content/datastore.svg");
 }
 #fileRestoreMenu {
 }

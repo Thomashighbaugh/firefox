@@ -472,7 +472,7 @@
 
   /*= maintenanceButtonPopup =================================================*/
   #backupBookmarks {
-    --menuitem-image: url("chrome://devtools/skin/images/datastore.svg");
+    --menuitem-image: url("chrome://icons/content/datastore.svg");
   }
   #fileRestoreMenu {
   }

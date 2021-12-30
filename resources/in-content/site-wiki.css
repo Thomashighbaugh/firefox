@@ -350,7 +350,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
     }
 
     .vector-menu-dropdown h3::after {
-        background-image: url(chrome://userchrome/content/in-content/wiki-arrow-down.svg) !important;
+        background-image: url(chrome://icons/content/wiki-arrow-down.svg) !important;
         -moz-context-properties: fill, fill-opacity;
         fill: currentColor;
         fill-opacity: 0.5;
@@ -505,7 +505,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
         opacity: 1 !important;
         fill: currentColor !important;
         fill-opacity: 0.67 !important;
-        background-image: url(chrome://userchrome/content/in-content/wiki-clear-text.svg) !important;
+        background-image: url(chrome://icons/content/wiki-clear-text.svg) !important;
     }
 
     button.oo-ui-inputWidget-input {
@@ -556,12 +556,12 @@ You can use greasemonkey or any other form of monkey that supports the document-
     }
 
     #mw-head .oo-ui-icon-bell {
-        background-image: url(chrome://userchrome/content/material/notification.svg) !important;
+        background-image: url(chrome://icons/content/notification.svg) !important;
         --notification-icon-left-offset: 57%;
     }
 
     #mw-head .oo-ui-icon-tray {
-        background-image: url(chrome://userchrome/content/in-content/wiki-tray.svg) !important;
+        background-image: url(chrome://icons/content/wiki-tray.svg) !important;
     }
 
     #pt-notifications-alert .mw-echo-notifications-badge::after,
@@ -584,7 +584,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
 
     .vector-user-menu-legacy #pt-anonuserpage,
     .vector-user-menu-legacy #pt-userpage a {
-        background-image: url(chrome://userchrome/content/fxa/avatar.svg) !important;
+        background-image: url(chrome://icons/content//avatar.svg) !important;
         padding-left: 2em !important;
         background-size: 16px !important;
         background-repeat: no-repeat !important;
@@ -1859,13 +1859,13 @@ You can use greasemonkey or any other form of monkey that supports the document-
     }
     
     .wikiEditor-ui-toolbar .group .tool-select .label::after {
-        background-image: url(chrome://userchrome/content/in-content/wiki-arrow-down.svg) !important;
+        background-image: url(chrome://icons/content/wiki-arrow-down.svg) !important;
         -moz-context-properties: fill, fill-opacity;
         fill: var(--uc-wiki-text-90) !important;
     }
 
     .wikiEditor-ui-toolbar .tabs span.tab a::before {
-        background-image: url(chrome://userchrome/content/in-content/wiki-arrow-down.svg) !important;
+        background-image: url(chrome://icons/content/wiki-arrow-down.svg) !important;
         -moz-context-properties: fill, fill-opacity;
         fill: var(--uc-wiki-text-90) !important;
         filter: none !important;
@@ -2905,7 +2905,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
         box-shadow: none !important;
         -moz-context-properties: fill, fill-opacity !important;
         fill: hsla(0, 0%, 100%, 0.6) !important;
-        background-image: url(chrome://userchrome/content/in-content/wiki-ellipsis.svg) !important;
+        background-image: url(chrome://icons/content/wiki-ellipsis.svg) !important;
     }
 
     .mw-mmv-ttf-ellipsis:hover {
@@ -3015,17 +3015,17 @@ You can use greasemonkey or any other form of monkey that supports the document-
         background-image: var(--wiki-sort-img) !important;
         background-repeat: no-repeat !important;
         background-position: center right !important;
-        --wiki-sort-img: url(chrome://userchrome/content/in-content/wiki-sort.svg);
+        --wiki-sort-img: url(chrome://icons/content/wiki-sort.svg);
         -moz-context-properties: fill;
         fill: currentColor;
     }
 
     table.wikitable.sortable.jquery-tablesorter thead tr th.headerSortUp {
-        --wiki-sort-img: url(chrome://userchrome/content/in-content/wiki-sort-up.svg);
+        --wiki-sort-img: url(chrome://icons/content/wiki-sort-up.svg);
     }
 
     table.wikitable.sortable.jquery-tablesorter thead tr th.headerSortDown {
-        --wiki-sort-img: url(chrome://userchrome/content/in-content/wiki-sort-down.svg);
+        --wiki-sort-img: url(chrome://icons/content/wiki-sort-down.svg);
     }
 
     .vertical-navbox th {
@@ -3984,7 +3984,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
     }
 
     body .ui-dialog .ui-icon-closethick {
-        background-image: url(chrome://userchrome/content/in-content/wiki-close.svg) !important;
+        background-image: url(chrome://icons/content/wiki-close.svg) !important;
         background-size: 200% !important;
         fill: white !important;
         fill-opacity: 0 !important;
@@ -4286,7 +4286,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
     }
 
     .mw-mmv-stripe-button.mw-mmv-description-page-button.mw-mmv-repo-button-commons::before {
-        background-image: url(chrome://userchrome/content/in-content/wiki-doc.svg) !important;
+        background-image: url(chrome://icons/content/wiki-doc.svg) !important;
         image-rendering: -moz-crisp-edges !important;
     }
 
@@ -4383,7 +4383,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
     .mw-parser-output a[href$=".PDF"].external,
     .mw-parser-output a[href*=".PDF?"].external,
     .mw-parser-output a[href*=".PDF#"].external {
-        background: url(chrome://userchrome/content/in-content/wiki-acrobat.svg) no-repeat right !important;
+        background: url(chrome://icons/content/wiki-acrobat.svg) no-repeat right !important;
         background-size: 14px 15px !important;
         padding-right: 17px !important;
     }
@@ -4436,7 +4436,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
     }
 
     span.citation-needed-content::before {
-        background-image: url(chrome://userchrome/content/in-content/wiki-pre-quote.svg);
+        background-image: url(chrome://icons/content/wiki-pre-quote.svg);
         background-size: 7px 7px;
         background-repeat: no-repeat !important;
         display: inline-block;
@@ -4446,7 +4446,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
     }
 
     span.citation-needed-content::after {
-        background-image: url(chrome://userchrome/content/in-content/wiki-post-quote.svg);
+        background-image: url(chrome://icons/content/wiki-post-quote.svg);
         background-size: 10px 7px;
         background-repeat: no-repeat !important;
         display: inline-block;

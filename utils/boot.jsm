@@ -2,9 +2,7 @@ let EXPORTED_SYMBOLS = [];
 
 let { classes: Cc, interfaces: Ci, manager: Cm } = Components;
 
-var cmanifest = Cc["@mozilla.org/file/directory_service;1"]
-  .getService(Ci.nsIProperties)
-  .get("UChrm", Ci.nsIFile);
+var cmanifest = Cc["@mozilla.org/file/directory_service;1"].getService(Ci.nsIProperties).get("UChrm", Ci.nsIFile);
 cmanifest.append("utils");
 cmanifest.append("chrome.manifest");
 Cm.QueryInterface(Ci.nsIComponentRegistrar).autoRegister(cmanifest);
@@ -57,13 +55,9 @@ const SHARED_GLOBAL = {};
 Object.defineProperty(SHARED_GLOBAL, "widgetCallbacks", { value: new Map() });
 
 function resolveChromeURL(str) {
-  const registry = Cc["@mozilla.org/chrome/chrome-registry;1"].getService(
-    Ci.nsIChromeRegistry
-  );
+  const registry = Cc["@mozilla.org/chrome/chrome-registry;1"].getService(Ci.nsIChromeRegistry);
   try {
-    return registry.convertChromeURL(
-      Services.io.newURI(str.replace(/\\/g, "/"))
-    ).spec;
+    return registry.convertChromeURL(Services.io.newURI(str.replace(/\\/g, "/"))).spec;
   } catch (e) {
     console.error(e);
     return "";
@@ -95,15 +89,7 @@ let _uc = {
 
   getDirEntry: function (filename, isLoader = false) {
     filename = filename.replace("\\", "/");
-    let pathParts = (
-      (filename.startsWith("..")
-        ? ""
-        : isLoader
-          ? _uc.SCRIPT_DIR
-          : _uc.RESOURCE_DIR) +
-      "/" +
-      filename
-    )
+    let pathParts = ((filename.startsWith("..") ? "" : isLoader ? _uc.SCRIPT_DIR : _uc.RESOURCE_DIR) + "/" + filename)
       .split("/")
       .filter((a) => !!a && a != "..");
     let entry = _uc.chromeDir;
@@ -125,9 +111,7 @@ let _uc = {
 
   updateStyleSheet: function (name, type) {
     if (type) {
-      let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(
-        Ci.nsIStyleSheetService
-      );
+      let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
       try {
         let uri = Services.io.newURI(`chrome://userchrome/content/${name}`);
         switch (type) {
@@ -168,10 +152,7 @@ let _uc = {
       return all;
     }
 
-    let sheets = recentWindow.InspectorUtils.getAllStyleSheets(
-      recentWindow.document,
-      false
-    );
+    let sheets = recentWindow.InspectorUtils.getAllStyleSheets(recentWindow.document, false);
 
     sheets = sheets.flatMap((x) => recurseImports(x, [x]));
 
@@ -184,10 +165,7 @@ let _uc = {
 
     let target = sheets.find((sheet) => sheet.href === entryFilePath);
     if (target) {
-      recentWindow.InspectorUtils.parseStyleSheet(
-        target,
-        _uc.utils.readFile(entry)
-      );
+      recentWindow.InspectorUtils.parseStyleSheet(target, _uc.utils.readFile(entry));
       return true;
     }
     return false;
@@ -196,9 +174,7 @@ let _uc = {
   getScripts: function () {
     this.scripts = {};
     if (!yPref.get(_uc.PREF_ENABLED) || !/^[\w_]*$/.test(_uc.SCRIPT_DIR)) {
-      console.log(
-        "Scripts are disabled or the given script directory name is invalid"
-      );
+      console.log("Scripts are disabled or the given script directory name is invalid");
       return;
     }
     let files = _uc.getDirEntry("", true);
@@ -220,9 +196,7 @@ let _uc = {
   getScriptData: function (aFile) {
     let header = (_uc.utils
       .readFile(aFile, true)
-      .match(
-        /^\/\/ ==UserScript==\s*\n(?:.*\n)*?\/\/ ==\/UserScript==\s*\n/m
-      ) || [""])[0];
+      .match(/^\/\/ ==UserScript==\s*\n(?:.*\n)*?\/\/ ==\/UserScript==\s*\n/m) || [""])[0];
     let match,
       rex = {
         include: [],
@@ -230,9 +204,7 @@ let _uc = {
       };
     let findNextRe = /^\/\/ @(include|exclude)\s+(.+)\s*$/gm;
     while ((match = findNextRe.exec(header))) {
-      rex[match[1]].push(
-        match[2].replace(/^main$/i, _uc.BROWSERCHROME).replace(/\*/g, ".*?")
-      );
+      rex[match[1]].push(match[2].replace(/^main$/i, _uc.BROWSERCHROME).replace(/\*/g, ".*?"));
     }
     if (!rex.include.length) {
       rex.include.push(_uc.BROWSERCHROME);
@@ -264,11 +236,7 @@ let _uc = {
       inbackground: /\/\/ @backgroundmodule\b/.test(header),
       isRunning: false,
       get isEnabled() {
-        return (
-          (yPref.get(_uc.PREF_SCRIPTSDISABLED) || "")
-            .split(",")
-            .indexOf(this.filename) === -1
-        );
+        return (yPref.get(_uc.PREF_SCRIPTSDISABLED) || "").split(",").indexOf(this.filename) === -1;
       },
     });
   },
@@ -287,11 +255,7 @@ let _uc = {
   },
 
   loadScript: function (script, win) {
-    if (
-      script.inbackground ||
-      !script.regex.test(win.location.href) ||
-      !script.isEnabled
-    ) {
+    if (script.inbackground || !script.regex.test(win.location.href) || !script.isEnabled) {
       return;
     }
     try {
@@ -300,10 +264,7 @@ let _uc = {
         return;
       }
 
-      Services.scriptloader.loadSubScript(
-        `chrome://userscripts/content/${script.filename}`,
-        win
-      );
+      Services.scriptloader.loadSubScript(`chrome://userscripts/content/${script.filename}`, win);
 
       script.isRunning = true;
       _uc.maybeRunStartUp(script, win);
@@ -356,7 +317,7 @@ let _uc = {
         } else {
           itemStyle += "background: transparent center no-repeat ";
         }
-        itemStyle += `url(chrome://userChrome/content/${desc.image});`;
+        itemStyle += `url(chrome://icons/content/${desc.image});`;
         itemStyle += desc.style || "";
       }
       SHARED_GLOBAL.widgetCallbacks.set(desc.id, desc.callback);
@@ -368,14 +329,14 @@ let _uc = {
           let toolbaritem = aDocument.createXULElement(desc.type);
           let props = {
             id: desc.id,
-            class: `toolbarbutton-1 chromeclass-toolbar-additional ${desc.class ? desc.class : ""
-              }`,
+            class: `toolbarbutton-1 chromeclass-toolbar-additional ${desc.class ? desc.class : ""}`,
             overflows: !!desc.overflows,
             label: desc.label || desc.id,
             tooltiptext: desc.tooltip || desc.id,
             style: itemStyle,
-            onclick: `${desc.allEvents ? "" : "event.button===0 && "
-              }_ucUtils.sharedGlobal.widgetCallbacks.get(this.id)(event,window)`,
+            onclick: `${
+              desc.allEvents ? "" : "event.button===0 && "
+            }_ucUtils.sharedGlobal.widgetCallbacks.get(this.id)(event,window)`,
           };
           for (let p in props) {
             toolbaritem.setAttribute(p, props[p]);
@@ -386,20 +347,11 @@ let _uc = {
     },
 
     readFile: function (aFile, metaOnly = false) {
-      let stream = Cc[
-        "@mozilla.org/network/file-input-stream;1"
-      ].createInstance(Ci.nsIFileInputStream);
-      let cvstream = Cc[
-        "@mozilla.org/intl/converter-input-stream;1"
-      ].createInstance(Ci.nsIConverterInputStream);
+      let stream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream);
+      let cvstream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream);
       try {
         stream.init(aFile, 0x01, 0, 0);
-        cvstream.init(
-          stream,
-          "UTF-8",
-          1024,
-          Ci.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER
-        );
+        cvstream.init(stream, "UTF-8", 1024, Ci.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER);
       } catch (e) {
         console.error(e);
         return null;
@@ -426,9 +378,7 @@ let _uc = {
     get chromeDir() {
       return {
         get files() {
-          return _uc.chromeDir.directoryEntries.QueryInterface(
-            Ci.nsISimpleEnumerator
-          );
+          return _uc.chromeDir.directoryEntries.QueryInterface(Ci.nsISimpleEnumerator);
         },
         uri: _uc.BASE_FILEURI,
       };
@@ -454,9 +404,7 @@ let _uc = {
     get windows() {
       return {
         get: function (onlyBrowsers = true) {
-          let windows = Services.wm.getEnumerator(
-            onlyBrowsers ? "navigator:browser" : null
-          );
+          let windows = Services.wm.getEnumerator(onlyBrowsers ? "navigator:browser" : null);
           let wins = [];
           while (windows.hasMoreElements()) {
             wins.push(windows.getNext());
@@ -481,19 +429,11 @@ let _uc = {
         return;
       }
       if (script.isEnabled) {
-        yPref.set(
-          _uc.PREF_SCRIPTSDISABLED,
-          `${script.filename},${yPref.get(_uc.PREF_SCRIPTSDISABLED)}`
-        );
+        yPref.set(_uc.PREF_SCRIPTSDISABLED, `${script.filename},${yPref.get(_uc.PREF_SCRIPTSDISABLED)}`);
       } else {
         yPref.set(
           _uc.PREF_SCRIPTSDISABLED,
-          yPref
-            .get(_uc.PREF_SCRIPTSDISABLED)
-            .replace(
-              new RegExp(`^${script.filename},?|,${script.filename}`),
-              ""
-            )
+          yPref.get(_uc.PREF_SCRIPTSDISABLED).replace(new RegExp(`^${script.filename},?|,${script.filename}`), "")
         );
       }
       Services.appinfo.invalidateCachesOnRestart();
@@ -523,10 +463,7 @@ let _uc = {
           resolve();
         }
         let observer = (subject, topic, data) => {
-          Services.obs.removeObserver(
-            observer,
-            "sessionstore-windows-restored"
-          );
+          Services.obs.removeObserver(observer, "sessionstore-windows-restored");
           resolve();
         };
         Services.obs.addObserver(observer, "sessionstore-windows-restored");
@@ -541,17 +478,11 @@ let _uc = {
           }
           let observer = (subject, topic, data) => {
             if (subject === win) {
-              Services.obs.removeObserver(
-                observer,
-                "browser-delayed-startup-finished"
-              );
+              Services.obs.removeObserver(observer, "browser-delayed-startup-finished");
               resolve();
             }
           };
-          Services.obs.addObserver(
-            observer,
-            "browser-delayed-startup-finished"
-          );
+          Services.obs.addObserver(observer, "browser-delayed-startup-finished");
         });
       } else {
         return Promise.reject(new Error("reference is not a window"));
@@ -560,8 +491,7 @@ let _uc = {
 
     registerHotkey: function (desc, func) {
       const validMods = ["accel", "alt", "ctrl", "meta", "shift"];
-      const validKey = (k) =>
-        /^[\w-]$/.test(k) ? 1 : /^F(?:1[0,2]|[1-9])$/.test(k) ? 2 : 0;
+      const validKey = (k) => (/^[\w-]$/.test(k) ? 1 : /^F(?:1[0,2]|[1-9])$/.test(k) ? 2 : 0);
       const NOK = (a) => typeof a != "string";
       const eToO = (e) => ({
         metaKey: e.metaKey,
@@ -608,9 +538,7 @@ let _uc = {
           });
           let keyset =
             doc.getElementById("mainKeyset") ||
-            doc.body.appendChild(
-              _uc.utils.createElement(doc, "keyset", { id: "ucKeys" })
-            );
+            doc.body.appendChild(_uc.utils.createElement(doc, "keyset", { id: "ucKeys" }));
           keyset.insertBefore(el, keyset.firstChild);
         });
       } catch (e) {
@@ -636,9 +564,7 @@ let _uc = {
           inBackground: desc.where === "tabshifted", // This doesn't work for some reason
           allowInheritPrincipal: false,
           private: !!desc.private,
-          userContextId: desc.url.startsWith("http")
-            ? desc.userContextId
-            : null,
+          userContextId: desc.url.startsWith("http") ? desc.userContextId : null,
         });
       } catch (e) {
         console.error(e);
@@ -652,17 +578,9 @@ let _uc = {
 
     restart: function (clearCache) {
       clearCache && Services.appinfo.invalidateCachesOnRestart();
-      let cancelQuit = Cc["@mozilla.org/supports-PRBool;1"].createInstance(
-        Ci.nsISupportsPRBool
-      );
-      Services.obs.notifyObservers(
-        cancelQuit,
-        "quit-application-requested",
-        "restart"
-      );
-      Services.startup.quit(
-        Services.startup.eAttemptQuit | Services.startup.eRestart
-      );
+      let cancelQuit = Cc["@mozilla.org/supports-PRBool;1"].createInstance(Ci.nsISupportsPRBool);
+      Services.obs.notifyObservers(cancelQuit, "quit-application-requested", "restart");
+      Services.startup.quit(Services.startup.eAttemptQuit | Services.startup.eRestart);
     },
   },
 };
@@ -693,8 +611,7 @@ UserChrome_js.prototype = {
   handleEvent: function (aEvent) {
     let document = aEvent.originalTarget;
     let window = document.defaultView;
-    let regex =
-      /^chrome:(?!\/\/global\/content\/(commonDialog|alerts\/alert)\.xhtml)|about:(?!blank)/i;
+    let regex = /^chrome:(?!\/\/global\/content\/(commonDialog|alerts\/alert)\.xhtml)|about:(?!blank)/i;
     // Don't inject scripts to modal prompt windows or notifications
     if (regex.test(window.location.href)) {
       window._ucUtils = _uc.utils;

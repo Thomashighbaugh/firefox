@@ -264,7 +264,7 @@
     }
 
     #category-experimental > .category-icon {
-        list-style-image: url(chrome://userchrome/content/material/potion-large.svg) !important;
+        list-style-image: url(chrome://icons/content/potion-large.svg) !important;
     }
 
     .top-site-outer {
@@ -300,7 +300,7 @@
     }
 
     .showPrivate .info {
-        background-image: url(chrome://userchrome/content/skin/privateBrowsing.svg) !important;
+        background-image: url(chrome://icons/content//privateBrowsing.svg) !important;
         -moz-context-properties: fill, fill-opacity;
         fill: hsl(235, 100%, 71%);
     }

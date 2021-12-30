@@ -1,10 +1,9 @@
 // ==UserScript==
 // @name           Clear Downloads Panel Button
-// @version        1.3.2
+// @version        1.3.1
 // @author         aminomancer
 // @homepage       https://github.com/aminomancer/uc.css.js
 // @description    Place a "Clear Downloads" button in the downloads panel, right next to the "Show all downloads" button.
-// @license        This Source Code Form is subject to the terms of the Creative Commons Attribution-NonCommercial-ShareAlike International License, v. 4.0. If a copy of the CC BY-NC-SA 4.0 was not distributed with this file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 // ==/UserScript==
 
 (function () {
@@ -35,7 +34,8 @@
                 class:
                     DownloadsView.downloadsHistory.className ||
                     "downloadsPanelFooterButton subviewbutton panel-subview-footer-button toolbarbutton-1",
-                oncommand: `goDoCommand('downloadsCmd_clearList'); DownloadsPanel.hidePanel();`,
+                command: `downloadsCmd_clearList`,
+                onclick: `DownloadsPanel.hidePanel();`,
                 label: labelString,
                 accesskey: strings[1],
                 flex: "1",
@@ -68,12 +68,16 @@
         }
     }
 
-    if (gBrowserInit.delayedStartupFinished) new ClearDLPanel();
+    function init() {
+        new ClearDLPanel();
+    }
+
+    if (gBrowserInit.delayedStartupFinished) init();
     else {
         let delayedListener = (subject, topic) => {
             if (topic == "browser-delayed-startup-finished" && subject == window) {
                 Services.obs.removeObserver(delayedListener, topic);
-                new ClearDLPanel();
+                init();
             }
         };
         Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");

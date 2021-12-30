@@ -1,34 +1,9 @@
 // ==UserScript==
 // @name           Vertical Tabs Pane
-// @version        1.5.4
+// @version        1.5.1
 // @author         aminomancer
 // @homepage       https://github.com/aminomancer/uc.css.js
-// @description    Create a vertical pane across from the sidebar that functions like the vertical
-// tab pane in Microsoft Edge. It doesn't hide the tab bar since people have different preferences
-// on how to do that, but it sets an attribute on the root element that you can use to hide the
-// regular tab bar while the vertical pane is open, for example :root[vertical-tabs] #TabsToolbar...
-// By default, the pane is resizable just like the sidebar is. And like the pane in Edge, you can
-// press a button to collapse it, and it will hide the tab labels and become a thin strip that just
-// shows the tabs' favicons. Hovering the collapsed pane will expand it without moving the browser
-// content. As with the [vertical-tabs] attribute, this "unpinned" state is reflected on the root
-// element, so you can select it like :root[vertical-tabs-unpinned]... Like the sidebar, the state
-// of the pane is stored between windows and recorded in preferences. There's no need to edit these
-// preferences directly. There are a few other preferences that can be edited in about:config, but
-// they can all be changed on the fly by opening the context menu within the pane. The new tab
-// button and the individual tabs all have their own context menus, but right-clicking anything else
-// will open the pane's context menu, which has options for changing these preferences. "Move Pane
-// to Right/Left" will change which side the pane (and by extension, the sidebar) is displayed on,
-// relative to the browser content. Since the pane always mirrors the position of the sidebar,
-// moving the pane to the right will move the sidebar to the left, and vice versa. "Reverse Tab
-// Order" changes the direction of the pane so that newer tabs are displayed on top rather than on
-// bottom. "Expand Pane on Hover/Focus" causes the pane to expand on hover when it's collapsed. When
-// you collapse the pane with the unpin button, it collapses to a small width and then temporarily
-// expands if you hover it, after a delay of 100ms. Then when your mouse leaves the pane, it
-// collapses again, after a delay of 100ms. Both of these delays can be changed with the "Configure
-// Hover Delay" and "Configure Hover Out Delay" options in the context menu, or in about:config. For
-// languages other than English, the labels and tooltips can be modified directly in the l10n object
-// below.
-// @license        This Source Code Form is subject to the terms of the Creative Commons Attribution-NonCommercial-ShareAlike International License, v. 4.0. If a copy of the CC BY-NC-SA 4.0 was not distributed with this file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+// @description    Create a vertical pane across from the sidebar that functions like the vertical tab pane in Microsoft Edge. It doesn't hide the tab bar since people have different preferences on how to do that, but it sets an attribute on the root element that you can use to hide the regular tab bar while the vertical pane is open, for example :root[vertical-tabs] #TabsToolbar... By default, the pane is resizable just like the sidebar is. And like the pane in Edge, you can press a button to collapse it, and it will hide the tab labels and become a thin strip that just shows the tabs' favicons. Hovering the collapsed pane will expand it without moving the browser content. As with the [vertical-tabs] attribute, this "unpinned" state is reflected on the root element, so you can select it like :root[vertical-tabs-unpinned]... Like the sidebar, the state of the pane is stored between windows and recorded in preferences. There's no need to edit these preferences directly. There are a few other preferences that can be edited in about:config, but they can all be changed on the fly by opening the context menu within the pane. The new tab button and the individual tabs all have their own context menus, but right-clicking anything else will open the pane's context menu, which has options for changing these preferences. "Move Pane to Right/Left" will change which side the pane (and by extension, the sidebar) is displayed on, relative to the browser content. Since the pane always mirrors the position of the sidebar, moving the pane to the right will move the sidebar to the left, and vice versa. "Reverse Tab Order" changes the direction of the pane so that newer tabs are displayed on top rather than on bottom. "Expand Pane on Hover/Focus" causes the pane to expand on hover when it's collapsed. When you collapse the pane with the unpin button, it collapses to a small width and then temporarily expands if you hover it, after a delay of 100ms. Then when your mouse leaves the pane, it collapses again, after a delay of 100ms. Both of these delays can be changed with the "Configure Hover Delay" and "Configure Hover Out Delay" options in the context menu, or in about:config. For languages other than English, the labels and tooltips can be modified directly in the l10n object below.
 // ==/UserScript==
 
 (function () {
@@ -37,8 +12,11 @@
         l10n: {
             "Button label": `Vertical Tabs`, // label and tooltip for the toolbar button
             "Button tooltip": `Toggle vertical tabs`,
-            "Collapse button tooltip": `Collapse pane`,
+            "Close button label": `Close Vertical Tabs`,
+            "Close button tooltip": `Close vertical tabs`,
+            "Pin button label": `Pin Vertical Tabs Pane`,
             "Pin button tooltip": `Pin pane`,
+            "Collapse button tooltip": `Collapse pane`,
             // labels for the context menu
             context: {
                 "Move Pane to Right": "Move Pane to Right",
@@ -142,9 +120,25 @@
             this.innerBox = this.pane.appendChild(
                 create(document, "vbox", { id: "vertical-tabs-inner-box" })
             );
-            this.buttonsRow = this.innerBox.appendChild(
+            this.toolbar = this.innerBox.appendChild(
+                create(document, "toolbar", {
+                    id: "vertical-tabs-toolbar",
+                    class: "browser-toolbar",
+                    "data-l10n-id": "tabs-toolbar",
+                    fullscreentoolbar: "true",
+                    mode: "icons",
+                    customizable: "true",
+                    customizationtarget: "vertical-tabs-toolbar-customization-target",
+                })
+            );
+            // tab stops let us focus elements in the tabs pane by hitting tab to cycle through toolbars, just as in vanilla firefox.
+            this.buttonsTabStop = this.toolbar.appendChild(
+                create(document, "toolbartabstop", { "aria-hidden": true })
+            );
+            this.cTarget = this.toolbar.appendChild(
                 create(document, "hbox", {
-                    id: "vertical-tabs-buttons-row",
+                    id: "vertical-tabs-toolbar-customization-target",
+                    flex: 1,
                 })
             );
             this.contextMenu._menuitemPosition = this.contextMenu.appendChild(
@@ -184,22 +178,23 @@
                     oncommand: `verticalTabsPane.promptForIntPref("userChrome.tabs.verticalTabsPane.hover-out-delay")`,
                 })
             );
-            // tab stops let us focus elements in the tabs pane by hitting tab to cycle through toolbars, just as in vanilla firefox.
-            this.buttonsTabStop = this.buttonsRow.appendChild(
-                create(document, "toolbartabstop", { "aria-hidden": true })
-            );
-            this.newTabButton = this.buttonsRow.appendChild(
-                document.getElementById("new-tab-button").cloneNode(true)
-            );
+            this.newTabButton = document.getElementById("new-tab-button").cloneNode(true);
+            this.cTarget.appendChild(this.newTabButton);
             this.newTabButton.id = "vertical-tabs-new-tab-button";
             this.newTabButton.setAttribute("flex", "1");
-            this.newTabButton.setAttribute("class", "subviewbutton subviewbutton-iconic");
-            this.newTabButton.tooltipText = GetDynamicShortcutTooltipText("new-tab-button");
-            this.pinPaneButton = this.buttonsRow.appendChild(
+            this.newTabButton.setAttribute(
+                "class",
+                "subviewbutton subviewbutton-iconic toolbarbutton-1"
+            );
+            nodeToTooltipMap["vertical-tabs-new-tab-button"] = "newTabButton.tooltip";
+            nodeToShortcutMap["vertical-tabs-new-tab-button"] = "key_newNavigatorTab";
+            this.pinPaneButton = this.cTarget.appendChild(
                 create(document, "toolbarbutton", {
                     id: "vertical-tabs-pin-button",
-                    class: "subviewbutton subviewbutton-iconic no-label",
+                    class: "subviewbutton subviewbutton-iconic toolbarbutton-1 no-label",
+                    label: config.l10n["Pin button label"],
                     tooltiptext: config.l10n["Collapse button tooltip"],
+                    removable: true,
                 })
             );
             this.pinPaneButton.addEventListener("command", (e) => {
@@ -208,11 +203,13 @@
                     : this.unpin();
                 this.resetPinnedTooltip();
             });
-            this.closePaneButton = this.buttonsRow.appendChild(
+            this.closePaneButton = this.cTarget.appendChild(
                 create(document, "toolbarbutton", {
                     id: "vertical-tabs-close-button",
-                    class: "subviewbutton subviewbutton-iconic no-label",
-                    tooltiptext: config.l10n["Button tooltip"],
+                    class: "subviewbutton subviewbutton-iconic toolbarbutton-1 no-label",
+                    label: config.l10n["Close button label"],
+                    tooltiptext: config.l10n["Close button tooltip"],
+                    removable: true,
                 })
             );
             if (key_toggleVerticalTabs)
@@ -220,6 +217,18 @@
                     key_toggleVerticalTabs
                 )})`;
             this.closePaneButton.addEventListener("command", (e) => this.toggle());
+            if (!CustomizableUI.areas.includes("vertical-tabs-toolbar")) {
+                CustomizableUI.registerArea("vertical-tabs-toolbar", {
+                    type: CustomizableUI.TYPE_TOOLBAR,
+                    defaultPlacements: [
+                        "vertical-tabs-new-tab-button",
+                        "vertical-tabs-pin-button",
+                        "vertical-tabs-close-button",
+                    ],
+                    defaultCollapsed: null,
+                });
+                CustomizableUI.registerToolbarNode(this.toolbar);
+            }
             this.innerBox.appendChild(create(document, "toolbarseparator"));
             this.scrollboxTabStop = this.innerBox.appendChild(
                 create(document, "toolbartabstop", { "aria-hidden": true })
@@ -392,7 +401,7 @@
         // make an array containing all the context menus that can be opened by right-clicking something inside the pane.
         get contextMenus() {
             let menus = [];
-            let contextDefs = [...this.pane.querySelectorAll("[context]")];
+            let contextDefs = Array.from(this.pane.querySelectorAll("[context]"));
             contextDefs.push(this.pane);
             contextDefs.forEach((node) => {
                 let menu = document.getElementById(node.getAttribute("context"));
@@ -612,6 +621,12 @@
                     break;
             }
         }
+        // onCustomizeStart() {
+        //     this.overflowButton.disabled = true;
+        // }
+        // onCustomizeEnd() {
+        //     this.overflowButton.disabled = false;
+        // }
         /**
          * for a given preference, get its value, regardless of the preference type.
          * @param {object} root (an object with nsIPrefBranch interface — reflects the preference branch we're watching, or just the root)
@@ -1073,7 +1088,7 @@
                     !gNavToolbox.contains(oldFocus) &&
                     !this.pane.contains(oldFocus)
                 ) {
-                    let allStops = [...document.querySelectorAll("toolbartabstop")];
+                    let allStops = Array.from(document.querySelectorAll("toolbartabstop"));
                     let earlierVisibleStopIndex = allStops.indexOf(e.target) - 1;
                     while (earlierVisibleStopIndex >= 0) {
                         let stop = allStops[earlierVisibleStopIndex];
@@ -1639,21 +1654,26 @@
                 parent.setAttribute("type", "menu");
                 if (newTabLeftClickOpensContainersMenu) {
                     gClickAndHoldListenersOnElement.remove(parent);
-                    nodeToTooltipMap["new-tab-button"] = "newTabAlwaysContainer.tooltip";
+                    nodeToTooltipMap["new-tab-button"] = nodeToTooltipMap[
+                        "vertical-tabs-new-tab-button"
+                    ] = "newTabAlwaysContainer.tooltip";
                 } else {
                     gClickAndHoldListenersOnElement.add(parent);
-                    nodeToTooltipMap["new-tab-button"] = "newTabContainer.tooltip";
+                    nodeToTooltipMap["new-tab-button"] = nodeToTooltipMap[
+                        "vertical-tabs-new-tab-button"
+                    ] = "newTabContainer.tooltip";
                 }
             } else {
-                nodeToTooltipMap["new-tab-button"] = "newTabButton.tooltip";
+                nodeToTooltipMap["new-tab-button"] = nodeToTooltipMap[
+                    "vertical-tabs-new-tab-button"
+                ] = "newTabButton.tooltip";
                 parent.removeAttribute("context", "new-tab-button-popup");
             }
             gDynamicTooltipCache.delete("new-tab-button");
-            this.newTabButton.tooltipText = GetDynamicShortcutTooltipText("new-tab-button");
         }
         // load our stylesheet as an author sheet. override it with userChrome.css and !important rules.
         registerSheet() {
-            let css = /* css */ `
+            let css = `
 #vertical-tabs-pane {
     --vertical-tabs-padding: 4px;
     --collapsed-pane-width: calc(
@@ -1720,16 +1740,17 @@
     height: min-content;
     max-height: 100%;
 }
-#vertical-tabs-buttons-row {
+#vertical-tabs-toolbar {
     min-width: 0 !important;
+    background: none;
 }
-#vertical-tabs-pane[no-expand][unpinned] #vertical-tabs-buttons-row {
+#vertical-tabs-pane[no-expand][unpinned] #vertical-tabs-toolbar-customization-target {
     -moz-box-orient: vertical;
 }
-#vertical-tabs-buttons-row > toolbarbutton {
+#vertical-tabs-toolbar toolbarbutton {
     margin: 0 !important;
 }
-#vertical-tabs-pane[unpinned]:not([expanded]) #vertical-tabs-buttons-row > toolbarbutton {
+#vertical-tabs-pane[unpinned]:not([expanded]) #vertical-tabs-toolbar toolbarbutton {
     min-width: calc(16px + var(--arrowpanel-menuitem-padding-inline) * 2) !important;
 }
 /* tabs */
@@ -1798,14 +1819,14 @@
 }
 /* secondary buttons inside a tab row */
 #vertical-tabs-list .all-tabs-item .all-tabs-secondary-button {
-    width: 18px;
-    height: 18px;
+    max-width: 18px;
+    max-height: 18px;
     border-radius: var(--tab-button-border-radius, 2px);
     color: inherit;
     background-color: transparent !important;
     opacity: 0.7;
-    min-height: revert;
-    min-width: revert;
+    min-height: 0;
+    min-width: 0;
     padding: 0;
 }
 #vertical-tabs-list .all-tabs-item .all-tabs-secondary-button > .toolbarbutton-icon {
@@ -1932,7 +1953,7 @@
         3px 3px/9px no-repeat;
 }
 /* take a chunk out of the favicon so the overlay is more visible */
-#vertical-tabs-pane
+#vertical-tabs-pane[unpinned]
     .all-tabs-item:is([muted], [soundplaying], [activemedia-blocked])
     .all-tabs-button
     .toolbarbutton-icon {
@@ -2023,8 +2044,8 @@
     -moz-box-pack: start !important;
 }
 #vertical-tabs-pane[unpinned]:not([no-expand])
-    #vertical-tabs-buttons-row
-    > toolbarbutton:not(#vertical-tabs-new-tab-button),
+    #vertical-tabs-toolbar
+    toolbarbutton:not(#vertical-tabs-new-tab-button),
 #vertical-tabs-pane[unpinned] :is(.all-tabs-item, .subviewbutton) .toolbarbutton-text {
     transition-property: opacity;
     transition-timing-function: ease-in-out;
@@ -2034,8 +2055,8 @@
     visibility: collapse;
 }
 #vertical-tabs-pane[unpinned]:not([expanded], [no-expand])
-    #vertical-tabs-buttons-row
-    > toolbarbutton:not(#vertical-tabs-new-tab-button),
+    #vertical-tabs-toolbar
+    toolbarbutton:not(#vertical-tabs-new-tab-button),
 #vertical-tabs-pane[unpinned]:not([expanded])
     :is(.all-tabs-item, .subviewbutton)
     .toolbarbutton-text {
@@ -2076,10 +2097,12 @@
 #vertical-tabs-button:not([positionstart="true"]) .toolbarbutton-icon {
     transform: scaleX(-1);
 }
-#vertical-tabs-button[checked],
-#vertical-tabs-close-button {
+#vertical-tabs-button[checked] {
     list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="context-fill %230c0c0d"><path fill-opacity="context-fill-opacity" d="M2,3h12v3H2V3z"/><path d="M6,7v6H5V7H2V6h12v1H6z M13,1c1.657,0,3,1.343,3,3v8c0,1.657-1.343,3-3,3H3c-1.657,0-3-1.343-3-3V4c0-1.657,1.343-3,3-3H13z M3,3C2.448,3,2,3.448,2,4v8c0,0.6,0.4,1,1,1h10c0.6,0,1-0.4,1-1V4c0-0.6-0.4-1-1-1H3z"/></svg>');
     fill-opacity: 0.4;
+}
+#vertical-tabs-close-button {
+    list-style-image: url(chrome://global/skin/icons/close.svg);
 }
 #vertical-tabs-new-tab-button {
     list-style-image: url("chrome://browser/skin/new-tab.svg");
@@ -2090,47 +2113,12 @@
 #vertical-tabs-pane[unpinned] #vertical-tabs-pin-button {
     list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M14.707 13.293L11.414 10l2.293-2.293a1 1 0 0 0 0-1.414A4.384 4.384 0 0 0 10.586 5h-.172A2.415 2.415 0 0 1 8 2.586V2a1 1 0 0 0-1.707-.707l-5 5A1 1 0 0 0 2 8h.586A2.415 2.415 0 0 1 5 10.414v.169a4.036 4.036 0 0 0 1.337 3.166 1 1 0 0 0 1.37-.042L10 11.414l3.293 3.293a1 1 0 0 0 1.414-1.414zm-7.578-1.837A2.684 2.684 0 0 1 7 10.583v-.169a4.386 4.386 0 0 0-1.292-3.121 4.414 4.414 0 0 0-1.572-1.015l2.143-2.142a4.4 4.4 0 0 0 1.013 1.571A4.384 4.384 0 0 0 10.414 7h.172a2.4 2.4 0 0 1 .848.152z"/></svg>');
 }
-#vertical-tabs-tooltip > .places-tooltip-box > hbox {
-    -moz-box-align: center;
+:root[customizing="true"] #browser[collapsed="true"] {
+    visibility: visible;
 }
-#vertical-tabs-tooltip #places-tooltip-insecure-icon {
-    min-width: 1em;
-    min-height: 1em;
-}
-#vertical-tabs-tooltip #places-tooltip-insecure-icon[hidden] {
-    display: none;
-}
-@supports -moz-bool-pref("userChrome.tabs.tooltip.always-show-lock-icon") {
-    #vertical-tabs-tooltip #places-tooltip-insecure-icon {
-        display: -moz-inline-box !important;
-    }
-}
-#vertical-tabs-tooltip #places-tooltip-insecure-icon[pending] {
-    display: none !important;
-}
-#vertical-tabs-tooltip #places-tooltip-insecure-icon[type="secure"] {
-    list-style-image: url("chrome://global/skin/icons/security.svg");
-}
-#vertical-tabs-tooltip #places-tooltip-insecure-icon[type="insecure"] {
-    list-style-image: url("chrome://global/skin/icons/security-broken.svg");
-}
-#vertical-tabs-tooltip #places-tooltip-insecure-icon[type="mixed-passive"] {
-    list-style-image: url("chrome://global/skin/icons/security-warning.svg");
-}
-#vertical-tabs-tooltip #places-tooltip-insecure-icon[type="about-page"] {
-    list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M15.424 5.366A4.384 4.384 0 0 0 13.817 3.4a7.893 7.893 0 0 1 .811 2.353v.017c-.9-2.185-2.441-3.066-3.7-4.984l-.189-.3c-.035-.059-.063-.112-.088-.161a1.341 1.341 0 0 1-.119-.306.022.022 0 0 0-.013-.019.026.026 0 0 0-.019 0h-.006a5.629 5.629 0 0 0-2.755 4.308c.094-.006.187-.014.282-.014a4.069 4.069 0 0 1 3.51 1.983A2.838 2.838 0 0 0 9.6 5.824a3.2 3.2 0 0 1-1.885 6.013 3.651 3.651 0 0 1-1.042-.2c-.078-.028-.157-.059-.235-.093-.046-.02-.091-.04-.135-.062A3.282 3.282 0 0 1 4.415 8.95s.369-1.334 2.647-1.334a1.91 1.91 0 0 0 .964-.857 12.756 12.756 0 0 1-1.941-1.118c-.29-.277-.428-.411-.551-.511-.066-.054-.128-.1-.207-.152a3.481 3.481 0 0 1-.022-1.894 5.915 5.915 0 0 0-1.929 1.442A4.108 4.108 0 0 1 3.1 2.584a1.561 1.561 0 0 0-.267.138 5.767 5.767 0 0 0-.783.649 6.9 6.9 0 0 0-.748.868 6.446 6.446 0 0 0-1.08 2.348c0 .009-.076.325-.131.715l-.025.182c-.019.117-.033.245-.048.444v.023c-.005.076-.011.16-.016.258v.04A7.884 7.884 0 0 0 8.011 16a7.941 7.941 0 0 0 7.9-6.44l.036-.3a7.724 7.724 0 0 0-.523-3.894z" /></svg>');
-}
-#vertical-tabs-tooltip #places-tooltip-insecure-icon[type="local-page"] {
-    list-style-image: url("chrome://browser/skin/notification-icons/persistent-storage.svg");
-}
-#vertical-tabs-tooltip #places-tooltip-insecure-icon[type="extension-page"] {
-    list-style-image: url("chrome://browser/content/extension.svg");
-}
-#vertical-tabs-tooltip #places-tooltip-insecure-icon[type="home-page"] {
-    list-style-image: url("chrome://browser/skin/tab.svg");
-}
-#vertical-tabs-tooltip #places-tooltip-insecure-icon[type="error-page"] {
-    list-style-image: url("chrome://global/skin/icons/warning.svg");
+:root[customizing="true"] #browser[collapsed="true"] > :not([id^="vertical-tabs"]) {
+    visibility: hidden;
+    pointer-events: none;
 }
             `;
             let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(
@@ -2173,7 +2161,6 @@
 
     // invoked when delayed window startup has finished, in other words after important components have been fully inited.
     function init() {
-        window.verticalTabsPane = new VerticalTabsPaneBase(); // instantiate our tabs pane
         SidebarUI.setPosition(); // set the sidebar position again since we modified this function, probably after it already set the position
         // change the onUnload function (invoked when window is closed) so that it calls our uninit function too.
         eval(
@@ -2216,7 +2203,7 @@
     function makeWidget() {
         // if you create a widget in the first window, it will automatically be created in subsequent videos.
         // so we stop the script from re-registering it on every subsequent window load.
-        if (CustomizableUI.getPlacementOfWidget("vertical-tabs-button", true)) return;
+        if (CustomizableUI.getWidget("vertical-tabs-button")) return;
         CustomizableUI.createWidget({
             id: "vertical-tabs-button",
             type: "button",
@@ -2251,6 +2238,9 @@
         });
     }
 
+    // make sure we don't create the pane in stripped down dialog-like windows
+    if (!window.toolbar.visible) return;
+
     // make the hotkey (ctrl + alt + V)
     if (config.hotkey.enabled && _ucUtils?.registerHotkey)
         _ucUtils.registerHotkey(
@@ -2280,6 +2270,8 @@
     );
 
     makeWidget();
+
+    window.verticalTabsPane = new VerticalTabsPaneBase(); // instantiate our tabs pane
 
     // tab pane's horizontal alignment should mirror that of the sidebar, which can be moved from left to right.
     SidebarUI.setPosition = function () {

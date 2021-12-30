@@ -9,8 +9,6 @@ message() {
 }
 
 download_ff() {
-  # This downloads the Firefox Authomatic Installer which enables the Auto-Update features of Nightly and the like, which the patch section is assuming exists and so is highly reccomended.
-  curl -LJ0 https://github.com/Linux-Is-Best/Firefox-automatic-install-for-Linux/archive/refs/tags/v2.8.2.zip --output /tmp/v2.8.2.zip && unzip /tmp/v2.8.2.zip && sudo chmod +x ~/Firefox-automatic-install-for-Linux-2.8.2/Setup.sh && bash ~/Firefox-automatic-install-for-Linux-2.8.2/Setup.sh
 
   message "[>>] Downloading theme..."
 
@@ -84,18 +82,11 @@ function print_help() {
   echo "Defaults to 'stable' if empty."
 }
 function patch() {
-
-  # sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox
-  # sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox-nightly
-  # sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox-developer
-  sudo cp -rvf /tmp/firefox-master/patches/root/* /opt/firefox
-  sudo cp -rvf /tmp/firefox-master/patches/root/* /opt/firefox-beta
-  sudo cp -rvf /tmp/firefox-master/patches/root/* /opt/firefox-developer-edition
-  sudo cp -rvf /tmp/firefox-master/patches/root/* /opt/firefox-esr
-  sudo cp -rvf /tmp/firefox-master/patches/root/* /opt/firefox-nightly
+  sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox
+  sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox-nightly
+  sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox-developer
 
 }
-
 # Check args
 if [[ ! -z "${@}" ]] && [[ ! -z "${1}" ]]; then
 

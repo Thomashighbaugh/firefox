@@ -2,7 +2,7 @@
 // userchrome.css usercontent.css activate
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 
-// Proton Enabled 
+// Proton Enabled #127
 user_pref("browser.proton.enabled", true);
 
 // Proton Tooltip
@@ -67,7 +67,7 @@ user_pref("widget.content.allow-gtk-dark-theme", true);
 // keep "all tabs" menu available at all times, useful for all tabs menu expansion pack
 user_pref("browser.tabs.tabmanager.enabled", true);
 // Background for selected <option> elements and others
-user_pref("ui.selecteditem", "#8b9cbe");
+user_pref("ui.selecteditem", "#2F3456");
 // Text color for selected <option> elements and others
 user_pref("ui.selecteditemtext", "#FFFFFFCC");
 

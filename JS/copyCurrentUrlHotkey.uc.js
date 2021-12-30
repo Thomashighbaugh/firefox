@@ -4,6 +4,7 @@
 // @author         aminomancer
 // @homepage       https://github.com/aminomancer
 // @description    Adds a new hotkey (Ctrl+Alt+C by default) that copies whatever is in the urlbar, even when it's not in focus.
+// @license        This Source Code Form is subject to the terms of the Creative Commons Attribution-NonCommercial-ShareAlike International License, v. 4.0. If a copy of the CC BY-NC-SA 4.0 was not distributed with this file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 // ==/UserScript==
 
 (function () {
@@ -11,7 +12,7 @@
         static config = {
             "copy confirmation hint": true, // if you have customHintProvider.uc.js, copying will open a confirmation hint anchored to the urlbar.
 
-            "context menu shortcut hint": true, // when you right-click the urlbar, the context menu has a "copy" command. set this to "true" to show a "Ctrl+Alt+C" hint next to this command, like firefox does with many other commands. the hint text will reflect the actual hotkey. so on macOS it will show "Cmd+Alt+C" and if you modify the modifiers below, it will show your modifiers instead. this setting isn't enabled by default because 1) unlike our custom hotkey, this command actually only copies the selection, not the full input content. so it's disabled if nothing is highlighted. and 2) the context menu is very thin due to the short names of the commands. adding "Ctrl+Alt+C" makes it kind of cramped. but it's easy to forget that hotkeys exist if they're not visually displayed anywhere, so you may want to enable this feature.
+            "context menu shortcut hint": false, // when you right-click the urlbar, the context menu has a "copy" command. set this to "true" to show a "Ctrl+Alt+C" hint next to this command, like firefox does with many other commands. the hint text will reflect the actual hotkey. so on macOS it will show "Cmd+Alt+C" and if you modify the modifiers below, it will show your modifiers instead. this setting isn't enabled by default because 1) unlike our custom hotkey, this command actually only copies the selection, not the full input content. so it's disabled if nothing is highlighted. and 2) the context menu is very thin due to the short names of the commands. adding "Ctrl+Alt+C" makes it kind of cramped. but it's easy to forget that hotkeys exist if they're not visually displayed anywhere, so you may want to enable this feature.
 
             shortcut: {
                 key: "C", // shortcut key, combined with modifiers.

@@ -83,6 +83,7 @@ function print_help() {
 }
 function patch() {
   sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox
+sudo cp -rvf /tmp/firefox-master/patches/root/* /opt/firefox-bin
   sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox-nightly
   sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox-developer
 

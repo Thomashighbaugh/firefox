@@ -1,11 +1,4 @@
-                         /* ______ __                               */
-/* .--.--.-----.-----.----.|      |  |--.----.-----.--------.-----. */
-/* |  |  |__ --|  -__|   _||   ---|     |   _|  _  |        |  -__| */
-/* |_____|_____|_____|__|  |______|__|__|__| |_____|__|__|__|_____| */
-/* ---------------------------------------------------------------- */
-/* This file will call the various components providing the browser 
-with my custom stylizations and UI modifications that DO NOT require
-the use of JS. For that see the JS directory */
+userChrome
 /* ------------------------------------------------- */
 /*                       Theme                       */
 /* ------------------------------------------------- */

@@ -10,14 +10,8 @@ as in this case, this is mainly constrained to the styling of the internal
 pages of Firefox like the about:config page. */
 /* -------------------------------------------------------------------------- */
 
-/* ------------------------------------------------- */
-/*                       Theme                       */
-/* ------------------------------------------------- */
 @import url("userContent/color");
 
-/* ------------------------------------------------- */
-/*                     Components                    */
-/* ------------------------------------------------- */
 @import url("userContent/about-home");
 @import url("userContent/accounts");
 @import url("userContent/activity-stream");
@@ -29,9 +23,6 @@ pages of Firefox like the about:config page. */
 @import url("userContent/support");
 @import url("userContent/view-source");
 
-/* ------------------------------------------------- */
-/*                  Namespace Calls                  */
-/* ------------------------------------------------- */
 /* Imports should always precede namespace calls, these two are reflected in all
  of the above components as well */
 

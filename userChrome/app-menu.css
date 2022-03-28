@@ -302,7 +302,7 @@
 }
 
 #appmenu-developer-tools-view toolbarbutton[label="Browser Toolbox"i] {
-  list-style-image: url(chrome://userchrome/skin/toolbox.svg) !important;
+  list-style-image: url(chrome://userchrome/content/skin/toolbox.svg) !important;
 }
 
 #appmenu-developer-tools-view toolbarbutton[label="Browser Content Toolbox"i] {

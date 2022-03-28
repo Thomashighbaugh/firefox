@@ -22,6 +22,7 @@ the use of JS. For that see the JS directory */
 @import url("userChrome/context-menu");
 @import url("userChrome/crtl-tab");
 @import url("userChrome/cursor");
+@import url("userChrome/extensions");
 @import url("userChrome/icons");
 @import url("userChrome/menu");
 @import url("userChrome/panels");

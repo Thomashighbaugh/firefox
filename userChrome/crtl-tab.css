@@ -65,8 +65,8 @@
 }
 
 #ctrlTab-showAll {
-  background-color: var(--ctrlTab-panel-bgcolor) !important;
-  border: 1px solid var(--blurred-dialog-border-color) !important;
+  background-color: #1b1d24cc !important;
+  border: 1px solid #1b1d24cc !important;
 }
 
 #ctrlTab-showAll .button-box {
@@ -75,12 +75,12 @@
 
 #ctrlTab-showAll:focus,
 #ctrlTab-showAll:focus-within {
-  background-color: var(--ctrlTab-panel-focused-bgcolor) !important;
-  border-color: var(--attention-color) !important;
+  background-color: #1b1d24cc !important;
+  border-color: #1b1d24cc !important;
 }
 
 .ctrlTab-preview-inner {
-  color: var(--ui-text-80) !important;
+  color: #f4f4f7 !important;
   margin: 0 !important;
   padding: 10px !important;
   border: 1px solid var(--blurred-dialog-border-color) !important;

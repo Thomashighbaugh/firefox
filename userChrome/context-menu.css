@@ -772,11 +772,11 @@ menuitem.share-tab-url-item > .menu-text,
 #context_closeTab .menu-text,
 #menu_close .menu-text,
 #menu_closeWindow .menu-text,
-/* menuitem#menu_devToolbox:not([checked="true"]) .menu-text, */
+menuitem#menu_devToolbox:not([checked="true"]) .menu-text,
 menuitem#menu_taskManager .menu-text,
 menuitem#menu_devtools_remotedebugging .menu-text,
-/* menuitem#menu_browserToolbox .menu-text, */
-/* menuitem#menu_browserContentToolbox .menu-text, */
+menuitem#menu_browserToolbox .menu-text,
+menuitem#menu_browserContentToolbox .menu-text,
 menuitem#menu_browserConsole .menu-text,
 menuitem#menu_responsiveUI:not([checked="true"]) .menu-text,
 menuitem#menu_eyedropper .menu-text,

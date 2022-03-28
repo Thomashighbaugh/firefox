@@ -301,9 +301,7 @@
   list-style-image: url(chrome://userchrome/content/material/remote.svg) !important;
 }
 
-#appmenu-developer-tools-view toolbarbutton[label="Browser Toolbox"i] {
-  list-style-image: url(chrome://userchrome/content/skin/toolbox.svg) !important;
-}
+
 
 #appmenu-developer-tools-view toolbarbutton[label="Browser Content Toolbox"i] {
   list-style-image: url(chrome://userchrome/content/devtools/command-frames.svg) !important;

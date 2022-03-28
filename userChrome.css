@@ -19,7 +19,7 @@ the use of JS. For that see the JS directory */
 @import url("userChrome/app-menu");
 @import url("userChrome/borders");
 @import url("userChrome/common");
-
+@import url("userChrome/context-menu");
 @import url("userChrome/crtl-tab");
 @import url("userChrome/cursor");
 @import url("userChrome/extensions");

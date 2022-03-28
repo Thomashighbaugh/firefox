@@ -1,4 +1,4 @@
-// ==UserScript==
+a// ==UserScript==
 // @name           App Menu Mods
 // @version        1.3
 // @author         aminomancer

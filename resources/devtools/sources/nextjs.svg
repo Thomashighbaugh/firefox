@@ -1,1 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512" style="background:#fff"><title>Zeit - Black on white logo</title><defs><linearGradient id="linearGradient-1" x1="114.721%" x2="39.54%" y1="181.283%" y2="100%"><stop offset="0%" stop-color="#FFF"/><stop offset="100%" stop-color="#000"/></linearGradient></defs><g id="Page-1" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"><g id="Black-on-white" fill="url(#linearGradient-1)"><polygon id="Triangle-3-Copy" points="254 156 367 356 141 356"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512" style="background:#fff">
+    <title>Zeit - #1b1d24 on #f4f4f7 logo</title>
+    <defs>
+        <linearGradient id="linearGradient-1" x1="114.721%" x2="39.54%" y1="181.283%" y2="100%">
+            <stop offset="0%" stop-color="#FFF" />
+            <stop offset="100%" stop-color="#000" />
+        </linearGradient>
+    </defs>
+    <g id="Page-1" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+        <g id="#1b1d24-on-#f4f4f7" fill="url(#linearGradient-1)">
+            <polygon id="Triangle-3-Copy" points="254 156 367 356 141 356" />
+        </g>
+    </g>
+</svg>

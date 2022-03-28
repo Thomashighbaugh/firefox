@@ -82,10 +82,9 @@ function print_help() {
   echo "Defaults to 'stable' if empty."
 }
 function patch() {
-  sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox
-sudo cp -rvf /tmp/firefox-master/patches/root/* /opt/firefox-bin
-  sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox-nightly
-  sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox-developer
+  # This will patch any firefox directory installed in /usr/lib/ by the package manager, which generally should suffice
+  sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox*
+
 
 }
 # Check args

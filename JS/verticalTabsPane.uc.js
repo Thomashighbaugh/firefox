@@ -109,8 +109,8 @@
       { name: noExpandPref, value: false },
       { name: widthPref, value: 350 },
       { name: reversePref, value: false },
-      { name: hoverDelayPref, value: 100 },
-      { name: hoverOutDelayPref, value: 100 },
+      { name: hoverDelayPref, value: 300 },
+      { name: hoverOutDelayPref, value: 300 },
     ];
     constructor() {
       this.preferences = VerticalTabsPaneBase.preferences;
@@ -239,7 +239,7 @@
         SidebarUI,
         "_positionStart",
         SidebarUI.POSITION_START_PREF,
-        false,
+        true,
         SidebarUI.setPosition.bind(SidebarUI)
       );
       // destroy the scrollbuttons.

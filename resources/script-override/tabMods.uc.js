@@ -86,20 +86,26 @@
     static get inheritedAttributes() {
       return {
         ".tab-background": "selected=visuallyselected,fadein,multiselected",
-        ".tab-line": "selected=visuallyselected,multiselected,before-multiselected",
+        ".tab-line":
+          "selected=visuallyselected,multiselected,before-multiselected",
         ".tab-loading-burst": "pinned,bursting,notselectedsinceload",
-        ".tab-content": "pinned,selected=visuallyselected,titlechanged,attention",
+        ".tab-content":
+          "pinned,selected=visuallyselected,titlechanged,attention",
         ".tab-icon-stack":
           "sharing,pictureinpicture,crashed,busy,soundplaying,soundplaying-scheduledremoval,pinned,muted,blocked,selected=visuallyselected,activemedia-blocked",
-        ".tab-throbber": "fadein,pinned,busy,progress,selected=visuallyselected",
-        ".tab-icon-pending": "fadein,pinned,busy,progress,selected=visuallyselected,pendingicon",
+        ".tab-throbber":
+          "fadein,pinned,busy,progress,selected=visuallyselected",
+        ".tab-icon-pending":
+          "fadein,pinned,busy,progress,selected=visuallyselected,pendingicon",
         ".tab-icon-image":
           "src=image,triggeringprincipal=iconloadingprincipal,requestcontextid,fadein,pinned,selected=visuallyselected,busy,crashed,sharing,pictureinpicture",
         ".tab-sharing-icon-overlay": "sharing,selected=visuallyselected,pinned",
         ".tab-icon-overlay":
           "sharing,pictureinpicture,crashed,busy,soundplaying,soundplaying-scheduledremoval,pinned,muted,blocked,selected=visuallyselected,activemedia-blocked",
-        ".tab-label-container": "pinned,selected=visuallyselected,labeldirection",
-        ".tab-label": "text=label,accesskey,fadein,pinned,selected=visuallyselected,attention",
+        ".tab-label-container":
+          "pinned,selected=visuallyselected,labeldirection",
+        ".tab-label":
+          "text=label,accesskey,fadein,pinned,selected=visuallyselected,attention",
         ".tab-icon-sound":
           "soundplaying,soundplaying-scheduledremoval,pinned,muted,blocked,selected=visuallyselected,activemedia-blocked,pictureinpicture",
         ".tab-label-container .tab-secondary-label":
@@ -159,7 +165,10 @@
       // *or* if we're e10s and the visually selected tab isn't changing, in which case the
       // tab switcher code won't run and update anything else (like the before- and after-
       // selected attributes).
-      if (!gMultiProcessBrowser || (val && this.hasAttribute("visuallyselected"))) {
+      if (
+        !gMultiProcessBrowser ||
+        (val && this.hasAttribute("visuallyselected"))
+      ) {
         this._visuallySelected = val;
       }
     }
@@ -186,7 +195,9 @@
     }
 
     get userContextId() {
-      return this.hasAttribute("usercontextid") ? parseInt(this.getAttribute("usercontextid")) : 0;
+      return this.hasAttribute("usercontextid")
+        ? parseInt(this.getAttribute("usercontextid"))
+        : 0;
     }
 
     get soundPlaying() {
@@ -235,7 +246,8 @@
     get _overPlayingIcon() {
       return (
         this.soundPlayingIcon?.matches(":hover") ||
-        (this.overlayIcon?.matches(":hover") && (this.soundPlaying || this.muted || this.activeMediaBlocked))
+        (this.overlayIcon?.matches(":hover") &&
+          (this.soundPlaying || this.muted || this.activeMediaBlocked))
       );
     }
 
@@ -282,7 +294,9 @@
       }
 
       const diff_in_msec = Date.now() - this._lastUnloaded;
-      Services.telemetry.getHistogramById("TAB_UNLOAD_TO_RELOAD").add(diff_in_msec / 1000);
+      Services.telemetry
+        .getHistogramById("TAB_UNLOAD_TO_RELOAD")
+        .add(diff_in_msec / 1000);
       Services.telemetry.scalarAdd("browser.engagement.tab_reload_count", 1);
       delete this._lastUnloaded;
     }
@@ -294,12 +308,16 @@
       if (this._overPlayingIcon) {
         const selectedTabs = gBrowser.selectedTabs;
         const contextTabInSelection = selectedTabs.includes(this);
-        const affectedTabsLength = contextTabInSelection ? selectedTabs.length : 1;
+        const affectedTabsLength = contextTabInSelection
+          ? selectedTabs.length
+          : 1;
         let stringID;
         if (this.hasAttribute("activemedia-blocked")) {
           stringID = "browser-tab-unblock";
         } else {
-          stringID = this.linkedBrowser.audioMuted ? "browser-tab-unmute" : "browser-tab-mute";
+          stringID = this.linkedBrowser.audioMuted
+            ? "browser-tab-unmute"
+            : "browser-tab-mute";
         }
         this.setSecondaryTabTooltipLabel(stringID, {
           count: affectedTabsLength,
@@ -321,7 +339,10 @@
     on_dragstart(event) {
       if (event.eventPhase == Event.CAPTURING_PHASE) {
         this.style.MozUserFocus = "";
-      } else if (this.mOverCloseButton || gSharedTabWarning.willShowSharedTabWarning(this)) {
+      } else if (
+        this.mOverCloseButton ||
+        gSharedTabWarning.willShowSharedTabWarning(this)
+      ) {
         event.stopPropagation();
       }
     }
@@ -330,7 +351,11 @@
       let eventMaySelectTab = true;
       let tabContainer = this.container;
 
-      if (tabContainer._closeTabByDblclick && event.button == 0 && event.detail == 1) {
+      if (
+        tabContainer._closeTabByDblclick &&
+        event.button == 0 &&
+        event.detail == 1
+      ) {
         this._selectedOnFirstMouseDown = this.selected;
       }
 
@@ -458,7 +483,10 @@
         tabContainer._closeTabByDblclick &&
         this._selectedOnFirstMouseDown &&
         this.selected &&
-        !(event.target.classList.contains("tab-icon-sound") || event.target.classList.contains("tab-icon-overlay"))
+        !(
+          event.target.classList.contains("tab-icon-sound") ||
+          event.target.classList.contains("tab-icon-overlay")
+        )
       ) {
         gBrowser.removeTab(this, {
           animate: true,
@@ -491,7 +519,9 @@
       } else {
         let candidate = visibleTabs[tabIndex - 1];
         let separatedByScrollButton =
-          tabContainer.getAttribute("overflow") == "true" && candidate.pinned && !this.pinned;
+          tabContainer.getAttribute("overflow") == "true" &&
+          candidate.pinned &&
+          !this.pinned;
         if (!candidate.selected && !separatedByScrollButton) {
           tabContainer._beforeHoveredTab = candidate;
           candidate.setAttribute("beforehovered", "true");
@@ -543,7 +573,10 @@
     }
 
     setSecondaryTabTooltipLabel(l10nID, l10nArgs) {
-      this.querySelector(".tab-secondary-label").toggleAttribute("showtooltip", l10nID);
+      this.querySelector(".tab-secondary-label").toggleAttribute(
+        "showtooltip",
+        l10nID
+      );
 
       const tooltipEl = this.querySelector(".tab-icon-sound-tooltip-label");
 
@@ -565,7 +598,9 @@
         return;
       }
 
-      if (!TelemetryStopwatch.running("HOVER_UNTIL_UNSELECTED_TAB_OPENED", this)) {
+      if (
+        !TelemetryStopwatch.running("HOVER_UNTIL_UNSELECTED_TAB_OPENED", this)
+      ) {
         TelemetryStopwatch.start("HOVER_UNTIL_UNSELECTED_TAB_OPENED", this);
       }
 
@@ -585,7 +620,9 @@
       // In order to avoid this situation, we could delay cancellation and
       // remove it if we get "mouseover" within very short period.
       this._hoverTabTimer = setTimeout(() => {
-        if (TelemetryStopwatch.running("HOVER_UNTIL_UNSELECTED_TAB_OPENED", this)) {
+        if (
+          TelemetryStopwatch.running("HOVER_UNTIL_UNSELECTED_TAB_OPENED", this)
+        ) {
           TelemetryStopwatch.cancel("HOVER_UNTIL_UNSELECTED_TAB_OPENED", this);
         }
       }, 100);
@@ -593,14 +630,18 @@
 
     finishUnselectedTabHoverTimer() {
       // Stop timer when the tab is opened.
-      if (TelemetryStopwatch.running("HOVER_UNTIL_UNSELECTED_TAB_OPENED", this)) {
+      if (
+        TelemetryStopwatch.running("HOVER_UNTIL_UNSELECTED_TAB_OPENED", this)
+      ) {
         TelemetryStopwatch.finish("HOVER_UNTIL_UNSELECTED_TAB_OPENED", this);
       }
     }
-
+ 
     resumeDelayedMedia() {
       if (this.activeMediaBlocked) {
-        Services.telemetry.getHistogramById("TAB_AUDIO_INDICATOR_USED").add(3 /* unblockByClickingIcon */);
+        Services.telemetry
+          .getHistogramById("TAB_AUDIO_INDICATOR_USED")
+          .add(3 /* unblockByClickingIcon */);
         this.removeAttribute("activemedia-blocked");
         this.linkedBrowser.resumeMedia();
         gBrowser._tabAttrModified(this, ["activemedia-blocked"]);
@@ -609,26 +650,28 @@
 
     toggleMuteAudio(aMuteReason) {
       let browser = this.linkedBrowser;
-      let hist = Services.telemetry.getHistogramById("TAB_AUDIO_INDICATOR_USED");
+      let hist = Services.telemetry.getHistogramById(
+        "TAB_AUDIO_INDICATOR_USED"
+      );
 
-      if (browser.audioMuted) {
-        if (this.linkedPanel) {
-          // "Lazy Browser" should not invoke its unmute method
-          browser.unmute();
+        if (browser.audioMuted) {
+          if (this.linkedPanel) {
+            // "Lazy Browser" should not invoke its unmute method
+            browser.unmute();
+          }
+          this.removeAttribute("muted");
+          hist.add(1 /* unmute */);
+        } else {
+          if (this.linkedPanel) {
+            // "Lazy Browser" should not invoke its mute method
+            browser.mute();
+          }
+          this.setAttribute("muted", "true");
+          hist.add(0 /* mute */);
         }
-        this.removeAttribute("muted");
-        hist.add(1 /* unmute */);
-      } else {
-        if (this.linkedPanel) {
-          // "Lazy Browser" should not invoke its mute method
-          browser.mute();
-        }
-        this.setAttribute("muted", "true");
-        hist.add(0 /* mute */);
-      }
-      this.muteReason = aMuteReason || null;
-
-      gBrowser._tabAttrModified(this, ["muted"]);
+        this.muteReason = aMuteReason || null;
+ 
+        gBrowser._tabAttrModified(this, ["muted"]);
     }
 
     setUserContextId(aUserContextId) {
@@ -648,7 +691,9 @@
     }
 
     updateA11yDescription() {
-      let prevDescTab = gBrowser.tabContainer.querySelector("tab[aria-describedby]");
+      let prevDescTab = gBrowser.tabContainer.querySelector(
+        "tab[aria-describedby]"
+      );
       if (prevDescTab) {
         // We can only have a description for the focused tab.
         prevDescTab.removeAttribute("aria-describedby");

@@ -44,7 +44,9 @@ var gSearchResultsPane = {
     }
     this.inited = true;
     this.searchInput = document.getElementById("searchInput");
-    this.searchInput.hidden = !Services.prefs.getBoolPref("browser.preferences.search");
+    this.searchInput.hidden = !Services.prefs.getBoolPref(
+      "browser.preferences.search"
+    );
     if (!this.searchInput.hidden) {
       this.searchInput.addEventListener("input", this);
       this.searchInput.addEventListener("command", this);
@@ -54,7 +56,9 @@ var gSearchResultsPane = {
         window.requestIdleCallback(() => this.initializeCategories());
       });
     }
-    let helpUrl = Services.urlFormatter.formatURLPref("app.support.baseURL") + "preferences";
+    let helpUrl =
+      Services.urlFormatter.formatURLPref("app.support.baseURL") +
+      "preferences";
     let helpContainer = document.getElementById("need-help");
     helpContainer.querySelector("a").href = helpUrl;
     ensureScrollPadding();
@@ -72,7 +76,8 @@ var gSearchResultsPane = {
    */
   fixInputPosition() {
     let innerContainer = document.querySelector(".sticky-inner-container");
-    let width = window.windowUtils.getBoundsWithoutFlushing(innerContainer).width;
+    let width = window.windowUtils.getBoundsWithoutFlushing(innerContainer)
+      .width;
     innerContainer.style.maxWidth = width + "px";
   },
 
@@ -220,13 +225,13 @@ var gSearchResultsPane = {
     let rgb = getComputedStyle(temp).color;
     temp.remove();
     rgb = rgb
-      .split("(")[1]
-      .split(")")[0]
-      .split(rgb.indexOf(",") > -1 ? "," : " ");
+        .split("(")[1]
+        .split(")")[0]
+        .split(rgb.indexOf(",") > -1 ? "," : " ");
     rgb.length = 3;
     rgb.forEach((c, i) => {
-      c = (+c).toString(16);
-      rgb[i] = c.length === 1 ? "0" + c : c.slice(0, 2);
+        c = (+c).toString(16);
+        rgb[i] = c.length === 1 ? "0" + c : c.slice(0, 2);
     });
     return (this._hex = "#" + rgb.join(""));
   },
@@ -293,13 +298,17 @@ var gSearchResultsPane = {
 
       // Building the range for highlighted areas
       let rootPreferencesChildren = [
-        ...document.querySelectorAll("#mainPrefPane > *:not([data-hidden-from-search], script, stringbundle)"),
+        ...document.querySelectorAll(
+          "#mainPrefPane > *:not([data-hidden-from-search], script, stringbundle)"
+        ),
       ];
 
       if (subQuery) {
         // Since the previous query is a subset of the current query,
         // there is no need to check elements that is hidden already.
-        rootPreferencesChildren = rootPreferencesChildren.filter((el) => !el.hidden);
+        rootPreferencesChildren = rootPreferencesChildren.filter(
+          el => !el.hidden
+        );
       }
 
       // Attach the bindings for all children if they were not already visible.
@@ -320,7 +329,9 @@ var gSearchResultsPane = {
           for (let anchorNode of this.listSearchTooltips) {
             this.createSearchTooltip(anchorNode, this.query);
           }
-          ts = await new Promise((resolve) => window.requestAnimationFrame(resolve));
+          ts = await new Promise(resolve =>
+            window.requestAnimationFrame(resolve)
+          );
           if (query !== this.query) {
             return;
           }
@@ -335,7 +346,8 @@ var gSearchResultsPane = {
 
           // Show the preceding search-header if one exists.
           let groupbox = child.closest("groupbox");
-          let groupHeader = groupbox && groupbox.querySelector(".search-header");
+          let groupHeader =
+            groupbox && groupbox.querySelector(".search-header");
           if (groupHeader) {
             groupHeader.hidden = false;
           }
@@ -371,13 +383,19 @@ var gSearchResultsPane = {
         // Implant search telemetry probe after user stops typing for a while
         if (this.query.length >= 2) {
           this.telemetryTimer = setTimeout(() => {
-            Services.telemetry.keyedScalarAdd("preferences.search_query", this.query, 1);
+            Services.telemetry.keyedScalarAdd(
+              "preferences.search_query",
+              this.query,
+              1
+            );
           }, 1000);
         }
       }
     } else {
       if (endQuery) {
-        document.querySelector(".sticky-inner-container").style.removeProperty("max-width");
+        document
+          .querySelector(".sticky-inner-container")
+          .style.removeProperty("max-width");
       }
       noResultsEl.hidden = true;
       document.getElementById("sorry-message-query").textContent = "";
@@ -391,7 +409,9 @@ var gSearchResultsPane = {
       }
     }
 
-    window.dispatchEvent(new CustomEvent("PreferencesSearchCompleted", { detail: query }));
+    window.dispatchEvent(
+      new CustomEvent("PreferencesSearchCompleted", { detail: query })
+    );
   },
 
   /**
@@ -416,7 +436,12 @@ var gSearchResultsPane = {
     ) {
       let simpleTextNodes = this.textNodeDescendants(nodeObject);
       for (let node of simpleTextNodes) {
-        let result = this.highlightMatches([node], [node.length], node.textContent.toLowerCase(), searchPhrase);
+        let result = this.highlightMatches(
+          [node],
+          [node.length],
+          node.textContent.toLowerCase(),
+          searchPhrase
+        );
         matchesFound = matchesFound || result;
       }
 
@@ -427,7 +452,10 @@ var gSearchResultsPane = {
 
       let accessKeyTextNodes = [];
 
-      if (nodeObject.tagName == "label" || nodeObject.tagName == "description") {
+      if (
+        nodeObject.tagName == "label" ||
+        nodeObject.tagName == "description"
+      ) {
         accessKeyTextNodes.push(...simpleTextNodes);
       }
 
@@ -446,19 +474,26 @@ var gSearchResultsPane = {
       );
 
       // Searching some elements, such as xul:button, have a 'label' attribute that contains the user-visible text.
-      let labelResult = this.queryMatchesContent(nodeObject.getAttribute("label"), searchPhrase);
+      let labelResult = this.queryMatchesContent(
+        nodeObject.getAttribute("label"),
+        searchPhrase
+      );
 
       // Searching some elements, such as xul:label, store their user-visible text in a "value" attribute.
       // Value will be skipped for menuitem since value in menuitem could represent index number to distinct each item.
       let valueResult =
         nodeObject.tagName !== "menuitem" && nodeObject.tagName !== "radio"
-          ? this.queryMatchesContent(nodeObject.getAttribute("value"), searchPhrase)
+          ? this.queryMatchesContent(
+              nodeObject.getAttribute("value"),
+              searchPhrase
+            )
           : false;
 
       // Searching some elements, such as xul:button, buttons to open subdialogs
       // using l10n ids.
       let keywordsResult =
-        nodeObject.hasAttribute("search-l10n-ids") && (await this.matchesSearchL10nIDs(nodeObject, searchPhrase));
+        nodeObject.hasAttribute("search-l10n-ids") &&
+        (await this.matchesSearchL10nIDs(nodeObject, searchPhrase));
 
       if (!keywordsResult) {
         // Searching some elements, such as xul:button, buttons to open subdialogs
@@ -466,11 +501,17 @@ var gSearchResultsPane = {
         keywordsResult =
           !keywordsResult &&
           nodeObject.hasAttribute("searchkeywords") &&
-          this.queryMatchesContent(nodeObject.getAttribute("searchkeywords"), searchPhrase);
+          this.queryMatchesContent(
+            nodeObject.getAttribute("searchkeywords"),
+            searchPhrase
+          );
       }
 
       // Creating tooltips for buttons
-      if (keywordsResult && (nodeObject.tagName === "button" || nodeObject.tagName == "menulist")) {
+      if (
+        keywordsResult &&
+        (nodeObject.tagName === "button" || nodeObject.tagName == "menulist")
+      ) {
         this.listSearchTooltips.add(nodeObject);
       }
 
@@ -484,13 +525,19 @@ var gSearchResultsPane = {
       }
 
       if (
-        (nodeObject.tagName == "menulist" || nodeObject.tagName == "menuitem") &&
+        (nodeObject.tagName == "menulist" ||
+          nodeObject.tagName == "menuitem") &&
         (labelResult || valueResult || keywordsResult)
       ) {
         nodeObject.setAttribute("highlightable", "true");
       }
 
-      matchesFound = matchesFound || complexTextNodesResult || labelResult || valueResult || keywordsResult;
+      matchesFound =
+        matchesFound ||
+        complexTextNodesResult ||
+        labelResult ||
+        valueResult ||
+        keywordsResult;
     }
 
     // Should not search unselected child nodes of a <xul:deck> element
@@ -498,12 +545,20 @@ var gSearchResultsPane = {
     if (nodeObject.tagName == "deck" && nodeObject.id != "historyPane") {
       let index = nodeObject.selectedIndex;
       if (index != -1) {
-        let result = await this.searchChildNodeIfVisible(nodeObject, index, searchPhrase);
+        let result = await this.searchChildNodeIfVisible(
+          nodeObject,
+          index,
+          searchPhrase
+        );
         matchesFound = matchesFound || result;
       }
     } else {
       for (let i = 0; i < nodeObject.childNodes.length; i++) {
-        let result = await this.searchChildNodeIfVisible(nodeObject, i, searchPhrase);
+        let result = await this.searchChildNodeIfVisible(
+          nodeObject,
+          i,
+          searchPhrase
+        );
         matchesFound = matchesFound || result;
       }
     }
@@ -524,7 +579,10 @@ var gSearchResultsPane = {
   async searchChildNodeIfVisible(nodeObject, index, searchPhrase) {
     let result = false;
     let child = nodeObject.childNodes[index];
-    if (!child.hidden && nodeObject.getAttribute("data-hidden-from-search") !== "true") {
+    if (
+      !child.hidden &&
+      nodeObject.getAttribute("data-hidden-from-search") !== "true"
+    ) {
       result = await this.searchWithinNode(child, searchPhrase);
       // Creating tooltips for menulist element
       if (result && nodeObject.tagName === "menulist") {
@@ -536,7 +594,8 @@ var gSearchResultsPane = {
       // will be hidden.
       if (
         child instanceof Element &&
-        (child.classList.contains("featureGate") || child.classList.contains("mozilla-product-item"))
+        (child.classList.contains("featureGate") ||
+          child.classList.contains("mozilla-product-item"))
       ) {
         this.subItems.set(child, result);
       }
@@ -567,10 +626,12 @@ var gSearchResultsPane = {
       const refs = nodeObject
         .getAttribute("search-l10n-ids")
         .split(",")
-        .map((s) => s.trim().split("."))
-        .filter((s) => !!s[0].length);
+        .map(s => s.trim().split("."))
+        .filter(s => !!s[0].length);
 
-      const messages = await document.l10n.formatMessages(refs.map((ref) => ({ id: ref[0] })));
+      const messages = await document.l10n.formatMessages(
+        refs.map(ref => ({ id: ref[0] }))
+      );
 
       // Map the localized messages taking value or a selected attribute and
       // building a string of concatenated translated strings out of it.
@@ -582,13 +643,16 @@ var gSearchResultsPane = {
             return null;
           }
           if (refAttr) {
-            let attr = msg.attributes && msg.attributes.find((a) => a.name === refAttr);
+            let attr =
+              msg.attributes && msg.attributes.find(a => a.name === refAttr);
             if (!attr) {
               console.error(`Missing search l10n id "${refId}.${refAttr}"`);
               return null;
             }
             if (attr.value === "") {
-              console.error(`Empty value added to search-l10n-ids "${refId}.${refAttr}"`);
+              console.error(
+                `Empty value added to search-l10n-ids "${refId}.${refAttr}"`
+              );
             }
             return attr.value;
           }
@@ -597,14 +661,17 @@ var gSearchResultsPane = {
           }
           return msg.value;
         })
-        .filter((keyword) => keyword !== null)
+        .filter(keyword => keyword !== null)
         .join(" ");
 
       this.searchKeywords.set(nodeObject, keywords);
       return this.queryMatchesContent(keywords, searchPhrase);
     }
 
-    return this.queryMatchesContent(this.searchKeywords.get(nodeObject), searchPhrase);
+    return this.queryMatchesContent(
+      this.searchKeywords.get(nodeObject),
+      searchPhrase
+    );
   },
 
   /**
@@ -640,7 +707,10 @@ var gSearchResultsPane = {
     // putting tooltips on, we have to flush layout intentionally, and that
     // this is the result of a XUL limitation (bug 1363730).
     let tooltipRect = searchTooltip.getBoundingClientRect();
-    searchTooltip.style.setProperty("left", `calc(50% - ${tooltipRect.width / 2}px)`);
+    searchTooltip.style.setProperty(
+      "left",
+      `calc(50% - ${tooltipRect.width / 2}px)`
+    );
   },
 
   /**

@@ -14,7 +14,9 @@ const nsIClipboardHelper = Ci.nsIClipboardHelper;
 const nsClipboardHelper_CONTRACTID = "@mozilla.org/widget/clipboardhelper;1";
 
 const gPrefBranch = Services.prefs;
-const gClipboardHelper = Cc[nsClipboardHelper_CONTRACTID].getService(nsIClipboardHelper);
+const gClipboardHelper = Cc[nsClipboardHelper_CONTRACTID].getService(
+  nsIClipboardHelper
+);
 
 var gLockProps = ["default", "user", "locked"];
 // we get these from a string bundle
@@ -128,7 +130,10 @@ var view = {
         index = getViewIndexOfPref(pref);
       }
     }
-    col.element.setAttribute("sortDirection", gSortDirection > 0 ? "ascending" : "descending");
+    col.element.setAttribute(
+      "sortDirection",
+      gSortDirection > 0 ? "ascending" : "descending"
+    );
     this.treebox.invalidate();
     if (index >= 0) {
       this.selection.select(index);
@@ -337,8 +342,14 @@ function fetchPref(prefName, prefIndex) {
       case gPrefBranch.PREF_STRING:
         pref.valueCol = gPrefBranch.getStringPref(prefName);
         // Try in case it's a localized string (will throw an exception if not)
-        if (pref.lockCol == PREF_IS_DEFAULT_VALUE && /^chrome:\/\/.+\/locale\/.+\.properties/.test(pref.valueCol)) {
-          pref.valueCol = gPrefBranch.getComplexValue(prefName, nsIPrefLocalizedString).data;
+        if (
+          pref.lockCol == PREF_IS_DEFAULT_VALUE &&
+          /^chrome:\/\/.+\/locale\/.+\.properties/.test(pref.valueCol)
+        ) {
+          pref.valueCol = gPrefBranch.getComplexValue(
+            prefName,
+            nsIPrefLocalizedString
+          ).data;
         }
         break;
     }
@@ -350,7 +361,7 @@ function fetchPref(prefName, prefIndex) {
 
 async function onConfigLoad() {
   let configContext = document.getElementById("configContext");
-  configContext.addEventListener("popupshowing", function (event) {
+  configContext.addEventListener("popupshowing", function(event) {
     if (event.target == this) {
       updateContextMenu();
     }
@@ -365,24 +376,24 @@ async function onConfigLoad() {
     resetSelected: ResetSelected,
   };
 
-  configContext.addEventListener("command", (e) => {
+  configContext.addEventListener("command", e => {
     if (e.target.id in commandListeners) {
       commandListeners[e.target.id]();
     }
   });
 
   let configString = document.getElementById("configString");
-  configString.addEventListener("command", function () {
+  configString.addEventListener("command", function() {
     NewPref(nsIPrefBranch.PREF_STRING);
   });
 
   let configInt = document.getElementById("configInt");
-  configInt.addEventListener("command", function () {
+  configInt.addEventListener("command", function() {
     NewPref(nsIPrefBranch.PREF_INT);
   });
 
   let configBool = document.getElementById("configBool");
-  configBool.addEventListener("command", function () {
+  configBool.addEventListener("command", function() {
     NewPref(nsIPrefBranch.PREF_BOOL);
   });
 
@@ -393,12 +404,12 @@ async function onConfigLoad() {
   textBox.addEventListener("command", FilterPrefs);
 
   let configFocuSearch = document.getElementById("configFocuSearch");
-  configFocuSearch.addEventListener("command", function () {
+  configFocuSearch.addEventListener("command", function() {
     textBox.focus();
   });
 
   let configFocuSearch2 = document.getElementById("configFocuSearch2");
-  configFocuSearch2.addEventListener("command", function () {
+  configFocuSearch2.addEventListener("command", function() {
     textBox.focus();
   });
 
@@ -406,23 +417,23 @@ async function onConfigLoad() {
   warningButton.addEventListener("command", ShowPrefs);
 
   let configTree = document.getElementById("configTree");
-  configTree.addEventListener("select", function () {
+  configTree.addEventListener("select", function() {
     window.updateCommands("select");
   });
 
   let configTreeBody = document.getElementById("configTreeBody");
-  configTreeBody.addEventListener("dblclick", function (event) {
+  configTreeBody.addEventListener("dblclick", function(event) {
     if (event.button == 0) {
       ModifySelected();
     }
   });
 
-  gLockStrs[PREF_IS_DEFAULT_VALUE] = "default";
-  gLockStrs[PREF_IS_MODIFIED] = "modified";
-  gLockStrs[PREF_IS_LOCKED] = "locked";
-  gTypeStrs[nsIPrefBranch.PREF_STRING] = "string";
-  gTypeStrs[nsIPrefBranch.PREF_INT] = "integer";
-  gTypeStrs[nsIPrefBranch.PREF_BOOL] = "boolean";
+  gLockStrs[PREF_IS_DEFAULT_VALUE] = 'default';
+  gLockStrs[PREF_IS_MODIFIED] = 'modified';
+  gLockStrs[PREF_IS_LOCKED] = 'locked';
+  gTypeStrs[nsIPrefBranch.PREF_STRING] = 'string';
+  gTypeStrs[nsIPrefBranch.PREF_INT] = 'integer';
+  gTypeStrs[nsIPrefBranch.PREF_BOOL] = 'boolean';
 
   var showWarning = gPrefBranch.getBoolPref("general.warnOnAboutConfig");
 
@@ -437,16 +448,24 @@ async function onConfigLoad() {
 function ShowPrefs() {
   gPrefBranch.getChildList("").forEach(fetchPref);
 
-  var descending = document.getElementsByAttribute("sortDirection", "descending");
+  var descending = document.getElementsByAttribute(
+    "sortDirection",
+    "descending"
+  );
   if (descending.item(0)) {
     gSortedColumn = descending[0].id;
     gSortDirection = -1;
   } else {
-    var ascending = document.getElementsByAttribute("sortDirection", "ascending");
+    var ascending = document.getElementsByAttribute(
+      "sortDirection",
+      "ascending"
+    );
     if (ascending.item(0)) {
       gSortedColumn = ascending[0].id;
     } else {
-      document.getElementById(gSortedColumn).setAttribute("sortDirection", "ascending");
+      document
+        .getElementById(gSortedColumn)
+        .setAttribute("sortDirection", "ascending");
     }
   }
   gSortFunction = gSortFunctions[gSortedColumn];
@@ -482,7 +501,9 @@ function ShowPrefs() {
 }
 
 function onConfigUnload() {
-  if (document.getElementById("configDeck").getAttribute("selectedIndex") == 1) {
+  if (
+    document.getElementById("configDeck").getAttribute("selectedIndex") == 1
+  ) {
     gPrefBranch.removeObserver("", gPrefListener);
     var configTree = document.getElementById("configTree");
     configTree.view = null;
@@ -491,7 +512,9 @@ function onConfigUnload() {
 }
 
 function FilterPrefs() {
-  if (document.getElementById("configDeck").getAttribute("selectedIndex") != 1) {
+  if (
+    document.getElementById("configDeck").getAttribute("selectedIndex") != 1
+  ) {
     return;
   }
 
@@ -517,7 +540,9 @@ function FilterPrefs() {
   }
 
   var prefCol =
-    view.selection && view.selection.currentIndex < 0 ? null : gPrefView[view.selection.currentIndex].prefCol;
+    view.selection && view.selection.currentIndex < 0
+      ? null
+      : gPrefView[view.selection.currentIndex].prefCol;
   var oldlen = gPrefView.length;
   gPrefView = gPrefArray;
   if (gFilter) {
@@ -662,9 +687,11 @@ async function NewPref(type) {
   var result = { value: "" };
   var dummy = { value: 0 };
 
-  let [newTitle, newPrompt] = [`New ${gTypeStrs[type]} value`, "Enter the preference name"];
+  let [newTitle, newPrompt] = [`New ${gTypeStrs[type]} value`, 'Enter the preference name'];
 
-  if (Services.prompt.prompt(window, newTitle, newPrompt, result, null, dummy)) {
+  if (
+    Services.prompt.prompt(window, newTitle, newPrompt, result, null, dummy)
+  ) {
     result.value = result.value.trim();
     if (!result.value) {
       return;
@@ -708,14 +735,25 @@ async function ModifyPref(entry) {
 
   if (entry.typeCol == nsIPrefBranch.PREF_BOOL) {
     var check = { value: entry.valueCol == "false" };
-    if (!entry.valueCol && !Services.prompt.select(window, title, entry.prefCol, [false, true], check)) {
+    if (
+      !entry.valueCol &&
+      !Services.prompt.select(
+        window,
+        title,
+        entry.prefCol,
+        [false, true],
+        check
+      )
+    ) {
       return false;
     }
     gPrefBranch.setBoolPref(entry.prefCol, check.value);
   } else {
     var result = { value: entry.valueCol };
     var dummy = { value: 0 };
-    if (!Services.prompt.prompt(window, title, entry.prefCol, result, null, dummy)) {
+    if (
+      !Services.prompt.prompt(window, title, entry.prefCol, result, null, dummy)
+    ) {
       return false;
     }
     if (entry.typeCol == nsIPrefBranch.PREF_INT) {
@@ -723,7 +761,7 @@ async function ModifyPref(entry) {
       // Thus, this check should catch all cases.
       var val = result.value | 0;
       if (val != result.value - 0) {
-        const [err_title, err_text] = ["Invalid value", "The text you entered is not a number."];
+        const [err_title, err_text] = ['Invalid value', 'The text you entered is not a number.'];
 
         Services.prompt.alert(window, err_title, err_text);
         return false;

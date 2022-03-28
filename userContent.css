@@ -22,6 +22,7 @@ pages of Firefox like the about:config page. */
 @import url("userContent/accounts");
 @import url("userContent/activity-stream");
 @import url("userContent/addons");
+@import url("userContent/bookmarks");
 @import url("userContent/common");
 @import url("userContent/error-page");
 @import url("userContent/places");

@@ -302,12 +302,12 @@
 }
 
 /* #appmenu-developer-tools-view toolbarbutton[label="Browser Toolbox"] { */
-  /* list-style-image: url(chrome://userchrome/content/skin/toolbox.svg) !important; */
+/* list-style-image: url(chrome://userchrome/content/skin/toolbox.svg) !important; */
 /* } */
 
 /* #appmenu-developer-tools-view toolbarbutton[label="Browser Content Toolbox"i] { */
-  /* list-style-image: url(chrome://userchrome/content/devtools/command-frames.svg) !important; */
-  /* fill-opacity: 0 !important; */
+/* list-style-image: url(chrome://userchrome/content/devtools/command-frames.svg) !important; */
+/* fill-opacity: 0 !important; */
 /* } */
 
 #appmenu-developer-tools-view toolbarbutton[label="Browser Console"i] {

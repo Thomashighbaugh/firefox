@@ -16,6 +16,7 @@ the use of JS. For that see the JS directory */
 /*                     Components                    */
 /* ------------------------------------------------- */
 @import url("userChrome/animate");
+@import url("userChrome/app-menu");
 @import url("userChrome/borders");
 @import url("userChrome/common");
 @import url("userChrome/cursor");

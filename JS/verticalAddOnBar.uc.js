@@ -77,9 +77,7 @@ var AddonbarVertical = {
 
         CustomizableUI.registerArea("addonbar_v", { legacy: true });
         if (appversion >= 65) CustomizableUI.registerToolbarNode(tb_addonbarv);
-          if (insert_before_borders)
-            document.getElementById("browser").appendChild(toolbox_abv);
-          else
+
             document
               .getElementById("browser")
               .insertBefore(

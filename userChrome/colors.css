@@ -1,22 +1,22 @@
-
+/* ______         __                    */
+/* |      |.-----.|  |.-----.----.-----. */
+/* |   ---||  _  ||  ||  _  |   _|__ --| */
+/* |______||_____||__||_____|__| |_____| */
+/* ------------------------------------------------- */
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 @namespace html "http://www.w3.org/1999/xhtml";
 
-/*= Default Colors - Hard Coded ==============================================*/
+/* ----------------- Default Colors ---------------- */
 /* Based on chrome://global/skin/in-content/common.css */
 :host,
 :root {
-   --in-content-page-color: #1c1e24;
+  --in-content-page-color: #1c1e24;
   --in-content-page-background: #f4f4f7;
   --in-content-text-color: var(--in-content-page-color);
   --in-content-deemphasized-text: #8b9cbe;
   --in-content-box-background: #1c1e24;
   --in-content-box-background-odd: #1b1d24; /* grey 90 a05 */
-  --in-content-box-border-color: color-mix(
-    in srgb,
-    currentColor 41%,
-    transparent
-  );
+  --in-content-box-border-color: color-mix(in srgb, currentColor 41%, transparent);
   --in-content-box-info-background: #2f303d;
   --in-content-item-hover: color-mix(in srgb, #b2bfd9 20%, transparent);
   --in-content-item-hover-text: var(--in-content-page-color);
@@ -40,9 +40,7 @@
   --in-content-button-background-hover: #22262d;
   --in-content-button-background-active: #22262d;
   --in-content-primary-button-text-color: #f4f4f7;
-  --in-content-primary-button-text-color-hover: var(
-    --in-content-primary-button-text-color
-  );
+  --in-content-primary-button-text-color-hover: var(--in-content-primary-button-text-color);
   --in-content-primary-button-background: #8b9cbe;
   --in-content-primary-button-background-hover: #b2bfd9;
   --in-content-primary-button-background-active: #b2bfd9;
@@ -68,20 +66,13 @@
   --checkbox-border-color: var(--in-content-box-border-color);
   --checkbox-unchecked-bgcolor: var(--in-content-button-background);
   --checkbox-unchecked-hover-bgcolor: var(--in-content-button-background-hover);
-  --checkbox-unchecked-active-bgcolor: var(
-    --in-content-button-background-active
-  );
+  --checkbox-unchecked-active-bgcolor: var(--in-content-button-background-active);
   --checkbox-checked-bgcolor: var(--in-content-primary-button-background);
   --checkbox-checked-color: var(--in-content-primary-button-text-color);
   --checkbox-checked-border-color: transparent;
-  --checkbox-checked-hover-bgcolor: var(
-    --in-content-primary-button-background-hover
-  );
-  --checkbox-checked-active-bgcolor: var(
-    --in-content-primary-button-background-active
-  )
-  
-  
+  --checkbox-checked-hover-bgcolor: var(--in-content-primary-button-background-hover);
+  --checkbox-checked-active-bgcolor: var(--in-content-primary-button-background-active);
+
   --blue-40: #3cbdff;
   --blue-50: #0badff;
   --blue-60: #098acc;
@@ -121,7 +112,7 @@
   --card-outline-color: var(--grey-30);
   --card-shadow-hover: var(--card-shadow), 0 0 0 5px var(--card-outline-color);
 }
-
+/* ------------------------------------------------- */
 @media (-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
   :host,
   :root {
@@ -145,14 +136,13 @@
     --in-content-button-background-active: rgb(91, 91, 102);
     --in-content-icon-color: rgb(251, 251, 254);
 
-   --in-content-primary-button-background: #8b9cbe;
-  --in-content-primary-button-background-hover: #b2bfd9;
-  --in-content-primary-button-background-active: #b2bfd9;
-  --in-content-danger-button-background: #e22850;
-  --in-content-danger-button-background-hover: #ff3d81;
-  --in-content-danger-button-background-active: #ff3d81;
-  --in-content-focus-outline-color: #b2bfd9;
-
+    --in-content-primary-button-background: #8b9cbe;
+    --in-content-primary-button-background-hover: #b2bfd9;
+    --in-content-primary-button-background-active: #b2bfd9;
+    --in-content-danger-button-background: #e22850;
+    --in-content-danger-button-background-hover: #ff3d81;
+    --in-content-danger-button-background-active: #ff3d81;
+    --in-content-focus-outline-color: #b2bfd9;
 
     --in-content-table-background: #22262d;
     --in-content-table-border-dark-color: #2f303d;
@@ -160,16 +150,10 @@
     --in-content-table-header-color: var(--in-content-page-color);
 
     --in-content-accent-color: #8b9cbe;
-    --in-content-accent-color-active: var(
-      --in-content-primary-button-background-hover
-    );
+    --in-content-accent-color-active: var(--in-content-primary-button-background-hover);
     --in-content-link-color: var(--in-content-primary-button-background);
-    --in-content-link-color-hover: var(
-      --in-content-primary-button-background-hover
-    );
-    --in-content-link-color-active: var(
-      --in-content-primary-button-background-active
-    );
+    --in-content-link-color-hover: var(--in-content-primary-button-background-hover);
+    --in-content-link-color-active: var(--in-content-primary-button-background-active);
     --in-content-link-color-visited: var(--in-content-link-color);
 
     --card-outline-color: var(--grey-60);

@@ -43,8 +43,7 @@
     PanelUI._initialized || PanelUI.init(shouldSuppressPopupNotifications);
     PanelUI._showBannerItem = function _showBannerItem(notification) {
       if (!this._panelBannerItem) {
-        this._panelBannerItem =
-          this.mainView.querySelector(".panel-banner-item");
+        this._panelBannerItem = this.mainView.querySelector(".panel-banner-item");
       }
 
       let label = gUpdateBanners.attributes[notification.id];
@@ -66,9 +65,6 @@
         init();
       }
     };
-    Services.obs.addObserver(
-      delayedListener,
-      "browser-delayed-startup-finished"
-    );
+    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
   }
 })();

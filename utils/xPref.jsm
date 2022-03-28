@@ -9,8 +9,7 @@ var xPref = {
     try {
       switch (sPrefs.getPrefType(prefPath)) {
         case 0:
-          if (valueIfUndefined != undefined)
-            return this.set(prefPath, valueIfUndefined, setDefault);
+          if (valueIfUndefined != undefined) return this.set(prefPath, valueIfUndefined, setDefault);
           else return undefined;
         case 32:
           return sPrefs.getStringPref(prefPath);

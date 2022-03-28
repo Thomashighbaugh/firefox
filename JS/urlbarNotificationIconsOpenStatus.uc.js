@@ -7,42 +7,42 @@
 // ==/UserScript==
 
 (() => {
-    const handler = {
-        handleEvent(e) {
-            if (e.originalTarget === PopupNotifications.panel)
-                e.type === "popupshowing"
-                    ? PopupNotifications._currentAnchorElement.setAttribute("open", true)
-                    : PopupNotifications._currentAnchorElement.removeAttribute("open");
-        },
-        attachListeners() {
-            PopupNotifications.panel.addEventListener("popupshowing", this, false);
-            PopupNotifications.panel.addEventListener("popuphiding", this, false);
-        },
-    };
+  const handler = {
+    handleEvent(e) {
+      if (e.originalTarget === PopupNotifications.panel)
+        e.type === "popupshowing"
+          ? PopupNotifications._currentAnchorElement.setAttribute("open", true)
+          : PopupNotifications._currentAnchorElement.removeAttribute("open");
+    },
+    attachListeners() {
+      PopupNotifications.panel.addEventListener("popupshowing", this, false);
+      PopupNotifications.panel.addEventListener("popuphiding", this, false);
+    },
+  };
 
-    function init() {
-        if (PopupNotifications.panel) handler.attachListeners();
-        else {
-            let observer = new MutationObserver(() => {
-                if (document.getElementById("notification-popup")) {
-                    handler.attachListeners();
-                    observer.disconnect();
-                    observer = null;
-                }
-            });
-            observer.observe(document.getElementById("mainPopupSet"), { childList: true });
+  function init() {
+    if (PopupNotifications.panel) handler.attachListeners();
+    else {
+      let observer = new MutationObserver(() => {
+        if (document.getElementById("notification-popup")) {
+          handler.attachListeners();
+          observer.disconnect();
+          observer = null;
         }
+      });
+      observer.observe(document.getElementById("mainPopupSet"), { childList: true });
     }
+  }
 
-    if (gBrowserInit.delayedStartupFinished) {
+  if (gBrowserInit.delayedStartupFinished) {
+    init();
+  } else {
+    let delayedListener = (subject, topic) => {
+      if (topic == "browser-delayed-startup-finished" && subject == window) {
+        Services.obs.removeObserver(delayedListener, topic);
         init();
-    } else {
-        let delayedListener = (subject, topic) => {
-            if (topic == "browser-delayed-startup-finished" && subject == window) {
-                Services.obs.removeObserver(delayedListener, topic);
-                init();
-            }
-        };
-        Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
-    }
+      }
+    };
+    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
+  }
 })();

@@ -151,9 +151,7 @@ class FindbarMods {
         accesskey: this.fluentStrings.caseSense.accesskey,
       })
     );
-    let matchCasePopup = this.contextMenu._menuMatchCase.appendChild(
-      document.createXULElement("menupopup")
-    );
+    let matchCasePopup = this.contextMenu._menuMatchCase.appendChild(document.createXULElement("menupopup"));
     matchCasePopup.addEventListener("popupshowing", this);
     this.contextMenu._menuMatchCasePopup = matchCasePopup;
 
@@ -193,9 +191,7 @@ class FindbarMods {
         accesskey: this.fluentStrings.diacritics.accesskey,
       })
     );
-    let diacriticsPopup = this.contextMenu._menuMatchDiacritics.appendChild(
-      document.createXULElement("menupopup")
-    );
+    let diacriticsPopup = this.contextMenu._menuMatchDiacritics.appendChild(document.createXULElement("menupopup"));
     diacriticsPopup.addEventListener("popupshowing", this);
     this.contextMenu._menuMatchDiacriticsPopup = diacriticsPopup;
 
@@ -259,9 +255,7 @@ class FindbarMods {
         if (node == wrapper || node == foundMatches) continue;
         node.hidden = showMinimalUI;
       }
-      this.getElement("find-next").hidden = this.getElement(
-        "find-previous"
-      ).hidden = showMinimalUI;
+      this.getElement("find-next").hidden = this.getElement("find-previous").hidden = showMinimalUI;
       foundMatches.hidden = showMinimalUI || !foundMatches.value;
       tinyIndicator.style.display = showMinimalUI ? "none" : "inline-block";
       if (showMinimalUI) this._findField.classList.add("minimal");
@@ -270,10 +264,8 @@ class FindbarMods {
       this._updateDiacriticMatching();
       this._setEntireWord();
       this._setHighlightAll();
-      if (this.findMode == this.FIND_TYPEAHEAD)
-        this._findField.placeholder = this._fastFindStr;
-      else if (this.findMode == this.FIND_LINKS)
-        this._findField.placeholder = this._fastFindLinksStr;
+      if (this.findMode == this.FIND_TYPEAHEAD) this._findField.placeholder = this._fastFindStr;
+      else if (this.findMode == this.FIND_LINKS) this._findField.placeholder = this._fastFindLinksStr;
       else this._findField.placeholder = this._normalFindStr;
     };
     // override the native on-results function so it updates both labels.
@@ -286,10 +278,7 @@ class FindbarMods {
           ).replace("#1", result.limit);
           this._tinyIndicator.textContent = `${result.limit}+`;
         } else {
-          this._foundMatches.value = PluralForm.get(
-            result.total,
-            this.strBundle.GetStringFromName("FoundMatches")
-          )
+          this._foundMatches.value = PluralForm.get(result.total, this.strBundle.GetStringFromName("FoundMatches"))
             .replace("#1", result.current)
             .replace("#2", result.total);
           this._tinyIndicator.textContent = `${result.current}/${result.total}`;
@@ -310,16 +299,9 @@ class FindbarMods {
     if (!node) return;
     let findbar = node.tagName === "findbar" ? node : node.closest("findbar");
     if (!findbar) return;
-    if (e.currentTarget !== this.contextMenu)
-      return this.onSubmenuShowing(e, findbar);
-    this.contextMenu._menuitemHighlightAll.setAttribute(
-      "checked",
-      !!findbar._highlightAll
-    );
-    this.contextMenu._menuitemEntireWord.setAttribute(
-      "checked",
-      !!findbar._entireWord
-    );
+    if (e.currentTarget !== this.contextMenu) return this.onSubmenuShowing(e, findbar);
+    this.contextMenu._menuitemHighlightAll.setAttribute("checked", !!findbar._highlightAll);
+    this.contextMenu._menuitemEntireWord.setAttribute("checked", !!findbar._entireWord);
     if (findbar._quickFindTimeout) {
       clearTimeout(findbar._quickFindTimeout);
       findbar._quickFindTimeout = null;
@@ -338,21 +320,14 @@ class FindbarMods {
   // checking any of a radio menuitem's siblings will automatically uncheck it, just like a radio input.
   onSubmenuShowing(e, findbar) {
     if (e.target === this.contextMenu._menuMatchDiacriticsPopup) {
-      let diacriticsStatus =
-        Services.prefs.getIntPref("findbar.matchdiacritics", 0) ||
-        findbar._matchDiacritics;
-      let activeItem =
-        this.contextMenu._menuMatchDiacriticsPopup.children[diacriticsStatus];
+      let diacriticsStatus = Services.prefs.getIntPref("findbar.matchdiacritics", 0) || findbar._matchDiacritics;
+      let activeItem = this.contextMenu._menuMatchDiacriticsPopup.children[diacriticsStatus];
       activeItem.setAttribute("checked", true);
     }
     if (e.target === this.contextMenu._menuMatchCasePopup) {
       let caseStatus =
-        Services.prefs.getIntPref(
-          "accessibility.typeaheadfind.casesensitive",
-          0
-        ) || findbar._typeAheadCaseSensitive;
-      let activeItem =
-        this.contextMenu._menuMatchCasePopup.children[caseStatus];
+        Services.prefs.getIntPref("accessibility.typeaheadfind.casesensitive", 0) || findbar._typeAheadCaseSensitive;
+      let activeItem = this.contextMenu._menuMatchCasePopup.children[caseStatus];
       activeItem.setAttribute("checked", true);
     }
   }
@@ -370,11 +345,9 @@ class FindbarMods {
         if (
           e.keyCode == KeyEvent.DOM_VK_UP ||
           (e.keyCode == KeyEvent.DOM_VK_LEFT &&
-            document.defaultView.getComputedStyle(this.parentNode).direction ==
-              "ltr") ||
+            document.defaultView.getComputedStyle(this.parentNode).direction == "ltr") ||
           (e.keyCode == KeyEvent.DOM_VK_RIGHT &&
-            document.defaultView.getComputedStyle(this.parentNode).direction ==
-              "rtl")
+            document.defaultView.getComputedStyle(this.parentNode).direction == "rtl")
         ) {
           e.preventDefault();
           window.document.commandDispatcher.rewindFocus();
@@ -383,11 +356,9 @@ class FindbarMods {
         if (
           e.keyCode == KeyEvent.DOM_VK_DOWN ||
           (e.keyCode == KeyEvent.DOM_VK_RIGHT &&
-            document.defaultView.getComputedStyle(this.parentNode).direction ==
-              "ltr") ||
+            document.defaultView.getComputedStyle(this.parentNode).direction == "ltr") ||
           (e.keyCode == KeyEvent.DOM_VK_LEFT &&
-            document.defaultView.getComputedStyle(this.parentNode).direction ==
-              "rtl")
+            document.defaultView.getComputedStyle(this.parentNode).direction == "rtl")
         ) {
           e.preventDefault();
           window.document.commandDispatcher.advanceFocus();
@@ -395,8 +366,7 @@ class FindbarMods {
         }
       }
       // handle access keys
-      if (!e.charCode || e.charCode <= 32 || e.altKey || e.ctrlKey || e.metaKey)
-        return;
+      if (!e.charCode || e.charCode <= 32 || e.altKey || e.ctrlKey || e.metaKey) return;
       const charLower = String.fromCharCode(e.charCode).toLowerCase();
       if (this.accessKey.toLowerCase() == charLower) {
         this.click();
@@ -424,9 +394,7 @@ class FindbarMods {
     // there's also some CSS in my stylesheets that gives the findbar a smooth transition and starting animation and compresses the buttons and stuff. the effects of this might look really weird without those rules so I'd definitely either 1) look at uc-findbar.css, or 2) set usingDuskfox to false at the top of this script.
     findbar._findField.style.width = "20em";
     // we want the close button to be on the far right end of the findbar.
-    findbar._findField.parentNode.after(
-      findbar.querySelector(".findbar-closebutton")
-    );
+    findbar._findField.parentNode.after(findbar.querySelector(".findbar-closebutton"));
     // put it after the input box so we can use the ~ squiggly combinator
     findbar._findField.after(findbar._tinyIndicator);
     // move the match-case and entire-word buttons into the text field. uc-findbar.css turns these buttons into mini icons, same size as the next/previous buttons. this way we can fit everything important into one row.
@@ -439,9 +407,7 @@ class FindbarMods {
   // for a given findbar, move its label into the proper position.
   setLabelPosition(findbar) {
     let getBounds = window.windowUtils.getBoundsWithoutFlushing;
-    let distanceFromEdge =
-      getBounds(findbar).right -
-      getBounds(findbar.querySelector(".findbar-textbox")).right;
+    let distanceFromEdge = getBounds(findbar).right - getBounds(findbar.querySelector(".findbar-textbox")).right;
     findbar._tinyIndicator.style.right = `${distanceFromEdge + 1}px`;
   }
   // when a new tab is opened and the findbar somehow activated, a new findbar is born.

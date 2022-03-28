@@ -21,12 +21,7 @@
   };
 
   let { interfaces: Ci, manager: Cm } = Components;
-  if (!FileUtils)
-    ChromeUtils.defineModuleGetter(
-      this,
-      "FileUtils",
-      "resource://gre/modules/FileUtils.jsm"
-    );
+  if (!FileUtils) ChromeUtils.defineModuleGetter(this, "FileUtils", "resource://gre/modules/FileUtils.jsm");
 
   function findAboutConfig() {
     if (config.urlOverride)
@@ -39,49 +34,25 @@
     )
       // registerAboutConf.uc.js
       return "about:cfg";
-    if (
-      FileUtils.getDir("UChrm", [
-        "resources",
-        "aboutconfig",
-        "config.xhtml",
-      ]).exists()
-    )
+    if (FileUtils.getDir("UChrm", ["resources", "aboutconfig", "config.xhtml"]).exists())
       // fx-autoconfig
       return "chrome://userchrome/content/aboutconfig/config.xhtml";
-    if (
-      FileUtils.getDir("UChrm", [
-        "utils",
-        "aboutconfig",
-        "config.xhtml",
-      ]).exists()
-    )
+    if (FileUtils.getDir("UChrm", ["utils", "aboutconfig", "config.xhtml"]).exists())
       // earthlng's loader
       return "chrome://userchromejs/content/aboutconfig/config.xhtml";
-    if (
-      FileUtils.getDir("UChrm", [
-        "utils",
-        "aboutconfig",
-        "aboutconfig.xhtml",
-      ]).exists()
-    )
+    if (FileUtils.getDir("UChrm", ["utils", "aboutconfig", "aboutconfig.xhtml"]).exists())
       // xiaoxiaoflood's loader
       return "chrome://userchromejs/content/aboutconfig/aboutconfig.xhtml";
     else return "about:config"; // no about:config replacement found
   }
 
   async function createButton() {
-    const configStrings = await new Localization(
-      ["toolkit/about/config.ftl"],
-      true
-    ); // get fluent file for AboutConfig page
-    const advancedPrefsLabel = await configStrings.formatValue([
-      "about-config-page-title",
-    ]); // localize the "Advanced Preferences" string
+    const configStrings = await new Localization(["toolkit/about/config.ftl"], true); // get fluent file for AboutConfig page
+    const advancedPrefsLabel = await configStrings.formatValue(["about-config-page-title"]); // localize the "Advanced Preferences" string
     const { mainView } = PanelUI;
     const doc = mainView.ownerDocument;
     const settingsButton =
-      doc.getElementById("appMenu-settings-button") ??
-      doc.getElementById("appMenu-preferences-button");
+      doc.getElementById("appMenu-settings-button") ?? doc.getElementById("appMenu-preferences-button");
     const prefsButton = doc.createXULElement("toolbarbutton");
 
     prefsButton.preferredURL = findAboutConfig();
@@ -97,11 +68,9 @@
   }
 
   function init() {
-    PanelMultiView.getViewNode(document, "appMenu-multiView").addEventListener(
-      "ViewShowing",
-      createButton,
-      { once: true }
-    );
+    PanelMultiView.getViewNode(document, "appMenu-multiView").addEventListener("ViewShowing", createButton, {
+      once: true,
+    });
   }
 
   if (gBrowserInit.delayedStartupFinished) {
@@ -113,9 +82,6 @@
         init();
       }
     };
-    Services.obs.addObserver(
-      delayedListener,
-      "browser-delayed-startup-finished"
-    );
+    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
   }
 })();

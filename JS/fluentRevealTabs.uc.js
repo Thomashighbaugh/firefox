@@ -32,9 +32,7 @@
       gBrowser.tabContainer.addEventListener("TabOpen", (e) =>
         this.applyEffect(e.target.querySelector(".tab-content"), true)
       );
-      gBrowser.tabs.forEach((tab) =>
-        this.applyEffect(tab.querySelector(".tab-content"), true)
-      );
+      gBrowser.tabs.forEach((tab) => this.applyEffect(tab.querySelector(".tab-content"), true));
     }
 
     /**
@@ -42,26 +40,17 @@
      * @param {object} e (event)
      */
     handleEvent(e) {
-      let { gradientSize, lightColor, clickEffect } =
-        e.currentTarget.fluentRevealState; // grab the colors and behavior from the event. this allows us to apply different colors/behavior to different elements and makes the script more adaptable for future expansion or user extension.
+      let { gradientSize, lightColor, clickEffect } = e.currentTarget.fluentRevealState; // grab the colors and behavior from the event. this allows us to apply different colors/behavior to different elements and makes the script more adaptable for future expansion or user extension.
       let x = e.pageX - this.getOffset(e.currentTarget).left - window.scrollX; // calculate gradient display coordinates based on mouse and element coords.
       let y = e.pageY - this.getOffset(e.currentTarget).top - window.scrollY;
       let cssLightEffect = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${lightColor}, rgba(255,255,255,0), rgba(255,255,255,0))`; // the effect is actually applied to the element by setting its background-color value to this.
 
       switch (e.type) {
         case "mousemove":
-          if (this.shouldClear(e.currentTarget))
-            return this.clearEffect(e.currentTarget); // if the element is a tab, check if it's selected or pinned and check if the user options hide the effect on selected or pinned tabs. determines if we should avoid showing the effect on the element at the current time.
+          if (this.shouldClear(e.currentTarget)) return this.clearEffect(e.currentTarget); // if the element is a tab, check if it's selected or pinned and check if the user options hide the effect on selected or pinned tabs. determines if we should avoid showing the effect on the element at the current time.
           if (clickEffect && e.currentTarget.fluentRevealState.is_pressed)
             // mousemove events still trigger while the element is clicked. so if the click effect is enabled and the element is pressed, we want to apply a different effect than we normally would.
-            this.drawEffect(
-              e.currentTarget,
-              x,
-              y,
-              lightColor,
-              gradientSize,
-              cssLightEffect
-            );
+            this.drawEffect(e.currentTarget, x, y, lightColor, gradientSize, cssLightEffect);
           else this.drawEffect(e.currentTarget, x, y, lightColor, gradientSize); // normal hover effect.
           break;
 
@@ -70,22 +59,13 @@
           break;
 
         case "mousedown":
-          if (this.shouldClear(e.currentTarget))
-            return this.clearEffect(e.currentTarget); // again, check if it's selected or pinned
+          if (this.shouldClear(e.currentTarget)) return this.clearEffect(e.currentTarget); // again, check if it's selected or pinned
           e.currentTarget.fluentRevealState.is_pressed = true;
-          this.drawEffect(
-            e.currentTarget,
-            x,
-            y,
-            lightColor,
-            gradientSize,
-            cssLightEffect
-          );
+          this.drawEffect(e.currentTarget, x, y, lightColor, gradientSize, cssLightEffect);
           break;
 
         case "mouseup":
-          if (this.shouldClear(e.currentTarget))
-            return this.clearEffect(e.currentTarget);
+          if (this.shouldClear(e.currentTarget)) return this.clearEffect(e.currentTarget);
           e.currentTarget.fluentRevealState.is_pressed = false;
           this.drawEffect(e.currentTarget, x, y, lightColor, gradientSize);
           break;
@@ -126,12 +106,9 @@
      */
     applyEffect(element, isTab = false, options = this._options) {
       // you may pass an options object when calling this method, but the options object passed does not necessarily contain ALL the properties of the static options object at the top of the script. if you pass just {gradientSize, lightColor} then clickEffect would be undefined rather than true or false. undefined is falsy so it's parsed like false. but if the default (static) clickEffect option was set to true, then it should default to true when you don't pass it, not default to false. so we need to set each of these values equal to 1) the option in the passed options object if it exists, or 2) the option in the static options object. if we just said let {clickEffect, gradientSize, lightColor} = options; then any values not passed in the options object would default to false. instead we're gonna set each one individually. I haven't run into this issue before so please let me know if there's a faster/shorter way of doing this.
-      let { clickEffect } =
-        options.clickEffect === undefined ? this._options : options;
-      let { gradientSize } =
-        options.gradientSize === undefined ? this._options : options;
-      let { lightColor } =
-        options.lightColor === undefined ? this._options : options;
+      let { clickEffect } = options.clickEffect === undefined ? this._options : options;
+      let { gradientSize } = options.gradientSize === undefined ? this._options : options;
+      let { lightColor } = options.lightColor === undefined ? this._options : options;
 
       // cache the values on the element itself. this is how we can support different options for different elements, something the library doesn't support.
       element.fluentRevealState = {
@@ -200,10 +177,7 @@
     shouldClear(element) {
       if (!element.fluentRevealState.isTab) return false; // if it's not a tab then it never needs to be skipped
       let tab = element.tab || element.closest("tab"); // the effect isn't actually applied to the tab itself but to .tab-content, so traverse up to the actual tab element which holds properties like selected, pinned.
-      return (
-        (!this._options.showOnSelectedTab && tab.selected) ||
-        (!this._options.showOnPinnedTab && tab.pinned)
-      );
+      return (!this._options.showOnSelectedTab && tab.selected) || (!this._options.showOnPinnedTab && tab.pinned);
     }
 
     /**
@@ -253,9 +227,6 @@
         init(); // start everything
       }
     };
-    Services.obs.addObserver(
-      delayedListener,
-      "browser-delayed-startup-finished"
-    ); // when the main chrome modules are initialized, the "browser-delayed-startup-finished" notification is sent to observers. so by adding an observer we'll know when this happens and can respond to it.
+    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished"); // when the main chrome modules are initialized, the "browser-delayed-startup-finished" notification is sent to observers. so by adding an observer we'll know when this happens and can respond to it.
   }
 })();

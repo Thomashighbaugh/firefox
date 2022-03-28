@@ -9,9 +9,7 @@
 
 let EXPORTED_SYMBOLS = [];
 (function () {
-  const { Services } = ChromeUtils.import(
-    "resource://gre/modules/Services.jsm"
-  );
+  const { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
   class ToolboxProcessSheetLoader {
     constructor() {
       Services.obs.addObserver(this, "domwindowopened", false);
@@ -37,20 +35,13 @@ let EXPORTED_SYMBOLS = [];
         .getURLSpecFromDir(this.traverseToMainProfile(win, "UChrm"));
     }
     loadSheet(win, path, name, type) {
-      let sss = win.Cc["@mozilla.org/content/style-sheet-service;1"].getService(
-        win.Ci.nsIStyleSheetService
-      );
+      let sss = win.Cc["@mozilla.org/content/style-sheet-service;1"].getService(win.Ci.nsIStyleSheetService);
       try {
-        sss.loadAndRegisterSheet(
-          win.Services.io.newURI(path + name),
-          sss[type]
-        );
+        sss.loadAndRegisterSheet(win.Services.io.newURI(path + name), sss[type]);
       } catch (e) {}
     }
     unloadSheet(win, path, name, type) {
-      let sss = win.Cc["@mozilla.org/content/style-sheet-service;1"].getService(
-        win.Ci.nsIStyleSheetService
-      );
+      let sss = win.Cc["@mozilla.org/content/style-sheet-service;1"].getService(win.Ci.nsIStyleSheetService);
       try {
         sss.unegisterSheet(win.Services.io.newURI(path + name), sss[type]);
       } catch (e) {}
@@ -75,9 +66,7 @@ let EXPORTED_SYMBOLS = [];
       let win = document.defaultView;
       this.lastSubject.removeEventListener("DomContentLoaded", this, true);
       if (
-        !Services.dirsvc
-          .get("UChrm", Ci.nsIFile)
-          .target.includes("chrome_debugger_profile") ||
+        !Services.dirsvc.get("UChrm", Ci.nsIFile).target.includes("chrome_debugger_profile") ||
         !this.regex.test(win.location.href)
       )
         return;
@@ -89,9 +78,7 @@ let EXPORTED_SYMBOLS = [];
     _onWindowUninit(e) {
       let win = e.target;
       if (
-        !Services.dirsvc
-          .get("UChrm", Ci.nsIFile)
-          .target.includes("chrome_debugger_profile") ||
+        !Services.dirsvc.get("UChrm", Ci.nsIFile).target.includes("chrome_debugger_profile") ||
         !this.regex.test(win.location.href)
       )
         return;

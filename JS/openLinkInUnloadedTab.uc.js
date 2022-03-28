@@ -31,8 +31,7 @@ const unloadedTabMenuL10n = {
       this.useLinkPref = `userChrome.openLinkInUnloadedTab.use_link_text_as_tab_title_when_unknown`;
       this.initPref(this.useLinkPref, true);
 
-      this.QUERY_TYPE_BOOKMARKS =
-        Ci.nsINavHistoryQueryOptions.QUERY_TYPE_BOOKMARKS;
+      this.QUERY_TYPE_BOOKMARKS = Ci.nsINavHistoryQueryOptions.QUERY_TYPE_BOOKMARKS;
       this.QUERY_TYPE_HISTORY = Ci.nsINavHistoryQueryOptions.QUERY_TYPE_HISTORY;
 
       this.placesMenuOpenUnloaded = this.create(document, "menuitem", {
@@ -112,8 +111,7 @@ const unloadedTabMenuL10n = {
     handleEvent(e) {
       switch (e.type) {
         case "popuphidden":
-          if (e.originalTarget === this.contentContextMenu)
-            this.contentMenuOpenLinkUnloaded.hidden = true;
+          if (e.originalTarget === this.contentContextMenu) this.contentMenuOpenLinkUnloaded.hidden = true;
           break;
         case "popupshowing":
           switch (e.target) {
@@ -142,50 +140,32 @@ const unloadedTabMenuL10n = {
         this.placesMenuOpenContainer?.hidden &&
         this.placesMenuOpenBookmarkContainer?.hidden &&
         this.placesMenuOpenBookmarkLinks?.hidden;
-      this.placesMenuOpenAllLinksUnloaded.disabled =
-        this.placesMenuOpenAllLinks?.disabled;
-      this.placesMenuOpenAllLinksUnloaded.hidden =
-        this.placesMenuOpenAllLinks?.hidden;
-      this.placesMenuOpenUnloaded.disabled =
-        this.placesMenuOpenNewTab?.disabled;
+      this.placesMenuOpenAllLinksUnloaded.disabled = this.placesMenuOpenAllLinks?.disabled;
+      this.placesMenuOpenAllLinksUnloaded.hidden = this.placesMenuOpenAllLinks?.hidden;
+      this.placesMenuOpenUnloaded.disabled = this.placesMenuOpenNewTab?.disabled;
       this.placesMenuOpenUnloaded.hidden = this.placesMenuOpenNewTab?.hidden;
     }
     onSyncedContextMenuShowing(_e) {
       this.syncedContextMenuInited = true;
-      this.syncedMenuOpenAllUnloaded.disabled =
-        this.syncedMenuOpenAll?.disabled;
+      this.syncedMenuOpenAllUnloaded.disabled = this.syncedMenuOpenAll?.disabled;
       this.syncedMenuOpenAllUnloaded.hidden = this.syncedMenuOpenAll?.hidden;
       this.syncedMenuOpenUnloaded.disabled = this.syncedMenuOpenTab?.disabled;
       this.syncedMenuOpenUnloaded.hidden = this.syncedMenuOpenTab?.hidden;
     }
     initPref(pref, bool) {
-      if (!Services.prefs.prefHasUserValue(pref))
-        Services.prefs.setBoolPref(pref, bool);
+      if (!Services.prefs.prefHasUserValue(pref)) Services.prefs.setBoolPref(pref, bool);
     }
     get useLinkAsTabTitle() {
       return Services.prefs.getBoolPref(this.useLinkPref, true);
     }
     get placesContextMenu() {
-      return (
-        this._placesContextMenu ||
-        (this._placesContextMenu = document.getElementById("placesContext"))
-      );
+      return this._placesContextMenu || (this._placesContextMenu = document.getElementById("placesContext"));
     }
     get contentContextMenu() {
-      return (
-        this._contentContextMenu ||
-        (this._contentContextMenu = document.getElementById(
-          "contentAreaContextMenu"
-        ))
-      );
+      return this._contentContextMenu || (this._contentContextMenu = document.getElementById("contentAreaContextMenu"));
     }
     get syncedContextMenu() {
-      return (
-        this._syncedContextMenu ||
-        (this._syncedContextMenu = document.getElementById(
-          "SyncedTabsSidebarContext"
-        ))
-      );
+      return this._syncedContextMenu || (this._syncedContextMenu = document.getElementById("SyncedTabsSidebarContext"));
     }
     get syncedTabsStore() {
       return sidebar.syncedTabsDeckComponent._syncedTabsListStore;
@@ -194,72 +174,53 @@ const unloadedTabMenuL10n = {
       return this.syncedTabsStore.data[this.syncedTabsStore._selectedRow[0]];
     }
     get selectedSyncedTab() {
-      return this.selectedSyncedRow.tabs?.[
-        this.syncedTabsStore._selectedRow[1]
-      ];
+      return this.selectedSyncedRow.tabs?.[this.syncedTabsStore._selectedRow[1]];
     }
     get placesMenuOpenContainer() {
       return (
         this._placesMenuOpenContainer ||
-        (this._placesMenuOpenContainer = document.getElementById(
-          "placesContext_openContainer:tabs"
-        ))
+        (this._placesMenuOpenContainer = document.getElementById("placesContext_openContainer:tabs"))
       );
     }
     get placesMenuOpenBookmarkContainer() {
       return (
         this._placesMenuOpenBookmarkContainer ||
-        (this._placesMenuOpenBookmarkContainer = document.getElementById(
-          "placesContext_openBookmarkContainer:tabs"
-        ))
+        (this._placesMenuOpenBookmarkContainer = document.getElementById("placesContext_openBookmarkContainer:tabs"))
       );
     }
     get placesMenuOpenBookmarkLinks() {
       return (
         this._placesMenuOpenBookmarkLinks ||
-        (this._placesMenuOpenBookmarkLinks = document.getElementById(
-          "placesContext_openBookmarkLinks:tabs"
-        ))
+        (this._placesMenuOpenBookmarkLinks = document.getElementById("placesContext_openBookmarkLinks:tabs"))
       );
     }
     get placesMenuOpenAllLinks() {
       return (
         this._placesMenuOpenAllLinks ||
-        (this._placesMenuOpenAllLinks = document.getElementById(
-          "placesContext_openLinks:tabs"
-        ))
+        (this._placesMenuOpenAllLinks = document.getElementById("placesContext_openLinks:tabs"))
       );
     }
     get placesMenuOpenNewTab() {
       return (
         this._placesMenuOpenNewTab ||
-        (this._placesMenuOpenNewTab = document.getElementById(
-          "placesContext_open:newtab"
-        ))
+        (this._placesMenuOpenNewTab = document.getElementById("placesContext_open:newtab"))
       );
     }
     get syncedMenuOpenAll() {
       return (
         this._syncedMenuOpenAll ||
-        (this._syncedMenuOpenAll = this.syncedContextMenu.querySelector(
-          "#syncedTabsOpenAllInTabs"
-        ))
+        (this._syncedMenuOpenAll = this.syncedContextMenu.querySelector("#syncedTabsOpenAllInTabs"))
       );
     }
     get syncedMenuOpenTab() {
       return (
         this._syncedMenuOpenTab ||
-        (this._syncedMenuOpenTab = this.syncedContextMenu.querySelector(
-          "#syncedTabsOpenSelectedInTab"
-        ))
+        (this._syncedMenuOpenTab = this.syncedContextMenu.querySelector("#syncedTabsOpenSelectedInTab"))
       );
     }
     get contentMenuOpenLink() {
       return (
-        this._contentMenuOpenLink ||
-        (this._contentMenuOpenLink = document.getElementById(
-          "context-openlinkintab"
-        ))
+        this._contentMenuOpenLink || (this._contentMenuOpenLink = document.getElementById("context-openlinkintab"))
       );
     }
     getActivePlacesView(popup) {
@@ -287,15 +248,12 @@ const unloadedTabMenuL10n = {
     }
     openSyncedTabUnloaded(popup) {
       if (!this.syncedContextMenuInited) return;
-      if (popup.triggerNode?.closest(".tabs-container"))
-        this.openTab(this.selectedSyncedTab, { syncedTabs: true });
+      if (popup.triggerNode?.closest(".tabs-container")) this.openTab(this.selectedSyncedTab, { syncedTabs: true });
     }
     openAllSyncedFromDevice(popup) {
       if (!this.syncedContextMenuInited) return;
       if (popup.triggerNode?.closest(".tabs-container"))
-        this.selectedSyncedRow.tabs.forEach((item) =>
-          this.openTab(item, { bulkOpen: true, syncedTabs: true })
-        );
+        this.selectedSyncedRow.tabs.forEach((item) => this.openTab(item, { bulkOpen: true, syncedTabs: true }));
     }
     async openTab(item, params = {}) {
       let url = typeof item === "object" ? item.url || item.uri : item;
@@ -314,8 +272,7 @@ const unloadedTabMenuL10n = {
             bulkOrderedOpen: true,
           };
         tabParams.triggeringPrincipal =
-          location.href === `chrome://browser/content/browser.xhtml` &&
-          !params.syncedTabs
+          location.href === `chrome://browser/content/browser.xhtml` && !params.syncedTabs
             ? gBrowser.selectedBrowser.contentPrincipal
             : Services.scriptSecurityManager.getSystemPrincipal();
       }
@@ -332,13 +289,8 @@ const unloadedTabMenuL10n = {
         entries: [
           {
             url: url,
-            title:
-              item?.title ||
-              info?.title ||
-              (this.useLinkAsTabTitle && params.linkText),
-            triggeringPrincipal_base64: this.E10SUtils.serializePrincipal(
-              tabParams.triggeringPrincipal
-            ),
+            title: item?.title || info?.title || (this.useLinkAsTabTitle && params.linkText),
+            triggeringPrincipal_base64: this.E10SUtils.serializePrincipal(tabParams.triggeringPrincipal),
           },
         ],
         lastAccessed: tab.lastAccessed,
@@ -350,54 +302,32 @@ const unloadedTabMenuL10n = {
         "SSTabRestoring",
         function () {
           isReady = true;
-          win.unloadedTabMenu.maybeSetIcon(
-            tab,
-            iconURL,
-            isReady,
-            tabParams.triggeringPrincipal
-          );
+          win.unloadedTabMenu.maybeSetIcon(tab, iconURL, isReady, tabParams.triggeringPrincipal);
         },
         { once: true }
       );
       let tempURL =
-        (await PlacesUtils.promiseFaviconData(uri.spec, 256).then(
-          (data) => data?.uri?.spec
-        )) || tentativeIcon;
+        (await PlacesUtils.promiseFaviconData(uri.spec, 256).then((data) => data?.uri?.spec)) || tentativeIcon;
       if (tempURL) {
         let blob = await fetch(tempURL)
           .then((r) => r.blob())
           .catch((e) => {
-            if (
-              params.fromContent &&
-              gContextMenu.linkURI.host ===
-                gContextMenu.contentData.principal.host
-            ) {
+            if (params.fromContent && gContextMenu.linkURI.host === gContextMenu.contentData.principal.host) {
               iconURL = gBrowser.getTabForBrowser(gContextMenu.browser).image;
-              win.unloadedTabMenu.maybeSetIcon(
-                tab,
-                iconURL,
-                isReady,
-                tabParams.triggeringPrincipal
-              );
+              win.unloadedTabMenu.maybeSetIcon(tab, iconURL, isReady, tabParams.triggeringPrincipal);
               return;
             }
           });
         let reader = new FileReader();
         reader.onloadend = function () {
           iconURL = reader.result;
-          win.unloadedTabMenu.maybeSetIcon(
-            tab,
-            iconURL,
-            isReady,
-            tabParams.triggeringPrincipal
-          );
+          win.unloadedTabMenu.maybeSetIcon(tab, iconURL, isReady, tabParams.triggeringPrincipal);
         };
         reader.readAsDataURL(blob);
       }
     }
     maybeSetIcon(tab, iconURL, isReady, principal) {
-      if (iconURL && isReady)
-        tab.ownerGlobal.gBrowser.setIcon(tab, iconURL, null, principal);
+      if (iconURL && isReady) tab.ownerGlobal.gBrowser.setIcon(tab, iconURL, null, principal);
     }
     getInfoFromHistory(aURI, aQueryType) {
       let options = PlacesUtils.history.getNewQueryOptions();
@@ -427,11 +357,7 @@ const unloadedTabMenuL10n = {
   function init() {
     window.unloadedTabMenu = new UnloadedTabMenuBase();
   }
-  if (
-    location.href !== `chrome://browser/content/browser.xhtml` ||
-    gBrowserInit.delayedStartupFinished
-  )
-    init();
+  if (location.href !== `chrome://browser/content/browser.xhtml` || gBrowserInit.delayedStartupFinished) init();
   else {
     let delayedListener = (subject, topic) => {
       if (topic == "browser-delayed-startup-finished" && subject == window) {
@@ -439,9 +365,6 @@ const unloadedTabMenuL10n = {
         init();
       }
     };
-    Services.obs.addObserver(
-      delayedListener,
-      "browser-delayed-startup-finished"
-    );
+    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
   }
 })();

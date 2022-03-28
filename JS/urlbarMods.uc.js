@@ -15,7 +15,6 @@
       // when you click & drag the identity box in the urlbar, it lets you drag and drop the URL into text fields, the tab bar, desktop, etc. while dragging it shows a little white box with the URL and favicon as the drag image. this can't be styled with CSS because it's drawn by the canvas 2D API. but we can easily change the function so that it sets the background and text colors equal to some CSS variables. it uses --tooltip-bgcolor, --tooltip-color, and --tooltip-border-color, or if those don't exist, it uses the vanilla variables --arrowpanel-background, --arrowpanel-color, and --arrowpanel-border-color. so if you use my theme duskFox it'll look similar to a tooltip. if you don't use my theme it'll look similar to a popup panel.
       "style identity icon drag box": true,
 
-     
       "add new tooltips and classes for identity icon": true,
 
       // my theme increases the prominence of the "type icon" in urlbar results. for bookmarks, this is a star. for open tabs, it's a tab icon. for remote tabs, aka synced tabs, it's a sync icon. with this option enabled, however, instead of showing a sync icon it will show a device icon specific to the type of device. so if the tab was synced from a cell phone, the type icon will show a phone. if it was synced from a laptop, it'll show a laptop, etc. the script will add some CSS to set the icons, but it won't change the way type icons are layed out. that's particular to my theme and it's purely a CSS issue, so I don't want the script to get involved in that. my urlbar-results.css file makes the type icon look basically like a 2nd favicon. it goes next to the favicon, rather than displaying on top of it. the script's CSS just changes the icon, so it'll fit with however you have type icons styled. if you don't use my theme but you want type icons to look more prominent, see urlbar-results.css and search "type-icon"
@@ -31,26 +30,16 @@
       "underline whitespace results": true,
     };
     constructor() {
-      if (UrlbarMods.config["add new tooltips and classes for identity icon"])
-        this.extendIdentityIcons();
-      if (UrlbarMods.config["style identity icon drag box"])
-        this.styleIdentityIconDragBox();
-      if (UrlbarMods.config["restore one-offs context menu"])
-        this.restoreOneOffsContextMenu();
-      if (UrlbarMods.config["show device icon in remote tab urlbar results"])
-        this.urlbarResultsDeviceIcon();
-      if (UrlbarMods.config["disable urlbar intervention tips"])
-        this.disableUrlbarInterventions();
-      if (UrlbarMods.config["sort urlbar results consistently"])
-        this.urlbarResultsSorting();
-      if (UrlbarMods.config["underline whitespace results"])
-        this.underlineSpaceResults();
+      if (UrlbarMods.config["add new tooltips and classes for identity icon"]) this.extendIdentityIcons();
+      if (UrlbarMods.config["style identity icon drag box"]) this.styleIdentityIconDragBox();
+      if (UrlbarMods.config["restore one-offs context menu"]) this.restoreOneOffsContextMenu();
+      if (UrlbarMods.config["show device icon in remote tab urlbar results"]) this.urlbarResultsDeviceIcon();
+      if (UrlbarMods.config["disable urlbar intervention tips"]) this.disableUrlbarInterventions();
+      if (UrlbarMods.config["sort urlbar results consistently"]) this.urlbarResultsSorting();
+      if (UrlbarMods.config["underline whitespace results"]) this.underlineSpaceResults();
     }
     get urlbarOneOffs() {
-      return (
-        this._urlbarOneOffs ||
-        (this._urlbarOneOffs = gURLBar.view.oneOffSearchButtons)
-      );
+      return this._urlbarOneOffs || (this._urlbarOneOffs = gURLBar.view.oneOffSearchButtons);
     }
     async extendIdentityIcons() {
       // Load the fluent strings into document.l10n if they haven't already been loaded.
@@ -81,14 +70,7 @@
         // So we need to remove them programmatically in a way that works for any and all translations.
         // Therefore we'll use unicode property escapes with the new property Sentence_Terminal.
         // This should include periods and every equivalent unicode character for sentence terminating punctuation.
-        .then((arr) =>
-          arr.map((str) =>
-            str.replace(
-              /(^\p{Sentence_Terminal}+)|(\p{Sentence_Terminal}+$)/gu,
-              ""
-            )
-          )
-        );
+        .then((arr) => arr.map((str) => str.replace(/(^\p{Sentence_Terminal}+)|(\p{Sentence_Terminal}+$)/gu, "")));
       gIdentityHandler._fluentStrings = {
         chromeUI,
         localResource,
@@ -111,32 +93,24 @@
         } else if (this._pageExtensionPolicy) {
           this._identityBox.className = "extensionPage";
           let extensionName = this._pageExtensionPolicy.name;
-          icon_label = gNavigatorBundle.getFormattedString(
-            "identity.extension.label",
-            [extensionName]
-          );
+          icon_label = gNavigatorBundle.getFormattedString("identity.extension.label", [extensionName]);
         } else if (this._uriHasHost && this._isSecureConnection) {
           this._identityBox.className = "verifiedDomain";
           if (this._isMixedActiveContentBlocked) {
             this._identityBox.classList.add("mixedActiveBlocked");
-            tooltip =
-              this._fluentStrings.mixedDisplayContentLoadedActiveBlocked;
+            tooltip = this._fluentStrings.mixedDisplayContentLoadedActiveBlocked;
           } else if (!this._isCertUserOverridden)
-            tooltip = gNavigatorBundle.getFormattedString(
-              "identity.identified.verifier",
-              [this.getIdentityData().caOrg]
-            );
+            tooltip = gNavigatorBundle.getFormattedString("identity.identified.verifier", [
+              this.getIdentityData().caOrg,
+            ]);
         } else if (this._isBrokenConnection) {
           this._identityBox.className = "unknownIdentity";
           if (this._isMixedActiveContentLoaded) {
             this._identityBox.classList.add("mixedActiveContent");
             tooltip = this._fluentStrings.mixedActiveContent;
           } else if (this._isMixedActiveContentBlocked) {
-            this._identityBox.classList.add(
-              "mixedDisplayContentLoadedActiveBlocked"
-            );
-            tooltip =
-              this._fluentStrings.mixedDisplayContentLoadedActiveBlocked;
+            this._identityBox.classList.add("mixedDisplayContentLoadedActiveBlocked");
+            tooltip = this._fluentStrings.mixedDisplayContentLoadedActiveBlocked;
           } else if (this._isMixedPassiveContentLoaded) {
             this._identityBox.classList.add("mixedDisplayContent");
             tooltip = this._fluentStrings.mixedDisplayContent;
@@ -169,17 +143,13 @@
         } else {
           let warnOnInsecure =
             this._insecureConnectionIconEnabled ||
-            (this._insecureConnectionIconPBModeEnabled &&
-              PrivateBrowsingUtils.isWindowPrivate(window));
+            (this._insecureConnectionIconPBModeEnabled && PrivateBrowsingUtils.isWindowPrivate(window));
           let className = warnOnInsecure ? "notSecure" : "unknownIdentity";
           this._identityBox.className = className;
-          tooltip = warnOnInsecure
-            ? gNavigatorBundle.getString("identity.notSecure.tooltip")
-            : "";
+          tooltip = warnOnInsecure ? gNavigatorBundle.getString("identity.notSecure.tooltip") : "";
           let warnTextOnInsecure =
             this._insecureConnectionTextEnabled ||
-            (this._insecureConnectionTextPBModeEnabled &&
-              PrivateBrowsingUtils.isWindowPrivate(window));
+            (this._insecureConnectionTextPBModeEnabled && PrivateBrowsingUtils.isWindowPrivate(window));
           if (warnTextOnInsecure) {
             icon_label = gNavigatorBundle.getString("identity.notSecure.label");
             this._identityBox.classList.add("notSecureText");
@@ -187,23 +157,15 @@
         }
         if (this._isCertUserOverridden) {
           this._identityBox.classList.add("certUserOverridden");
-          tooltip = gNavigatorBundle.getString(
-            "identity.identified.verified_by_you"
-          );
+          tooltip = gNavigatorBundle.getString("identity.identified.verified_by_you");
         }
-        this._updateAttribute(
-          this._identityIcon,
-          "lock-icon-gray",
-          this._useGrayLockIcon
-        );
+        this._updateAttribute(this._identityIcon, "lock-icon-gray", this._useGrayLockIcon);
         this._identityIcon.setAttribute("tooltiptext", tooltip);
         if (this._pageExtensionPolicy) {
           let extensionName = this._pageExtensionPolicy.name;
           this._identityIcon.setAttribute(
             "tooltiptext",
-            gNavigatorBundle.getFormattedString("identity.extension.tooltip", [
-              extensionName,
-            ])
+            gNavigatorBundle.getFormattedString("identity.extension.tooltip", [extensionName])
           );
         }
         this._identityIconLabel.setAttribute("tooltiptext", tooltip);
@@ -233,24 +195,17 @@
       }
       // draw a rectangle with rounded corners
       function roundRect(ctx, x, y, width, height, radius = 5, fill, stroke) {
-        if (typeof radius === "number")
-          radius = { tl: radius, tr: radius, br: radius, bl: radius };
+        if (typeof radius === "number") radius = { tl: radius, tr: radius, br: radius, bl: radius };
         else {
           let defaultRadius = { tl: 0, tr: 0, br: 0, bl: 0 };
-          for (let side in defaultRadius)
-            radius[side] = radius[side] || defaultRadius[side];
+          for (let side in defaultRadius) radius[side] = radius[side] || defaultRadius[side];
         }
         ctx.beginPath();
         ctx.moveTo(x + radius.tl, y);
         ctx.lineTo(x + width - radius.tr, y);
         ctx.quadraticCurveTo(x + width, y, x + width, y + radius.tr);
         ctx.lineTo(x + width, y + height - radius.br);
-        ctx.quadraticCurveTo(
-          x + width,
-          y + height,
-          x + width - radius.br,
-          y + height
-        );
+        ctx.quadraticCurveTo(x + width, y + height, x + width - radius.br, y + height);
         ctx.lineTo(x + radius.bl, y + height);
         ctx.quadraticCurveTo(x, y + height, x, y + height - radius.bl);
         ctx.lineTo(x, y + radius.tl);
@@ -274,10 +229,7 @@
               /(let backgroundColor = ).*;/,
               `$1varToHex("var(--tooltip-bgcolor, var(--arrowpanel-background))");`
             )
-            .replace(
-              /(let textColor = ).*;/,
-              `$1varToHex("var(--tooltip-color, var(--arrowpanel-color))");`
-            )
+            .replace(/(let textColor = ).*;/, `$1varToHex("var(--tooltip-color, var(--arrowpanel-color))");`)
             .replace(/ctx\.fillStyle = backgroundColor;/, ``)
             .replace(
               /ctx\.fillRect.*;/,
@@ -297,11 +249,7 @@
         "services.sync.syncedTabs.showRemoteIcons",
         true
       );
-      XPCOMUtils.defineLazyModuleGetter(
-        this,
-        "UrlbarResult",
-        "resource:///modules/UrlbarResult.jsm"
-      );
+      XPCOMUtils.defineLazyModuleGetter(this, "UrlbarResult", "resource:///modules/UrlbarResult.jsm");
       // these variables look unused but they're for the functions that will be modified dynamically and evaluated later like provider.startQuery.toSource()
       let showRemoteIconsPref = this.showRemoteIconsPref;
       let UrlbarResult = this.UrlbarResult;
@@ -313,12 +261,8 @@
       function getUniqueId(prefix) {
         return prefix + (gUniqueIdSerial++ % 9999);
       }
-      let provider = gURLBar.view.controller.manager.providers.find(
-        (provider) => provider.name === "RemoteTabs"
-      );
-      UrlbarUtils.RESULT_PAYLOAD_SCHEMA[
-        UrlbarUtils.RESULT_TYPE.REMOTE_TAB
-      ].properties.clientType = {
+      let provider = gURLBar.view.controller.manager.providers.find((provider) => provider.name === "RemoteTabs");
+      UrlbarUtils.RESULT_PAYLOAD_SCHEMA[UrlbarUtils.RESULT_TYPE.REMOTE_TAB].properties.clientType = {
         type: "string",
       };
       let src1 = provider.startQuery.toSource();
@@ -329,55 +273,39 @@
             provider.startQuery
               .toSource()
               .replace(/async startQuery/, ``)
-              .replace(
-                /(device\: client\.name\,)/,
-                `$1 clientType: client.clientType,`
-              )
+              .replace(/(device\: client\.name\,)/, `$1 clientType: client.clientType,`)
         );
       if (!src2.includes("result.payload.clientType"))
         eval(
           `gURLBar.view._updateRow = function ` +
             gURLBar.view._updateRow
               .toSource()
-              .replace(
-                /(item\.removeAttribute\(\"stale\"\)\;)/,
-                `$1 item.removeAttribute("clientType");`
-              )
+              .replace(/(item\.removeAttribute\(\"stale\"\)\;)/, `$1 item.removeAttribute("clientType");`)
               .replace(
                 /(item\.setAttribute\(\"type\"\, \"remotetab\"\)\;)/,
                 `$1 if (result.payload.clientType) item.setAttribute("clientType", result.payload.clientType);`
               )
         );
       let css = `.urlbarView-row[type="remotetab"] .urlbarView-type-icon{background:var(--device-icon,url("chrome://browser/skin/sync.svg")) center/contain no-repeat;}.urlbarView-row[type="remotetab"][clientType="phone"]{--device-icon:url("chrome://browser/skin/device-phone.svg");}.urlbarView-row[type="remotetab"][clientType="tablet"]{--device-icon:url("chrome://browser/skin/device-tablet.svg");}.urlbarView-row[type="remotetab"][clientType="desktop"]{--device-icon:url("chrome://browser/skin/device-desktop.svg");}.urlbarView-row[type="remotetab"][clientType="tv"]{--device-icon:url("chrome://browser/skin/device-tv.svg");}.urlbarView-row[type="remotetab"][clientType="vr"]{--device-icon:url("chrome://browser/skin/device-vr.svg");}`;
-      let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(
-        Ci.nsIStyleSheetService
-      );
-      let uri = makeURI(
-        "data:text/css;charset=UTF=8," + encodeURIComponent(css)
-      );
+      let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
+      let uri = makeURI("data:text/css;charset=UTF=8," + encodeURIComponent(css));
       if (sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) return;
       sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
     }
     disableUrlbarInterventions() {
       let manager = gURLBar.controller.manager;
-      let interventions = manager.providers.find(
-        (provider) => provider.name === "UrlbarProviderInterventions"
-      );
+      let interventions = manager.providers.find((provider) => provider.name === "UrlbarProviderInterventions");
       if (interventions) manager.unregisterProvider(interventions);
     }
     urlbarResultsSorting() {
-      let UnifiedComplete =
-        gURLBar.view.controller.manager.muxers.get("UnifiedComplete");
+      let UnifiedComplete = gURLBar.view.controller.manager.muxers.get("UnifiedComplete");
       let sortSrc = UnifiedComplete.sort.toSource();
       if (!sortSrc.includes("getLogger"))
         eval(
           `UnifiedComplete.sort = function ` +
             sortSrc
               .replace(/sort/, ``)
-              .replace(
-                /logger/,
-                `UrlbarUtils.getLogger({ prefix: "MuxerUnifiedComplete" })`
-              )
+              .replace(/logger/, `UrlbarUtils.getLogger({ prefix: "MuxerUnifiedComplete" })`)
               .replace(
                 /showSearchSuggestionsFirst\: true/,
                 `showSearchSuggestionsFirst: UrlbarPrefs.get("showSearchSuggestionsFirst")`
@@ -385,11 +313,7 @@
         );
     }
     underlineSpaceResults() {
-      gURLBar.view._addTextContentWithHighlights = function (
-        node,
-        text,
-        highlights
-      ) {
+      gURLBar.view._addTextContentWithHighlights = function (node, text, highlights) {
         node.textContent = "";
         if (!text) return;
         if (/^\s{2,}$/.test(text) && !highlights.length) {
@@ -400,17 +324,10 @@
         let index = 0;
         for (let [highlightIndex, highlightLength] of highlights) {
           if (highlightIndex - index > 0)
-            node.appendChild(
-              this.document.createTextNode(
-                text.substring(index, highlightIndex)
-              )
-            );
+            node.appendChild(this.document.createTextNode(text.substring(index, highlightIndex)));
           if (highlightLength > 0) {
             let strong = this._createElement("strong");
-            strong.textContent = text.substring(
-              highlightIndex,
-              highlightIndex + highlightLength
-            );
+            strong.textContent = text.substring(highlightIndex, highlightIndex + highlightLength);
             node.appendChild(strong);
           }
           index = highlightIndex + highlightLength;
@@ -427,9 +344,6 @@
         new UrlbarMods();
       }
     };
-    Services.obs.addObserver(
-      delayedListener,
-      "browser-delayed-startup-finished"
-    );
+    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
   }
 })();

@@ -1,47 +1,37 @@
-
+/* ______                                       */
+/* |      |.-----.--------.--------.-----.-----. */
+/* |   ---||  _  |        |        |  _  |     | */
+/* |______||_____|__|__|__|__|__|__|_____|__|__| */
+/* ------------------------------------------------- */
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 @namespace html "http://www.w3.org/1999/xhtml";
 
-/*= Proton Commons ===========================================================*/
+/* ----------------- Proton Commons ---------------- */
 @-moz-document url("chrome://global/content/commonDialog.xhtml"),
   url("chrome://pippki/content/editcacert.xhtml"),
   url("chrome://pippki/content/deletecert.xhtml"),
   url("chrome://pippki/content/exceptionDialog.xhtml"),
   url("chrome://mozapps/content/downloads/unknownContentType.xhtml"),
   url("chrome://global/content/appPicker.xhtml"),
-  url("chrome://browser/content/pageinfo/pageInfo.xhtml") {
-  /*- Overwrite --------------------------------------------------------------*/
-  @media (-moz-toolbar-prefers-color-scheme: dark),
-    (prefers-color-scheme: dark) {
+  url("chrome://browser/content/pageinfo/pageInfo.xhtml")
+{
+  /* ------------------- Overwrite ------------------- */
+  @media (-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
     :root {
-      --in-content-page-background: #42414d;
+      --in-content-page-background: #323643;
     }
   }
 
   :root:not(:-moz-lwtheme),
   :root[lwt-default-theme-in-dark-mode] {
-    --checkbox-unchecked-bgcolor: var(
-      --in-content-button-background
-    ) !important;
-    --checkbox-unchecked-hover-bgcolor: var(
-      --in-content-button-background-hover
-    ) !important;
-    --checkbox-unchecked-active-bgcolor: var(
-      --in-content-button-background-active
-    ) !important;
-    --checkbox-checked-bgcolor: var(
-      --in-content-primary-button-background
-    ) !important;
-    --checkbox-checked-color: var(
-      --in-content-primary-button-text-color
-    ) !important;
-    --checkbox-checked-hover-bgcolor: var(
-      --in-content-primary-button-background-hover
-    ) !important;
-    --checkbox-checked-active-bgcolor: var(
-      --in-content-primary-button-background-active
-    ) !important;
+    --checkbox-unchecked-bgcolor: var(--in-content-button-background) !important;
+    --checkbox-unchecked-hover-bgcolor: var(--in-content-button-background-hover) !important;
+    --checkbox-unchecked-active-bgcolor: var(--in-content-button-background-active) !important;
+    --checkbox-checked-bgcolor: var(--in-content-primary-button-background) !important;
+    --checkbox-checked-color: var(--in-content-primary-button-text-color) !important;
+    --checkbox-checked-hover-bgcolor: var(--in-content-primary-button-background-hover) !important;
+    --checkbox-checked-active-bgcolor: var(--in-content-primary-button-background-active) !important;
   }
 
   /*- Dialog -----------------------------------------------------------------*/
@@ -70,8 +60,7 @@
     min-height: 32px !important;
     border: 1px solid transparent !important; /* shows up in high-contrast mode */
     border-radius: var(--in-content-button-border-radius) !important;
-    padding: var(--in-content-button-vertical-padding)
-      var(--in-content-button-horizontal-padding) !important;
+    padding: var(--in-content-button-vertical-padding) var(--in-content-button-horizontal-padding) !important;
 
     min-height: 32px !important;
     /* Use the same margin of other elements for the alignment */
@@ -123,15 +112,11 @@
     color: var(--in-content-primary-button-text-color) !important;
   }
   xul|button[default]:not([disabled="true"]):hover {
-    background-color: var(
-      --in-content-primary-button-background-hover
-    ) !important;
+    background-color: var(--in-content-primary-button-background-hover) !important;
     color: var(--in-content-primary-button-text-color) !important;
   }
   xul|button[default]:not([disabled="true"]):hover:active {
-    background-color: var(
-      --in-content-primary-button-background-active
-    ) !important;
+    background-color: var(--in-content-primary-button-background-active) !important;
   }
 
   xul|button[disabled="true"],
@@ -202,16 +187,12 @@
   }
 
   xul|radio:not([disabled="true"])[selected]:hover > xul|*.radio-check {
-    background-color: var(
-      --in-content-primary-button-background-hover
-    ) !important;
+    background-color: var(--in-content-primary-button-background-hover) !important;
     color: var(--in-content-primary-button-text-color-hover) !important;
   }
 
   xul|radio:not([disabled="true"])[selected]:hover:active > xul|*.radio-check {
-    background-color: var(
-      --in-content-primary-button-background-active
-    ) !important;
+    background-color: var(--in-content-primary-button-background-active) !important;
   }
 
   xul|*.radio-label-box {
@@ -281,19 +262,13 @@
 
   .checkbox-check[checked] {
     border-color: var(--checkbox-checked-border-color, transparent) !important;
-    background-color: var(
-      --checkbox-checked-bgcolor,
-      -moz-accent-color
-    ) !important;
+    background-color: var(--checkbox-checked-bgcolor, -moz-accent-color) !important;
     background-image: url("chrome://global/skin/icons/check.svg") !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
     -moz-context-properties: fill !important;
     fill: currentColor !important;
-    color: var(
-      --checkbox-checked-color,
-      -moz-accent-color-foreground
-    ) !important;
+    color: var(--checkbox-checked-color, -moz-accent-color-foreground) !important;
     /* Style the button also when printing with "Print Backgrounds" unchecked */
     color-adjust: exact !important;
   }
@@ -320,30 +295,18 @@
   @media (prefers-contrast) {
     checkbox:not([disabled="true"]):hover > .checkbox-check {
       /* color will set the border-color on the check due to how HCM works for in-content pages. */
-      color: var(
-        --checkbox-checked-border-color,
-        color-mix(in srgb, -moz-accent-color 4%, Field)
-      ) !important;
+      color: var(--checkbox-checked-border-color, color-mix(in srgb, -moz-accent-color 4%, Field)) !important;
     }
 
     .checkbox-check[checked] {
       color: var(--checkbox-checked-border-color, currentColor) !important;
-      fill: var(
-        --checkbox-checked-color,
-        -moz-accent-color-foreground
-      ) !important;
+      fill: var(--checkbox-checked-color, -moz-accent-color-foreground) !important;
     }
 
     checkbox:not([disabled="true"]):hover:active > .checkbox-check[checked],
     checkbox:not([disabled="true"]):hover > .checkbox-check[checked] {
-      color: var(
-        --checkbox-checked-border-color-hover,
-        -moz-accent-color-foreground
-      ) !important;
-      fill: var(
-        --checkbox-checked-border-color-hover,
-        -moz-accent-color-foreground
-      ) !important;
+      color: var(--checkbox-checked-border-color-hover, -moz-accent-color-foreground) !important;
+      fill: var(--checkbox-checked-border-color-hover, -moz-accent-color-foreground) !important;
     }
   }
 
@@ -355,11 +318,8 @@
     margin: 3px 6px !important;
   }
 
-
   /*- Each OS ----------------------------------------------------------------*/
-  @media (-moz-os-version: windows-win7),
-    (-moz-os-version: windows-win8),
-    (-moz-os-version: windows-win10) {
+  @media (-moz-os-version: windows-win7), (-moz-os-version: windows-win8), (-moz-os-version: windows-win10) {
     xul|checkbox,
     xul|radio {
       padding-inline-start: 0 !important;
@@ -427,13 +387,10 @@
 }
 
 /*= Delete Cert ==============================================================*/
-@-moz-document url("chrome://pippki/content/deletecert.xhtml") {
+@-moz-document url("chrome://pippki/content/deletecert.xhtml")
+{
   :root {
-    --in-content-border-color: color-mix(
-      in srgb,
-      currentColor 41%,
-      transparent
-    ) !important;
+    --in-content-border-color: color-mix(in srgb, currentColor 41%, transparent) !important;
   }
   #certlist {
     border: 1px solid var(--in-content-border-color) !important;
@@ -442,13 +399,10 @@
 }
 
 /*= Cert Exeption Dialog =====================================================*/
-@-moz-document url("chrome://pippki/content/exceptionDialog.xhtml") {
+@-moz-document url("chrome://pippki/content/exceptionDialog.xhtml")
+{
   :root {
-    --in-content-border-color: color-mix(
-      in srgb,
-      currentColor 41%,
-      transparent
-    ) !important;
+    --in-content-border-color: color-mix(in srgb, currentColor 41%, transparent) !important;
   }
   #locationTextBox {
     appearance: none !important;

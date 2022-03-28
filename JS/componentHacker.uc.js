@@ -12,25 +12,25 @@ var EXPORTED_SYMBOLS = [];
 const { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 Services.obs.addObserver(
-    {
-        observe(doc) {
-            if (
-                doc.nodePrincipal.isSystemPrincipal &&
-                (doc.contentType == "application/xhtml+xml" || doc.contentType == "text/html") &&
-                doc.URL != "about:blank"
-            ) {
-                const loadExtraCustomElements = !(
-                    doc.documentURI == "chrome://extensions/content/dummy.xhtml" ||
-                    doc.documentURI == "chrome://geckoview/content/geckoview.xhtml"
-                );
-                if (loadExtraCustomElements) {
-                    Services.scriptloader.loadSubScript(
-                        "chrome://userchrome/content/script-override/customElements.js",
-                        doc.ownerGlobal
-                    );
-                }
-            }
-        },
+  {
+    observe(doc) {
+      if (
+        doc.nodePrincipal.isSystemPrincipal &&
+        (doc.contentType == "application/xhtml+xml" || doc.contentType == "text/html") &&
+        doc.URL != "about:blank"
+      ) {
+        const loadExtraCustomElements = !(
+          doc.documentURI == "chrome://extensions/content/dummy.xhtml" ||
+          doc.documentURI == "chrome://geckoview/content/geckoview.xhtml"
+        );
+        if (loadExtraCustomElements) {
+          Services.scriptloader.loadSubScript(
+            "chrome://userchrome/content/script-override/customElements.js",
+            doc.ownerGlobal
+          );
+        }
+      }
     },
-    "initial-document-element-inserted"
+  },
+  "initial-document-element-inserted"
 );

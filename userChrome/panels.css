@@ -1,36 +1,24 @@
-
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 @namespace html "http://www.w3.org/1999/xhtml";
 
-
 /*= Page Info ================================================================*/
-@-moz-document url("chrome://browser/content/pageinfo/pageInfo.xhtml") {
+@-moz-document url("chrome://browser/content/pageinfo/pageInfo.xhtml")
+{
   :root {
-    --in-content-border-color: color-mix(
-      in srgb,
-      currentColor 41%,
-      transparent
-    ) !important;
+    --in-content-border-color: color-mix(in srgb, currentColor 41%, transparent) !important;
   }
 
   #viewGroup > radio {
     border-radius: 8px !important;
-    padding: var(--in-content-button-vertical-padding)
-      var(--in-content-button-horizontal-padding) !important;
+    padding: var(--in-content-button-vertical-padding) var(--in-content-button-horizontal-padding) !important;
     margin: 4px !important;
   }
   #viewGroup > radio:hover {
-    background-color: var(
-      --in-content-button-background-hover
-    ) !important; /* #E0E8F6; */
+    background-color: var(--in-content-button-background-hover) !important; /* #E0E8F6; */
   }
   #viewGroup > radio[selected="true"] {
-    color: var(
-      --in-content-button-text-color
-    ) !important; /* SelectedItemText */
-    background-color: var(
-      --in-content-button-background-active
-    ) !important; /* #C1D2EE; */
+    color: var(--in-content-button-text-color) !important; /* SelectedItemText */
+    background-color: var(--in-content-button-background-active) !important; /* #C1D2EE; */
   }
   #viewGroup > radio {
     color: var(--in-content-deemphasized-text) !important; /* FieldText */
@@ -143,321 +131,316 @@
   }
 }
 
-    /*- Toolbar & Menus ------------------------------------------------------*/
-    #placesToolbar {
-      appearance: none !important;
-      background-color: var(--organizer-toolbar-background) !important;
-      color: var(--organizer-color) !important;
-      border-bottom: 1px solid var(--organizer-border-color) !important;
-      padding: 4px !important;
-      padding-inline-end: 6px !important;
-    }
+/*- Toolbar & Menus ------------------------------------------------------*/
+#placesToolbar {
+  appearance: none !important;
+  background-color: var(--organizer-toolbar-background) !important;
+  color: var(--organizer-color) !important;
+  border-bottom: 1px solid var(--organizer-border-color) !important;
+  padding: 4px !important;
+  padding-inline-end: 6px !important;
+}
 
-    #placesToolbar > toolbarbutton {
-      appearance: none !important;
-      padding: 5px !important;
-      border-radius: 4px !important;
-    }
+#placesToolbar > toolbarbutton {
+  appearance: none !important;
+  padding: 5px !important;
+  border-radius: 4px !important;
+}
 
-    #placesToolbar > toolbarbutton[disabled] {
-      opacity: 0.6 !important;
-    }
+#placesToolbar > toolbarbutton[disabled] {
+  opacity: 0.6 !important;
+}
 
-    #placesToolbar > toolbarbutton:not([disabled]):hover {
-      background-color: var(--organizer-hover-background) !important;
-      color: var(--organizer-hover-color) !important;
-    }
+#placesToolbar > toolbarbutton:not([disabled]):hover {
+  background-color: var(--organizer-hover-background) !important;
+  color: var(--organizer-hover-color) !important;
+}
 
-    #placesToolbar > toolbarbutton:not([disabled]):hover:active {
-      background-color: var(--organizer-selected-background) !important;
-    }
+#placesToolbar > toolbarbutton:not([disabled]):hover:active {
+  background-color: var(--organizer-selected-background) !important;
+}
 
-    #placesToolbar > toolbarbutton > .toolbarbutton-icon,
-    #placesMenu > menu > image,
-    #placesMenu > menu > .menubar-text {
-      -moz-context-properties: fill !important;
-      fill: currentColor !important;
-    }
+#placesToolbar > toolbarbutton > .toolbarbutton-icon,
+#placesMenu > menu > image,
+#placesMenu > menu > .menubar-text {
+  -moz-context-properties: fill !important;
+  fill: currentColor !important;
+}
 
-    #placesMenu {
-      margin-inline-start: 6px !important;
-    }
+#placesMenu {
+  margin-inline-start: 6px !important;
+}
 
-    #placesMenu > menu {
-      appearance: none !important;
-      color: var(--organizer-color) !important;
-      border-radius: 4px !important;
-      padding-block: 5px !important;
-      padding-inline-start: 5px !important;
-      margin-inline-end: 2px !important;
-    }
+#placesMenu > menu {
+  appearance: none !important;
+  color: var(--organizer-color) !important;
+  border-radius: 4px !important;
+  padding-block: 5px !important;
+  padding-inline-start: 5px !important;
+  margin-inline-end: 2px !important;
+}
 
-    #placesMenu > menu[_moz-menuactive="true"],
-    #placesMenu > menu:hover {
-      background-color: var(--organizer-hover-background) !important;
-      color: var(--organizer-hover-color) !important;
-    }
+#placesMenu > menu[_moz-menuactive="true"],
+#placesMenu > menu:hover {
+  background-color: var(--organizer-hover-background) !important;
+  color: var(--organizer-hover-color) !important;
+}
 
-    #placesMenu > menu:hover:active,
-    #placesMenu > menu[open] {
-      background-color: var(--organizer-selected-background) !important;
-      color: var(--organizer-selected-color) !important;
-    }
+#placesMenu > menu:hover:active,
+#placesMenu > menu[open] {
+  background-color: var(--organizer-selected-background) !important;
+  color: var(--organizer-selected-color) !important;
+}
 
-    #placesMenu > menu > .menubar-text {
-      margin-block: 0 !important; /* override menu.css */
-      padding-inline-end: 4px !important;
-    }
+#placesMenu > menu > .menubar-text {
+  margin-block: 0 !important; /* override menu.css */
+  padding-inline-end: 4px !important;
+}
 
-    /*- Search Bar & Input ---------------------------------------------------*/
-    #searchFilter,
-    #detailsPane html|input {
-      appearance: none !important;
-      background-color: var(--organizer-toolbar-field-background) !important;
-      color: var(--organizer-color) !important;
-      border: 1px solid var(--organizer-toolbar-field-border-color) !important;
-      border-radius: 4px !important;
-      margin: 0 !important;
-      padding-block: 2px !important;
-      min-height: 24px !important;
-    }
+/*- Search Bar & Input ---------------------------------------------------*/
+#searchFilter,
+#detailsPane html|input {
+  appearance: none !important;
+  background-color: var(--organizer-toolbar-field-background) !important;
+  color: var(--organizer-color) !important;
+  border: 1px solid var(--organizer-toolbar-field-border-color) !important;
+  border-radius: 4px !important;
+  margin: 0 !important;
+  padding-block: 2px !important;
+  min-height: 24px !important;
+}
 
-    #searchFilter[focused] {
-      box-shadow: var(--organizer-toolbar-field-focus-box-shadow) !important;
-      background-color: var(
-        --organizer-toolbar-field-background-focused
-      ) !important;
-      border-color: transparent !important;
-      outline: 2px solid var(--organizer-toolbar-field-focus-border-color) !important;
-      outline-offset: -2px !important;
-    }
+#searchFilter[focused] {
+  box-shadow: var(--organizer-toolbar-field-focus-box-shadow) !important;
+  background-color: var(--organizer-toolbar-field-background-focused) !important;
+  border-color: transparent !important;
+  outline: 2px solid var(--organizer-toolbar-field-focus-border-color) !important;
+  outline-offset: -2px !important;
+}
 
-    /*- Sidebar & Splitter ---------------------------------------------------*/
-    #placesList {
-      background-color: var(--organizer-pane-background) !important;
-    }
+/*- Sidebar & Splitter ---------------------------------------------------*/
+#placesList {
+  background-color: var(--organizer-pane-background) !important;
+}
 
-    #placesView > splitter {
-      border: 0 !important;
-      border-inline-end: 1px solid var(--organizer-border-color) !important;
-      min-width: 0 !important;
-      width: 3px !important;
-      background-color: transparent !important;
-      margin-inline-start: -3px !important;
-      position: relative !important;
-    }
+#placesView > splitter {
+  border: 0 !important;
+  border-inline-end: 1px solid var(--organizer-border-color) !important;
+  min-width: 0 !important;
+  width: 3px !important;
+  background-color: transparent !important;
+  margin-inline-start: -3px !important;
+  position: relative !important;
+}
 
-    /*- Downloads Pane -------------------------------------------------------*/
-    #downloadsRichListBox {
-      color: var(--organizer-color) !important;
-      background-color: var(--organizer-content-background) !important;
-    }
+/*- Downloads Pane -------------------------------------------------------*/
+#downloadsRichListBox {
+  color: var(--organizer-color) !important;
+  background-color: var(--organizer-content-background) !important;
+}
 
-    #clearDownloadsButton:focus-visible {
-      outline: 2px solid var(--organizer-outline-color) !important;
-    }
+#clearDownloadsButton:focus-visible {
+  outline: 2px solid var(--organizer-outline-color) !important;
+}
 
-    richlistitem[selected="true"],
-    richlistitem:hover {
-      background-color: var(--organizer-hover-background) !important;
-      color: var(--organizer-color) !important;
-    }
+richlistitem[selected="true"],
+richlistitem:hover {
+  background-color: var(--organizer-hover-background) !important;
+  color: var(--organizer-color) !important;
+}
 
-    richlistbox:where(:focus) > richlistitem[selected="true"] {
-      background-color: var(--organizer-selected-background) !important;
-    }
+richlistbox:where(:focus) > richlistitem[selected="true"] {
+  background-color: var(--organizer-selected-background) !important;
+}
 
-    /*- Tree -----------------------------------------------------------------*/
-    #contentView treecol {
-      /* Use box-shadow to draw a bottom border instead of border-bottom
+/*- Tree -----------------------------------------------------------------*/
+#contentView treecol {
+  /* Use box-shadow to draw a bottom border instead of border-bottom
          * because otherwise the items on contentView won't be perfectly
          * aligned with the items on the sidebar. */
-      box-shadow: inset 0 -1px var(--organizer-border-color) !important;
-    }
+  box-shadow: inset 0 -1px var(--organizer-border-color) !important;
+}
 
-    tree {
-      background-color: var(--organizer-content-background) !important;
-      color: var(--organizer-color) !important;
-    }
+tree {
+  background-color: var(--organizer-content-background) !important;
+  color: var(--organizer-color) !important;
+}
 
-    treecol:not([hideheader="true"]),
-    treecolpicker {
-      appearance: none !important;
-      border: none !important;
-      background-color: var(--in-content-button-background) !important;
-      color: var(--organizer-color, inherit) !important;
-      padding: 5px 10px !important;
-    }
+treecol:not([hideheader="true"]),
+treecolpicker {
+  appearance: none !important;
+  border: none !important;
+  background-color: var(--in-content-button-background) !important;
+  color: var(--organizer-color, inherit) !important;
+  padding: 5px 10px !important;
+}
 
-    treecol:not([hideheader="true"], [sortable="false"]):hover,
-    treecolpicker:hover {
-      background-color: var(--organizer-hover-background) !important;
-      color: var(--organizer-color) !important;
-    }
+treecol:not([hideheader="true"], [sortable="false"]):hover,
+treecolpicker:hover {
+  background-color: var(--organizer-hover-background) !important;
+  color: var(--organizer-color) !important;
+}
 
-    treecol:not([hideheader="true"], [sortable="false"]):hover:active,
-    treecolpicker:hover:active {
-      background-color: var(--organizer-selected-background) !important;
-    }
+treecol:not([hideheader="true"], [sortable="false"]):hover:active,
+treecolpicker:hover:active {
+  background-color: var(--organizer-selected-background) !important;
+}
 
-    treecol:not([hideheader="true"], :first-child),
-    treecolpicker {
-      padding-left: 10px !important;
-      border-inline-start-width: 1px !important;
-      border-inline-start-style: solid !important;
-      border-image: linear-gradient(
-          transparent 0%,
-          transparent 20%,
-          var(--organizer-border-color) 20%,
-          var(--organizer-border-color) 80%,
-          transparent 80%,
-          transparent 100%
-        )
-        1 1 !important;
-    }
+treecol:not([hideheader="true"], :first-child),
+treecolpicker {
+  padding-left: 10px !important;
+  border-inline-start-width: 1px !important;
+  border-inline-start-style: solid !important;
+  border-image: linear-gradient(
+      transparent 0%,
+      transparent 20%,
+      var(--organizer-border-color) 20%,
+      var(--organizer-border-color) 80%,
+      transparent 80%,
+      transparent 100%
+    )
+    1 1 !important;
+}
 
-    treecol[sortDirection]:not([hideheader="true"])
-      > xul|*.treecol-sortdirection {
-      fill: currentColor !important;
-      width: 18px !important;
-      height: 18px !important;
-    }
+treecol[sortDirection]:not([hideheader="true"]) > xul|*.treecol-sortdirection {
+  fill: currentColor !important;
+  width: 18px !important;
+  height: 18px !important;
+}
 
-    treechildren::-moz-tree-row {
-      background-color: transparent !important;
-    }
+treechildren::-moz-tree-row {
+  background-color: transparent !important;
+}
 
-    treechildren::-moz-tree-row(hover) {
-      background-color: var(--organizer-hover-background) !important;
-    }
+treechildren::-moz-tree-row(hover) {
+  background-color: var(--organizer-hover-background) !important;
+}
 
-    treechildren::-moz-tree-row(selected) {
-      background-color: var(--organizer-selected-background) !important;
-      color: var(--organizer-selected-color) !important;
-      border: 1px solid transparent !important;
-    }
+treechildren::-moz-tree-row(selected) {
+  background-color: var(--organizer-selected-background) !important;
+  color: var(--organizer-selected-color) !important;
+  border: 1px solid transparent !important;
+}
 
-    treechildren::-moz-tree-image(hover),
-    treechildren::-moz-tree-twisty(hover),
-    treechildren::-moz-tree-cell-text(hover) {
-      color: var(--organizer-hover-color) !important;
-    }
+treechildren::-moz-tree-image(hover),
+treechildren::-moz-tree-twisty(hover),
+treechildren::-moz-tree-cell-text(hover) {
+  color: var(--organizer-hover-color) !important;
+}
 
-    treechildren::-moz-tree-image(selected),
-    treechildren::-moz-tree-twisty(selected),
-    treechildren::-moz-tree-cell-text(selected) {
-      color: var(--organizer-selected-color) !important;
-    }
+treechildren::-moz-tree-image(selected),
+treechildren::-moz-tree-twisty(selected),
+treechildren::-moz-tree-cell-text(selected) {
+  color: var(--organizer-selected-color) !important;
+}
 
-    treechildren::-moz-tree-separator {
-      height: 1px !important;
-      border-color: var(--organizer-separator-color) !important;
-    }
+treechildren::-moz-tree-separator {
+  height: 1px !important;
+  border-color: var(--organizer-separator-color) !important;
+}
 
-    treechildren::-moz-tree-separator(hover) {
-      border-color: var(--organizer-hover-color) !important;
-    }
+treechildren::-moz-tree-separator(hover) {
+  border-color: var(--organizer-hover-color) !important;
+}
 
-    treechildren::-moz-tree-separator(selected) {
-      border-color: var(--organizer-selected-color) !important;
-    }
+treechildren::-moz-tree-separator(selected) {
+  border-color: var(--organizer-selected-color) !important;
+}
 
-    /*- Info Box -------------------------------------------------------------*/
-    #detailsPane {
-      background-color: var(--organizer-pane-background) !important;
-      color: var(--organizer-color) !important;
-      padding: 5px !important;
-      border-top: 1px solid var(--organizer-border-color) !important;
-    }
+/*- Info Box -------------------------------------------------------------*/
+#detailsPane {
+  background-color: var(--organizer-pane-background) !important;
+  color: var(--organizer-color) !important;
+  padding: 5px !important;
+  border-top: 1px solid var(--organizer-border-color) !important;
+}
 
-    #editBookmarkPanelRows .expander-up,
-    #editBookmarkPanelRows .expander-down {
-      appearance: none !important;
-      min-width: 0 !important;
-      padding: 5px !important;
-      margin: 0 !important;
-      margin-inline-end: 4px !important;
-      border: 1px solid var(--organizer-pane-field-border-color) !important;
-      border-radius: 4px !important;
-      color: var(--organizer-color) !important;
-      background-color: var(--organizer-content-background) !important;
-      list-style-image: url("chrome://global/skin/icons/arrow-down-12.svg");
-      -moz-context-properties: fill !important;
-      fill: currentColor !important;
-    }
+#editBookmarkPanelRows .expander-up,
+#editBookmarkPanelRows .expander-down {
+  appearance: none !important;
+  min-width: 0 !important;
+  padding: 5px !important;
+  margin: 0 !important;
+  margin-inline-end: 4px !important;
+  border: 1px solid var(--organizer-pane-field-border-color) !important;
+  border-radius: 4px !important;
+  color: var(--organizer-color) !important;
+  background-color: var(--organizer-content-background) !important;
+  list-style-image: url("chrome://global/skin/icons/arrow-down-12.svg");
+  -moz-context-properties: fill !important;
+  fill: currentColor !important;
+}
 
-    #editBookmarkPanelRows .expander-up:hover,
-    #editBookmarkPanelRows .expander-down:hover {
-      background-color: var(--organizer-hover-background) !important;
-      color: var(--organizer-hover-color) !important;
-    }
+#editBookmarkPanelRows .expander-up:hover,
+#editBookmarkPanelRows .expander-down:hover {
+  background-color: var(--organizer-hover-background) !important;
+  color: var(--organizer-hover-color) !important;
+}
 
-    #editBookmarkPanelRows .expander-up:hover:active,
-    #editBookmarkPanelRows .expander-down:hover:active {
-      background-color: var(--organizer-selected-background) !important;
-      color: var(--organizer-selected-color) !important;
-    }
+#editBookmarkPanelRows .expander-up:hover:active,
+#editBookmarkPanelRows .expander-down:hover:active {
+  background-color: var(--organizer-selected-background) !important;
+  color: var(--organizer-selected-color) !important;
+}
 
-    #editBookmarkPanelRows .expander-up:focus-visible,
-    #editBookmarkPanelRows .expander-down:focus-visible {
-      outline: 2px solid var(--organizer-outline-color) !important;
-      outline-offset: -1px !important;
-    }
+#editBookmarkPanelRows .expander-up:focus-visible,
+#editBookmarkPanelRows .expander-down:focus-visible {
+  outline: 2px solid var(--organizer-outline-color) !important;
+  outline-offset: -1px !important;
+}
 
-    #editBookmarkPanelRows .expander-up {
-      list-style-image: url("chrome://global/skin/icons/arrow-up-12.svg");
-    }
+#editBookmarkPanelRows .expander-up {
+  list-style-image: url("chrome://global/skin/icons/arrow-up-12.svg");
+}
 
-    #editBookmarkPanelRows .expander-up > .button-box,
-    #editBookmarkPanelRows .expander-down > .button-box {
-      padding: 0 !important;
-    }
+#editBookmarkPanelRows .expander-up > .button-box,
+#editBookmarkPanelRows .expander-down > .button-box {
+  padding: 0 !important;
+}
 
-    #places input {
-      border: 1px solid var(--organizer-pane-field-border-color) !important;
-      border-radius: 4px !important;
-      background-color: var(--organizer-content-background) !important;
-      color: var(--organizer-color) !important;
-      min-height: 20px !important;
-      padding-inline: 4px !important;
-    }
+#places input {
+  border: 1px solid var(--organizer-pane-field-border-color) !important;
+  border-radius: 4px !important;
+  background-color: var(--organizer-content-background) !important;
+  color: var(--organizer-color) !important;
+  min-height: 20px !important;
+  padding-inline: 4px !important;
+}
 
-    #places input:focus {
-      outline: 2px solid var(--organizer-outline-color) !important;
-      outline-offset: -1px !important;
-    }
+#places input:focus {
+  outline: 2px solid var(--organizer-outline-color) !important;
+  outline-offset: -1px !important;
+}
 
-    #places input:not(:read-write):focus {
-      outline: none !important;
-    }
+#places input:not(:read-write):focus {
+  outline: none !important;
+}
 
-    .caption-label {
-      margin-inline-start: 8px !important;
-      color: var(--organizer-deemphasized-color) !important;
-    }
+.caption-label {
+  margin-inline-start: 8px !important;
+  color: var(--organizer-deemphasized-color) !important;
+}
 
-    #editBMPanel_tagsSelectorRow > richlistbox {
-      appearance: none !important;
-      color: var(--organizer-color) !important;
-      background-color: var(--organizer-content-background) !important;
-      border: 1px solid var(--organizer-border-color) !important;
-      border-radius: 4px !important;
-    }
+#editBMPanel_tagsSelectorRow > richlistbox {
+  appearance: none !important;
+  color: var(--organizer-color) !important;
+  background-color: var(--organizer-content-background) !important;
+  border: 1px solid var(--organizer-border-color) !important;
+  border-radius: 4px !important;
+}
 
-    #editBMPanel_tagsSelectorRow > richlistbox > richlistitem {
-      border: 1px solid transparent !important;
-    }
+#editBMPanel_tagsSelectorRow > richlistbox > richlistitem {
+  border: 1px solid transparent !important;
+}
 
-    #editBMPanel_tagsSelectorRow > richlistbox > richlistitem:hover {
-      background-color: var(--organizer-hover-background) !important;
-      color: var(--organizer-hover-color) !important;
-    }
+#editBMPanel_tagsSelectorRow > richlistbox > richlistitem:hover {
+  background-color: var(--organizer-hover-background) !important;
+  color: var(--organizer-hover-color) !important;
+}
 
-    #editBMPanel_tagsSelectorRow > richlistbox > richlistitem[selected] {
-      background-color: var(--organizer-selected-background) !important;
-      color: var(--organizer-selected-color) !important;
-    }
-  }
+#editBMPanel_tagsSelectorRow > richlistbox > richlistitem[selected] {
+  background-color: var(--organizer-selected-background) !important;
+  color: var(--organizer-selected-color) !important;
 }
 
 /** Decoration ****************************************************************/
@@ -472,10 +455,7 @@
   /* Sidebar */
   .sidebar-panel[lwt-sidebar] #search-box:hover,
   body[lwt-sidebar] xul|search-textbox.tabsFilter:hover {
-    border-color: var(
-      --lwt-sidebar-highlight-background-color,
-      Highlight
-    ) !important;
+    border-color: var(--lwt-sidebar-highlight-background-color, Highlight) !important;
   }
   .sidebar-panel:not([lwt-sidebar]) #search-box:hover,
   body:not([lwt-sidebar]) xul|search-textbox.tabsFilter:hover {
@@ -486,11 +466,7 @@
   #editBMPanel_namePicker:hover,
   #editBMPanel_tagsField:hover,
   .findbar-container .findbar-textbox:hover {
-    --input-border-color: color-mix(
-      in srgb,
-      var(--focus-outline-color, -moz-accent-color) 50%,
-      transparent
-    );
+    --input-border-color: color-mix(in srgb, var(--focus-outline-color, -moz-accent-color) 50%, transparent);
   }
 
   /*= Downloads Panel ========================================================*/
@@ -498,9 +474,7 @@
   #downloadsListBox .download-state[exists] .downloadDetails {
     color: var(--button-primary-bgcolor);
   }
-  #downloadsListBox
-    .download-state[exists]
-    .downloadDetails.downloadDetailsHover {
+  #downloadsListBox .download-state[exists] .downloadDetails.downloadDetailsHover {
     color: var(--button-primary-hover-bgcolor);
   }
 
@@ -509,41 +483,39 @@
     text-decoration: line-through;
     text-decoration-color: color-mix(in srgb, currentColor 65%, transparent);
   }
-  #downloadsListBox
-    .download-state:not([exists], [state="0"])
-    .downloadTypeIcon {
+  #downloadsListBox .download-state:not([exists], [state="0"]) .downloadTypeIcon {
     filter: grayscale(100%) !important;
   }
 }
-  /*- Arrow - Synced Tabs ----------------------------------------------------*/
-  @-moz-document url("chrome://browser/content/syncedtabs/sidebar.xhtml") {
-    /* treechildren::-moz-tree-twisty: Can't apply */
-    #template-container .item.client .item-twisty-container {
-      transition: transform 0.1s var(--animation-easing-function) !important;
-    }
-
-    #template-container .item.client.closed .item-twisty-container {
-      transform: rotate(-90deg);
-      background-image: url("chrome://global/skin/icons/arrow-down-12.svg") !important;
-    }
-
-    #template-container .item.client.closed .item-twisty-container:dir(rtl) {
-      transform: rotate(90deg);
-      background-image: url("chrome://global/skin/icons/arrow-down-12.svg") !important;
-    }
-  }
-
-  /*- Arrow - Edit Bookmark Popup --------------------------------------------*/
-  #editBookmarkPanelRows .expander-up .button-icon,
-  #editBookmarkPanelRows .expander-down .button-icon {
+/*- Arrow - Synced Tabs ----------------------------------------------------*/
+@-moz-document url("chrome://browser/content/syncedtabs/sidebar.xhtml")
+{
+  /* treechildren::-moz-tree-twisty: Can't apply */
+  #template-container .item.client .item-twisty-container {
     transition: transform 0.1s var(--animation-easing-function) !important;
   }
-  #editBookmarkPanelRows .expander-up {
-    list-style-image: url("chrome://global/skin/icons/arrow-down.svg") !important;
+
+  #template-container .item.client.closed .item-twisty-container {
+    transform: rotate(-90deg);
+    background-image: url("chrome://global/skin/icons/arrow-down-12.svg") !important;
   }
-  #editBookmarkPanelRows .expander-up .button-icon {
-    transform: rotate(180deg);
+
+  #template-container .item.client.closed .item-twisty-container:dir(rtl) {
+    transform: rotate(90deg);
+    background-image: url("chrome://global/skin/icons/arrow-down-12.svg") !important;
   }
+}
+
+/*- Arrow - Edit Bookmark Popup --------------------------------------------*/
+#editBookmarkPanelRows .expander-up .button-icon,
+#editBookmarkPanelRows .expander-down .button-icon {
+  transition: transform 0.1s var(--animation-easing-function) !important;
+}
+#editBookmarkPanelRows .expander-up {
+  list-style-image: url("chrome://global/skin/icons/arrow-down.svg") !important;
+}
+#editBookmarkPanelRows .expander-up .button-icon {
+  transform: rotate(180deg);
 }
 
 /** Reduce Padding ************************************************************/
@@ -585,8 +557,7 @@
   --space-left-tabbar: 0px; /* If you want drag space, set to 8px */
 }
 :root:not([tabsintitlebar]) #tabbrowser-tabs:not([positionpinnedtabs]),
-:root:is([sizemode="maximized"], [sizemode="fullscreen"])
-  #tabbrowser-tabs:not([positionpinnedtabs]) {
+:root:is([sizemode="maximized"], [sizemode="fullscreen"]) #tabbrowser-tabs:not([positionpinnedtabs]) {
   padding-inline-start: var(--space-left-tabbar) !important;
 }
 
@@ -597,8 +568,6 @@
 .titlebar-spacer[type="post-tabs"] {
   width: 25px !important; /* Original: 40px */
 }
-
-
 
 /*= Nav Bar - Reduce Width ===================================================*/
 #nav-bar:not([customizing]) toolbarspring {
@@ -644,8 +613,7 @@
 :root[uidensity="compact"] #tab-notification-deck {
   --infobar-message-margin: 0 4px 2px;
 }
-#tab-notification-deck
-  notification-message[message-bar-type="infobar"]:not([style*="margin-top"]) {
+#tab-notification-deck notification-message[message-bar-type="infobar"]:not([style*="margin-top"]) {
   margin: var(--infobar-message-margin, 0 4px 4px) !important;
 }
 
@@ -658,22 +626,13 @@
   --infobar-button-vertical-margin: 2px;
 }
 .infobar > .icon {
-  margin-block: var(
-    --infobar-vertical-margin,
-    8px
-  ) !important; /* Original: 8px */
+  margin-block: var(--infobar-vertical-margin, 8px) !important; /* Original: 8px */
 }
 .notification-message {
-  padding-block: var(
-    --infobar-vertical-margin,
-    8px
-  ) !important; /* Original: 8px */
+  padding-block: var(--infobar-vertical-margin, 8px) !important; /* Original: 8px */
 }
 .notification-button-container > .notification-button {
-  margin-block: var(
-    --infobar-button-vertical-margin,
-    4px
-  ) !important; /* Original: 4px */
+  margin-block: var(--infobar-button-vertical-margin, 4px) !important; /* Original: 4px */
 }
 .notification-close {
   margin: var(--infobar-button-vertical-margin, 4px) 8px !important; /* Original: 4px 8px */
@@ -685,20 +644,13 @@
   display: block;
   width: 2px;
   position: absolute;
-  background-image: linear-gradient(
-    0,
-    #f4f4f7 0%,
-    #b2bfd9 52.08%,
-    #8b9cbe 100%
-  );
+  background-image: linear-gradient(0, #f4f4f7 0%, #b2bfd9 52.08%, #8b9cbe 100%);
   top: 0;
   inset-inline-start: 0;
   height: 100%;
   border-start-start-radius: 4px;
   border-end-start-radius: 4px;
 }
-
-
 
 /*= Popup Panel - Reduce padding =============================================*/
 #protections-popup-main-header-label {
@@ -727,31 +679,21 @@
   margin: 4px 8px 0 !important;
 }
 /* not cut off for Protection popup Footer on windows */
-:root[uidensity="compact"]
-  #protections-popup-multiView
-  #protections-popup-footer {
+:root[uidensity="compact"] #protections-popup-multiView #protections-popup-footer {
   padding: 3px 0 20px !important;
 }
 /* Button and disabled category in Protection popup */
-:root[uidensity="compact"]
-  #protections-popup-multiView
-  .protections-popup-footer-button,
-:root[uidensity="compact"]
-  #protections-popup-multiView
-  .protections-popup-category {
+:root[uidensity="compact"] #protections-popup-multiView .protections-popup-footer-button,
+:root[uidensity="compact"] #protections-popup-multiView .protections-popup-category {
   height: 20px !important;
   min-height: 20px !important;
 }
 /* Footer Button in Tracking Content Panel */
-:root[uidensity="compact"]
-  #protections-popup-multiView
-  .panel-footer.panel-footer-menulike {
+:root[uidensity="compact"] #protections-popup-multiView .panel-footer.panel-footer-menulike {
   margin: 0 0 3px !important;
 }
 /* Identity popup header padding */
-:root[uidensity="compact"]
-  #identity-popup-multiView
-  #identity-popup-mainView-panel-header {
+:root[uidensity="compact"] #identity-popup-multiView #identity-popup-mainView-panel-header {
   padding: 2px 5px !important;
 }
 /* Text When There is no trackers */
@@ -762,4 +704,3 @@
 :root[uidensity="compact"] #downloadsListBox {
   margin: 0 !important;
 }
-

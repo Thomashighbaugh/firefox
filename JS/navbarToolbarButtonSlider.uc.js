@@ -66,18 +66,13 @@
     const excludedPref = "userChrome.toolbarSlider.excludeButtons";
     const springPref = "userChrome.toolbarSlider.excludeFlexibleSpace";
     const collapsePref = "userChrome.toolbarSlider.collapseSliderOnOverflow";
-    const directionPref =
-      "userChrome.toolbarSlider.wrapButtonsRelativeToUrlbar";
+    const directionPref = "userChrome.toolbarSlider.wrapButtonsRelativeToUrlbar";
     let outer = document.createElement("toolbaritem");
     let inner = document.createElement("hbox");
     let kids = inner.children;
     let cNavBar = document.getElementById("nav-bar");
-    let cTarget = document.getElementById(
-      cNavBar.getAttribute("customizationtarget")
-    );
-    let cOverflow = document.getElementById(
-      cNavBar.getAttribute("overflowtarget")
-    );
+    let cTarget = document.getElementById(cNavBar.getAttribute("customizationtarget"));
+    let cOverflow = document.getElementById(cNavBar.getAttribute("overflowtarget"));
     let toolbarContextMenu = document.getElementById("toolbar-context-menu");
     let urlbar = document.getElementById("urlbar-container");
     let bin = document.getElementById("mainPopupSet");
@@ -102,9 +97,7 @@
           case collapsePref:
             if (value === null) value = true;
             this.collapse = value;
-            value
-              ? urlbar.style.removeProperty("min-width")
-              : (urlbar.style.minWidth = "revert");
+            value ? urlbar.style.removeProperty("min-width") : (urlbar.style.minWidth = "revert");
             if (outer.ready) {
               if (!value) outer.setAttribute("overflows", false);
               else outer.removeAttribute("overflows");
@@ -152,19 +145,12 @@
           let widgetList = await cuiArray();
           if (arr.length < widgetList.length && arr.length < length)
             return setTimeout(async () => this.setMaxWidth(), 1);
-          if (arr)
-            arr.slice(0, length).forEach((el) => (maxWidth += parseWidth(el)));
+          if (arr) arr.slice(0, length).forEach((el) => (maxWidth += parseWidth(el)));
           else {
             let widgetArray = await cuiArray();
-            widgetArray
-              .slice(0, length)
-              .forEach(
-                (w) => (maxWidth += parseWidth(w.forWindow(window).node))
-              );
+            widgetArray.slice(0, length).forEach((w) => (maxWidth += parseWidth(w.forWindow(window).node)));
           }
-        } else
-          maxWidth =
-            length * parseWidth(document.getElementById("forward-button"));
+        } else maxWidth = length * parseWidth(document.getElementById("forward-button"));
         outer.style.maxWidth = `${maxWidth}px`;
       },
       migrateDirectionPref() {
@@ -185,16 +171,11 @@
         }
       },
       initialSet() {
-        if (!prefsvc.prefHasUserValue(widthPref))
-          prefsvc.setIntPref(widthPref, 11);
-        if (!prefsvc.prefHasUserValue(collapsePref))
-          prefsvc.setBoolPref(collapsePref, true);
-        if (!prefsvc.prefHasUserValue(excludedPref))
-          prefsvc.setStringPref(excludedPref, "[]");
-        if (!prefsvc.prefHasUserValue(springPref))
-          prefsvc.setBoolPref(springPref, true);
-        if (!prefsvc.prefHasUserValue(directionPref))
-          prefsvc.setStringPref(directionPref, "after");
+        if (!prefsvc.prefHasUserValue(widthPref)) prefsvc.setIntPref(widthPref, 11);
+        if (!prefsvc.prefHasUserValue(collapsePref)) prefsvc.setBoolPref(collapsePref, true);
+        if (!prefsvc.prefHasUserValue(excludedPref)) prefsvc.setStringPref(excludedPref, "[]");
+        if (!prefsvc.prefHasUserValue(springPref)) prefsvc.setBoolPref(springPref, true);
+        if (!prefsvc.prefHasUserValue(directionPref)) prefsvc.setStringPref(directionPref, "after");
         this.migrateDirectionPref();
         this.observe(prefsvc, null, widthPref);
         this.observe(prefsvc, null, collapsePref);
@@ -257,11 +238,7 @@
                 second makes sure that the node being mutated is actually in the nav-bar, since there are other widget areas.
                 third makes sure we're not in customize mode, since that involves a lot of dom changes and we want to basically pause this whole feature during customize mode.
                 if all are true then we call pickUpOrphans to wrap any widgets that aren't already wrapped. */
-        if (
-          aNode.ownerGlobal === window &&
-          aContainer === cTarget &&
-          !CustomizationHandler.isCustomizing()
-        )
+        if (aNode.ownerGlobal === window && aContainer === cTarget && !CustomizationHandler.isCustomizing())
           pickUpOrphans(aNode);
       },
       onWidgetAfterCreation(aWidgetId, aArea) {
@@ -275,8 +252,7 @@
                 if it is, then we need to call wrapAll in the windows that weren't closed. that's what the 3rd argument here is for. */
         aWindow === window
           ? window.CustomizableUI.removeListener(cuiListen)
-          : aWindow.CustomizationHandler.isCustomizing() &&
-            wrapAll(domArray, inner);
+          : aWindow.CustomizationHandler.isCustomizing() && wrapAll(domArray, inner);
       },
     };
 
@@ -289,9 +265,7 @@
             if the global context is a private browsing window, then it will filter out any extension widgets that aren't allowed in private browsing.
             this is important because every item in the array needs to have a corresponding DOM node for us to remember the DOM order and place widgets where they belong.
             if we leave an item in the array that has no DOM node, then insertBefore will put the widget before undefined, which means put it at the very end, which isn't always what we want. */
-      return CustomizableUI.getWidgetsInArea("nav-bar")
-        .filter(Boolean)
-        .filter(filterWidgets);
+      return CustomizableUI.getWidgetsInArea("nav-bar").filter(Boolean).filter(filterWidgets);
     }
 
     // allow the toolbar context menu to work correctly even though the toolbar buttons' parent is the slider, not the navbar customization target.
@@ -305,9 +279,7 @@
         let popup = e.target;
         let button = this.validWidget(popup);
         let moveToPanel = popup.querySelector(".customize-context-moveToPanel");
-        let removeFromToolbar = popup.querySelector(
-          ".customize-context-removeFromToolbar"
-        );
+        let removeFromToolbar = popup.querySelector(".customize-context-removeFromToolbar");
         if (!moveToPanel || !removeFromToolbar) return;
         // if the parent element is not the slider, then make the context menu work as normal and bail.
         if (!button || button.parentElement !== inner) {
@@ -322,11 +294,9 @@
           return;
         }
         // if a non-removable system button got into the slider somehow, then disable these commands
-        let movable =
-          button && button.id && CustomizableUI.isWidgetRemovable(button);
+        let movable = button && button.id && CustomizableUI.isWidgetRemovable(button);
         if (movable) {
-          if (CustomizableUI.isSpecialWidget(button.id))
-            moveToPanel.setAttribute("disabled", true);
+          if (CustomizableUI.isSpecialWidget(button.id)) moveToPanel.setAttribute("disabled", true);
           else moveToPanel.removeAttribute("disabled");
           removeFromToolbar.removeAttribute("disabled");
         } else {
@@ -417,9 +387,7 @@
 
     function getRelToUrlbar(index, array) {
       let urlbarIdx =
-        array.indexOf(urlbar) > -1
-          ? array.indexOf(urlbar)
-          : array.findIndex((w) => w.id === "urlbar-container");
+        array.indexOf(urlbar) > -1 ? array.indexOf(urlbar) : array.findIndex((w) => w.id === "urlbar-container");
       switch (prefHandler.direction) {
         case "after":
           return urlbarIdx < index;
@@ -440,11 +408,7 @@
 
     function filterWidgets(item, index, array) {
       // check if window is private and widget is disallowed in private browsing. if so, filter it out.
-      if (
-        item.showInPrivateBrowsing === false &&
-        PrivateBrowsingUtils.isWindowPrivate(this)
-      )
-        return false;
+      if (item.showInPrivateBrowsing === false && PrivateBrowsingUtils.isWindowPrivate(this)) return false;
 
       // exclude urlbar, searchbar, system buttons, and the slider itself.
       switch (item.id) {
@@ -471,9 +435,7 @@
       )
         return !prefsvc.getBoolPref(springPref, true);
       // exclude buttons defined by user preference
-      let excludedButtons = JSON.parse(
-        prefsvc.getStringPref(excludedPref, "[]")
-      );
+      let excludedButtons = JSON.parse(prefsvc.getStringPref(excludedPref, "[]"));
       if (excludedButtons.some((str) => str === item.id)) return false;
       return getRelToUrlbar(index, array);
     }
@@ -491,15 +453,12 @@
             they don't need to be, but if they aren't, the slider may change the actual widget order, which persists through sessions. */
       parent.insertBefore(
         outer,
-        !previousElementSibling
-          ? parent.firstElementChild
-          : previousElementSibling?.nextElementSibling
+        !previousElementSibling ? parent.firstElementChild : previousElementSibling?.nextElementSibling
       );
     }
 
     function unwrapAll() {
-      let orderedWidgets =
-        CustomizableUI.getWidgetsInArea("nav-bar").filter(Boolean);
+      let orderedWidgets = CustomizableUI.getWidgetsInArea("nav-bar").filter(Boolean);
       orderedWidgets.forEach((w, i) => {
         let node = w.forWindow(window).node;
         let prevWidget = orderedWidgets[i - 1];
@@ -523,10 +482,7 @@
           /* if the node that changed is the last item in the array, meaning it's *supposed* to be the last in order, then we can't use insertBefore() since there's nothing meant to be after it. we can't only use after() either since it won't work for the first node. so we check for its intended position... */
           i + 1 === array?.length
             ? array[i - 1].forWindow(window).node.after(aNode) // and if it's the last item, we use the after() method to put it after the node corresponding to the previous widget.
-            : container.insertBefore(
-                aNode,
-                array[i + 1].forWindow(window).node
-              ); // for all the other widgets we just insert their nodes before the node corresponding to the next widget.
+            : container.insertBefore(aNode, array[i + 1].forWindow(window).node); // for all the other widgets we just insert their nodes before the node corresponding to the next widget.
       });
     }
 
@@ -553,10 +509,7 @@
                 an instance of widget 1 has a property 'node', let's call it node 1. same for widget 2, call it node 2.
                 node 1's next sibling should be equal to node 2. if node 1's next sibling is actually node 5, then the DOM is out of order relative to the array.
                 so we check each widget's node's next sibling, and if it's not equal to the node of the next widget in the array, we insert the node before the next widget's node. */
-        if (
-          item.forWindow(window).node.nextElementSibling !=
-          array[i + 1]?.forWindow(window).node
-        )
+        if (item.forWindow(window).node.nextElementSibling != array[i + 1]?.forWindow(window).node)
           /* if nextElementSibling returns null, then it's the last child of the slider.
                     if that widget is the last in the array, then array[i+1] will return undefined.
                     since null == undefined the if statement will still execute for the last widget.
@@ -564,10 +517,7 @@
                     since there is no next widget, we're telling the engine to insert the node before undefined.
                     which always results in inserting the node at the end. so it ends up where it should be anyway.
                     and this is faster than actually checking if it's the last node for every iteration of the loop. */
-          container.insertBefore(
-            item.forWindow(window)?.node,
-            array[i + 1]?.forWindow(window).node
-          );
+          container.insertBefore(item.forWindow(window)?.node, array[i + 1]?.forWindow(window).node);
       });
     }
 
@@ -647,8 +597,7 @@
           if (event.deltaMode == event.DOM_DELTA_PIXEL) {
             scrollAmount = delta;
             instant = true;
-          } else if (event.deltaMode == event.DOM_DELTA_PAGE)
-            scrollAmount = delta * this.clientWidth;
+          } else if (event.deltaMode == event.DOM_DELTA_PAGE) scrollAmount = delta * this.clientWidth;
           else scrollAmount = delta * this.lineScrollAmount();
         }
 
@@ -699,11 +648,7 @@
       ToolbarKeyboardNavigator._focusButton = function (aButton) {
         aButton.setAttribute("tabindex", "-1");
         let parent = aButton.parentElement;
-        while (
-          parent.tagName === "toolbarbutton" ||
-          parent.tagName === "toolbaritem"
-        )
-          parent = parent.parentElement;
+        while (parent.tagName === "toolbarbutton" || parent.tagName === "toolbaritem") parent = parent.parentElement;
         if (parent.classList.contains("slider-inner-container")) {
           smoothCenterScrollTo(aButton, parent);
           Services.focus.setFocus(aButton, Ci.nsIFocusManager.FLAG_NOSCROLL);
@@ -718,12 +663,8 @@
 
     function registerSheet() {
       const css = `#nav-bar-customization-target>#nav-bar-toolbarbutton-slider-container:first-child,#nav-bar-customization-target>toolbarpaletteitem#nav-bar-toolbarbutton-slider-container:first-child>:is(toolbarbutton,toolbaritem){padding-inline-start:unset;margin-inline-start:calc(var(--toolbar-start-end-padding) - var(--toolbarbutton-outer-padding));}`;
-      let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(
-        Ci.nsIStyleSheetService
-      );
-      let uri = makeURI(
-        "data:text/css;charset=UTF=8," + encodeURIComponent(css)
-      );
+      let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
+      let uri = makeURI("data:text/css;charset=UTF=8," + encodeURIComponent(css));
       if (sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) return;
       sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
     }
@@ -748,16 +689,12 @@
       let scrollBox = node.closest(".slider-container, arrowscrollbox");
       if (!scrollBox) return false;
       let ordinals =
-        scrollBox.getAttribute("orient") === "horizontal"
-          ? ["left", "right", "width"]
-          : ["top", "bottom", "height"];
+        scrollBox.getAttribute("orient") === "horizontal" ? ["left", "right", "width"] : ["top", "bottom", "height"];
       let nodeRect = node.getBoundingClientRect();
       let scrollRect = scrollBox.getBoundingClientRect();
       return (
-        scrollRect[ordinals[0]] >
-          nodeRect[ordinals[0]] + nodeRect[ordinals[2]] / 2 ||
-        scrollRect[ordinals[1]] + nodeRect[ordinals[2]] / 2 <
-          nodeRect[ordinals[1]]
+        scrollRect[ordinals[0]] > nodeRect[ordinals[0]] + nodeRect[ordinals[2]] / 2 ||
+        scrollRect[ordinals[1]] + nodeRect[ordinals[2]] / 2 < nodeRect[ordinals[1]]
       );
     }
 
@@ -769,8 +706,7 @@
       // don't change this method if we're using restorePreProtonLibraryButton.uc.js, since that script also changes it
       if (!LibraryUI)
         StarUI.showConfirmation = function () {
-          const HINT_COUNT_PREF =
-            "browser.bookmarks.editDialog.confirmationHintShowCount";
+          const HINT_COUNT_PREF = "browser.bookmarks.editDialog.confirmationHintShowCount";
           const HINT_COUNT = Services.prefs.getIntPref(HINT_COUNT_PREF, 0);
           if (HINT_COUNT >= 3) return;
           Services.prefs.setIntPref(HINT_COUNT_PREF, HINT_COUNT + 1);
@@ -806,9 +742,6 @@
         startup();
       }
     };
-    Services.obs.addObserver(
-      delayedListener,
-      "browser-delayed-startup-finished"
-    );
+    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
   }
 })();

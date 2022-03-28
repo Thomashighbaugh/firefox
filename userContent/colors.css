@@ -12,11 +12,7 @@
   --in-content-deemphasized-text: #8b9cbe;
   --in-content-box-background: #1c1e24;
   --in-content-box-background-odd: #1b1d24; /* grey 90 a05 */
-  --in-content-box-border-color: color-mix(
-    in srgb,
-    currentColor 41%,
-    transparent
-  );
+  --in-content-box-border-color: color-mix(in srgb, currentColor 41%, transparent);
   --in-content-box-info-background: #2f303d;
   --in-content-item-hover: color-mix(in srgb, #b2bfd9 20%, transparent);
   --in-content-item-hover-text: var(--in-content-page-color);
@@ -40,9 +36,7 @@
   --in-content-button-background-hover: #22262d;
   --in-content-button-background-active: #22262d;
   --in-content-primary-button-text-color: #f4f4f7;
-  --in-content-primary-button-text-color-hover: var(
-    --in-content-primary-button-text-color
-  );
+  --in-content-primary-button-text-color-hover: var(--in-content-primary-button-text-color);
   --in-content-primary-button-background: #8b9cbe;
   --in-content-primary-button-background-hover: #b2bfd9;
   --in-content-primary-button-background-active: #b2bfd9;
@@ -68,20 +62,13 @@
   --checkbox-border-color: var(--in-content-box-border-color);
   --checkbox-unchecked-bgcolor: var(--in-content-button-background);
   --checkbox-unchecked-hover-bgcolor: var(--in-content-button-background-hover);
-  --checkbox-unchecked-active-bgcolor: var(
-    --in-content-button-background-active
-  );
+  --checkbox-unchecked-active-bgcolor: var(--in-content-button-background-active);
   --checkbox-checked-bgcolor: var(--in-content-primary-button-background);
   --checkbox-checked-color: var(--in-content-primary-button-text-color);
   --checkbox-checked-border-color: transparent;
-  --checkbox-checked-hover-bgcolor: var(
-    --in-content-primary-button-background-hover
-  );
-  --checkbox-checked-active-bgcolor: var(
-    --in-content-primary-button-background-active
-  )
-  
-  
+  --checkbox-checked-hover-bgcolor: var(--in-content-primary-button-background-hover);
+  --checkbox-checked-active-bgcolor: var(--in-content-primary-button-background-active);
+
   --blue-40: #3cbdff;
   --blue-50: #0badff;
   --blue-60: #098acc;
@@ -160,19 +147,14 @@
     --in-content-table-header-color: #f4f4f7;
 
     --in-content-accent-color: #8b9cbe;
-    --in-content-accent-color-active: var(
-      --in-content-primary-button-background-hover
-    );
+    --in-content-accent-color-active: var(--in-content-primary-button-background-hover);
     --in-content-link-color: #8b9cbe;
-    --in-content-link-color-hover: var(
-      --in-content-primary-button-background-hover
-    );
-    --in-content-link-color-active: var(
-      --in-content-primary-button-background-active
-    );
+    --in-content-link-color-hover: var(--in-content-primary-button-background-hover);
+    --in-content-link-color-active: var(--in-content-primary-button-background-active);
     --in-content-link-color-visited: #555e70;
 
     --card-outline-color: var(--grey-60);
 
     --dialog-warning-text-color: var(--red-40);
   }
+}

@@ -11,8 +11,7 @@
 }
 
 /* History */
-:-moz-any(#historyTree, #placesList, #placeContent)
-  treechildren::-moz-tree-image(title, query, open, dayContainer),
+:-moz-any(#historyTree, #placesList, #placeContent) treechildren::-moz-tree-image(title, query, open, dayContainer),
 :-moz-any(#historyTree, #placesList, #placeContent)
   treechildren::-moz-tree-image(query, open, OrganizerQuery_history____v) {
   list-style-image: url("./icons/history-reverse.svg") !important;
@@ -21,16 +20,13 @@
 /* Tag */
 :-moz-any(#PlacesToolbar, #BMB_bookmarksPopup, #bookmarksMenu)
   .bookmark-item[container="true"][tagContainer="true"][open="true"],
-:-moz-any(#placesList, #placeContent)
-  treechildren::-moz-tree-image(title, query, open, tagContainer),
-:-moz-any(#placesList, #placeContent)
-  treechildren::-moz-tree-image(query, open, OrganizerQuery_tags_______v) {
+:-moz-any(#placesList, #placeContent) treechildren::-moz-tree-image(title, query, open, tagContainer),
+:-moz-any(#placesList, #placeContent) treechildren::-moz-tree-image(query, open, OrganizerQuery_tags_______v) {
   list-style-image: url("./icons/tag-open.svg") !important;
 }
 
 /* Boomark */
-:-moz-any(#placesList, #placeContent)
-  treechildren::-moz-tree-image(query, open, OrganizerQuery_allbms_____v) {
+:-moz-any(#placesList, #placeContent) treechildren::-moz-tree-image(query, open, OrganizerQuery_allbms_____v) {
   list-style-image: url("chrome://browser/skin/bookmark-hollow.svg") !important;
 }
 
@@ -49,7 +45,8 @@
 }
 
 /*= Menubar - Icons ==========================================================*/
-@-moz-document url("chrome://browser/content/places/places.xhtml") {
+@-moz-document url("chrome://browser/content/places/places.xhtml")
+{
   @media (-moz-gtk-csd-available) {
     #organizeButton,
     #viewMenu,
@@ -101,21 +98,15 @@
 /** Panel - Icons *************************************************************/
 /*= Padding ==================================================================*/
 :root {
-  --arrowpanel-menublank-padding: calc(
-    var(--arrowpanel-menuicon-padding) * 2 + 8px
-  ) !important;
-  --arrowpanel-menuimageblank-padding: calc(
-    var(--arrowpanel-menuitem-padding) - 2px
-  ) !important;
+  --arrowpanel-menublank-padding: calc(var(--arrowpanel-menuicon-padding) * 2 + 8px) !important;
+  --arrowpanel-menuimageblank-padding: calc(var(--arrowpanel-menuitem-padding) - 2px) !important;
 }
 
 #downloadsHistory .button-text,
 .subviewbutton > .toolbarbutton-text {
   padding-inline-start: var(--arrowpanel-menuicon-padding) !important;
 }
-.toolbaritem-combined-buttons
-  > .subviewbutton:not(.subviewbutton-iconic)
-  > .toolbarbutton-text {
+.toolbaritem-combined-buttons > .subviewbutton:not(.subviewbutton-iconic) > .toolbarbutton-text {
   padding-inline-start: 0 !important;
 }
 #panelMenu_bookmarksMenu .subviewbutton[disabled="true"] .toolbarbutton-text,
@@ -164,16 +155,11 @@
 }
 #appMenu-zoomReduce-button2 > .toolbarbutton-icon,
 #appMenu-zoomEnlarge-button2 > .toolbarbutton-icon {
-  stroke: var(
-    --zoom-controls-bgcolor,
-    var(--button-bgcolor, ButtonFace)
-  ) !important;
+  stroke: var(--zoom-controls-bgcolor, var(--button-bgcolor, ButtonFace)) !important;
   -moz-context-properties: fill, stroke !important;
 }
-#appMenu-zoomReduce-button2:not([disabled], [open], :active):is(:hover)
-  > .toolbarbutton-icon,
-#appMenu-zoomEnlarge-button2:not([disabled], [open], :active):is(:hover)
-  > .toolbarbutton-icon {
+#appMenu-zoomReduce-button2:not([disabled], [open], :active):is(:hover) > .toolbarbutton-icon,
+#appMenu-zoomEnlarge-button2:not([disabled], [open], :active):is(:hover) > .toolbarbutton-icon {
   stroke: var(--button-hover-bgcolor) !important;
 }
 
@@ -320,9 +306,7 @@
 }
 
 .PanelUI-remotetabs-notabsforclient-label {
-  margin-inline-start: calc(
-    var(--arrowpanel-menuicon-padding) + var(--arrowpanel-menuitem-padding)
-  ) !important;
+  margin-inline-start: calc(var(--arrowpanel-menuicon-padding) + var(--arrowpanel-menuitem-padding)) !important;
   padding-inline-start: var(--arrowpanel-menublank-padding) !important;
 }
 
@@ -619,8 +603,7 @@ menupopup:is(#menu_FilePopup, #menu_EditPopup, #menu_viewPopup, #goPopup, #histo
   menu:not(.menu-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
 menupopup:is(#organizeButtonPopup, #maintenanceButtonPopup) > menuitem,
 menupopup:is(#viewMenuPopup, #maintenanceButtonPopup) > menu,
-menupopup:is(#context_sendTabToDevicePopupMenu, #context-sendpagetodevice-popup)
-  > menuitem,
+menupopup:is(#context_sendTabToDevicePopupMenu, #context-sendpagetodevice-popup) > menuitem,
 #blockedPopupDontShowMessage {
   /* Color */
   -moz-context-properties: fill, fill-opacity !important;
@@ -647,29 +630,21 @@ menupopup:is(#context_sendTabToDevicePopupMenu, #context-sendpagetodevice-popup)
 /* Padding */
 :root {
   --context-menu-background-padding-default: 5px;
-  --context-menu-background-padding: var(
-    --context-menu-background-padding-default
-  );
+  --context-menu-background-padding: var(--context-menu-background-padding-default);
 }
-:not(menu, #ContentSelectDropdown, #context-navigation)
-  > menupopup
-  > menuitem:not(.menuitem-iconic),
-:not(menu, #ContentSelectDropdown, #context-navigation)
-  > menupopup
-  > menu:not(.menu-iconic),
+:not(menu, #ContentSelectDropdown, #context-navigation) > menupopup > menuitem:not(.menuitem-iconic),
+:not(menu, #ContentSelectDropdown, #context-navigation) > menupopup > menu:not(.menu-iconic),
 menupopup:is(#menu_FilePopup, #menu_EditPopup, #menu_viewPopup, #goPopup, #historyMenuPopup, #bookmarksMenuPopup, #menu_ToolsPopup, #menu_HelpPopup)
   menuitem:not(.menuitem-iconic, .in-menulist, [type="checkbox"], [checked="true"], .bookmark-item),
 menupopup:is(#menu_FilePopup, #menu_EditPopup, #menu_viewPopup, #goPopup, #historyMenuPopup, #bookmarksMenuPopup, #menu_ToolsPopup, #menu_HelpPopup)
   menu:not(.menu-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
 menupopup:is(#organizeButtonPopup, #maintenanceButtonPopup) > menuitem,
 menupopup:is(#viewMenuPopup, #maintenanceButtonPopup) > menu,
-menupopup:is(#context_sendTabToDevicePopupMenu, #context-sendpagetodevice-popup)
-  > menuitem,
+menupopup:is(#context_sendTabToDevicePopupMenu, #context-sendpagetodevice-popup) > menuitem,
 #blockedPopupDontShowMessage {
   background-position: left var(--context-menu-background-padding) center !important;
   padding-inline-start: var(--context-menu-background-padding) !important;
 }
-
 
 /** Context Menu - Icons ******************************************************/
 /*= tabContextMenu ===========================================================*/
@@ -796,8 +771,7 @@ menuitem.viewCustomizeToolbar {
 #blockedPopupAllowSite {
   --menuitem-image: url("chrome://global/skin/icons/check.svg");
 }
-#blockedPopupOptions
-  > menuitem[oncommand="gPopupBlockerObserver.editPopupSettings();"] {
+#blockedPopupOptions > menuitem[oncommand="gPopupBlockerObserver.editPopupSettings();"] {
   --menuitem-image: url("chrome://global/skin/icons/edit.svg");
 }
 #blockedPopupDontShowMessage {
@@ -1075,8 +1049,7 @@ menuitem.viewCustomizeToolbar {
 }
 
 /*= pictureInPictureToggleContextMenu ========================================*/
-#pictureInPictureToggleContextMenu
-  > menuitem[oncommand="PictureInPicture.hideToggle();"] {
+#pictureInPictureToggleContextMenu > menuitem[oncommand="PictureInPicture.hideToggle();"] {
   --menuitem-image: url("./icons/eye-hide.svg");
 }
 

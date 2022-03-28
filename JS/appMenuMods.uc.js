@@ -30,16 +30,14 @@
     async handleEvent(_e) {
       let strings = await this.generateStrings();
       await AppMenuMods.sleep(1);
-      document.getElementById("appMenu-extensions-themes-button").label =
-        await strings.formatValue(["addon-category-extension"]);
+      document.getElementById("appMenu-extensions-themes-button").label = await strings.formatValue([
+        "addon-category-extension",
+      ]);
       this.addRestartButton(strings);
     }
     addSeparatorToAccountPanel() {
-      this.manageAccountSeparator =
-        this.fxaPanelView.ownerDocument.createXULElement("toolbarseparator");
-      this.fxaPanelView
-        .querySelector("#fxa-manage-account-button")
-        .after(this.manageAccountSeparator);
+      this.manageAccountSeparator = this.fxaPanelView.ownerDocument.createXULElement("toolbarseparator");
+      this.fxaPanelView.querySelector("#fxa-manage-account-button").after(this.manageAccountSeparator);
     }
     async addRestartButton(strings) {
       if (!_ucUtils) return;
@@ -52,10 +50,7 @@
       });
       let exitButton = document.getElementById("appMenu-quit-button2");
       if (exitButton) exitButton.before(restartButton);
-      else
-        PanelUI.mainView
-          .querySelector(".panel-subview-body")
-          .appendChild(restartButton);
+      else PanelUI.mainView.querySelector(".panel-subview-body").appendChild(restartButton);
     }
   }
 
@@ -67,9 +62,6 @@
         new AppMenuMods();
       }
     };
-    Services.obs.addObserver(
-      delayedListener,
-      "browser-delayed-startup-finished"
-    );
+    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
   }
 })();

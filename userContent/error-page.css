@@ -4,7 +4,8 @@
 /** Error Page - Restore illustrations ****************************************/
 @-moz-document url-prefix("about:neterror"),
   url("about:restartrequired"), url("chrome://browser/content/aboutRestartRequired.xhtml"),
-  url("about:sessionrestore"),  url("chrome://browser/content/aboutSessionRestore.xhtml") {
+  url("about:sessionrestore"),  url("chrome://browser/content/aboutSessionRestore.xhtml")
+{
   /* Illustrations Position */
   #errorPageContainer,
   .description-wrapper {
@@ -40,7 +41,8 @@
   url-prefix("about:neterror?e=netTimeout"),
   url-prefix("about:neterror?e=netReset"),
   url-prefix("about:neterror?e=netOffline"),
-  url("about:restartrequired"), url("chrome://browser/content/aboutRestartRequired.xhtml") {
+  url("about:restartrequired"), url("chrome://browser/content/aboutRestartRequired.xhtml")
+{
   #errorPageContainer {
     background-image: url("./icons/error-connection-failure.svg");
   }
@@ -62,7 +64,8 @@
     background-size: 18.5em;
   }
 }
-@-moz-document url("about:sessionrestore"), url("chrome://browser/content/aboutSessionRestore.xhtml") {
+@-moz-document url("about:sessionrestore"), url("chrome://browser/content/aboutSessionRestore.xhtml")
+{
   .description-wrapper {
     background-image: url("./icons/error-session-restore.svg");
   }
@@ -86,14 +89,16 @@
     }
   }
 }
-@-moz-document url("about:robots"), url("chrome://browser/content/aboutRobots.xhtml") {
+@-moz-document url("about:robots"), url("chrome://browser/content/aboutRobots.xhtml")
+{
   @media (min-width: 970px) {
     .title {
       background-image: url("chrome://browser/content/aboutRobots-icon.png") !important;
     }
   }
 }
-@-moz-document url("about:welcomeBack"), url("chrome://browser/content/aboutWelcomeBack.xhtml") {
+@-moz-document url("about:welcomeBack"), url("chrome://browser/content/aboutWelcomeBack.xhtml")
+{
   @media (min-width: 970px) {
     .title {
       background-image: url("./icons/welcome-back.svg") !important;

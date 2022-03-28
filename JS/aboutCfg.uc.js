@@ -14,41 +14,17 @@ const config = {
 };
 
 let { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-let {
-  classes: Cc,
-  interfaces: Ci,
-  manager: Cm,
-  utils: Cu,
-  results: Cr,
-} = Components;
+let { classes: Cc, interfaces: Ci, manager: Cm, utils: Cu, results: Cr } = Components;
 let registrar = Cm.QueryInterface(Ci.nsIComponentRegistrar);
-ChromeUtils.defineModuleGetter(
-  this,
-  "FileUtils",
-  "resource://gre/modules/FileUtils.jsm"
-);
+ChromeUtils.defineModuleGetter(this, "FileUtils", "resource://gre/modules/FileUtils.jsm");
 
 function findAboutConfig() {
   if (config.pathOverride) return config.pathOverride;
-  if (
-    FileUtils.getDir("UChrm", [
-      "resources",
-      "aboutconfig",
-      "config.xhtml",
-    ]).exists()
-  )
+  if (FileUtils.getDir("UChrm", ["resources", "aboutconfig", "config.xhtml"]).exists())
     return "chrome://userchrome/content/aboutconfig/config.xhtml";
-  if (
-    FileUtils.getDir("UChrm", ["utils", "aboutconfig", "config.xhtml"]).exists()
-  )
+  if (FileUtils.getDir("UChrm", ["utils", "aboutconfig", "config.xhtml"]).exists())
     return "chrome://userchromejs/content/aboutconfig/config.xhtml";
-  if (
-    FileUtils.getDir("UChrm", [
-      "utils",
-      "aboutconfig",
-      "aboutconfig.xhtml",
-    ]).exists()
-  )
+  if (FileUtils.getDir("UChrm", ["utils", "aboutconfig", "aboutconfig.xhtml"]).exists())
     return "chrome://userchromejs/content/aboutconfig/aboutconfig.xhtml";
   else return false;
 }
@@ -56,19 +32,11 @@ function findAboutConfig() {
 // generate a unique ID on every app launch. protection against the very unlikely possibility that a future update adds a component with the same class ID, which would break the script.
 function generateFreeCID() {
   let uuid = Components.ID(
-    Cc["@mozilla.org/uuid-generator;1"]
-      .getService(Ci.nsIUUIDGenerator)
-      .generateUUID()
-      .toString()
+    Cc["@mozilla.org/uuid-generator;1"].getService(Ci.nsIUUIDGenerator).generateUUID().toString()
   );
   // I can't tell whether generateUUID is guaranteed to produce a unique ID, or just a random ID. so I add this loop to regenerate it in the extremely unlikely (or potentially impossible) event that the UUID is already registered as a CID. I haven't seen this happen yet on about 200 tests but there's no harm in keeping it just in case.
   while (registrar.isCIDRegistered(uuid)) {
-    uuid = Components.ID(
-      Cc["@mozilla.org/uuid-generator;1"]
-        .getService(Ci.nsIUUIDGenerator)
-        .generateUUID()
-        .toString()
-    );
+    uuid = Components.ID(Cc["@mozilla.org/uuid-generator;1"].getService(Ci.nsIUUIDGenerator).generateUUID().toString());
   }
   return uuid;
 }
@@ -118,10 +86,7 @@ let onChromeWindow = {
   observe(win, _top, _data) {
     eval(
       "win.gIdentityHandler._secureInternalPages = " +
-        `/${win.gIdentityHandler._secureInternalPages.source.replace(
-          /\|config\|/,
-          `|config|${config.address}|`
-        )}/`
+        `/${win.gIdentityHandler._secureInternalPages.source.replace(/\|config\|/, `|config|${config.address}|`)}/`
     );
   },
 };

@@ -9,12 +9,9 @@
 
 (async function () {
   let css = `.tab-icon-sound-label,.tab-secondary-label{display:none;}.tab-icon-sound{display:-moz-box;}.tab-icon-sound:not([soundplaying],[muted],[activemedia-blocked],[pictureinpicture]),.tab-icon-sound[pinned]{display:none;}.tab-icon-overlay{display:none;}`;
-  let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(
-    Ci.nsIStyleSheetService
-  );
+  let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
   let uri = makeURI("data:text/css;charset=UTF=8," + encodeURIComponent(css));
-  if (!sss.sheetRegistered(uri, sss.AUTHOR_SHEET))
-    sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
+  if (!sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
   /**
    * for a given tab on which the tooltip is anchored, set the tooltip icon accordingly.
    * for a secure tab, use the lock icon. for an insecure tab, use the insecure icon.
@@ -32,10 +29,7 @@
     } else icon.removeAttribute("pending");
     let docURI = tab.linkedBrowser?.documentURI;
     if (docURI) {
-      let homePage = new RegExp(
-        `(${BROWSER_NEW_TAB_URL}|${HomePage.get(window)})`,
-        "i"
-      ).test(docURI.spec);
+      let homePage = new RegExp(`(${BROWSER_NEW_TAB_URL}|${HomePage.get(window)})`, "i").test(docURI.spec);
       // if the page is the user's homepage or new tab page, reflect that in the icon.
       if (homePage) {
         icon.setAttribute("type", "home-page");
@@ -53,10 +47,7 @@
         // about: pages
         case "about":
           let pathQueryRef = docURI?.pathQueryRef;
-          if (
-            pathQueryRef &&
-            /^(neterror|certerror|httpsonlyerror)/.test(pathQueryRef)
-          ) {
+          if (pathQueryRef && /^(neterror|certerror|httpsonlyerror)/.test(pathQueryRef)) {
             icon.setAttribute("type", "error-page");
             icon.hidden = false;
             return;
@@ -121,10 +112,7 @@
     let stringWithShortcut = (stringId, keyElemId, pluralCount) => {
       let keyElem = document.getElementById(keyElemId);
       let shortcut = ShortcutUtils.prettifyShortcut(keyElem);
-      return PluralForm.get(
-        pluralCount,
-        gTabBrowserBundle.GetStringFromName(stringId)
-      )
+      return PluralForm.get(pluralCount, gTabBrowserBundle.GetStringFromName(stringId))
         .replace("%S", shortcut)
         .replace("#1", pluralCount);
     };
@@ -137,10 +125,10 @@
     if (tab.mOverCloseButton) {
       let rect = windowUtils.getBoundsWithoutFlushing(tab.closeButton);
       let shortcut = ShortcutUtils.prettifyShortcut(key_close);
-      label = PluralForm.get(
-        affectedTabsLength,
-        gTabBrowserBundle.GetStringFromName("tabs.closeTabs.tooltip")
-      ).replace("#1", affectedTabsLength);
+      label = PluralForm.get(affectedTabsLength, gTabBrowserBundle.GetStringFromName("tabs.closeTabs.tooltip")).replace(
+        "#1",
+        affectedTabsLength
+      );
       if (contextTabInSelection && shortcut) {
         if (label.includes("%S")) label = label.replace("%S", shortcut);
         else label = label + " (" + shortcut + ")";
@@ -151,14 +139,8 @@
       let rect = windowUtils.getBoundsWithoutFlushing(icon);
       let stringID;
       if (contextTabInSelection) {
-        stringID = tab.linkedBrowser.audioMuted
-          ? "tabs.unmuteAudio2.tooltip"
-          : "tabs.muteAudio2.tooltip";
-        label = stringWithShortcut(
-          stringID,
-          "key_toggleMute",
-          affectedTabsLength
-        );
+        stringID = tab.linkedBrowser.audioMuted ? "tabs.unmuteAudio2.tooltip" : "tabs.muteAudio2.tooltip";
+        label = stringWithShortcut(stringID, "key_toggleMute", affectedTabsLength);
       } else {
         if (tab.hasAttribute("activemedia-blocked")) {
           stringID = "tabs.unblockAudio2.tooltip";
@@ -168,10 +150,10 @@
             : "tabs.muteAudio2.background.tooltip";
         }
 
-        label = PluralForm.get(
-          affectedTabsLength,
-          gTabBrowserBundle.GetStringFromName(stringID)
-        ).replace("#1", affectedTabsLength);
+        label = PluralForm.get(affectedTabsLength, gTabBrowserBundle.GetStringFromName(stringID)).replace(
+          "#1",
+          affectedTabsLength
+        );
       }
       align = rect.right - tabRect.left < 250;
     } else label = this.getTabTooltip(tab);

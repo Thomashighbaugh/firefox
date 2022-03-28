@@ -77,27 +77,19 @@ class DebugExtension {
   constructor() {
     this.setupUpdate();
     this.toolbarMenu = this.makeMainMenu(this.toolbarContext);
-    this.toolbarMenupopup = this.toolbarMenu.appendChild(
-      document.createXULElement("menupopup")
-    );
+    this.toolbarMenupopup = this.toolbarMenu.appendChild(document.createXULElement("menupopup"));
     this.toolbarMenupopup.addEventListener("popupshowing", this);
     this.overflowMenu = this.makeMainMenu(this.overflowContext);
-    this.overflowMenupopup = this.overflowMenu.appendChild(
-      document.createXULElement("menupopup")
-    );
+    this.overflowMenupopup = this.overflowMenu.appendChild(document.createXULElement("menupopup"));
     this.overflowMenupopup.addEventListener("popupshowing", this);
     this.pageActionMenu = this.makeMainMenu(this.pageActionContext);
-    this.pageActionMenupopup = this.pageActionMenu.appendChild(
-      document.createXULElement("menupopup")
-    );
+    this.pageActionMenupopup = this.pageActionMenu.appendChild(document.createXULElement("menupopup"));
     this.pageActionMenupopup.addEventListener("popupshowing", this);
     // make a menu item for each type of page within each context
     DebugExtension.menuitems.forEach((type) =>
       ["toolbar", "overflow", "pageAction"].forEach((context) => {
-        if (typeof type === "string")
-          this.makeMenuitem(type, this[`${context}Menupopup`]);
-        else if (typeof type === "object")
-          this.makeMenu(type, this[`${context}Menupopup`]);
+        if (typeof type === "string") this.makeMenuitem(type, this[`${context}Menupopup`]);
+        else if (typeof type === "object") this.makeMenu(type, this[`${context}Menupopup`]);
       })
     );
   }
@@ -112,26 +104,15 @@ class DebugExtension {
       else element.setAttribute(name, value);
   }
   get toolbarContext() {
-    return (
-      this._toolbarContext ||
-      (this._toolbarContext = document.getElementById("toolbar-context-menu"))
-    );
+    return this._toolbarContext || (this._toolbarContext = document.getElementById("toolbar-context-menu"));
   }
   get overflowContext() {
     return (
-      this._overflowContext ||
-      (this._overflowContext = document.getElementById(
-        "customizationPanelItemContextMenu"
-      ))
+      this._overflowContext || (this._overflowContext = document.getElementById("customizationPanelItemContextMenu"))
     );
   }
   get pageActionContext() {
-    return (
-      this._pageActionContext ||
-      (this._pageActionContext = document.getElementById(
-        "pageActionContextMenu"
-      ))
-    );
+    return this._pageActionContext || (this._pageActionContext = document.getElementById("pageActionContextMenu"));
   }
   // enable/disable menu items depending on whether the clicked extension has pages available to open.
   handleEvent(e) {
@@ -143,21 +124,17 @@ class DebugExtension {
     if (e.target.className.includes("Submenu-Popup")) {
       popup.querySelector(".customize-context-BrowserAction").disabled =
         !extension.manifest.browser_action?.default_popup;
-      popup.querySelector(".customize-context-PageAction").disabled =
-        !extension.manifest.page_action?.default_popup;
+      popup.querySelector(".customize-context-PageAction").disabled = !extension.manifest.page_action?.default_popup;
       popup.querySelector(".customize-context-SidebarAction").disabled =
         !extension.manifest.sidebar_action?.default_panel;
-      popup.querySelector(".customize-context-Options").disabled =
-        !extension.manifest.options_ui?.page;
+      popup.querySelector(".customize-context-Options").disabled = !extension.manifest.options_ui?.page;
     } else {
       popup.querySelector(".customize-context-ViewDocs-Submenu").disabled =
         !extension.manifest.browser_action?.default_popup &&
         !extension.manifest.page_action?.default_popup &&
         !extension.manifest.options_ui?.page;
       popup.querySelector(".customize-context-ViewSource").disabled =
-        extension.addonData.isSystem ||
-        extension.addonData.builtIn ||
-        extension.addonData.temporarilyInstalled;
+        extension.addonData.isSystem || extension.addonData.builtIn || extension.addonData.temporarilyInstalled;
     }
   }
   makeMainMenu(popup) {
@@ -169,11 +146,7 @@ class DebugExtension {
       contexttype: popup === this.pageActionContext ? void 0 : "toolbaritem",
     });
     popup
-      .querySelector(
-        popup === this.pageActionContext
-          ? ".manageExtensionItem"
-          : ".customize-context-manageExtension"
-      )
+      .querySelector(popup === this.pageActionContext ? ".manageExtensionItem" : ".customize-context-manageExtension")
       .after(menu);
     return menu;
   }
@@ -190,9 +163,7 @@ class DebugExtension {
       label: DebugExtension.config[type].label,
       accesskey: DebugExtension.config[type].accesskey,
       oncommand: `debugExtensionMenu.onCommand(event, this.parentElement, "${type}")`,
-      contexttype: popup.closest("#pageActionContextMenu")
-        ? void 0
-        : "toolbaritem",
+      contexttype: popup.closest("#pageActionContextMenu") ? void 0 : "toolbaritem",
     });
     popup.appendChild(item);
     return item;
@@ -211,9 +182,7 @@ class DebugExtension {
       class: `customize-context-${name}-Submenu`,
       label: DebugExtension.config[name].label,
       accesskey: DebugExtension.config[name].accesskey,
-      contexttype: popup.closest("#pageActionContextMenu")
-        ? void 0
-        : "toolbaritem",
+      contexttype: popup.closest("#pageActionContextMenu") ? void 0 : "toolbaritem",
     });
     let menupopup = menu.appendChild(document.createXULElement("menupopup"));
     menupopup.className = `customize-context-${name}-Submenu-Popup`;
@@ -224,8 +193,7 @@ class DebugExtension {
   }
   // get the ID for the button the context menu was opened on
   getExtensionId(popup) {
-    if (popup.closest("#pageActionContextMenu"))
-      return BrowserPageActions.actionForNode(popup.triggerNode).extensionID;
+    if (popup.closest("#pageActionContextMenu")) return BrowserPageActions.actionForNode(popup.triggerNode).extensionID;
     else return ToolbarContextMenu._getExtensionId(popup);
   }
   // click callback
@@ -253,11 +221,8 @@ class DebugExtension {
         url = extension.manifest.options_ui?.page;
         break;
       case "Inspector":
-        url = `about:devtools-toolbox?id=${encodeURIComponent(
-          id
-        )}&type=extension`;
-        triggeringPrincipal =
-          Services.scriptSecurityManager.getSystemPrincipal(); // use the system principal for about:devtools-toolbox
+        url = `about:devtools-toolbox?id=${encodeURIComponent(id)}&type=extension`;
+        triggeringPrincipal = Services.scriptSecurityManager.getSystemPrincipal(); // use the system principal for about:devtools-toolbox
         break;
       case "ViewSource":
         this.openArchive(id);
@@ -273,17 +238,10 @@ class DebugExtension {
     }
     // if the extension's principal isn't available for some reason, make a content principal.
     if (!triggeringPrincipal)
-      triggeringPrincipal =
-        Services.scriptSecurityManager.createContentPrincipal(
-          Services.io.newURI(url),
-          {}
-        );
+      triggeringPrincipal = Services.scriptSecurityManager.createContentPrincipal(Services.io.newURI(url), {});
     // whether to open in the current tab or a new tab.
     // only opens in the current tab if the current tab is on the new tab page or home page.
-    let where = new RegExp(
-      `(${BROWSER_NEW_TAB_URL}|${HomePage.get(window)})`,
-      "i"
-    ).test(gBrowser.currentURI.spec)
+    let where = new RegExp(`(${BROWSER_NEW_TAB_URL}|${HomePage.get(window)})`, "i").test(gBrowser.currentURI.spec)
       ? "current"
       : "tab";
     openLinkIn(url, where, {
@@ -316,10 +274,7 @@ class DebugExtension {
             /let separator/,
             `let debugExtension = popup.querySelector(\".customize-context-debugExtension\");\n    let separator`
           )
-          .replace(
-            /\[removeExtension, manageExtension,/,
-            `[removeExtension, manageExtension, debugExtension,`
-          )
+          .replace(/\[removeExtension, manageExtension,/, `[removeExtension, manageExtension, debugExtension,`)
     );
     eval(
       `BrowserPageActions.onContextMenuShowing = async function ` +
@@ -335,8 +290,7 @@ class DebugExtension {
   }
 }
 
-if (gBrowserInit.delayedStartupFinished)
-  window.debugExtensionMenu = new DebugExtension();
+if (gBrowserInit.delayedStartupFinished) window.debugExtensionMenu = new DebugExtension();
 else {
   let delayedListener = (subject, topic) => {
     if (topic == "browser-delayed-startup-finished" && subject == window) {

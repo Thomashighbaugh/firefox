@@ -7,41 +7,36 @@
 // ==/UserScript==
 
 (function () {
-    class AutocompletePopupStyler {
-        constructor() {
-            this.autocomplete.addEventListener("popupshowing", this);
-        }
-        handleEvent(_e) {
-            this.autocomplete.toggleAttribute("anchored-on-panel", this.sameBG);
-        }
-        get sameBG() {
-            if (!this.autocomplete.anchorNode) return false;
-            return (
-                getComputedStyle(this.panelShadowContent).backgroundColor ===
-                getComputedStyle(this.autocomplete).backgroundColor
-            );
-        }
-        get autocomplete() {
-            return (
-                this._autocomplete ||
-                (this._autocomplete = document.getElementById("PopupAutoComplete"))
-            );
-        }
-        get panelShadowContent() {
-            return this.autocomplete.anchorNode
-                ?.closest("panel")
-                .shadowRoot.querySelector(`[part="content"]`);
-        }
+  class AutocompletePopupStyler {
+    constructor() {
+      this.autocomplete.addEventListener("popupshowing", this);
     }
+    handleEvent(_e) {
+      this.autocomplete.toggleAttribute("anchored-on-panel", this.sameBG);
+    }
+    get sameBG() {
+      if (!this.autocomplete.anchorNode) return false;
+      return (
+        getComputedStyle(this.panelShadowContent).backgroundColor ===
+        getComputedStyle(this.autocomplete).backgroundColor
+      );
+    }
+    get autocomplete() {
+      return this._autocomplete || (this._autocomplete = document.getElementById("PopupAutoComplete"));
+    }
+    get panelShadowContent() {
+      return this.autocomplete.anchorNode?.closest("panel").shadowRoot.querySelector(`[part="content"]`);
+    }
+  }
 
-    if (gBrowserInit.delayedStartupFinished) new AutocompletePopupStyler();
-    else {
-        let delayedListener = (subject, topic) => {
-            if (topic == "browser-delayed-startup-finished" && subject == window) {
-                Services.obs.removeObserver(delayedListener, topic);
-                new AutocompletePopupStyler();
-            }
-        };
-        Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
-    }
+  if (gBrowserInit.delayedStartupFinished) new AutocompletePopupStyler();
+  else {
+    let delayedListener = (subject, topic) => {
+      if (topic == "browser-delayed-startup-finished" && subject == window) {
+        Services.obs.removeObserver(delayedListener, topic);
+        new AutocompletePopupStyler();
+      }
+    };
+    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
+  }
 })();

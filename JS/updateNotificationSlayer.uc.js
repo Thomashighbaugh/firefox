@@ -37,18 +37,12 @@
         return;
       }
 
-      if (
-        (window.fullScreen && FullScreen.navToolboxHidden) ||
-        document.fullscreenElement ||
-        this._shouldSuppress()
-      ) {
+      if ((window.fullScreen && FullScreen.navToolboxHidden) || document.fullscreenElement || this._shouldSuppress()) {
         this._hidePopup();
         return;
       }
 
-      let doorhangers = notifications.filter(
-        (n) => !n.dismissed && !n.options.badgeOnly
-      );
+      let doorhangers = notifications.filter((n) => !n.dismissed && !n.options.badgeOnly);
 
       if (this.panel.state == "showing" || this.panel.state == "open") {
         // If the menu is already showing, then we need to dismiss all notifications
@@ -88,22 +82,12 @@
       }
     };
 
-    AppMenuNotifications.showNotification = function showNotification(
-      id,
-      mainAction,
-      secondaryAction,
-      options = {}
-    ) {
+    AppMenuNotifications.showNotification = function showNotification(id, mainAction, secondaryAction, options = {}) {
       let newOptions = options;
       if (id.startsWith("update")) {
         newOptions.dismissed = true;
       }
-      let notification = new AppMenuNotification(
-        id,
-        mainAction,
-        secondaryAction,
-        newOptions
-      );
+      let notification = new AppMenuNotification(id, mainAction, secondaryAction, newOptions);
       let existingIndex = this._notifications.findIndex((n) => n.id == id);
       if (existingIndex != -1) {
         this._notifications.splice(existingIndex, 1);
@@ -142,9 +126,6 @@
         init();
       }
     };
-    Services.obs.addObserver(
-      delayedListener,
-      "browser-delayed-startup-finished"
-    );
+    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
   }
 })();

@@ -8,15 +8,9 @@
 
 (function () {
   function init() {
-    const { UrlbarResult } = ChromeUtils.import(
-      "resource:///modules/UrlbarResult.jsm"
-    );
-    let autofiller = gURLBar.controller.manager.providers.find(
-      (p) => p.name === "Autofill"
-    );
-    let pUniComp = gURLBar.controller.manager.providers.find(
-      (p) => (p.name = "UnifiedComplete")
-    );
+    const { UrlbarResult } = ChromeUtils.import("resource:///modules/UrlbarResult.jsm");
+    let autofiller = gURLBar.controller.manager.providers.find((p) => p.name === "Autofill");
+    let pUniComp = gURLBar.controller.manager.providers.find((p) => (p.name = "UnifiedComplete"));
 
     autofiller._matchKnownUrl = async function (queryContext) {
       let tempResults = [];
@@ -26,14 +20,11 @@
 
       let firstResult = tempResults[0];
       if (firstResult) {
-        let trimmedURL = UrlbarUtils.stripPrefixAndTrim(
-          firstResult.payload.url,
-          {
-            stripHttp: true,
-            stripHttps: true,
-            stripWww: true,
-          }
-        )[0];
+        let trimmedURL = UrlbarUtils.stripPrefixAndTrim(firstResult.payload.url, {
+          stripHttp: true,
+          stripHttps: true,
+          stripWww: true,
+        })[0];
         if (trimmedURL.startsWith(queryContext.trimmedSearchString))
           return this._processUrlRow(tempResults[0], queryContext);
       }
@@ -62,9 +53,7 @@
       let url = row.payload.url;
       let strippedURL = queryContext.trimmedSearchString;
 
-      let strippedURLIndex = url
-        .toLowerCase()
-        .indexOf(strippedURL.toLowerCase());
+      let strippedURLIndex = url.toLowerCase().indexOf(strippedURL.toLowerCase());
       let strippedPrefix = url.substr(0, strippedURLIndex);
       autofilledValue = url.substr(strippedURLIndex);
       finalCompleteValue = strippedPrefix + autofilledValue;
@@ -83,9 +72,7 @@
           icon: row.payload.icon,
         })
       );
-      autofilledValue =
-        queryContext.searchString +
-        autofilledValue.substring(this._searchString.length);
+      autofilledValue = queryContext.searchString + autofilledValue.substring(this._searchString.length);
       result.autofill = {
         value: autofilledValue,
         selectionStart: queryContext.searchString.length,
@@ -103,9 +90,6 @@
         init();
       }
     };
-    Services.obs.addObserver(
-      delayedListener,
-      "browser-delayed-startup-finished"
-    );
+    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
   }
 })();

@@ -8,12 +8,12 @@
 // ==/UserScript==
 
 class AnimateContextMenus {
-    constructor() {
-        document.documentElement.setAttribute("animate-menupopups", true);
-        addEventListener("popupshowing", this);
-        addEventListener("popupshown", this);
-        addEventListener("popuphidden", this);
-        let css = `
+  constructor() {
+    document.documentElement.setAttribute("animate-menupopups", true);
+    addEventListener("popupshowing", this);
+    addEventListener("popupshown", this);
+    addEventListener("popuphidden", this);
+    let css = `
 :root[animate-menupopups] :not(menulist) > menupopup:not([position], [type="arrow"], [animate="false"]) {
     opacity: 0;
     transform: translateY(-70px) scaleX(0.95) scaleY(0.5);
@@ -39,37 +39,30 @@ class AnimateContextMenus {
     pointer-events: none;
 }
 `;
-        let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(
-            Ci.nsIStyleSheetService
-        );
-        let uri = Services.io.newURI("data:text/css;charset=UTF=8," + encodeURIComponent(css));
-        if (!sss.sheetRegistered(uri, sss.AUTHOR_SHEET))
-            sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
+    let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
+    let uri = Services.io.newURI("data:text/css;charset=UTF=8," + encodeURIComponent(css));
+    if (!sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
+  }
+  handleEvent(e) {
+    if (e.target.tagName !== "menupopup") return;
+    if (e.target.hasAttribute("position")) return;
+    if (e.target.getAttribute("type") == "arrow") return;
+    if (e.target.parentElement) if (e.target.parentElement.tagName == "menulist") return;
+    if (e.target.shadowRoot && e.target.shadowRoot.firstElementChild.classList.contains("panel-arrowcontainer")) return;
+    this[`on_${e.type}`](e);
+  }
+  on_popupshowing(e) {
+    if (e.target.getAttribute("animate") != "false") {
+      e.target.setAttribute("animate", "open");
+      e.target.setAttribute("animating", "true");
     }
-    handleEvent(e) {
-        if (e.target.tagName !== "menupopup") return;
-        if (e.target.hasAttribute("position")) return;
-        if (e.target.getAttribute("type") == "arrow") return;
-        if (e.target.parentElement) if (e.target.parentElement.tagName == "menulist") return;
-        if (
-            e.target.shadowRoot &&
-            e.target.shadowRoot.firstElementChild.classList.contains("panel-arrowcontainer")
-        )
-            return;
-        this[`on_${e.type}`](e);
-    }
-    on_popupshowing(e) {
-        if (e.target.getAttribute("animate") != "false") {
-            e.target.setAttribute("animate", "open");
-            e.target.setAttribute("animating", "true");
-        }
-    }
-    on_popupshown(e) {
-        e.target.removeAttribute("animating");
-    }
-    on_popuphidden(e) {
-        if (e.target.getAttribute("animate") != "false") e.target.removeAttribute("animate");
-    }
+  }
+  on_popupshown(e) {
+    e.target.removeAttribute("animating");
+  }
+  on_popuphidden(e) {
+    if (e.target.getAttribute("animate") != "false") e.target.removeAttribute("animate");
+  }
 }
 
 new AnimateContextMenus();

@@ -13,66 +13,64 @@
 // ==/UserScript==
 
 class WindowDragHotkey {
-    constructor() {
-        this.registerSheet();
-        ["keydown", "keyup"].forEach((ev) => document.addEventListener(ev, this, true));
+  constructor() {
+    this.registerSheet();
+    ["keydown", "keyup"].forEach((ev) => document.addEventListener(ev, this, true));
+  }
+  handleEvent(e) {
+    if (e.repeat) return;
+    switch (e.type) {
+      case "keydown":
+        this.onDown(e);
+        break;
+      case "keyup":
+        this.onUp();
+        break;
+      case "mouseout":
+        this.onOut(e);
+        break;
     }
-    handleEvent(e) {
-        if (e.repeat) return;
-        switch (e.type) {
-            case "keydown":
-                this.onDown(e);
-                break;
-            case "keyup":
-                this.onUp();
-                break;
-            case "mouseout":
-                this.onOut(e);
-                break;
-        }
-    }
-    onDown(e) {
-        switch (e.key) {
-            case "Alt":
-                if (!e.shiftKey) return;
-                break;
-            case "Shift":
-                if (!e.altKey) return;
-                break;
-            default:
-                document.documentElement.removeAttribute("force-drag");
-                return;
-        }
-        document.documentElement.setAttribute("force-drag", true);
-        window.addEventListener("mouseout", this);
-        e.preventDefault();
-    }
-    onUp() {
+  }
+  onDown(e) {
+    switch (e.key) {
+      case "Alt":
+        if (!e.shiftKey) return;
+        break;
+      case "Shift":
+        if (!e.altKey) return;
+        break;
+      default:
         document.documentElement.removeAttribute("force-drag");
+        return;
     }
-    onOut(e) {
-        if (e.shiftKey && e.altKey) return;
-        document.documentElement.removeAttribute("force-drag");
-        window.removeEventListener("mouseout", this);
-    }
-    registerSheet() {
-        let css = `:root[force-drag] toolbar *{-moz-window-dragging:drag!important;}`;
-        let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(
-            Ci.nsIStyleSheetService
-        );
-        let uri = makeURI("data:text/css;charset=UTF=8," + encodeURIComponent(css));
-        if (sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) return; // avoid loading duplicate sheets on subsequent window launches.
-        sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
-    }
+    document.documentElement.setAttribute("force-drag", true);
+    window.addEventListener("mouseout", this);
+    e.preventDefault();
+  }
+  onUp() {
+    document.documentElement.removeAttribute("force-drag");
+  }
+  onOut(e) {
+    if (e.shiftKey && e.altKey) return;
+    document.documentElement.removeAttribute("force-drag");
+    window.removeEventListener("mouseout", this);
+  }
+  registerSheet() {
+    let css = `:root[force-drag] toolbar *{-moz-window-dragging:drag!important;}`;
+    let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
+    let uri = makeURI("data:text/css;charset=UTF=8," + encodeURIComponent(css));
+    if (sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) return; // avoid loading duplicate sheets on subsequent window launches.
+    sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
+  }
 }
 
 if (gBrowserInit.delayedStartupFinished) new WindowDragHotkey();
 else {
-    let delayedListener = (subject, topic) => {
-        if (topic == "browser-delayed-startup-finished" && subject == window) {
-            Services.obs.removeObserver(delayedListener, topic);
-            new WindowDragHotkey();
-        }
-    };
-    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
+  let delayedListener = (subject, topic) => {
+    if (topic == "browser-delayed-startup-finished" && subject == window) {
+      Services.obs.removeObserver(delayedListener, topic);
+      new WindowDragHotkey();
+    }
+  };
+  Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
 }

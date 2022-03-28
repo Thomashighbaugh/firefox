@@ -7,47 +7,45 @@
 // ==/UserScript==
 
 (function () {
-    const builtInSidebars = ["Bookmarks", "History", "Tabs"];
-    function init() {
-        for (let type of builtInSidebars) {
-            SidebarUI.sidebars.get(
-                `view${type}Sidebar`
-            ).buttonId = `sidebar-switcher-${type.toLowerCase()}`;
+  const builtInSidebars = ["Bookmarks", "History", "Tabs"];
+  function init() {
+    for (let type of builtInSidebars) {
+      SidebarUI.sidebars.get(`view${type}Sidebar`).buttonId = `sidebar-switcher-${type.toLowerCase()}`;
+    }
+
+    SidebarUI.selectMenuItem = function selectMenuItem(commandID) {
+      for (let [id, { menuId, buttonId, triggerButtonId }] of this.sidebars) {
+        let menu = document.getElementById(menuId);
+        let button = document.getElementById(buttonId);
+        let triggerbutton = triggerButtonId && document.getElementById(triggerButtonId);
+        if (id == commandID) {
+          menu.setAttribute("checked", "true");
+          button.setAttribute("checked", "true");
+          if (triggerbutton) {
+            triggerbutton.setAttribute("checked", "true");
+            updateToggleControlLabel(triggerbutton);
+          }
+        } else {
+          menu.removeAttribute("checked");
+          button.removeAttribute("checked");
+          if (triggerbutton) {
+            triggerbutton.removeAttribute("checked");
+            updateToggleControlLabel(triggerbutton);
+          }
         }
+      }
+    };
+  }
 
-        SidebarUI.selectMenuItem = function selectMenuItem(commandID) {
-            for (let [id, { menuId, buttonId, triggerButtonId }] of this.sidebars) {
-                let menu = document.getElementById(menuId);
-                let button = document.getElementById(buttonId);
-                let triggerbutton = triggerButtonId && document.getElementById(triggerButtonId);
-                if (id == commandID) {
-                    menu.setAttribute("checked", "true");
-                    button.setAttribute("checked", "true");
-                    if (triggerbutton) {
-                        triggerbutton.setAttribute("checked", "true");
-                        updateToggleControlLabel(triggerbutton);
-                    }
-                } else {
-                    menu.removeAttribute("checked");
-                    button.removeAttribute("checked");
-                    if (triggerbutton) {
-                        triggerbutton.removeAttribute("checked");
-                        updateToggleControlLabel(triggerbutton);
-                    }
-                }
-            }
-        };
-    }
-
-    if (gBrowserInit.delayedStartupFinished) {
+  if (gBrowserInit.delayedStartupFinished) {
+    init();
+  } else {
+    let delayedListener = (subject, topic) => {
+      if (topic == "browser-delayed-startup-finished" && subject == window) {
+        Services.obs.removeObserver(delayedListener, topic);
         init();
-    } else {
-        let delayedListener = (subject, topic) => {
-            if (topic == "browser-delayed-startup-finished" && subject == window) {
-                Services.obs.removeObserver(delayedListener, topic);
-                init();
-            }
-        };
-        Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
-    }
+      }
+    };
+    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
+  }
 })();

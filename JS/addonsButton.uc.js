@@ -30,8 +30,7 @@ UC.extensionOptionsMenu = {
           class: "toolbarbutton-1 chromeclass-toolbar-additional",
           image:
             "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABaUlEQVQ4y6WTW0sCQRiG/SEpVBDUVVfphbAEhWAlqYhrLWUlER2IIgrqYkEp6SBmudWiFf0SiSCwpAI7bJnprq6H/sTbGhJiEyt28fAN7zfz8DHDaABo/oPqBpovX7j4T1gOS6dNCcYiZbhOSrCHi2hugqNCwskVYNmXbxoSuPkCN3NWhCdahLLGKCfDcSBjOJiHeTeHPr8EyifCwGb9RMF0RIaHl+E+zoMJ5+AM5WALSBjaEWHayqLXm4GR/YB+Iw2iYIKTMB6WwIRE0EER9r0s+r1pGNZT6F55ReeigPb5F7TOPpMFTDCDkUAGA753GFYFdC08QedJEvkR2DbfzuntFBz+1K2ZFdCz9Ii2qQfo3Pck2MoZpVI/AqtXQAXjchIdk3fQMok/Ib6CaS0Z1c8pdlc8pqXjUOF7AqVSxDvQOq7RKERBi/UKdbDVnK3vkQWWS9Si1vstGIyxCqiBquZUXc429BfU+AL9Tqy8Q2Za8AAAAABJRU5ErkJggg==",
-          onclick:
-            'if (event.button == 1) BrowserOpenAddonsMgr("addons://list/extension")',
+          onclick: 'if (event.button == 1) BrowserOpenAddonsMgr("addons://list/extension")',
         });
 
         let mp = _uc.createElement(doc, "menupopup", {
@@ -40,10 +39,7 @@ UC.extensionOptionsMenu = {
         });
         btn.appendChild(mp);
 
-        mp.addEventListener(
-          "popupshowing",
-          UC.extensionOptionsMenu.evalPopulateMenu
-        );
+        mp.addEventListener("popupshowing", UC.extensionOptionsMenu.evalPopulateMenu);
 
         return btn;
       },
@@ -75,10 +71,8 @@ UC.extensionOptionsMenu = {
 
     addons
       .sort((a, b) => {
-        let ka =
-          (enabledFirst ? (a.isActive ? "0" : "1") : "") + a.name.toLowerCase();
-        let kb =
-          (enabledFirst ? (b.isActive ? "0" : "1") : "") + b.name.toLowerCase();
+        let ka = (enabledFirst ? (a.isActive ? "0" : "1") : "") + a.name.toLowerCase();
+        let kb = (enabledFirst ? (b.isActive ? "0" : "1") : "") + b.name.toLowerCase();
         return ka < kb ? -1 : 1;
       })
       .forEach((addon) => {
@@ -87,12 +81,7 @@ UC.extensionOptionsMenu = {
           (!addon.hidden || UC.extensionOptionsMenu.showHidden) &&
           (!addon.userDisabled || UC.extensionOptionsMenu.showDisabled)
         ) {
-          if (
-            showDisabled &&
-            enabledFirst &&
-            prevState &&
-            addon.isActive != prevState
-          )
+          if (showDisabled && enabledFirst && prevState && addon.isActive != prevState)
             popup.appendChild(doc.createXULElement("menuseparator"));
           prevState = addon.isActive;
 
@@ -128,8 +117,7 @@ UC.extensionOptionsMenu = {
 
     switch (e.button) {
       case 0:
-        if (addon.optionsURL && !hasMdf)
-          UC.extensionOptionsMenu.openAddonOptions(addon, win);
+        if (addon.optionsURL && !hasMdf) UC.extensionOptionsMenu.openAddonOptions(addon, win);
         else if (e.ctrlKey) UC.extensionOptionsMenu.browseDir(addon);
         break;
       case 1:
@@ -137,9 +125,7 @@ UC.extensionOptionsMenu = {
           openURL(addon.homepageURL);
           closeMenus(mi);
         } else if (e.ctrlKey) {
-          Cc["@mozilla.org/widget/clipboardhelper;1"]
-            .getService(Ci.nsIClipboardHelper)
-            .copyString(addon.id);
+          Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper).copyString(addon.id);
           closeMenus(mi);
         }
         break;
@@ -149,15 +135,8 @@ UC.extensionOptionsMenu = {
           else addon.disable();
           UC.extensionOptionsMenu.setDisable(mi, addon, 1);
         } else if (e.ctrlKey) {
-          if (
-            Services.prompt.confirm(
-              null,
-              null,
-              "Delete " + addon.name + " permanently?"
-            )
-          ) {
-            if (addon.pendingOperations & AddonManager.PENDING_UNINSTALL)
-              addon.cancelUninstall();
+          if (Services.prompt.confirm(null, null, "Delete " + addon.name + " permanently?")) {
+            if (addon.pendingOperations & AddonManager.PENDING_UNINSTALL) addon.cancelUninstall();
             else {
               addon.uninstall();
               return;
@@ -207,9 +186,7 @@ UC.extensionOptionsMenu = {
 
     switch (Number(addon.optionsType)) {
       case 5:
-        win.BrowserOpenAddonsMgr(
-          "addons://detail/" + encodeURIComponent(addon.id) + "/preferences"
-        );
+        win.BrowserOpenAddonsMgr("addons://detail/" + encodeURIComponent(addon.id) + "/preferences");
         break;
       case 3:
         win.switchToTabHavingURI(addon.optionsURL, true);
@@ -227,9 +204,7 @@ UC.extensionOptionsMenu = {
           }
         }
         var features = "chrome,titlebar,toolbar,centerscreen";
-        var instantApply = Services.prefs.getBoolPref(
-          "browser.preferences.instantApply"
-        );
+        var instantApply = Services.prefs.getBoolPref("browser.preferences.instantApply");
         features += instantApply ? ",dialog=no" : "";
         win.openDialog(addon.optionsURL, addon.id, features);
     }

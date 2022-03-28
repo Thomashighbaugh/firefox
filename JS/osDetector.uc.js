@@ -7,5 +7,5 @@
 // ==/UserScript==
 
 (function () {
-    document.documentElement.setAttribute("operatingsystem", AppConstants.platform);
+  document.documentElement.setAttribute("operatingsystem", AppConstants.platform);
 })();

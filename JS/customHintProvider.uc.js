@@ -102,25 +102,19 @@ window.CustomHint = {
   get _animationBox() {
     this._ensurePanel();
     delete this._animationBox;
-    return (this._animationBox = document.getElementById(
-      "confirmation-hint-checkmark-animation-container"
-    ));
+    return (this._animationBox = document.getElementById("confirmation-hint-checkmark-animation-container"));
   },
 
   get _message() {
     this._ensurePanel();
     delete this._message;
-    return (this._message = document.getElementById(
-      "confirmation-hint-message"
-    ));
+    return (this._message = document.getElementById("confirmation-hint-message"));
   },
 
   get _description() {
     this._ensurePanel();
     delete this._description;
-    return (this._description = document.getElementById(
-      "confirmation-hint-description"
-    ));
+    return (this._description = document.getElementById("confirmation-hint-description"));
   },
 
   _ensurePanel() {
@@ -149,13 +143,9 @@ window.CustomHint = {
     // so for now I'm just gonna fix it with a script. it will get the coordinates via javascript instead of C++
     ConfirmationHint.show = function show(anchor, messageId, options = {}) {
       this._reset();
-      this._message.textContent = gBrowserBundle.GetStringFromName(
-        `confirmationHint.${messageId}.label`
-      );
+      this._message.textContent = gBrowserBundle.GetStringFromName(`confirmationHint.${messageId}.label`);
       if (options.showDescription) {
-        this._description.textContent = gBrowserBundle.GetStringFromName(
-          `confirmationHint.${messageId}.description`
-        );
+        this._description.textContent = gBrowserBundle.GetStringFromName(`confirmationHint.${messageId}.description`);
         this._description.hidden = false;
         this._panel.classList.add("with-description");
       } else {
@@ -169,10 +159,7 @@ window.CustomHint = {
         "popupshown",
         () => {
           this._animationBox.setAttribute("animate", "true");
-          this._timerID = setTimeout(
-            () => this._panel.hidePopup(true),
-            DURATION + 120
-          );
+          this._timerID = setTimeout(() => this._panel.hidePopup(true), DURATION + 120);
         },
         { once: true }
       );
@@ -193,9 +180,6 @@ window.CustomHint = {
         init();
       }
     };
-    Services.obs.addObserver(
-      delayedListener,
-      "browser-delayed-startup-finished"
-    );
+    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
   }
 })();

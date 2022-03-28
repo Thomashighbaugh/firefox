@@ -36,5 +36,5 @@ pages of Firefox like the about:config page. */
 /* Imports should always precede namespace calls, these two are reflected in all
  of the above components as well */
 
- @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 @namespace html url("http://www.w3.org/1999/xhtml");

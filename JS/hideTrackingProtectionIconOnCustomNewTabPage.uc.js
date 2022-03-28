@@ -10,15 +10,10 @@
   function init() {
     gProtectionsHandler.onLocationChange = function onLocationChange() {
       let currentURL = gBrowser.currentURI.spec;
-      let homeOrNTP =
-        currentURL === HomePage.get(window) ||
-        currentURL === AboutNewTab.newTabURL;
+      let homeOrNTP = currentURL === HomePage.get(window) || currentURL === AboutNewTab.newTabURL;
       if (this._showToastAfterRefresh) {
         this._showToastAfterRefresh = false;
-        if (
-          this._previousURI == currentURL &&
-          this._previousOuterWindowID == gBrowser.selectedBrowser.outerWindowID
-        )
+        if (this._previousURI == currentURL && this._previousOuterWindowID == gBrowser.selectedBrowser.outerWindowID)
           this.showProtectionsPopup({ toast: true });
       }
       this.hadShieldState = false;
@@ -31,21 +26,12 @@
           ? (gIdentityHandler._identityIconBox.disabled = true)
           : delete gIdentityHandler._identityIconBox.disabled;
       // hide the TP icon on new tab page/homepage
-      if (
-        !ContentBlockingAllowList.canHandle(gBrowser.selectedBrowser) ||
-        homeOrNTP
-      ) {
+      if (!ContentBlockingAllowList.canHandle(gBrowser.selectedBrowser) || homeOrNTP) {
         this._trackingProtectionIconContainer.hidden = true;
         return;
       } else this._trackingProtectionIconContainer.hidden = false;
-      this.hasException = ContentBlockingAllowList.includes(
-        gBrowser.selectedBrowser
-      );
-      if (this._protectionsPopup)
-        this._protectionsPopup.toggleAttribute(
-          "hasException",
-          this.hasException
-        );
+      this.hasException = ContentBlockingAllowList.includes(gBrowser.selectedBrowser);
+      if (this._protectionsPopup) this._protectionsPopup.toggleAttribute("hasException", this.hasException);
       this.iconBox.toggleAttribute("hasException", this.hasException);
       this.fingerprintersHistogramAdd("pageLoad");
       this.cryptominersHistogramAdd("pageLoad");
@@ -62,9 +48,6 @@
         init();
       }
     };
-    Services.obs.addObserver(
-      delayedListener,
-      "browser-delayed-startup-finished"
-    );
+    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
   }
 })();

@@ -1,9 +1,15 @@
+/* _______         __                  __          */
+/* |   _   |.-----.|__|.--------.---.-.|  |_.-----. */
+/* |       ||     ||  ||        |  _  ||   _|  -__| */
+/* |___|___||__|__||__||__|__|__|___._||____|_____| */
+/* ------------------------------------------------- */
+
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 @namespace html "http://www.w3.org/1999/xhtml";
 
-/*= Animate ==================================================================*/
+/* -------------------- Animate -------------------- */
 @media (prefers-reduced-motion: no-preference) {
-  /*- Background Color -------------------------------------------------------*/
+  /* ---------------- Background Color --------------- */
   button,
   toolbarbutton,
   stack,
@@ -21,16 +27,12 @@
     transition: background-color 0.25s var(--animation-easing-function) !important;
   }
   @media (-moz-gtk-csd-available) {
-    .tabbrowser-tab:is([visuallyselected], [multiselected], [selected])
-      .tab-background:not(:-moz-lwtheme) {
+    .tabbrowser-tab:is([visuallyselected], [multiselected], [selected]) .tab-background:not(:-moz-lwtheme) {
       transition: background-image 0.25s var(--animation-easing-function) !important;
     }
   }
 
   .subviewbutton {
-    /* treechildren::-moz-tree-row: Can't apply
-       menu, menuitem is not apply.
-     */
     transition: background-color 0.5s var(--animation-easing-function) !important;
   }
   .subviewbutton:hover {
@@ -41,8 +43,7 @@
   #tabbrowser-tabs:not([movingtab]) .tabbrowser-tab:not([collapsed]) {
     /* -moz-box-flex may be caused #tabbrowser-tabs[closebuttons] */
     transition: -moz-box-flex 0.2s var(--animation-easing-function),
-      margin-inline-start 0.2s var(--animation-easing-function),
-      min-width 0.1s ease-out, max-width 0.1s ease-out !important;
+      margin-inline-start 0.2s var(--animation-easing-function), min-width 0.1s ease-out, max-width 0.1s ease-out !important;
     max-width: var(--tab-max-width, 240px);
   }
   #tabbrowser-tabs:not([movingtab]) .tabbrowser-tab[pinned] {
@@ -56,8 +57,7 @@
   }
   #tabbrowser-tabs:not([movingtab]) .tab-content::before,
   #tabbrowser-tabs:not([movingtab]) .tab-content::after {
-    transition: width 0.2s var(--animation-easing-function),
-      transform 0.2s var(--animation-easing-function) !important;
+    transition: width 0.2s var(--animation-easing-function), transform 0.2s var(--animation-easing-function) !important;
   }
   #tabbrowser-tabs:not([movingtab]) .tab-content .tab-label-container {
     transition: width 0.3s var(--animation-easing-function) !important;
@@ -69,13 +69,11 @@
   /*- URL / Search Bar -------------------------------------------------------*/
   #urlbar-background,
   #searchbar {
-    transition: border-color 1s var(--animation-easing-function),
-      background-color 1.5s var(--animation-easing-function) !important;
+    transition: border-color 1s var(--animation-easing-function), background-color 1.5s var(--animation-easing-function) !important;
   }
   #urlbar-background:hover,
   #searchbar:hover {
-    transition: border-color 0.5s var(--animation-easing-function),
-      background-color 1s var(--animation-easing-function) !important;
+    transition: border-color 0.5s var(--animation-easing-function), background-color 1s var(--animation-easing-function) !important;
   }
 
   /* Buttons in URL bar */
@@ -118,8 +116,8 @@
     max-width: 36em;
 
     /* Animation */
-    transition: margin-inline-start 0.25s var(--animation-easing-function),
-      opacity 0.25s ease-in-out, visibility 0s linear !important;
+    transition: margin-inline-start 0.25s var(--animation-easing-function), opacity 0.25s ease-in-out,
+      visibility 0s linear !important;
   }
   #sidebar-box[hidden="true"] {
     display: -moz-box !important;
@@ -130,7 +128,8 @@
   }
 
   /*- Expand - Synced Tabs ---------------------------------------------------*/
-  @-moz-document url("chrome://browser/content/syncedtabs/sidebar.xhtml") {
+  @-moz-document url("chrome://browser/content/syncedtabs/sidebar.xhtml")
+  {
     .item-tabs-list {
       transition: transform 0.2s ease-out, opacity 0.2s ease-out;
       transform: translateY(0%);
@@ -149,3 +148,4 @@
       max-height: 0;
     }
   }
+}

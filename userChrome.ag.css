@@ -7,12 +7,9 @@
 /* this stylesheet is used to style native anonymous content
 , like tooltips and scrollbars. */
 
-
-
 @namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
 
 @namespace html url(http://www.w3.org/1999/xhtml);
-
 
 @import url(uc-globals.css);
 /* browser scrollbars */
@@ -258,10 +255,7 @@ tooltip > description {
 
 /* print preview background */
 ::-moz-page-sequence {
-  background-image: linear-gradient(
-    var(--secondary-color),
-    var(--window-color)
-  );
+  background-image: linear-gradient(var(--secondary-color), var(--window-color));
 }
 
 html|input[type="number"]::-moz-number-spin-box {
@@ -287,8 +281,8 @@ html|input[type="number"]::-moz-number-spin-down {
 }
 
 @-moz-document url(chrome://browser/content/browser.xul),
-               url(chrome://browser/content/browser.xhtml) {
-
+               url(chrome://browser/content/browser.xhtml)
+{
   /* hide horizontal tabs at the top of the window */
   #TabsToolbar > * {
     visibility: collapse;
@@ -306,5 +300,4 @@ html|input[type="number"]::-moz-number-spin-down {
   #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
     display: none;
   }
-
 }

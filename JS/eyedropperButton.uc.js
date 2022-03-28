@@ -20,71 +20,44 @@ class EyedropperButton {
     else Services.obs.addObserver(this, "browser-delayed-startup-finished");
   }
   makeBundles() {
-    this.menuBundle = Services.strings.createBundle(
-      "chrome://devtools/locale/menus.properties"
-    );
-    this.inspectorBundle = Services.strings.createBundle(
-      "chrome://devtools/locale/inspector.properties"
-    );
+    this.menuBundle = Services.strings.createBundle("chrome://devtools/locale/menus.properties");
+    this.inspectorBundle = Services.strings.createBundle("chrome://devtools/locale/inspector.properties");
   }
   getString(name, where) {
     return this[`${where}Bundle`].GetStringFromName(name);
   }
   // "Eyedropper"
   get labelString() {
-    return (
-      this._labelString ||
-      (this._labelString = this.getString("eyedropper.label", "menu"))
-    );
+    return this._labelString || (this._labelString = this.getString("eyedropper.label", "menu"));
   }
   // "Grab a color from the page"
   get tooltipString() {
-    return (
-      this._tooltipString ||
-      (this._tooltipString = this.getString(
-        "inspector.eyedropper.label",
-        "inspector"
-      ))
-    );
+    return this._tooltipString || (this._tooltipString = this.getString("inspector.eyedropper.label", "inspector"));
   }
   // "Ctrl+Shift+Y"
   get shortcutString() {
     return (
       this._shortcutString ||
-      (this._shortcutString = this.hotkey
-        ? ` (${ShortcutUtils.prettifyShortcut(this.keyEl)})`
-        : "")
+      (this._shortcutString = this.hotkey ? ` (${ShortcutUtils.prettifyShortcut(this.keyEl)})` : "")
     );
   }
   // "Grab a color from the page (%S)"
   get tooltipWithShortcut() {
-    return (
-      this._tooltipWithShortcut ||
-      (this._tooltipWithShortcut = this.tooltipString + this.shortcutString)
-    );
+    return this._tooltipWithShortcut || (this._tooltipWithShortcut = this.tooltipString + this.shortcutString);
   }
   get devToolsMenu() {
-    return (
-      this._devToolsMenu ||
-      (this._devToolsMenu = document.getElementById("menuWebDeveloperPopup"))
-    );
+    return this._devToolsMenu || (this._devToolsMenu = document.getElementById("menuWebDeveloperPopup"));
   }
   get mainMenuItem() {
-    return (
-      this._mainMenuItem ||
-      (this._mainMenuItem = document.getElementById("menu_eyedropper") || null)
-    );
+    return this._mainMenuItem || (this._mainMenuItem = document.getElementById("menu_eyedropper") || null);
   }
   get keyEl() {
     return this._keyEl || (this._keyEl = window[EyedropperButton.shortcut.id]);
   }
   makeHotkey() {
-    this.hotkey = _ucUtils.registerHotkey(
-      EyedropperButton.shortcut,
-      (win, key) => {
-        Services.obs.notifyObservers(win, "uc-eyedropper-started");
-      }
-    );
+    this.hotkey = _ucUtils.registerHotkey(EyedropperButton.shortcut, (win, key) => {
+      Services.obs.notifyObservers(win, "uc-eyedropper-started");
+    });
   }
   makeWidget() {
     if (CustomizableUI.getPlacementOfWidget("eyedropper-button", true)) return;
@@ -140,5 +113,4 @@ class EyedropperButton {
   }
 }
 
-if (/^chrome:\/\/browser\/content\/browser.(xul||xhtml)$/i.test(location))
-  new EyedropperButton();
+if (/^chrome:\/\/browser\/content\/browser.(xul||xhtml)$/i.test(location)) new EyedropperButton();

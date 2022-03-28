@@ -2,7 +2,8 @@
 @namespace html url("http://www.w3.org/1999/xhtml");
 
 /*= chrome://browser/content/places/places.xhtml =============================*/
-@-moz-document url("chrome://browser/content/places/places.xhtml") {
+@-moz-document url("chrome://browser/content/places/places.xhtml")
+{
   /** Library - Icons Replace *************************************************/
   /*= Standard Folder - More Visible =========================================*/
   /* on Toolbar and Menus */
@@ -54,36 +55,30 @@
   /* https://github.com/mozilla/gecko-dev/blob/master/browser/themes/shared/places/tree-icons.css */
 
   /* Query */
-  :-moz-any(#historyTree, #placesList, #placeContent)
-    treechildren::-moz-tree-image(title, query) {
+  :-moz-any(#historyTree, #placesList, #placeContent) treechildren::-moz-tree-image(title, query) {
     list-style-image: url("chrome://browser/skin/places/folder-smart.svg") !important;
   }
 
   /* History */
-  :-moz-any(#historyTree, #placesList, #placeContent)
-    treechildren::-moz-tree-image(title, query, dayContainer),
+  :-moz-any(#historyTree, #placesList, #placeContent) treechildren::-moz-tree-image(title, query, dayContainer),
   :-moz-any(#historyTree, #placesList, #placeContent)
     treechildren::-moz-tree-image(query, OrganizerQuery_history____v) {
     list-style-image: url("chrome://browser/skin/history.svg") !important;
   }
 
   /* Downloads */
-  :-moz-any(#placesList, #placeContent)
-    treechildren::-moz-tree-image(query, OrganizerQuery_downloads__v) {
+  :-moz-any(#placesList, #placeContent) treechildren::-moz-tree-image(query, OrganizerQuery_downloads__v) {
     list-style-image: url("chrome://browser/skin/downloads/downloads.svg") !important;
   }
 
   /* Tag */
-  :-moz-any(#placesList, #placeContent)
-    treechildren::-moz-tree-image(title, query, tagContainer),
-  :-moz-any(#placesList, #placeContent)
-    treechildren::-moz-tree-image(query, OrganizerQuery_tags_______v) {
+  :-moz-any(#placesList, #placeContent) treechildren::-moz-tree-image(title, query, tagContainer),
+  :-moz-any(#placesList, #placeContent) treechildren::-moz-tree-image(query, OrganizerQuery_tags_______v) {
     list-style-image: url("chrome://browser/skin/places/tag.svg") !important;
   }
 
   /* Boomark */
-  :-moz-any(#placesList, #placeContent)
-    treechildren::-moz-tree-image(query, OrganizerQuery_allbms_____v) {
+  :-moz-any(#placesList, #placeContent) treechildren::-moz-tree-image(query, OrganizerQuery_allbms_____v) {
     list-style-image: url("chrome://browser/skin/bookmark.svg") !important;
   }
 
@@ -110,8 +105,7 @@
   }
 
   /* History */
-  :-moz-any(#historyTree, #placesList, #placeContent)
-    treechildren::-moz-tree-image(title, query, open, dayContainer),
+  :-moz-any(#historyTree, #placesList, #placeContent) treechildren::-moz-tree-image(title, query, open, dayContainer),
   :-moz-any(#historyTree, #placesList, #placeContent)
     treechildren::-moz-tree-image(query, open, OrganizerQuery_history____v) {
     list-style-image: url("./icons/history-reverse.svg") !important;
@@ -120,16 +114,13 @@
   /* Tag */
   :-moz-any(#PlacesToolbar, #BMB_bookmarksPopup, #bookmarksMenu)
     .bookmark-item[container="true"][tagContainer="true"][open="true"],
-  :-moz-any(#placesList, #placeContent)
-    treechildren::-moz-tree-image(title, query, open, tagContainer),
-  :-moz-any(#placesList, #placeContent)
-    treechildren::-moz-tree-image(query, open, OrganizerQuery_tags_______v) {
+  :-moz-any(#placesList, #placeContent) treechildren::-moz-tree-image(title, query, open, tagContainer),
+  :-moz-any(#placesList, #placeContent) treechildren::-moz-tree-image(query, open, OrganizerQuery_tags_______v) {
     list-style-image: url("./icons/tag-open.svg") !important;
   }
 
   /* Boomark */
-  :-moz-any(#placesList, #placeContent)
-    treechildren::-moz-tree-image(query, open, OrganizerQuery_allbms_____v) {
+  :-moz-any(#placesList, #placeContent) treechildren::-moz-tree-image(query, open, OrganizerQuery_allbms_____v) {
     list-style-image: url("chrome://browser/skin/bookmark-hollow.svg") !important;
   }
 
@@ -200,10 +191,8 @@
     -moz-appearance: none !important; /* Linux: menulist */
   }
 
-  #placesContext
-    menuitem:not(.menuitem-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
-  #placesContext
-    menu:not(.menu-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
+  #placesContext menuitem:not(.menuitem-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
+  #placesContext menu:not(.menu-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
   menupopup:is(#organizeButtonPopup, #maintenanceButtonPopup) > menuitem,
   menupopup:is(#viewMenuPopup, #maintenanceButtonPopup) > menu {
     /* Color */
@@ -231,14 +220,10 @@
   /* Padding */
   :root {
     --context-menu-background-padding-default: 5px;
-    --context-menu-background-padding: var(
-      --context-menu-background-padding-default
-    );
+    --context-menu-background-padding: var(--context-menu-background-padding-default);
   }
-  #placesContext
-    menuitem:not(.menuitem-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
-  #placesContext
-    menu:not(.menu-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
+  #placesContext menuitem:not(.menuitem-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
+  #placesContext menu:not(.menu-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
   menupopup:is(#organizeButtonPopup, #maintenanceButtonPopup) > menuitem,
   menupopup:is(#viewMenuPopup, #maintenanceButtonPopup) > menu {
     background-position: left var(--context-menu-background-padding) center !important;
@@ -246,15 +231,10 @@
   }
 
   /* Padding - Windows */
-  @media (-moz-os-version: windows-win7),
-    (-moz-os-version: windows-win8),
-    (-moz-os-version: windows-win10) {
+  @media (-moz-os-version: windows-win7), (-moz-os-version: windows-win8), (-moz-os-version: windows-win10) {
     /* Checkbox */
     :root {
-      --context-menu-text-padding: calc(
-        var(--menu-padding) + var(--context-menu-background-padding-default) +
-          16px
-      );
+      --context-menu-text-padding: calc(var(--menu-padding) + var(--context-menu-background-padding-default) + 16px);
     }
     :not(menu, #ContentSelectDropdown, #context-navigation)
       > menupopup
@@ -275,10 +255,8 @@
     }
   }
   @media (-moz-os-version: windows-win7), (-moz-os-version: windows-win8) {
-    #placesContext
-      menuitem:not(.menuitem-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
-    #placesContext
-      menu:not(.menu-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
+    #placesContext menuitem:not(.menuitem-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
+    #placesContext menu:not(.menu-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
     menupopup:is(#organizeButtonPopup, #maintenanceButtonPopup) > menuitem,
     menupopup:is(#viewMenuPopup, #maintenanceButtonPopup) > menu {
       background-position: left var(--context-menu-background-padding) center !important;
@@ -290,15 +268,12 @@
       --context-menu-background-padding: 1em;
       --context-menu-text-padding: 24px; /* 16px + 8px */
       --menu-background-padding-default: calc(
-        var(--context-menu-background-padding) +
-          var(--context-menu-text-padding)
+        var(--context-menu-background-padding) + var(--context-menu-text-padding)
       );
     }
 
-    #placesContext
-      menuitem:not(.menuitem-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
-    #placesContext
-      menu:not(.menu-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
+    #placesContext menuitem:not(.menuitem-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
+    #placesContext menu:not(.menu-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
     menupopup:is(#organizeButtonPopup, #maintenanceButtonPopup) > menuitem,
     menupopup:is(#viewMenuPopup, #maintenanceButtonPopup) > menu {
       padding-inline-start: var(--menu-background-padding-default) !important;
@@ -321,29 +296,21 @@
     }
 
     /* context menu width */
-    #placesContext
-      menuitem:not(.menuitem-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
-    #placesContext
-      menu:not(.menu-iconic, .in-menulist, [type="checkbox"], [checked="true"]) {
+    #placesContext menuitem:not(.menuitem-iconic, .in-menulist, [type="checkbox"], [checked="true"]),
+    #placesContext menu:not(.menu-iconic, .in-menulist, [type="checkbox"], [checked="true"]) {
       padding-inline-end: var(--context-menu-background-padding) !important;
     }
 
     /* text position */
-    #placesContext
-      menuitem:not(.menuitem-iconic, .in-menulist, [type="checkbox"], [checked="true"])
-      > .menu-text,
-    #placesContext
-      menu:not(.menu-iconic, .in-menulist, [type="checkbox"], [checked="true"])
-      > .menu-text {
+    #placesContext menuitem:not(.menuitem-iconic, .in-menulist, [type="checkbox"], [checked="true"]) > .menu-text,
+    #placesContext menu:not(.menu-iconic, .in-menulist, [type="checkbox"], [checked="true"]) > .menu-text {
       padding-inline-start: var(--context-menu-mac-padding) !important;
     }
 
     /* Checkbox menuitem, None iconic menu */
     #placesContext menuitem[type="checkbox"],
     #placesContext menu:not(.menu-iconic) {
-      padding-inline-start: calc(
-        var(--context-menu-background-padding) + var(--context-menu-mac-padding)
-      ) !important;
+      padding-inline-start: calc(var(--context-menu-background-padding) + var(--context-menu-mac-padding)) !important;
     }
   }
 
@@ -499,3 +466,5 @@
       background-image: url("chrome://global/skin/icons/arrow-right.svg");
       background-position: right center;
     }
+  }
+}

@@ -25,9 +25,7 @@
       gBrowser.removeCurrentTab({ animate: true });
     };
 
-    document
-      .getElementById("cmd_close")
-      .setAttribute("oncommand", "AminoCloseTabOrWindow(event);");
+    document.getElementById("cmd_close").setAttribute("oncommand", "AminoCloseTabOrWindow(event);");
   }
 
   if (gBrowserInit.delayedStartupFinished) {
@@ -39,9 +37,6 @@
         init();
       }
     };
-    Services.obs.addObserver(
-      delayedListener,
-      "browser-delayed-startup-finished"
-    );
+    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
   }
 })();

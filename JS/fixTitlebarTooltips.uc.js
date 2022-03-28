@@ -8,8 +8,8 @@
 // ==/UserScript==
 
 class FixTitlebarTooltips {
-    constructor() {
-        this.markup = `<hbox class="titlebar-buttonbox-container" skipintoolbarset="true">
+  constructor() {
+    this.markup = `<hbox class="titlebar-buttonbox-container" skipintoolbarset="true">
             <hbox class="titlebar-buttonbox titlebar-color">
                 <toolbarbutton class="titlebar-button titlebar-min"
                             oncommand="window.minimize();"
@@ -29,8 +29,8 @@ class FixTitlebarTooltips {
                             />
             </hbox>
         </hbox>`;
-        let boxes = document.querySelectorAll(".titlebar-buttonbox-container");
-        boxes.forEach((box) => box.replaceWith(MozXULElement.parseXULToFragment(this.markup)));
-    }
+    let boxes = document.querySelectorAll(".titlebar-buttonbox-container");
+    boxes.forEach((box) => box.replaceWith(MozXULElement.parseXULToFragment(this.markup)));
+  }
 }
 new FixTitlebarTooltips();

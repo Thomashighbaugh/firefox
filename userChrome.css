@@ -1,4 +1,4 @@
-                         /* ______ __                               */
+/* ______ __                               */
 /* .--.--.-----.-----.----.|      |  |--.----.-----.--------.-----. */
 /* |  |  |__ --|  -__|   _||   ---|     |   _|  _  |        |  -__| */
 /* |_____|_____|_____|__|  |______|__|__|__| |_____|__|__|__|_____| */
@@ -35,7 +35,6 @@ the use of JS. For that see the JS directory */
 /* ------------------------------------------------- */
 /* Imports should always precede namespace calls, these two are reflected in all
  of the above components as well */
-
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 @namespace html "http://www.w3.org/1999/xhtml";

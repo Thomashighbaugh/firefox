@@ -2,7 +2,8 @@
 @namespace html url("http://www.w3.org/1999/xhtml");
 
 /*= Support.org ============================================================*/
-@-moz-document url-prefix("https://support.mozilla.org") {
+@-moz-document url-prefix("https://support.mozilla.org")
+{
   /* Basic */
   :root {
     --color-blue-06: var(--in-content-link-color) !important;
@@ -26,12 +27,7 @@
     --color-error-hover: var(--red-50) !important;
     --color-moz-heading: #fff;
     --color-moz-inverse-bg: var(red) !important;
-    --focus-shadow: 0 0 0 4px
-        color-mix(
-          in srgb,
-          var(--in-content-primary-button-background) 30%,
-          transparent
-        ),
+    --focus-shadow: 0 0 0 4px color-mix(in srgb, var(--in-content-primary-button-background) 30%, transparent),
       0 0 0 2px var(--in-content-primary-button-background-active);
   }
   .warning {
@@ -150,9 +146,7 @@
   .mzp-c-menu-panel {
     border-color: var(--in-content-button-background-hover) !important;
   }
-  .mzp-c-menu-item:is(:focus, :hover, :active)
-    .mzp-c-menu-item-link
-    .mzp-c-menu-item-title {
+  .mzp-c-menu-item:is(:focus, :hover, :active) .mzp-c-menu-item-link .mzp-c-menu-item-title {
     border-color: var(--in-content-page-color) !important;
   }
 
@@ -164,8 +158,7 @@
   .card--product,
   .card--topic,
   .card--article {
-    box-shadow: 0 5px 10px -3px rgba(249, 249, 250, 0.12),
-      0 3px 16px 2px rgba(91, 91, 102, 0.12),
+    box-shadow: 0 5px 10px -3px rgba(249, 249, 250, 0.12), 0 3px 16px 2px rgba(91, 91, 102, 0.12),
       0 8px 12px 1px rgba(82, 82, 94, 0.04) !important;
   }
 }

@@ -7,24 +7,24 @@
 // ==/UserScript==
 
 (function () {
-    function init() {
-        window.og_OpenBrowserWindow = OpenBrowserWindow;
-        eval(
-            `OpenBrowserWindow = ` +
-                OpenBrowserWindow.toSource().replace(
-                    /\N*\s*if \(\!PrivateBrowsingUtils\.permanentPrivateBrowsing\) {\s*.*\s*defaultArgs \= \"about\:privatebrowsing\"\;\s*\}/gm,
-                    ``
-                )
-        );
-    }
-    if (gBrowserInit.delayedStartupFinished) init();
-    else {
-        let delayedListener = (subject, topic) => {
-            if (topic == "browser-delayed-startup-finished" && subject == window) {
-                Services.obs.removeObserver(delayedListener, topic);
-                init();
-            }
-        };
-        Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
-    }
+  function init() {
+    window.og_OpenBrowserWindow = OpenBrowserWindow;
+    eval(
+      `OpenBrowserWindow = ` +
+        OpenBrowserWindow.toSource().replace(
+          /\N*\s*if \(\!PrivateBrowsingUtils\.permanentPrivateBrowsing\) {\s*.*\s*defaultArgs \= \"about\:privatebrowsing\"\;\s*\}/gm,
+          ``
+        )
+    );
+  }
+  if (gBrowserInit.delayedStartupFinished) init();
+  else {
+    let delayedListener = (subject, topic) => {
+      if (topic == "browser-delayed-startup-finished" && subject == window) {
+        Services.obs.removeObserver(delayedListener, topic);
+        init();
+      }
+    };
+    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
+  }
 })();

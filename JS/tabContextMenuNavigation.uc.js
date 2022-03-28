@@ -47,10 +47,7 @@ class TabContextMenuNavigation {
   constructor() {
     this.config = TabContextMenuNavigation.config;
     let l10n = this.config.l10n;
-    document.documentElement.setAttribute(
-      "operatingsystem",
-      AppConstants.platform
-    );
+    document.documentElement.setAttribute("operatingsystem", AppConstants.platform);
     this.loadStylesheet();
     // menuitem group
     this.contextNavigation = this.create(document, "menugroup", {
@@ -100,8 +97,7 @@ class TabContextMenuNavigation {
     );
     // remove the separator after "New Tab" menuitem since it'll look awkward with the menugroup above it.
     let newTab = this.tabContext.querySelector("#context_openANewTab");
-    if (newTab.nextElementSibling.tagName === "menuseparator")
-      newTab.nextElementSibling.remove();
+    if (newTab.nextElementSibling.tagName === "menuseparator") newTab.nextElementSibling.remove();
     // set up listener to hide/disable menuitems
     this.tabContext.addEventListener("popupshowing", this);
   }
@@ -124,43 +120,17 @@ class TabContextMenuNavigation {
       this.contextForward.disabled = !gBrowser.selectedTabs.some(
         (tab) => gBrowser.getBrowserForTab(tab).webNavigation.canGoForward
       );
-      this.contextBack.setAttribute(
-        "tooltiptext",
-        l10n["Go Back (Multiselected)"]
-      );
-      this.contextForward.setAttribute(
-        "tooltiptext",
-        l10n["Go Forward (Multiselected)"]
-      );
-      this.contextReload.setAttribute(
-        "tooltiptext",
-        l10n["Reload (Multiselected)"]
-      );
-      this.contextBookmark.setAttribute(
-        "tooltiptext",
-        l10n["Bookmark (Multiselected)"]
-      );
+      this.contextBack.setAttribute("tooltiptext", l10n["Go Back (Multiselected)"]);
+      this.contextForward.setAttribute("tooltiptext", l10n["Go Forward (Multiselected)"]);
+      this.contextReload.setAttribute("tooltiptext", l10n["Reload (Multiselected)"]);
+      this.contextBookmark.setAttribute("tooltiptext", l10n["Bookmark (Multiselected)"]);
     } else {
-      this.contextBack.disabled = !gBrowser.getBrowserForTab(this.contextTab)
-        .webNavigation.canGoBack;
-      this.contextForward.disabled = !gBrowser.getBrowserForTab(this.contextTab)
-        .webNavigation.canGoForward;
-      this.contextBack.setAttribute(
-        "tooltiptext",
-        l10n["Go Back (Single Tab)"]
-      );
-      this.contextForward.setAttribute(
-        "tooltiptext",
-        l10n["Go Forward (Single Tab)"]
-      );
-      this.contextReload.setAttribute(
-        "tooltiptext",
-        l10n["Reload (Single Tab)"]
-      );
-      this.contextBookmark.setAttribute(
-        "tooltiptext",
-        l10n["Bookmark (Single Tab)"]
-      );
+      this.contextBack.disabled = !gBrowser.getBrowserForTab(this.contextTab).webNavigation.canGoBack;
+      this.contextForward.disabled = !gBrowser.getBrowserForTab(this.contextTab).webNavigation.canGoForward;
+      this.contextBack.setAttribute("tooltiptext", l10n["Go Back (Single Tab)"]);
+      this.contextForward.setAttribute("tooltiptext", l10n["Go Forward (Single Tab)"]);
+      this.contextReload.setAttribute("tooltiptext", l10n["Reload (Single Tab)"]);
+      this.contextBookmark.setAttribute("tooltiptext", l10n["Bookmark (Single Tab)"]);
     }
   }
   goBack() {
@@ -200,18 +170,14 @@ class TabContextMenuNavigation {
     document.head.appendChild(style);
   }
   get tabContext() {
-    return (
-      this._tabContext ||
-      (this._tabContext = document.getElementById("tabContextMenu"))
-    );
+    return this._tabContext || (this._tabContext = document.getElementById("tabContextMenu"));
   }
   get contextTab() {
     return TabContextMenu.contextTab;
   }
 }
 
-if (gBrowserInit.delayedStartupFinished)
-  window.tabContextMenuNavigation = new TabContextMenuNavigation();
+if (gBrowserInit.delayedStartupFinished) window.tabContextMenuNavigation = new TabContextMenuNavigation();
 else {
   let delayedListener = (subject, topic) => {
     if (topic == "browser-delayed-startup-finished" && subject == window) {

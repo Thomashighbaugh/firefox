@@ -1,56 +1,37 @@
-
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 @namespace html "http://www.w3.org/1999/xhtml";
-
-
 
 /*== Bookmark Popup Color ====================================================*/
 #editBMPanel_folderTree:-moz-lwtheme,
 #editBMPanel_tagsSelector:-moz-lwtheme {
   appearance: none !important;
-  border: 0.5px solid
-    var(
-      --button-active-bgcolor,
-      color-mix(in srgb, currentColor 30%, transparent)
-    ) !important;
+  border: 0.5px solid var(--button-active-bgcolor, color-mix(in srgb, currentColor 30%, transparent)) !important;
 }
 
 #editBMPanel_folderTree:-moz-lwtheme,
 #editBMPanel_folderTree:-moz-lwtheme > treechildren,
 #editBMPanel_folderTree:-moz-lwtheme > treechildren::-moz-tree-image,
 #editBMPanel_folderTree:-moz-lwtheme > treechildren::-moz-tree-cell-text(hover),
-#editBMPanel_folderTree:-moz-lwtheme
-  > treechildren::-moz-tree-cell-text(selected),
+#editBMPanel_folderTree:-moz-lwtheme > treechildren::-moz-tree-cell-text(selected),
 #editBMPanel_tagsSelector:-moz-lwtheme,
 #editBMPanel_tagsSelector:-moz-lwtheme > richlistitem {
   color: var(--lwt-text-color, fieldtext) !important;
 }
-#editBMPanel_folderTree:-moz-lwtheme
-  > treechildren::-moz-tree-cell-text(selected) {
+#editBMPanel_folderTree:-moz-lwtheme > treechildren::-moz-tree-cell-text(selected) {
   font-weight: 600 !important;
 }
 
 #editBMPanel_folderTree:-moz-lwtheme > treechildren,
 #editBMPanel_tagsSelector:-moz-lwtheme {
-  background-color: color-mix(
-    in srgb,
-    var(--arrowpanel-background) 35%,
-    var(--in-content-box-background)
-  ) !important;
+  background-color: color-mix(in srgb, var(--arrowpanel-background) 35%, var(--in-content-box-background)) !important;
 }
 #editBMPanel_folderTree:-moz-lwtheme > treechildren::-moz-tree-row(hover),
 #editBMPanel_tagsSelector > richlistitem:hover {
-  background-color: var(
-    --button-hover-bgcolor,
-    color-mix(in srgb, currentColor 17%, transparent)
-  ) !important;
+  background-color: var(--button-hover-bgcolor, color-mix(in srgb, currentColor 17%, transparent)) !important;
 }
 #editBMPanel_folderTree:-moz-lwtheme > treechildren::-moz-tree-row(selected),
 #editBMPanel_tagsSelector > richlistitem[selected="true"] {
-  background-color: var(
-    --button-active-bgcolor,
-    color-mix(in srgb, currentColor 30%, transparent)
-  ) !important;
+  background-color: var(--button-active-bgcolor, color-mix(in srgb, currentColor 30%, transparent)) !important;
 }
 
 #editBMPanel_namePicker,
@@ -82,10 +63,7 @@ xul|search-textbox.tabsFilter[focused="true"] {
 }
 .sidebar-panel[lwt-sidebar] #search-box[focused="true"],
 body[lwt-sidebar] xul|search-textbox.tabsFilter[focused="true"] {
-  --input-bgcolor: var(
-    --lwt-sidebar-highlight-background-color,
-    Highlight
-  ) !important;
+  --input-bgcolor: var(--lwt-sidebar-highlight-background-color, Highlight) !important;
 }
 .sidebar-panel:not([lwt-sidebar]) #search-box[focused="true"],
 body:not([lwt-sidebar]) xul|search-textbox.tabsFilter[focused="true"] {
@@ -95,10 +73,7 @@ body:not([lwt-sidebar]) xul|search-textbox.tabsFilter[focused="true"] {
 
 /*= PopupAutoComplete ========================================================*/
 #PopupAutoComplete {
-  --panel-bgcolor: var(
-    --arrowpanel-background,
-    var(--in-content-button-background)
-  );
+  --panel-bgcolor: var(--arrowpanel-background, var(--in-content-button-background));
 
   /* overwrite */
   --panel-border-radius: 4px !important; /* Original: 0 */
@@ -116,50 +91,24 @@ body:not([lwt-sidebar]) xul|search-textbox.tabsFilter[focused="true"] {
 #PopupAutoComplete > richlistbox {
   border-radius: var(--panel-border-radius) !important;
   background-color: var(--panel-bgcolor) !important; /* Original: Field */
-  color: var(
-    --arrowpanel-color,
-    var(--in-content-page-color)
-  ) !important; /* Original: FiledText */
+  color: var(--arrowpanel-color, var(--in-content-page-color)) !important; /* Original: FiledText */
 }
 
-#PopupAutoComplete
-  > richlistbox
-  > richlistitem[originaltype="generatedPassword"]
-  > .two-line-wrapper
-  > .ac-site-icon,
-#PopupAutoComplete
-  > richlistbox
-  > richlistitem[originaltype="loginWithOrigin"]
-  > .two-line-wrapper
-  > .ac-site-icon,
-#PopupAutoComplete
-  > richlistbox
-  > richlistitem[originaltype="login"]
-  > .ac-site-icon {
+#PopupAutoComplete > richlistbox > richlistitem[originaltype="generatedPassword"] > .two-line-wrapper > .ac-site-icon,
+#PopupAutoComplete > richlistbox > richlistitem[originaltype="loginWithOrigin"] > .two-line-wrapper > .ac-site-icon,
+#PopupAutoComplete > richlistbox > richlistitem[originaltype="login"] > .ac-site-icon {
   fill: GrayText !important;
 }
 
 #PopupAutoComplete > richlistbox > richlistitem[originaltype="loginsFooter"] {
   --panel-border-color: var(--panel-bgcolor);
-  color: var(
-    --arrowpanel-color,
-    var(--in-content-page-color)
-  ) !important; /* Original: FieldText */
-  background-color: var(
-    --arrowpanel-dimmed,
-    hsla(0, 0%, 80%, 0.35)
-  ) !important; /* Original: hsla(0,0%,80%,.35) */
-  border-color: var(
-    --panel-border-color
-  ) !important; /* Original: rgba(38,38,38,.15) */
+  color: var(--arrowpanel-color, var(--in-content-page-color)) !important; /* Original: FieldText */
+  background-color: var(--arrowpanel-dimmed, hsla(0, 0%, 80%, 0.35)) !important; /* Original: hsla(0,0%,80%,.35) */
+  border-color: var(--panel-border-color) !important; /* Original: rgba(38,38,38,.15) */
 }
 
-#PopupAutoComplete
-  > richlistbox
-  > richlistitem[originaltype="loginsFooter"]:hover,
-#PopupAutoComplete
-  > richlistbox
-  > richlistitem[originaltype="loginsFooter"][selected] {
+#PopupAutoComplete > richlistbox > richlistitem[originaltype="loginsFooter"]:hover,
+#PopupAutoComplete > richlistbox > richlistitem[originaltype="loginsFooter"][selected] {
   background-color: var(
     --arrowpanel-dimmed-further,
     hsla(0, 0%, 80%, 0.5)
@@ -176,7 +125,8 @@ browser[type="content"] > html {
 }
 
 /*= Notification =============================================================*/
-@-moz-document url("chrome://global/content/alerts/alert.xhtml") {
+@-moz-document url("chrome://global/content/alerts/alert.xhtml")
+{
   /* Color */
   :root {
     --menu-color: #15141a;
@@ -184,8 +134,7 @@ browser[type="content"] > html {
     --menu-border-color: #cfcfd8;
     --menuitem-hover-background-color: #e0e0e6;
   }
-  @media (-moz-toolbar-prefers-color-scheme: dark),
-    (prefers-color-scheme: dark) {
+  @media (-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
     :root {
       --menu-border-color: rgba(107, 107, 107, 0.3);
       --menu-color: #fbfbfe;
@@ -222,10 +171,7 @@ browser[type="content"] > html {
   }
   .close-icon:hover > .toolbarbutton-icon,
   #alertSettings:is(:hover, [open]) > .button-box > .box-inherit {
-    background-color: var(
-      --menuitem-hover-background-color,
-      #e0e0e6
-    ) !important;
+    background-color: var(--menuitem-hover-background-color, #e0e0e6) !important;
   }
 
   /* Shape */
@@ -244,7 +190,8 @@ browser[type="content"] > html {
 }
 
 /*= Library Popup ============================================================*/
-@-moz-document url("chrome://browser/content/places/places.xhtml") {
+@-moz-document url("chrome://browser/content/places/places.xhtml")
+{
   @media (-moz-gtk-csd-available) {
     :root {
       --organizer-color: -moz-DialogText;
@@ -266,9 +213,7 @@ browser[type="content"] > html {
       --organizer-toolbar-field-background: Field;
       --organizer-toolbar-field-background-focused: Field;
       --organizer-toolbar-field-border-color: ThreeDShadow;
-      --organizer-toolbar-field-focus-border-color: var(
-        --organizer-outline-color
-      );
+      --organizer-toolbar-field-focus-border-color: var(--organizer-outline-color);
       --organizer-toolbar-field-focus-box-shadow: unset;
       --organizer-pane-field-border-color: ThreeDShadow;
     }
@@ -278,34 +223,20 @@ browser[type="content"] > html {
         --organizer-color: var(--in-content-page-color);
         --organizer-deemphasized-color: var(--in-content-deemphasized-text);
 
-        --organizer-toolbar-background: rgb(
-          249,
-          249,
-          251
-        ); /* --toolbar-bgcolor */
-        --organizer-pane-background: rgb(
-          229,
-          229,
-          235
-        ); /* --lwt-accent-color */
+        --organizer-toolbar-background: rgb(249, 249, 251); /* --toolbar-bgcolor */
+        --organizer-pane-background: rgb(229, 229, 235); /* --lwt-accent-color */
         --organizer-content-background: var(--in-content-page-background);
 
         --organizer-hover-background: var(--in-content-button-background-hover);
         --organizer-hover-color: var(--organizer-color);
-        --organizer-selected-background: var(
-          --in-content-button-background-active
-        );
+        --organizer-selected-background: var(--in-content-button-background-active);
         --organizer-selected-color: var(--organizer-color);
         --organizer-outline-color: var(--in-content-primary-button-background);
 
         --organizer-separator-color: var(--organizer-pane-field-border-color);
         --organizer-border-color: var(--in-content-border-color);
 
-        --organizer-toolbar-field-background: rgb(
-          240,
-          240,
-          244
-        ); /* --lwt-accent-color */
+        --organizer-toolbar-field-background: rgb(240, 240, 244); /* --lwt-accent-color */
         --organizer-toolbar-field-background-focused: Field;
         --organizer-toolbar-field-border-color: transparent;
         --organizer-toolbar-field-focus-border-color: color-mix(
@@ -313,17 +244,11 @@ browser[type="content"] > html {
           var(--organizer-outline-color) 50%,
           transparent
         );
-        --organizer-toolbar-field-focus-box-shadow: 0 1px 3px
-          rgba(0, 0, 0, 0.23);
-        --organizer-pane-field-border-color: color-mix(
-          in srgb,
-          currentColor 41%,
-          transparent
-        );
+        --organizer-toolbar-field-focus-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.23);
+        --organizer-pane-field-border-color: color-mix(in srgb, currentColor 41%, transparent);
       }
 
-      @media (-moz-toolbar-prefers-color-scheme: dark),
-        (prefers-color-scheme: dark) {
+      @media (-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
         :root {
           --organizer-color: rgb(251, 251, 254);
           --organizer-deemphasized-color: rgb(191, 191, 201);
@@ -332,15 +257,15 @@ browser[type="content"] > html {
           --organizer-pane-background: #1b1d24;
           --organizer-content-background: #1c1e24;
 
-          --organizer-hover-background:#555e70;
+          --organizer-hover-background: #555e70;
           --organizer-selected-background: #3c3f4c;
           --organizer-outline-color: #8b9cbe;
 
-          --organizer-toolbar-field-background: var(
-            --in-content-page-background
-          );
+          --organizer-toolbar-field-background: var(--in-content-page-background);
           --organizer-toolbar-field-background-focused: #3c3f4c;
           scrollbar-color: #b2bfd9 #2f303d;
         }
       }
     }
+  }
+}

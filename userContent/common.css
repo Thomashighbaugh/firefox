@@ -66,8 +66,7 @@
     border-radius: var(--in-content-button-border-radius) !important;
     background-color: var(--in-content-button-background) !important;
     font-weight: 400 !important;
-    padding: var(--in-content-button-vertical-padding)
-      var(--in-content-button-horizontal-padding) !important;
+    padding: var(--in-content-button-vertical-padding) var(--in-content-button-horizontal-padding) !important;
     text-decoration: none !important;
     margin: 4px 8px !important;
     /* Ensure font-size isn't overridden by widget styling (e.g. in forms.css) */
@@ -124,17 +123,13 @@
   button[autofocus]:enabled:hover,
   button[type="submit"]:enabled:hover,
   button.primary:enabled:hover {
-    background-color: var(
-      --in-content-primary-button-background-hover
-    ) !important;
+    background-color: var(--in-content-primary-button-background-hover) !important;
     color: var(--in-content-primary-button-text-color-hover) !important;
   }
   button[autofocus]:enabled:hover:active,
   button[type="submit"]:enabled:hover:active,
   button.primary:enabled:hover:active {
-    background-color: var(
-      --in-content-primary-button-background-active
-    ) !important;
+    background-color: var(--in-content-primary-button-background-active) !important;
   }
 
   /* Checkbox */

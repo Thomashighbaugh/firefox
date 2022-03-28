@@ -78,6 +78,25 @@ var AddonbarVertical = {
         CustomizableUI.registerArea("addonbar_v", { legacy: true });
         if (appversion >= 65) CustomizableUI.registerToolbarNode(tb_addonbarv);
 
+        if (addonbar_v_on_the_left) {
+          if (insert_before_borders || appversion >= 86)
+            document
+              .getElementById("browser")
+              .insertBefore(
+                toolbox_abv,
+                document.getElementById("browser").firstChild
+              );
+          else
+            document
+              .getElementById("browser")
+              .insertBefore(
+                toolbox_abv,
+                document.getElementById("browser").firstChild.nextSibling
+              );
+        } else {
+          if (insert_before_borders)
+            document.getElementById("browser").appendChild(toolbox_abv);
+          else
             document
               .getElementById("browser")
               .insertBefore(
@@ -231,7 +250,7 @@ var AddonbarVertical = {
         '\
 		#addonbar_v { \
 		  -moz-appearance: none !important; \
-		  background-color:#17191e !important; \
+		  background-color:#1b1d24 !important; \
 		  background-image: var(--toolbar-bgimage); \
 		  background-clip: padding-box; \
 		  color: var(--toolbar-color, inherit); \
@@ -262,7 +281,7 @@ var AddonbarVertical = {
 		  min-width: 0px; \
 		  width: 0px; \
 		  max-width: 0px; \
-      background-color:#17191e !important; \
+      background-color:#1b1d24 !important; \
 		} \
 		#main-window[customizing] #addonbar_v { \
 		  outline: 1px dashed !important; \
@@ -270,13 +289,13 @@ var AddonbarVertical = {
 		} \
 		#addonbar_v:-moz-lwtheme { \
 		  background: var(--lwt-header-image) !important; \
-      background-color:#17191e !important; \
+      background-color:#1b1d24 !important; \
 		  background-position: 100vw 50vh !important; \
 		} \
 		#addonbar_v toolbarbutton, \
 		#addonbar_v toolbar .toolbarbutton-1 { \
 		  padding: 0 !important; \
-      background-color:#17191e !important; \
+      background-color:#1b1d24 !important; \
 		} \
 		' +
         end_border +
@@ -300,14 +319,14 @@ var AddonbarVertical = {
 		} \
 		#tooglebutton_addonbar_v { \
 		  background: url("chrome://browser/skin/back.svg") no-repeat; \
-      background-color:#17191e !important; \
+      background-color:#1b1d24 !important; \
 		  background-size: 35% !important; \
 		  background-position: 10% 70% !important; \
 		} \
 		#tooglebutton_addonbar_v[checked] { \
 		  transform: rotate(180deg) !important;  \
 		  background: url("chrome://browser/skin/back.svg") no-repeat; \
-      background-color:#17191e !important; \
+      background-color:#1b1d24 !important; \
 		  background-position: 10% 30% !important; \
 		}*/ \
 	  ';
@@ -321,14 +340,14 @@ var AddonbarVertical = {
 		#addonbar_v toolbarbutton .toolbarbutton-icon { \
 		  padding: 0 !important; \
 		  width: 16px !important; \
-    background-color:#17191e !important; \
+    background-color:#1b1d24 !important; \
 		  height: 16px !important; \
 		} \
 		#addonbar_v .toolbarbutton-badge-stack { \
 		  padding: 0 !important; \
 		  margin: 0 !important; \
 		  width: 16px !important; \
-    background-color:#17191e !important; \
+    background-color:#1b1d24 !important; \
 		  min-width: 16px !important; \
 		  height: 16px !important; \
 		  min-height: 16px !important; \
@@ -336,10 +355,10 @@ var AddonbarVertical = {
 		#addonbar_v toolbarbutton .toolbarbutton-badge { \
 		  margin-top: 0px !important; \
 		  font-size: 8px !important; \
-    background-color:#17191e !important; \
+    background-color:#1b1d24 !important; \
 		} \
     		#addonbar_v toolbarbutton  { \
-    background-color:#17191e !important; \
+    background-color:#1b1d24 !important; \
 		} \
 	  ";
 

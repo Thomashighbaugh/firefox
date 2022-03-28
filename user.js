@@ -92,8 +92,8 @@ user_pref("ui.textSelectBackgroundAttention", "#8b9cbe");
 user_pref("ui.textSelectBackgroundDisabled", "#555e70");
 user_pref("ui.SpellCheckerUnderline", "#8b9cbe");
 
-user_pref("ui.IMERawInputBackground", "#17191e");
-user_pref("ui.IMESelectedRawTextBackground", "#17191e");
+user_pref("ui.IMERawInputBackground", "#1b1d24");
+user_pref("ui.IMESelectedRawTextBackground", "#1b1d24");
 
 user_pref("gfx.font_rendering.cleartype_params.cleartype_level", 100);
 user_pref("gfx.font_rendering.cleartype_params.force_gdi_classic_for_families", "");

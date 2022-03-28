@@ -386,7 +386,7 @@
       --win-bgcolor: #1c1e24;
       --win-disabled-color: #555e70;
       --win-disabled-bgcolor: transparent;
-      --win-hover-bgcolor: #17191e; /* also button-bgcolor */
+      --win-hover-bgcolor: #1b1d24; /* also button-bgcolor */
       --win-hover-active-bgcolor: #22262d; /* also button-active-color */
       --win-field-bgcolor: #3c3f4c;
       --win-component-bgcolor: #1c1e24;

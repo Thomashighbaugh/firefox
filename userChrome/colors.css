@@ -11,7 +11,7 @@
   --in-content-text-color: var(--in-content-page-color);
   --in-content-deemphasized-text: #8b9cbe;
   --in-content-box-background: #1c1e24;
-  --in-content-box-background-odd: #17191e; /* grey 90 a05 */
+  --in-content-box-background-odd: #1b1d24; /* grey 90 a05 */
   --in-content-box-border-color: color-mix(
     in srgb,
     currentColor 41%,
@@ -57,7 +57,7 @@
   --in-content-button-horizontal-padding: 15px;
   --in-content-button-vertical-padding: 7px;
 
-  --in-content-table-background: #17191e;
+  --in-content-table-background: #1b1d24;
   --in-content-table-border-dark-color: #3c3f4c;
   --in-content-table-header-background: #2f303d;
   --in-content-table-header-color: #f4f4f7;

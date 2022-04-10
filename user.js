@@ -1,7 +1,7 @@
 // userchrome.css usercontent.css activate
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 
-// Proton Enabled 
+// Proton Enabled
 user_pref("browser.proton.enabled", true);
 
 // Proton Tooltip
@@ -12,13 +12,13 @@ user_pref("svg.context-properties.content.enabled", true);
 
 
 
-// CSS Blur Filter 
+// CSS Blur Filter
 user_pref("layout.css.backdrop-filter.enabled", true);
 
-// Restore Compact Mode 
+// Restore Compact Mode
 user_pref("browser.compactmode.show", true);
 
-// about:home Search Bar 
+// about:home Search Bar
 user_pref("browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar", false);
 
 
@@ -319,3 +319,9 @@ user_pref("ui.systemUsesDarkTheme", 1);
 // I would think but don't/can't
 user_perf("privacy.popups.disable_from_plugins", 0);
 
+
+// Enable extensions to work on Mozilla's pages
+// May Not Work When Loaded From Here, But Kept Here As Record Anyway
+
+user_pref("privacy.resistFingerprinting.block_mozAddonManager", true)
+user_pref("extensions.webextensions.restrictedDomains", "blank")

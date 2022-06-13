@@ -35,7 +35,7 @@
 #bookmarksMenuPopup #bookmarksToolbarFolderMenu[open="true"],
 :-moz-any(#bookmarks-view, #editBMPanel_folderTree, #placesList, #placeContent)
   treechildren::-moz-tree-image(container, open, queryFolder_toolbar_____) {
-  list-style-image: url("./icons/bookmarksToolbar-open.svg") !important;
+  list-style-image: url("./icons/bookmarks-toolbar.svg") !important;
 }
 
 /* Bookmark Menu */

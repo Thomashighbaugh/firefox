@@ -81,30 +81,29 @@ function print_help() {
   echo ""
   echo "Defaults to 'stable' if empty."
 }
-function patch() {
-  # This will patch any firefox directory installed in /usr/lib/ by the package manager, which generally should suffice
-  sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox*
-
-
-}
 # Check args
 if [[ ! -z "${@}" ]] && [[ ! -z "${1}" ]]; then
 
   if [[ "${1}" == "dev" ]]; then
     RELEASE_NAME="Developer Edition"
     check_profile "dev-edition-default"
+    sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox-developer-edition/
   elif [[ "${1}" == "beta" ]]; then
     RELEASE_NAME="Beta"
     check_profile "default-beta"
+    sudo cp -rvf /tmp/firefox-master/patches/root/* /opt/firefox-beta/
   elif [[ "${1}" == "nightly" ]]; then
     RELEASE_NAME="Nightly"
+    sudo cp -rvf /tmp/firefox-master/patches/root/* /opt/firefox-nightly/
     check_profile "default-nightly"
   elif [[ "${1}" == "stable" ]]; then
     RELEASE_NAME="Stable"
     check_profile "default-default"
+    sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox/
   elif [[ "${1}" == "esr" ]]; then
     RELEASE_NAME="ESR"
     check_profile "default-esr"
+    sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox-esr/
   elif [[ "${1}" == "help" ]]; then
     print_help
     exit
@@ -143,7 +142,6 @@ if [[ -n "$FF_USER_DIRECTORY" ]]; then
     fi
     # Download theme
     download_ff
-    patch
   else
     message "[>>] Chrome folder does not exist! Creating one..."
     mkdir "${FF_USER_DIRECTORY}/chrome"
@@ -155,7 +153,6 @@ if [[ -n "$FF_USER_DIRECTORY" ]]; then
       # Download theme
 
       download_ff
-      patch
     else
       message "[!!] There was a problem while creating the directory. Terminating..."
       exit 1

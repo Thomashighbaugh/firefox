@@ -1,0 +1,38 @@
+{
+   "background": {
+      "persistent": false,
+      "scripts": [ "js/background.js" ]
+   },
+   "browser_action": {
+      "default_icon": {
+         "19": "icons/notionx-white.png",
+         "38": "icons/notionx-white.png"
+      },
+      "default_popup": "popup.html",
+      "default_title": "NotionX ( for Notion )"
+   },
+   "content_scripts": [ {
+      "css": [ "css/content-script.css" ],
+      "js": [ "js/content-script.js" ],
+      "matches": [ "https://*.notion.so/*" ],
+      "run_at": "document_idle"
+   } ],
+   "content_security_policy": "script-src 'self' ; object-src 'self'",
+   "default_locale": "en",
+   "description": "A Browser Extension that enhances Notion experience.",
+   "homepage_url": "http://scarsu.cn/notionx/",
+   "icons": {
+      "128": "icons/notionx-white.png",
+      "16": "icons/notionx-white.png",
+      "48": "icons/notionx-white.png"
+   },
+   "manifest_version": 2,
+   "name": "NotionX ( for Notion )",
+   "permissions": [ "https://*.notion.so/*" ],
+   "version": "2.1.3",
+   "browser_specific_settings": {
+      "gecko": {
+        "id": "extension@Bardeen"
+      }
+    }
+}

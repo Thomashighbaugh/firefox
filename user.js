@@ -134,17 +134,17 @@ user_pref("media.peerconnection.ice.no_host", true);
 
 
 // prevent names of plugins from leaking
-user_perf("plugins.enumerable_names", "blank");
+
 
 // hardware acceleration
-user_perf("layers.offmainthreadcomposition.enabled", true);
+
 user_perf("layers.offmainthreadcomposition.async-animations", true);
-user_perf("layers.async-video.enabled", true);
+
 user_perf("html5.offmainthread", true);
 user_pref("gfx.webrender.all", true);
 user_pref("gfx.webrender.enabled", true);
 // below solves issue of freezing and stuttering
-user_perf("layers.acceleration.force - enabled", true);
+user_perf("layers.acceleration.force-enabled", true);
 
 // disable annoying web notifications
 user_pref("dom.webnotifications.enabled", false);
@@ -205,8 +205,9 @@ user_pref("browser.newtab.url", "https://startpage-zwei.vercel.app/");
 user_pref("browser.newtabpage.activity-stream.enabled", false);
 user_pref("browser.newtabpage.activity-stream.feeds.sections", false);
 user_pref("browser.newtabpage.activity-stream.feeds.snippets", false);
-user_perf("browser.newtabpage.activity-stream.feeds.system.topstories", false);
+user_perf("browser.newtabpage.activity-stream.feeds.section.topstories", false);
 user_perf("browser.newtabpage.activity-stream.feeds.telemetry", false);
+user_perf("browser.newtabpage.activity-stream.telemetry", false);
 user_perf("browser.newtabpage.activity-stream.feeds.system.topsites", false);
 user_perf("browser.newtabpage.activity-stream.feeds.topsites", false);
 user_perf(
@@ -323,5 +324,5 @@ user_perf("privacy.popups.disable_from_plugins", 0);
 // Enable extensions to work on Mozilla's pages
 // May Not Work When Loaded From Here, But Kept Here As Record Anyway
 
-user_pref("privacy.resistFingerprinting.block_mozAddonManager", true)
-user_pref("extensions.webextensions.restrictedDomains", "blank")
+user_pref("privacy.resistFingerprinting.block_mozAddonManager", true);
+user_pref("extensions.webextensions.restrictedDomains", "blank");

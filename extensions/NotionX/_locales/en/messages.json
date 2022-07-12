@@ -1,0 +1,146 @@
+{
+   "About": {
+      "description": "",
+      "message": "About"
+   },
+   "Options": {
+      "description": "",
+      "message": "Options"
+   },
+   "Shortcuts": {
+      "description": "",
+      "message": "Shortcuts"
+   },
+   "changeLang": {
+      "description": "",
+      "message": "Change NotionX Language"
+   },
+   "changeLangDesc": {
+      "description": "",
+      "message": "Change language of this extension"
+   },
+   "extName": {
+      "description": "",
+      "message": "NotionX"
+   },
+   "genHeaderNumber": {
+      "description": "",
+      "message": "Generate index for Headers"
+   },
+   "genHeaderNumberDesc": {
+      "description": "",
+      "message": "Generate index for Headers like 1.2.1."
+   },
+   "hideAddBtn": {
+      "description": "",
+      "message": "Hide 'New' Button"
+   },
+   "hideAddBtnDesc": {
+      "description": "",
+      "message": "Hide Table 'New' Button"
+   },
+   "hideComments": {
+      "description": "",
+      "message": "Hide Page Comment"
+   },
+   "hideCommentsDesc": {
+      "description": "",
+      "message": "Hide page comments and Properties (not line comments)"
+   },
+   "hideHelpBtn": {
+      "description": "",
+      "message": "Hide Help Button"
+   },
+   "hideHelpBtnDesc": {
+      "description": "",
+      "message": "Hide Help Button"
+   },
+   "hideNotionXDarkMode": {
+      "description": "",
+      "message": "Hide NotionX DarkMode"
+   },
+   "hideNotionXDarkModeDesc": {
+      "description": "",
+      "message": "Hide NotionX Dark Mode Button at top-right corner"
+   },
+   "hideNotionXSidebar": {
+      "description": "",
+      "message": "Hide NotionX SideBar"
+   },
+   "hideNotionXSidebarDesc": {
+      "description": "",
+      "message": "Hide NotionX SideBar"
+   },
+   "openInDesktop": {
+      "description": "",
+      "message": "Open in Desktop"
+   },
+   "openInDesktopDesc": {
+      "description": "",
+      "message": "Open current page in desktop"
+   },
+   "place": {
+      "description": "",
+      "message": "place"
+   },
+   "preventTableOverflow": {
+      "description": "",
+      "message": "Prevent table overflow"
+   },
+   "preventTableOverflowDesc": {
+      "description": "",
+      "message": "Prevent table overflow caused by too large width"
+   },
+   "resetOptions": {
+      "description": "",
+      "message": "Reset Options"
+   },
+   "resetOptionsDesc": {
+      "description": "",
+      "message": "Reset all options above"
+   },
+   "setCodeLang": {
+      "description": "",
+      "message": "Set Code Language"
+   },
+   "setCodeLangDesc": {
+      "description": "",
+      "message": "Set language for all code blocks in current page"
+   },
+   "showScrollToTop": {
+      "description": "",
+      "message": "Scroll to Top Button"
+   },
+   "showScrollToTopDesc": {
+      "description": "",
+      "message": "Add a 'scroll to top' button at bottom-right corner"
+   },
+   "toggleCodeLineNum": {
+      "description": "",
+      "message": "Show Code Line Num"
+   },
+   "toggleCodeLineNumDesc": {
+      "description": "",
+      "message": "Show line number in code block"
+   },
+   "toggleCompact": {
+      "description": "",
+      "message": "Compact Mode"
+   },
+   "toggleCompactDesc": {
+      "description": "",
+      "message": "small text & full width"
+   },
+   "toggleDark": {
+      "description": "",
+      "message": "Dark Mode"
+   },
+   "toggleDarkDesc": {
+      "description": "",
+      "message": "Toggle dark mode"
+   },
+   "xx": {
+      "description": "",
+      "message": "xx"
+   }
+}

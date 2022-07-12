@@ -1,0 +1,146 @@
+{
+   "About": {
+      "description": "",
+      "message": "Про нас"
+   },
+   "Options": {
+      "description": "",
+      "message": "Параметри"
+   },
+   "Shortcuts": {
+      "description": "",
+      "message": "Комбінації клавіш"
+   },
+   "changeLang": {
+      "description": "",
+      "message": "Змінити мову NotionX"
+   },
+   "changeLangDesc": {
+      "description": "",
+      "message": "Змінити мову розширення"
+   },
+   "extName": {
+      "description": "",
+      "message": "NotionX"
+   },
+   "genHeaderNumber": {
+      "description": "",
+      "message": "Generate index for Headers"
+   },
+   "genHeaderNumberDesc": {
+      "description": "",
+      "message": "Generate index for Headers like 1.2.1."
+   },
+   "hideAddBtn": {
+      "description": "",
+      "message": "Hide 'New' Button"
+   },
+   "hideAddBtnDesc": {
+      "description": "",
+      "message": "Hide Table 'New' Button"
+   },
+   "hideComments": {
+      "description": "",
+      "message": "Приховати коментарі сторінки"
+   },
+   "hideCommentsDesc": {
+      "description": "",
+      "message": "Приховати коментарі (зверху сторінки)"
+   },
+   "hideHelpBtn": {
+      "description": "",
+      "message": "Hide Help Button"
+   },
+   "hideHelpBtnDesc": {
+      "description": "",
+      "message": "Hide Help Button"
+   },
+   "hideNotionXDarkMode": {
+      "description": "",
+      "message": "Hide NotionX DarkMode"
+   },
+   "hideNotionXDarkModeDesc": {
+      "description": "",
+      "message": "Hide NotionX Dark Mode Button at top-right corner"
+   },
+   "hideNotionXSidebar": {
+      "description": "",
+      "message": "Приховати панель NotionX"
+   },
+   "hideNotionXSidebarDesc": {
+      "description": "",
+      "message": "Приховати панель NotionX"
+   },
+   "openInDesktop": {
+      "description": "",
+      "message": "Відкрити у настільному застосунку"
+   },
+   "openInDesktopDesc": {
+      "description": "",
+      "message": "Відкрити сторінку у застосунку"
+   },
+   "place": {
+      "description": "",
+      "message": "місце"
+   },
+   "preventTableOverflow": {
+      "description": "",
+      "message": "Запобігти переповненню таблиці"
+   },
+   "preventTableOverflowDesc": {
+      "description": "",
+      "message": "Запобігти виходження за рамки надто широкої таблиці"
+   },
+   "resetOptions": {
+      "description": "",
+      "message": "Скинути параметри"
+   },
+   "resetOptionsDesc": {
+      "description": "",
+      "message": "Скинути усі параметри"
+   },
+   "setCodeLang": {
+      "description": "",
+      "message": "Встановити мову коду"
+   },
+   "setCodeLangDesc": {
+      "description": "",
+      "message": "Встановити мову коду для усіх блоків на цій сторінці"
+   },
+   "showScrollToTop": {
+      "description": "",
+      "message": "Прокрутити сі догори"
+   },
+   "showScrollToTopDesc": {
+      "description": "",
+      "message": "Додати кнопку 'Прокрутити сі догори' у правому нижньому куті"
+   },
+   "toggleCodeLineNum": {
+      "description": "",
+      "message": "Показувати № рядка коду"
+   },
+   "toggleCodeLineNumDesc": {
+      "description": "",
+      "message": "Показувати номер рядка в блоках коду"
+   },
+   "toggleCompact": {
+      "description": "",
+      "message": "Компактний режим"
+   },
+   "toggleCompactDesc": {
+      "description": "",
+      "message": "малий текст і на повну ширину"
+   },
+   "toggleDark": {
+      "description": "",
+      "message": "Темний режим"
+   },
+   "toggleDarkDesc": {
+      "description": "",
+      "message": "Увімкнути темний режим"
+   },
+   "xx": {
+      "description": "",
+      "message": "xx"
+   }
+}

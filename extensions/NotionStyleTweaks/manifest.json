@@ -1,0 +1,40 @@
+{
+   "action": {
+      "default_icon": {
+         "128": "icons/icon-128.png",
+         "16": "icons/icon-16.png",
+         "32": "icons/icon-32.png",
+         "48": "icons/icon-48.png"
+      },
+      "default_popup": "index.html",
+      "default_title": "Notion Style Tweaks"
+   },
+   "background": {
+      "service_worker": "build/background.js"
+   },
+   "content_scripts": [ {
+      "css": [ "stylesheets/themes/CSS/theme.css", "stylesheets/tweaks/CSS/tweaks.css" ],
+      "js": [ "build/injection.js", "build/update.js" ],
+      "matches": [ "https://www.notion.so/*" ],
+      "run_at": "document_idle"
+   } ],
+   "description": "Tweaks for Notion",
+   "homepage_url": "https://github.com/EliWimmer/notion-style-tweaks",
+   "host_permissions": [ "https://www.notion.so/*" ],
+   "icons": {
+      "128": "icons/icon-128.png",
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiLbxz66A/JEBvPl05mBJJHWvnX/gMfBLz+aVll9CBsJmy+WjRsrWAJ5Md2i87UKuSTczX/9WS3yEzHzxAL6bfRwTtWeQ98q4ggAHYurOTh/v8/ygU6qvky3gLcH/WyFGBZZ/XI8AQf4tz8F9qS6fBPnS25zkHVXuVBu6AVmYSxOA1xBsIYf95bZJVedzwt3SEYAi0ggR9faclF9b5b0AdC3Xqs8ev21A6QpPPQI6X4it0wb+tViDutofU3hzrfDw60nac8yU5iSLFJo5+YKc268K/XHTA3HlPeLrANg2SqBzk9qYSEBTTECK4Fy7J/tvR3ZbbgcKMgjyfB8VLWFS1wIDAQAB",
+   "manifest_version": 3,
+   "name": "Notion Style Tweaks",
+   "permissions": [ "tabs", "scripting", "storage", "activeTab" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.7.2",
+   "web_accessible_resources": [ {
+      "matches": [ "https://www.notion.so/*" ],
+      "resources": [ "fonts/Cinzel-VariableFont_wght.ttf", "fonts/DancingScript-VariableFont_wght.ttf", "fonts/EBGaramond-VariableFont_wght.ttf", "fonts/FiraCode-VariableFont_wght.ttf", "fonts/Inconsolata-VariableFont_wght.ttf", "fonts/Inter-VariableFont_wght.ttf", "fonts/JetBrainsMono-VariableFont_wght.ttf", "fonts/JosefinSans-VariableFont_wght.ttf", "fonts/JosefinSlab-VariableFont_wght.ttf", "fonts/Lora-VariableFont_wght.ttf", "fonts/MavenPro-VariableFont_wght.ttf", "fonts/Montserrat-VariableFont_wght.ttf", "fonts/Mulish-VariableFont_wght.ttf", "fonts/Nunito-VariableFont_wght.ttf", "fonts/OpenSans-VariableFont_wght.ttf", "fonts/Oswald-VariableFont_wght.ttf", "fonts/OverpassMono-VariableFont_wght.ttf", "fonts/Petrona-VariableFont_wght.ttf", "fonts/PlayfairDisplay-VariableFont_wght.ttf", "fonts/Quicksand-VariableFont_wght.ttf", "fonts/Raleway-VariableFont_wght.ttf", "fonts/RobotoMono-VariableFont_wght.ttf", "fonts/RobotoSlab-VariableFont_wght.ttf", "fonts/Rubik-VariableFont_wght.ttf", "fonts/SourceCodePro-VariableFont_wght.ttf", "fonts/WorkSans-VariableFont_wght.ttf" ]
+   } ]
+}

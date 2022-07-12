@@ -1,0 +1,146 @@
+{
+  "extName": {
+    "message": "NotionX",
+    "description": ""
+  },
+  "xx": {
+    "message": "xx",
+    "description": ""
+  },
+  "changeLangDesc": {
+    "message": "切换此插件内的语言",
+    "description": ""
+  },
+  "changeLang": {
+    "message": "切换插件语言",
+    "description": ""
+  },
+  "Options": {
+    "message": "配置",
+    "description": ""
+  },
+  "Shortcuts": {
+    "message": "快捷键",
+    "description": ""
+  },
+  "About": {
+    "message": "关于",
+    "description": ""
+  },
+  "hideComments": {
+    "message": "隐藏页面评论",
+    "description": ""
+  },
+  "hideCommentsDesc": {
+    "message": "隐藏页面评论和属性(注意是页标题下的评论，而不是行评论)",
+    "description": ""
+  },
+  "hideHelpBtn": {
+    "message": "隐藏帮助按钮",
+    "description": ""
+  },
+  "hideHelpBtnDesc": {
+    "message": "隐藏帮助按钮",
+    "description": ""
+  },
+  "hideAddBtn": {
+    "message": "隐藏'New'按钮",
+    "description": ""
+  },
+  "hideAddBtnDesc": {
+    "message": "隐藏table的'New'按钮",
+    "description": ""
+  },
+  "hideNotionXSidebar": {
+    "message": "隐藏NotionX侧边栏",
+    "description": ""
+  },
+  "hideNotionXSidebarDesc": {
+    "message": "隐藏NotionX侧边栏",
+    "description": ""
+  },
+  "hideNotionXDarkMode": {
+    "message": "隐藏NotionX暗黑模式按钮",
+    "description": ""
+  },
+  "hideNotionXDarkModeDesc": {
+    "message": "隐藏页面右上角的NotionX暗黑模式按钮",
+    "description": ""
+  },
+  "toggleDark": {
+    "message": "暗黑模式",
+    "description": ""
+  },
+  "toggleDarkDesc": {
+    "message": "切换暗黑模式",
+    "description": ""
+  },
+  "openInDesktop": {
+    "message": "在桌面端打开",
+    "description": ""
+  },
+  "openInDesktopDesc": {
+    "message": "在桌面端中打开当前页面",
+    "description": ""
+  },
+  "genHeaderNumber": {
+    "message": "生成Headers序号",
+    "description": ""
+  },
+  "genHeaderNumberDesc": {
+    "message": "为Header Block生成形如1.2.1.的序号",
+    "description": ""
+  },
+  "toggleCompact": {
+    "message": "紧凑模式",
+    "description": ""
+  },
+  "toggleCompactDesc": {
+    "message": "small text & full width",
+    "description": ""
+  },
+  "toggleCodeLineNum": {
+    "message": "显示代码行号",
+    "description": ""
+  },
+  "toggleCodeLineNumDesc": {
+    "message": "显示代码块前的行号",
+    "description": ""
+  },
+  "resetOptions": {
+    "message": "还原配置",
+    "description": ""
+  },
+  "resetOptionsDesc": {
+    "message": "还原所有配置",
+    "description": ""
+  },
+  "showScrollToTopDesc": {
+    "message": "在页面右下角添加一个'滚动至顶部的按钮'",
+    "description": ""
+  },
+  "showScrollToTop": {
+    "message": "Scroll to Top 按钮",
+    "description": ""
+  },
+  "preventTableOverflow": {
+    "message": "阻止表格溢出",
+    "description": ""
+  },
+  "preventTableOverflowDesc": {
+    "message": "阻止表格因横向宽度过大导致的尺寸溢出",
+    "description": ""
+  },
+  "setCodeLang": {
+    "message": "设置代码快语言",
+    "description": ""
+  },
+  "setCodeLangDesc": {
+    "message": "为当前页面所有代码块设置语言",
+    "description": ""
+  },
+  "place": {
+    "message": "place",
+    "description": ""
+  }
+}

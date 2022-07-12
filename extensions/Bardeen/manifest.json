@@ -1,0 +1,64 @@
+{
+   "background": {
+      "scripts": [ "background.js" ]
+   },
+   "browser_action": {
+      "default_icon": {
+         "16": "icons/bardeen-16.png",
+         "32": "icons/bardeen-32.png"
+      },
+      "default_title": "Bardeen - automate workflows with one click"
+   },
+   "browser_specific_settings": {
+      "gecko": {
+         "id": "extension@bardeen.ai",
+         "strict_min_version": "42.0",
+         "update_url": "https://clients2.google.com/service/update2/crx"
+      }
+   },
+   "commands": {
+      "_execute_browser_action": {
+         "suggested_key": {
+            "default": "Alt+B",
+            "mac": "Alt+B"
+         }
+      },
+      "toggle-popup": {
+         "description": "Display the Bardeen pop-up window",
+         "suggested_key": {
+            "default": "Alt+Period",
+            "mac": "Alt+Period"
+         }
+      }
+   },
+   "content_scripts": [ {
+      "js": [ "website-interactive.js" ],
+      "matches": [ "*://*.bardeen.ai/*", "*://bardeen.webflow.io/*" ]
+   }, {
+      "js": [ "content.js" ],
+      "matches": [ "*://*/*" ],
+      "run_at": "document_start"
+   } ],
+   "content_security_policy": "script-src 'self' 'unsafe-eval' 'sha256-Eh2YFPk6dZS5X/WWre+4zBVz6BHzrbIGk+i/K0P5WUI='; object-src 'self';",
+   "description": "One-click automations for your repetitive tasks",
+   "icons": {
+      "128": "icons/bardeen-128.png",
+      "16": "icons/bardeen-16.png",
+      "32": "icons/bardeen-32.png",
+      "48": "icons/bardeen-48.png",
+      "72": "icons/bardeen-72.png",
+      "96": "icons/bardeen-96.png"
+   },
+ 
+   "manifest_version": 2,
+   "name": "Bardeen - automate workflows with one click",
+   "options_ui": {
+      "browser_style": false,
+      "open_in_tab": true,
+      "page": "settings.html"
+   },
+   "permissions": [ "\u003Call_urls>", "webNavigation", "unlimitedStorage", "notifications", "activeTab", "tabs", "*://*/*", "history", "bookmarks", "contextMenus" ],
+   "version": "2.2.5",
+   "web_accessible_resources": [ "*.png", "*.svg", "*.woff2", "popup.html", "settings.html" ]
+
+}

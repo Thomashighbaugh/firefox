@@ -1,679 +1,366 @@
-let EXPORTED_SYMBOLS = [];
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-let { classes: Cc, interfaces: Ci, manager: Cm } = Components;
+ "use strict";
 
-var cmanifest = Cc["@mozilla.org/file/directory_service;1"].getService(Ci.nsIProperties).get("UChrm", Ci.nsIFile);
-cmanifest.append("utils");
-cmanifest.append("chrome.manifest");
-Cm.QueryInterface(Ci.nsIComponentRegistrar).autoRegister(cmanifest);
-
-ChromeUtils.import("chrome://userchromejs/content/userChrome.jsm");
-
-console.warn("Browser is executing custom scripts via autoconfig");
-const { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-
-const yPref = {
-  get: function (prefPath) {
-    const sPrefs = Services.prefs;
-    try {
-      switch (sPrefs.getPrefType(prefPath)) {
-        case 0:
-          return undefined;
-        case 32:
-          return sPrefs.getStringPref(prefPath);
-        case 64:
-          return sPrefs.getIntPref(prefPath);
-        case 128:
-          return sPrefs.getBoolPref(prefPath);
-      }
-    } catch (ex) {
-      return undefined;
-    }
-    return;
-  },
-  set: function (prefPath, value) {
-    const sPrefs = Services.prefs;
-    switch (typeof value) {
-      case "string":
-        return sPrefs.setCharPref(prefPath, value) || value;
-      case "number":
-        return sPrefs.setIntPref(prefPath, value) || value;
-      case "boolean":
-        return sPrefs.setBoolPref(prefPath, value) || value;
-    }
-    return;
-  },
-  addListener: (a, b) => {
-    let o = (q, w, e) => b(yPref.get(e), e);
-    Services.prefs.addObserver(a, o);
-    return { pref: a, observer: o };
-  },
-  removeListener: (a) => Services.prefs.removeObserver(a.pref, a.observer),
-};
-
-const SHARED_GLOBAL = {};
-Object.defineProperty(SHARED_GLOBAL, "widgetCallbacks", { value: new Map() });
-
-function resolveChromeURL(str) {
-  const registry = Cc["@mozilla.org/chrome/chrome-registry;1"].getService(Ci.nsIChromeRegistry);
-  try {
-    return registry.convertChromeURL(Services.io.newURI(str.replace(/\\/g, "/"))).spec;
-  } catch (e) {
-    console.error(e);
-    return "";
-  }
-}
-// relative to "chrome" folder
-function resolveChromePath(str) {
-  let parts = resolveChromeURL(str).split("/");
-  return parts.slice(parts.indexOf("chrome") + 1, parts.length - 1).join("/");
-}
-
-let _uc = {
-  BROWSERCHROME: "chrome://browser/content/browser.xhtml",
-  PREF_ENABLED: "userChromeJS.enabled",
-  PREF_SCRIPTSDISABLED: "userChromeJS.scriptsDisabled",
-
-  SCRIPT_DIR: resolveChromePath("chrome://userscripts/content/"),
-  RESOURCE_DIR: resolveChromePath("chrome://userchrome/content/"),
-  BASE_FILEURI: Services.io
-    .getProtocolHandler("file")
-    .QueryInterface(Ci.nsIFileProtocolHandler)
-    .getURLSpecFromDir(Services.dirsvc.get("UChrm", Ci.nsIFile)),
-
-  SESSION_RESTORED: false,
-
-  get chromeDir() {
-    return Services.dirsvc.get("UChrm", Ci.nsIFile);
-  },
-
-  getDirEntry: function (filename, isLoader = false) {
-    filename = filename.replace("\\", "/");
-    let pathParts = ((filename.startsWith("..") ? "" : isLoader ? _uc.SCRIPT_DIR : _uc.RESOURCE_DIR) + "/" + filename)
-      .split("/")
-      .filter((a) => !!a && a != "..");
-    let entry = _uc.chromeDir;
-
-    for (let part of pathParts) {
-      entry.append(part);
-    }
-    if (!entry.exists()) {
-      return null;
-    }
-    if (entry.isDirectory()) {
-      return entry.directoryEntries.QueryInterface(Ci.nsISimpleEnumerator);
-    } else if (entry.isFile()) {
-      return entry;
-    } else {
-      return null;
-    }
-  },
-
-  updateStyleSheet: function (name, type) {
-    if (type) {
-      let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
-      try {
-        let uri = Services.io.newURI(`chrome://userchrome/content/${name}`);
-        switch (type) {
-          case "agent":
-            sss.unregisterSheet(uri, sss.AGENT_SHEET);
-            sss.loadAndRegisterSheet(uri, sss.AGENT_SHEET);
-            return true;
-          case "author":
-            sss.unregisterSheet(uri, sss.AUTHOR_SHEET);
-            sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
-            return true;
-          default:
-            return false;
-        }
-      } catch (e) {
-        console.error(e);
-        return false;
-      }
-    }
-    let entry = _uc.utils.getFSEntry(name);
-    if (!(entry && entry.isFile())) {
-      return false;
-    }
-    let recentWindow = Services.wm.getMostRecentBrowserWindow();
-    if (!recentWindow) {
-      return false;
-    }
-    function recurseImports(sheet, all) {
-      let z = 0;
-      let rule = sheet.cssRules[0];
-      // loop through import rules and check that the "all"
-      // doesn't already contain the same object
-      while (rule instanceof CSSImportRule && !all.includes(rule.styleSheet)) {
-        all.push(rule.styleSheet);
-        recurseImports(rule.styleSheet, all);
-        rule = sheet.cssRules[++z];
-      }
-      return all;
-    }
-
-    let sheets = recentWindow.InspectorUtils.getAllStyleSheets(recentWindow.document, false);
-
-    sheets = sheets.flatMap((x) => recurseImports(x, [x]));
-
-    // If a sheet is imported multiple times, then there will be
-    // duplicates, because style system does create an object for
-    // each instace but that's OK since sheets.find below will
-    // only find the first instance and reload that which is
-    // "probably" fine.
-    let entryFilePath = `file:///${entry.path.replaceAll("\\", "/")}`;
-
-    let target = sheets.find((sheet) => sheet.href === entryFilePath);
-    if (target) {
-      recentWindow.InspectorUtils.parseStyleSheet(target, _uc.utils.readFile(entry));
-      return true;
-    }
-    return false;
-  },
-
-  getScripts: function () {
-    this.scripts = {};
-    if (!yPref.get(_uc.PREF_ENABLED) || !/^[\w_]*$/.test(_uc.SCRIPT_DIR)) {
-      console.log("Scripts are disabled or the given script directory name is invalid");
-      return;
-    }
-    let files = _uc.getDirEntry("", true);
-    while (files.hasMoreElements()) {
-      let file = files.getNext().QueryInterface(Ci.nsIFile);
-      if (/\.uc\.js$/i.test(file.leafName)) {
-        let script = _uc.getScriptData(file);
-        if (script.inbackground && script.isEnabled) {
-          try {
-            Cu.import(`chrome://userscripts/content/${script.filename}`);
-          } catch (e) {
-            console.error(e);
-          }
-        }
-      }
-    }
-  },
-
-  getScriptData: function (aFile) {
-    let header = (_uc.utils
-      .readFile(aFile, true)
-      .match(/^\/\/ ==UserScript==\s*\n(?:.*\n)*?\/\/ ==\/UserScript==\s*\n/m) || [""])[0];
-    let match,
-      rex = {
-        include: [],
-        exclude: [],
-      };
-    let findNextRe = /^\/\/ @(include|exclude)\s+(.+)\s*$/gm;
-    while ((match = findNextRe.exec(header))) {
-      rex[match[1]].push(match[2].replace(/^main$/i, _uc.BROWSERCHROME).replace(/\*/g, ".*?"));
-    }
-    if (!rex.include.length) {
-      rex.include.push(_uc.BROWSERCHROME);
-    }
-    let exclude = rex.exclude.length ? `(?!${rex.exclude.join("$|")}$)` : "";
-    let def = ["", ""];
-    let author = (header.match(/\/\/ @author\s+(.+)\s*$/im) || def)[1];
-    let filename = aFile.leafName || "";
-
-    return (this.scripts[filename] = {
-      filename: filename,
-      name: (header.match(/\/\/ @name\s+(.+)\s*$/im) || def)[1],
-      charset: (header.match(/\/\/ @charset\s+(.+)\s*$/im) || def)[1],
-      description: (header.match(/\/\/ @description\s+(.+)\s*$/im) || def)[1],
-      version: (header.match(/\/\/ @version\s+(.+)\s*$/im) || def)[1],
-      author: (header.match(/\/\/ @author\s+(.+)\s*$/im) || def)[1],
-      regex: new RegExp(`^${exclude}(${rex.include.join("|") || ".*"})$`, "i"),
-      id: (header.match(/\/\/ @id\s+(.+)\s*$/im) || [
-        "",
-        filename.split(".uc.js")[0] + "@" + (author || "userChromeJS"),
-      ])[1],
-      homepageURL: (header.match(/\/\/ @homepageURL\s+(.+)\s*$/im) || def)[1],
-      downloadURL: (header.match(/\/\/ @downloadURL\s+(.+)\s*$/im) || def)[1],
-      updateURL: (header.match(/\/\/ @updateURL\s+(.+)\s*$/im) || def)[1],
-      optionsURL: (header.match(/\/\/ @optionsURL\s+(.+)\s*$/im) || def)[1],
-      startup: (header.match(/\/\/ @startup\s+(.+)\s*$/im) || def)[1],
-      //shutdown: (header.match(/\/\/ @shutdown\s+(.+)\s*$/im) || def)[1],
-      onlyonce: /\/\/ @onlyonce\b/.test(header),
-      inbackground: /\/\/ @backgroundmodule\b/.test(header),
-      isRunning: false,
-      get isEnabled() {
-        return (yPref.get(_uc.PREF_SCRIPTSDISABLED) || "").split(",").indexOf(this.filename) === -1;
-      },
-    });
-  },
-
-  //everLoaded: [],
-
-  maybeRunStartUp: (script, win) => {
-    if (
-      script.startup &&
-      /^\w*$/.test(script.startup) &&
-      SHARED_GLOBAL[script.startup] &&
-      typeof SHARED_GLOBAL[script.startup]._startup === "function"
-    ) {
-      SHARED_GLOBAL[script.startup]._startup(win);
-    }
-  },
-
-  loadScript: function (script, win) {
-    if (script.inbackground || !script.regex.test(win.location.href) || !script.isEnabled) {
-      return;
-    }
-    try {
-      if (script.onlyonce && script.isRunning) {
-        _uc.maybeRunStartUp(script, win);
-        return;
-      }
-
-      Services.scriptloader.loadSubScript(`chrome://userscripts/content/${script.filename}`, win);
-
-      script.isRunning = true;
-      _uc.maybeRunStartUp(script, win);
-
-      /*if (!script.shutdown) {
-        this.everLoaded.push(script.id);
-      }*/
-    } catch (ex) {
-      console.error(ex);
-    }
-    return;
-  },
-
-  // things to be exported for use by userscripts
-  utils: {
-    get sharedGlobal() {
-      return SHARED_GLOBAL;
-    },
-
-    createElement: function (doc, tag, props, isHTML = false) {
-      let el = isHTML ? doc.createElement(tag) : doc.createXULElement(tag);
-      for (let prop in props) {
-        el.setAttribute(prop, props[prop]);
-      }
-      return el;
-    },
-
-    createWidget(desc) {
-      if (!desc || !desc.id) {
-        console.error("custom widget description is missing 'id' property");
-        return null;
-      }
-      if (!["toolbaritem", "toolbarbutton"].includes(desc.type)) {
-        console.error("custom widget has unsupported type: " + desc.type);
-        return null;
-      }
-      const CUI = Services.wm.getMostRecentBrowserWindow().CustomizableUI;
-      let newWidget = CUI.getWidget(desc.id);
-
-      if (newWidget && newWidget.hasOwnProperty("source")) {
-        // very likely means that the widget with this id already exists
-        // There isn't a very reliable way to 'really' check if it exists or not
-        return newWidget;
-      }
-      // This is pretty ugly but makes onBuild much cleaner.
-      let itemStyle = "";
-      if (desc.image) {
-        if (desc.type === "toolbarbutton") {
-          itemStyle += "list-style-image:";
-        } else {
-          itemStyle += "background: transparent center no-repeat ";
-        }
-        itemStyle += `url(chrome://userChrome/content/${desc.image});`;
-        itemStyle += desc.style || "";
-      }
-      SHARED_GLOBAL.widgetCallbacks.set(desc.id, desc.callback);
-
-      return CUI.createWidget({
-        id: desc.id,
-        type: "custom",
-        onBuild: function (aDocument) {
-          let toolbaritem = aDocument.createXULElement(desc.type);
-          let props = {
-            id: desc.id,
-            class: `toolbarbutton-1 chromeclass-toolbar-additional ${desc.class ? desc.class : ""}`,
-            overflows: !!desc.overflows,
-            label: desc.label || desc.id,
-            tooltiptext: desc.tooltip || desc.id,
-            style: itemStyle,
-            onclick: `${
-              desc.allEvents ? "" : "event.button===0 && "
-            }_ucUtils.sharedGlobal.widgetCallbacks.get(this.id)(event,window)`,
-          };
-          for (let p in props) {
-            toolbaritem.setAttribute(p, props[p]);
-          }
-          return toolbaritem;
-        },
-      });
-    },
-
-    readFile: function (aFile, metaOnly = false) {
-      let stream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream);
-      let cvstream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream);
-      try {
-        stream.init(aFile, 0x01, 0, 0);
-        cvstream.init(stream, "UTF-8", 1024, Ci.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER);
-      } catch (e) {
-        console.error(e);
-        return null;
-      }
-      let content = "",
-        data = {};
-      while (cvstream.readString(4096, data)) {
-        content += data.value;
-        if (metaOnly && content.indexOf("// ==/UserScript==") > 0) {
-          break;
-        }
-      }
-      cvstream.close();
-      stream.close();
-      return content.replace(/\r\n?/g, "\n");
-    },
-
-    createFileURI: (fileName = "") => {
-      fileName = String(fileName);
-      let u = resolveChromeURL(`chrome://userchrome/content/${fileName}`);
-      return fileName ? u : u.substr(0, u.lastIndexOf("/") + 1);
-    },
-
-    get chromeDir() {
-      return {
-        get files() {
-          return _uc.chromeDir.directoryEntries.QueryInterface(Ci.nsISimpleEnumerator);
-        },
-        uri: _uc.BASE_FILEURI,
-      };
-    },
-
-    getFSEntry: (fileName) => _uc.getDirEntry(fileName),
-
-    getScriptData: () => {
-      let scripts = [];
-      for (let script in _uc.scripts) {
-        let data = {};
-        let o = _uc.scripts[script];
-        for (let p in o) {
-          if (p != "isEnabled") {
-            data[p] = o[p];
-          }
-        }
-        scripts.push(data);
-      }
-      return scripts;
-    },
-
-    get windows() {
-      return {
-        get: function (onlyBrowsers = true) {
-          let windows = Services.wm.getEnumerator(onlyBrowsers ? "navigator:browser" : null);
-          let wins = [];
-          while (windows.hasMoreElements()) {
-            wins.push(windows.getNext());
-          }
-          return wins;
-        },
-        forEach: function (fun, onlyBrowsers = true) {
-          let wins = this.get(onlyBrowsers);
-          wins.forEach((w) => fun(w.document, w));
-        },
-      };
-    },
-
-    toggleScript: function (el) {
-      let isElement = !!el.tagName;
-      if (!isElement && typeof el != "string") {
-        return;
-      }
-      let script = _uc.scripts[isElement ? el.getAttribute("filename") : el];
-      if (!script) {
-        console.log("no script to toggle");
-        return;
-      }
-      if (script.isEnabled) {
-        yPref.set(_uc.PREF_SCRIPTSDISABLED, `${script.filename},${yPref.get(_uc.PREF_SCRIPTSDISABLED)}`);
-      } else {
-        yPref.set(
-          _uc.PREF_SCRIPTSDISABLED,
-          yPref.get(_uc.PREF_SCRIPTSDISABLED).replace(new RegExp(`^${script.filename},?|,${script.filename}`), "")
-        );
-      }
-      Services.appinfo.invalidateCachesOnRestart();
-    },
-
-    updateStyleSheet: function (name = "../userChrome.css", type) {
-      return _uc.updateStyleSheet(name, type);
-    },
-
-    updateMenuStatus: function (menu) {
-      if (!menu) {
-        return;
-      }
-      let disabledScripts = yPref.get(_uc.PREF_SCRIPTSDISABLED).split(",");
-      for (let item of menu.children) {
-        if (disabledScripts.includes(item.getAttribute("filename"))) {
-          item.removeAttribute("checked");
-        } else {
-          item.setAttribute("checked", "true");
-        }
-      }
-    },
-
-    startupFinished: function () {
-      return new Promise((resolve) => {
-        if (_uc.SESSION_RESTORED) {
-          resolve();
-        }
-        let observer = (subject, topic, data) => {
-          Services.obs.removeObserver(observer, "sessionstore-windows-restored");
-          resolve();
-        };
-        Services.obs.addObserver(observer, "sessionstore-windows-restored");
-      });
-    },
-
-    windowIsReady: function (win) {
-      if (win && win.isChromeWindow) {
-        return new Promise((resolve) => {
-          if (win.gBrowserInit.delayedStartupFinished) {
-            resolve();
-          }
-          let observer = (subject, topic, data) => {
-            if (subject === win) {
-              Services.obs.removeObserver(observer, "browser-delayed-startup-finished");
-              resolve();
-            }
-          };
-          Services.obs.addObserver(observer, "browser-delayed-startup-finished");
-        });
-      } else {
-        return Promise.reject(new Error("reference is not a window"));
-      }
-    },
-
-    registerHotkey: function (desc, func) {
-      const validMods = ["accel", "alt", "ctrl", "meta", "shift"];
-      const validKey = (k) => (/^[\w-]$/.test(k) ? 1 : /^F(?:1[0,2]|[1-9])$/.test(k) ? 2 : 0);
-      const NOK = (a) => typeof a != "string";
-      const eToO = (e) => ({
-        metaKey: e.metaKey,
-        ctrlKey: e.ctrlKey,
-        altKey: e.altKey,
-        shiftKey: e.shiftKey,
-        key: e.srcElement.getAttribute("key"),
-        id: e.srcElement.getAttribute("id"),
-      });
-
-      if (NOK(desc.id) || NOK(desc.key) || NOK(desc.modifiers)) {
-        return false;
-      }
-
-      try {
-        let mods = desc.modifiers
-          .toLowerCase()
-          .split(" ")
-          .filter((a) => validMods.includes(a));
-        let key = validKey(desc.key);
-        if (!key || (mods.length === 0 && key === 1)) {
-          return false;
-        }
-
-        _uc.utils.windows.forEach((doc, win) => {
-          if (doc.getElementById(desc.id)) {
-            return;
-          }
-          let details = {
-            id: desc.id,
-            modifiers: mods.join(",").replace("ctrl", "accel"),
-            oncommand: "//",
-          };
-          if (key === 1) {
-            details.key = desc.key.toUpperCase();
-          } else {
-            details.keycode = `VK_${desc.key}`;
-          }
-
-          let el = _uc.utils.createElement(doc, "key", details);
-
-          el.addEventListener("command", (ev) => {
-            func(ev.target.ownerGlobal, eToO(ev));
-          });
-          let keyset =
-            doc.getElementById("mainKeyset") ||
-            doc.body.appendChild(_uc.utils.createElement(doc, "keyset", { id: "ucKeys" }));
-          keyset.insertBefore(el, keyset.firstChild);
-        });
-      } catch (e) {
-        console.error(e);
-        return false;
-      }
-      return true;
-    },
-    loadURI: function (win, desc) {
-      if (
-        !win ||
-        !desc ||
-        !desc.url ||
-        typeof desc.url !== "string" ||
-        !["tab", "tabshifted", "window", "current"].includes(desc.where)
-      ) {
-        return false;
-      }
-      const isJsURI = desc.url.slice(0, 11) === "javascript:";
-      try {
-        win.openTrustedLinkIn(desc.url, desc.where, {
-          allowPopups: isJsURI,
-          inBackground: desc.where === "tabshifted", // This doesn't work for some reason
-          allowInheritPrincipal: false,
-          private: !!desc.private,
-          userContextId: desc.url.startsWith("http") ? desc.userContextId : null,
-        });
-      } catch (e) {
-        console.error(e);
-        return false;
-      }
-      return true;
-    },
-    get prefs() {
-      return yPref;
-    },
-
-    restart: function (clearCache) {
-      clearCache && Services.appinfo.invalidateCachesOnRestart();
-      let cancelQuit = Cc["@mozilla.org/supports-PRBool;1"].createInstance(Ci.nsISupportsPRBool);
-      Services.obs.notifyObservers(cancelQuit, "quit-application-requested", "restart");
-      Services.startup.quit(Services.startup.eAttemptQuit | Services.startup.eRestart);
-    },
-  },
-};
-
-Object.freeze(_uc.utils);
-_uc.utils.startupFinished().then(() => {
-  _uc.SESSION_RESTORED = true;
-});
-
-if (yPref.get(_uc.PREF_ENABLED) === undefined) {
-  yPref.set(_uc.PREF_ENABLED, true);
-}
-
-if (yPref.get(_uc.PREF_SCRIPTSDISABLED) === undefined) {
-  yPref.set(_uc.PREF_SCRIPTSDISABLED, "");
-}
-
-function UserChrome_js() {
-  _uc.getScripts();
-  Services.obs.addObserver(this, "domwindowopened", false);
-}
-
-UserChrome_js.prototype = {
-  observe: function (aSubject, aTopic, aData) {
-    aSubject.addEventListener("DOMContentLoaded", this, true);
-  },
-
-  handleEvent: function (aEvent) {
-    let document = aEvent.originalTarget;
-    let window = document.defaultView;
-    let regex = /^chrome:(?!\/\/global\/content\/(commonDialog|alerts\/alert)\.xhtml)|about:(?!blank)/i;
-    // Don't inject scripts to modal prompt windows or notifications
-    if (regex.test(window.location.href)) {
-      window._ucUtils = _uc.utils;
-      document.allowUnsafeHTML = false; // https://bugzilla.mozilla.org/show_bug.cgi?id=1432966
-      if (window._gBrowser) {
-        // bug 1443849
-        window.gBrowser = window._gBrowser;
-      }
-      let isWindow = window.isChromeWindow;
-
-      /* Add a way to toggle scripts in tools menu */
-      let menu, popup, item;
-      let ce = _uc.utils.createElement;
-      if (isWindow) {
-        menu = document.querySelector("#menu_openDownloads");
-        if (menu) {
-          try {
-            popup = ce(document, "menupopup", {
-              id: "menuUserScriptsPopup",
-              onpopupshown: `_ucUtils.updateMenuStatus(this)`,
-            });
-            item = ce(document, "menu", {
-              id: "userScriptsMenu",
-              label: "userScripts",
-            });
-          } catch (e) {
-            isWindow = false;
-          }
-        } else {
-          isWindow = false;
-        }
-      }
-      if (yPref.get(_uc.PREF_ENABLED)) {
-        Object.values(_uc.scripts).forEach((script) => {
-          _uc.loadScript(script, window);
-          if (isWindow) {
-            popup.appendChild(
-              ce(document, "menuitem", {
-                type: "checkbox",
-                label: script.name || script.filename,
-                filename: script.filename,
-                checked: "true",
-                oncommand: `_ucUtils.toggleScript(this)`,
-              })
-            );
-          }
-        });
-      }
-      if (isWindow) {
-        popup.appendChild(ce(document, "menuseparator", {}));
-        popup.appendChild(
-          ce(document, "menuitem", {
-            label: "Restart now!",
-            oncommand: "_ucUtils.restart(true)",
-            tooltiptext: "Toggling scripts requires a restart",
-          })
-        );
-        item.appendChild(popup);
-        menu.parentNode.insertBefore(item, menu);
-      }
-    }
-  },
-};
-
-!Services.appinfo.inSafeMode && new UserChrome_js();
+ var EXPORTED_SYMBOLS = ["BootstrapLoader"];
+ 
+ const {AddonManager} = ChromeUtils.import("resource://gre/modules/AddonManager.jsm");
+ const {XPCOMUtils} = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+ 
+ XPCOMUtils.defineLazyModuleGetters(this, {
+   AddonInternal: "resource://gre/modules/addons/XPIDatabase.jsm",
+   Blocklist: "resource://gre/modules/Blocklist.jsm",
+   ConsoleAPI: "resource://gre/modules/Console.jsm",
+   InstallRDF: "chrome://userchromejs/content/RDFManifestConverter.jsm",
+   Services: "resource://gre/modules/Services.jsm",
+ });
+ 
+ XPCOMUtils.defineLazyGetter(this, "BOOTSTRAP_REASONS", () => {
+   const {XPIProvider} = ChromeUtils.import("resource://gre/modules/addons/XPIProvider.jsm");
+   return XPIProvider.BOOTSTRAP_REASONS;
+ });
+ 
+ const {Log} = ChromeUtils.import("resource://gre/modules/Log.jsm");
+ var logger = Log.repository.getLogger("addons.bootstrap");
+ 
+ /**
+  * Valid IDs fit this pattern.
+  */
+ var gIDTest = /^(\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\}|[a-z0-9-\._]*\@[a-z0-9-\._]+)$/i;
+ 
+ // Properties that exist in the install manifest
+ const PROP_METADATA      = ["id", "version", "type", "internalName", "updateURL",
+                             "optionsURL", "optionsType", "aboutURL", "iconURL"];
+ const PROP_LOCALE_SINGLE = ["name", "description", "creator", "homepageURL"];
+ const PROP_LOCALE_MULTI  = ["developers", "translators", "contributors"];
+ 
+ // Map new string type identifiers to old style nsIUpdateItem types.
+ // Retired values:
+ // 32 = multipackage xpi file
+ // 8 = locale
+ // 256 = apiextension
+ // 128 = experiment
+ // theme = 4
+ const TYPES = {
+   extension: 2,
+   dictionary: 64,
+ };
+ 
+ const COMPATIBLE_BY_DEFAULT_TYPES = {
+   extension: true,
+   dictionary: true,
+ };
+ 
+ const hasOwnProperty = Function.call.bind(Object.prototype.hasOwnProperty);
+ 
+ function isXPI(filename) {
+   let ext = filename.slice(-4).toLowerCase();
+   return ext === ".xpi" || ext === ".zip";
+ }
+ 
+ /**
+  * Gets an nsIURI for a file within another file, either a directory or an XPI
+  * file. If aFile is a directory then this will return a file: URI, if it is an
+  * XPI file then it will return a jar: URI.
+  *
+  * @param {nsIFile} aFile
+  *        The file containing the resources, must be either a directory or an
+  *        XPI file
+  * @param {string} aPath
+  *        The path to find the resource at, "/" separated. If aPath is empty
+  *        then the uri to the root of the contained files will be returned
+  * @returns {nsIURI}
+  *        An nsIURI pointing at the resource
+  */
+ function getURIForResourceInFile(aFile, aPath) {
+   if (!isXPI(aFile.leafName)) {
+     let resource = aFile.clone();
+     if (aPath)
+       aPath.split("/").forEach(part => resource.append(part));
+ 
+     return Services.io.newFileURI(resource);
+   }
+ 
+   return buildJarURI(aFile, aPath);
+ }
+ 
+ /**
+  * Creates a jar: URI for a file inside a ZIP file.
+  *
+  * @param {nsIFile} aJarfile
+  *        The ZIP file as an nsIFile
+  * @param {string} aPath
+  *        The path inside the ZIP file
+  * @returns {nsIURI}
+  *        An nsIURI for the file
+  */
+ function buildJarURI(aJarfile, aPath) {
+   let uri = Services.io.newFileURI(aJarfile);
+   uri = "jar:" + uri.spec + "!/" + aPath;
+   return Services.io.newURI(uri);
+ }
+ 
+ var BootstrapLoader = {
+   name: "bootstrap",
+   manifestFile: "install.rdf",
+   async loadManifest(pkg) {
+     /**
+      * Reads locale properties from either the main install manifest root or
+      * an em:localized section in the install manifest.
+      *
+      * @param {Object} aSource
+      *        The resource to read the properties from.
+      * @param {boolean} isDefault
+      *        True if the locale is to be read from the main install manifest
+      *        root
+      * @param {string[]} aSeenLocales
+      *        An array of locale names already seen for this install manifest.
+      *        Any locale names seen as a part of this function will be added to
+      *        this array
+      * @returns {Object}
+      *        an object containing the locale properties
+      */
+     function readLocale(aSource, isDefault, aSeenLocales) {
+       let locale = {};
+       if (!isDefault) {
+         locale.locales = [];
+         for (let localeName of aSource.locales || []) {
+           if (!localeName) {
+             logger.warn("Ignoring empty locale in localized properties");
+             continue;
+           }
+           if (aSeenLocales.includes(localeName)) {
+             logger.warn("Ignoring duplicate locale in localized properties");
+             continue;
+           }
+           aSeenLocales.push(localeName);
+           locale.locales.push(localeName);
+         }
+ 
+         if (locale.locales.length == 0) {
+           logger.warn("Ignoring localized properties with no listed locales");
+           return null;
+         }
+       }
+ 
+       for (let prop of [...PROP_LOCALE_SINGLE, ...PROP_LOCALE_MULTI]) {
+         if (hasOwnProperty(aSource, prop)) {
+           locale[prop] = aSource[prop];
+         }
+       }
+ 
+       return locale;
+     }
+ 
+     let manifestData = await pkg.readString("install.rdf");
+     let manifest = InstallRDF.loadFromString(manifestData).decode();
+ 
+     let addon = new AddonInternal();
+     for (let prop of PROP_METADATA) {
+       if (hasOwnProperty(manifest, prop)) {
+         addon[prop] = manifest[prop];
+       }
+     }
+ 
+     if (!addon.type) {
+       addon.type = "extension";
+     } else {
+       let type = addon.type;
+       addon.type = null;
+       for (let name in TYPES) {
+         if (TYPES[name] == type) {
+           addon.type = name;
+           break;
+         }
+       }
+     }
+ 
+     if (!(addon.type in TYPES))
+       throw new Error("Install manifest specifies unknown type: " + addon.type);
+ 
+     if (!addon.id)
+       throw new Error("No ID in install manifest");
+     if (!gIDTest.test(addon.id))
+       throw new Error("Illegal add-on ID " + addon.id);
+     if (!addon.version)
+       throw new Error("No version in install manifest");
+ 
+     addon.strictCompatibility = (!(addon.type in COMPATIBLE_BY_DEFAULT_TYPES) ||
+                                  manifest.strictCompatibility == "true");
+ 
+     // Only read these properties for extensions.
+     if (addon.type == "extension") {
+       if (manifest.bootstrap != "true") {
+         throw new Error("Non-restartless extensions no longer supported");
+       }
+ 
+       if (addon.optionsType &&
+           addon.optionsType != AddonManager.OPTIONS_TYPE_INLINE_BROWSER &&
+           addon.optionsType != AddonManager.OPTIONS_TYPE_TAB) {
+             throw new Error("Install manifest specifies unknown optionsType: " + addon.optionsType);
+       }
+     } else {
+       // Convert legacy dictionaries into a format the WebExtension
+       // dictionary loader can process.
+       if (addon.type === "dictionary") {
+         addon.loader = null;
+         let dictionaries = {};
+         await pkg.iterFiles(({path}) => {
+           let match = /^dictionaries\/([^\/]+)\.dic$/.exec(path);
+           if (match) {
+             let lang = match[1].replace(/_/g, "-");
+             dictionaries[lang] = match[0];
+           }
+         });
+         addon.startupData = {dictionaries};
+       }
+ 
+       // Only extensions are allowed to provide an optionsURL, optionsType,
+       // optionsBrowserStyle, or aboutURL. For all other types they are silently ignored
+       addon.aboutURL = null;
+       addon.optionsBrowserStyle = null;
+       addon.optionsType = null;
+       addon.optionsURL = null;
+     }
+ 
+     addon.defaultLocale = readLocale(manifest, true);
+ 
+     let seenLocales = [];
+     addon.locales = [];
+     for (let localeData of manifest.localized || []) {
+       let locale = readLocale(localeData, false, seenLocales);
+       if (locale)
+         addon.locales.push(locale);
+     }
+ 
+     let dependencies = new Set(manifest.dependencies);
+     addon.dependencies = Object.freeze(Array.from(dependencies));
+ 
+     let seenApplications = [];
+     addon.targetApplications = [];
+     for (let targetApp of manifest.targetApplications || []) {
+       if (!targetApp.id || !targetApp.minVersion ||
+           !targetApp.maxVersion) {
+             logger.warn("Ignoring invalid targetApplication entry in install manifest");
+             continue;
+       }
+       if (seenApplications.includes(targetApp.id)) {
+         logger.warn("Ignoring duplicate targetApplication entry for " + targetApp.id +
+                     " in install manifest");
+         continue;
+       }
+       seenApplications.push(targetApp.id);
+       addon.targetApplications.push(targetApp);
+     }
+ 
+     // Note that we don't need to check for duplicate targetPlatform entries since
+     // the RDF service coalesces them for us.
+     addon.targetPlatforms = [];
+     for (let targetPlatform of manifest.targetPlatforms || []) {
+       let platform = {
+         os: null,
+         abi: null,
+       };
+ 
+       let pos = targetPlatform.indexOf("_");
+       if (pos != -1) {
+         platform.os = targetPlatform.substring(0, pos);
+         platform.abi = targetPlatform.substring(pos + 1);
+       } else {
+         platform.os = targetPlatform;
+       }
+ 
+       addon.targetPlatforms.push(platform);
+     }
+ 
+     addon.userDisabled = false;
+     addon.softDisabled = addon.blocklistState == Blocklist.STATE_SOFTBLOCKED;
+     addon.applyBackgroundUpdates = AddonManager.AUTOUPDATE_DEFAULT;
+ 
+     addon.userPermissions = null;
+ 
+     addon.icons = {};
+     if (await pkg.hasResource("icon.png")) {
+       addon.icons[32] = "icon.png";
+       addon.icons[48] = "icon.png";
+     }
+ 
+     if (await pkg.hasResource("icon64.png")) {
+       addon.icons[64] = "icon64.png";
+     }
+ 
+     return addon;
+   },
+ 
+   loadScope(addon) {
+     let file = addon.file || addon._sourceBundle;
+     let uri = getURIForResourceInFile(file, "bootstrap.js").spec;
+     let principal = Services.scriptSecurityManager.getSystemPrincipal();
+ 
+     let sandbox = new Cu.Sandbox(principal, {
+       sandboxName: uri,
+       addonId: addon.id,
+       wantGlobalProperties: ["ChromeUtils"],
+       metadata: { addonID: addon.id, URI: uri },
+     });
+ 
+     try {
+       Object.assign(sandbox, BOOTSTRAP_REASONS);
+ 
+       XPCOMUtils.defineLazyGetter(sandbox, "console", () =>
+         new ConsoleAPI({ consoleID: `addon/${addon.id}` }));
+ 
+       Services.scriptloader.loadSubScript(uri, sandbox);
+     } catch (e) {
+       logger.warn(`Error loading bootstrap.js for ${addon.id}`, e);
+     }
+ 
+     function findMethod(name) {
+       if (sandbox.name) {
+         return sandbox.name;
+       }
+ 
+       try {
+         let method = Cu.evalInSandbox(name, sandbox);
+         return method;
+       } catch (err) { }
+ 
+       return () => {
+         logger.warn(`Add-on ${addon.id} is missing bootstrap method ${name}`);
+       };
+     }
+ 
+     let install = findMethod("install");
+     let uninstall = findMethod("uninstall");
+     let startup = findMethod("startup");
+     let shutdown = findMethod("shutdown");
+ 
+     return {
+       install: (...args) => install(...args),
+       uninstall: (...args) => uninstall(...args),
+ 
+       startup(...args) {
+         if (addon.type == "extension") {
+           logger.debug(`Registering manifest for ${file.path}\n`);
+           Components.manager.addBootstrappedManifestLocation(file);
+         }
+         return startup(...args);
+       },
+ 
+       shutdown(data, reason) {
+         try {
+           return shutdown(data, reason);
+         } catch (err) {
+           throw err;
+         } finally {
+           if (reason != BOOTSTRAP_REASONS.APP_SHUTDOWN) {
+             logger.debug(`Removing manifest for ${file.path}\n`);
+             Components.manager.removeBootstrappedManifestLocation(file);
+           }
+         }
+       },
+     };
+   },
+ };

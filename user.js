@@ -123,7 +123,7 @@ user_pref("userChrome.css.wikipedia.dark-theme-enabled", true);
 // Enable popups from plugins, useful for dictionary add-on I
 // use and other reasons, addons should change this themselves
 // I would think but don't/can't
-user_perf("privacy.popups.disable_from_plugins", 0);
+user_pref("privacy.popups.disable_from_plugins", 0);
 
 
 
@@ -138,13 +138,13 @@ user_pref("media.peerconnection.ice.no_host", true);
 
 // hardware acceleration
 
-user_perf("layers.offmainthreadcomposition.async-animations", true);
+user_pref("layers.offmainthreadcomposition.async-animations", true);
 
-user_perf("html5.offmainthread", true);
+user_pref("html5.offmainthread", true);
 user_pref("gfx.webrender.all", true);
 user_pref("gfx.webrender.enabled", true);
 // below solves issue of freezing and stuttering
-user_perf("layers.acceleration.force-enabled", true);
+user_pref("layers.acceleration.force-enabled", true);
 
 // disable annoying web notifications
 user_pref("dom.webnotifications.enabled", false);
@@ -205,17 +205,17 @@ user_pref("browser.newtab.url", "https://startpage-zwei.vercel.app/");
 user_pref("browser.newtabpage.activity-stream.enabled", false);
 user_pref("browser.newtabpage.activity-stream.feeds.sections", false);
 user_pref("browser.newtabpage.activity-stream.feeds.snippets", false);
-user_perf("browser.newtabpage.activity-stream.feeds.section.topstories", false);
-user_perf("browser.newtabpage.activity-stream.feeds.telemetry", false);
-user_perf("browser.newtabpage.activity-stream.telemetry", false);
-user_perf("browser.newtabpage.activity-stream.feeds.system.topsites", false);
-user_perf("browser.newtabpage.activity-stream.feeds.topsites", false);
-user_perf(
+user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
+user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
+user_pref("browser.newtabpage.activity-stream.telemetry", false);
+user_pref("browser.newtabpage.activity-stream.feeds.system.topsites", false);
+user_pref("browser.newtabpage.activity-stream.feeds.topsites", false);
+user_pref(
     "browser.newtabpage.activity-stream.newNewtabExperience.enabled",
     false
 );
-user_perf("browser.newtabpage.activity-stream.showSponsored", false);
-user_perf("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
+user_pref("browser.newtabpage.activity-stream.showSponsored", false);
+user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
 
 // Disable new tab tile ads & preload
 user_pref("browser.newtabpage.enhanced", false);
@@ -242,16 +242,16 @@ user_pref("experiments.manifest.uri", "");
 
 
 // Make devtools dark like everything else
-user_perf("devtools.theme", "dark");
+user_pref("devtools.theme", "dark");
 
 // allow variants of GTK themes (Linux)
-user_perf("widget.content.allow-gtk-dark-theme", true);
+user_pref("widget.content.allow-gtk-dark-theme", true);
 
 // Set my GTK theme to be Firefox's
-user_perf("widget.content.gtk-theme-override", "Dhumavati-White-Dark");
+user_pref("widget.content.gtk-theme-override", "Dhumavati-White-Dark");
 
 // Stop the stupid "be careful lol" warning for about:config
-user_perfs("browser.aboutConfig.showWarning", false);
+user_prefs("browser.aboutConfig.showWarning", false);
 
 // keep "all tabs" menu available at all times, useful for all tabs menu expansion pack
 user_pref("browser.tabs.tabmanager.enabled", true);
@@ -277,35 +277,35 @@ user_pref("plugin.state.flash", 0);
 
 
 // Create menu in tab bar enabling tab management from a list (useless given the present right sidebar which does as much)
-user_perf("browser.tabs.tabmanager.enabled", false);
+user_pref("browser.tabs.tabmanager.enabled", false);
 //  Allow porting over GTK theme directly (was false but TODO, does setting it true help at all?)
-user_perf("browser.display.use_system_colors", true);
-user_perf("layout.css.moz-document.content.enabled", true);
-user_perf("browser.display.focus_ring_width", 0);
-user_perf("browser.display.windows.non_native_menus", 1);
+user_pref("browser.display.use_system_colors", true);
+user_pref("layout.css.moz-document.content.enabled", true);
+user_pref("browser.display.focus_ring_width", 0);
+user_pref("browser.display.windows.non_native_menus", 1);
 
 // Enable the visual refresh of Firefox UI (disable if porting CSS from before, this config is using it as the base its CSS modifies so its on)
-user_perf("browser.proton.places-tooltip.enabled", true);
-user_perf("browser.startup.blankWindow", false);
-user_perf("browser.startup.preXulSkeletonUI", false);
+user_pref("browser.proton.places-tooltip.enabled", true);
+user_pref("browser.startup.blankWindow", false);
+user_pref("browser.startup.preXulSkeletonUI", false);
 user_pref("widget.disable-native-theme-for-content", true);
 
 
 
 
-user_perf("reader.color_scheme", "dark");
+user_pref("reader.color_scheme", "dark");
 
 
 // Delay before displaying submenu
-user_perf("ui.submenuDelay", 0);
-user_perf("ui.prefersReducedMotion", 0);
-user_perf("ui.tooltipDelay", 0);
+user_pref("ui.submenuDelay", 0);
+user_pref("ui.prefersReducedMotion", 0);
+user_pref("ui.tooltipDelay", 0);
 
 //When using arrow keys to navigate a menu, don't even focus that which is disable
-user_perf("ui.skipNavigatingDisabledMenuItem", 1);
+user_pref("ui.skipNavigatingDisabledMenuItem", 1);
 
 // Double Underline Spelling Errors for Visual Cue Purpose http://kb.mozillazine.org/Ui.SpellCheckerUnderlineStyle
-user_perf("ui.SpellCheckerUnderlineStyle", 4);
+user_pref("ui.SpellCheckerUnderlineStyle", 4);
 
 
 
@@ -318,7 +318,7 @@ user_pref("ui.systemUsesDarkTheme", 1);
 // Enable popups from plugins, useful for dictionary add-on I
 // use and other reasons, addons should change this themselves
 // I would think but don't/can't
-user_perf("privacy.popups.disable_from_plugins", 0);
+user_pref("privacy.popups.disable_from_plugins", 0);
 
 
 // Enable extensions to work on Mozilla's pages

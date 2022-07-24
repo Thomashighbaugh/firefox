@@ -98,7 +98,7 @@ if [[ ! -z "${@}" ]] && [[ ! -z "${1}" ]]; then
     check_profile "default-nightly"
   elif [[ "${1}" == "stable" ]]; then
     RELEASE_NAME="Stable"
-    check_profile "default-default"
+    check_profile "default-release"
     sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox/
   elif [[ "${1}" == "esr" ]]; then
     RELEASE_NAME="ESR"

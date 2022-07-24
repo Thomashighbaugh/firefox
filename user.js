@@ -251,7 +251,7 @@ user_pref("widget.content.allow-gtk-dark-theme", true);
 user_pref("widget.content.gtk-theme-override", "Dhumavati-White-Dark");
 
 // Stop the stupid "be careful lol" warning for about:config
-user_prefs("browser.aboutConfig.showWarning", false);
+user_pref("browser.aboutConfig.showWarning", false);
 
 // keep "all tabs" menu available at all times, useful for all tabs menu expansion pack
 user_pref("browser.tabs.tabmanager.enabled", true);

@@ -1,1 +1,0 @@
-importScripts("database.js");

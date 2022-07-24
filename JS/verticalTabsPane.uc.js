@@ -1571,8 +1571,8 @@
     transition-duration: var(--pane-transition-duration), var(--pane-transition-duration), var(--pane-transition-duration);
 }
 #vertical-tabs-pane[unpinned]:not([positionstart="true"]) {
-    left: 0;
-    right: auto;
+    left: auto;
+    right: 0;
     margin-inline: 0;
 }
 #vertical-tabs-pane[unpinned][expanded] {

@@ -196,23 +196,23 @@
   url("about:restartrequired"), url("chrome://browser/content/aboutRestartRequired.xhtml")
 {
   #errorPageContainer {
-    background-image: url("./icons/error-connection-failure.svg");
+    background-image: url("chrome://global/skin/icons/error-connection-failure.svg");
   }
 }
 @-moz-document url-prefix("about:neterror?e=dnsNotFound") {
   #errorPageContainer {
-    background-image: url("./icons/error-server-not-found.svg");
+    background-image: url("chrome://global/skin/icons/error-server-not-found.svg");
   }
 }
 @-moz-document url-prefix("about:neterror?e=malformedURI") {
   #errorPageContainer {
-    background-image: url("chrome://browser/skin/illustrations/error-malformed-url.svg");
+    background-image: url("chrome://global/skin/icons/illustrations/error-malformed-url.svg");
   }
 }
 @-moz-document url-prefix("about:neterror?e=clockSkewError"),
   url-prefix("about:neterror?e=nssFailure") {
   #errorPageContainer {
-    background-image: url("./icons/blue-berror.svg");
+    background-image: url("chrome://global/skin/icons/blue-berror.svg");
     background-size: 18.5em;
   }
 }

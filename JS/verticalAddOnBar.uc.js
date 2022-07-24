@@ -313,10 +313,10 @@ var AddonbarVertical = {
 };
 
 /* initialization delay workaround */
-document.addEventListener("DOMContentLoaded", AddonbarVertical.init(), false);
+// document.addEventListener("DOMContentLoaded", AddonbarVertical.init(), false);
 /* Use the below code instead of the one above this line, if issues occur */
-/*
+
 setTimeout(function(){
   AddonbarVertical.init();
 },2000);
-*/
+

@@ -1,4 +1,6 @@
-<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="16" height="16"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
         <linearGradient x1="62.533%" y1=".107%" x2="0%" y2="109.9%" id="b">
             <stop stop-color="#AB71FF" offset="0%"/>
@@ -6,7 +8,7 @@
         </linearGradient>
         <path d="M.5.5h16v16H.5V.5zm12 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" id="a"/>
     </defs>
-    <g fill="none" fill-rule="evenodd">
+    <g fill="#f4f4f7" fill-rule="evenodd">
         <g transform="translate(-.5 -.5)">
             <mask id="c" fill="#fff">
                 <use xlink:href="#a"/>

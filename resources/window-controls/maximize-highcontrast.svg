@@ -1,3 +1,4 @@
-<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
-    <path stroke="#1b1d24" stroke-width="1.9" fill="none" d="M2 2h8v8H2z"/>
+<svg width="12" height="12"
+    xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+    <path stroke="#1b1d24" stroke-width="1.9" fill="#f4f4f7" d="M2 2h8v8H2z"/>
 </svg>

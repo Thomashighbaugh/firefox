@@ -6,7 +6,7 @@
             <stop offset="100%" stop-color="#1b1d24" />
         </linearGradient>
     </defs>
-    <g id="Page-1" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+    <g id="Page-1" fill="#f4f4f7" fill-rule="evenodd" stroke="none" stroke-width="1">
         <g id="#1b1d24-on-#f4f4f7" fill="url(#linearGradient-1)">
             <polygon id="Triangle-3-Copy" points="254 156 367 356 141 356" />
         </g>

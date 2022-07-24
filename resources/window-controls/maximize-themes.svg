@@ -1,4 +1,5 @@
-<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" fill="none">
+<svg width="12" height="12"
+    xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" fill="#f4f4f7">
     <path stroke="#1b1d24" stroke-width="3.6" stroke-opacity=".75" d="M2 2h8v8H2z"/>
     <path stroke="#f4f4f7" stroke-width="1.9" d="M2 2h8v8H2z"/>
 </svg>

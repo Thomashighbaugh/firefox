@@ -4,8 +4,8 @@
 /* |___|___||__|__||__||__|__|__|___._||____|_____| */
 /* ------------------------------------------------- */
 
-@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
-@namespace html "http://www.w3.org/1999/xhtml";
+
+
 
 /* -------------------- Animate -------------------- */
 @media (prefers-reduced-motion: no-preference) {

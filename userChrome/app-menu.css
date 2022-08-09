@@ -4,8 +4,8 @@
 /* |___|___||   __|   __|    |__|_|__||_____|__|__|_____| */
 /*          |__|  |__|                                    */
 /* ------------------------------------------------- */
-@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
-@namespace html "http://www.w3.org/1999/xhtml";
+
+
 
 /* this stylesheet focuses on the app menu.
 (the menu opened by the PanelUI hamburger button at the far right end of the toolbar) */

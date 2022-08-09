@@ -4,8 +4,8 @@
 /* |______||_____|__|__|__|__|__|__|_____|__|__| */
 /* ------------------------------------------------- */
 
-@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
-@namespace html "http://www.w3.org/1999/xhtml";
+
+
 
 /* ----------------- Proton Commons ---------------- */
 @-moz-document url("chrome://global/content/commonDialog.xhtml"),

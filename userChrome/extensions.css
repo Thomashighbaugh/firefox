@@ -1,5 +1,5 @@
-@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
-@namespace html "http://www.w3.org/1999/xhtml";
+
+
 /* Tab Stash */
 :is(.webextension-browser-action, .eom-addon-button)[data-extensionid="tab-stash@condordes.net"i] .toolbarbutton-icon,
 #sidebar-box[sidebarcommand="tab-stash_condordes_net-sidebar-action"] #sidebar-switcher-target > #sidebar-icon,

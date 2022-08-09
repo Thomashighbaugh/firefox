@@ -3,15 +3,30 @@
 {
   /* hide horizontal tabs at the top of the window */
   #TabsToolbar > * {
-/*    visibility: collapse !important;
-   /*  display:none !important;*/
+    visibility: collapse !important;
+    display:none !important;
   }
+
+  #titlebar-secondary-buttonbox,
+#titlebar .toolbar-items,
+#titlebar .titlebar-spacer,
+.private-browsing-indicator,
+#toolbar-menubar,
+#tabbrowser-tabs {
+  display: none;
+}
+
+#alltabs-button {
+  z-index: 9 !important;
+  display: block !important;
+  position: relative;
+}
 
   /* hide navigation bar when it is not focused; use Ctrl+L to get focus */
   #main-window:not([customizing]) #navigator-toolbox:not(:focus-within):not(:hover) {
     margin-top: -45px;
-/*    visibility: collapse !important;
-   /* /*  display:none !important;*/*/*/
+    visibility: collapse !important;
+    display:none !important;
   }
   #navigator-toolbox {
     transition: 0.2s margin-top ease-out;
@@ -42,16 +57,13 @@
   :root {
     --newtab-button-minus-width-padding: 2px;
     --newtab-button-width-padding: calc(var(--toolbarbutton-inner-padding) - var(--newtab-button-minus-width-padding));
- /*   visibility: collapse !important;
-   /* /*  display:none !important;*/*/*/
+    visibility: collapse !important;
+    display:none !important;
   }
   #new-tab-button > .toolbarbutton-icon,
   #alltabs-button > .toolbarbutton-badge-stack {
-    /* Original: calc(2 * var(--toolbarbutton-inner-padding) + 16px) */
-    width: calc(2 * var(--newtab-button-width-padding) + 16px) !important;
-    visibility: collapse !important;
-   /* /*  display:none !important;*/*/
-    /* Original: --toolbarbutton-inner-padding */
+   
+    display:none !important;
     padding-left: var(--newtab-button-width-padding) !important;
     padding-right: var(--newtab-button-width-padding) !important;
   }
@@ -61,32 +73,34 @@
     > .tabbrowser-tab[first-visible-unpinned-tab] {
     margin-inline-start: 1px !important;
     visibility: collapse !important;
-   /* /*  display:none !important;*/*/
+    display:none !important;
   }
 
   :root:not([uidensity="touch"]) #tabbrowser-arrowscrollbox {
     --scrollbtn-inner-padding: 1px;
     --scrollbtn-outer-padding: 3px;
     visibility: collapse !important;
-   /* /*  display:none !important;*/*/
+    display:none !important;
   }
   #scrollbutton-up {
     padding-left: var(--scrollbtn-inner-padding, 4px) !important; /* Original: 4px */
     visibility: collapse !important;
-   /* /*  display:none !important;*/*/
+    display:none !important;
     padding-right: var(--scrollbtn-outer-padding, 4px) !important;
   }
   #scrollbutton-down {
     padding-left: var(--scrollbtn-outer-padding, 4px) !important; /* Original: 4px */
     visibility: collapse !important;
-   /* /*  display:none !important;*/*/
+    display:none !important;
     padding-right: var(--scrollbtn-inner-padding, 4px) !important;
   }
 
   :root:not([uidensity="touch"]) #new-tab-button,
   #alltabs-button {
     --toolbarbutton-outer-padding: 4px; /* Original: 2px*/
-    display: flex;
+    z-index: 9 !important;
+    display: block !important;
+    position: relative;
   }
 
   /* Tab - Max Size */
@@ -103,39 +117,39 @@
   .tabbrowser-tab {
     padding-inline: 1px !important;
     visibility: collapse !important;
-   /* /*  display:none !important;*/*/
+    display:none !important;
   }
 
   .tabbrowser-tab:not([last-visible-tab]) {
     margin-inline-end: -0.5px !important;
     visibility: collapse !important;
-   /*  display:none !important;*/
+    display:none !important;
   }
 
   /*= Tab Bar - Reduce Height, Show more contents ==============================*/
   /* for Extra Drag Space */
   :root {
     --space-above-tabbar: 0px; /* If you want drag space, set to 8px */
-    /* visibility: collapse !important; */
-    /*/*  display:none !important;*/
+     visibility: collapse !important; 
+    display:none !important;
   }
   :root[tabsintitlebar][sizemode="normal"] #toolbar-menubar[autohide="true"] {
     height: calc(var(--tab-min-height) + var(--space-above-tabbar));
-    /* visibility: collapse !important; */
-    /*/*  display:none !important;*/
+    visibility: collapse !important;
+     display:none !important;
   }
   :root[sizemode="normal"][chromehidden~="menubar"] #TabsToolbar > .toolbar-items,
   :root[sizemode="normal"] #toolbar-menubar[autohide="true"][inactive] + #TabsToolbar > .toolbar-items {
     padding-top: var(--space-above-tabbar) !important;
-    /* visibility: collapse !important; */
-    /*/*  display:none !important;*/
+    visibility: collapse !important; 
+    display:none !important;
   }
 
   /* Toolbar Height */
   :root:not([uidensity="touch"]) #TabsToolbar {
     --toolbarbutton-inner-padding: calc((var(--tab-min-height) - 16px) / 2) 
-    /* visibility: collapse !important; */
-    /*/*  display:none !important;*/
+     visibility: collapse !important; 
+     display:none !important;
   }
 
   .toolbar-items,
@@ -146,14 +160,14 @@
   :root[uidensity="compact"] .toolbar-items,
   :root[uidensity="compact"] .tabbrowser-tab {
     --tabbar-max-height: 24px;
-    /* visibility: collapse !important; */
-    /*/*  display:none !important;*/
+    visibility: collapse !important; 
+     display:none !important;
   }
   :root[uidensity="touch"] .toolbar-items,
   :root[uidensity="touch"] .tabbrowser-tab {
     --tabbar-max-height: 36px;
-    /* visibility: collapse !important; */
-    /*/*  display:none !important;*/
+     visibility: collapse !important; 
+     display:none !important;
   }
 
   /* Scroll Button - Size Fix */
@@ -161,8 +175,8 @@
     --scrollbtn-vertical-padding: 3px;
     --scrollbtn-vertical-border: 2px;
     --scrollbtn-border-radius: 7px;
-    /* visibility: collapse !important;*/
-   /*  display:none !important;*/
+    visibility: collapse !important;
+        display:none !important;
   }
   #scrollbutton-up,
   #scrollbutton-down {
@@ -224,14 +238,14 @@
   
   /* Remove line at Toolbar's top */
   #tabbrowser-tabs {
-    /* visibility: collapse !important;*/
-   /*  display:none !important;*/
+    visibility: collapse !important;
+     display:none !important;
     z-index: 1 !important;
   }
   #tabbrowser-arrowscrollbox[overflowing] .tabbrowser-tab[pinned]:is([visuallyselected], [multiselected]) {
     overflow: hidden;
-    /* visibility: collapse !important;*/
-   /*  display:none !important;*/
+    visibility: collapse !important;
+     display:none !important;
   }
 
   /** Selected Tab - Color like toolbar *****************************************/

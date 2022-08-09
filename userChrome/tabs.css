@@ -35,22 +35,22 @@
   #generalTab {
     --viewgroup-image: url(chrome://global/skin/icons/page-portrait.svg);
     visibility: collapse !important;
-   /* /*  display:none !important;*/*/
+     display:none !important;
   }
   #mediaTab {
     --viewgroup-image: url(chrome://browser/skin/canvas.svg);
     visibility: collapse !important;
-   /* /*  display:none !important;*/*/
+    display:none !important;
   }
   #permTab {
     --viewgroup-image: url(chrome://browser/skin/permissions.svg);
     visibility: collapse !important;
-   /* /*  display:none !important;*/*/
+    display:none !important;
   }
   #securityTab {
     --viewgroup-image: url(chrome://global/skin/icons/security.svg);
     visibility: collapse !important;
-   /* /*  display:none !important;*/*/
+    display:none !important;
   }
 
   /* Tabbar Buttons */
@@ -110,7 +110,7 @@
   .tabbrowser-tab[fadein]:not([pinned]):not([style*="max-width"]) {
     max-width: var(--tab-max-width) !important; /* Original: 225px */
     visibility: collapse !important;
-   /* /*  display:none !important;*/*/
+    display:none !important;
   }
 
   /* neighbouring tabs should "pinch" together */

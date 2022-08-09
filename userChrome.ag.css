@@ -284,7 +284,7 @@ html|input[type="number"]::-moz-number-spin-down {
   #TabsToolbar > * {
     visibility: collapse;
   }
-  #identity-box{
+  #identity-box, #back-button, #forward-button{
     visibility: hidden;
     display: none;
   }

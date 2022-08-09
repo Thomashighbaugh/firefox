@@ -284,7 +284,7 @@
   #scrollbutton-down:not(:-moz-lwtheme),
   #alltabs-button:not(:-moz-lwtheme) > .toolbarbutton-badge-stack,
   #TabsToolbar:not(:-moz-lwtheme) .toolbarbutton-1 > .toolbarbutton-icon {
-    color: var(--background-color) !important;
+    color: #f4f4f7 !important;
     background-color: color-mix(in srgb, currentColor 50%, transparent);
   }
 }
@@ -322,24 +322,24 @@
     :root[lwt-default-theme-in-dark-mode] {
       --win-text-color: #ffffff;
       --win-bgcolor: #1c1e24;
-      --win-disabled-color: #555e70;
+      --win-disabled-color: #383a47;
       --win-disabled-bgcolor: transparent;
       --win-hover-bgcolor: #1b1d24; /* also button-bgcolor */
-      --win-hover-active-bgcolor: #22262d; /* also button-active-color */
-      --win-field-bgcolor: #3c3f4c;
+      --win-hover-active-bgcolor: #282b36; /* also button-active-color */
+      --win-field-bgcolor: #17191e;
       --win-component-bgcolor: #1c1e24;
-      --win-border-color: #555e70;
-      --win-tab-seperator-color: #555e70;
+      --win-border-color: #383a47;
+      --win-tab-seperator-color: #383a47;
       --win-sidebar-bgcolor: #1c1e24;
       --win-sidebar-hover-bgcolor: #2f303d;
-      --win-sidebar-button-hover-bgcolor: #3c3f4c;
-      --win-sidebar-button-hover-active-bgcolor: #555e70;
+      --win-sidebar-button-hover-bgcolor: #17191e;
+      --win-sidebar-button-hover-active-bgcolor: #383a47;
       --win-button-border: #8b9cbe;
       --win-button-hover-bgcolor: #1c1e24;
       --win-shorcut-text-color: #b2bfd9;
       --win-error-color: #ffb900;
       --win-red-border-color: #ff3d81;
-      --win-accent-color: color-mix(in srgb, rgba(255, 255, 255, 0.8) 20%, -moz-accent-color);
+      --win-accent-color: color-mix(in srgb, rgba(244, 244, 244, 0.8) 20%, -moz-accent-color);
       --win-accent-content-color: color-mix(in srgb, rgba(255, 255, 255, 0.8) 35%, -moz-accent-color);
       --win-accent-hover-color: color-mix(in srgb, rgba(0, 0, 0, 0.8) 5%, -moz-accent-color);
       --win-accent-active-color: -moz-accent-color;

@@ -194,28 +194,26 @@ browser[type="content"] > html {
 {
   @media (-moz-gtk-csd-available) {
     :root {
-      --organizer-color: -moz-DialogText;
-      --organizer-deemphasized-color: GrayText;
-
-      --organizer-toolbar-background: -moz-Dialog;
-      --organizer-pane-background: -moz-Dialog;
-      --organizer-content-background: -moz-Dialog;
-
-      --organizer-hover-background: SelectedItem;
-      --organizer-hover-color: SelectedItemText;
-      --organizer-selected-background: SelectedItem;
-      --organizer-selected-color: SelectedItemText;
-      --organizer-outline-color: SelectedItem;
-
-      --organizer-separator-color: ThreeDDarkShadow;
-      --organizer-border-color: ThreeDShadow;
-
+  
       --organizer-toolbar-field-background: Field;
       --organizer-toolbar-field-background-focused: Field;
-      --organizer-toolbar-field-border-color: ThreeDShadow;
       --organizer-toolbar-field-focus-border-color: var(--organizer-outline-color);
       --organizer-toolbar-field-focus-box-shadow: unset;
-      --organizer-pane-field-border-color: ThreeDShadow;
+  
+      --organizer-color: rgb(251, 251, 254);
+      --organizer-deemphasized-color: rgb(191, 191, 201);
+
+      --organizer-toolbar-background: #17191e;
+      --organizer-pane-background: #1b1d24;
+      --organizer-content-background: #1c1e24;
+
+      --organizer-hover-background: #282b36;
+      --organizer-selected-background: #383a47;
+      --organizer-outline-color: #555e70;
+
+      --organizer-toolbar-field-background: var(--in-content-page-background);
+      --organizer-toolbar-field-background-focused:#17191e;
+      scrollbar-color: #b2bfd9 #2f303d;
     }
 
     @media not all and (prefers-contrast) {
@@ -262,7 +260,7 @@ browser[type="content"] > html {
           --organizer-outline-color: #555e70;
 
           --organizer-toolbar-field-background: var(--in-content-page-background);
-          --organizer-toolbar-field-background-focused: #383a47;
+          --organizer-toolbar-field-background-focused:#17191e;
           scrollbar-color: #b2bfd9 #2f303d;
         }
       }

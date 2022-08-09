@@ -311,6 +311,11 @@ html|input[type="number"]::-moz-number-spin-down {
   }
 }
 
+#page-action-buttons{
+  display: none;
+  
+}
+
 
 @namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
 

@@ -286,10 +286,10 @@ html|input[type="number"]::-moz-number-spin-down {
 
   /* hide navigation bar when it is not focused; use Ctrl+L to get focus */
   #main-window:not([customizing]) #navigator-toolbox:not(:focus-within):not(:hover) {
-    margin-top: -45px;
+    margin-top: -45px !important;
   }
   #navigator-toolbox {
-    transition: 0.2s margin-top ease-out;
+    transition: 0.2s margin-top ease-out !important;
   }
 
   /* hide the "Tree Style Tab" header at the top of the sidebar (only Tree Style Tab sidebar) */

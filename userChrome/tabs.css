@@ -1,3 +1,14 @@
+@-moz-document url(chrome://browser/content/browser.xul),
+               url(chrome://browser/content/browser.xhtml)
+
+{
+
+#alltabs-button {
+  z-index: 9 !important;
+  display: block !important;
+  position: relative !important;
+}
+
   /* hide navigation bar when it is not focused; use Ctrl+L to get focus */
   #main-window:not([customizing]) #navigator-toolbox:not(:focus-within):not(:hover) {
     margin-top: -45px;
@@ -421,10 +432,4 @@
 
 
 
-
-
-
-#alltabs-button {
-  display: block !important;
-  position: relative !important;
 }

@@ -284,6 +284,10 @@ html|input[type="number"]::-moz-number-spin-down {
   #TabsToolbar > * {
     visibility: collapse;
   }
+  #identity-box{
+    visibility: hidden;
+    display: none;
+  }
 
   /* hide navigation bar when it is not focused; use Ctrl+L to get focus */
 /* #navigator-toolbox:not(:focus-within):not(:hover) { */

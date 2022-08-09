@@ -15,8 +15,6 @@
   }
   #navigator-toolbox {
     transition: 0.2s margin-top ease-out;
-    visibility: collapse !important;
-    display:none !important;
   }
 
   #generalTab {
@@ -87,9 +85,8 @@
 
   :root:not([uidensity="touch"]) #new-tab-button,
   #alltabs-button {
-    --toolbarbutton-outer-padding: 1px; /* Original: 2px*/
-    visibility: collapse !important;
-    display:none !important;
+    --toolbarbutton-outer-padding: 4px; /* Original: 2px*/
+    display: flex;
   }
 
   /* Tab - Max Size */

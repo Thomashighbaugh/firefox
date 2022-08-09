@@ -102,9 +102,9 @@ body:not([lwt-sidebar]) xul|search-textbox.tabsFilter[focused="true"] {
 
 #PopupAutoComplete > richlistbox > richlistitem[originaltype="loginsFooter"] {
   --panel-border-color: var(--panel-bgcolor);
-  color: var(--arrowpanel-color, var(--in-content-page-color)) !important; /* Original: FieldText */
-  background-color: var(--arrowpanel-dimmed, hsla(0, 0%, 80%, 0.35)) !important; /* Original: hsla(0,0%,80%,.35) */
-  border-color: var(--panel-border-color) !important; /* Original: rgba(38,38,38,.15) */
+  color: var(--arrowpanel-color, var(--in-content-page-color)) !important; 
+  background-color: var(--arrowpanel-dimmed, hsla(0, 0%, 80%, 0.35)) !important; 
+  border-color: var(--panel-border-color) !important; 
 }
 
 #PopupAutoComplete > richlistbox > richlistitem[originaltype="loginsFooter"]:hover,
@@ -253,16 +253,16 @@ browser[type="content"] > html {
           --organizer-color: rgb(251, 251, 254);
           --organizer-deemphasized-color: rgb(191, 191, 201);
 
-          --organizer-toolbar-background: #1c1e24;
+          --organizer-toolbar-background: #17191e;
           --organizer-pane-background: #1b1d24;
           --organizer-content-background: #1c1e24;
 
-          --organizer-hover-background: #555e70;
-          --organizer-selected-background: #3c3f4c;
-          --organizer-outline-color: #8b9cbe;
+          --organizer-hover-background: #282b36;
+          --organizer-selected-background: #383a47;
+          --organizer-outline-color: #555e70;
 
           --organizer-toolbar-field-background: var(--in-content-page-background);
-          --organizer-toolbar-field-background-focused: #3c3f4c;
+          --organizer-toolbar-field-background-focused: #383a47;
           scrollbar-color: #b2bfd9 #2f303d;
         }
       }

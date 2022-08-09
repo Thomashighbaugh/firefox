@@ -131,8 +131,8 @@ browser[type="content"] > html {
   :root {
     --menu-color: #15141a;
     --menu-background-color: #f9f9fb;
-    --menu-border-color: #cfcfd8;
-    --menuitem-hover-background-color: #e0e0e6;
+    --menu-border-color: #17191e;
+    --menuitem-hover-background-color: #1b1d24;
   }
   @media (-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
     :root {

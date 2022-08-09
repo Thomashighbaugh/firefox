@@ -288,7 +288,13 @@ html|input[type="number"]::-moz-number-spin-down {
     visibility: hidden;
     display: none;
   }
+#urlbar-input{
+  justify-self: center !important;
+  justify-content: center !important;
+  align-self: center !important;
+  align-items: center !important;
 
+}
   /* hide navigation bar when it is not focused; use Ctrl+L to get focus */
 /* #navigator-toolbox:not(:focus-within):not(:hover) { */
     /* margin-top: -45px; */

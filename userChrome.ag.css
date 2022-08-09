@@ -293,6 +293,7 @@ html|input[type="number"]::-moz-number-spin-down {
   justify-content: center !important;
   align-self: center !important;
   align-items: center !important;
+  text-align: center;
 
 }
   /* hide navigation bar when it is not focused; use Ctrl+L to get focus */

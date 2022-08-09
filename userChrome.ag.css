@@ -294,6 +294,7 @@ html|input[type="number"]::-moz-number-spin-down {
   align-self: center !important;
   align-items: center !important;
   text-align: center;
+  padding-left:12px !important;
 
 }
   /* hide navigation bar when it is not focused; use Ctrl+L to get focus */

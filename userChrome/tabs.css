@@ -1,9 +1,3 @@
-@-moz-document url(chrome://browser/content/browser.xul),
-               url(chrome://browser/content/browser.xhtml)
-
-{
-
-
   /* hide navigation bar when it is not focused; use Ctrl+L to get focus */
   #main-window:not([customizing]) #navigator-toolbox:not(:focus-within):not(:hover) {
     margin-top: -45px;
@@ -424,9 +418,6 @@
     treechildren::-moz-tree-image(container, queryFolder_menu________) {
     list-style-image: url("chrome://browser/skin/places/bookmarksMenu.svg") !important;
   }
-}
-
-
 
 
 
@@ -434,7 +425,6 @@
 
 
 #alltabs-button {
-  z-index: 9 !important;
   display: block !important;
   position: relative !important;
 }

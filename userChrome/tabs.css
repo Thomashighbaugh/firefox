@@ -3,15 +3,15 @@
 {
   /* hide horizontal tabs at the top of the window */
   #TabsToolbar > * {
-    visibility: collapse !important;
-    display:none !important;
+/*    visibility: collapse !important;
+    display:none !important; */
   }
 
   /* hide navigation bar when it is not focused; use Ctrl+L to get focus */
   #main-window:not([customizing]) #navigator-toolbox:not(:focus-within):not(:hover) {
     margin-top: -45px;
-    visibility: collapse !important;
-    display:none !important;
+/*    visibility: collapse !important;
+    display:none !important;*/
   }
   #navigator-toolbox {
     transition: 0.2s margin-top ease-out;
@@ -42,8 +42,8 @@
   :root {
     --newtab-button-minus-width-padding: 2px;
     --newtab-button-width-padding: calc(var(--toolbarbutton-inner-padding) - var(--newtab-button-minus-width-padding));
-    visibility: collapse !important;
-    display:none !important;
+ /*   visibility: collapse !important;
+    display:none !important;*/
   }
   #new-tab-button > .toolbarbutton-icon,
   #alltabs-button > .toolbarbutton-badge-stack {

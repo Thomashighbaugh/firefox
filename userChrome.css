@@ -1,5 +1,5 @@
 
-/* ______ __                               */
+/*                          ______ __                               */
 /* .--.--.-----.-----.----.|      |  |--.----.-----.--------.-----. */
 /* |  |  |__ --|  -__|   _||   ---|     |   _|  _  |        |  -__| */
 /* |_____|_____|_____|__|  |______|__|__|__| |_____|__|__|__|_____| */
@@ -7,21 +7,34 @@
 /* This file will call the various components providing the browser 
 with my custom stylizations and UI modifications that DO NOT require
 the use of JS. For that see the JS directory */
+/* ------------------------------------------------- */
+/*                       Theme                       */
+/* ------------------------------------------------- */
+@import url("userChrome/colors");
+@import url("userChrome/theme");
 
-@import url("userChrome/config.css");
-@import url("userChrome/variables.css");
-@import url("userChrome/icons/icons.css");
-@import url("userChrome/urlbar/urlbar.css");
-@import url("userChrome/navbar/navbar.css");
-@import url("userChrome/popup/popup.css");
-@import url("userChrome/interface/interface.css");
-@import url("userChrome/userChrome-tabline.css");
+/* ------------------------------------------------- */
+/*                     Components                    */
+/* ------------------------------------------------- */
+@import url("userChrome/animate");
+@import url("userChrome/app-menu");
+@import url("userChrome/borders");
+@import url("userChrome/common");
+@import url("userChrome/context-menu");
+@import url("userChrome/crtl-tab");
+@import url("userChrome/cursor");
+@import url("userChrome/extensions");
+@import url("userChrome/icons");
+@import url("userChrome/menu");
+@import url("userChrome/panels");
+@import url("userChrome/popup");
+@import url("userChrome/sidebar");
+@import url("userChrome/tabs");
 
 /* ------------------------------------------------- */
 /*                  Namespace Calls                  */
 /* ------------------------------------------------- */
-/* Imports should always precede namespace calls, these two are reflected in all
- of the above components as well */
+/* Imports should always precede namespace calls according to Firefox's docs so here they are! */ 
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 @namespace html "http://www.w3.org/1999/xhtml";

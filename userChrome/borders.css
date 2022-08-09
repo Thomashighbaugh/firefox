@@ -1,0 +1,101 @@
+/* ______                __                    */
+/* |   __ \.-----.----.--|  |.-----.----.-----. */
+/* |   __ <|  _  |   _|  _  ||  -__|   _|__ --| */
+/* |______/|_____|__| |_____||_____|__| |_____| */
+/* ------------------------------------------------- */
+
+
+
+/* Border Color */
+/*
+      --menu-border-color: var(--mac-bgcolor) !important;
+      --toolbar-field-border-color: var(--mac-bgcolor) !important;
+      --arrowpanel-border-color: var(--mac-bgcolor) !important;
+      --chrome-content-separator-color: var(--mac-bgcolor) !important;
+      --toolbarseparator-color: var(--mac-bgcolor) !important;
+      --panel-separator-color: var(--mac-bgcolor) !important;
+     */
+
+/* Button Border Color */
+/*
+      --tab-line-color: var(---mac-bgcolor) !important;
+      --checkbox-border-color: var(--mac-bgcolor) !important;
+      --input-border-color: var(--mac-bgcolor) !important;
+      --autocomplete-popup-separator-color: var(--mac-bgcolor) !important;
+     */
+
+/* Accent Color Forground */
+--button-primary-color: var(--mac-primary-button-color) !important;
+--checkbox-checked-color: var(--mac-primary-button-color) !important;
+
+/* Accent Color */
+--button-primary-bgcolor: var(--mac-accent-color) !important;
+--focus-outline-color: var(--mac-accent-color) !important;
+--checkbox-checked-bgcolor: var(--mac-accent-color) !important;
+
+/* Accent Content Color */
+--toolbarbutton-icon-fill-attention: var(--mac-accent-content-color) !important;
+--urlbar-popup-url-color: var(--mac-accent-content-color) !important;
+--download-progress-fill-color: var(--mac-accent-content-color) !important;
+
+/* Accent Hover Color */
+--button-primary-hover-bgcolor: var(--mac-accent-hover-color) !important;
+--checkbox-checked-hover-bgcolor: var(--mac-accent-hover-color) !important;
+
+/* Accent Hover Active Color */
+--button-primary-active-bgcolor: var(--mac-accent-active-color) !important;
+--checkbox-checked-active-bgcolor: var(--mac-accent-active-color) !important;
+
+/* Error Color */
+/*
+      --error-text-color: var(--win-error-color) !important;
+      --input-error-border-color: var(--win-error-color) !important;
+     */
+
+/* Others */
+--tab-selected-bgcolor: unset !important;
+--tabs-border-color: transparent !important;
+--checkbox-checked-border-color: transparent !important;
+
+/* Other Defaults */
+--arrowpanel-dimmed: color-mix(in srgb, currentColor 12%, transparent) !important;
+--arrowpanel-dimmed-further: color-mix(in srgb, currentColor 20%, transparent) !important;
+--arrowpanel-dimmed-even-further: color-mix(in srgb, currentColor 27%, transparent) !important;
+
+--download-progress-flare-color: rgba(255, 255, 255, 0.75) !important;
+
+--panelview-toolbarbutton-focus-box-shadow: inset 0 0 0 2px var(--focus-outline-color) !important;
+
+@media (-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
+  :root:not(:-moz-lwtheme),
+  :root[lwt-default-theme-in-dark-mode] {
+    --mac-field-bgcolor: Field;
+    --mac-panel-bgcolor: -moz-CellHighlight;
+    --mac-hover-bgcolor: ButtonFace;
+
+    --toolbar-field-focus-background-color: var(--mac-bgcolor) !important;
+    --toolbar-field-background-color: var(--mac-sidebar-bgcolor) !important;
+  }
+}
+
+/*- Toolbar ----------------------------------------------------------------*/
+:root:not(:-moz-lwtheme) #navigator-toolbox,
+:root[lwt-default-theme-in-dark-mode] #navigator-toolbox {
+  appearance: auto !important;
+}
+
+:root:not(:-moz-lwtheme) #titlebar {
+  --mac-hover-bgcolor: ButtonFace;
+}
+:root:not(:-moz-lwtheme) #titlebar,
+:root[lwt-default-theme-in-dark-mode] #titlebar {
+  --button-hover-bgcolor: var(--mac-hover-bgcolor);
+  --button-active-bgcolor: var(--mac-hover-bgcolor);
+  --toolbarbutton-hover-background: var(--mac-hover-bgcolor);
+  --toolbarbutton-active-background: var(--mac-hover-bgcolor);
+}
+
+:root[lwt-default-theme-in-dark-mode] #urlbar {
+  --autocomplete-popup-highlight-background: var(--mac-hover-bgcolor) !important;
+  --autocomplete-popup-hover-background: var(--mac-hover-bgcolor) !important;
+}

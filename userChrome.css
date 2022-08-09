@@ -7,29 +7,15 @@
 /* This file will call the various components providing the browser 
 with my custom stylizations and UI modifications that DO NOT require
 the use of JS. For that see the JS directory */
-/* ------------------------------------------------- */
-/*                       Theme                       */
-/* ------------------------------------------------- */
-@import url("userChrome/colors");
-@import url("userChrome/theme");
 
-/* ------------------------------------------------- */
-/*                     Components                    */
-/* ------------------------------------------------- */
-@import url("userChrome/animate");
-@import url("userChrome/app-menu");
-@import url("userChrome/borders");
-@import url("userChrome/common");
-@import url("userChrome/context-menu");
-@import url("userChrome/crtl-tab");
-@import url("userChrome/cursor");
-@import url("userChrome/extensions");
-@import url("userChrome/icons");
-@import url("userChrome/menu");
-@import url("userChrome/panels");
-@import url("userChrome/popup");
-@import url("userChrome/sidebar");
-@import url("userChrome/tabs");
+@import url("userChrome/config.css");
+@import url("userChrome/variables.css");
+@import url("userChrome/icons/icons.css");
+@import url("userChrome/urlbar/urlbar.css");
+@import url("userChrome/navbar/navbar.css");
+@import url("userChrome/popup/popup.css");
+@import url("userChrome/interface/interface.css");
+@import url("userChrome/userChrome-tabline.css");
 
 /* ------------------------------------------------- */
 /*                  Namespace Calls                  */

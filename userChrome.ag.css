@@ -293,7 +293,7 @@ html|input[type="number"]::-moz-number-spin-down {
   justify-content: center !important;
   align-self: center !important;
   align-items: center !important;
-  text-align: center;
+  text-align: center !important;
   padding-left:12px !important;
 
 }

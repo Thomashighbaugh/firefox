@@ -1486,8 +1486,7 @@ menupopup:is(#context_sendTabToDevicePopupMenu, #context-sendpagetodevice-popup)
 #menu_readerModeItem {
   --menuitem-image: url("chrome://global/skin/icons/reader-mode.svg");
 }
-#menu_showAllTabs {
-}
+
 
 #documentDirection-swap {
   --menuitem-image: url("chrome://global/skin/icons//text-direction-horizontal-ltr.svg");

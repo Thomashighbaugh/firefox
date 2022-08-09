@@ -19,7 +19,7 @@
 #alltabs-button {
   z-index: 9 !important;
   display: block !important;
-  position: relative;
+  position: relative !important;
 }
 
   /* hide navigation bar when it is not focused; use Ctrl+L to get focus */

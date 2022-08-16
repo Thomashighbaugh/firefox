@@ -8,7 +8,7 @@ cmanifest.append("chrome.manifest");
 Cm.QueryInterface(Ci.nsIComponentRegistrar).autoRegister(cmanifest);
 
 ChromeUtils.import("chrome://userchromejs/content/userChrome.jsm");
-ChromeUtils.import("chrome://userchromejs/content/aboutcfg.jsm");
+
 ChromeUtils.import("chrome://userchromejs/content/BootstrapLoader.jsm");
 
 console.warn("Browser is executing custom scripts via autoconfig");

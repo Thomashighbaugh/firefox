@@ -45,12 +45,12 @@
   --scrollbtn-outer-padding: 3px;
 }
 #scrollbutton-up {
-  padding-left: var(--scrollbtn-inner-padding, 4px) !important; /* Original: 4px */
-  padding-right: var(--scrollbtn-outer-padding, 4px) !important;
+  padding-left: 4px !important; /* Original: 4px */
+  padding-right: 4px !important;
 }
 #scrollbutton-down {
-  padding-left: var(--scrollbtn-outer-padding, 4px) !important; /* Original: 4px */
-  padding-right: var(--scrollbtn-inner-padding, 4px) !important;
+  padding-left: 4px !important; /* Original: 4px */
+  padding-right: 4px !important;
 }
 
 :root:not([uidensity="touch"]) #new-tab-button,

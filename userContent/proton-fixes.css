@@ -63,7 +63,7 @@
 
       --organizer-hover-background: #383a47;
       --organizer-selected-background: #323643;
-      --organizer-outline-color: rgb(0, 221, 255);
+      --organizer-outline-color: #555e70;
 
       --organizer-toolbar-field-background: var(--in-content-page-background);
       --organizer-toolbar-field-background-focused: #17191e;

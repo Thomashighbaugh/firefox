@@ -2,22 +2,16 @@
 @import "tab_padding";
 
 /*= Tab Bar - Reduce Width, Show more tabs ===================================*/
-@include Option("userChrome.padding.first_tab") {
-  @import "first_tab";
-}
+@import "first_tab";
 
-@include Option("userChrome.padding.tabbar_width") {
-  @import "tabbar_width";
-}
+@import "tabbar_width";
 
 /*= Tab Bar - Reduce Height, Show more contents ==============================*/
 @include Option("userChrome.padding.drag_space") {
   @import "drag_space";
 }
 
-@include Option("userChrome.padding.tabbar_height") {
-  @import "tabbar_height";
-}
+@import "tabbar_height";
 
 /*= Tool Bar - Button Padding ================================================*/
 @include Option("userChrome.padding.toolbar_button") {

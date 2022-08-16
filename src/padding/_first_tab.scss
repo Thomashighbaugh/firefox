@@ -1,6 +1,6 @@
 /* for First Tab Space */
 :root {
-  --space-left-tabbar: 8px; /* If the option is not specified, it is equivalent to 0px. */
+  --space-left-tabbar: 0px; /* If the option is not specified, it is equivalent to 0px. */
 }
 
 :root:not([tabsintitlebar]) #tabbrowser-tabs:not([positionpinnedtabs]),

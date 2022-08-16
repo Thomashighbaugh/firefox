@@ -1053,7 +1053,7 @@
     --blue-70: #003eaa;
     --blue-80: #002275;
     --grey-30: #e9efff;
-    --grey-60: #4a4a4f;
+    --grey-60: #555e70;
     --grey-90-a10: rgba(12, 12, 13, 0.1);
     --grey-90-a20: rgba(12, 12, 13, 0.2);
     --grey-90-a30: rgba(12, 12, 13, 0.3);
@@ -1102,8 +1102,8 @@
       --in-content-button-background-hover: #383a47;
       --in-content-button-background-active: #323643;
       --in-content-icon-color: #f4f4f7;
-      --in-content-primary-button-text-color: #1c1e24;
-      --in-content-primary-button-background: rgb(0, 221, 255);
+      --in-content-primary-button-text-color: #f4f4f7;
+      --in-content-primary-button-background: #555e70;
       --in-content-primary-button-background-hover: rgb(128, 235, 255);
       --in-content-primary-button-background-active: rgb(170, 242, 255);
       --in-content-danger-button-background: #ff848b;
@@ -2896,16 +2896,16 @@
 /*= Tab Bar - Distribution padding, radius ===================================*/
 @supports -moz-bool-pref("userChrome.tab.lepton_like_padding") or -moz-bool-pref("userChrome.tab.photon_like_padding") {
   :root {
-    --proton-tab-block-margin: var(--tab-block-margin) !important; /* Original: 4px, Legacy */
+    --proton-tab-block-margin: 0px !important; /* Original: 4px, Legacy */
   }
   :root[uidensity="touch"] {
     /* Like Original */
-    --tab-block-margin: 4px !important;
+    --tab-block-margin: 0px !important;
   }
 }
 @supports -moz-bool-pref("userChrome.tab.lepton_like_padding") {
   :root {
-    --tab-block-margin: 2px !important; /* New version of --proton-tab-block-margin */
+    --tab-block-margin: 0px !important; /* New version of --proton-tab-block-margin */
   }
 }
 @supports -moz-bool-pref("userChrome.tab.photon_like_padding") {
@@ -2914,114 +2914,123 @@
   }
 }
 /*= Tab Bar - Reduce Width, Show more tabs ===================================*/
-@supports -moz-bool-pref("userChrome.padding.first_tab") {
-  /* for First Tab Space */
-  :root {
-    --space-left-tabbar: 8px; /* If the option is not specified, it is equivalent to 0px. */
-  }
-  :root:not([tabsintitlebar]) #tabbrowser-tabs:not([positionpinnedtabs]),
-  :root:is([sizemode="maximized"], [sizemode="fullscreen"]) #tabbrowser-tabs:not([positionpinnedtabs]) {
-    padding-inline-start: var(--space-left-tabbar) !important;
+/* for First Tab Space */
+:root {
+  --space-left-tabbar: 0px; /* If the option is not specified, it is equivalent to 0px. */
+}
+
+:root:not([tabsintitlebar]) #tabbrowser-tabs:not([positionpinnedtabs]),
+:root:is([sizemode="maximized"], [sizemode="fullscreen"]) #tabbrowser-tabs:not([positionpinnedtabs]) {
+  padding-inline-start: var(--space-left-tabbar) !important;
+}
+
+/* Titlebar Space */
+:root {
+  --uc-title-pre-spacer: 30px; /* Original: 40px */
+  --uc-title-post-spacer: 25px; /* Original: 40px */
+}
+
+.titlebar-spacer[type="pre-tabs"] {
+  width: var(--uc-title-pre-spacer) !important;
+}
+
+.titlebar-spacer[type="post-tabs"] {
+  width: var(--uc-title-post-spacer) !important;
+}
+
+/* Tabbar Buttons */
+:root {
+  --newtab-button-minus-width-padding: 2px;
+  --newtab-button-width-padding: calc(var(--toolbarbutton-inner-padding) - var(--newtab-button-minus-width-padding));
+}
+
+#new-tab-button > .toolbarbutton-icon,
+#alltabs-button > .toolbarbutton-badge-stack {
+  /* Original: calc(2 * var(--toolbarbutton-inner-padding) + 16px) */
+  width: calc(2 * var(--newtab-button-width-padding) + 16px) !important;
+  /* Original: --toolbarbutton-inner-padding */
+  padding-left: var(--newtab-button-width-padding) !important;
+  padding-right: var(--newtab-button-width-padding) !important;
+}
+
+@supports not -moz-bool-pref("userChrome.tab.photon_like_padding") {
+  #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
+    > #tabbrowser-arrowscrollbox
+    > .tabbrowser-tab[first-visible-unpinned-tab] {
+    margin-inline-start: 1px !important;
   }
 }
-@supports -moz-bool-pref("userChrome.padding.tabbar_width") {
-  /* Titlebar Space */
+@supports -moz-bool-pref("userChrome.tab.photon_like_padding") {
+  #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
+    > #tabbrowser-arrowscrollbox
+    > .tabbrowser-tab[first-visible-unpinned-tab] {
+    margin-inline-start: 0 !important;
+  }
+}
+:root:not([uidensity="touch"]) #tabbrowser-arrowscrollbox {
+  --scrollbtn-inner-padding: 1px;
+  --scrollbtn-outer-padding: 3px;
+}
+
+#scrollbutton-up {
+  padding-left: 4px !important; /* Original: 4px */
+  padding-right: 4px !important;
+}
+
+#scrollbutton-down {
+  padding-left: 4px !important; /* Original: 4px */
+  padding-right: 4px !important;
+}
+
+:root:not([uidensity="touch"]) #new-tab-button,
+#alltabs-button {
+  --toolbarbutton-outer-padding: 1px; /* Original: 2px*/
+}
+
+/* Tab - Max Size */
+@supports not -moz-bool-pref("userChrome.tab.photon_like_padding") {
   :root {
-    --uc-title-pre-spacer: 30px; /* Original: 40px */
-    --uc-title-post-spacer: 25px; /* Original: 40px */
+    --tab-max-width: 240px;
   }
-  .titlebar-spacer[type="pre-tabs"] {
-    width: var(--uc-title-pre-spacer) !important;
-  }
-  .titlebar-spacer[type="post-tabs"] {
-    width: var(--uc-title-post-spacer) !important;
-  }
-  /* Tabbar Buttons */
+}
+@supports -moz-bool-pref("userChrome.tab.photon_like_padding") {
   :root {
-    --newtab-button-minus-width-padding: 2px;
-    --newtab-button-width-padding: calc(var(--toolbarbutton-inner-padding) - var(--newtab-button-minus-width-padding));
+    --tab-max-width: 225px;
   }
-  #new-tab-button > .toolbarbutton-icon,
-  #alltabs-button > .toolbarbutton-badge-stack {
-    /* Original: calc(2 * var(--toolbarbutton-inner-padding) + 16px) */
-    width: calc(2 * var(--newtab-button-width-padding) + 16px) !important;
-    /* Original: --toolbarbutton-inner-padding */
-    padding-left: var(--newtab-button-width-padding) !important;
-    padding-right: var(--newtab-button-width-padding) !important;
-  }
-  @supports not -moz-bool-pref("userChrome.tab.photon_like_padding") {
-    #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
-      > #tabbrowser-arrowscrollbox
-      > .tabbrowser-tab[first-visible-unpinned-tab] {
-      margin-inline-start: 1px !important;
-    }
-  }
-  @supports -moz-bool-pref("userChrome.tab.photon_like_padding") {
-    #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
-      > #tabbrowser-arrowscrollbox
-      > .tabbrowser-tab[first-visible-unpinned-tab] {
-      margin-inline-start: 0 !important;
-    }
-  }
-  :root:not([uidensity="touch"]) #tabbrowser-arrowscrollbox {
-    --scrollbtn-inner-padding: 1px;
-    --scrollbtn-outer-padding: 3px;
-  }
-  #scrollbutton-up {
-    padding-left: var(--scrollbtn-inner-padding, 4px) !important; /* Original: 4px */
-    padding-right: var(--scrollbtn-outer-padding, 4px) !important;
-  }
-  #scrollbutton-down {
-    padding-left: var(--scrollbtn-outer-padding, 4px) !important; /* Original: 4px */
-    padding-right: var(--scrollbtn-inner-padding, 4px) !important;
-  }
-  :root:not([uidensity="touch"]) #new-tab-button,
-  #alltabs-button {
-    --toolbarbutton-outer-padding: 1px; /* Original: 2px*/
-  }
-  /* Tab - Max Size */
-  @supports not -moz-bool-pref("userChrome.tab.photon_like_padding") {
+}
+@supports -moz-bool-pref("userChrome.tabbar.one_liner") {
+  @supports not -moz-bool-pref("userChrome.tabbar.one_liner.responsive") {
     :root {
-      --tab-max-width: 240px;
+      --tab-max-width: 180px;
     }
   }
-  @supports -moz-bool-pref("userChrome.tab.photon_like_padding") {
-    :root {
-      --tab-max-width: 225px;
-    }
-  }
-  @supports -moz-bool-pref("userChrome.tabbar.one_liner") {
-    @supports not -moz-bool-pref("userChrome.tabbar.one_liner.responsive") {
+  @supports -moz-bool-pref("userChrome.tabbar.one_liner.responsive") {
+    @media screen and (min-width: 1100px) {
       :root {
         --tab-max-width: 180px;
       }
     }
-    @supports -moz-bool-pref("userChrome.tabbar.one_liner.responsive") {
-      @media screen and (min-width: 1100px) {
-        :root {
-          --tab-max-width: 180px;
-        }
-      }
-    }
   }
-  .tabbrowser-tab[fadein]:not([pinned]):not([style*="max-width"]) {
-    max-width: var(--tab-max-width) !important; /* Original: 225px */
-  }
-  /* neighbouring tabs should "pinch" together */
-  @supports not -moz-bool-pref("userChrome.tab.photon_like_padding") {
-    @supports -moz-bool-pref("userChrome.tab.lepton_like_padding") {
-      .tabbrowser-tab {
-        padding-inline: 1px !important;
-      }
-    }
-    .tabbrowser-tab:not([last-visible-tab]) {
-      margin-inline-end: -1px !important;
-    }
-  }
-  @supports -moz-bool-pref("userChrome.tab.photon_like_padding") {
+}
+
+.tabbrowser-tab[fadein]:not([pinned]):not([style*="max-width"]) {
+  max-width: var(--tab-max-width) !important; /* Original: 225px */
+}
+
+/* neighbouring tabs should "pinch" together */
+@supports not -moz-bool-pref("userChrome.tab.photon_like_padding") {
+  @supports -moz-bool-pref("userChrome.tab.lepton_like_padding") {
     .tabbrowser-tab {
-      padding-inline: 0 !important;
+      padding-inline: 1px !important;
     }
+  }
+  .tabbrowser-tab:not([last-visible-tab]) {
+    margin-inline-end: -1px !important;
+  }
+}
+@supports -moz-bool-pref("userChrome.tab.photon_like_padding") {
+  .tabbrowser-tab {
+    padding-inline: 0 !important;
   }
 }
 /*= Tab Bar - Reduce Height, Show more contents ==============================*/
@@ -3091,85 +3100,86 @@
     }
   }
 }
-@supports -moz-bool-pref("userChrome.padding.tabbar_height") {
-  /* Toolbar Height */
-  @supports -moz-bool-pref("userChrome.tab.lepton_like_padding") {
-    :root:not([uidensity]) {
-      --tab-min-height: 36px !important;
-    }
-    :root[uidensity="compact"] {
-      --tab-min-height: 32px !important;
-    }
-    :root[uidensity="touch"] {
-      --tab-min-height: 41px !important;
-    }
+/* Toolbar Height */
+@supports -moz-bool-pref("userChrome.tab.lepton_like_padding") {
+  :root:not([uidensity]) {
+    --tab-min-height: 22px !important;
   }
-  @supports -moz-bool-pref("userChrome.tab.photon_like_padding") {
-    :root:not([uidensity]) {
-      --tab-min-height: 32px !important;
-    }
-    :root[uidensity="compact"] {
-      --tab-min-height: 29px !important;
-    }
-    :root[uidensity="touch"] {
-      --tab-min-height: 41px !important;
-    }
-    /* Top Margin */
-    .tab-background,
-    .tab-content {
-      margin-top: 0 !important;
-    }
+  :root[uidensity="compact"] {
+    --tab-min-height: 15px !important;
   }
-  @supports not -moz-bool-pref("userChrome.tab.lepton_like_padding") {
-    @supports not -moz-bool-pref("userChrome.tab.photon_like_padding") {
-      :root:not([uidensity]) {
-        --tab-min-height: 36px !important; /* 38px -> 36px */
-      }
-      :root[uidensity="compact"] {
-        --tab-min-height: 29px !important; /* 36px -> 29px */
-      }
-    }
-  }
-  @supports -moz-bool-pref("userChrome.tab.connect_to_window") {
-    #TabsToolbar {
-      --toolbarbutton-inner-padding: calc(
-        (var(--tab-min-height) - 18px) / 2
-      ) !important; /* Prevent overflow pinned tab bottom margin */
-    }
-    :root:not([uidensity="compact"]) #tabbrowser-arrowscrollbox,
-    #tabbrowser-arrowscrollbox[overflowing="true"] > .tabbrowser-tab[pinned="true"],
-    #tabbrowser-arrowscrollbox[overflowing="true"] > .tabbrowser-tab[pinned="true"] .tab-stack,
-    #tabbrowser-arrowscrollbox[overflowing="true"] > .tabbrowser-tab[pinned="true"] .tab-content {
-      max-height: var(--tab-min-height) !important; /* Force apply height */
-    }
-    :root[uidensity="compact"] #tabbrowser-arrowscrollbox {
-      height: var(--tab-min-height) !important;
-    }
-  }
-  /* Scroll Button - Size Fix */
-  :root #tabbrowser-arrowscrollbox {
-    --scrollbtn-vertical-padding: 3px;
-    --scrollbtn-vertical-border: 2px;
-    --scrollbtn-border-radius: 7px;
-  }
-  #scrollbutton-up,
-  #scrollbutton-down {
-    /* Original: var(--toolbarbutton-inner-padding) calc(var(--toolbarbutton-inner-padding) - 6px) = 9px */
-    /* https://github.com/mozilla/gecko-dev/blob/71b1259afd1cdaf41871ae675c2dadb967ea5b34/browser/themes/shared/toolbarbuttons.inc.css#L142 */
-    padding-top: var(--scrollbtn-vertical-padding, var(--toolbarbutton-inner-padding)) !important;
-    padding-bottom: var(--scrollbtn-vertical-padding, var(--toolbarbutton-inner-padding)) !important;
-    /* Original: 4px */
-    border-top-width: var(--scrollbtn-vertical-border, 4px) !important;
-    border-bottom-width: var(--scrollbtn-vertical-border, 4px) !important;
-    /* Original: calc(var(--tab-border-radius) + 4px) = 8px */
-    border-radius: var(--scrollbtn-border-radius, calc(var(--tab-border-radius) + 4px)) !important;
-  }
-  :root[tabsintitlebar]:not([uidensity="compact"]) #toolbar-menubar[autohide="true"] {
-    height: calc(
-      var(--tab-min-height) - var(--tabs-navbar-shadow-size) - 2px
-    ); /* Compact: 28px, Normal: 33px, Touch: 38px */
+  :root[uidensity="touch"] {
+    --tab-min-height: 25px !important;
   }
 }
+@supports -moz-bool-pref("userChrome.tab.photon_like_padding") {
+  :root:not([uidensity]) {
+    --tab-min-height: 22px !important;
+  }
+  :root[uidensity="compact"] {
+    --tab-min-height: 15px !important;
+  }
+  :root[uidensity="touch"] {
+    --tab-min-height: 25px !important;
+  }
+  /* Top Margin */
+  .tab-background,
+  .tab-content {
+    margin-top: 0 !important;
+  }
+}
+@supports not -moz-bool-pref("userChrome.tab.lepton_like_padding") {
+  @supports not -moz-bool-pref("userChrome.tab.photon_like_padding") {
+    :root:not([uidensity]) {
+      --tab-min-height: 22px !important; /* 38px -> 36px */
+    }
+    :root[uidensity="compact"] {
+      --tab-min-height: 15px !important; /* 36px -> 29px */
+    }
+  }
+}
+@supports -moz-bool-pref("userChrome.tab.connect_to_window") {
+  #TabsToolbar {
+    --toolbarbutton-inner-padding: calc(
+      (var(--tab-min-height) - 18px) / 2
+    ) !important; /* Prevent overflow pinned tab bottom margin */
+  }
+  :root:not([uidensity="compact"]) #tabbrowser-arrowscrollbox,
+  #tabbrowser-arrowscrollbox[overflowing="true"] > .tabbrowser-tab[pinned="true"],
+  #tabbrowser-arrowscrollbox[overflowing="true"] > .tabbrowser-tab[pinned="true"] .tab-stack,
+  #tabbrowser-arrowscrollbox[overflowing="true"] > .tabbrowser-tab[pinned="true"] .tab-content {
+    max-height: var(--tab-min-height) !important; /* Force apply height */
+  }
+  :root[uidensity="compact"] #tabbrowser-arrowscrollbox {
+    height: var(--tab-min-height) !important;
+  }
+}
+/* Scroll Button - Size Fix */
+:root #tabbrowser-arrowscrollbox {
+  --scrollbtn-vertical-padding: 3px;
+  --scrollbtn-vertical-border: 2px;
+  --scrollbtn-border-radius: 7px;
+}
+
+#scrollbutton-up,
+#scrollbutton-down {
+  /* Original: var(--toolbarbutton-inner-padding) calc(var(--toolbarbutton-inner-padding) - 6px) = 9px */
+  /* https://github.com/mozilla/gecko-dev/blob/71b1259afd1cdaf41871ae675c2dadb967ea5b34/browser/themes/shared/toolbarbuttons.inc.css#L142 */
+  padding-top: var(--scrollbtn-vertical-padding, var(--toolbarbutton-inner-padding)) !important;
+  padding-bottom: var(--scrollbtn-vertical-padding, var(--toolbarbutton-inner-padding)) !important;
+  /* Original: 4px */
+  border-top-width: var(--scrollbtn-vertical-border, 4px) !important;
+  border-bottom-width: var(--scrollbtn-vertical-border, 4px) !important;
+  /* Original: calc(var(--tab-border-radius) + 4px) = 8px */
+  border-radius: var(--scrollbtn-border-radius, calc(var(--tab-border-radius) + 4px)) !important;
+}
+
+:root[tabsintitlebar]:not([uidensity="compact"]) #toolbar-menubar[autohide="true"] {
+  height: calc(
+    var(--tab-min-height) - var(--tabs-navbar-shadow-size) - 2px
+  ); /* Compact: 28px, Normal: 33px, Touch: 38px */
+}
+
 /*= Tool Bar - Button Padding ================================================*/
 @supports -moz-bool-pref("userChrome.padding.toolbar_button") {
   :root[uidensity="compact"] {

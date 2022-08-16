@@ -2,26 +2,26 @@
 @include Option("userChrome.tab.lepton_like_padding") {
   :root {
     &:not([uidensity]) {
-      --tab-min-height: 36px !important;
+      --tab-min-height: 22px !important;
     }
     &[uidensity="compact"] {
-      --tab-min-height: 32px !important;
+      --tab-min-height: 15px !important;
     }
-    &[uidensity="touch"]  {
-      --tab-min-height: 41px !important;
+    &[uidensity="touch"] {
+      --tab-min-height: 25px !important;
     }
   }
 }
 @include Option("userChrome.tab.photon_like_padding") {
   :root {
     &:not([uidensity]) {
-      --tab-min-height: 32px !important;
+      --tab-min-height: 22px !important;
     }
     &[uidensity="compact"] {
-      --tab-min-height: 29px !important;
+      --tab-min-height: 15px !important;
     }
-    &[uidensity="touch"]  {
-      --tab-min-height: 41px !important;
+    &[uidensity="touch"] {
+      --tab-min-height: 25px !important;
     }
   }
 
@@ -35,17 +35,19 @@
   @include NotOption("userChrome.tab.photon_like_padding") {
     :root {
       &:not([uidensity]) {
-        --tab-min-height: 36px !important; /* 38px -> 36px */
+        --tab-min-height: 22px !important; /* 38px -> 36px */
       }
       &[uidensity="compact"] {
-        --tab-min-height: 29px !important; /* 36px -> 29px */
+        --tab-min-height: 15px !important; /* 36px -> 29px */
       }
     }
   }
 }
 @include Option("userChrome.tab.connect_to_window") {
   #TabsToolbar {
-    --toolbarbutton-inner-padding: calc((var(--tab-min-height) - 18px) / 2) !important; /* Prevent overflow pinned tab bottom margin */
+    --toolbarbutton-inner-padding: calc(
+      (var(--tab-min-height) - 18px) / 2
+    ) !important; /* Prevent overflow pinned tab bottom margin */
   }
 
   :root:not([uidensity="compact"]) #tabbrowser-arrowscrollbox,

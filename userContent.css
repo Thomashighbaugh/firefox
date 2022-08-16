@@ -566,7 +566,7 @@
       --blue-70: #003eaa;
       --blue-80: #002275;
       --grey-30: #e9efff;
-      --grey-60: #4a4a4f;
+      --grey-60: #555e70;
       --grey-90-a10: rgba(12, 12, 13, 0.1);
       --grey-90-a20: rgba(12, 12, 13, 0.2);
       --grey-90-a30: rgba(12, 12, 13, 0.3);
@@ -615,8 +615,8 @@
         --in-content-button-background-hover: #383a47;
         --in-content-button-background-active: #323643;
         --in-content-icon-color: #f4f4f7;
-        --in-content-primary-button-text-color: #1c1e24;
-        --in-content-primary-button-background: rgb(0, 221, 255);
+        --in-content-primary-button-text-color: #f4f4f7;
+        --in-content-primary-button-background: #555e70;
         --in-content-primary-button-background-hover: rgb(128, 235, 255);
         --in-content-primary-button-background-active: rgb(170, 242, 255);
         --in-content-danger-button-background: #ff848b;

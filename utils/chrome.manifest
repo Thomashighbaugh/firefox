@@ -128,3 +128,4 @@ override chrome://global/content/xml/XMLPrettyPrint.css ../resources/layout/XMLP
 # Its highlight color doesn't match the theme, so I changed how it works.
 override chrome://browser/content/preferences/findInPage.js ../resources/script-override/findInPage.js
 
+

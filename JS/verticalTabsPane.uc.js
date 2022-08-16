@@ -105,7 +105,7 @@
   class VerticalTabsPaneBase {
     static preferences = [
       { name: closedPref, value: false },
-      { name: unpinnedPref, value: false },
+      { name: unpinnedPref, value: true },
       { name: noExpandPref, value: false },
       { name: widthPref, value: 350 },
       { name: reversePref, value: false },
@@ -254,8 +254,8 @@
       readPref(noExpandPref);
       readPref(hoverDelayPref);
       readPref(hoverOutDelayPref);
-      if (!this.hoverDelay) this.hoverDelay = 100;
-      if (!this.hoverOutDelay) this.hoverOutDelay = 100;
+      if (!this.hoverDelay) this.hoverDelay = 300;
+      if (!this.hoverOutDelay) this.hoverOutDelay = 250;
       // we don't want to read some of these prefs until we know whether the window was opened by another window with a pane,
       // because instead of reading from prefs we can adopt the pane state from the previous window.
       // normally in my scripts I update prefs like this every time they're changed, which would mean, for example,

@@ -15,8 +15,7 @@ override chrome://global/skin/arrowscrollbox.css ../resources/layout/arrowscroll
 # Override the tab element to restore the tab sound button and move the close button, among other things.
 override chrome://browser/content/tabbrowser-tab.js ../resources/script-override/tabMods.uc.js
 
-# Override the notification message bar element to move the close button to the left in tab order.
-override chrome://global/content/elements/message-bar.js ../resources/script-override/message-bar.js
+
 
 # Override a bunch of icons that appear all over the browser.
 override chrome://global/skin/icons/check.svg ../resources/check.svg
@@ -127,5 +126,6 @@ override chrome://global/content/xml/XMLPrettyPrint.css ../resources/layout/XMLP
 # The script for the searchbar on about:preferences.
 # Its highlight color doesn't match the theme, so I changed how it works.
 override chrome://browser/content/preferences/findInPage.js ../resources/script-override/findInPage.js
+
 
 

@@ -158,7 +158,7 @@ let _uc = {
 
     // If a sheet is imported multiple times, then there will be
     // duplicates, because style system does create an object for
-    // each instace but that's OK since sheets.find below will
+    // each instance but that's OK since sheets.find below will
     // only find the first instance and reload that which is
     // "probably" fine.
     let entryFilePath = `file:///${entry.path.replaceAll("\\", "/")}`;

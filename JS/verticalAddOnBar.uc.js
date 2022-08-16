@@ -70,7 +70,8 @@ var AddonbarVertical = {
               .getElementById("browser")
               .insertBefore(toolbox_abv, document.getElementById("browser").firstChild.nextSibling);
         } else {
-          if (insert_before_borders) document.getElementById("browser").appendChild(toolbox_abv);
+          if (insert_before_borders)
+          document.getElementById("browser").insertBefore(toolbox_abv, document.getElementById("browser").lastChild.previousSibling);
           else
             document.getElementById("browser").insertBefore(toolbox_abv, document.getElementById("browser").lastChild);
         }
@@ -79,8 +80,8 @@ var AddonbarVertical = {
           mutations.forEach(function (mutation) {
             try {
               if (document.querySelector("#main-window").getAttribute("customizing")) {
-                document.querySelector("#addonbar_v").setAttribute("orient", "horizontal");
-                document.querySelector("#navigator-toolbox").appendChild(document.querySelector("#addonbar_v"));
+                document.querySelector("#addonbar_v").setAttribute("orient", "vertical");
+                document.querySelector("#toolbox_abv").appendChild(document.querySelector("#addonbar_v"));
               } else {
                 document.querySelector("#addonbar_v").setAttribute("orient", "vertical");
                 document.querySelector("#toolbox_abv").appendChild(document.querySelector("#addonbar_v"));

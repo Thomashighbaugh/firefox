@@ -32,7 +32,7 @@
     --organizer-deemphasized-color: var(--in-content-deemphasized-text);
 
     --organizer-toolbar-background: rgb(249, 249, 251); /* --toolbar-bgcolor */
-    --organizer-pane-background: rgb(229, 229, 235); /* --lwt-accent-color */
+    --organizer-pane-background: #f4f4f7; /* --lwt-accent-color */
     --organizer-content-background: var(--in-content-page-background);
 
     --organizer-hover-background: var(--in-content-button-background-hover);

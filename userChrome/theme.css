@@ -1,11 +1,8 @@
-
-
-
 /** Default Thme - Contrast ***************************************************/
 /*= Lightmode - Color darker =================================================*/
 :root[lwtheme-mozlightdark]:not([lwthemetextcolor="bright"]), /* Legacy */
 :root[style*="--lwt-accent-color: rgb(240, 240, 244); --lwt-text-color: rgba(21, 20, 26);"] {
-  --lwt-accent-color: rgb(229, 229, 235) !important; /* Original: rgb(240, 240, 244) */
+  --lwt-accent-color: #f4f4f7 !important; /* Original: rgb(240, 240, 244) */
 }
 @media (-moz-os-version: windows-win10) {
   :root[lwtheme-mozlightdark]:not([lwthemetextcolor="bright"]) #navigator-toolbox,  /* Legacy */
@@ -261,7 +258,7 @@
 /*= Windows7 - Aero Based Theme ==============================================*/
 @media (-moz-os-version: windows-win7) {
   #TabsToolbar:not(:-moz-lwtheme) {
-    --background-color: rgb(229, 229, 235);
+    --background-color: #f4f4f7;
   }
   #TabsToolbar:not(:-moz-lwtheme)
     .tabbrowser-tab

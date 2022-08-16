@@ -1,6 +1,3 @@
-
-
-
 /*== Bookmark Popup Color ====================================================*/
 #editBMPanel_folderTree:-moz-lwtheme,
 #editBMPanel_tagsSelector:-moz-lwtheme {
@@ -102,9 +99,9 @@ body:not([lwt-sidebar]) xul|search-textbox.tabsFilter[focused="true"] {
 
 #PopupAutoComplete > richlistbox > richlistitem[originaltype="loginsFooter"] {
   --panel-border-color: var(--panel-bgcolor);
-  color: var(--arrowpanel-color, var(--in-content-page-color)) !important; 
-  background-color: var(--arrowpanel-dimmed, hsla(0, 0%, 80%, 0.35)) !important; 
-  border-color: var(--panel-border-color) !important; 
+  color: var(--arrowpanel-color, var(--in-content-page-color)) !important;
+  background-color: var(--arrowpanel-dimmed, hsla(0, 0%, 80%, 0.35)) !important;
+  border-color: var(--panel-border-color) !important;
 }
 
 #PopupAutoComplete > richlistbox > richlistitem[originaltype="loginsFooter"]:hover,
@@ -194,12 +191,11 @@ browser[type="content"] > html {
 {
   @media (-moz-gtk-csd-available) {
     :root {
-  
       --organizer-toolbar-field-background: Field;
       --organizer-toolbar-field-background-focused: Field;
       --organizer-toolbar-field-focus-border-color: var(--organizer-outline-color);
       --organizer-toolbar-field-focus-box-shadow: unset;
-  
+
       --organizer-color: rgb(251, 251, 254);
       --organizer-deemphasized-color: rgb(191, 191, 201);
 
@@ -212,7 +208,7 @@ browser[type="content"] > html {
       --organizer-outline-color: #555e70;
 
       --organizer-toolbar-field-background: var(--in-content-page-background);
-      --organizer-toolbar-field-background-focused:#17191e;
+      --organizer-toolbar-field-background-focused: #17191e;
       scrollbar-color: #b2bfd9 #2f303d;
     }
 
@@ -222,7 +218,7 @@ browser[type="content"] > html {
         --organizer-deemphasized-color: var(--in-content-deemphasized-text);
 
         --organizer-toolbar-background: rgb(249, 249, 251); /* --toolbar-bgcolor */
-        --organizer-pane-background: rgb(229, 229, 235); /* --lwt-accent-color */
+        --organizer-pane-background: #f4f4f7; /* --lwt-accent-color */
         --organizer-content-background: var(--in-content-page-background);
 
         --organizer-hover-background: var(--in-content-button-background-hover);
@@ -260,7 +256,7 @@ browser[type="content"] > html {
           --organizer-outline-color: #555e70;
 
           --organizer-toolbar-field-background: var(--in-content-page-background);
-          --organizer-toolbar-field-background-focused:#17191e;
+          --organizer-toolbar-field-background-focused: #17191e;
           scrollbar-color: #b2bfd9 #2f303d;
         }
       }

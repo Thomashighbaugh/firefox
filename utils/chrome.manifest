@@ -36,6 +36,11 @@ override chrome://global/content/xml/XMLPrettyPrint.css ../resources/layout/XMLP
 override chrome://browser/content/preferences/findInPage.js ../resources/script-override/findInPage.js
 
 # ---------------------------------------------------------------------------- #
+# tab bar modifications
+override chrome://browser/content/tabbrowser-tab.js ../resources/script-override/tabMods.uc.js
+
+
+# ---------------------------------------------------------------------------- #
 # Override a bunch of icons that appear all over the browser.
 override chrome://global/skin/icons/check.svg ../resources/check.svg
 override chrome://global/skin/icons/success.svg ../resources/check.svg

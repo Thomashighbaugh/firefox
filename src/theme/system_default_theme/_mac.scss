@@ -238,7 +238,7 @@
       > .tabbrowser-tab
       > .tab-stack
       > .tab-background[selected="true"],
-    :root[style*="--lwt-accent-color: rgb(28, 27, 34); --lwt-text-color: rgba(251, 251, 254);"][lwt-default-theme-in-dark-mode]
+    :root[style*="--lwt-accent-color: #1c1e24; --lwt-text-color: rgba(251, 251, 254);"][lwt-default-theme-in-dark-mode]
       #tabbrowser-tabs:not([movingtab])
       > #tabbrowser-arrowscrollbox
       > .tabbrowser-tab

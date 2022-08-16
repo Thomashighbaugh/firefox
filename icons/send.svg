@@ -1,4 +1,45 @@
-<!-- This Source Code Form is subject to the terms of the Mozilla Public
-   - License, v. 2.0. If a copy of the MPL was not distributed with this
-   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
-<svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><linearGradient id="a" gradientUnits="userSpaceOnUse" x1="11.369" x2="3.641" y1="1.065" y2="14.451"><stop offset="0" stop-color="#ff9640"/><stop offset=".6" stop-color="#fc4055"/><stop offset="1" stop-color="#e31587"/></linearGradient><linearGradient id="b" gradientUnits="userSpaceOnUse" x1="11.369" x2="3.641" y1="1.065" y2="14.451"><stop offset="0" stop-color="#fff36e" stop-opacity=".8"/><stop offset=".094" stop-color="#fff36e" stop-opacity=".699"/><stop offset=".752" stop-color="#fff36e" stop-opacity="0"/></linearGradient><linearGradient id="c" gradientUnits="userSpaceOnUse" x1="8.984" x2="12.975" y1="10.186" y2="3.273"><stop offset="0" stop-color="#0090ed"/><stop offset=".386" stop-color="#5b6df8"/><stop offset=".629" stop-color="#9059ff"/><stop offset="1" stop-color="#b833e1"/></linearGradient><linearGradient id="d" gradientUnits="userSpaceOnUse" x1="8.119" x2="14.738" y1="7.437" y2="9.03"><stop offset="0" stop-color="#054096" stop-opacity=".5"/><stop offset=".054" stop-color="#0f3d9c" stop-opacity=".441"/><stop offset=".261" stop-color="#2f35b1" stop-opacity=".249"/><stop offset=".466" stop-color="#462fbf" stop-opacity=".111"/><stop offset=".669" stop-color="#542bc8" stop-opacity=".028"/><stop offset=".864" stop-color="#592acb" stop-opacity="0"/></linearGradient><linearGradient id="e" gradientUnits="userSpaceOnUse" x1="12.93" x2="9.059" y1="3.351" y2="10.055"><stop offset="0" stop-color="#722291" stop-opacity=".5"/><stop offset=".295" stop-color="#722291" stop-opacity="0"/></linearGradient><path d="m8.017 0a8.036 8.036 0 0 0 -7.978 7.374 1.522 1.522 0 0 0 .4 1.151 1.5 1.5 0 0 0 1.096.475h5.465v3.584l-1.293-1.291a1 1 0 0 0 -1.414 1.414l3 3a1 1 0 0 0 .325.216.986.986 0 0 0 .764 0 1 1 0 0 0 .325-.216l3-3a1 1 0 0 0 -1.414-1.414l-1.293 1.293v-3.586h5.5a1.5 1.5 0 0 0 1.1-.478 1.523 1.523 0 0 0 .4-1.148 8.037 8.037 0 0 0 -7.983-7.374zm0 7h-5.917a6 6 0 0 1 11.84 0z" fill="url(#a)"/><path d="m8.017 0a8.036 8.036 0 0 0 -7.978 7.374 1.522 1.522 0 0 0 .4 1.151 1.5 1.5 0 0 0 1.096.475h5.465v3.584l-1.293-1.291a1 1 0 0 0 -1.414 1.414l3 3a1 1 0 0 0 .325.216.986.986 0 0 0 .764 0 1 1 0 0 0 .325-.216l3-3a1 1 0 0 0 -1.414-1.414l-1.293 1.293v-3.586h5.5a1.5 1.5 0 0 0 1.1-.478 1.523 1.523 0 0 0 .4-1.148 8.037 8.037 0 0 0 -7.983-7.374zm0 7h-5.917a6 6 0 0 1 11.84 0z" fill="url(#b)"/><path d="m7 9 1.009-7a6.042 6.042 0 0 1 5.928 5h-2.937a2 2 0 0 0 -2 2h5.5a1.5 1.5 0 0 0 1.5-1.626c-.327-3.574-4.549-5.517-7.991-5.374z" fill="url(#c)"/><path d="m13.937 7h-2.937a2 2 0 0 0 -2 2h5.5a1.5 1.5 0 0 0 1.1-.478z" fill="url(#d)" opacity=".9"/><path d="m15.6 8.522a1.5 1.5 0 0 0 .4-1.148c-.327-3.574-4.549-5.517-7.991-5.374a6.042 6.042 0 0 1 5.928 5z" fill="url(#e)"/></svg>
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	y="0px" width="16" height="16" viewBox="0 0 495.003 495.003" style="enable-background:new 0 0 495.003 495.003;"
+	xml:space="preserve">
+	<g id="XMLID_51_">
+		<path id="XMLID_53_" fill="#f4f4f7" fill-opacity="context-fill-opacity" d="M164.711,456.687c0,2.966,1.647,5.686,4.266,7.072c2.617,1.385,5.799,1.207,8.245-0.468l55.09-37.616
+		l-67.6-32.22V456.687z" />
+		<path id="XMLID_52_" fill="#f4f4f7" fill-opacity="context-fill-opacity" d="M492.431,32.443c-1.513-1.395-3.466-2.125-5.44-2.125c-1.19,0-2.377,0.264-3.5,0.816L7.905,264.422
+		c-4.861,2.389-7.937,7.353-7.904,12.783c0.033,5.423,3.161,10.353,8.057,12.689l125.342,59.724l250.62-205.99L164.455,364.414
+		l156.145,74.4c1.918,0.919,4.012,1.376,6.084,1.376c1.768,0,3.519-0.322,5.186-0.977c3.637-1.438,6.527-4.318,7.97-7.956
+		L494.436,41.257C495.66,38.188,494.862,34.679,492.431,32.443z" />
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+</svg>

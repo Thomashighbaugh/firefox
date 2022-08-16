@@ -4,8 +4,6 @@
 /* |______||_____||__||_____|__| |_____| */
 /* ------------------------------------------------- */
 
-
-
 /* ----------------- Default Colors ---------------- */
 /* Based on chrome://global/skin/in-content/common.css */
 :host,
@@ -117,7 +115,7 @@
   :host,
   :root {
     /* Keep these in sync with layout/base/PresShell.cpp, and plaintext.css */
-    --in-content-page-background: rgb(28, 27, 34);
+    --in-content-page-background: #1c1e24;
     --in-content-page-color: rgb(251, 251, 254);
     --in-content-deemphasized-text: rgb(191, 191, 201);
 

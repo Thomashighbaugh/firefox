@@ -1,25 +1,25 @@
 /** Default Thme - Contrast ***************************************************/
 /*= Lightmode - Color darker =================================================*/
 :root[lwtheme-mozlightdark]:not([lwthemetextcolor="bright"]), /* Legacy */
-:root[style*="--lwt-accent-color: rgb(240, 240, 244); --lwt-text-color: rgba(21, 20, 26);"] {
+:root[style*="--lwt-accent-color: rgb(240, 240, 244); --lwt-text-color: #17191e;"] {
   --lwt-accent-color: #f4f4f7 !important; /* Original: rgb(240, 240, 244) */
 }
 @media (-moz-os-version: windows-win10) {
   :root[lwtheme-mozlightdark]:not([lwthemetextcolor="bright"]) #navigator-toolbox,  /* Legacy */
-  :root[style*="--lwt-accent-color: rgb(240, 240, 244); --lwt-text-color: rgba(21, 20, 26);"] {
+  :root[style*="--lwt-accent-color: rgb(240, 240, 244); --lwt-text-color: #17191e;"] {
     background-color: var(--lwt-accent-color) !important;
   }
 }
 @supports -moz-bool-pref("layout.css.osx-font-smoothing.enabled") {
   :root[lwtheme-mozlightdark]:not([lwthemetextcolor="bright"]) #navigator-toolbox,  /* Legacy */
-  :root[style*="--lwt-accent-color: rgb(240, 240, 244); --lwt-text-color: rgba(21, 20, 26);"] {
+  :root[style*="--lwt-accent-color: rgb(240, 240, 244); --lwt-text-color: #17191e;"] {
     background-color: var(--lwt-accent-color) !important;
   }
 }
 
 /*= Darkmode - Color lighter =================================================*/
 :root[lwtheme-mozlightdark][lwthemetextcolor="bright"], /* Legacy */
-:root[style*="--lwt-accent-color: rgb(28, 27, 34); --lwt-text-color: rgba(251, 251, 254);"] {
+:root[style*="--lwt-accent-color: #1c1e24; --lwt-text-color: rgba(251, 251, 254);"] {
   --toolbar-bgcolor: rgba(43, 42, 51, 5) !important; /* Original: rgba(43, 42, 51, 1) */
 }
 
@@ -558,7 +558,7 @@
     > .tabbrowser-tab
     > .tab-stack
     > .tab-background[multiselected]:not([selected]),
-  :root:is([style*="--lwt-accent-color: rgb(240, 240, 244); --lwt-text-color: rgba(21, 20, 26);"], [style*="--lwt-accent-color: rgb(28, 27, 34); --lwt-text-color: rgba(251, 251, 254);"])
+  :root:is([style*="--lwt-accent-color: rgb(240, 240, 244); --lwt-text-color: #17191e;"], [style*="--lwt-accent-color: #1c1e24; --lwt-text-color: rgba(251, 251, 254);"])
        #tabbrowser-tabs:not([movingtab])
                            > #tabbrowser-arrowscrollbox
                            > .tabbrowser-tab

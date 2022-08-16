@@ -35,7 +35,7 @@
 
 /* For themes outside of Light and Dark (which are curated by Mozilla), show a thicker border
    around the tab to help themes that are dependent on tab_line to show the selected tab. */
-:root:not([lwtheme-mozlightdark], [style*="--lwt-accent-color: rgb(240, 240, 244); --lwt-text-color: rgba(21, 20, 26);"])
+:root:not([lwtheme-mozlightdark], [style*="--lwt-accent-color: rgb(240, 240, 244); --lwt-text-color: #17191e;"])
   #TabsToolbar:not([brighttext])
   #tabbrowser-tabs:not([noshadowfortests])
   .tabbrowser-tab:is([visuallyselected="true"], [multiselected])
@@ -46,7 +46,7 @@
     0 0 4px rgba(128, 128, 142, 0.5) !important;
 }
 
-:root:not([lwtheme-mozlightdark], [style*="--lwt-accent-color: rgb(28, 27, 34); --lwt-text-color: rgba(251, 251, 254);"])
+:root:not([lwtheme-mozlightdark], [style*="--lwt-accent-color: #1c1e24; --lwt-text-color: rgba(251, 251, 254);"])
   #TabsToolbar[brighttext]
   #tabbrowser-tabs:not([noshadowfortests])
   .tabbrowser-tab:is([visuallyselected="true"], [multiselected])

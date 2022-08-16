@@ -30,12 +30,12 @@
   background-repeat: no-repeat;
   background-position-y: bottom;
 }
-:root:not([customizing="true"]):is([lwtheme-mozlightdark], [style*="--lwt-accent-color: rgb(28, 27, 34); --lwt-text-color: rgba(251, 251, 254);"])
+:root:not([customizing="true"]):is([lwtheme-mozlightdark], [style*="--lwt-accent-color: #1c1e24; --lwt-text-color: rgba(251, 251, 254);"])
   #TabsToolbar[brighttext]
   #tabbrowser-tabs:not([noshadowfortests])
   tab[visuallyselected]
   > stack:-moz-lwtheme::before,
-:root:not([customizing="true"]):is([lwtheme-mozlightdark], [style*="--lwt-accent-color: rgb(28, 27, 34); --lwt-text-color: rgba(251, 251, 254);"])
+:root:not([customizing="true"]):is([lwtheme-mozlightdark], [style*="--lwt-accent-color: #1c1e24; --lwt-text-color: rgba(251, 251, 254);"])
   #TabsToolbar[brighttext]
   #tabbrowser-tabs:not([noshadowfortests])
   tab[visuallyselected]

@@ -7,7 +7,7 @@ content userchromejs ./
 # Where the JS at!
 content userscripts ../JS/
 # Where everything at
-content userchrome ../
+content userchrome ../resources
 # ---------------------------------------------------------------------------- #
 
 # ---------------------------------------------------------------------------- #
@@ -20,7 +20,7 @@ override chrome://browser/content/tabbrowser-tab.js ../resources/script-override
 
 # ---------------------------------------------------------------------------- #
 # Basic content stylesheets, e.g., for plain text and "view source" documents.
-resource content-accessible chrome://userchrome/resources/content/layout/contentaccessible/ contentaccessible=yes
+resource content-accessible chrome://userchrome/content/layout/contentaccessible/ contentaccessible=yes
 
 # ---------------------------------------------------------------------------- #
 # Directory listing stylesheet, kind of like a file explorer.

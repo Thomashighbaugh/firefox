@@ -1,14 +1,14 @@
-@include OneLinerNavbarContent() {
-  #TabsToolbar {
-    display: none !important;
-  }
+// @include OneLinerNavbarContent() {
+//   #TabsToolbar {
+//     display: none !important;
+//   }
 
-  @include Option("userChrome.hidden.navbar") {
-    #nav-bar {
-      visibility: collapse; /* display: none is not work */
-    }
+@include Option("userChrome.hidden.navbar") {
+  #nav-bar {
+    visibility: collapse; /* display: none is not work */
   }
 }
+// }
 
 @include Option("userChrome.hidden.tab_icon") {
   .tabbrowser-tab:not([pinned="true"]) .tab-icon-stack {

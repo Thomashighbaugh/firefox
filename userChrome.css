@@ -5380,11 +5380,10 @@
   }
 }
 /*= Unloaded Tab - Contents Opacity ===========================================*/
-@supports -moz-bool-pref("userChrome.tab.unloaded") {
-  #tabbrowser-tabs .tabbrowser-tab[pending] .tab-content {
-    opacity: 0.7;
-  }
+#tabbrowser-tabs .tabbrowser-tab[pending] .tab-content {
+  opacity: 0.7;
 }
+
 /*= Clipped tabs =============================================================*/
 /** Clipped tabs - Letters cleary *********************************************/
 #tabbrowser-tabs[closebuttons="activetab"] {
@@ -5688,151 +5687,50 @@
   }
 }
 /*= PictureInPicture Tab - Show PIP Icon =====================================*/
-@supports -moz-bool-pref("userChrome.tab.pip") {
-  #tabbrowser-tabs:not([closebuttons="activetab"]) .tabbrowser-tab[pictureinpicture]:not([pinned]) .tab-content::after,
-  #tabbrowser-tabs[closebuttons="activetab"]
-    .tabbrowser-tab[pictureinpicture]:not([pinned], :hover)
-    .tab-content::after {
-    content: "";
-  }
-  .tabbrowser-tab[pictureinpicture]:not([pinned]) .tab-content::after {
-    /* Shape */
-    display: -moz-inline-box !important;
-    width: 14px;
-    height: 14px;
-    background-size: 14px;
-    -moz-box-ordinal-group: 1 !important;
-    /* Color */
-    fill: currentColor;
-    opacity: 0.8;
-    -moz-context-properties: fill;
-    /* Icon */
-    background-image: url("chrome://global/skin/media/picture-in-picture-open.svg");
-  }
-  .tabbrowser-tab[pictureinpicture]:not([pinned])[selected] .tab-content::after {
-    opacity: 0.95;
-  }
-  /* Close Button's position */
-  .tabbrowser-tab[pictureinpicture]:not([pinned]) .tab-close-button {
-    -moz-box-ordinal-group: 2 !important;
-  }
-  #tabbrowser-tabs:not([closebuttons="activetab"]) .tabbrowser-tab[pictureinpicture]:not([pinned]) .tab-close-button {
-    margin-left: 7px !important;
-  }
-  #tabbrowser-tabs:not([closebuttons="activetab"])
-    .tabbrowser-tab[pictureinpicture]:not([pinned]):hover
-    .tab-close-button {
-    margin-left: 2px !important;
-  }
+#tabbrowser-tabs:not([closebuttons="activetab"]) .tabbrowser-tab[pictureinpicture]:not([pinned]) .tab-content::after,
+#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab[pictureinpicture]:not([pinned], :hover) .tab-content::after {
+  content: "";
 }
-/*= Container Tab - Color line at icon's bottom ==============================*/
-@supports -moz-bool-pref("userChrome.tab.container") {
-  @supports not -moz-bool-pref("userChrome.tabbar.as_titlebar") {
-    @supports not -moz-bool-pref("userChrome.tab.photon_like_contextline") {
-      .tab-context-line {
-        display: none;
-      }
-    }
-    .tabbrowser-tab {
-      --container-position-y: 11px;
-    }
-    :root[uidensity="compact"] .tabbrowser-tab {
-      --container-position-y: 10px;
-    }
-    :root[uidensity="touch"] .tabbrowser-tab {
-      --container-position-y: 12px;
-    }
-    .tab-content:not([titlechanged])::before {
-      /* Box Model */
-      content: "";
-      display: block;
-      position: absolute !important;
-      transform: translate(9px, var(--container-position-y)) !important;
-      /* Shape */
-      border-bottom: 2px solid var(--identity-icon-color);
-      width: 25%;
-      opacity: 0.75;
-    }
-    .tabbrowser-tab[visuallyselected]:not([pinned]) .tab-content::before {
-      width: calc(100% - 30px);
-      opacity: 1;
-    }
-    #tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab[visuallyselected]:not([pinned]) .tab-content::before {
-      width: calc(100% - 33px);
-    }
-    /* Animate */
-    @media (prefers-reduced-motion: no-preference) {
-      .tab-content:not([titlechanged])::before {
-        transition: 0.15s var(--animation-easing-function) !important;
-        transition-property: width, opacity;
-      }
-    }
-    /* Pinned Tab */
-    .tabbrowser-tab[pinned] .tab-content::before {
-      transform: translateY(var(--container-position-y)) !important;
-      width: 16px;
-    }
-    @supports -moz-bool-pref("userChrome.tab.close_button_at_pinned") {
-      .tabbrowser-tab[pinned][visuallyselected]:not([busy]):hover .tab-content::before {
-        opacity: 0;
-      }
-    }
-    /* Pinned Tab - Titlechanged Indicator override */
-    .tabbrowser-tab:is([image], [pinned])[usercontextid] > .tab-stack > .tab-content[attention]:not([selected="true"]),
-    .tabbrowser-tab[usercontextid] > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
-      /* Original: radial-gradient(circle, var(--attention-icon-color), var(--attention-icon-color) 2px, transparent 2px); */
-      --dotted-identity-image: radial-gradient(
-        circle,
-        var(--identity-icon-color),
-        var(--identity-icon-color) 2px,
-        transparent 2px
-      );
-      background-image: var(--dotted-identity-image), var(--dotted-identity-image), var(--dotted-identity-image) !important;
-      background-position-x: 32%, 50%, 70% !important;
-    }
-    :root[uidensity="compact"]
-      .tabbrowser-tab:is([image], [pinned])[usercontextid]
-      > .tab-stack
-      > .tab-content[attention]:not([selected="true"]),
-    :root[uidensity="compact"]
-      .tabbrowser-tab[usercontextid]
-      > .tab-stack
-      > .tab-content[pinned][titlechanged]:not([selected="true"]) {
-      /* Original: radial-gradient(circle, var(--attention-icon-color), var(--attention-icon-color) 2px, transparent 2px); */
-      background-position-x: 30%, 50%, 70% !important;
-    }
-    .tabbrowser-tab:is([image], [pinned]) > .tab-stack > .tab-content[attention]:not([selected="true"]),
-    .tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
-      /* Original: center bottom calc(6.5px + var(--tabs-navbar-shadow-size)); */
-      background-position-y: top calc(0.5px + 50% + var(--container-position-y)) !important;
-    }
-    /* Pinned Tab - Titlechanged & soundplaying */
-    .tabbrowser-tab:is([image], [pinned])[usercontextid]:is([soundplaying], [muted], [activemedia-blocked])
-      > .tab-stack
-      > .tab-content[attention]:not([selected="true"]),
-    .tabbrowser-tab[usercontextid]:is([soundplaying], [muted], [activemedia-blocked])
-      > .tab-stack
-      > .tab-content[pinned][titlechanged]:not([selected="true"]) {
-      background-position-x: calc(32% - 1px), calc(50% - 1px), calc(70% - 1px) !important;
-    }
-    :root[uidensity="compact"]
-      .tabbrowser-tab:is([image], [pinned])[usercontextid]:is([soundplaying], [muted], [activemedia-blocked])
-      > .tab-stack
-      > .tab-content[attention]:not([selected="true"]),
-    :root[uidensity="compact"]
-      .tabbrowser-tab[usercontextid]:is([soundplaying], [muted], [activemedia-blocked])
-      > .tab-stack
-      > .tab-content[pinned][titlechanged]:not([selected="true"]) {
-      background-position-x: calc(30% - 1px), calc(50% - 1px), calc(70% - 1px) !important;
-    }
-  }
+
+.tabbrowser-tab[pictureinpicture]:not([pinned]) .tab-content::after {
+  /* Shape */
+  display: -moz-inline-box !important;
+  width: 14px;
+  height: 14px;
+  background-size: 14px;
+  -moz-box-ordinal-group: 1 !important;
+  /* Color */
+  fill: currentColor;
+  opacity: 0.8;
+  -moz-context-properties: fill;
+  /* Icon */
+  background-image: url("chrome://global/skin/media/picture-in-picture-open.svg");
 }
+
+.tabbrowser-tab[pictureinpicture]:not([pinned])[selected] .tab-content::after {
+  opacity: 0.95;
+}
+
+/* Close Button's position */
+.tabbrowser-tab[pictureinpicture]:not([pinned]) .tab-close-button {
+  -moz-box-ordinal-group: 2 !important;
+}
+
+#tabbrowser-tabs:not([closebuttons="activetab"]) .tabbrowser-tab[pictureinpicture]:not([pinned]) .tab-close-button {
+  margin-left: 7px !important;
+}
+
+#tabbrowser-tabs:not([closebuttons="activetab"])
+  .tabbrowser-tab[pictureinpicture]:not([pinned]):hover
+  .tab-close-button {
+  margin-left: 2px !important;
+}
+
 /*= Crashed Tab - Don't show Favicons ========================================*/
-@supports -moz-bool-pref("userChrome.tab.crashed") {
-  .tab-icon-image[crashed] {
-    display: none !important;
-  }
+.tab-icon-image[crashed] {
+  display: none !important;
 }
+
 /** Url View UI ***************************************************************/
 /*= Url View - Move icon to left =============================================*/
 @supports -moz-bool-pref("userChrome.urlView.move_icon_to_left") {

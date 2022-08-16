@@ -13,9 +13,8 @@
 @import "newtab_button";
 
 /*= Unloaded Tab - Contents Opacity ===========================================*/
-@include Option("userChrome.tab.unloaded") {
-  @import "unload_tab";
-}
+
+@import "unload_tab";
 
 /*= Clipped tabs =============================================================*/
 @import "clipped_tab";
@@ -24,18 +23,8 @@
 @import "sound_tab";
 
 /*= PictureInPicture Tab - Show PIP Icon =====================================*/
-@include Option("userChrome.tab.pip") {
-  @import "picture_in_picture_tab";
-}
 
-/*= Container Tab - Color line at icon's bottom ==============================*/
-@include Option("userChrome.tab.container") {
-  @include NotOption("userChrome.tabbar.as_titlebar") {
-    @import "container_tab";
-  }
-}
+@import "picture_in_picture_tab";
 
 /*= Crashed Tab - Don't show Favicons ========================================*/
-@include Option("userChrome.tab.crashed") {
-  @import "crashed_tab";
-}
+@import "crashed_tab";

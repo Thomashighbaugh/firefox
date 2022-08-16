@@ -5618,8 +5618,11 @@ See the above repository for updates as well as full license text. */
 }
 /** Hidden ********************************************************************/
 @supports not -moz-bool-pref("userChrome.tabbar.one_liner") {
-  #TabsToolbar:not([hover="true"]) {
-    display: none !important;
+  #TabsToolbar {
+    height: 1px !important;
+  }
+  #TabsToolbar:hover {
+    height: 25px !important;
   }
   @supports -moz-bool-pref("userChrome.hidden.navbar") {
     #nav-bar {
@@ -5630,8 +5633,11 @@ See the above repository for updates as well as full license text. */
 @supports -moz-bool-pref("userChrome.tabbar.one_liner") {
   @supports -moz-bool-pref("userChrome.tabbar.one_liner.responsive") {
     @media screen and (max-width: 1100px) {
-      #TabsToolbar:not([hover="true"]) {
-        display: none !important;
+      #TabsToolbar {
+        height: 1px !important;
+      }
+      #TabsToolbar:hover {
+        height: 25px !important;
       }
       @supports -moz-bool-pref("userChrome.hidden.navbar") {
         #nav-bar {

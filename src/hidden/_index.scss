@@ -1,8 +1,10 @@
 @include OneLinerNavbarContent() {
-  #TabsToolbar:not([hover="true"]) {
-    display: none !important;
+  #TabsToolbar {
+    height: 1px !important;
   }
-
+  #TabsToolbar:hover {
+    height: 25px !important;
+  }
   @include Option("userChrome.hidden.navbar") {
     #nav-bar {
       visibility: collapse; /* display: none is not work */

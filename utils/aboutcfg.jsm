@@ -50,7 +50,7 @@ let EXPORTED_SYMBOLS = [];
     return uuid;
   }
 
-  const urlString = 'chrome://userchromejs/content/aboutconfig/config.xhtml';
+  const urlString = 'chrome://userchrome/content/aboutconfig/config.xhtml';
 
   function VintageAboutConfig() {}
 

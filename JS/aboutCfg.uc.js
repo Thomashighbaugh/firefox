@@ -24,7 +24,7 @@ const config = {
     // autoconfig loader or xiaoxiaoflood's, and didn't modify anything. if it's
     // unable to find the URL for your particular setup, please find it yourself
     // and paste it here, *inside the quotes*
-    pathOverride: "chrome://userchrome/content/resources/aboutconfig/config.xhtml",
+    pathOverride: "",
   };
   
   let { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");

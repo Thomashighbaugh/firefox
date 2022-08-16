@@ -1,14 +1,14 @@
 
 
-# --------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 # Provide Namespace Aliases
 # This file, script loader and friends are located
 content userchromejs ./
 # Where the JS at!
 content userscripts ../JS/
-# Where everything at really
+# Where everything at
 content userchrome ../
-# --------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 
 # ---------------------------------------------------------------------------- #
 # Override the built-in styles for arrowscrollboxes, mainly to replace scrollbuttons with scrollbars.
@@ -35,7 +35,7 @@ override chrome://global/content/xml/XMLPrettyPrint.css ../resources/layout/XMLP
 # The script for the searchbar on about:preferences.
 override chrome://browser/content/preferences/findInPage.js ../resources/script-override/findInPage.js
 
-
+# ---------------------------------------------------------------------------- #
 # Override a bunch of icons that appear all over the browser.
 override chrome://global/skin/icons/check.svg ../resources/check.svg
 override chrome://global/skin/icons/success.svg ../resources/check.svg

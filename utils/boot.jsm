@@ -7,9 +7,17 @@ cmanifest.append("utils");
 cmanifest.append("chrome.manifest");
 Cm.QueryInterface(Ci.nsIComponentRegistrar).autoRegister(cmanifest);
 
+
+
+const {AddonManager} = ChromeUtils.import('resource://gre/modules/AddonManager.jsm');
+if (AddonManager.addExternalExtensionLoader) {
+  const {BootstrapLoader} = ChromeUtils.import('chrome://userchromejs/content/BootstrapLoader.jsm');
+  AddonManager.addExternalExtensionLoader(BootstrapLoader);
+}
+
+ChromeUtils.import('chrome://userchromejs/content/userPrefs.jsm');
 ChromeUtils.import("chrome://userchromejs/content/userChrome.jsm");
 
-ChromeUtils.import("chrome://userchromejs/content/BootstrapLoader.jsm");
 
 console.warn("Browser is executing custom scripts via autoconfig");
 const { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");

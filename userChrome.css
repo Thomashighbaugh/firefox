@@ -6074,57 +6074,12 @@
     transition-delay: 0s !important;
   }
 }
-@supports not -moz-bool-pref("userChrome.autohide.tab.opacity") {
-  @supports not -moz-bool-pref("userChrome.autohide.tab.blur") {
-    .tabbrowser-tab:not([multiselected]) .tab-content:not(:hover):not([selected]) {
-      margin-bottom: -64px;
-    }
-  }
-}
-@supports -moz-bool-pref("userChrome.autohide.tab.opacity") {
-  .tabbrowser-tab:not([multiselected]) .tab-content:not(:hover):not([selected]) {
-    opacity: 0%;
-  }
-}
-@supports -moz-bool-pref("userChrome.autohide.tab.blur") {
-  .tabbrowser-tab:not([multiselected]) .tab-content:not(:hover):not([selected]) {
-    filter: blur(8px);
-  }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .tabbrowser-tab:not([multiselected]) .tab-content:not(:hover):not([selected]) {
-    transition-timing-function: var(--animation-easing-function);
-    transition-duration: 0.2s;
-    transition-delay: 600ms;
-  }
-  .tabbrowser-tab:not([multiselected]) .tab-content:not(:hover):not([selected]):is(:hover, :focus-within) {
-    transition-delay: 0s;
-  }
-  @supports not -moz-bool-pref("userChrome.autohide.tab.opacity") {
-    @supports not -moz-bool-pref("userChrome.autohide.tab.blur") {
-      .tabbrowser-tab:not([multiselected]) .tab-content:not(:hover):not([selected]) {
-        transition-property: margin-bottom;
-      }
-    }
-  }
-  @supports -moz-bool-pref("userChrome.autohide.tab.opacity") {
-    .tabbrowser-tab:not([multiselected]) .tab-content:not(:hover):not([selected]) {
-      transition-property: opacity;
-    }
-  }
-  @supports -moz-bool-pref("userChrome.autohide.tab.blur") {
-    .tabbrowser-tab:not([multiselected]) .tab-content:not(:hover):not([selected]) {
-      transition-property: filter;
-    }
-  }
-}
-
 @supports -moz-bool-pref("userChrome.autohide.tabbar") or -moz-bool-pref("userChrome.autohide.navbar") or -moz-bool-pref(
     "userChrome.autohide.bookmarkbar"
   )
   or -moz-bool-pref("userChrome.tabbar.one_liner") {
   :root {
-    --uc-tabbar-height: var(--tab-min-height);
+    --uc-tabbar-height: 20px;
     --uc-tabbar-hide-height: calc(-1 * var(--uc-tabbar-height));
     --uc-navbar-height: calc(16px + 2 * (var(--toolbarbutton-inner-padding) + var(--toolbarbutton-outer-padding)));
     --uc-navbar-hide-height: calc(-1 * var(--uc-navbar-height));

@@ -6576,10 +6576,8 @@
 }
 /** Hidden ********************************************************************/
 @supports not -moz-bool-pref("userChrome.tabbar.one_liner") {
-  @supports -moz-bool-pref("userChrome.hidden.tabbar") {
-    #TabsToolbar {
-      display: none !important;
-    }
+  #TabsToolbar {
+    display: none !important;
   }
   @supports -moz-bool-pref("userChrome.hidden.navbar") {
     #nav-bar {
@@ -6590,10 +6588,8 @@
 @supports -moz-bool-pref("userChrome.tabbar.one_liner") {
   @supports -moz-bool-pref("userChrome.tabbar.one_liner.responsive") {
     @media screen and (max-width: 1100px) {
-      @supports -moz-bool-pref("userChrome.hidden.tabbar") {
-        #TabsToolbar {
-          display: none !important;
-        }
+      #TabsToolbar {
+        display: none !important;
       }
       @supports -moz-bool-pref("userChrome.hidden.navbar") {
         #nav-bar {

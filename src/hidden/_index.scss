@@ -1,8 +1,6 @@
 @include OneLinerNavbarContent() {
-  @include Option("userChrome.hidden.tabbar") {
-    #TabsToolbar {
-      display: none !important;
-    }
+  #TabsToolbar {
+    display: none !important;
   }
 
   @include Option("userChrome.hidden.navbar") {
@@ -26,20 +24,15 @@
   }
 
   @include Option("userChrome.hidden.sidebar_header.vertical_tab_only") {
-    #sidebar-box:is(
-      [sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"],
-      [sidebarcommand="tabcenter-reborn_ariasuni-sidebar-action"],
-      [sidebarcommand="sidebartabs_asamuzak_jp-sidebar-action"]
-    ) #sidebar-header {
+    #sidebar-box:is([sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"], [sidebarcommand="tabcenter-reborn_ariasuni-sidebar-action"], [sidebarcommand="sidebartabs_asamuzak_jp-sidebar-action"])
+      #sidebar-header {
       display: none !important;
     }
   }
 }
 
 @include Option("userChrome.hidden.urlbar_iconbox") {
-  #identity-box[pageproxystate="valid"]
-  #identity-box[pageproxystate="valid"]
-  #identity-box[pageproxystate="valid"] {
+  #identity-box[pageproxystate="valid"] #identity-box[pageproxystate="valid"] #identity-box[pageproxystate="valid"] {
     .notSecureText #identity-icon-label,
     .chromeUI #identity-icon-box,
     &.extensionPage #identity-icon-box {

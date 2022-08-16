@@ -2,19 +2,38 @@
 
 # --------------------------------------------------- #
 # Provide Namespace Aliases
-resource userchromejs ../
+# This file, script loader and friends are located
 content userchromejs ./
+# Where the JS at!
 content userscripts ../JS/
-content userchrome ../resources/
+# Where everything at really
+content userchrome ../
 # --------------------------------------------------- #
 
-
+# ---------------------------------------------------------------------------- #
 # Override the built-in styles for arrowscrollboxes, mainly to replace scrollbuttons with scrollbars.
 override chrome://global/skin/arrowscrollbox.css ../resources/layout/arrowscrollbox.css
 
+# ---------------------------------------------------------------------------- #
 # Override the tab element to restore the tab sound button and move the close button, among other things.
 override chrome://browser/content/tabbrowser-tab.js ../resources/script-override/tabMods.uc.js
 
+# ---------------------------------------------------------------------------- #
+# Basic content stylesheets, e.g., for plain text and "view source" documents.
+resource content-accessible chrome://userchrome/resources/content/layout/contentaccessible/ contentaccessible=yes
+
+# ---------------------------------------------------------------------------- #
+# Directory listing stylesheet, kind of like a file explorer.
+# Used when navigating to a folder e.g., file://: or resource://gre
+override chrome://global/skin/dirListing/dirListing.css ../resources/layout/dirListing.css
+
+# ---------------------------------------------------------------------------- #
+# XML document stylesheet. Used when opening an XML file or response.
+override chrome://global/content/xml/XMLPrettyPrint.css ../resources/layout/XMLPrettyPrint.css
+
+# ---------------------------------------------------------------------------- #
+# The script for the searchbar on about:preferences.
+override chrome://browser/content/preferences/findInPage.js ../resources/script-override/findInPage.js
 
 
 # Override a bunch of icons that appear all over the browser.
@@ -116,16 +135,6 @@ override chrome://activity-stream/content/data/content/assets/glyph-info-16.svg 
 override chrome://activity-stream/content/data/content/assets/glyph-webextension-16.svg ../resources/material/extension.svg
 override chrome://devtools/content/debugger/images/sources/extension.svg ../resources/material/extension.svg
 
-# Basic content stylesheets, e.g., for plain text and "view source" documents.
-resource content-accessible chrome://userchrome/content/layout/contentaccessible/ contentaccessible=yes
-# Directory listing stylesheet, kind of like a file explorer.
-# Used when navigating to a folder e.g., file:///C: or resource://gre
-override chrome://global/skin/dirListing/dirListing.css ../resources/layout/dirListing.css
-# XML document stylesheet. Used when opening an XML file or response.
-override chrome://global/content/xml/XMLPrettyPrint.css ../resources/layout/XMLPrettyPrint.css
-# The script for the searchbar on about:preferences.
-# Its highlight color doesn't match the theme, so I changed how it works.
-override chrome://browser/content/preferences/findInPage.js ../resources/script-override/findInPage.js
 
 
 

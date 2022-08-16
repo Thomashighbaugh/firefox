@@ -98,7 +98,7 @@
   */
  function buildJarURI(aJarfile, aPath) {
    let uri = Services.io.newFileURI(aJarfile);
-   uri = "jar:" + uri.spec + "!/" + aPath;
+   uri = "jar:" + uri.spec + "/" + aPath;
    return Services.io.newURI(uri);
  }
  

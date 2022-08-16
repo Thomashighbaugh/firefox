@@ -62,7 +62,7 @@ var AddonbarVertical = {
 	  tb_addonbarv.setAttribute("label", addonbar_v_label);
 	  tb_addonbarv.setAttribute("lockiconsize","true");
 	  tb_addonbarv.setAttribute("defaultset","spring");
-	  
+	  /* -------------------------------------------------------------------------- */
 	  toolbox_abv.appendChild(tb_addonbarv);
 	  
 	  CustomizableUI.registerArea("addonbar_v", {legacy: true});
@@ -102,7 +102,7 @@ var AddonbarVertical = {
 	  } catch(e) {}
 	  
 	  if(addonbar_v_togglebutton) {
-	  
+	  /* -------------------------------------------------------------------------- */
 		CustomizableUI.createWidget({
 			id: "tooglebutton_addonbar_v", // button id
 			defaultArea: CustomizableUI.AREA_NAVBAR,
@@ -137,7 +137,7 @@ var AddonbarVertical = {
 				
 		});
 	  }
-
+/* -------------------------------------------------------------------------- */
 	  // 'Ctr + Alt + /' on Windows/Linux or 'Cmd + Alt + /' on macOS to toggle vertical add-on bar
 	  var key = document.createXULElement('key');
 	  if(appversion < 69) key = document.createElement("key");
@@ -162,7 +162,7 @@ var AddonbarVertical = {
 	  
 	 }
 	} catch(e) {}
-	
+	/* -------------------------------------------------------------------------- */
 	// style toolbar & toggle button
 	var addonbar_v_style = '';
 	var tooglebutton_addonbar_v_style = '';
@@ -181,7 +181,7 @@ var AddonbarVertical = {
 		  }\
 		';
 	  }
-
+/* -------------------------------------------------------------------------- */
 	  addonbar_v_style ='\
 		#addonbar_v { \
 		  -moz-appearance: none !important; \
@@ -292,8 +292,7 @@ var AddonbarVertical = {
 /* initialization delay workaround */
 document.addEventListener("DOMContentLoaded", AddonbarVertical.init(), false);
 /* Use the below code instead of the one above this line, if issues occur */
-/*
+
 setTimeout(function(){
   AddonbarVertical.init();
 },2000);
-*/

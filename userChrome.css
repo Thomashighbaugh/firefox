@@ -5617,9 +5617,28 @@ See the above repository for updates as well as full license text. */
   }
 }
 /** Hidden ********************************************************************/
-@supports -moz-bool-pref("userChrome.hidden.navbar") {
-  #nav-bar {
-    visibility: collapse; /* display: none is not work */
+@supports not -moz-bool-pref("userChrome.tabbar.one_liner") {
+  #TabsToolbar {
+    display: none !important;
+  }
+  @supports -moz-bool-pref("userChrome.hidden.navbar") {
+    #nav-bar {
+      visibility: collapse; /* display: none is not work */
+    }
+  }
+}
+@supports -moz-bool-pref("userChrome.tabbar.one_liner") {
+  @supports -moz-bool-pref("userChrome.tabbar.one_liner.responsive") {
+    @media screen and (max-width: 1100px) {
+      #TabsToolbar {
+        display: none !important;
+      }
+      @supports -moz-bool-pref("userChrome.hidden.navbar") {
+        #nav-bar {
+          visibility: collapse; /* display: none is not work */
+        }
+      }
+    }
   }
 }
 @supports -moz-bool-pref("userChrome.hidden.tab_icon") {

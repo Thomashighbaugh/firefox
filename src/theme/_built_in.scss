@@ -2,7 +2,7 @@
 
 /*= Lightmode - Color darker =================================================*/
 #{built-in-light-theme()} {
-  --lwt-accent-color: #f4f4f7 !important; /* Original: rgb(240, 240, 244) */
+  --lwt-accent-color: rgb(229, 229, 235) !important; /* Original: rgb(240, 240, 244) */
 }
 @include OS($win10, $mac) {
   #{selector.nest(built-in-light-theme(), "#navigator-toolbox")} {

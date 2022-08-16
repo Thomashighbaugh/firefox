@@ -15,7 +15,7 @@ Cm.QueryInterface(Ci.nsIComponentRegistrar).autoRegister(cmanifest);
 //   AddonManager.addExternalExtensionLoader(BootstrapLoader);
 // }
 
-ChromeUtils.import('chrome://userchromejs/content/userPrefs.jsm');
+// ChromeUtils.import('chrome://userchromejs/content/userPrefs.jsm');
 ChromeUtils.import("chrome://userchromejs/content/userChrome.jsm");
 
 

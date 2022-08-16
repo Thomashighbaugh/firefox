@@ -1,4 +1,3 @@
-
 /*                          ______ __                               */
 /* .--.--.-----.-----.----.|      |  |--.----.-----.--------.-----. */
 /* |  |  |__ --|  -__|   _||   ---|     |   _|  _  |        |  -__| */
@@ -30,11 +29,10 @@ the use of JS. For that see the JS directory */
 @import url("userChrome/popup");
 @import url("userChrome/sidebar");
 @import url("userChrome/tabs");
-
+@import url("userChrome/hide-tabbar");
 /* ------------------------------------------------- */
 /*                  Namespace Calls                  */
 /* ------------------------------------------------- */
-/* Imports should always precede namespace calls according to Firefox's docs so here they are! */ 
-
+/* Imports should always precede namespace calls according to Firefox's docs so here they are! */
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 @namespace html "http://www.w3.org/1999/xhtml";

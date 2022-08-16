@@ -4,10 +4,9 @@
 # Provide Namespace Aliases
 # This file, script loader and friends are located
 content userchromejs ./
-# Where the JS at!
 content userscripts ../JS/
-# Where everything at
-content userchrome ../resources
+content userchrome ../resources/
+
 # ---------------------------------------------------------------------------- #
 
 # ---------------------------------------------------------------------------- #

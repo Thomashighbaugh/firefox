@@ -59,19 +59,6 @@ function resolveChromePath(str){
   return parts.slice(parts.indexOf("chrome") + 1,parts.length - 1).join("/");
 }
 
-function traverseToMainProfile(str){
-    let dir = Services.dirsvc.get(str,Ci.nsIFile);
-    if (!dir.exists()) {
-      let toAddChrome = false;
-      while (dir.target.includes('chrome_debugger_profile')) {
-        dir = dir.parent;
-        toAddChrome = true;
-      }
-      if (toAddChrome) dir.append('chrome');
-    }
-    return dir;
-  }
-
 const SHARED_GLOBAL = {};
 Object.defineProperty(SHARED_GLOBAL,"widgetCallbacks",{value:new Map()});
 
@@ -97,7 +84,7 @@ const SCRIPT_DIR = resolveChromePath('chrome://userscripts/content/');
 const RESOURCE_DIR = resolveChromePath('chrome://userchrome/content/');
 const BASE_FILEURI = Services.io.getProtocolHandler('file')
                     .QueryInterface(Ci.nsIFileProtocolHandler)
-                    .getURLSpecFromDir(traverseToMainProfile('UChrm'));
+                    .getURLSpecFromDir(Services.dirsvc.get('UChrm',Ci.nsIFile));
 
 class ScriptData {
   constructor(leafName, headerText){
@@ -200,7 +187,7 @@ function getDirEntry(filename,isLoader = false){
   filename = filename.replace("\\","/");
   let pathParts = ((filename.startsWith("..") ? "" : (isLoader ? SCRIPT_DIR : RESOURCE_DIR)) + "/" + filename)
                   .split("/").filter( (a) => (!!a && a != "..") );
-  let entry = traverseToMainProfile('UChrm');
+  let entry = Services.dirsvc.get('UChrm',Ci.nsIFile);
   
   for(let part of pathParts){
     entry.append(part)
@@ -451,7 +438,7 @@ const utils = {
   get chromeDir(){
     return {
       get files(){
-        const dir = traverseToMainProfile('UChrm');
+        const dir = Services.dirsvc.get('UChrm',Ci.nsIFile);
         return dir.directoryEntries.QueryInterface(Ci.nsISimpleEnumerator)
       },
       uri: BASE_FILEURI

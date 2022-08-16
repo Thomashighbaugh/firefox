@@ -1,3 +1,4 @@
+// skip 1st line
 try {
   
   let {
@@ -6,22 +7,8 @@ try {
   manager: Cm,
   utils: Cu
   } = Components;
-  function traverseToMainProfile(str) {
-    let dir = Cc["@mozilla.org/file/directory_service;1"]
-        .getService(Ci.nsIProperties)
-        .get(str, Ci.nsIFile);
-    if (!dir.exists()) {
-        let toAddChrome = false;
-        while (dir.target.includes("chrome_debugger_profile")) {
-            dir = dir.parent;
-            toAddChrome = true;
-        }
-        if (toAddChrome) dir.append("chrome");
-    }
-    return dir;
-}
   
-let cmanifest = traverseToMainProfile('UChrm');
+  let cmanifest = Cc['@mozilla.org/file/directory_service;1'].getService(Ci.nsIProperties).get('UChrm', Ci.nsIFile);
   cmanifest.append('utils');
   cmanifest.append('chrome.manifest');
   

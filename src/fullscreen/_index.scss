@@ -1,9 +1,3 @@
-@include Option("userChrome.fullscreen.overlap") {
-  @include Option("browser.fullscreen.autohide") {
-    @import "overlap";
-  }
-}
+@import "overlap";
 
-@include Option("userChrome.fullscreen.show_bookmarkbar") {
-  @import "show_bookmarkbar";
-}
+@import "show_bookmarkbar";

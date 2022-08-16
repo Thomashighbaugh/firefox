@@ -31,34 +31,28 @@
     margin-top: 0 !important;
   }
 }
-@include NotOption("userChrome.tab.lepton_like_padding") {
-  @include NotOption("userChrome.tab.photon_like_padding") {
-    :root {
-      &:not([uidensity]) {
-        --tab-min-height: 22px !important; /* 38px -> 36px */
-      }
-      &[uidensity="compact"] {
-        --tab-min-height: 15px !important; /* 36px -> 29px */
-      }
-    }
+:root {
+  &:not([uidensity]) {
+    --tab-min-height: 22px !important; /* 38px -> 36px */
+  }
+  &[uidensity="compact"] {
+    --tab-min-height: 15px !important; /* 36px -> 29px */
   }
 }
-@include Option("userChrome.tab.connect_to_window") {
-  #TabsToolbar {
-    --toolbarbutton-inner-padding: calc(
-      (var(--tab-min-height) - 18px) / 2
-    ) !important; /* Prevent overflow pinned tab bottom margin */
-  }
+#TabsToolbar {
+  --toolbarbutton-inner-padding: calc(
+    (var(--tab-min-height) - 18px) / 2
+  ) !important; /* Prevent overflow pinned tab bottom margin */
+}
 
-  :root:not([uidensity="compact"]) #tabbrowser-arrowscrollbox,
-  #tabbrowser-arrowscrollbox[overflowing="true"] > .tabbrowser-tab[pinned="true"],
-  #tabbrowser-arrowscrollbox[overflowing="true"] > .tabbrowser-tab[pinned="true"] .tab-stack,
-  #tabbrowser-arrowscrollbox[overflowing="true"] > .tabbrowser-tab[pinned="true"] .tab-content {
-    max-height: var(--tab-min-height) !important; /* Force apply height */
-  }
-  :root[uidensity="compact"] #tabbrowser-arrowscrollbox {
-    height: var(--tab-min-height) !important;
-  }
+:root:not([uidensity="compact"]) #tabbrowser-arrowscrollbox,
+#tabbrowser-arrowscrollbox[overflowing="true"] > .tabbrowser-tab[pinned="true"],
+#tabbrowser-arrowscrollbox[overflowing="true"] > .tabbrowser-tab[pinned="true"] .tab-stack,
+#tabbrowser-arrowscrollbox[overflowing="true"] > .tabbrowser-tab[pinned="true"] .tab-content {
+  max-height: var(--tab-min-height) !important; /* Force apply height */
+}
+:root[uidensity="compact"] #tabbrowser-arrowscrollbox {
+  height: var(--tab-min-height) !important;
 }
 
 /* Scroll Button - Size Fix */

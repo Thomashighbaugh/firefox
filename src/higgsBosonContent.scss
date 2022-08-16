@@ -6,8 +6,7 @@
 @use "utils/proton_elements" as Proton;
 @use "sass:selector";
 
-@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
-@namespace html url("http://www.w3.org/1999/xhtml");
+
 
 /** Video player **************************************************************/
 @import "contents/video_player";
@@ -34,6 +33,11 @@
   @import "contents/proton_contents";
 }
 
+/** Monospace *****************************************************************/
+@include Option("userContent.page.monospace") {
+  @import "contents/monospace";
+}
+
 /** Menu - Icons Layout *******************************************************/
 @include Option("userChrome.icon.menu") {
   @import "contents/context_menu";
@@ -41,3 +45,6 @@
 
 /** Download Panel ************************************************************/
 @import "contents/downloads";
+
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");

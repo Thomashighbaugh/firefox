@@ -306,7 +306,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
 
     a:hover {
       text-decoration: none !important;
-      color: #fff !important;
+      color: #f4f4f7 !important;
       opacity: 1 !important;
     }
 
@@ -591,7 +591,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
       padding: 0 0.2em !important;
       border: 1px solid #888 !important;
       background-color: #666 !important;
-      color: #fff !important;
+      color: #f4f4f7 !important;
     }
 
     #pt-notifications-alert .mw-echo-notifications-badge span,
@@ -728,7 +728,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
     }
 
     #mw-panel > .portal > h3 {
-      color: #fff !important;
+      color: #f4f4f7 !important;
       font-size: 1rem !important;
       margin-inline: 7px !important;
       padding-bottom: 1px !important;
@@ -1840,8 +1840,8 @@ You can use greasemonkey or any other form of monkey that supports the document-
     }
 
     .save.mw-ui-button.mw-ui-progressive {
-      background-color: #fff0 !important;
-      color: #fff !important;
+      background-color: #f4f4f70 !important;
+      color: #f4f4f7 !important;
       border: none !important;
     }
 
@@ -1972,7 +1972,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
       width: 100% !important;
       border: 1px solid var(--uc-wiki-popup-border-color) !important;
       border-radius: 0 0 4px 4px !important;
-      background-color: #fff;
+      background-color: #f4f4f7;
       z-index: 1;
       background-color: var(--uc-wiki-popup-bg) !important;
       overflow: auto !important;
@@ -2518,7 +2518,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
       position: absolute !important;
       border: 11px solid transparent !important;
       border-top: 0 !important;
-      border-bottom: 11px solid #ffffff !important;
+      border-bottom: 11px solid #f4f4f7 !important;
       top: -7px !important;
       left: 7px !important;
       visibility: collapse !important;
@@ -2551,7 +2551,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
       position: absolute !important;
       border: 12px solid transparent !important;
       border-top: 0 !important;
-      border-bottom: 12px solid #ffffff !important;
+      border-bottom: 12px solid #f4f4f7 !important;
       top: -8px !important;
       left: 6px !important;
       z-index: 112 !important;
@@ -2573,7 +2573,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
       position: absolute !important;
       border: 12px solid transparent !important;
       border-top: 0 !important;
-      border-bottom: 12px solid #ffffff !important;
+      border-bottom: 12px solid #f4f4f7 !important;
       top: -8px !important;
       left: 290px !important;
       visibility: collapse !important;
@@ -2626,7 +2626,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
       position: absolute !important;
       border: 12px solid transparent !important;
       border-bottom: 0 !important;
-      border-top: 12px solid #ffffff !important;
+      border-top: 12px solid #f4f4f7 !important;
       bottom: -8px !important;
       left: 290px !important;
       z-index: 112 !important;
@@ -2652,7 +2652,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
       position: absolute !important;
       border: 12px solid transparent !important;
       border-bottom: 0 !important;
-      border-top: 12px solid #ffffff !important;
+      border-top: 12px solid #f4f4f7 !important;
       bottom: -8px !important;
       left: 417px !important;
       visibility: collapse !important;
@@ -2764,7 +2764,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
       width: 100% !important;
       height: 20px !important;
       background-color: transparent !important;
-      background-image: linear-gradient(hsla(0, 0%, 100%, 0), #ffffff) !important;
+      background-image: linear-gradient(hsla(0, 0%, 100%, 0), #f4f4f7) !important;
       opacity: 0 !important;
       pointer-events: none !important;
       transition: opacity 250ms ease !important;
@@ -2817,7 +2817,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
     .mw-interlanguage-selector.mw-ui-button:hover,
     .mw-interlanguage-selector.mw-ui-button:active {
       background-color: hsla(0, 0%, 0%, 0.2) !important;
-      color: #fff !important;
+      color: #f4f4f7 !important;
       border-color: transparent !important;
       border: none !important;
     }
@@ -2877,7 +2877,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
     }
 
     .rt-tooltipContent a:hover {
-      color: #fff !important;
+      color: #f4f4f7 !important;
     }
 
     .rt-settingsLink {
@@ -3228,7 +3228,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
     #bodyContent .portal ul {
       border-radius: 4px !important;
       background-color: var(--uc-wiki-box-bg) !important;
-      color: #fff !important;
+      color: #f4f4f7 !important;
       box-shadow: 0 0 15px 2px hsla(0, 0%, 0%, 0.1), 0 0 3px 1px hsla(0, 0%, 0%, 0.2) !important;
     }
 
@@ -3237,12 +3237,12 @@ You can use greasemonkey or any other form of monkey that supports the document-
     }
 
     #mw-content-text .portal a:hover {
-      color: #fff !important;
+      color: #f4f4f7 !important;
       text-decoration: none !important;
     }
 
     #mw-content-text .portal a:active {
-      color: #fff !important;
+      color: #f4f4f7 !important;
       text-decoration: none !important;
     }
 
@@ -3252,7 +3252,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
     #mw-navigation .portal ul li:active {
       border-radius: 3px !important;
       background-color: hsla(0, 0%, 100%, 0.075) !important;
-      color: #fff !important;
+      color: #f4f4f7 !important;
     }
 
     #mw-navigation .portal ul li,
@@ -3982,7 +3982,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
     .ui-widget-header.ui-corner-all.ui-helper-clearfix {
       border: none !important;
       background: var(--uc-wiki-box-bg) !important;
-      color: #fff !important;
+      color: #f4f4f7 !important;
       font-family: "Source Sans Pro" !important;
       font-weight: normal !important;
       font-size: 18px !important;
@@ -3994,7 +3994,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
     body .ui-dialog {
       border: none !important;
       background: var(--uc-wiki-box-bg) !important;
-      color: #fff !important;
+      color: #f4f4f7 !important;
       font-family: "Source Sans Pro" !important;
       font-size: 14px !important;
       padding: 5px !important;
@@ -4050,7 +4050,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
       border: none !important;
       background: var(--uc-wiki-box-bg) !important;
       background-image: none !important;
-      color: #fff !important;
+      color: #f4f4f7 !important;
     }
 
     .ui-widget-header.ui-helper-clearfix.control-bar:not(.block) .k-options,
@@ -4063,7 +4063,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
     .ui-widget-header.ui-helper-clearfix.control-bar:not(.block) .time-disp {
       float: left !important;
       position: relative !important;
-      color: #fffa !important;
+      color: #f4f4f7a !important;
       bottom: 2px !important;
     }
 
@@ -4189,14 +4189,14 @@ You can use greasemonkey or any other form of monkey that supports the document-
     .suggestions-special:focus .special-label,
     .suggestions-result-current .special-query,
     .suggestions-result-current .special-label {
-      color: #fff !important;
+      color: #f4f4f7 !important;
     }
 
     .suggestions-result:hover,
     .suggestions-result:active,
     .suggestions-result:focus,
     .suggestions-result-current {
-      color: #fff !important;
+      color: #f4f4f7 !important;
       background-color: hsl(180, 2%, 10%) !important;
       border-radius: 2px !important;
     }
@@ -4247,7 +4247,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
 
     .mw-ui-button.mw-ui-progressive {
       background-color: hsl(0, 0%, 17.3%) !important;
-      color: #fff !important;
+      color: #f4f4f7 !important;
       border: 1px solid transparent !important;
       opacity: 0.7 !important;
       transition: 0.15s ease-in-out !important;
@@ -4259,7 +4259,7 @@ You can use greasemonkey or any other form of monkey that supports the document-
 
     .mw-ui-button.mw-ui-progressive:hover {
       background-color: hsl(0, 0%, 17.3%) !important;
-      color: #fff !important;
+      color: #f4f4f7 !important;
       border: 1px solid transparent !important;
       opacity: 1 !important;
     }

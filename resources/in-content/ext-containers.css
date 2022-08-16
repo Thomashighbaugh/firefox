@@ -8,1015 +8,1012 @@
 
 @-moz-document url-prefix("moz-extension://14960f03-eca3-472b-b4d2-0b7f831ebe41/pageActionPopup.html")
 {
-    :root {
-        background-color: var(--uc-arrowpanel-background) !important;
-        font-size: 12px !important;
-        color: var(--uc-arrowpanel-color) !important;
-        letter-spacing: 0 !important;
-    }
+  :root {
+    background-color: var(--uc-arrowpanel-background) !important;
+    font-size: 12px !important;
+    color: var(--uc-arrowpanel-color) !important;
+    letter-spacing: 0 !important;
+  }
 
-    svg:root {
-        background: none !important;
-    }
+  svg:root {
+    background: none !important;
+  }
 
-    html,
+  html,
+  body {
+    min-block-size: 0 !important;
+  }
+
+  body {
+    --hr-grey: var(--uc-desaturate-dimmed) !important;
+    font-size: 12px !important;
+    color: inherit !important;
+    letter-spacing: inherit !important;
+    padding: var(--menupopup-inner-padding-magnitude) !important;
+    padding-top: 0 !important;
+    min-inline-size: 0px !important;
+    inline-size: calc(var(--overflow-size) + 249px) !important;
+    max-inline-size: 300px !important;
+    box-sizing: border-box !important;
+    background: none !important;
+  }
+
+  h3.title {
+    padding-block: 8px 4px !important;
+    block-size: 40px !important;
+    min-height: 40px !important;
+    white-space: nowrap !important;
+    font-family: inherit !important;
+    font-weight: normal !important;
+    font-size: 1.1em !important;
+    line-height: 28px !important;
+    text-align: center !important;
+    user-select: none;
+    color: inherit !important;
+    letter-spacing: inherit !important;
+  }
+
+  hr {
+    padding: 0 !important;
+    margin: var(--menupopup-inner-padding) !important;
+  }
+
+  .scrollable,
+  .identities-list {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .menu {
+    padding-block: revert !important;
+  }
+
+  .menu-item {
+    cursor: default !important;
+    border-radius: var(--context-menuitem-border-radius) !important;
+    inline-size: unset !important;
+    display: flex !important;
+    flex-flow: row nowrap;
+    padding-inline: 0 8px !important;
+    min-height: var(--subviewbutton-height) !important;
+    user-select: none !important;
+  }
+
+  .controller,
+  .hover-highlight {
+    transition: none !important;
+  }
+
+  .hover-highlight:is(:focus):not(:hover, :focus-visible) {
+    background: revert !important;
+    color: inherit !important;
+  }
+
+  .hover-highlight:is(:hover, :focus-visible) {
+    color: inherit !important;
+    background: var(--uc-arrowpanel-dimmed) !important;
+  }
+
+  .hover-highlight:is(:hover, :focus-visible):active {
+    background: var(--uc-arrowpanel-dimmed-further) !important;
+  }
+
+  .menu-item td {
+    align-items: center !important;
+    overflow: clip !important;
+  }
+
+  .menu-icon {
+    margin: 0 !important;
+    margin-inline: 6px 8px !important;
+    inline-size: 16px !important;
+  }
+
+  @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
     body {
-        min-block-size: 0 !important;
-    }
-
-    body {
-        --hr-grey: var(--uc-desaturate-dimmed) !important;
-        font-size: 12px !important;
-        color: inherit !important;
-        letter-spacing: inherit !important;
-        padding: var(--menupopup-inner-padding-magnitude) !important;
-        padding-top: 0 !important;
-        min-inline-size: 0px !important;
-        inline-size: calc(var(--overflow-size) + 249px) !important;
-        max-inline-size: 300px !important;
-        box-sizing: border-box !important;
-        background: none !important;
+      font-family: SF Pro Text, Segoe UI, sans-serif !important;
+      font-kerning: normal !important;
     }
 
     h3.title {
-        padding-block: 8px 4px !important;
-        block-size: 40px !important;
-        min-height: 40px !important;
-        white-space: nowrap !important;
-        font-family: inherit !important;
-        font-weight: normal !important;
-        font-size: 1.1em !important;
-        line-height: 28px !important;
-        text-align: center !important;
-        user-select: none;
-        color: inherit !important;
-        letter-spacing: inherit !important;
+      font-family: SF Pro Display, Segoe UI, sans-serif !important;
+      font-kerning: normal !important;
+      font-size: 1.1em !important;
+      font-weight: var(--uc-font-weight-bold, 600) !important;
     }
-
-    hr {
-        padding: 0 !important;
-        margin: var(--menupopup-inner-padding) !important;
-    }
-
-    .scrollable,
-    .identities-list {
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    .menu {
-        padding-block: revert !important;
-    }
-
-    .menu-item {
-        cursor: default !important;
-        border-radius: var(--context-menuitem-border-radius) !important;
-        inline-size: unset !important;
-        display: flex !important;
-        flex-flow: row nowrap;
-        padding-inline: 0 8px !important;
-        min-height: var(--subviewbutton-height) !important;
-        user-select: none !important;
-    }
-
-    .controller,
-    .hover-highlight {
-        transition: none !important;
-    }
-
-    .hover-highlight:is(:focus):not(:hover, :focus-visible) {
-        background: revert !important;
-        color: inherit !important;
-    }
-
-    .hover-highlight:is(:hover, :focus-visible) {
-        color: inherit !important;
-        background: var(--uc-arrowpanel-dimmed) !important;
-    }
-
-    .hover-highlight:is(:hover, :focus-visible):active {
-        background: var(--uc-arrowpanel-dimmed-further) !important;
-    }
-
-    .menu-item td {
-        align-items: center !important;
-        overflow: clip !important;
-    }
-
-    .menu-icon {
-        margin: 0 !important;
-        margin-inline: 6px 8px !important;
-        inline-size: 16px !important;
-    }
-
-    @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
-        body {
-            font-family: SF Pro Text, Segoe UI, sans-serif !important;
-            font-kerning: normal !important;
-        }
-
-        h3.title {
-            font-family: SF Pro Display, Segoe UI, sans-serif !important;
-            font-kerning: normal !important;
-            font-size: 1.1em !important;
-            font-weight: var(--uc-font-weight-bold, 600) !important;
-        }
-    }
+  }
 }
 
 @-moz-document url-prefix("moz-extension://14960f03-eca3-472b-b4d2-0b7f831ebe41/popup.html")
 {
-    :root {
-        background-color: var(--uc-arrowpanel-background) !important;
-        font-size: 12px !important;
-        color: var(--uc-arrowpanel-color) !important;
-        letter-spacing: 0 !important;
-        scrollbar-width: none !important;
-    }
+  :root {
+    background-color: var(--uc-arrowpanel-background) !important;
+    font-size: 12px !important;
+    color: var(--uc-arrowpanel-color) !important;
+    letter-spacing: 0 !important;
+    scrollbar-width: none !important;
+  }
 
-    svg:root {
-        background: none !important;
-    }
+  svg:root {
+    background: none !important;
+  }
 
-    html,
+  html,
+  body {
+    min-block-size: 0 !important;
+  }
+
+  body {
+    --hr-grey: var(--uc-desaturate-dimmed) !important;
+    --text-grey: var(--uc-arrowpanel-color) !important;
+    font-size: 12px !important;
+    color: inherit !important;
+    letter-spacing: inherit !important;
+    background: none !important;
+  }
+
+  div {
+    user-select: none;
+  }
+
+  input[type="text"] {
+    background-color: var(--uc-desaturate-faint) !important;
+    border-color: var(--uc-desaturate-dimmed) !important;
+    min-height: var(--subviewbutton-height) !important;
+    block-size: unset !important;
+    height: auto !important;
+    border-radius: var(--context-menuitem-border-radius) !important;
+    padding-block: 0 !important;
+  }
+
+  .edit-container-panel input[type="text"] {
+    margin-inline: 2px !important;
+  }
+
+  :focus-visible,
+  :-moz-focusring,
+  :focus + label {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  input[type="text"]:focus-visible {
+    border-color: transparent !important;
+    outline-style: solid !important;
+    outline-width: 1.5px !important;
+    outline-color: var(--in-parent-border-highlight) !important;
+    box-shadow: 0 0 0 3.5px var(--in-parent-border-active-shadow);
+  }
+
+  input[type="checkbox"] {
+    appearance: none !important;
+    min-width: 10px !important;
+    min-height: 10px !important;
+    width: 14px !important;
+    height: 14px !important;
+    margin-inline-end: 4px !important;
+    padding: 0.5px;
+    border-radius: 2px !important;
+    margin: 0;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+    border-color: var(--uc-checkbox-border-color) !important;
+    background-color: var(--uc-arrowpanel-faint) !important;
+  }
+
+  input[type="checkbox"]:is(:hover, :focus-visible) {
+    background-color: var(--uc-arrowpanel-dimmed) !important;
+  }
+
+  input[type="checkbox"]:is(:hover, :focus-visible):active {
+    background-color: var(--uc-arrowpanel-dimmed-further) !important;
+  }
+
+  input[type="checkbox"]:is([checked="true"], :checked) {
+    background-image: url(chrome://userchrome/content/check.svg) !important;
+    border-color: var(--uc-checkbox-checked-border-color) !important;
+    background-color: var(--uc-checkbox-checked-bgcolor) !important;
+  }
+
+  input[type="checkbox"]:is([checked="true"], :checked):is(:hover, :focus-visible) {
+    background-color: var(--uc-checkbox-checked-hover-bgcolor) !important;
+  }
+
+  input[type="checkbox"]:is([checked="true"], :checked):is(:hover, :focus-visible):active {
+    background-color: var(--uc-checkbox-checked-active-bgcolor) !important;
+  }
+
+  h3.title,
+  .proxy-panel-title {
+    background: none !important;
+    padding-block: 8px 4px !important;
+    block-size: 40px !important;
+    max-block-size: unset !important;
+    min-height: 40px !important;
+    white-space: nowrap !important;
+    padding-inline: 16px !important;
+    font-family: inherit !important;
+    font-weight: normal !important;
+    font-size: 1.1em !important;
+    line-height: 28px !important;
+    text-align: center !important;
+    user-select: none;
+    color: inherit !important;
+    letter-spacing: inherit !important;
+    box-shadow: none !important;
+  }
+
+  h3.proxy-panel-title {
+    padding-bottom: calc(((40px - 1.1em) / 2) + var(--menupopup-inner-padding-magnitude)) !important;
+    min-height: 44.5px !important;
+    margin-inline: var(--menupopup-inner-padding-magnitude) !important;
+    inline-size: calc(100% - (var(--menupopup-inner-padding-magnitude) * 2)) !important;
+  }
+
+  h4 {
+    font-weight: 400;
+    font-size: 1.1em !important;
+  }
+
+  .sub-header-wrapper {
+    margin: revert !important;
+    color: inherit !important;
+  }
+
+  .sub-header {
+    padding-inline: 10px !important;
+    color: inherit !important;
+  }
+
+  .info-icon {
+    fill-opacity: 0.8;
+    -moz-context-properties: fill, fill-opacity;
+    fill: var(--ui-text-80);
+    cursor: default !important;
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: var(--general-button-border-radius);
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    inset-block-start: 10.5px !important;
+    right: 10.5px !important;
+  }
+
+  .info-icon:is(:hover, :focus-visible) {
+    fill-opacity: 1;
+    background-color: var(--uc-arrowpanel-dimmed);
+  }
+
+  .info-icon:hover:active {
+    background-color: var(--uc-arrowpanel-dimmed-further);
+  }
+
+  .info-icon img {
+    display: none;
+  }
+
+  .info-icon::before {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(chrome://userchrome/content/info.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  hr {
+    margin: var(--menupopup-inner-padding-magnitude) !important;
+    padding-block: 0 !important;
+  }
+
+  .panel {
+    min-block-size: 0 !important;
+    transition: none !important;
+    background: none !important;
+  }
+
+  .scrollable,
+  .identities-list {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .scrollable {
+    scrollbar-width: auto !important;
+  }
+
+  .identities-list {
+    margin-inline: var(--menupopup-inner-padding-magnitude) !important;
+    inline-size: unset !important;
+    max-block-size: 600px !important;
+    padding-bottom: var(--menupopup-inner-padding-magnitude) !important;
+  }
+
+  table[hidden]:empty {
+    display: flex !important;
+    flex-flow: row nowrap !important;
+    height: 20px !important;
+    margin-bottom: 4px !important;
+    padding-inline: 10px !important;
+    align-items: center !important;
+    color: var(--context-menu-disabled-color) !important;
+  }
+
+  table[hidden]:empty::before {
+    content: "(empty)" !important;
+  }
+
+  #edit-container-assignments > .scrollable {
+    padding-bottom: var(--menupopup-inner-padding-magnitude) !important;
+  }
+
+  #container-panel .identities-list {
+    border-bottom: 1px solid var(--uc-desaturate-dimmed) !important;
+  }
+
+  v-padding-hack-footer {
+    display: none !important;
+  }
+
+  v-padding-hack-4 {
+    display: none !important;
+  }
+
+  .bottom-btn {
+    appearance: none !important;
+    position: relative !important;
+    height: revert !important;
+    line-height: var(--subviewbutton-height) !important;
+    min-height: var(--subviewbutton-height) !important;
+    margin: var(--menupopup-inner-padding-magnitude) !important;
+    padding-inline-start: 8px !important;
+    cursor: default !important;
+    border: none !important;
+    inline-size: unset !important;
+    border-radius: var(--context-menuitem-border-radius) !important;
+    background-color: transparent !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+    color: inherit !important;
+  }
+
+  #manage-containers-link:not([hidden]) {
+    display: flex !important;
+    align-content: center !important;
+    align-items: center !important;
+    padding-inline-start: 0 !important;
+  }
+
+  #manage-containers-link::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-inline: 6px 8px !important;
+    background-image: url(chrome://global/skin/icons/settings.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    -moz-context-properties: fill, fill-opacity;
+    fill: currentColor;
+  }
+
+  .menu {
+    padding-block: revert !important;
+  }
+
+  .menu-item {
+    cursor: default !important;
+    border-radius: var(--context-menuitem-border-radius) !important;
+    min-height: var(--subviewbutton-height) !important;
+    line-height: var(--subviewbutton-height) !important;
+    height: var(--subviewbutton-height) !important;
+    user-select: none !important;
+    max-width: -moz-available !important;
+    margin-inline: var(--menupopup-inner-padding-magnitude) !important;
+    padding-inline-end: 6px !important;
+    display: flex !important;
+    flex-flow: row nowrap !important;
+    overflow: clip !important;
+  }
+
+  .identities-list .menu-item {
+    margin-inline: 0 !important;
+  }
+
+  .menu-item :is(td, .menu-item-name, .menu-right-float) {
+    align-items: center;
+  }
+
+  .hover-highlight:is(:focus):not(:hover, :focus-visible) {
+    background: revert !important;
+    color: inherit !important;
+  }
+
+  .hover-highlight:is(:hover, :focus-visible),
+  .bottom-btn:is(:hover, :focus-visible) {
+    color: inherit !important;
+    background: var(--uc-arrowpanel-dimmed) !important;
+  }
+
+  .hover-highlight:hover:active,
+  .bottom-btn:hover:active {
+    background: var(--uc-arrowpanel-dimmed-further) !important;
+  }
+
+  .menu-text {
+    flex-grow: 1 !important;
+    word-break: break-all !important;
+    align-self: start !important;
+    line-height: var(--subviewbutton-height) !important;
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+  }
+
+  .menu-icon {
+    display: block;
+    margin-inline: 6px 8px !important;
+    margin-block: 0 !important;
+    inline-size: 16px !important;
+    background-color: transparent !important;
+    filter: none !important;
+    fill: currentColor;
+    -moz-context-properties: fill, fill-opacity;
+  }
+
+  .menu-icon img {
+    filter: none !important;
+  }
+
+  .menu-icon[src="/img/container-openin-16.svg"] {
+    padding-left: 16px !important;
+    background-image: url(chrome://userchrome/content/skin/container-go.svg) !important;
+  }
+
+  .radio-choice > .radio-container > [type="radio"]:checked + label {
+    background: var(--uc-arrowpanel-color) !important;
+  }
+
+  #edit-container-panel-choose-icon .radio-container:hover .usercontext-icon::before {
+    fill: inherit !important;
+  }
+
+  .radio-container:active .usercontext-icon::before {
+    transform: scale(0.85) !important;
+  }
+
+  [data-identity-color="grey"] {
+    --identity-icon-color: var(--uc-arrowpanel-color) !important;
+  }
+
+  [type="radio"]:checked + [data-identity-color="grey"] {
+    --identity-icon-color: var(--uc-arrowpanel-background) !important;
+  }
+
+  .sub-header:empty {
+    display: none;
+  }
+
+  tr > td > .trash-button {
+    visibility: hidden !important;
+    display: block !important;
+    background-image: url(chrome://userchrome/content/close.svg) !important;
+    filter: none !important;
+    fill: currentColor !important;
+    -moz-context-properties: fill, fill-opacity;
+    max-width: 16px !important;
+    width: 16px !important;
+    height: 16px !important;
+    padding-inline: 16px 0 !important;
+    margin-inline: 2px !important;
+    margin-block: 0 !important;
+  }
+
+  tr:hover > td > .trash-button {
+    visibility: visible !important;
+  }
+
+  .menu-icon.hover-highlight:is(:hover, :focus, :focus-visible),
+  .menu-icon.hover-highlight:is(:hover, :focus, :focus-visible):active {
+    background-color: transparent !important;
+  }
+
+  .menu-right-float {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: end;
+  }
+
+  .menu-arrow {
+    padding: 0px !important;
+    margin-right: var(--menu-right-margin) !important;
+    min-width: 0 !important;
+    width: var(--menu-right-size) !important;
+    height: var(--menu-right-size) !important;
+    fill-opacity: 0.6;
+    -moz-context-properties: fill, fill-opacity;
+    fill: currentColor;
+  }
+
+  .menu-arrow img {
+    display: none;
+  }
+
+  .menu-arrow::after {
+    content: "";
+    background-image: var(--menu-right-img);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: var(--menu-right-size);
+    height: var(--menu-right-size);
+    display: block;
+  }
+
+  .identities-list .menu-arrow,
+  #sort-containers-link .menu-arrow {
+    display: none !important;
+  }
+
+  .controller,
+  .hover-highlight {
+    transition: none !important;
+  }
+
+  .btn-return {
+    background-color: transparent !important;
+    background-image: url(chrome://userchrome/content/menu-arrow-left.svg) !important;
+    background-size: 16px !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    -moz-context-properties: fill, fill-opacity;
+    fill: currentColor;
+    color: inherit;
+    fill-opacity: 0.6;
+    padding: var(--uc-toolbarbutton-inner-padding, 8px) !important;
+    margin: 0 !important;
+    top: 8px !important;
+    left: 8px !important;
+    min-height: var(--subviewbutton-height) !important;
+    min-width: var(--subviewbutton-height) !important;
+    block-size: var(--subviewbutton-height) !important;
+    inline-size: var(--subviewbutton-height) !important;
+    filter: none !important;
+    cursor: default !important;
+    border-radius: var(--context-menuitem-border-radius) !important;
+    background-color: transparent;
+  }
+
+  .btn-return:is(:hover, :focus-visible, :-moz-focusring) {
+    background-color: var(--uc-arrowpanel-dimmed) !important;
+    fill-opacity: 0.8;
+  }
+
+  .btn-return:is(:hover, :focus-visible, :-moz-focusring):active {
+    background-color: var(--uc-arrowpanel-dimmed-further) !important;
+  }
+
+  .menu-item td {
+    border: none !important;
+    flex-grow: 1;
+  }
+
+  .menu-item.drag-over td {
+    background-image: linear-gradient(
+      180deg,
+      var(--uc-desaturate-dimmed-even-further) 1.5px,
+      transparent 1.5px
+    ) !important;
+  }
+
+  .move-button img {
+    display: none;
+  }
+
+  .move-button {
+    background-image: url(chrome://browser/skin/notification-icons/drag-indicator.svg);
+    background-size: 14px var(--subviewbutton-height) !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    -moz-context-properties: fill, fill-opacity;
+    fill: var(--uc-desaturate-dimmed-even-further);
+    width: 16px;
+    height: 16px !important;
+  }
+
+  .edit-container-panel legend,
+  .options-header {
+    margin-block: 0 4px !important;
+    margin-inline: 2px !important;
+  }
+
+  .options-header {
+    font-size: 1.1em !important;
+    margin-block: 8px !important;
+  }
+
+  fieldset,
+  .options-header {
+    padding-block-end: 8px !important;
+  }
+
+  #edit-container-panel > .edit-form {
+    padding: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
+    padding-block: var(--menupopup-inner-padding-magnitude) 2px !important;
+  }
+
+  #edit-container-options > .container-options > input[type="checkbox"] {
+    inset-inline-start: 20px;
+  }
+
+  .radio-choice > .radio-container {
+    block-size: 28px !important;
+  }
+
+  .options-label {
+    cursor: default !important;
+  }
+
+  .manage-assigned-sites-list {
+    cursor: pointer !important;
+    width: max-content !important;
+    color: var(--in-content-link-color-hover) !important;
+  }
+
+  #manage-assigned-sites-list:is(:hover, :focus-visible, :-moz-focusring) {
+    text-decoration: underline !important;
+  }
+
+  #edit-container-options {
+    padding-block: 4px !important;
+  }
+
+  .container-options {
+    margin-inline: 2px 8px !important;
+  }
+
+  .switch {
+    block-size: 14px !important;
+    inline-size: 28px !important;
+  }
+
+  .slider {
+    background-color: var(--uc-switch-off-background) !important;
+    border-radius: 14px !important;
+    inset-block-end: 0;
+    box-shadow: none !important;
+    inset-inline-start: 0;
+    position: absolute;
+    inset-inline-end: 0;
+    inset-block-start: 0;
+    transition: 0.1s ease-in-out;
+  }
+
+  .slider:hover {
+    background-color: var(--uc-switch-off-hover-background) !important;
+  }
+
+  .slider:hover:active {
+    background-color: var(--uc-switch-off-active-background) !important;
+  }
+
+  .slider::before {
+    background-color: #f4f4f7;
+    inset-block-end: 2px !important;
+    block-size: 10px !important;
+    inset-inline-start: 2px !important;
+    inline-size: 10px !important;
+  }
+
+  input:checked + .slider::before {
+    transform: translateX(14px) !important;
+  }
+
+  input:checked + .slider {
+    background-color: var(--purple-40) !important;
+  }
+
+  input:checked + .slider:hover {
+    background-color: var(--purple-50) !important;
+  }
+
+  input:checked + .slider:hover:active {
+    background-color: var(--purple-55) !important;
+  }
+
+  .panel-footer {
+    padding: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
+    padding-top: var(--menupopup-inner-padding-magnitude) !important;
+    background: none !important;
+    border: none !important;
+    block-size: revert !important;
+    column-gap: 4px;
+  }
+
+  .alert-text {
+    font-family: inherit !important;
+    text-align: inherit !important;
+  }
+
+  .panel-footer > .button,
+  .primary-cta,
+  .delete-btn {
+    appearance: none !important;
+    border-radius: var(--context-menuitem-border-radius) !important;
+    height: revert !important;
+    block-size: 0 !important;
+    line-height: normal !important;
+    min-height: var(--subviewbutton-height) !important;
+    width: 100% !important;
+    inline-size: -moz-available !important;
+    margin-block-start: var(--menupopup-inner-padding-magnitude) !important;
+    padding-inline-start: 8px !important;
+    cursor: default !important;
+    background-color: var(--uc-arrowpanel-dimmed) !important;
+    border: 1px solid transparent !important;
+    transition: none !important;
+    box-shadow: none !important;
+  }
+
+  .panel-footer > .button:is(:hover, :focus-visible, :-moz-focusring) {
+    background-color: var(--uc-arrowpanel-dimmed) !important;
+  }
+
+  .panel-footer > .button:hover:active {
+    background-color: var(--uc-arrowpanel-dimmed-further) !important;
+  }
+
+  .panel-footer > .button.secondary:not([disabled]) {
+    background-color: transparent !important;
+    border-color: var(--uc-arrowpanel-dimmed) !important;
+  }
+
+  .panel-footer > .button.secondary:not([disabled], :active):is(:hover, :focus-visible) {
+    background-color: var(--uc-arrowpanel-dimmed) !important;
+    border-color: transparent !important;
+  }
+
+  .panel-footer > .button.secondary:not([disabled]):is(:hover:active, [open]) {
+    background-color: var(--uc-arrowpanel-dimmed-further) !important;
+    border-color: transparent !important;
+  }
+
+  .panel-footer > .button.primary:is(:hover, :focus-visible, :-moz-focusring),
+  .primary-cta:is(:hover, :focus-visible, :-moz-focusring),
+  .advanced-proxy-settings-btn:is(:hover, :focus-visible, :-moz-focusring) {
+    background-color: var(--in-parent-primary-button-background) !important;
+  }
+
+  .panel-footer > .button.primary:hover:active,
+  .primary-cta:hover:active,
+  .advanced-proxy-settings-btn:hover:active {
+    background-color: var(--in-parent-primary-button-background-hover) !important;
+  }
+
+  .delete-btn {
+    background-color: hsla(2, 70%, 56%, 45%) !important;
+    margin-block: var(--menupopup-inner-padding-magnitude) calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
+    margin-inline: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
+    justify-content: inherit !important;
+    align-content: center !important;
+    align-items: center !important;
+    line-height: normal !important;
+    block-size: 0 !important;
+  }
+
+  .delete-btn:is(:hover, :focus-visible, :-moz-focusring) {
+    background-color: hsla(358, 70%, 50%, 85%) !important;
+  }
+
+  .delete-btn:is(:hover, :focus-visible, :-moz-focusring):active {
+    background-color: hsl(353, 90%, 50%) !important;
+  }
+
+  .panel-content.delete-container-confirm {
+    padding-block: var(--menupopup-inner-padding-magnitude) 0 !important;
+    padding-inline: 16px 0 !important;
+    display: flex;
+    flex-flow: column;
+    row-gap: 8px !important;
+  }
+
+  .panel-content.delete-container-confirm > * {
+    padding-block: revert !important;
+  }
+
+  #delete-container-tab-warning:empty {
+    display: none !important;
+  }
+
+  .blue-link,
+  .blue-link span {
+    cursor: pointer !important;
+    color: var(--purple-30) !important;
+    transition: none !important;
+  }
+
+  .blue-link:hover,
+  .blue-link:hover span {
+    color: var(--purple-25) !important;
+    text-decoration: underline !important;
+    transition: none !important;
+  }
+
+  .moz-vpn-content,
+  .moz-vpn-controller-content {
+    min-block-size: 0 !important;
+    box-shadow: none !important;
+    border-top: 1px solid var(--hr-grey) !important;
+    margin: var(--menupopup-inner-padding-magnitude) 0 !important;
+    padding-block: 8px 0 !important;
+    transition: none !important;
+  }
+
+  .collapsible-content,
+  .add-bg-color {
+    background-color: transparent !important;
+  }
+
+  .collapsible-content {
+    max-block-size: 0;
+    opacity: 0;
+    visibility: hidden;
+    background-color: var(--bgColor);
+    transition: none !important;
+  }
+
+  .moz-vpn-logo,
+  .moz-vpn-logotype {
+    background-image: url("chrome://userchrome/content/material/firefox-vpn.svg") !important;
+    color: inherit !important;
+    font-family: inherit !important;
+    fill: currentColor !important;
+    -moz-context-properties: fill, fill-opacity;
+    font-size: 1.1em !important;
+  }
+
+  .moz-vpn-cta {
+    block-size: var(--subviewbutton-height) !important;
+    margin-block: 6px 0 !important;
+    margin-inline: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
+    text-align: inherit !important;
+    line-height: normal !important;
+  }
+
+  .advanced-proxy-settings-btn {
+    appearance: none !important;
+    border-radius: var(--context-menuitem-border-radius) !important;
+    min-height: var(--subviewbutton-height) !important;
+    background-color: var(--uc-arrowpanel-dimmed) !important;
+    transition: none !important;
+    block-size: var(--subviewbutton-height) !important;
+    min-block-size: revert !important;
+    box-shadow: none !important;
+    border: 1px solid transparent !important;
+    margin-block: var(--menupopup-inner-padding-magnitude) !important;
+    margin-inline: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
+    line-height: normal !important;
+    text-align: initial !important;
+    padding-inline-start: 30px !important;
+    background-image: url(chrome://userchrome/content/settings.svg), var(--iconArrowRight) !important;
+    -moz-context-properties: fill, fill-opacity;
+    fill: currentColor !important;
+    background-position: 6px center, calc(100% - 10px) center !important;
+    background-size: 16px 16px, 9px !important;
+  }
+
+  .collapsible-content > .flx-row.flx-space-between {
+    inline-size: calc(100% - ((var(--menupopup-inner-padding-magnitude) * 2) * 2)) !important;
+    padding-block-start: 8px !important;
+  }
+
+  .button-wrapper {
+    margin-inline: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
+  }
+
+  .advanced-proxy-panel-content {
+    padding-block: calc(var(--menupopup-inner-padding-magnitude) + 4px) !important;
+    padding-inline: calc(var(--menupopup-inner-padding-magnitude) + 6px) !important;
+    margin-block-start: 48.5px !important;
+  }
+
+  .advanced-proxy-input-wrapper {
+    margin-block: var(--menupopup-inner-padding-magnitude) !important;
+  }
+
+  .apply-to-container {
+    block-size: var(--subviewbutton-height) !important;
+    margin-block: var(--menupopup-inner-padding-magnitude) !important;
+    line-height: normal !important;
+  }
+
+  #clear-advanced-proxy-input {
+    inset-inline-end: 6px !important;
+    inset-block-start: 6px !important;
+    background-image: url(chrome://userchrome/content/textbox-clear.svg) !important;
+    background-color: transparent !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    fill: currentColor !important;
+    color: inherit !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill-opacity: 0 !important;
+    width: 16px !important;
+    height: 16px !important;
+    min-height: 1px !important;
+    border-radius: var(--tab-button-border-radius, 2px) !important;
+    margin: 0 3px 0 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #clear-advanced-proxy-input:hover {
+    background-color: var(--uc-arrowpanel-dimmed) !important;
+  }
+
+  .proxy-validity {
+    position: absolute;
+    inset-block-start: 30px !important;
+    inset-inline-start: 10px !important;
+    pointer-events: none !important;
+    background-color: var(--warning-icon-background) !important;
+    border-radius: var(--general-button-border-radius) !important;
+    padding-block: 3px !important;
+    padding-inline: 5px !important;
+  }
+
+  .proxy-validity::after {
+    background-color: var(--warning-icon-background) !important;
+    inset-inline-start: 8px !important;
+  }
+
+  @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
     body {
-        min-block-size: 0 !important;
-    }
-
-    body {
-        --hr-grey: var(--uc-desaturate-dimmed) !important;
-        --text-grey: var(--uc-arrowpanel-color) !important;
-        font-size: 12px !important;
-        color: inherit !important;
-        letter-spacing: inherit !important;
-        background: none !important;
-    }
-
-    div {
-        user-select: none;
-    }
-
-    input[type="text"] {
-        background-color: var(--uc-desaturate-faint) !important;
-        border-color: var(--uc-desaturate-dimmed) !important;
-        min-height: var(--subviewbutton-height) !important;
-        block-size: unset !important;
-        height: auto !important;
-        border-radius: var(--context-menuitem-border-radius) !important;
-        padding-block: 0 !important;
-    }
-
-    .edit-container-panel input[type="text"] {
-        margin-inline: 2px !important;
-    }
-
-    :focus-visible,
-    :-moz-focusring,
-    :focus + label {
-        outline: none !important;
-        box-shadow: none !important;
-    }
-
-    input[type="text"]:focus-visible {
-        border-color: transparent !important;
-        outline-style: solid !important;
-        outline-width: 1.5px !important;
-        outline-color: var(--in-parent-border-highlight) !important;
-        box-shadow: 0 0 0 3.5px var(--in-parent-border-active-shadow);
-    }
-
-    input[type="checkbox"] {
-        appearance: none !important;
-        min-width: 10px !important;
-        min-height: 10px !important;
-        width: 14px !important;
-        height: 14px !important;
-        margin-inline-end: 4px !important;
-        padding: 0.5px;
-        border-radius: 2px !important;
-        margin: 0;
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-        -moz-context-properties: fill, fill-opacity !important;
-        fill: currentColor !important;
-        border-color: var(--uc-checkbox-border-color) !important;
-        background-color: var(--uc-arrowpanel-faint) !important;
-    }
-
-    input[type="checkbox"]:is(:hover, :focus-visible) {
-        background-color: var(--uc-arrowpanel-dimmed) !important;
-    }
-
-    input[type="checkbox"]:is(:hover, :focus-visible):active {
-        background-color: var(--uc-arrowpanel-dimmed-further) !important;
-    }
-
-    input[type="checkbox"]:is([checked="true"], :checked) {
-        background-image: url(chrome://userchrome/content/check.svg) !important;
-        border-color: var(--uc-checkbox-checked-border-color) !important;
-        background-color: var(--uc-checkbox-checked-bgcolor) !important;
-    }
-
-    input[type="checkbox"]:is([checked="true"], :checked):is(:hover, :focus-visible) {
-        background-color: var(--uc-checkbox-checked-hover-bgcolor) !important;
-    }
-
-    input[type="checkbox"]:is([checked="true"], :checked):is(:hover, :focus-visible):active {
-        background-color: var(--uc-checkbox-checked-active-bgcolor) !important;
+      font-family: SF Pro Text, Segoe UI, sans-serif !important;
+      font-kerning: normal !important;
     }
 
     h3.title,
     .proxy-panel-title {
-        background: none !important;
-        padding-block: 8px 4px !important;
-        block-size: 40px !important;
-        max-block-size: unset !important;
-        min-height: 40px !important;
-        white-space: nowrap !important;
-        padding-inline: 16px !important;
-        font-family: inherit !important;
-        font-weight: normal !important;
-        font-size: 1.1em !important;
-        line-height: 28px !important;
-        text-align: center !important;
-        user-select: none;
-        color: inherit !important;
-        letter-spacing: inherit !important;
-        box-shadow: none !important;
-    }
-
-    h3.proxy-panel-title {
-        padding-bottom: calc(
-            ((40px - 1.1em) / 2) + var(--menupopup-inner-padding-magnitude)
-        ) !important;
-        min-height: 44.5px !important;
-        margin-inline: var(--menupopup-inner-padding-magnitude) !important;
-        inline-size: calc(100% - (var(--menupopup-inner-padding-magnitude) * 2)) !important;
+      font-family: SF Pro Display, Segoe UI, sans-serif !important;
+      font-kerning: normal !important;
+      font-size: 1.1em !important;
+      font-weight: var(--uc-font-weight-bold, 600) !important;
     }
 
     h4 {
-        font-weight: 400;
-        font-size: 1.1em !important;
+      font-weight: 500 !important;
     }
-
-    .sub-header-wrapper {
-        margin: revert !important;
-        color: inherit !important;
-    }
-
-    .sub-header {
-        padding-inline: 10px !important;
-        color: inherit !important;
-    }
-
-    .info-icon {
-        fill-opacity: 0.8;
-        -moz-context-properties: fill, fill-opacity;
-        fill: var(--ui-text-80);
-        cursor: default !important;
-        width: 24px !important;
-        height: 24px !important;
-        border-radius: var(--general-button-border-radius);
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        inset-block-start: 10.5px !important;
-        right: 10.5px !important;
-    }
-
-    .info-icon:is(:hover, :focus-visible) {
-        fill-opacity: 1;
-        background-color: var(--uc-arrowpanel-dimmed);
-    }
-
-    .info-icon:hover:active {
-        background-color: var(--uc-arrowpanel-dimmed-further);
-    }
-
-    .info-icon img {
-        display: none;
-    }
-
-    .info-icon::before {
-        content: "";
-        display: block;
-        width: 16px;
-        height: 16px;
-        background-image: url(chrome://userchrome/content/info.svg);
-        background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    hr {
-        margin: var(--menupopup-inner-padding-magnitude) !important;
-        padding-block: 0 !important;
-    }
-
-    .panel {
-        min-block-size: 0 !important;
-        transition: none !important;
-        background: none !important;
-    }
-
-    .scrollable,
-    .identities-list {
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    .scrollable {
-        scrollbar-width: auto !important;
-    }
-
-    .identities-list {
-        margin-inline: var(--menupopup-inner-padding-magnitude) !important;
-        inline-size: unset !important;
-        max-block-size: 600px !important;
-        padding-bottom: var(--menupopup-inner-padding-magnitude) !important;
-    }
-
-    table[hidden]:empty {
-        display: flex !important;
-        flex-flow: row nowrap !important;
-        height: 20px !important;
-        margin-bottom: 4px !important;
-        padding-inline: 10px !important;
-        align-items: center !important;
-        color: var(--context-menu-disabled-color) !important;
-    }
-
-    table[hidden]:empty::before {
-        content: "(empty)" !important;
-    }
-
-    #edit-container-assignments > .scrollable {
-        padding-bottom: var(--menupopup-inner-padding-magnitude) !important;
-    }
-
-    #container-panel .identities-list {
-        border-bottom: 1px solid var(--uc-desaturate-dimmed) !important;
-    }
-
-    v-padding-hack-footer {
-        display: none !important;
-    }
-
-    v-padding-hack-4 {
-        display: none !important;
-    }
-
-    .bottom-btn {
-        appearance: none !important;
-        position: relative !important;
-        height: revert !important;
-        line-height: var(--subviewbutton-height) !important;
-        min-height: var(--subviewbutton-height) !important;
-        margin: var(--menupopup-inner-padding-magnitude) !important;
-        padding-inline-start: 8px !important;
-        cursor: default !important;
-        border: none !important;
-        inline-size: unset !important;
-        border-radius: var(--context-menuitem-border-radius) !important;
-        background-color: transparent !important;
-        font-family: inherit !important;
-        font-size: inherit !important;
-        color: inherit !important;
-    }
-
-    #manage-containers-link:not([hidden]) {
-        display: flex !important;
-        align-content: center !important;
-        align-items: center !important;
-        padding-inline-start: 0 !important;
-    }
-
-    #manage-containers-link::before {
-        content: "";
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        margin-inline: 6px 8px !important;
-        background-image: url(chrome://global/skin/icons/settings.svg);
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-        -moz-context-properties: fill, fill-opacity;
-        fill: currentColor;
-    }
-
-    .menu {
-        padding-block: revert !important;
-    }
-
-    .menu-item {
-        cursor: default !important;
-        border-radius: var(--context-menuitem-border-radius) !important;
-        min-height: var(--subviewbutton-height) !important;
-        line-height: var(--subviewbutton-height) !important;
-        height: var(--subviewbutton-height) !important;
-        user-select: none !important;
-        max-width: -moz-available !important;
-        margin-inline: var(--menupopup-inner-padding-magnitude) !important;
-        padding-inline-end: 6px !important;
-        display: flex !important;
-        flex-flow: row nowrap !important;
-        overflow: clip !important;
-    }
-
-    .identities-list .menu-item {
-        margin-inline: 0 !important;
-    }
-
-    .menu-item :is(td, .menu-item-name, .menu-right-float) {
-        align-items: center;
-    }
-
-    .hover-highlight:is(:focus):not(:hover, :focus-visible) {
-        background: revert !important;
-        color: inherit !important;
-    }
-
-    .hover-highlight:is(:hover, :focus-visible),
-    .bottom-btn:is(:hover, :focus-visible) {
-        color: inherit !important;
-        background: var(--uc-arrowpanel-dimmed) !important;
-    }
-
-    .hover-highlight:hover:active,
-    .bottom-btn:hover:active {
-        background: var(--uc-arrowpanel-dimmed-further) !important;
-    }
-
-    .menu-text {
-        flex-grow: 1 !important;
-        word-break: break-all !important;
-        align-self: start !important;
-        line-height: var(--subviewbutton-height) !important;
-        text-overflow: ellipsis !important;
-        overflow: hidden !important;
-    }
-
-    .menu-icon {
-        display: block;
-        margin-inline: 6px 8px !important;
-        margin-block: 0 !important;
-        inline-size: 16px !important;
-        background-color: transparent !important;
-        filter: none !important;
-        fill: currentColor;
-        -moz-context-properties: fill, fill-opacity;
-    }
-
-    .menu-icon img {
-        filter: none !important;
-    }
-
-    .menu-icon[src="/img/container-openin-16.svg"] {
-        padding-left: 16px !important;
-        background-image: url(chrome://userchrome/content/skin/container-go.svg) !important;
-    }
-
-    .radio-choice > .radio-container > [type="radio"]:checked + label {
-        background: var(--uc-arrowpanel-color) !important;
-    }
-
-    #edit-container-panel-choose-icon .radio-container:hover .usercontext-icon::before {
-        fill: inherit !important;
-    }
-
-    .radio-container:active .usercontext-icon::before {
-        transform: scale(0.85) !important;
-    }
-
-    [data-identity-color="grey"] {
-        --identity-icon-color: var(--uc-arrowpanel-color) !important;
-    }
-
-    [type="radio"]:checked + [data-identity-color="grey"] {
-        --identity-icon-color: var(--uc-arrowpanel-background) !important;
-    }
-
-    .sub-header:empty {
-        display: none;
-    }
-
-    tr > td > .trash-button {
-        visibility: hidden !important;
-        display: block !important;
-        background-image: url(chrome://userchrome/content/close.svg) !important;
-        filter: none !important;
-        fill: currentColor !important;
-        -moz-context-properties: fill, fill-opacity;
-        max-width: 16px !important;
-        width: 16px !important;
-        height: 16px !important;
-        padding-inline: 16px 0 !important;
-        margin-inline: 2px !important;
-        margin-block: 0 !important;
-    }
-
-    tr:hover > td > .trash-button {
-        visibility: visible !important;
-    }
-
-    .menu-icon.hover-highlight:is(:hover, :focus, :focus-visible),
-    .menu-icon.hover-highlight:is(:hover, :focus, :focus-visible):active {
-        background-color: transparent !important;
-    }
-
-    .menu-right-float {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: end;
-    }
-
-    .menu-arrow {
-        padding: 0px !important;
-        margin-right: var(--menu-right-margin) !important;
-        min-width: 0 !important;
-        width: var(--menu-right-size) !important;
-        height: var(--menu-right-size) !important;
-        fill-opacity: 0.6;
-        -moz-context-properties: fill, fill-opacity;
-        fill: currentColor;
-    }
-
-    .menu-arrow img {
-        display: none;
-    }
-
-    .menu-arrow::after {
-        content: "";
-        background-image: var(--menu-right-img);
-        background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat;
-        width: var(--menu-right-size);
-        height: var(--menu-right-size);
-        display: block;
-    }
-
-    .identities-list .menu-arrow,
-    #sort-containers-link .menu-arrow {
-        display: none !important;
-    }
-
-    .controller,
-    .hover-highlight {
-        transition: none !important;
-    }
-
-    .btn-return {
-        background-color: transparent !important;
-        background-image: url(chrome://userchrome/content/menu-arrow-left.svg) !important;
-        background-size: 16px !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        -moz-context-properties: fill, fill-opacity;
-        fill: currentColor;
-        color: inherit;
-        fill-opacity: 0.6;
-        padding: var(--uc-toolbarbutton-inner-padding, 8px) !important;
-        margin: 0 !important;
-        top: 8px !important;
-        left: 8px !important;
-        min-height: var(--subviewbutton-height) !important;
-        min-width: var(--subviewbutton-height) !important;
-        block-size: var(--subviewbutton-height) !important;
-        inline-size: var(--subviewbutton-height) !important;
-        filter: none !important;
-        cursor: default !important;
-        border-radius: var(--context-menuitem-border-radius) !important;
-        background-color: transparent;
-    }
-
-    .btn-return:is(:hover, :focus-visible, :-moz-focusring) {
-        background-color: var(--uc-arrowpanel-dimmed) !important;
-        fill-opacity: 0.8;
-    }
-
-    .btn-return:is(:hover, :focus-visible, :-moz-focusring):active {
-        background-color: var(--uc-arrowpanel-dimmed-further) !important;
-    }
-
-    .menu-item td {
-        border: none !important;
-        flex-grow: 1;
-    }
-
-    .menu-item.drag-over td {
-        background-image: linear-gradient(
-            180deg,
-            var(--uc-desaturate-dimmed-even-further) 1.5px,
-            transparent 1.5px
-        ) !important;
-    }
-
-    .move-button img {
-        display: none;
-    }
-
-    .move-button {
-        background-image: url(chrome://browser/skin/notification-icons/drag-indicator.svg);
-        background-size: 14px var(--subviewbutton-height) !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        -moz-context-properties: fill, fill-opacity;
-        fill: var(--uc-desaturate-dimmed-even-further);
-        width: 16px;
-        height: 16px !important;
-    }
-
-    .edit-container-panel legend,
-    .options-header {
-        margin-block: 0 4px !important;
-        margin-inline: 2px !important;
-    }
-
-    .options-header {
-        font-size: 1.1em !important;
-        margin-block: 8px !important;
-    }
-
-    fieldset,
-    .options-header {
-        padding-block-end: 8px !important;
-    }
-
-    #edit-container-panel > .edit-form {
-        padding: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
-        padding-block: var(--menupopup-inner-padding-magnitude) 2px !important;
-    }
-
-    #edit-container-options > .container-options > input[type="checkbox"] {
-        inset-inline-start: 20px;
-    }
-
-    .radio-choice > .radio-container {
-        block-size: 28px !important;
-    }
-
-    .options-label {
-        cursor: default !important;
-    }
-
-    .manage-assigned-sites-list {
-        cursor: pointer !important;
-        width: max-content !important;
-        color: var(--in-content-link-color-hover) !important;
-    }
-
-    #manage-assigned-sites-list:is(:hover, :focus-visible, :-moz-focusring) {
-        text-decoration: underline !important;
-    }
-
-    #edit-container-options {
-        padding-block: 4px !important;
-    }
-
-    .container-options {
-        margin-inline: 2px 8px !important;
-    }
-
-    .switch {
-        block-size: 14px !important;
-        inline-size: 28px !important;
-    }
-
-    .slider {
-        background-color: var(--uc-switch-off-background) !important;
-        border-radius: 14px !important;
-        inset-block-end: 0;
-        box-shadow: none !important;
-        inset-inline-start: 0;
-        position: absolute;
-        inset-inline-end: 0;
-        inset-block-start: 0;
-        transition: 0.1s ease-in-out;
-    }
-
-    .slider:hover {
-        background-color: var(--uc-switch-off-hover-background) !important;
-    }
-
-    .slider:hover:active {
-        background-color: var(--uc-switch-off-active-background) !important;
-    }
-
-    .slider::before {
-        background-color: #fff;
-        inset-block-end: 2px !important;
-        block-size: 10px !important;
-        inset-inline-start: 2px !important;
-        inline-size: 10px !important;
-    }
-
-    input:checked + .slider::before {
-        transform: translateX(14px) !important;
-    }
-
-    input:checked + .slider {
-        background-color: var(--purple-40) !important;
-    }
-
-    input:checked + .slider:hover {
-        background-color: var(--purple-50) !important;
-    }
-
-    input:checked + .slider:hover:active {
-        background-color: var(--purple-55) !important;
-    }
-
-    .panel-footer {
-        padding: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
-        padding-top: var(--menupopup-inner-padding-magnitude) !important;
-        background: none !important;
-        border: none !important;
-        block-size: revert !important;
-        column-gap: 4px;
-    }
-
-    .alert-text {
-        font-family: inherit !important;
-        text-align: inherit !important;
-    }
-
-    .panel-footer > .button,
-    .primary-cta,
-    .delete-btn {
-        appearance: none !important;
-        border-radius: var(--context-menuitem-border-radius) !important;
-        height: revert !important;
-        block-size: 0 !important;
-        line-height: normal !important;
-        min-height: var(--subviewbutton-height) !important;
-        width: 100% !important;
-        inline-size: -moz-available !important;
-        margin-block-start: var(--menupopup-inner-padding-magnitude) !important;
-        padding-inline-start: 8px !important;
-        cursor: default !important;
-        background-color: var(--uc-arrowpanel-dimmed) !important;
-        border: 1px solid transparent !important;
-        transition: none !important;
-        box-shadow: none !important;
-    }
-
-    .panel-footer > .button:is(:hover, :focus-visible, :-moz-focusring) {
-        background-color: var(--uc-arrowpanel-dimmed) !important;
-    }
-
-    .panel-footer > .button:hover:active {
-        background-color: var(--uc-arrowpanel-dimmed-further) !important;
-    }
-
-    .panel-footer > .button.secondary:not([disabled]) {
-        background-color: transparent !important;
-        border-color: var(--uc-arrowpanel-dimmed) !important;
-    }
-
-    .panel-footer > .button.secondary:not([disabled], :active):is(:hover, :focus-visible) {
-        background-color: var(--uc-arrowpanel-dimmed) !important;
-        border-color: transparent !important;
-    }
-
-    .panel-footer > .button.secondary:not([disabled]):is(:hover:active, [open]) {
-        background-color: var(--uc-arrowpanel-dimmed-further) !important;
-        border-color: transparent !important;
-    }
-
-    .panel-footer > .button.primary:is(:hover, :focus-visible, :-moz-focusring),
-    .primary-cta:is(:hover, :focus-visible, :-moz-focusring),
-    .advanced-proxy-settings-btn:is(:hover, :focus-visible, :-moz-focusring) {
-        background-color: var(--in-parent-primary-button-background) !important;
-    }
-
-    .panel-footer > .button.primary:hover:active,
-    .primary-cta:hover:active,
-    .advanced-proxy-settings-btn:hover:active {
-        background-color: var(--in-parent-primary-button-background-hover) !important;
-    }
-
-    .delete-btn {
-        background-color: hsla(2, 70%, 56%, 45%) !important;
-        margin-block: var(--menupopup-inner-padding-magnitude)
-            calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
-        margin-inline: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
-        justify-content: inherit !important;
-        align-content: center !important;
-        align-items: center !important;
-        line-height: normal !important;
-        block-size: 0 !important;
-    }
-
-    .delete-btn:is(:hover, :focus-visible, :-moz-focusring) {
-        background-color: hsla(358, 70%, 50%, 85%) !important;
-    }
-
-    .delete-btn:is(:hover, :focus-visible, :-moz-focusring):active {
-        background-color: hsl(353, 90%, 50%) !important;
-    }
-
-    .panel-content.delete-container-confirm {
-        padding-block: var(--menupopup-inner-padding-magnitude) 0 !important;
-        padding-inline: 16px 0 !important;
-        display: flex;
-        flex-flow: column;
-        row-gap: 8px !important;
-    }
-
-    .panel-content.delete-container-confirm > * {
-        padding-block: revert !important;
-    }
-
-    #delete-container-tab-warning:empty {
-        display: none !important;
-    }
-
-    .blue-link,
-    .blue-link span {
-        cursor: pointer !important;
-        color: var(--purple-30) !important;
-        transition: none !important;
-    }
-
-    .blue-link:hover,
-    .blue-link:hover span {
-        color: var(--purple-25) !important;
-        text-decoration: underline !important;
-        transition: none !important;
-    }
-
-    .moz-vpn-content,
-    .moz-vpn-controller-content {
-        min-block-size: 0 !important;
-        box-shadow: none !important;
-        border-top: 1px solid var(--hr-grey) !important;
-        margin: var(--menupopup-inner-padding-magnitude) 0 !important;
-        padding-block: 8px 0 !important;
-        transition: none !important;
-    }
-
-    .collapsible-content,
-    .add-bg-color {
-        background-color: transparent !important;
-    }
-
-    .collapsible-content {
-        max-block-size: 0;
-        opacity: 0;
-        visibility: hidden;
-        background-color: var(--bgColor);
-        transition: none !important;
-    }
-
-    .moz-vpn-logo,
-    .moz-vpn-logotype {
-        background-image: url("chrome://userchrome/content/material/firefox-vpn.svg") !important;
-        color: inherit !important;
-        font-family: inherit !important;
-        fill: currentColor !important;
-        -moz-context-properties: fill, fill-opacity;
-        font-size: 1.1em !important;
-    }
-
-    .moz-vpn-cta {
-        block-size: var(--subviewbutton-height) !important;
-        margin-block: 6px 0 !important;
-        margin-inline: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
-        text-align: inherit !important;
-        line-height: normal !important;
-    }
-
-    .advanced-proxy-settings-btn {
-        appearance: none !important;
-        border-radius: var(--context-menuitem-border-radius) !important;
-        min-height: var(--subviewbutton-height) !important;
-        background-color: var(--uc-arrowpanel-dimmed) !important;
-        transition: none !important;
-        block-size: var(--subviewbutton-height) !important;
-        min-block-size: revert !important;
-        box-shadow: none !important;
-        border: 1px solid transparent !important;
-        margin-block: var(--menupopup-inner-padding-magnitude) !important;
-        margin-inline: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
-        line-height: normal !important;
-        text-align: initial !important;
-        padding-inline-start: 30px !important;
-        background-image: url(chrome://userchrome/content/settings.svg), var(--iconArrowRight) !important;
-        -moz-context-properties: fill, fill-opacity;
-        fill: currentColor !important;
-        background-position: 6px center, calc(100% - 10px) center !important;
-        background-size: 16px 16px, 9px !important;
-    }
-
-    .collapsible-content > .flx-row.flx-space-between {
-        inline-size: calc(100% - ((var(--menupopup-inner-padding-magnitude) * 2) * 2)) !important;
-        padding-block-start: 8px !important;
-    }
-
-    .button-wrapper {
-        margin-inline: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
-    }
-
-    .advanced-proxy-panel-content {
-        padding-block: calc(var(--menupopup-inner-padding-magnitude) + 4px) !important;
-        padding-inline: calc(var(--menupopup-inner-padding-magnitude) + 6px) !important;
-        margin-block-start: 48.5px !important;
-    }
-
-    .advanced-proxy-input-wrapper {
-        margin-block: var(--menupopup-inner-padding-magnitude) !important;
-    }
-
-    .apply-to-container {
-        block-size: var(--subviewbutton-height) !important;
-        margin-block: var(--menupopup-inner-padding-magnitude) !important;
-        line-height: normal !important;
-    }
-
-    #clear-advanced-proxy-input {
-        inset-inline-end: 6px !important;
-        inset-block-start: 6px !important;
-        background-image: url(chrome://userchrome/content/textbox-clear.svg) !important;
-        background-color: transparent !important;
-        background-size: contain !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        fill: currentColor !important;
-        color: inherit !important;
-        -moz-context-properties: fill, fill-opacity !important;
-        fill-opacity: 0 !important;
-        width: 16px !important;
-        height: 16px !important;
-        min-height: 1px !important;
-        border-radius: var(--tab-button-border-radius, 2px) !important;
-        margin: 0 3px 0 0 !important;
-        padding: 0 !important;
-        box-sizing: border-box !important;
-    }
-
-    #clear-advanced-proxy-input:hover {
-        background-color: var(--uc-arrowpanel-dimmed) !important;
-    }
-
-    .proxy-validity {
-        position: absolute;
-        inset-block-start: 30px !important;
-        inset-inline-start: 10px !important;
-        pointer-events: none !important;
-        background-color: var(--warning-icon-background) !important;
-        border-radius: var(--general-button-border-radius) !important;
-        padding-block: 3px !important;
-        padding-inline: 5px !important;
-    }
-
-    .proxy-validity::after {
-        background-color: var(--warning-icon-background) !important;
-        inset-inline-start: 8px !important;
-    }
-
-    @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
-        body {
-            font-family: SF Pro Text, Segoe UI, sans-serif !important;
-            font-kerning: normal !important;
-        }
-
-        h3.title,
-        .proxy-panel-title {
-            font-family: SF Pro Display, Segoe UI, sans-serif !important;
-            font-kerning: normal !important;
-            font-size: 1.1em !important;
-            font-weight: var(--uc-font-weight-bold, 600) !important;
-        }
-
-        h4 {
-            font-weight: 500 !important;
-        }
-    }
+  }
 }
 
 /* little message that pops up on top of pages when you use "always open in x container" */
 body > .container-notification::before {
-    content: "";
-    display: inline-block;
-    block-size: 16px;
-    inline-size: 16px;
-    margin-inline-end: 3px;
-    background-image: url(chrome://userchrome/content/skin/container-plus.svg);
-    -moz-context-properties: fill, fill-opacity !important;
-    fill: currentColor !important;
-    color: inherit !important;
+  content: "";
+  display: inline-block;
+  block-size: 16px;
+  inline-size: 16px;
+  margin-inline-end: 3px;
+  background-image: url(chrome://userchrome/content/skin/container-plus.svg);
+  -moz-context-properties: fill, fill-opacity !important;
+  fill: currentColor !important;
+  color: inherit !important;
 }
 
 body > .container-notification img {
-    display: none !important;
+  display: none !important;
 }
 
 @media (prefers-color-scheme: dark) {
-    body > .container-notification {
-        background: var(--in-content-button-highlight-dark) !important;
-        color: var(--plaintext-color) !important;
-    }
+  body > .container-notification {
+    background: var(--in-content-button-highlight-dark) !important;
+    color: var(--plaintext-color) !important;
+  }
 }

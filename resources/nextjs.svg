@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512" style="background:#fff">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512" style="background:#f4f4f7">
     <title>Zeit - #1b1d24 on #f4f4f7 logo</title>
     <defs>
         <linearGradient id="linearGradient-1" x1="114.721%" x2="39.54%" y1="181.283%" y2="100%">
-            <stop offset="0%" stop-color="#FFF" />
+            <stop offset="0%" stop-color="#f4f4f7" />
             <stop offset="100%" stop-color="#1b1d24" />
         </linearGradient>
     </defs>

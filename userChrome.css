@@ -398,7 +398,7 @@
       --win-hover-active-bgcolor: #c2c2c2; /* also button-hover-bgcolor */
       --win-button-hover-bgcolor: rgba(218, 218, 218, 0.66);
       --win-button-active-bgcolor: #aaaaaa;
-      --win-field-bgcolor: #ffffff;
+      --win-field-bgcolor: #f4f4f7;
       --win-component-bgcolor: #f2f2f2;
       --win-border-color: #8a8a8a;
       --win-tab-seperator-color: #a3a3a3;
@@ -428,7 +428,7 @@
     @media (-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
       :root:not(:-moz-lwtheme),
       :root[lwt-default-theme-in-dark-mode] {
-        --win-text-color: #ffffff;
+        --win-text-color: #f4f4f7;
         --win-bgcolor: #2b2b2b;
         --win-disabled-color: #747474;
         --win-disabled-bgcolor: transparent;
@@ -629,8 +629,8 @@
     @media (-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
       .sidebar-panel[style="--newtab-background-color: rgba(43, 42, 51, 1); --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"],
       body[lwt-sidebar][style="--newtab-background-color: rgba(43, 42, 51, 1); --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"],
-      .sidebar-panel[style="--newtab-background-color: rgb(43, 42, 51); --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"],
-      body[lwt-sidebar][style="--newtab-background-color: rgb(43, 42, 51); --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"] {
+      .sidebar-panel[style="--newtab-background-color: #1c1e24; --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"],
+      body[lwt-sidebar][style="--newtab-background-color: #1c1e24; --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"] {
         /* Only darkmode has more: --newtab-background-color-secondary: rgba(66, 65, 77, 1); */
         --lwt-sidebar-background-color: var(--win-sidebar-bgcolor) !important;
         --lwt-sidebar-text-color: var(--win-text-color) !important;
@@ -935,8 +935,8 @@
     @media (-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
       .sidebar-panel[style="--newtab-background-color: rgba(43, 42, 51, 1); --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"],
       body[lwt-sidebar][style="--newtab-background-color: rgba(43, 42, 51, 1); --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"],
-      .sidebar-panel[style="--newtab-background-color: rgb(43, 42, 51); --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"],
-      body[lwt-sidebar][style="--newtab-background-color: rgb(43, 42, 51); --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"] {
+      .sidebar-panel[style="--newtab-background-color: #1c1e24; --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"],
+      body[lwt-sidebar][style="--newtab-background-color: #1c1e24; --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"] {
         /* Only darkmode has more: --newtab-background-color-secondary: rgba(66, 65, 77, 1); */
         --lwt-sidebar-background-color: transparent !important;
         --lwt-sidebar-text-color: var(--mac-text-color) !important;
@@ -984,24 +984,24 @@
   /* Based on chrome://global/skin/in-content/common.css */
   :host,
   :root {
-    --in-content-page-color: rgb(21, 20, 26);
-    --in-content-page-background: #fff;
+    --in-content-page-color: #1c1e24;
+    --in-content-page-background: #f4f4f7;
     --in-content-text-color: var(--in-content-page-color);
-    --in-content-deemphasized-text: rgb(91, 91, 102);
-    --in-content-box-background: #fff;
+    --in-content-deemphasized-text: #323643;
+    --in-content-box-background: #f4f4f7;
     --in-content-box-background-odd: rgba(12, 12, 13, 0.05); /* grey 90 a05 */
     --in-content-box-border-color: color-mix(in srgb, currentColor 41%, transparent);
-    --in-content-box-info-background: #f0f0f4;
+    --in-content-box-info-background: #e9efff;
     --in-content-item-hover: color-mix(in srgb, var(--in-content-primary-button-background) 20%, transparent);
     --in-content-item-hover-text: var(--in-content-page-color);
     --in-content-item-selected: var(--in-content-primary-button-background);
     --in-content-item-selected-text: var(--in-content-primary-button-text-color);
-    --in-content-icon-color: rgb(91, 91, 102);
+    --in-content-icon-color: #323643;
     --in-content-accent-color: #0a84ff;
     --in-content-accent-color-active: #0060df;
     --in-content-border-hover: var(--grey-90-a50);
     --in-content-border-invalid: var(--red-50);
-    --in-content-border-color: #d7d7db;
+    --in-content-border-color: #e9efff;
     --in-content-error-text-color: #c50042;
     --in-content-link-color: var(--blue-60);
     --in-content-link-color-hover: var(--blue-70);
@@ -1013,7 +1013,7 @@
     --in-content-button-background: rgba(207, 207, 216, 0.33);
     --in-content-button-background-hover: rgba(207, 207, 216, 0.66);
     --in-content-button-background-active: rgb(207, 207, 216);
-    --in-content-primary-button-text-color: rgb(251, 251, 254);
+    --in-content-primary-button-text-color: #f4f4f7;
     --in-content-primary-button-text-color-hover: var(--in-content-primary-button-text-color);
     --in-content-primary-button-background: #0061e0;
     --in-content-primary-button-background-hover: #0250bb;
@@ -1035,7 +1035,7 @@
     ); /* Legacy: #0a84ff; rgb(5, 64, 150); */
     --in-content-table-header-color: var(
       --in-content-primary-button-text-color
-    ); /* Legacy: #ffffff; var(--in-content-page-color); */
+    ); /* Legacy: #f4f4f7; var(--in-content-page-color); */
     --in-content-sidebar-width: 240px;
     --dialog-warning-text-color: var(--red-60);
     --checkbox-border-color: var(--in-content-box-border-color);
@@ -1052,7 +1052,7 @@
     --blue-60: #0060df;
     --blue-70: #003eaa;
     --blue-80: #002275;
-    --grey-30: #d7d7db;
+    --grey-30: #e9efff;
     --grey-60: #4a4a4f;
     --grey-90-a10: rgba(12, 12, 13, 0.1);
     --grey-90-a20: rgba(12, 12, 13, 0.2);
@@ -1089,27 +1089,27 @@
     :root {
       /* Keep these in sync with layout/base/PresShell.cpp, and plaintext.css */
       --in-content-page-background: #1c1e24;
-      --in-content-page-color: rgb(251, 251, 254);
-      --in-content-deemphasized-text: rgb(191, 191, 201);
-      --in-content-box-background: rgb(35, 34, 43);
+      --in-content-page-color: #f4f4f7;
+      --in-content-deemphasized-text: #b2bfd9;
+      --in-content-box-background: #282b36;
       --in-content-box-background-odd: rgba(249, 249, 250, 0.05);
       --in-content-box-info-background: rgba(249, 249, 250, 0.15);
       --in-content-border-color: rgba(249, 249, 250, 0.2);
       --in-content-border-hover: rgba(249, 249, 250, 0.3);
       --in-content-border-invalid: rgb(255, 132, 139);
       --in-content-error-text-color: #ff9aa2;
-      --in-content-button-background: rgb(43, 42, 51);
-      --in-content-button-background-hover: rgb(82, 82, 94);
-      --in-content-button-background-active: rgb(91, 91, 102);
-      --in-content-icon-color: rgb(251, 251, 254);
-      --in-content-primary-button-text-color: rgb(43, 42, 51);
+      --in-content-button-background: #1c1e24;
+      --in-content-button-background-hover: #383a47;
+      --in-content-button-background-active: #323643;
+      --in-content-icon-color: #f4f4f7;
+      --in-content-primary-button-text-color: #1c1e24;
       --in-content-primary-button-background: rgb(0, 221, 255);
       --in-content-primary-button-background-hover: rgb(128, 235, 255);
       --in-content-primary-button-background-active: rgb(170, 242, 255);
       --in-content-danger-button-background: #ff848b;
       --in-content-danger-button-background-hover: #ffbdc5;
       --in-content-danger-button-background-active: #ffdfe7;
-      --in-content-table-background: rgb(35, 34, 43);
+      --in-content-table-background: #282b36;
       --in-content-table-border-dark-color: var(--in-content-box-border-color);
       --in-content-accent-color: var(--in-content-primary-button-background);
       --in-content-accent-color-active: var(--in-content-primary-button-background-hover);
@@ -1167,7 +1167,7 @@
         --in-content-focus-outline-color: var(--blue-40) !important;
         --in-content-accent-color: var(--blue-40) !important;
         --in-content-accent-color-active: var(--blue-30) !important;
-        --in-content-table-background: rgb(35, 34, 43) !important;
+        --in-content-table-background: #282b36 !important;
         --in-content-table-border-color: rgba(249, 249, 250, 0.2) !important;
         --in-content-table-header-background: rgb(5, 64, 150) !important;
         --in-content-table-header-color: var(--in-content-page-color) !important;
@@ -2257,15 +2257,15 @@
         }
         @media (-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
           :root {
-            --organizer-color: rgb(251, 251, 254);
-            --organizer-deemphasized-color: rgb(191, 191, 201);
-            --organizer-toolbar-background: rgb(43, 42, 51);
-            --organizer-pane-background: rgb(35, 34, 43);
+            --organizer-color: #f4f4f7;
+            --organizer-deemphasized-color: #b2bfd9;
+            --organizer-toolbar-background: #1c1e24;
+            --organizer-pane-background: #282b36;
             --organizer-content-background: #1c1e24;
-            --organizer-hover-background: rgb(82, 82, 94);
-            --organizer-selected-background: rgb(91, 91, 102);
+            --organizer-hover-background: #383a47;
+            --organizer-selected-background: #323643;
             --organizer-toolbar-field-background: var(--in-content-page-background);
-            --organizer-toolbar-field-background-focused: rgb(66, 65, 77);
+            --organizer-toolbar-field-background-focused: #17191e;
             scrollbar-color: rgba(249, 249, 250, 0.4) rgba(20, 20, 25, 0.3);
           }
         }

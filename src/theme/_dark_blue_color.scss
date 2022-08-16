@@ -1,4 +1,5 @@
-:host, :root {
+:host,
+:root {
   /* Color Memo
   Just refer - Photon's dark color
   --button-primary-bgcolor: #0060DF;
@@ -42,8 +43,8 @@
   --in-content-accent-color: var(--blue-40) !important;
   --in-content-accent-color-active: var(--blue-30) !important;
 
-  --in-content-table-background: rgb(35, 34, 43) !important;
-  --in-content-table-border-color: rgba(249,249,250,0.2) !important;
+  --in-content-table-background: #282b36 !important;
+  --in-content-table-border-color: rgba(249, 249, 250, 0.2) !important;
   --in-content-table-header-background: rgb(5, 64, 150) !important;
   --in-content-table-header-color: var(--in-content-page-color) !important;
 

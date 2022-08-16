@@ -54,19 +54,19 @@
 
   @media (-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
     :root {
-      --organizer-color: rgb(251, 251, 254);
-      --organizer-deemphasized-color: rgb(191, 191, 201);
+      --organizer-color: #f4f4f7;
+      --organizer-deemphasized-color: #b2bfd9;
 
-      --organizer-toolbar-background: rgb(43, 42, 51);
-      --organizer-pane-background: rgb(35, 34, 43);
+      --organizer-toolbar-background: #1c1e24;
+      --organizer-pane-background: #282b36;
       --organizer-content-background: #1c1e24;
 
-      --organizer-hover-background: rgb(82, 82, 94);
-      --organizer-selected-background: rgb(91, 91, 102);
+      --organizer-hover-background: #383a47;
+      --organizer-selected-background: #323643;
       --organizer-outline-color: rgb(0, 221, 255);
 
       --organizer-toolbar-field-background: var(--in-content-page-background);
-      --organizer-toolbar-field-background-focused: rgb(66, 65, 77);
+      --organizer-toolbar-field-background-focused: #17191e;
       scrollbar-color: rgba(249, 249, 250, 0.4) rgba(20, 20, 25, 0.3);
     }
   }

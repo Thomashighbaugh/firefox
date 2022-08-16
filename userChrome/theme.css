@@ -296,7 +296,7 @@
     --win-hover-bgcolor: rgb(218, 218, 218); /* also button-bgcolor */
     --win-hover-active-bgcolor: #c2c2c2; /* also button-hover-bgcolor */
     --win-button-active-bgcolor: #aaaaaa;
-    --win-field-bgcolor: #ffffff;
+    --win-field-bgcolor: #f4f4f7;
     --win-component-bgcolor: #f2f2f2;
     --win-border-color: #8a8a8a;
     --win-tab-seperator-color: #a3a3a3;
@@ -317,7 +317,7 @@
   @media (-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
     :root:not(:-moz-lwtheme),
     :root[lwt-default-theme-in-dark-mode] {
-      --win-text-color: #ffffff;
+      --win-text-color: #f4f4f7;
       --win-bgcolor: #1c1e24;
       --win-disabled-color: #383a47;
       --win-disabled-bgcolor: transparent;
@@ -512,8 +512,8 @@
   @media (-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
     .sidebar-panel[style="--newtab-background-color: rgba(43, 42, 51, 1); --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"],
       body[lwt-sidebar][style="--newtab-background-color: rgba(43, 42, 51, 1); --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"],
-      .sidebar-panel[style="--newtab-background-color: rgb(43, 42, 51); --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"], /* Nightly */
-      body[lwt-sidebar][style="--newtab-background-color: rgb(43, 42, 51); --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"] {
+      .sidebar-panel[style="--newtab-background-color: #1c1e24; --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"], /* Nightly */
+      body[lwt-sidebar][style="--newtab-background-color: #1c1e24; --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"] {
       /* Only darkmode has more: --newtab-background-color-secondary: rgba(66, 65, 77, 1); */
       --lwt-sidebar-background-color: transparent !important;
       --lwt-sidebar-text-color: var(--win-text-color) !important;

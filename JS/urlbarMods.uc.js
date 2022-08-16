@@ -175,7 +175,7 @@
       gIdentityHandler._refreshIdentityIcons();
     }
     styleIdentityIconDragBox() {
-      // for a given string in CSS3 custom property syntax, e.g. "var(--tooltip-color)" or "var(--tooltip-color, rgb(255, 255, 255))", convert it to a hex code string e.g. "#FFFFFF"
+      // for a given string in CSS3 custom property syntax, e.g. "var(--tooltip-color)" or "var(--tooltip-color, rgb(255, 255, 255))", convert it to a hex code string e.g. "#f4f4f7"
       function varToHex(variable) {
         let temp = document.createElement("div");
         document.body.appendChild(temp);

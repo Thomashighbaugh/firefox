@@ -24,7 +24,7 @@
     --color-warning: var(--yellow-80) !important;
     --color-error: var(--red-60) !important;
     --color-error-hover: var(--red-50) !important;
-    --color-moz-heading: #fff;
+    --color-moz-heading: #f4f4f7;
     --color-moz-inverse-bg: var(red) !important;
     --focus-shadow: 0 0 0 4px color-mix(in srgb, var(--in-content-primary-button-background) 30%, transparent),
       0 0 0 2px var(--in-content-primary-button-background-active);

@@ -11,8 +11,8 @@
 @media (-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
   .sidebar-panel[style="--newtab-background-color: rgba(43, 42, 51, 1); --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"],
       body[lwt-sidebar][style="--newtab-background-color: rgba(43, 42, 51, 1); --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"],
-      .sidebar-panel[style="--newtab-background-color: rgb(43, 42, 51); --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"], /* Nightly */
-      body[lwt-sidebar][style="--newtab-background-color: rgb(43, 42, 51); --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"] {
+      .sidebar-panel[style="--newtab-background-color: #1c1e24; --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"], /* Nightly */
+      body[lwt-sidebar][style="--newtab-background-color: #1c1e24; --newtab-text-primary-color: rgba(251, 251, 254, 1); --lwt-sidebar-background-color: rgb(56, 56, 61); --lwt-sidebar-text-color: rgba(249, 249, 250, 1);"] {
     /* Only darkmode has more: --newtab-background-color-secondary: rgba(66, 65, 77, 1); */
     --lwt-sidebar-background-color: transparent !important;
     --lwt-sidebar-text-color: var(--mac-text-color) !important;

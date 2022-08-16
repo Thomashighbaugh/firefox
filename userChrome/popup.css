@@ -196,8 +196,8 @@ browser[type="content"] > html {
       --organizer-toolbar-field-focus-border-color: var(--organizer-outline-color);
       --organizer-toolbar-field-focus-box-shadow: unset;
 
-      --organizer-color: rgb(251, 251, 254);
-      --organizer-deemphasized-color: rgb(191, 191, 201);
+      --organizer-color: #f4f4f7;
+      --organizer-deemphasized-color: #b2bfd9;
 
       --organizer-toolbar-background: #17191e;
       --organizer-pane-background: #1b1d24;
@@ -244,8 +244,8 @@ browser[type="content"] > html {
 
       @media (-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
         :root {
-          --organizer-color: rgb(251, 251, 254);
-          --organizer-deemphasized-color: rgb(191, 191, 201);
+          --organizer-color: #f4f4f7;
+          --organizer-deemphasized-color: #b2bfd9;
 
           --organizer-toolbar-background: #17191e;
           --organizer-pane-background: #1b1d24;

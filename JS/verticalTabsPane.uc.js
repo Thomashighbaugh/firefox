@@ -1959,7 +1959,7 @@
   .toolbarbutton-icon {
   mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><circle cx="100%" cy="100%" r="9"/></svg>')
           exclude 0/100% 100% no-repeat,
-      linear-gradient(#fff, #fff);
+      linear-gradient(#f4f4f7, #f4f4f7);
   mask-position: 8px 8px;
   transition-property: mask;
   transition-timing-function: ease-in-out;
@@ -1971,7 +1971,7 @@
   .toolbarbutton-icon {
   mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><circle cx="100%" cy="100%" r="9"/></svg>')
           exclude 0/100% 100% no-repeat,
-      linear-gradient(#fff, #fff);
+      linear-gradient(#f4f4f7, #f4f4f7);
 }
 /* close button */
 #vertical-tabs-list .all-tabs-item .all-tabs-secondary-button[close-button] {

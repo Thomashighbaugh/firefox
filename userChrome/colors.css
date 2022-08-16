@@ -76,7 +76,7 @@
   --blue-60: #098acc;
   --blue-70: #076899;
   --blue-80: #044566;
-  --grey-30: #d7d7db;
+  --grey-30: #e9efff;
   --grey-60: #444b5a;
   --grey-90-a10: #22262d22;
   --grey-90-a20: #22262d55;
@@ -116,10 +116,10 @@
   :root {
     /* Keep these in sync with layout/base/PresShell.cpp, and plaintext.css */
     --in-content-page-background: #1c1e24;
-    --in-content-page-color: rgb(251, 251, 254);
-    --in-content-deemphasized-text: rgb(191, 191, 201);
+    --in-content-page-color: #f4f4f7;
+    --in-content-deemphasized-text: #b2bfd9;
 
-    --in-content-box-background: rgb(35, 34, 43);
+    --in-content-box-background: #282b36;
     --in-content-box-background-odd: rgba(249, 249, 250, 0.05);
     --in-content-box-info-background: rgba(249, 249, 250, 0.15);
 
@@ -129,10 +129,10 @@
 
     --in-content-error-text-color: #ff9aa2;
 
-    --in-content-button-background: rgb(43, 42, 51);
-    --in-content-button-background-hover: rgb(82, 82, 94);
-    --in-content-button-background-active: rgb(91, 91, 102);
-    --in-content-icon-color: rgb(251, 251, 254);
+    --in-content-button-background: #1c1e24;
+    --in-content-button-background-hover: #383a47;
+    --in-content-button-background-active: #323643;
+    --in-content-icon-color: #f4f4f7;
 
     --in-content-primary-button-background: #8b9cbe;
     --in-content-primary-button-background-hover: #b2bfd9;

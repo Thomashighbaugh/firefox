@@ -71,7 +71,7 @@
   --blue-60: #098acc;
   --blue-70: #076899;
   --blue-80: #044566;
-  --grey-30: #d7d7db;
+  --grey-30: #e9efff;
   --grey-60: #444b5a;
   --grey-90-a10: #22262d22;
   --grey-90-a20: #22262d55;
@@ -111,8 +111,8 @@
   :root {
     /* Keep these in sync with layout/base/PresShell.cpp, and plaintext.css */
     --in-content-page-background: #1c1e24;
-    --in-content-page-color: rgb(251, 251, 254);
-    --in-content-deemphasized-text: rgb(191, 191, 201);
+    --in-content-page-color: #f4f4f7;
+    --in-content-deemphasized-text: #b2bfd9;
 
     --in-content-box-background: #2f303d;
     --in-content-box-background-odd: #22262d44;

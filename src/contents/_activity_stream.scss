@@ -6,7 +6,7 @@
     body[style*="--newtab-background-color:rgba(42, 42, 46, 1);"],
     body[style*="--newtab-background-color: rgba(42, 42, 46, 1);"],
     body[style*="--newtab-background-color: rgba(43, 42, 51, 1);"],
-    body[style*="--newtab-background-color: rgb(43, 42, 51);"] {
+    body[style*="--newtab-background-color: #1c1e24;"] {
       /* inner */
       --newtab-focus-border: rgba(
         0,
@@ -26,7 +26,6 @@
       }
     }
   }
-
 
   /** Activity Stream - Web Site Icon: full size ******************************/
   @include Option("userContent.newTab.full_icon") {

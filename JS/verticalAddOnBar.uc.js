@@ -34,7 +34,7 @@ var AddonbarVertical = {
 	var button_label = "Toggle vertical Add-on Bar"; // Toggle button name
 	var addonbar_v_togglebutton = true; // display toggle button for vertical toolbar (true) or not (false)
 	var addonbar_v_on_the_left = false; // display vertical toolbar on the left (true) or the right (false)
-	var insert_before_borders = true; // may not always offer a visible change
+	var insert_before_borders = false; // may not always offer a visible change
 	var style_addonbar_v = true; // apply default toolbar appearance/colors to vertical add-on bar
 	var addonbar_v_width = "40px"; // toolbar width
 	var compact_buttons = false; // compact button size (true) or default button size (false)
@@ -45,7 +45,7 @@ var AddonbarVertical = {
 	  else var toolbox_abv = document.createXULElement("toolbox");
 	  toolbox_abv.setAttribute("orient","horizontal");
 	  toolbox_abv.setAttribute("id","toolbox_abv");
-	 // toolbox_abv.setAttribute("insertbefore","sidebar-box");
+	  toolbox_abv.setAttribute("insertbefore","sidebar-box");
 	  
 	  if(appversion <= 62) var tb_addonbarv = document.createElement("toolbar");
 	  else var tb_addonbarv = document.createXULElement("toolbar");

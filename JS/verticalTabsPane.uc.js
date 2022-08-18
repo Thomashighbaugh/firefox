@@ -270,7 +270,7 @@
                 SidebarUI,
                 "_positionStart",
                 SidebarUI.POSITION_START_PREF,
-                false,
+                true,
                 SidebarUI.setPosition.bind(SidebarUI)
             );
             // destroy the scrollbuttons.
@@ -2288,11 +2288,11 @@
             this._splitter.style.MozBoxOrdinalGroup = 4;
             verticalSplitter.style.MozBoxOrdinalGroup = 2;
             verticalPane.style.MozBoxOrdinalGroup = 1;
-            this._box.setAttribute("positionend", true);
-            verticalPane.setAttribute("positionstart", true);
+            this._box.setAttribute("positionstart", true);
+            verticalPane.setAttribute("positionend", true);
         } else {
-            this._box.removeAttribute("positionend");
-            verticalPane.removeAttribute("positionstart");
+            this._box.removeAttribute("positionstart");
+            verticalPane.removeAttribute("positionend");
         }
         this.hideSwitcherPanel();
         let content = SidebarUI.browser.contentWindow;

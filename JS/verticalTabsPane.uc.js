@@ -271,7 +271,7 @@
               "_positionStart",
               SidebarUI.POSITION_START_PREF,
               true,
-              SidebarUI.setPosition()
+              SidebarUI.setPosition.bind(SidebarUI)
           );
           // destroy the scrollbuttons.
           ["#scrollbutton-up", "#scrollbutton-down"].forEach((id) =>
@@ -2161,7 +2161,7 @@
 
   // invoked when delayed window startup has finished, in other words after important components have been fully inited.
   function init() {
-      SidebarUI.setPosition(); // set the sidebar position again since we modified this function, probably after it already set the position
+      SidebarUI.setPosition.bind(SidebarUI); // set the sidebar position again since we modified this function, probably after it already set the position
       // change the onUnload function (invoked when window is closed) so that it calls our uninit function too.
       eval(
           `gBrowserInit.onUnload = function ` +

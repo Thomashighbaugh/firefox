@@ -145,7 +145,7 @@
               create(document, "menuitem", {
                   id: "vertical-tabs-context-position",
                   label: config.l10n.context["Move Pane to Right"],
-                  oncommand: `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, true);`,
+                  oncommand: `Services.prefs.setBoolPref(verticalPane.POSITION_START_PREF, true);`,
               })
           );
           this.contextMenu._menuitemExpand = this.contextMenu.appendChild(
@@ -264,12 +264,12 @@
           });
           prefSvc.addObserver("userChrome.tabs.verticalTabsPane", this);
           prefSvc.addObserver("privacy.userContext", this);
-          prefSvc.addObserver(SidebarUI.POSITION_START_PREF, this);
+          prefSvc.addObserver(verticalPane.POSITION_START_PREF, this);
           // re-initialize the sidebar's positionstart pref callback since we changed it earlier at the bottom to make it also move the vertical tabs pane.
           XPCOMUtils.defineLazyPreferenceGetter(
               SidebarUI,
               "_positionStart",
-              SidebarUI.POSITION_START_PREF,
+              verticalPane.POSITION_START_PREF,
               true,
               SidebarUI.setPosition.bind(SidebarUI)
           );
@@ -300,7 +300,7 @@
               if (window.closed) return;
               readPref(reversePref);
               readPref(userContextPref);
-              readPref(SidebarUI.POSITION_START_PREF);
+              readPref(verticalPane.POSITION_START_PREF);
               // try to adopt from previous window, otherwise restore from prefs.
               let sourceWindow = window.opener;
               if (sourceWindow)
@@ -697,19 +697,19 @@
               case containerOnClickPref:
                   this.handlePrivacyChange();
                   break;
-              case SidebarUI.POSITION_START_PREF:
+              case verticalPane.POSITION_START_PREF:
                   let menuitem = this.contextMenu._menuitemPosition;
                   if (value) {
                       menuitem.label = config.l10n.context["Move Pane to Left"];
                       menuitem.setAttribute(
                           "oncommand",
-                          `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, false);`
+                          `Services.prefs.setBoolPref(verticalPane.POSITION_START_PREF, false);`
                       );
                   } else {
                       menuitem.label = config.l10n.context["Move Pane to Right"];
                       menuitem.setAttribute(
                           "oncommand",
-                          `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, true);`
+                          `Services.prefs.setBoolPref(verticalPane.POSITION_START_PREF, true);`
                       );
                   }
                   break;

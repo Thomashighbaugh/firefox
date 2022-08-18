@@ -13,12 +13,12 @@ download_ff() {
   message "[>>] Downloading theme..."
 
   curl -LJ0 https://github.com/Thomashighbaugh/firefox/archive/master.tar.gz | tar -xz -C /tmp/
-
+  sudo git clone https://github.com/Thomashighbaugh/firefox /tmp/firefox 
   # Download success!
   if [[ $? -eq 0 ]]; then
     message "[>>] Copying..."
 
-    FF_THEME="/tmp/firefox-master/"
+    FF_THEME="/tmp/firefox/"
     cp -r "${FF_THEME}"* "${CHROME_DIRECTORY}"
 
     # Backup user.js instead of overwriting it
@@ -85,31 +85,36 @@ function print_help() {
 if [[ ! -z "${@}" ]] && [[ ! -z "${1}" ]]; then
 
   if [[ "${1}" == "dev" ]]; then
-    RELEASE_NAME="Developer Edition"
+    RELEASE_NAME="Firefox Developer Edition"
     check_profile "dev-edition-default"
     sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox-developer-edition/
   elif [[ "${1}" == "beta" ]]; then
-    RELEASE_NAME="Beta"
+    RELEASE_NAME="Firefox Beta"
     check_profile "default-beta"
     sudo cp -rvf /tmp/firefox-master/patches/root/* /opt/firefox-beta/
   elif [[ "${1}" == "nightly" ]]; then
-    RELEASE_NAME="Nightly"
+    RELEASE_NAME="Firefox Nightly"
     sudo cp -rvf /tmp/firefox-master/patches/root/* /opt/firefox-nightly/
     check_profile "default-nightly"
   elif [[ "${1}" == "stable" ]]; then
-    RELEASE_NAME="Stable"
+    RELEASE_NAME="Firefox Stable"
     check_profile "default-release"
     sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox/
   elif [[ "${1}" == "esr" ]]; then
-    RELEASE_NAME="ESR"
+    RELEASE_NAME="Firefox ESR"
     check_profile "default-esr"
     sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/firefox-esr/
   elif [[ "${1}" == "help" ]]; then
     print_help
     exit
+  elif [[ "${1}" == "wolf" ]]; then 
+    RELEASE_NAME="Librewolf"
+    FF_USER_DIRECTORY="$(find "${HOME}/.librewolf" -maxdepth 1 -type d -regextype egrep -regex '.*[a-zA-Z0-9]+.'default-release)"
+    sudo cp -rvf /tmp/firefox-master/patches/root/* /usr/lib/librewolf/ 
   else
     echo -ne "Invalid parameter!\n"
-    print_help
+    print_help "default-release"
+ 
     exit
   fi
 else
@@ -160,6 +165,6 @@ if [[ -n "$FF_USER_DIRECTORY" ]]; then
   fi
 
 else
-  message "[!!] No Firefox ${RELEASE_NAME} user profile detected! Make sure to run Firefox ${RELEASE_NAME} atleast once! Terminating..."
+  message "[!!] No ${RELEASE_NAME} user profile detected! Make sure to run Firefox ${RELEASE_NAME} atleast once! Terminating..."
   exit 1
 fi

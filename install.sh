@@ -23,7 +23,12 @@ download_ff() {
 	message "[>>] Downloading theme..."
 
 	curl -LJ0 https://github.com/Thomashighbaugh/firefox/archive/master.tar.gz | tar -xz -C /tmp/
-	sudo git clone https://github.com/Thomashighbaugh/firefox /tmp/firefox
+	if [[ ! -d "/tmp/firefox" ]]; then
+	  sudo git clone https://github.com/Thomashighbaugh/firefox /tmp/firefox
+    else 
+       rm -rvf  /tmp/firefox
+       sudo git clone https://github.com/Thomashighbaugh/firefox /tmp/firefox
+    fi
 	#---------------------------------------------------------#
 	# Download success!
 	if [[ $? -eq 0 ]]; then

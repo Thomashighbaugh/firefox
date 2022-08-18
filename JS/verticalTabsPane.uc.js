@@ -2294,9 +2294,9 @@
           this._box.removeAttribute("positionend");
           verticalPane.removeAttribute("positionstart");
       }
-      this.hideSwitcherPanel();
-      let content = SidebarUI.browser.contentWindow;
- //     if (content && content.updatePosition) content.updatePosition();
+   //   this.hideSwitcherPanel();
+     // let content = SidebarUI.browser.contentWindow;
+      if (content && content.updatePosition) content.updatePosition();
   };
 
   // wait for delayed startup for some parts of the script to execute.

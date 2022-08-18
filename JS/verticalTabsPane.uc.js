@@ -145,7 +145,7 @@
               create(document, "menuitem", {
                   id: "vertical-tabs-context-position",
                   label: config.l10n.context["Move Pane to Right"],
-                  oncommand: `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, true);`,
+                  oncommand: `Services.prefs.setBoolPref(TabsPanel.POSITION_START_PREF, true);`,
               })
           );
           this.contextMenu._menuitemExpand = this.contextMenu.appendChild(
@@ -264,14 +264,14 @@
           });
           prefSvc.addObserver("userChrome.tabs.verticalTabsPane", this);
           prefSvc.addObserver("privacy.userContext", this);
-          prefSvc.addObserver(SidebarUI.POSITION_START_PREF, this);
+          prefSvc.addObserver(TabsPanel.POSITION_START_PREF, this);
           // re-initialize the sidebar's positionstart pref callback since we changed it earlier at the bottom to make it also move the vertical tabs pane.
           XPCOMUtils.defineLazyPreferenceGetter(
-              SidebarUI,
+              TabsPanel,
               "_positionStart",
-              SidebarUI.POSITION_START_PREF,
+              TabsPanel.POSITION_START_PREF,
               true,
-              SidebarUI.setPosition.bind(SidebarUI)
+              TabsPanel.setPosition.bind(TabsPanel)
           );
           // destroy the scrollbuttons.
           ["#scrollbutton-up", "#scrollbutton-down"].forEach((id) =>
@@ -300,7 +300,7 @@
               if (window.closed) return;
               readPref(reversePref);
               readPref(userContextPref);
-              readPref(SidebarUI.POSITION_START_PREF);
+              readPref(TabsPanel.POSITION_START_PREF);
               // try to adopt from previous window, otherwise restore from prefs.
               let sourceWindow = window.opener;
               if (sourceWindow)
@@ -697,19 +697,19 @@
               case containerOnClickPref:
                   this.handlePrivacyChange();
                   break;
-              case SidebarUI.POSITION_START_PREF:
+              case TabsPanel.POSITION_START_PREF:
                   let menuitem = this.contextMenu._menuitemPosition;
                   if (value) {
                       menuitem.label = config.l10n.context["Move Pane to Left"];
                       menuitem.setAttribute(
                           "oncommand",
-                          `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, false);`
+                          `Services.prefs.setBoolPref(TabsPanel.POSITION_START_PREF, false);`
                       );
                   } else {
                       menuitem.label = config.l10n.context["Move Pane to Right"];
                       menuitem.setAttribute(
                           "oncommand",
-                          `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, true);`
+                          `Services.prefs.setBoolPref(TabsPanel.POSITION_START_PREF, true);`
                       );
                   }
                   break;
@@ -2161,13 +2161,13 @@
 
   // invoked when delayed window startup has finished, in other words after important components have been fully inited.
   function init() {
-      SidebarUI.setPosition(); // set the sidebar position again since we modified this function, probably after it already set the position
+      TabsPanel.setPosition(); // set the sidebar position again since we modified this function, probably after it already set the position
       // change the onUnload function (invoked when window is closed) so that it calls our uninit function too.
       eval(
           `gBrowserInit.onUnload = function ` +
               gBrowserInit.onUnload
                   .toSource()
-                  .replace(/(SidebarUI\.uninit\(\))/, `$1; verticalTabsPane.uninit()`)
+                  .replace(/(TabsPanel\.uninit\(\))/, `$1; verticalTabsPane.uninit()`)
       );
       window.onunload = gBrowserInit.onUnload.bind(gBrowserInit); // reset the event handler since it used the bind method, which creates an anonymous version of the function that we can't change. just re-bind our new version.
       let gNextWindowID = 0; // looks unread but this is required for the following functions
@@ -2274,7 +2274,7 @@
   window.verticalTabsPane = new VerticalTabsPaneBase(); // instantiate our tabs pane
 
   // tab pane's horizontal alignment should mirror that of the sidebar, which can be moved from left to right.
-  SidebarUI.setPosition = function () {
+  TabsPanel.setPosition = function () {
       let appcontent = document.getElementById("appcontent");
       let verticalSplitter = document.getElementById("vertical-tabs-splitter");
       let verticalPane = document.getElementById("vertical-tabs-pane");
@@ -2295,7 +2295,7 @@
           verticalPane.removeAttribute("positionstart");
       }
       this.hideSwitcherPanel();
-      let content = SidebarUI.browser.contentWindow;
+      let content = TabsPanel.browser.contentWindow;
       if (content && content.updatePosition) content.updatePosition();
   };
 

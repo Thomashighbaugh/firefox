@@ -1795,7 +1795,7 @@
     max-width: var(--pane-width, 350px);
     margin-inline: 0 calc(var(--collapsed-pane-width) - var(--pane-width, 350px));
 }
-#vertical-tabs-pane[unpinned][expanded]:not([positionstart="true"]) {
+#vertical-tabs-pane[unpinned][expanded]([positionstart="true"]) {
     margin-inline: calc(var(--collapsed-pane-width) - var(--pane-width, 350px)) 0;
 }
 #vertical-tabs-pane[no-expand] {

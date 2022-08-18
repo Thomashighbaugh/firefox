@@ -271,7 +271,8 @@
                 "_positionStart",
                 SidebarUI.POSITION_START_PREF,
                 true,
-                SidebarUI.setPosition.bind(SidebarUI.POSITION_START_PREF);
+                SidebarUI.setPosition.bind(SidebarUI)
+            );
             // destroy the scrollbuttons.
             ["#scrollbutton-up", "#scrollbutton-down"].forEach((id) =>
                 this.containerNode.shadowRoot.querySelector(id).remove()

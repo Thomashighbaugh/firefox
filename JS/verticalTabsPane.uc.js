@@ -270,7 +270,7 @@
                 SidebarUI,
                 "_positionStart",
                 SidebarUI.POSITION_START_PREF,
-                true,
+                false,
                 SidebarUI.setPosition.bind(SidebarUI)
             );
             // destroy the scrollbuttons.

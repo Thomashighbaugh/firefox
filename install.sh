@@ -21,12 +21,10 @@ message() {
 download_ff() {
 
 	message "[>>] Downloading theme..."
-
-	curl -LJ0 https://github.com/Thomashighbaugh/firefox/archive/master.tar.gz | tar -xz -C /tmp/
 	if [[ ! -d "/tmp/firefox" ]]; then
 	  sudo git clone https://github.com/Thomashighbaugh/firefox /tmp/firefox
     else 
-       rm -rvf  /tmp/firefox
+       sudo rm -rf  /tmp/firefox  >/dev/null
        sudo git clone https://github.com/Thomashighbaugh/firefox /tmp/firefox
     fi
 	#---------------------------------------------------------#
@@ -58,7 +56,7 @@ download_ff() {
 		mv "${CHROME_DIRECTORY}/user.js" "${CHROME_DIRECTORY}/../"
 
 		if [[ $? -eq 0 ]]; then
-			rm -rf "/tmp/firefox/"
+		sudo rm -rf "/tmp/firefox/"  >/dev/null
 		else
 			message " [!!] There was a problem while copying the files. Terminating..."
 			exit

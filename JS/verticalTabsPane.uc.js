@@ -268,8 +268,8 @@
             // re-initialize the sidebar's positionstart pref callback since we changed it earlier at the bottom to make it also move the vertical tabs pane.
             XPCOMUtils.defineLazyPreferenceGetter(
                 SidebarUI,
-                "_positionEnd",
-                SidebarUI.POSITION_END_PREF,
+                "_positionStart",
+                SidebarUI.POSITION_START_PREF,
                 true,
                 SidebarUI.setPosition.bind(SidebarUI)
             );
@@ -1711,8 +1711,8 @@
     transition-duration: var(--pane-transition-duration), var(--pane-transition-duration), var(--pane-transition-duration);
 }
 #vertical-tabs-pane[unpinned]:not([positionstart="true"]) {
-    left: auto;
-    right: 0;
+    left: 0;
+    right: auto;
     margin-inline: 0;
 }
 #vertical-tabs-pane[unpinned][expanded] {
@@ -1722,7 +1722,7 @@
     margin-inline: 0 calc(var(--collapsed-pane-width) - var(--pane-width, 350px));
 }
 #vertical-tabs-pane[unpinned][expanded]:not([positionstart="true"]) {
-    margin-inline: calc(var(--collapsed-pane-width) - var(--pane-width, 350px)) 0;
+    margin-inline: calc(var(--collapsed-pane-width) + var(--pane-width, 350px)) 0;
 }
 #vertical-tabs-pane[no-expand] {
     transition: none !important;
@@ -2227,7 +2227,7 @@
                 node.appendChild(
                     create(doc, "observes", {
                         "element": "vertical-tabs-pane",
-                        "attribute": "positionstart",
+                        "attribute": "positionend",
                     })
                 );
                 if (key_toggleVerticalTabs)

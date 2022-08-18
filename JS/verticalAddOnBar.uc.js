@@ -32,8 +32,8 @@ var AddonbarVertical = {
         gBrowser.selectedBrowser.removeAttribute("blank");
     } catch (e) { }
 
-    var addonbar_v_label = "侧边工具栏"; // toolbar name
-    var button_label = "显示/隐藏侧边工具栏"; // Toggle button name
+    var addonbar_v_label = "Vertical Add-On Bar"; // toolbar name
+    var button_label = "Toggle Add-On Bar"// Toggle button name
     var addonbar_v_togglebutton = true; // display toggle button for vertical toolbar (true) or not (false)
     var addonbar_v_on_the_left = false; // display vertical toolbar on the left (true) or the right (false)
     var insert_before_borders = false; // may not always offer a visible change

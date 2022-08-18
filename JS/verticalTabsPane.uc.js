@@ -301,11 +301,6 @@
                 readPref(reversePref);
                 readPref(userContextPref);
                 readPref(SidebarUI.POSITION_START_PREF);
-                // try to adopt from previous window, otherwise restore from prefs.
-                let sourceWindow = window.opener;
-                if (sourceWindow)
-                    if (!sourceWindow.closed && sourceWindow.location.protocol == "chrome:")
-                        if (this.adoptFromWindow(sourceWindow)) return;
                 readPref(widthPref);
                 readPref(unpinnedPref);
                 readPref(closedPref);
@@ -409,7 +404,6 @@
             });
             return menus;
         }
-        // we want to prevent the pane from collapsing when a context menu is opened from inside it.
         // since document.popupNode was recently removed, we have to manually locate every context menu,
         // and check if it's open by checking the triggerNode property. if the triggerNode is inside the pane,
         // we prevent the pane from collapsing and instead add a popuphidden event listener,
@@ -621,12 +615,12 @@
                     break;
             }
         }
-        // onCustomizeStart() {
-        //     this.overflowButton.disabled = true;
-        // }
-        // onCustomizeEnd() {
-        //     this.overflowButton.disabled = false;
-        // }
+         onCustomizeStart() {
+             this.overflowButton.disabled = true;
+         }
+         onCustomizeEnd() {
+             this.overflowButton.disabled = false;
+         }
         /**
          * for a given preference, get its value, regardless of the preference type.
          * @param {object} root (an object with nsIPrefBranch interface — reflects the preference branch we're watching, or just the root)
@@ -703,13 +697,13 @@
                         menuitem.label = config.l10n.context["Move Pane to Left"];
                         menuitem.setAttribute(
                             "oncommand",
-                            `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, false);`
+                            `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, true);`
                         );
                     } else {
                         menuitem.label = config.l10n.context["Move Pane to Right"];
                         menuitem.setAttribute(
                             "oncommand",
-                            `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, true);`
+                            `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, false);`
                         );
                     }
                     break;

@@ -61,9 +61,10 @@ var AddonbarVertical = {
 	  tb_addonbarv.setAttribute("label", addonbar_v_label);
 	  tb_addonbarv.setAttribute("lockiconsize","true");
 	  tb_addonbarv.setAttribute("defaultset","spring");
-	  tb_addonbarv.setAttribute("appendchild", "sidebar-box");
 
-	  toolbox_abv.appendChild(tb_addonbarv);
+
+//	  toolbox_abv.appendChild(tb_addonbarv);
+	  tb_addonbarv.appendChild(toolbox_abv);
 	  
 	  CustomizableUI.registerArea("addonbar_v", {legacy: true});
 	  if(appversion >= 65) CustomizableUI.registerToolbarNode(tb_addonbarv);

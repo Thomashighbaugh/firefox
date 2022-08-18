@@ -181,7 +181,7 @@
         create(document, "menuitem", {
           id: "vertical-tabs-context-position",
           label: config.l10n.context["Move Pane to Right"],
-          oncommand: `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, true);`,
+          oncommand: `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, false);`,
         })
       );
       this._contextMenu.menuitemExpand = this._contextMenu.appendChild(
@@ -286,7 +286,7 @@
         SidebarUI,
         "_positionStart",
         SidebarUI.POSITION_START_PREF,
-        true,
+        false,
         SidebarUI.setPosition.bind(SidebarUI)
       );
       // destroy the scrollbuttons.
@@ -725,13 +725,13 @@
             menuitem.label = config.l10n.context["Move Pane to Left"];
             menuitem.setAttribute(
               "oncommand",
-              `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, false);`
+              `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, true);`
             );
           } else {
             menuitem.label = config.l10n.context["Move Pane to Right"];
             menuitem.setAttribute(
               "oncommand",
-              `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, true);`
+              `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, false);`
             );
           }
           break;

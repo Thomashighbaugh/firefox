@@ -85,12 +85,12 @@
     class VerticalTabsPaneBase {
         static preferences = [
             { name: closedPref, value: false },
-            { name: unpinnedPref, value: true },
+            { name: unpinnedPref, value: false },
             { name: noExpandPref, value: false },
             { name: widthPref, value: 350 },
             { name: reversePref, value: false },
-            { name: hoverDelayPref, value: 300 },
-            { name: hoverOutDelayPref, value: 250 },
+            { name: hoverDelayPref, value: 100 },
+            { name: hoverOutDelayPref, value: 100 },
         ];
         constructor() {
             this.preferences = VerticalTabsPaneBase.preferences;

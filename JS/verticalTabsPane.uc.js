@@ -271,7 +271,7 @@
               "_positionStart",
               SidebarUI.POSITION_START_PREF,
               true,
-            //  SidebarUI.setPosition.bind(SidebarUI)
+              SidebarUI.setPosition.bind(SidebarUI)
           );
           // destroy the scrollbuttons.
           ["#scrollbutton-up", "#scrollbutton-down"].forEach((id) =>
@@ -2296,7 +2296,7 @@
       }
       this.hideSwitcherPanel();
       let content = SidebarUI.browser.contentWindow;
-      if (content && content.updatePosition) content.updatePosition();
+ //     if (content && content.updatePosition) content.updatePosition();
   };
 
   // wait for delayed startup for some parts of the script to execute.

@@ -35,7 +35,7 @@ var AddonbarVertical = {
 	var addonbar_v_on_the_left = false; // display vertical toolbar on the left (true) or the right (false)
 	var insert_before_borders = false; // may not always offer a visible change
 	var style_addonbar_v = true; // apply default toolbar appearance/colors to vertical add-on bar
-	var addonbar_v_width = "40px"; // toolbar width
+	var addonbar_v_width = "30px"; // toolbar width
 	var compact_buttons = false; // compact button size (true) or default button size (false)
 
 	try {
@@ -61,15 +61,21 @@ var AddonbarVertical = {
 	  tb_addonbarv.setAttribute("label", addonbar_v_label);
 	  tb_addonbarv.setAttribute("lockiconsize","true");
 	  tb_addonbarv.setAttribute("defaultset","spring");
-	  
+	  tb_addonbarv.setAttribute("insertbefore", "toolbox_abv");
+
 	  toolbox_abv.appendChild(tb_addonbarv);
 	  
 	  CustomizableUI.registerArea("addonbar_v", {legacy: true});
 	  if(appversion >= 65) CustomizableUI.registerToolbarNode(tb_addonbarv);
-
+	  
+	  if(addonbar_v_on_the_left) {
+	    if(insert_before_borders || appversion >= 86) document.getElementById("browser").insertBefore(toolbox_abv,document.getElementById("browser").firstChild);
+	    else document.getElementById("browser").insertBefore(toolbox_abv,document.getElementById("browser").firstChild.nextSibling);
+	  }
+	  else {
 		if(insert_before_borders) document.getElementById("browser").appendChild(toolbox_abv);
 	    else document.getElementById("browser").insertBefore(toolbox_abv,document.getElementById("browser").lastChild);
-
+	  }
 	  
   	  var observer = new MutationObserver(function(mutations) {
 		mutations.forEach(function(mutation) {
@@ -164,14 +170,14 @@ var AddonbarVertical = {
 	if(style_addonbar_v) {
 	  var end_border =' \
 		#addonbar_v { \
-			-moz-border-end: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.4)) !important; \
+			-moz-border-end: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.1)) !important; \
 		}\
 	  ';
 		  
 	  if(!addonbar_v_on_the_left) {
 		end_border ='\
 		  #addonbar_v { \
-			-moz-border-start: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.4)) !important; \
+			-moz-border-start: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.1)) !important; \
 		  }\
 		';
 	  }

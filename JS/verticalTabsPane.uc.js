@@ -1711,8 +1711,8 @@
     transition-duration: var(--pane-transition-duration), var(--pane-transition-duration), var(--pane-transition-duration);
 }
 #vertical-tabs-pane[unpinned]:not([positionstart="true"]) {
-    left: 0;
-    right: auto;
+    left: auto;
+    right: 0;
     margin-inline: 0;
 }
 #vertical-tabs-pane[unpinned][expanded] {
@@ -1722,7 +1722,7 @@
     margin-inline: 0 calc(var(--collapsed-pane-width) - var(--pane-width, 350px));
 }
 #vertical-tabs-pane[unpinned][expanded]:not([positionstart="true"]) {
-    margin-inline: calc(var(--collapsed-pane-width) + var(--pane-width, 350px)) 0;
+    margin-inline: calc(var(--collapsed-pane-width) - var(--pane-width, 350px)) 0;
 }
 #vertical-tabs-pane[no-expand] {
     transition: none !important;
@@ -2227,7 +2227,7 @@
                 node.appendChild(
                     create(doc, "observes", {
                         "element": "vertical-tabs-pane",
-                        "attribute": "positionend",
+                        "attribute": "positionstart",
                     })
                 );
                 if (key_toggleVerticalTabs)

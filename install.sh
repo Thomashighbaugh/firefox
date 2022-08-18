@@ -22,10 +22,10 @@ download_ff() {
 
 	message "[>>] Downloading theme..."
 	if [[ ! -d "/tmp/firefox" ]]; then
-	  sudo git clone https://github.com/Thomashighbaugh/firefox /tmp/firefox
+	  sudo git clone https://github.com/Thomashighbaugh/firefox /tmp/firefox >/dev/null 2>&1
     else 
-       sudo rm -rf  /tmp/firefox  >/dev/null
-       sudo git clone https://github.com/Thomashighbaugh/firefox /tmp/firefox
+       sudo rm -rf  /tmp/firefox  >/dev/null 2>&1
+       sudo git clone https://github.com/Thomashighbaugh/firefox /tmp/firefox >/dev/null 2>&1
     fi
 	#---------------------------------------------------------#
 	# Download success!
@@ -56,7 +56,7 @@ download_ff() {
 		mv "${CHROME_DIRECTORY}/user.js" "${CHROME_DIRECTORY}/../"
 
 		if [[ $? -eq 0 ]]; then
-		sudo rm -rf "/tmp/firefox/"  >/dev/null
+		sudo rm -rf "/tmp/firefox/"  >/dev/null  2>&1
 		else
 			message " [!!] There was a problem while copying the files. Terminating..."
 			exit
@@ -80,8 +80,9 @@ download_ff() {
 	echo "|______/|_____|_____|_____|__|__|"
 	echo "##################################"
 	echo
-    message "\n Higgs-Boson successfully installed! Enjoy!"
-    message "\n\n\n To insure the browser loads with the customizations, clear the startup cache by selecting the button on the about:support page."
+    message "[>>] Please restart your browser if it is open for the theme to be applied."
+    echo
+    echo
 }
 
 function check_profile() {

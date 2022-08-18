@@ -89,7 +89,7 @@ var AddAddonbar = {
 			background-position: 0vw 50vh !important; \
 		  }\
 		  /* autohide add-on bar in fullscreen mode */ \
-		  /*#main-window[sizemode="fullscreen"]:not([inDOMFullscreen="true"]) #addonbar {\
+		  #main-window[sizemode="fullscreen"]:not([inDOMFullscreen="true"]) #addonbar {\
 			visibility: visible !important; \
 			display: block !important; \
 			min-height: 1px !important; \
@@ -100,7 +100,7 @@ var AddAddonbar = {
 			min-height: 24px !important; \
 			height: 24px !important; \
 			max-height: 24px !important; \
-		  }*/ \
+		  } \
 		  ' +
                 compact_buttons_code +
                 "\

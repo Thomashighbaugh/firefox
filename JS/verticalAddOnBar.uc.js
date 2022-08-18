@@ -35,7 +35,7 @@ var AddonbarVertical = {
 	var addonbar_v_on_the_left = true; // display vertical toolbar on the left (true) or the right (false)
 	var insert_before_borders = false; // may not always offer a visible change
 	var style_addonbar_v = true; // apply default toolbar appearance/colors to vertical add-on bar
-	var addonbar_v_width = "30px"; // toolbar width
+	var addonbar_v_width = "40px"; // toolbar width
 	var compact_buttons = false; // compact button size (true) or default button size (false)
 
 	try {

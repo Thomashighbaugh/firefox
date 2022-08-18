@@ -1,5 +1,5 @@
 //vertical_addonbar.uc.js
-//Right + Single column only
+//Right + Multi columns on window maximized
 
 (function () {
   if (location != "chrome://browser/content/browser.xul" && location != "chrome://browser/content/browser.xhtml") {
@@ -33,16 +33,17 @@ you can find a color picker to hex code in this link:
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool */
 
 :root {
-  --vt-width: 20px; /* Not yet to plus the space */
-  --vt-space-width: 10px; /* Add extra width to the vertical toolbar, so that it won't look tied and crowded */
+  --vt-width: 20px; /* For each column, not yet to plus the space */
+  --vt-space-width: 15px; /* Add extra width to the vertical toolbar, so that it won't look tied and crowded */
   --vt-space-height: 5px; /* Vertical space between the buttons */
   --vt-button-padding: 10px; /* Basically increase the size of the buttons, should be smaller than space-width/2 in most cases */
+  --vt-columns: 2; /* Number of the columns */
   --vt-color: rgb(32, 32, 32); /* Background color of the tooldbar */
   --vt-hover-color: rgba(122, 122, 122, 0.5);
   --vt-active-color: rgba(222, 122, 122, 0.5);
   --vt-active-hover-color: rgba(155, 122, 122, 0.5);
 
-  --vt-space-width-total: calc(var(--vt-space-width) * 2); /* Don't change this */
+  --vt-space-width-total: calc(var(--vt-space-width) * (var(--vt-columns) +  1)); /* Don't change this */
 }
 
 /* If you harly see the icon,
@@ -53,11 +54,11 @@ due to its color matchs the toolbar color, try this *//*
 /*---*/
 
 #content-deck {
-  border-right: calc(var(--vt-space-width-total) + var(--vt-width)) solid var(--vt-color) !important;
+  border-right: calc(var(--vt-space-width-total) + var(--vt-width) * var(--vt-columns)) solid var(--vt-color) !important;
 }
 
 #main-window[inFullscreen="true"] #content-deck {
-border-right: 0 !important;
+  border-right: 0 !important;
 }
 
 #main-window[inFullscreen="true"] #vertical-toolbar-toolbox {
@@ -65,10 +66,10 @@ border-right: 0 !important;
 }
 
 #vertical-toolbar-toolbox {
-  position: fixed;
   direction: rtl;
-  right: calc(var(--vt-width) + var(--vt-space-width-total));
-  height: calc(var(--vt-width) + var(--vt-space-width-total));
+  position: fixed;
+  right: calc(var(--vt-width) * var(--vt-columns) + var(--vt-space-width-total));
+  height: calc(var(--vt-width) * var(--vt-columns) + var(--vt-space-width-total));
   transform-origin: top right;
   transform: rotate(-90deg);
   background-color: var(--vt-color);
@@ -87,6 +88,7 @@ border-right: 0 !important;
   align-content: space-evenly;
   align-items: center;
   flex: 0 0 auto;
+  flex-wrap: wrap;
 }
 
 #vertical-toolbar toolbarbutton {
@@ -115,7 +117,15 @@ border-right: 0 !important;
   --toolbarbutton-active-background: var(--vt-active-hover-color) !important;
 }
 
-#vertical-toolbar-toolbox {
+#main-window[sizemode="normal"] {
+  --vt-columns: 1;
+}
+
+#main-window[sizemode="normal"] #vertical-toolbar {
+  flex-wrap: nowrap
+}
+
+#main-window[sizemode="normal"] #vertical-toolbar-toolbox {
   overflow-x: scroll;
   overflow-y: hidden;
 }

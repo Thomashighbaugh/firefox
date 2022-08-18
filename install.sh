@@ -80,7 +80,8 @@ download_ff() {
 	echo "|______/|_____|_____|_____|__|__|"
 	echo "##################################"
 	echo
-	message "Higgs-Boson successfully installed! Enjoy!"
+    message "\n Higgs-Boson successfully installed! Enjoy!"
+    message "\n\n\n To insure the browser loads with the customizations, clear the startup cache by selecting the button on the about:support page."
 }
 
 function check_profile() {

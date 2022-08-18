@@ -35,7 +35,7 @@ var AddonbarVertical = {
 	var addonbar_v_on_the_left = false; // display vertical toolbar on the left (true) or the right (false)
 	var insert_before_borders = false; // may not always offer a visible change
 	var style_addonbar_v = true; // apply default toolbar appearance/colors to vertical add-on bar
-	var addonbar_v_width = "30px"; // toolbar width
+	var addonbar_v_width = "40px"; // toolbar width
 	var compact_buttons = false; // compact button size (true) or default button size (false)
 
 	try {
@@ -44,7 +44,7 @@ var AddonbarVertical = {
 	  else var toolbox_abv = document.createXULElement("toolbox");
 	  toolbox_abv.setAttribute("orient","horizontal");
 	  toolbox_abv.setAttribute("id","toolbox_abv");
-	  toolbox_abv.setAttribute("insertbefore","toolbox_abv");
+	  toolbox_abv.setAttribute("insertbefore","sidebar-box");
 	  
 	  if(appversion <= 62) var tb_addonbarv = document.createElement("toolbar");
 	  else var tb_addonbarv = document.createXULElement("toolbar");
@@ -164,14 +164,14 @@ var AddonbarVertical = {
 	if(style_addonbar_v) {
 	  var end_border =' \
 		#addonbar_v { \
-			-moz-border-end: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.1)) !important; \
+			-moz-border-end: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.4)) !important; \
 		}\
 	  ';
 		  
 	  if(!addonbar_v_on_the_left) {
 		end_border ='\
 		  #addonbar_v { \
-			-moz-border-start: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.1)) !important; \
+			-moz-border-start: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.4)) !important; \
 		  }\
 		';
 	  }

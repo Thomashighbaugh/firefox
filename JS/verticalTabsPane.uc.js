@@ -2161,7 +2161,7 @@
 
     // invoked when delayed window startup has finished, in other words after important components have been fully inited.
     function init() {
-      //  SidebarUI.setPosition(); // set the sidebar position again since we modified this function, probably after it already set the position
+        SidebarUI.setPosition(); // set the sidebar position again since we modified this function, probably after it already set the position
         // change the onUnload function (invoked when window is closed) so that it calls our uninit function too.
         eval(
             `gBrowserInit.onUnload = function ` +
@@ -2257,7 +2257,7 @@
         create(document, "splitter", {
             class: "chromeclass-extrachrome sidebar-splitter",
             id: "vertical-tabs-splitter",
-            hidden: true,
+            hidden: false,
         })
     );
     document.getElementById("sidebar-splitter").after(
@@ -2265,7 +2265,7 @@
             class: "chromeclass-extrachrome",
             id: "vertical-tabs-pane",
             context: "vertical-tabs-context-menu",
-            hidden: true,
+            hidden: false,
         })
     );
 

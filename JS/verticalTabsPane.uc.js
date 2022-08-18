@@ -268,11 +268,10 @@
             // re-initialize the sidebar's positionstart pref callback since we changed it earlier at the bottom to make it also move the vertical tabs pane.
             XPCOMUtils.defineLazyPreferenceGetter(
                 SidebarUI,
-                "_positionEnd",
+                "_positionStart",
                 SidebarUI.POSITION_START_PREF,
                 true,
-                SidebarUI.setPosition.bind(SidebarUI)
-            );
+                SidebarUI.setPosition.bind(SidebarUI.POSITION_START_PREF);
             // destroy the scrollbuttons.
             ["#scrollbutton-up", "#scrollbutton-down"].forEach((id) =>
                 this.containerNode.shadowRoot.querySelector(id).remove()
@@ -285,8 +284,8 @@
             readPref(noExpandPref);
             readPref(hoverDelayPref);
             readPref(hoverOutDelayPref);
-            if (!this.hoverDelay) this.hoverDelay = 100;
-            if (!this.hoverOutDelay) this.hoverOutDelay = 100;
+            if (!this.hoverDelay) this.hoverDelay = 300;
+            if (!this.hoverOutDelay) this.hoverOutDelay = 300;
             // we don't want to read some of these prefs until we know whether the window was opened by another window with a pane,
             // because instead of reading from prefs we can adopt the pane state from the previous window.
             // normally in my scripts I update prefs like this every time they're changed, which would mean, for example,
@@ -1554,7 +1553,7 @@
             }
             // browser.proton.places-tooltip.enabled should be set to true for best results.
             // regular tab tooltip is pretty lame.
-            if (!gProtonPlacesTooltip) return e.target.falsAttribute("label", label);
+            if (!gProtonPlacesTooltip) return e.target.setAttribute("label", label);
             // align to the row
             if (align) {
                 e.target.setAttribute("position", "after_start");
@@ -1687,7 +1686,7 @@
     border-inline-width: 1px 0;
     z-index: 2;
 }
-#vertical-tabs-pane[positionend] {
+#vertical-tabs-pane[positionstart] {
     border-inline-width: 0 1px;
 }
 #vertical-tabs-pane:not([unpinned]) {
@@ -1710,7 +1709,7 @@
     transition-timing-function: ease-in-out, ease-in-out, ease-in-out;
     transition-duration: var(--pane-transition-duration), var(--pane-transition-duration), var(--pane-transition-duration);
 }
-#vertical-tabs-pane[unpinned]:not([positionend="true"]) {
+#vertical-tabs-pane[unpinned]:not([positionstart="true"]) {
     left: auto;
     right: 0;
     margin-inline: 0;
@@ -1721,7 +1720,7 @@
     max-width: var(--pane-width, 350px);
     margin-inline: 0 calc(var(--collapsed-pane-width) - var(--pane-width, 350px));
 }
-#vertical-tabs-pane[unpinned][expanded]:not([positionend="true"]) {
+#vertical-tabs-pane[unpinned][expanded]:not([positionstart="true"]) {
     margin-inline: calc(var(--collapsed-pane-width) - var(--pane-width, 350px)) 0;
 }
 #vertical-tabs-pane[no-expand] {
@@ -2094,7 +2093,7 @@
     fill-opacity: 0.4;
 }
 /* buttons at the top of the pane */
-#vertical-tabs-button:not([positionend="true"]) .toolbarbutton-icon {
+#vertical-tabs-button:not([positionstart="true"]) .toolbarbutton-icon {
     transform: scaleX(-1);
 }
 #vertical-tabs-button[checked] {
@@ -2227,7 +2226,7 @@
                 node.appendChild(
                     create(doc, "observes", {
                         "element": "vertical-tabs-pane",
-                        "attribute": "positionend",
+                        "attribute": "positionstart",
                     })
                 );
                 if (key_toggleVerticalTabs)
@@ -2288,8 +2287,8 @@
             this._splitter.style.MozBoxOrdinalGroup = 4;
             verticalSplitter.style.MozBoxOrdinalGroup = 2;
             verticalPane.style.MozBoxOrdinalGroup = 1;
-            this._box.setAttribute("positionstart", true);
-            verticalPane.setAttribute("positionend", true);
+            this._box.setAttribute("positionend", true);
+            verticalPane.setAttribute("positionstart", true);
         } else {
             this._box.removeAttribute("positionend");
             verticalPane.removeAttribute("positionstart");

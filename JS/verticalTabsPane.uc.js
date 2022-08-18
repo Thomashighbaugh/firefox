@@ -2288,11 +2288,11 @@
             this._splitter.style.MozBoxOrdinalGroup = 4;
             verticalSplitter.style.MozBoxOrdinalGroup = 2;
             verticalPane.style.MozBoxOrdinalGroup = 1;
-            this._box.setAttribute("positionstart", true);
+            this._box.setAttribute("positionend", true);
             verticalPane.setAttribute("positionend", true);
         } else {
             this._box.removeAttribute("positionstart");
-            verticalPane.removeAttribute("positionend");
+            verticalPane.removeAttribute("positionstart");
         }
         this.hideSwitcherPanel();
         let content = SidebarUI.browser.contentWindow;

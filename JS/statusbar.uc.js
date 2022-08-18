@@ -50,7 +50,7 @@ var AddAddonbar = {
 		} \
 		#addonbar toolbarbutton .toolbarbutton-badge { \
 		  margin-top: 0px !important; \
-		  font-size: 8px !important; \
+		  font-size:10px !important; \
 		} \
 	  ";
 
@@ -75,7 +75,8 @@ var AddAddonbar = {
 			outline-offset: -2px !important; \
 		  } \
 		  #addonbar { \
-			border-top: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.1)) !important; \
+			border-top: 1.5px solid var(--sidebar-border-color,rgba(0,0,0,0.3)) !important; \
+			min-height: 40px !important;\
 			background-color: var(--window-color); \
 			background-image: var(--toolbar-bgimage); \
 			-moz-window-dragging: no-drag !important; \

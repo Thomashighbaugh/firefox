@@ -2161,7 +2161,7 @@
 
   // invoked when delayed window startup has finished, in other words after important components have been fully inited.
   function init() {
-      SidebarUI.setPosition.bind(SidebarUI); // set the sidebar position again since we modified this function, probably after it already set the position
+      SidebarUI.setPosition(); // set the sidebar position again since we modified this function, probably after it already set the position
       // change the onUnload function (invoked when window is closed) so that it calls our uninit function too.
       eval(
           `gBrowserInit.onUnload = function ` +
@@ -2288,11 +2288,11 @@
           this._splitter.style.MozBoxOrdinalGroup = 4;
           verticalSplitter.style.MozBoxOrdinalGroup = 2;
           verticalPane.style.MozBoxOrdinalGroup = 1;
-          this._box.setAttribute("positionend", true);
+          this._box.setAttribute("positionend", false);
           verticalPane.setAttribute("positionstart", true);
       } else {
-          this._box.removeAttribute("positionend");
-          verticalPane.removeAttribute("positionstart");
+          this._box.setAttribute("positionend", true);
+          verticalPane.setAttribute("positionstart",  false);
       }
       this.hideSwitcherPanel();
       let content = SidebarUI.browser.contentWindow;

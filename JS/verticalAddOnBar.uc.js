@@ -45,7 +45,7 @@ var AddonbarVertical = {
 	  else var toolbox_abv = document.createXULElement("toolbox");
 	  toolbox_abv.setAttribute("orient","horizontal");
 	  toolbox_abv.setAttribute("id","toolbox_abv");
-	  toolbox_abv.setAttribute("insertbefore","sidebar-box");
+//	  toolbox_abv.setAttribute("insertbefore","sidebar-box");
 	  
 	  if(appversion <= 62) var tb_addonbarv = document.createElement("toolbar");
 	  else var tb_addonbarv = document.createXULElement("toolbar");
@@ -293,6 +293,6 @@ var AddonbarVertical = {
 document.addEventListener("DOMContentLoaded", AddonbarVertical.init(), false);
 /* Use the below code instead of the one above this line, if issues occur */
 
-setTimeout(function(){
-  AddonbarVertical.init();
-},2000);
+//setTimeout(function(){
+//  AddonbarVertical.init();
+//},2000);

@@ -2294,8 +2294,8 @@
           this._box.removeAttribute("positionend");
           verticalPane.removeAttribute("positionstart");
       }
-   //   this.hideSwitcherPanel();
-     // let content = SidebarUI.browser.contentWindow;
+      this.hideSwitcherPanel();
+      let content = SidebarUI.browser.contentWindow;
       if (content && content.updatePosition) content.updatePosition();
   };
 

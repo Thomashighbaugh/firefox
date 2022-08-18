@@ -269,8 +269,8 @@
           XPCOMUtils.defineLazyPreferenceGetter(
               SidebarUI,
               "_positionStart",
-              SidebarUI.POSITION_START_PREF,
-              false,
+             // SidebarUI.POSITION_START_PREF,
+              true,
               SidebarUI.setPosition.bind(SidebarUI)
           );
           // destroy the scrollbuttons.

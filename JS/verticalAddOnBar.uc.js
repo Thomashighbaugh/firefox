@@ -72,8 +72,8 @@ var AddonbarVertical = {
 	    
 	  
 	 
-		document.getElementById("browser").appendChild(toolbox_abv);
-	    // document.getElementById("browser").insertBefore(toolbox_abv,document.getElementById("browser").lastChild);
+		//document.getElementById("browser").appendChild(toolbox_abv);
+	     document.getElementById("browser").insertBefore(toolbox_abv,document.getElementById("browser").lastChild);
 	
 	  
   	  var observer = new MutationObserver(function(mutations) {

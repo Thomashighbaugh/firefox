@@ -271,7 +271,7 @@
                 "_positionStart",
                 SidebarUI.POSITION_START_PREF,
                 true,
-                SidebarUI.setPosition.bind(SidebarUI)
+//                SidebarUI.setPosition.bind(SidebarUI)
             );
             // destroy the scrollbuttons.
             ["#scrollbutton-up", "#scrollbutton-down"].forEach((id) =>
@@ -2257,7 +2257,7 @@
         create(document, "splitter", {
             class: "chromeclass-extrachrome sidebar-splitter",
             id: "vertical-tabs-splitter",
-            hidden: false,
+            hidden: true,
         })
     );
     document.getElementById("sidebar-splitter").after(
@@ -2265,7 +2265,7 @@
             class: "chromeclass-extrachrome",
             id: "vertical-tabs-pane",
             context: "vertical-tabs-context-menu",
-            hidden: false,
+            hidden: true,
         })
     );
 
@@ -2289,9 +2289,9 @@
             verticalSplitter.style.MozBoxOrdinalGroup = 2;
             verticalPane.style.MozBoxOrdinalGroup = 1;
             this._box.setAttribute("positionend", true);
-            verticalPane.setAttribute("positionend", true);
+            verticalPane.setAttribute("positionstart", true);
         } else {
-            this._box.removeAttribute("positionstart");
+            this._box.removeAttribute("positionend");
             verticalPane.removeAttribute("positionstart");
         }
         this.hideSwitcherPanel();

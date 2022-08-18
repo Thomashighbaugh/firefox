@@ -268,10 +268,10 @@
             // re-initialize the sidebar's positionstart pref callback since we changed it earlier at the bottom to make it also move the vertical tabs pane.
             XPCOMUtils.defineLazyPreferenceGetter(
                 SidebarUI,
-                "_positionStart",
-                SidebarUI.POSITION_START_PREF,
+                "_positionEnd",
+                SidebarUI.POSITION_END_PREF,
                 true,
-//                SidebarUI.setPosition.bind(SidebarUI)
+                SidebarUI.setPosition.bind(SidebarUI)
             );
             // destroy the scrollbuttons.
             ["#scrollbutton-up", "#scrollbutton-down"].forEach((id) =>

@@ -67,6 +67,7 @@ download_ff() {
 		message " [!!] There was a problem while downloading the theme. Terminating..."
 		exit
 	fi
+    clear
 	echo "##################################"
 	echo " _______ __                      "
 	echo "|   |   |__|.-----.-----.-----.  "

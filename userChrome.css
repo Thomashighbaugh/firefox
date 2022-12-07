@@ -5570,5 +5570,12 @@ See the above repository for updates as well as full license text. */
   display: none !important;
 }
 
+/** Fix Vertical Tabs Plane **************************************************/
+#browser {
+  -moz-box-layout: revert !important;
+}
+
+
+
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 @namespace html "http://www.w3.org/1999/xhtml";

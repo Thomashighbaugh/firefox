@@ -1,4 +1,1 @@
-<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
-    <path stroke="#1b1d24" stroke-width="3.6" stroke-opacity=".75" d="M0 6h12"/>
-    <path stroke="#f4f4f7" stroke-width="1.9" d="M1 6h10"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" shape-rendering="crispEdges"><path stroke="#1b1d24" stroke-opacity=".75" stroke-width="3.6" d="M0 6h12"/><path stroke="#f4f4f7" stroke-width="1.9" d="M1 6h10"/></svg>

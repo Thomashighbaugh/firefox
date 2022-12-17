@@ -5574,6 +5574,9 @@ See the above repository for updates as well as full license text. */
 #browser {
   -moz-box-layout: revert !important;
 }
+* {
+  -moz-box-layout: revert !important;
+}
 
 
 

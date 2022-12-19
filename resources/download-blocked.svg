@@ -1,4 +1,4 @@
 <svg width="16" height="16">
-  <circle cx="8" cy="8" r="8" fill="#d92215"/>
-  <rect width="10" height="4" x="3" y="6" fill="#f4f4f7" rx=".5" ry=".5"/>
+  <circle cx="8" cy="8" r="8" fill="#ff3d81" />
+  <rect width="10" height="4" x="3" y="6" fill="#f4f4f7" rx=".5" ry=".5" />
 </svg>

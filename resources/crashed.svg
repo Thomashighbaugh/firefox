@@ -1,10 +1,11 @@
 <svg viewBox="22 22 16 16">
   <defs>
     <linearGradient id="crashed_svg__a" x1="30" x2="30" y1="23" y2="37" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#e63b2e"/>
-      <stop offset="1" stop-color="#c33931"/>
+      <stop offset="0" stop-color="#ff3d81" />
+      <stop offset="1" stop-color="#c94c4c" />
     </linearGradient>
   </defs>
-  <circle cx="30" cy="30" r="7" fill="url(#crashed_svg__a)"/>
-  <path fill="#f4f4f7" d="M31.03 33.304a1.085 1.085 0 1 1-2.17 0c0-.588.479-1.079 1.079-1.079.612 0 1.091.491 1.091 1.079zm-1.859-2.171-.24-5.253h2.015l-.24 5.253h-1.535z"/>
+  <circle cx="30" cy="30" r="7" fill="url(#crashed_svg__a)" />
+  <path fill="#f4f4f7"
+    d="M31.03 33.304a1.085 1.085 0 1 1-2.17 0c0-.588.479-1.079 1.079-1.079.612 0 1.091.491 1.091 1.079zm-1.859-2.171-.24-5.253h2.015l-.24 5.253h-1.535z" />
 </svg>

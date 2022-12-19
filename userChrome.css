@@ -5947,8 +5947,8 @@ button {
 }
 
 /* ----- DISABLE LOADING THROBBER ----- */
-/*.tabbrowser-tab .tab-icon-image,
-.tabbrowser-tab .tab-throbber { display:none!important; }*/
+.tabbrowser-tab .tab-icon-image,
+.tabbrowser-tab .tab-throbber { display:none!important; }
 
 /* ---- URLBOX & SEARCH BOX BORDER THICKNESS ----- */
 #searchbar,#urlbar-background{ border-width: 3px !important; }
@@ -5957,10 +5957,10 @@ button {
 #PopupAutoCompleteRichResult .autocomplete-richlistitem, .urlbarView-row {border-bottom: 2px solid #212121 !important;}
 
 /* ----- URLBAR EXPANDED BORDER COLOR ----- */
-/*#urlbar[breakout][breakout-extend] {
+#urlbar[breakout][breakout-extend] {
     border: 1px solid #282828 !important;
     border-radius: 1px !important;
-}*/
+}
 
 
 }

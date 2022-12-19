@@ -10,7 +10,7 @@ html body div#full div#content div#main recommended-extensions-section recommend
 }
 
 .disco-cta-button:hover {
-  border: 1px solid #555566 !important
+  border: 1px solid #555566 !important;
   background-image: linear-gradient(#434546, #434546), linear-gradient(#434546, #434546), var(--lwt-header-image, none) !important;
 }
 
@@ -119,8 +119,10 @@ html body main details#tab-pickup-container.content-container named-deck#tabpick
 
 .ds-card-grid.ds-card-grid-border .ds-card:not(.placeholder) {
   width: 200px !important;
-  margin-inline-end: -126px !important;
-  margin-inline-start: -139px !important;
+  -webkit-margin-end: -126px !important;
+          margin-inline-end: -126px !important;
+  -webkit-margin-start: -139px !important;
+          margin-inline-start: -139px !important;
   margin-top: 47px !important;
   box-shadow: 0 1px 3px rgb(0, 0, 0), 0 0 0 1px #4040405c inset !important;
   background-color: #262626 !important;
@@ -133,7 +135,7 @@ html body main details#tab-pickup-container.content-container named-deck#tabpick
 }
 
 .ds-navigation {
-  color: var(--newtab-text-primary-color); !important;
+  color: var(--newtab-text-primary-color) !important;
 }
 
 .ds-card .ds-card-link:focus {
@@ -809,7 +811,8 @@ input[type="checkbox"].toggle-button {
 
 /* ----- NEW PAGE LOGO & TEXT SCALE ----- */
 .search-wrapper .logo-and-wordmark .wordmark {
-  margin-inline-start: 20px !important;
+  -webkit-margin-start: 20px !important;
+          margin-inline-start: 20px !important;
   scale: 100% !important;
   font-family: Oxanium !important;
 }
@@ -1027,8 +1030,10 @@ html#preferences-root body#preferences-body stack#preferences-stack hbox vbox.ma
 
 html body.activity-stream.modal-open div#root div div.outer-wrapper.ds-outer-wrapper-breakpoint-override.visible-logo main div.body-wrapper.on div.discovery-stream.ds-layout div.ds-column.ds-column-12 div.ds-column-grid div div.ds-top-sites section.collapsible-section.top-sites div div.edit-topsites-wrapper div.edit-topsites div.modalOverlayOuter.active div.modal form.topsite-form section.actions button.cancel {
   color: #bbb !important;
-  margin-inline-start: 10px;
-  margin-inline-end: 0;
+  -webkit-margin-start: 10px;
+          margin-inline-start: 10px;
+  -webkit-margin-end: 0;
+          margin-inline-end: 0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
   background-color: #222 !important;
   border: 1px solid transparent !important;
@@ -1044,8 +1049,10 @@ html body.activity-stream.modal-open div#root div div.outer-wrapper.ds-outer-wra
 
 html body.activity-stream.modal-open div#root div div.outer-wrapper.ds-outer-wrapper-breakpoint-override.visible-logo main div.body-wrapper.on div.discovery-stream.ds-layout div.ds-column.ds-column-12 div.ds-column-grid div div.ds-top-sites section.collapsible-section.top-sites div div.edit-topsites-wrapper div.edit-topsites div.modalOverlayOuter.active div.modal form.topsite-form section.actions button.done {
   color: #bbb !important;
-  margin-inline-start: 10px;
-  margin-inline-end: 0;
+  -webkit-margin-start: 10px;
+          margin-inline-start: 10px;
+  -webkit-margin-end: 0;
+          margin-inline-end: 0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
   border: 1px solid #555566 !important;
   background-image: linear-gradient(#4c4d4d, #4c4d4d), linear-gradient(#4c4d4d, #4c4d4d), var(--lwt-header-image, none) !important;
@@ -1053,8 +1060,10 @@ html body.activity-stream.modal-open div#root div div.outer-wrapper.ds-outer-wra
 
 html body.activity-stream.modal-open div#root div div.outer-wrapper.ds-outer-wrapper-breakpoint-override.visible-logo main div.body-wrapper.on div.discovery-stream.ds-layout div.ds-column.ds-column-12 div.ds-column-grid div div.ds-top-sites section.collapsible-section.top-sites div div.edit-topsites-wrapper div.edit-topsites div.modalOverlayOuter.active div.modal form.topsite-form section.actions button.done:hover {
   color: #fff !important;
-  margin-inline-start: 10px;
-  margin-inline-end: 0;
+  -webkit-margin-start: 10px;
+          margin-inline-start: 10px;
+  -webkit-margin-end: 0;
+          margin-inline-end: 0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
   border: 1px solid #555566 !important;
   background-image: linear-gradient(#4c4d4d, #4c4d4d), linear-gradient(#4c4d4d, #4c4d4d), var(--lwt-header-image, none) !important;
@@ -1091,7 +1100,9 @@ html body.activity-stream.modal-open div#root div div.outer-wrapper.ds-outer-wra
 
 
 search-addons > search-textbox {
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   border: 1px solid #171717 !important;
   border-radius: 4px;
   background-color: #242424 !important;
@@ -1359,7 +1370,8 @@ html body div#full div#content div#main recommended-extensions-section taar-noti
 }
 
 div.container span.icon {
-  filter: invert(100%) !important;
+  -webkit-filter: invert(100%) !important;
+          filter: invert(100%) !important;
 }
 
 * { 
@@ -1382,7 +1394,8 @@ recommended-addon-list {
   display: grid !important;
   grid-template-areas: "hd hd""cd cd" !important;
   grid-template-columns: 1fr 1fr !important;
-  column-gap: 1em !important;
+  -moz-column-gap: 1em !important;
+       column-gap: 1em !important;
 }
 
 addon-card .card-contents {
@@ -1440,8 +1453,11 @@ html body div#full div#content div#main addon-list section addon-card div.card.a
 #categories > .category {
   border-radius: 4px;
   min-height: 40px !important;
-  appearance: none;
-  margin-inline-start: 34px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  -webkit-margin-start: 34px;
+          margin-inline-start: 34px;
   padding-inline: 10px;
   transition: background-color 150ms;
   padding-top: 8px !important;
@@ -1548,18 +1564,22 @@ hbox.dialog-button-box {
 .addon-badge {
   width: 20px;
   height: 20px;
-  filter: grayscale(100%) !important;
+  -webkit-filter: grayscale(100%) !important;
+          filter: grayscale(100%) !important;
 }
 addon-card:not([expanded]):hover .addon-badge {
-  filter: grayscale(0%) !important;
+  -webkit-filter: grayscale(0%) !important;
+          filter: grayscale(0%) !important;
 }
 .card-heading-icon {
-  filter: grayscale(100%) !important;
+  -webkit-filter: grayscale(100%) !important;
+          filter: grayscale(100%) !important;
   margin-top: 8px !important;
   margin-left: 10px !important;
 }
 addon-card:not([expanded]):hover .card-heading-icon {
-  filter: grayscale(0%) !important;
+  -webkit-filter: grayscale(0%) !important;
+          filter: grayscale(0%) !important;
 }
 
 /* ----- MORE ADDON PAGE FIXES ----- */
@@ -1580,7 +1600,8 @@ html body div#full div#content div#main addon-list section addon-card div.card.a
 }
 .card-heading-image {
   width: var(--section-width) !important;
-  object-fit: scale-down !important;
+  -o-object-fit: scale-down !important;
+     object-fit: scale-down !important;
 }
 
 .addon.card {
@@ -1656,7 +1677,8 @@ input[type="checkbox"].toggle-button:hover {
   width: 22px !important;
   height: 22px !important;
   margin-block: 5px !important;
-  margin-inline-end: 8px !important;
+  -webkit-margin-end: 8px !important;
+          margin-inline-end: 8px !important;
   margin-top: -2px !important;
 }
 
@@ -1887,7 +1909,7 @@ color: #555566!important;
 
 
 /* ALL ABOUT: PAGES STYLE *************************************/
-@-moz-document url-prefix(about:){
+@-moz-document url-prefix(`about:`)
 #content,
 #appcontent,
 browser,
@@ -2006,6 +2028,6 @@ body[lwt-newtab-brighttext] {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
 }*/
 
-/*button {
+button {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
-}*/
+}

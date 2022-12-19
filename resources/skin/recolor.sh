@@ -17,7 +17,7 @@ function recolor() {
      sed -i 's/55cc3d/2eedae/g' *.svg
      sed -i 's/ffcd02/ffffaf/g' *.svg
      sed -i 's/0A84FF/0badff/g' *.svg
-     sed -i 's/999999/8b9cbe/g' *.svg
+     sed -i 's/999999/555566/g' *.svg
      sed -i 's/8c8c8c/555e70/g' *.svg
 
 }

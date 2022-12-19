@@ -5939,27 +5939,28 @@ button {
 /* ----- OPTIONAL (REMOVE  TO ENABLE) ----- */
 
 /* ----- NAVIGATION TOOLBAR BOTTOM BORDER THICKNESS ----- */
-/*#navigator-toolbox{ border-bottom-width: 8px !important; }*/
+#navigator-toolbox{ border-bottom-width: 8px !important; }
 
 /* ----- THINKNESS OF FRAME ----- */ 
-/*#main-window[tabsintitlebar][sizemode="maximized"] #toolbar-menubar {
+#main-window[tabsintitlebar][sizemode="maximized"] #toolbar-menubar {
   margin-buttom: 4px !important;
-}*/
+}
 
 /* ----- DISABLE LOADING THROBBER ----- */
 /*.tabbrowser-tab .tab-icon-image,
 .tabbrowser-tab .tab-throbber { display:none!important; }*/
 
 /* ---- URLBOX & SEARCH BOX BORDER THICKNESS ----- */
-/*#searchbar,#urlbar-background{ border-width: 3px !important; }*/
+#searchbar,#urlbar-background{ border-width: 3px !important; }
 
 /* ----- ADDS A SEPARTING LINE BETWEEN URLS IN URLBAR DROPDOWN ----- */
-/*#PopupAutoCompleteRichResult .autocomplete-richlistitem, .urlbarView-row {border-bottom: 2px solid #212121 !important;}*/
+#PopupAutoCompleteRichResult .autocomplete-richlistitem, .urlbarView-row {border-bottom: 2px solid #212121 !important;}
 
 /* ----- URLBAR EXPANDED BORDER COLOR ----- */
 /*#urlbar[breakout][breakout-extend] {
     border: 1px solid #282828 !important;
     border-radius: 1px !important;
 }*/
-}
 
+
+}

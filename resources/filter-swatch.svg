@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12">
-    <mask id="a">
-        <rect width="100%" height="100%" fill="#f4f4f7" />
-        <path d="M12 0H0v12z" />
-    </mask>
-    <circle cx="6" cy="6" r="6" fill="#f4f4f7" />
-    <circle cx="6" cy="6" r="6" mask="url(#a)" fill="#aeb0b1" />
+<svg width="12" height="12">
+  <mask id="filter-swatch_svg__a">
+    <rect width="100%" height="100%" fill="#f4f4f7"/>
+    <path d="M12 0H0v12z"/>
+  </mask>
+  <circle cx="6" cy="6" r="6" fill="#f4f4f7"/>
+  <circle cx="6" cy="6" r="6" fill="#aeb0b1" mask="url(#filter-swatch_svg__a)"/>
 </svg>

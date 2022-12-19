@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#f4f4f7" stroke="#f4f4f7" shape-rendering="crispEdges"><path stroke="#1b1d24" stroke-opacity=".75" stroke-width="3.6" d="M2,4 l 6,0 l 0,6 l -6,0z M2.5,1.5 l 8,0 l 0,8"/><rect width="6" height="6" x="2" y="4" stroke-width="1.9"/><polyline stroke-width=".9" points="3.5 1.5 10.5 1.5 10.5 8.5"/></svg>
+<svg width="12" height="12" fill="#f4f4f7" stroke="#f4f4f7" shape-rendering="crispEdges">
+  <path stroke="#1b1d24" stroke-opacity=".75" stroke-width="3.6" d="M2 4h6v6H2zm.5-2.5h8v8"/>
+  <path stroke-width="1.9" d="M2 4h6v6H2z"/>
+  <path stroke-width=".9" d="M3.5 1.5h7v7"/>
+</svg>

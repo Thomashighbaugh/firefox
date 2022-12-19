@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="background:#f4f4f7"><defs><linearGradient id="a" x1="114.721%" x2="39.54%" y1="181.283%" y2="100%"><stop offset="0%" stop-color="#f4f4f7"/><stop offset="100%"/></linearGradient></defs><path fill="url(#a)" fill-rule="evenodd" d="m254 156 113 200H141z"/></svg>
+<svg style="background:#f4f4f7" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="nextjs_svg__a" x1="114.721%" x2="39.54%" y1="181.283%" y2="100%">
+      <stop offset="0%" stop-color="#f4f4f7"/>
+      <stop offset="100%"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#nextjs_svg__a)" fill-rule="evenodd" d="m254 156 113 200H141z"/>
+</svg>

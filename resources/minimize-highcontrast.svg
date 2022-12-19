@@ -1,1 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><line x1="1" x2="11" y1="6" y2="6" fill="#f4f4f7" stroke="#f4f4f7" stroke-width="1.9" shape-rendering="crispEdges"/></svg>
+<svg width="12" height="12">
+  <path fill="#f4f4f7" stroke="#f4f4f7" stroke-width="1.9" d="M1 6h10" shape-rendering="crispEdges"/>
+</svg>

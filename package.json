@@ -26,7 +26,5 @@
     "sass": "^1.49.0",
     "sass-true": "^6.1.0"
   },
-  "dependencies": {
-    "css-scss": "^0.1.1"
-  }
+ 
 }

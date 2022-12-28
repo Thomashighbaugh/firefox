@@ -40,100 +40,100 @@ override chrome://browser/content/tabbrowser-tab.js ../resources/script-override
 
 # ---------------------------------------------------------------------------- #
 # Override a bunch of icons that appear all over the browser.
-# override chrome://global/skin/icons/check.svg ../resources/check.svg
-# override chrome://global/skin/icons/success.svg ../resources/check.svg
-# override chrome://global/skin/icons/check-partial.svg ../resources/check-partial.svg
-# override chrome://global/skin/icons/radio.svg ../resources/radio.svg
-# override chrome://global/skin/icons/blocked.svg ../resources/blocked.svg
-# override chrome://global/skin/icons/security-broken.svg ../resources/connection-mixed-active-loaded.svg
-# override chrome://global/skin/icons/security-warning.svg ../resources/connection-mixed-passive-loaded.svg
-# override chrome://global/skin/icons/security.svg ../resources/connection-secure.svg
-# override chrome://global/skin/icons/print.svg ../resources/print.svg
-# override chrome://global/skin/icons/open-in-new.svg ../resources/open-in-new.svg
-# override chrome://global/skin/icons/chevron.svg ../resources/chevron.svg
-# override chrome://global/skin/icons/close.svg ../resources/close.svg
-# override chrome://global/skin/icons/delete.svg ../resources/delete.svg
-# override chrome://global/skin/icons/add.svg ../resources/add.svg
-# override chrome://global/skin/icons/more.svg ../resources/more.svg
-# override chrome://global/skin/icons/edit.svg ../resources/edit.svg
-# override chrome://global/skin/icons/reload.svg ../resources/reload.svg
-# override chrome://global/skin/icons/help.svg ../resources/help.svg
-# override chrome://global/skin/icons/lightbulb.svg ../resources/tip.svg
-# override chrome://global/skin/icons/defaultFavicon.svg ../resources/defaultFavicon.svg
-# override chrome://global/skin/icons/info.svg ../resources/info.svg
-# override chrome://global/skin/icons/info-filled.svg ../resources/info-filled.svg
-# override chrome://global/skin/icons/search-glass.svg ../resources/search-glass.svg
-# override chrome://global/skin/icons/settings.svg ../resources/settings.svg
-# override chrome://global/skin/icons/folder.svg ../resources/folder.svg
-# override chrome://global/skin/icons/plugin.svg ../resources/plugin.svg
-# override chrome://global/skin/icons/highlights.svg ../resources/glyph-highlights-16.svg
-# override chrome://global/skin/icons/pocket.svg ../resources/pocket.svg
-# override chrome://global/skin/icons/pocket-outline.svg ../resources/pocket-outline.svg
-# override chrome://mozapps/skin/extensions/extension.svg ../resources/extension.svg
-# override chrome://mozapps/skin/extensions/extensionGeneric.svg ../resources/extensionGeneric.svg
-# override chrome://browser/skin/menu.svg ../resources/menu.svg
-# override chrome://browser/skin/menu-badged.svg ../resources/menu-badged.svg
-# override chrome://browser/skin/history.svg ../resources/history.svg
-# override chrome://browser/skin/tab.svg ../resources/tab.svg
-# override chrome://browser/skin/new-tab.svg ../resources/new-tab.svg
-# override chrome://browser/skin/window.svg ../resources/window.svg
-# override chrome://browser/skin/reader-mode.svg ../resources/reader-mode.svg
-# override chrome://browser/skin/forward.svg ../resources/forward.svg
-# override chrome://browser/skin/back.svg ../resources/back.svg
-# override chrome://browser/skin/reload.svg ../resources/reload.svg
-# override chrome://browser/skin/forget.svg ../resources/forget.svg
-# override chrome://browser/skin/login.svg ../resources/login.svg
-# override chrome://browser/skin/home.svg ../resources/home.svg
-# override chrome://browser/skin/privateBrowsing.svg ../resources/privateBrowsing.svg
-# override chrome://browser/skin/privatebrowsing/favicon.svg ../resources/privateBrowsing.svg
-# override chrome://browser/skin/sidebars.svg ../resources/sidebars.svg
-# override chrome://browser/skin/sidebars-right.svg ../resources/sidebars-right.svg
-# override chrome://browser/skin/library.svg ../resources/library.svg
-# override chrome://browser/skin/bookmark.svg ../resources/bookmark.svg
-# override chrome://browser/skin/bookmark-hollow.svg ../resources/bookmark-hollow.svg
-# override chrome://browser/skin/bookmark-star-on-tray.svg ../resources/bookmark-star-on-tray.svg
-# override chrome://browser/skin/places/folder.svg ../resources/folder.svg
-# override chrome://browser/skin/places/bookmarksToolbar.svg ../resources/folder-special.svg
-# override chrome://browser/skin/places/bookmarksMenu.svg ../resources/folder-source.svg
-# override chrome://browser/skin/places/folder-smart.svg ../resources/folder-user.svg
-# override chrome://browser/skin/places/tag.svg ../resources/tag.svg
-# override chrome://browser/skin/places/history.svg ../resources/history.svg
-# override chrome://browser/skin/downloads/downloads.svg ../resources/downloads.svg
-# override chrome://browser/skin/downloads/notification-start-animation.svg ../resources/notification-start-animation.svg
-# override chrome://browser/skin/fullscreen.svg ../resources/fullscreen.svg
-# override chrome://browser/skin/fullscreen-exit.svg ../resources/fullscreen-exit.svg
-# override chrome://browser/skin/controlcenter/socialblock.svg ../resources/dislike.svg
-# override chrome://browser/skin/controlcenter/3rdpartycookies.svg ../resources/controlcenter/3rdpartycookies.svg
-# override chrome://browser/skin/notification-icons/autoplay-media.svg ../resources/autoplay-media.svg
-# override chrome://browser/skin/notification-icons/autoplay-media-blocked.svg ../resources/autoplay-media-blocked.svg
-# override chrome://browser/skin/notification-icons/camera.svg ../resources/camera.svg
-# override chrome://browser/skin/notification-icons/camera-blocked.svg ../resources/camera-blocked.svg
-# override chrome://browser/skin/notification-icons/desktop-notification.svg ../resources/desktop-notification.svg
-# override chrome://browser/skin/notification-icons/desktop-notification-blocked.svg ../resources/desktop-notification-blocked.svg
-# override chrome://browser/skin/notification-icons/geo.svg ../resources/geo.svg
-# override chrome://browser/skin/notification-icons/geo-blocked.svg ../resources/geo-blocked.svg
-# override chrome://browser/skin/notification-icons/microphone.svg ../resources/microphone.svg
-# override chrome://browser/skin/notification-icons/microphone-blocked.svg ../resources/microphone-blocked.svg
-# override chrome://browser/skin/notification-icons/midi.svg ../resources/midi.svg
-# override chrome://browser/skin/notification-icons/persistent-storage.svg ../resources/persistent-storage.svg
-# override chrome://browser/skin/notification-icons/persistent-storage-blocked.svg ../resources/persistent-storage-blocked.svg
-# override chrome://browser/skin/notification-icons/popup.svg ../resources/popup.svg
-# override chrome://browser/skin/notification-icons/screen.svg ../resources/screen.svg
-# override chrome://browser/skin/notification-icons/screen-blocked.svg ../resources/screen-blocked.svg
-# override chrome://browser/skin/notification-icons/xr.svg ../resources/xr.svg
-# override chrome://browser/skin/notification-icons/xr-blocked.svg ../resources/xr-blocked.svg
-# override chrome://browser/skin/preferences/android-menu.svg ../resources/android-menu.svg
-# override chrome://browser/skin/preferences/category-general.svg ../resources/category-general.svg
-# override chrome://browser/skin/preferences/category-privacy-security.svg ../resources/category-privacy-security.svg
-# override chrome://browser/skin/preferences/category-search.svg ../resources/category-search.svg
-# override chrome://browser/skin/preferences/category-sync.svg ../resources/category-sync.svg
-# override chrome://mozapps/skin/extensions/category-extensions.svg ../resources/category-extensions.svg
-# override chrome://mozapps/skin/extensions/category-plugins.svg ../resources/category-plugins.svg
-# override chrome://mozapps/skin/extensions/category-discover.svg ../resources/category-discover.svg
-# override chrome://mozapps/skin/extensions/category-sitepermission.svg ../resources/defaultFavicon.svg
-# override chrome://mozapps/skin/extensions/category-available.svg ../resources/verified-update.svg
-# override chrome://mozapps/skin/extensions/category-recent.svg ../resources/verified.svg
-# override chrome://activity-stream/content/data/content/assets/glyph-highlights-16.svg ../resources/glyph-highlights-16.svg
-# override chrome://activity-stream/content/data/content/assets/glyph-info-16.svg ../resources/glyph-info-16.svg
-# override chrome://activity-stream/content/data/content/assets/glyph-webextension-16.svg ../resources/extension.svg
-# override chrome://devtools/content/debugger/images/sources/extension.svg ../resources/extension.svg
+override chrome://global/skin/icons/check.svg ../resources/check.svg
+override chrome://global/skin/icons/success.svg ../resources/check.svg
+override chrome://global/skin/icons/check-partial.svg ../resources/check-partial.svg
+override chrome://global/skin/icons/radio.svg ../resources/radio.svg
+override chrome://global/skin/icons/blocked.svg ../resources/blocked.svg
+override chrome://global/skin/icons/security-broken.svg ../resources/connection-mixed-active-loaded.svg
+override chrome://global/skin/icons/security-warning.svg ../resources/connection-mixed-passive-loaded.svg
+override chrome://global/skin/icons/security.svg ../resources/connection-secure.svg
+override chrome://global/skin/icons/print.svg ../resources/print.svg
+override chrome://global/skin/icons/open-in-new.svg ../resources/open-in-new.svg
+override chrome://global/skin/icons/chevron.svg ../resources/chevron.svg
+override chrome://global/skin/icons/close.svg ../resources/close.svg
+override chrome://global/skin/icons/delete.svg ../resources/delete.svg
+override chrome://global/skin/icons/add.svg ../resources/add.svg
+override chrome://global/skin/icons/more.svg ../resources/more.svg
+override chrome://global/skin/icons/edit.svg ../resources/edit.svg
+override chrome://global/skin/icons/reload.svg ../resources/reload.svg
+override chrome://global/skin/icons/help.svg ../resources/help.svg
+override chrome://global/skin/icons/lightbulb.svg ../resources/tip.svg
+override chrome://global/skin/icons/defaultFavicon.svg ../resources/defaultFavicon.svg
+override chrome://global/skin/icons/info.svg ../resources/info.svg
+override chrome://global/skin/icons/info-filled.svg ../resources/info-filled.svg
+override chrome://global/skin/icons/search-glass.svg ../resources/search-glass.svg
+override chrome://global/skin/icons/settings.svg ../resources/settings.svg
+override chrome://global/skin/icons/folder.svg ../resources/folder.svg
+override chrome://global/skin/icons/plugin.svg ../resources/plugin.svg
+override chrome://global/skin/icons/highlights.svg ../resources/glyph-highlights-16.svg
+override chrome://global/skin/icons/pocket.svg ../resources/pocket.svg
+override chrome://global/skin/icons/pocket-outline.svg ../resources/pocket-outline.svg
+override chrome://mozapps/skin/extensions/extension.svg ../resources/extension.svg
+override chrome://mozapps/skin/extensions/extensionGeneric.svg ../resources/extensionGeneric.svg
+override chrome://browser/skin/menu.svg ../resources/menu.svg
+override chrome://browser/skin/menu-badged.svg ../resources/menu-badged.svg
+override chrome://browser/skin/history.svg ../resources/history.svg
+override chrome://browser/skin/tab.svg ../resources/tab.svg
+override chrome://browser/skin/new-tab.svg ../resources/new-tab.svg
+override chrome://browser/skin/window.svg ../resources/window.svg
+override chrome://browser/skin/reader-mode.svg ../resources/reader-mode.svg
+override chrome://browser/skin/forward.svg ../resources/forward.svg
+override chrome://browser/skin/back.svg ../resources/back.svg
+override chrome://browser/skin/reload.svg ../resources/reload.svg
+override chrome://browser/skin/forget.svg ../resources/forget.svg
+override chrome://browser/skin/login.svg ../resources/login.svg
+override chrome://browser/skin/home.svg ../resources/home.svg
+override chrome://browser/skin/privateBrowsing.svg ../resources/privateBrowsing.svg
+override chrome://browser/skin/privatebrowsing/favicon.svg ../resources/privateBrowsing.svg
+override chrome://browser/skin/sidebars.svg ../resources/sidebars.svg
+override chrome://browser/skin/sidebars-right.svg ../resources/sidebars-right.svg
+override chrome://browser/skin/library.svg ../resources/library.svg
+override chrome://browser/skin/bookmark.svg ../resources/bookmark.svg
+override chrome://browser/skin/bookmark-hollow.svg ../resources/bookmark-hollow.svg
+override chrome://browser/skin/bookmark-star-on-tray.svg ../resources/bookmark-star-on-tray.svg
+override chrome://browser/skin/places/folder.svg ../resources/folder.svg
+override chrome://browser/skin/places/bookmarksToolbar.svg ../resources/folder-special.svg
+override chrome://browser/skin/places/bookmarksMenu.svg ../resources/folder-source.svg
+override chrome://browser/skin/places/folder-smart.svg ../resources/folder-user.svg
+override chrome://browser/skin/places/tag.svg ../resources/tag.svg
+override chrome://browser/skin/places/history.svg ../resources/history.svg
+override chrome://browser/skin/downloads/downloads.svg ../resources/downloads.svg
+override chrome://browser/skin/downloads/notification-start-animation.svg ../resources/notification-start-animation.svg
+override chrome://browser/skin/fullscreen.svg ../resources/fullscreen.svg
+override chrome://browser/skin/fullscreen-exit.svg ../resources/fullscreen-exit.svg
+override chrome://browser/skin/controlcenter/socialblock.svg ../resources/dislike.svg
+override chrome://browser/skin/controlcenter/3rdpartycookies.svg ../resources/controlcenter/3rdpartycookies.svg
+override chrome://browser/skin/notification-icons/autoplay-media.svg ../resources/autoplay-media.svg
+override chrome://browser/skin/notification-icons/autoplay-media-blocked.svg ../resources/autoplay-media-blocked.svg
+override chrome://browser/skin/notification-icons/camera.svg ../resources/camera.svg
+override chrome://browser/skin/notification-icons/camera-blocked.svg ../resources/camera-blocked.svg
+override chrome://browser/skin/notification-icons/desktop-notification.svg ../resources/desktop-notification.svg
+override chrome://browser/skin/notification-icons/desktop-notification-blocked.svg ../resources/desktop-notification-blocked.svg
+override chrome://browser/skin/notification-icons/geo.svg ../resources/geo.svg
+override chrome://browser/skin/notification-icons/geo-blocked.svg ../resources/geo-blocked.svg
+override chrome://browser/skin/notification-icons/microphone.svg ../resources/microphone.svg
+override chrome://browser/skin/notification-icons/microphone-blocked.svg ../resources/microphone-blocked.svg
+override chrome://browser/skin/notification-icons/midi.svg ../resources/midi.svg
+override chrome://browser/skin/notification-icons/persistent-storage.svg ../resources/persistent-storage.svg
+override chrome://browser/skin/notification-icons/persistent-storage-blocked.svg ../resources/persistent-storage-blocked.svg
+override chrome://browser/skin/notification-icons/popup.svg ../resources/popup.svg
+override chrome://browser/skin/notification-icons/screen.svg ../resources/screen.svg
+override chrome://browser/skin/notification-icons/screen-blocked.svg ../resources/screen-blocked.svg
+override chrome://browser/skin/notification-icons/xr.svg ../resources/xr.svg
+override chrome://browser/skin/notification-icons/xr-blocked.svg ../resources/xr-blocked.svg
+override chrome://browser/skin/preferences/android-menu.svg ../resources/android-menu.svg
+override chrome://browser/skin/preferences/category-general.svg ../resources/category-general.svg
+override chrome://browser/skin/preferences/category-privacy-security.svg ../resources/category-privacy-security.svg
+override chrome://browser/skin/preferences/category-search.svg ../resources/category-search.svg
+override chrome://browser/skin/preferences/category-sync.svg ../resources/category-sync.svg
+override chrome://mozapps/skin/extensions/category-extensions.svg ../resources/category-extensions.svg
+override chrome://mozapps/skin/extensions/category-plugins.svg ../resources/category-plugins.svg
+override chrome://mozapps/skin/extensions/category-discover.svg ../resources/category-discover.svg
+override chrome://mozapps/skin/extensions/category-sitepermission.svg ../resources/defaultFavicon.svg
+override chrome://mozapps/skin/extensions/category-available.svg ../resources/verified-update.svg
+override chrome://mozapps/skin/extensions/category-recent.svg ../resources/verified.svg
+override chrome://activity-stream/content/data/content/assets/glyph-highlights-16.svg ../resources/glyph-highlights-16.svg
+override chrome://activity-stream/content/data/content/assets/glyph-info-16.svg ../resources/glyph-info-16.svg
+override chrome://activity-stream/content/data/content/assets/glyph-webextension-16.svg ../resources/extension.svg
+override chrome://devtools/content/debugger/images/sources/extension.svg ../resources/extension.svg

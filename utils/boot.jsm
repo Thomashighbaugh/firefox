@@ -260,10 +260,10 @@ function updateStyleSheet(name,type) {
   sheets = sheets.flatMap( x => recurseImports(x,[x]) );
   
   // If a sheet is imported multiple times, then there will be
-  // duplicates, because style system does create an object for
-  // each instace but that's OK since sheets.find below will
+  // duplicates, because style system creates an object for
+  // each instance but that's OK since sheets.find below will
   // only find the first instance and reload that which is
-  // "probably" fine.
+  // *probably* fine.
   let entryFilePath = `file:///${entry.path.replaceAll("\\","/")}`;
   
   let target = sheets.find(sheet => sheet.href === entryFilePath);

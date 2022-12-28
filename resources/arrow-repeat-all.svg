@@ -1,44 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   width="12"
-   height="12"
-   version="1.1"
-   id="svg4"
-   sodipodi:docname="arrow-repeat-all.svg"
-   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs8" />
-  <sodipodi:namedview
-     id="namedview6"
-     pagecolor="#ffffff"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     showgrid="false"
-     inkscape:zoom="20.653411"
-     inkscape:cx="5.0112789"
-     inkscape:cy="7.1658867"
-     inkscape:window-width="812"
-     inkscape:window-height="865"
-     inkscape:window-x="804"
-     inkscape:window-y="8"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="svg4" />
-  <path
-     fill="#f4f4f7"
-     fill-opacity="context-fill-opacity"
-     d="m 5.8837539,10.509441 a 1,1 0 0 0 0.707,-0.293 l 3,-3.0000001 a 1,1 0 0 0 -1.414,-1.414 l -2.293,2.293 -2.293,-2.293 a 1,1 0 0 0 -1.414,1.414 l 3,3.0000001 a 1,1 0 0 0 0.707,0.293 z"
-     id="path2" />
-  <path
-     fill="#f4f4f7"
-     fill-opacity="context-fill-opacity"
-     d="m 5.7486036,6.4148177 a 1,1 0 0 0 0.707,-0.293 l 3,-3.0000002 a 1,1 0 0 0 -1.414,-1.414 l -2.293,2.293 -2.293,-2.293 a 1,1 0 0 0 -1.414,1.414 l 3,3.0000002 a 1,1 0 0 0 0.707,0.293 z"
-     id="path2-3" />
+<svg width="12" height="12">
+  <path fill="#f4f4f7" fill-opacity="context-fill-opacity" d="M5.884 10.51a1 1 0 0 0 .707-.294l3-3a1 1 0 0 0-1.414-1.414L5.884 8.095 3.59 5.802a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 .707.293z"/>
+  <path fill="#f4f4f7" fill-opacity="context-fill-opacity" d="M5.749 6.415a1 1 0 0 0 .707-.293l3-3a1 1 0 0 0-1.414-1.414L5.749 4 3.456 1.708a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 .707.293z"/>
 </svg>

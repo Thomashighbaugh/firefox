@@ -1,4 +1,4 @@
 <svg width="20" height="20">
-  <rect width="20" height="20" fill="#f4f4f7" fill-opacity="context-fill-opacity" rx="2" ry="2"/>
+  <rect width="20" height="20" fill="#f4f4f700" fill-opacity="context-fill-opacity" rx="2" ry="2"/>
   <path fill="#f4f4f7" fill-opacity="#1b1d24-opacity" d="m11.06 10 3.47-3.47a.75.75 0 0 0-1.06-1.06L10 8.94 6.53 5.47a.75.75 0 1 0-1.06 1.06L8.94 10l-3.47 3.47a.75.75 0 1 0 1.06 1.06L10 11.06l3.47 3.47a.75.75 0 0 0 1.06-1.06z"/>
 </svg>

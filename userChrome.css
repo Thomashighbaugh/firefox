@@ -580,7 +580,7 @@ html#main-window body box#navigator-toolbox-background toolbox#navigator-toolbox
 }
 
 html#main-window body hbox#browser vbox#sidebar-box.chromeclass-extrachrome box#sidebar-header toolbarbutton#sidebar-switcher-target.tabbable image#sidebar-switcher-arrow {
-    list-style-image: url("Iconsdb.com-Arrow-Down.png") !important;
+    list-style-image: url("chrome://userchrome/arrow-down.svg") !important;
     margin-right: 2px !important;
     margin-left: -2px !important;
     margin-top: 2px !important;
@@ -597,7 +597,7 @@ html#main-window body hbox#browser vbox#sidebar-box.chromeclass-extrachrome box#
 }
 
 html#main-window body hbox#browser vbox#sidebar-box.chromeclass-extrachrome box#sidebar-header toolbarbutton#sidebar-switcher-target.tabbable image#sidebar-icon {
-    list-style-image: url("Icons8-Filled-Bookmark-Ribbon-Titlebar-Hover.PNG") !important;
+    list-style-image: url("chrome://userchrome/bookmark-star.svg") !important;
     width: 18px !important;
     height: 18px !important;
     margin-bottom: -2px !important;
@@ -890,7 +890,7 @@ html#main-window body box#navigator-toolbox-background toolbox#navigator-toolbox
 }
 
 .titlebar-min {
-    list-style-image: url(Icons8.com-Minimize.png) !important;
+    list-style-image: url("chrome://userchrome/minimize.svg") !important;
     margin-top: 0px !important;
     margin-right: 12px !important;
     margin-bottom: 0px !important;
@@ -899,11 +899,11 @@ html#main-window body box#navigator-toolbox-background toolbox#navigator-toolbox
 }
 
 .titlebar-min:hover {
-    list-style-image: url(Icons8.com-Minimize.png) !important;
+    list-style-image: url("chrome://userchrome/minimize.svg") !important;
 }   
 
 .titlebar-max {
-    list-style-image: url(Icons8.com-Maximize.png) !important;
+    list-style-image: url("chrome://userchrome/maximize.svg") !important;
     margin-top: 0px !important;
     margin-right: 12px !important;
     margin-bottom: 0px !important;
@@ -914,11 +914,11 @@ html#main-window body box#navigator-toolbox-background toolbox#navigator-toolbox
 }
 
 .titlebar-max:hover {
-    list-style-image: url(Icons8.com-Maximize.png) !important;
+    list-style-image: url("chrome://userchrome/maximize.svg") !important;
 }
 
 .titlebar-restore {
-    list-style-image: url(Icons8.com-Restore.png) !important;
+    list-style-image: url("chrome://global/skin/icons/chevron.svg") !important;
     margin-top: 0px !important;
     margin-right: 12px !important;
     margin-bottom: 0px !important;
@@ -929,11 +929,11 @@ html#main-window body box#navigator-toolbox-background toolbox#navigator-toolbox
 }
 
 .titlebar-restore:hover {
-    list-style-image: url(Icons8.com-Restore.png) !important;
+    list-style-image: url("chrome://global/skin/icons/chevron.svg") !important;
 }
 
 .titlebar-close {
-    list-style-image: url(Icons8.com-Close-Firefox.png) !important;
+    list-style-image: url("chrome://global/skin/icons/close.svg") !important;
     margin-top: 0px !important;
     margin-right: 0px !important;
     margin-bottom: 0px !important;
@@ -941,7 +941,7 @@ html#main-window body box#navigator-toolbox-background toolbox#navigator-toolbox
 }
 
 .titlebar-close:hover {
-    list-style-image: url(Icons8.com-Close-Firefox.png) !important;
+    list-style-image: url("chrome://global/skin/icons/close.svg") !important;
     background-color: #555566 !important;
 }    
 
@@ -1017,7 +1017,7 @@ pageAction-panel-bookmark[starred], #star-button[starred] {
     opacity: 1;
     margin-inline-start: 0px !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
-    background-image: url(Iconsdb.com-Volume-Active-Playing.png) !important;
+    background-image: url(chrome://userchrome/volume-on.svg) !important;
     border: 1px solid #222 !important;
     background-color: #555566 !important;
     list-style-image: none !important;
@@ -1070,11 +1070,11 @@ html#main-window body box#customization-container hbox#customization-footer spac
 }
 
 #nav-bar-customization-target > #stop-reload-button > :is(#reload-button, #stop-button) > .toolbarbutton-animatable-box {
-    list-style-image: url("Stop.png") !important;
+    list-style-image: url("chrome://userchrome/stop-button-fix.svg") !important;
 }
 
 #stop-button {
-    list-style-image: url("Stop.png") !important;
+    list-style-image: url("chrome://userchrome/stop-button-fix.svg") !important;
 }
 
 .protections-popup-tp-switch::before {
@@ -1162,7 +1162,7 @@ menupopup, panel {
 
 /* ----- ALL TABS BUTTON ----- */
 #alltabs-button {
-    list-style-image: url("Icons8.com-All-Tabs.png") !important;
+    list-style-image: url("chrome://browser/skin/tab.svg") !important;
     margin-bottom: 0px !important;
     background-color: #242424 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
@@ -1170,12 +1170,12 @@ menupopup, panel {
     border: 1px solid #181818 !important; 
 }
 #alltabs-button[open] {
-    list-style-image: url("Icons8.com-All-Tabs.png") !important;
+    list-style-image: url("chrome://browser/skin/tab.svg") !important;
     border: 1px solid #434546aa !important;
     background-image: linear-gradient(#282828, #282828), linear-gradient(#282828, #282828), var(--lwt-header-image, none) !important; 
 }
 #alltabs-button:hover {
-    list-style-image: url("Icons8.com-All-Tabs.png") !important;
+    list-style-image: url("chrome://browser/skin/tab.svg") !important;
     border: 1px solid #434546aa !important;
     background-image: linear-gradient(#282828, #282828), linear-gradient(#282828, #282828), var(--lwt-header-image, none) !important; 
     margin-bottom: 0px !important;
@@ -1234,7 +1234,7 @@ border-radius: 4px !important;
 }
 
 #organizeButton {
-    list-style-image: url("Iconsdb.com-Organize.png") !important;
+    list-style-image: url("chrome://browser/skin/window.svg ") !important;
     margin-top: 10px !important;
     margin-bottom: 5px !important;
     margin-left: 10px !important;
@@ -1242,7 +1242,7 @@ border-radius: 4px !important;
 }
 
 #organizeButton:hover {
-    list-style-image: url("Iconsdb.com-Organize-Hover.png") !important;
+    list-style-image: url("chrome://userchrome/new-window.svg") !important;
 }
 
 .close-icon:hover {
@@ -1309,13 +1309,13 @@ panelmultiview {
 
 
 #protections-popup-mainView .subviewbutton-nav:not(.notFound)::after, #identity-popup-mainView .subviewbutton-nav::after, .widget-overflow-list .subviewbutton-nav::after, .PanelUI-subView .subviewbutton-nav::after {
-    content: url(Iconsdb.com-SubMenu-Arrow-Right.png) !important;
+    content: url(chrome://userchrome/arrow-right.svg) !important;
 }
 
 
 #vertical-tabs-list .all-tabs-item .all-tabs-secondary-button[activemedia-blocked] {
     list-style-image: none !important;
-    background-image: url(Iconsdb.com-Volume-Active.png) !important;
+    background-image: url("chrome://userchrome/volume-on.svg") !important;
     background-repeat: no-repeat !important;
     background-size: 15px !important;
     background-position: 4.5px center !important;
@@ -1822,7 +1822,7 @@ html#main-window body box toolbox#navigator-toolbox toolbar#nav-bar.browser-tool
 }
 
 .menu-right {
-    list-style-image: url(Iconsdb.com-SubMenu-Arrow-Right.png) !important;
+    list-style-image: url("chrome://userchrome/arrow-right.svg") !important;
 }
 
 .searchbar-textbox {
@@ -2029,14 +2029,14 @@ html#main-window body box toolbox#navigator-toolbox toolbar#nav-bar.browser-tool
 }
 /*#vertical-tabs-list .all-tabs-item .all-tabs-secondary-button[toggle-mute]:is(:hover, :focus-within) {
     list-style-image: none !important;
-    background-image: url(Iconsdb.com-Volume-Mute.png) !important;
+    background-image: url(chrome://userchrome/volume-off.svg) !important;
     background-size: 14px !important;
     background-repeat: no-repeat !important;
 
 }*/
 #vertical-tabs-list .all-tabs-item .all-tabs-secondary-button[soundplaying][toggle-mute]:is(:hover, :focus-within) {
     list-style-image: none !important;
-    background-image: url(Iconsdb.com-Volume-Mute-Active.png) !important;
+    background-image: url("chrome://userchrome/volume-off.svg") !important;
     background-size: 14px !important;
     background-repeat: no-repeat !important;
 
@@ -2049,7 +2049,7 @@ html#main-window body box toolbox#navigator-toolbox toolbar#nav-bar.browser-tool
 }
 #vertical-tabs-list .all-tabs-item .all-tabs-secondary-button[muted] {
     list-style-image: none !important;
-    background-image: url(Iconsdb.com-Volume-Mute.png) !important;
+    background-image: url("chrome://userchrome/volume-off.svg") !important;
     background-repeat: no-repeat !important;
     transform: none !important;
     opacity: 1 !important;
@@ -2061,7 +2061,7 @@ html#main-window body box toolbox#navigator-toolbox toolbar#nav-bar.browser-tool
     > .all-tabs-item:not(:hover, :focus-within)
     .all-tabs-secondary-button[pictureinpicture] {
     list-style-image: none !important;
-    background-image: url(Iconsdb.com-Volume-Active.png) !important;
+    background-image: url("chrome://userchrome/volume-on.svg") !important;
     background-repeat: no-repeat !important;
     border-radius: 1px !important;
 }
@@ -2072,7 +2072,7 @@ html#main-window body box toolbox#navigator-toolbox toolbar#nav-bar.browser-tool
 
 /*.all-tabs-secondary-button[soundplaying] {
     border-radius: 1px !important;
-    background-image: url(Iconsdb.com-Volume-Mute.png) !important;
+    background-image: url("chrome://userchrome/volume-off.svg") !important;
 }*/
 
 
@@ -2082,7 +2082,7 @@ html#main-window body box toolbox#navigator-toolbox toolbar#nav-bar.browser-tool
     opacity: 1;
     margin-inline-start: -2px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
-    list-style-image: url("Iconsdb.com-Volume-Mute.png") !important;
+    list-style-image: url("chrome://userchrome/volume-off.svg") !important;
     background-image: none !important;
 }*/
 
@@ -3060,7 +3060,7 @@ urlbar-container, #search-container {
 }*/
 .tab-close-button {
     opacity: 0.8 !important;
-    list-style-image: url("Icons8.com-Close-Tab.png") !important;
+    list-style-image: url("chrome://userchrome/close-tab.svg") !important;
     margin-top: 0px !important;
     margin-inline-end: calc(var(--inline-tab-padding) / -1) !important;
     border-radius: 1px !important;
@@ -3072,7 +3072,7 @@ urlbar-container, #search-container {
     display: -moz-box !important;
     color: #555566 !important;
     fill-opacity: 0.8 !important;
-    background-image: linear-gradient(#0b75a2, #0b75a2), linear-gradient(#0b75a2, #0b75a2), var(--lwt-header-image, none) !important;
+    background-image: linear-gradient(#1d1e22, #1d1e22), linear-gradient(#1d1e22, #1d1e22), var(--lwt-header-image, none) !important;
 }
 
 /* ----- NEWTAB BUTTON GAP WITH ACTIVE ----- */
@@ -3119,26 +3119,26 @@ urlbar-container, #search-container {
 #downloads-button[open="true"]:hover > .toolbarbutton-badge-stack > #downloads-indicator-anchor > #downloads-indicator-icon,
 #downloads-button[open="true"]:hover > .toolbarbutton-badge-stack > #downloads-indicator-anchor > #downloads-indicator-progress-outer {
     fill: #f4f4f7 !important;
-}
+}`
 
 /* ----- "MORE TOOLS" ICONS ----- */
 #nav-bar-overflow-button {
-    list-style-image: url("Icons8.com-More-Tools.png") !important;
+    list-style-image: url("chrome://global/skin/icons/more.svg") !important;
 }
 #nav-bar-overflow-button:hover {
-    list-style-image: url("Icons8.com-More-Tools.png") !important;
+    list-style-image: url("chrome://global/skin/icons/more.svg") !important;
 }
 
 #nav-bar-overflow-button:active {
-    list-style-image: url("Icons8.com-More-Tools.png") !important;
+    list-style-image: url("chrome://global/skin/icons/more.svg") !important;
 }
 
 #nav-bar-overflow-button[open="true"] {
-    list-style-image: url("Icons8.com-More-Tools.png") !important;
+    list-style-image: url("chrome://global/skin/icons/more.svg") !important;
 }
 
 /*#preferences-button {
-    list-style-image: url("Iconsdb.com-Organize.png") !important;
+    list-style-image: url("chrome://browser/skin/window.svg ") !important;
 }*/
 
 /* ----- TRULY BUTTON SHAPED NAVBAR BUTTONS ( Code by The_Other_Guy ) ----- */
@@ -3224,7 +3224,7 @@ urlbar-container, #search-container {
 
 /* ----- NEWTAB BUTTON ----- */
 #tabs-newtab-button, #TabsToolbar #new-tab-button {
-    list-style-image: url("Icons8.com-New-Tab.png") !important;
+    list-style-image: url("chrome://browser/skin/new-tab.svg") !important;
     fill-opacity: 1 !important;
     border: 1px solid #181818 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
@@ -3237,11 +3237,11 @@ html#main-window body box toolbox#navigator-toolbox vbox#titlebar toolbar#TabsTo
 }
 
 #tabs-newtab-button:hover, #TabsToolbar:hover #new-tab-button:hover {
-    list-style-image: url("Icons8.com-New-Tab.png") !important;
+    list-style-image: url("chrome://browser/skin/new-tab.svg") !important;
 }
 
 #tabs-newtab-button:hover, #TabsToolbar:hover #new-tab-button:active {
-    list-style-image: url("Icons8.com-New-Tab.png") !important;
+    list-style-image: url("chrome://browser/skin/new-tab.svg") !important;
     border: 1px solid #434546aa !important;
     background-image: linear-gradient(#282828, #282828), linear-gradient(#282828, #282828), var(--lwt-header-image, none) !important;
 }
@@ -3289,7 +3289,7 @@ html#main-window body box toolbox#navigator-toolbox vbox#titlebar toolbar#TabsTo
     padding-right: 3px !important; 
 }
 #vertical-tabs-close-button {
-    list-style-image: url("Icons8.com-VerticalTabs-Button.png") !important;
+    list-style-image: url("chrome://browser/skin/sidebars.svg") !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
     margin-top: 6px !important;
     margin-right: 6px !important;
@@ -3343,18 +3343,18 @@ html#main-window body box toolbox#navigator-toolbox vbox#titlebar toolbar#TabsTo
 }
 
 #vertical-tabs-button {
-    list-style-image: url("Icons8.com-VerticalTabs-Button.png") !important;
+    list-style-image: url("chrome://browser/skin/sidebars.svg") !important;
     border: 1px solid #181818 !important;
     margin-left: 2px !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.55), 0 0 0 1px #4040405c inset !important;
 }
 #vertical-tabs-button:hover {
-    list-style-image: url("Icons8.com-VerticalTabs-Button.png") !important;
+    list-style-image: url("chrome://browser/skin/sidebars.svg") !important;
 }
 #vertical-tabs-button[checked="true"] {
     border: 1px solid #434546aa !important;
     background-image: linear-gradient(#282828, #282828), linear-gradient(#282828, #282828), var(--lwt-header-image, none) !important;
-    list-style-image: url("Icons8.com-VerticalTabs-Button.png") !important;    
+    list-style-image: url("chrome://browser/skin/sidebars.svg") !important;    
 }
 #vertical-tabs-pane {
     background-color: #202020 !important;
@@ -4475,7 +4475,7 @@ html#main-window body box toolbox#navigator-toolbox toolbar#nav-bar.browser-tool
 }
 
 /*#identity-icon {
-    list-style-image: url(Fox.png) !important;
+    list-style-image: url(chrome://userchrome/about-logo.svg) !important;
     scale: 116% !important;
 }*/
 #identity-box[pageproxystate="valid"].chromeUI #identity-icon {
@@ -4955,7 +4955,7 @@ html#main-window body box toolbox#navigator-toolbox toolbar#nav-bar.browser-tool
 }
 
 #nav-bar[customizing] > .overflow-button {
-    list-style-image: url("Icons8.com-More-Tools-Hover-Active.png") !important;
+    list-style-image: url("chrome://global/skin/icons/more.svg") !important;
 }
 
 #customization-panelHeader {
@@ -5335,7 +5335,7 @@ menuitem.subviewbutton[_moz-menuactive]:not(:-moz-any([disabled], :active)),
     list-style-image: none !important;
     width: 0 !important;
     padding-left: 16px !important;
-    background: url("Fox.png") !important;
+    background: url("chrome://userchrome/about-logo.svg") !important;
     background-size: 18px 18px !important;
     background-repeat: no-repeat !important;
     padding: 11px !important;
@@ -5473,81 +5473,81 @@ html#main-window body box toolbox#navigator-toolbox vbox#titlebar toolbar#TabsTo
 
 .tab-icon-overlay[soundplaying] {
     opacity: 1 !important;
-    list-style-image: url("Icons8.com-Volume.png") !important;
+    list-style-image: url("chrome://userchrome/volume-on.svg") !important;
 }
 
 .tab-icon-overlay[muted]:not([crashed]):hover,
 .tab-icon-overlay[activemedia-blocked]:not([crashed]):hover {
-  list-style-image: url("Icons8.com-Volume-Mute.png") !important;
+  list-style-image: url("chrome://userchrome/volume-off.svg") !important;
 }
 
 .tab-icon-overlay[muted]:not([selected]):not([crashed]):hover {
-list-style-image: url("Icons8.com-Volume-Active.png") !important;
+list-style-image: url("chrome://userchrome/volume-on.svg") !important;
 }
 
 .tab-icon-overlay[soundplaying]:hover {
-  list-style-image: url("Icons8.com-Volume-Mute.png") !important;
+  list-style-image: url("chrome://userchrome/volume-off.svg") !important;
 }
 
 .tab-icon-overlay[muted][selected]:not([crashed]) {
-    list-style-image: url("Icons8.com-Volume-Mute.png") !important;
+    list-style-image: url("chrome://userchrome/volume-off.svg") !important;
     border: 1px solid #434546aa !important;
     background-image: linear-gradient(#282828, #282828), linear-gradient(#282828, #282828), var(--lwt-header-image, none) !important;
 }
 
 .tab-icon-overlay[muted][selected]:not([crashed]):hover {
-    list-style-image: url("Icons8.com-Volume-Active.png") !important;
+    list-style-image: url("chrome://userchrome/volume-on.svg") !important;
 }
 
 .tab-icon-overlay[soundplaying][selected] {
-  list-style-image: url("Icons8.com-Volume-Active.png") !important;
+  list-style-image: url("chrome://userchrome/volume-on.svg") !important;
   border: 1px solid #434546aa !important;
   background-image: linear-gradient(#282828, #282828), linear-gradient(#282828, #282828), var(--lwt-header-image, none) !important;
 }
 
 .tab-icon-overlay[soundplaying]:not([selected]) {
-    list-style-image: url("Icons8.com-Volume-Active-Playing.png") !important;
+    list-style-image: url("chrome://userchrome/tab-play.svg") !important;
     border: 1px solid #434546aa !important;
     background-image: linear-gradient(#282828, #282828), linear-gradient(#282828, #282828), var(--lwt-header-image, none) !important;
 }
 
 .tab-icon-overlay[muted]:not([selected]):not([crashed]) {
-    list-style-image: url("Icons8.com-Volume-Mute-Active.png") !important;
+    list-style-image: url("chrome://userchrome/volume-off.svg") !important;
     border: 1px solid #434546aa !important;
     background-image: linear-gradient(#282828, #282828), linear-gradient(#282828, #282828), var(--lwt-header-image, none) !important;
 }
 
 .tab-icon-overlay[soundplaying]:not([selected]):hover {
-    list-style-image: url("Icons8.com-Volume-Mute.png") !important;
+    list-style-image: url("chrome://userchrome/volume-off.svg") !important;
     background-color: #555566 !important;
 }
 
 .tab-icon-overlay[soundplaying][selected]:hover {
-    list-style-image: url("Icons8.com-Volume-Mute.png") !important;
+    list-style-image: url("chrome://userchrome/volume-off.svg") !important;
     border: 1px solid #434546aa !important;
     background-image: linear-gradient(#282828, #282828), linear-gradient(#282828, #282828), var(--lwt-header-image, none) !important;
   }
 
 .tab-icon-overlay[muted]:not([crashed]) {
-  list-style-image: url("Icons8.com-Volume-Mute.png") !important;
+  list-style-image: url("chrome://userchrome/volume-off.svg") !important;
 }
 .tab-icon-overlay[activemedia-blocked]:not([crashed]) {
-  list-style-image: url("Icons8.com-Volume-Active.png") !important;
+  list-style-image: url("chrome://userchrome/volume-on.svg") !important;
 }
 
 .tab-icon-overlay[soundplaying][selected]:-moz-lwtheme-brighttext:not(:hover) {
-  list-style-image: url("Icons8.com-Volume-Active.png") !important;
+  list-style-image: url("chrome://userchrome/volume-on.svg") !important;
 }
 
 .tab-icon-overlay[muted][selected]:-moz-lwtheme-brighttext:not(:hover) {
-list-style-image: url("Icons8.com-Volume-Mute.png") !important;
+list-style-image: url("chrome://userchrome/volume-off.svg") !important;
 }
 /*#TabsToolbar[brighttext] .tab-icon-overlay[muted]:not([crashed]):not([selected]):not(:hover) {
-  list-style-image: url("Icons8.com-Volume-Mute.png") !important;
+  list-style-image: url("chrome://userchrome/volume-off.svg") !important;
 }*/
 #TabsToolbar[brighttext] .tab-icon-overlay[activemedia-blocked]:not([crashed]):not([selected]):not(:hover),
 .tab-icon-overlay[activemedia-blocked][selected]:-moz-lwtheme-brighttext:not(:hover) {
-  list-style-image: url("Icons8.com-Volume.png") !important;
+  list-style-image: url("chrome://userchrome/volume-on.svg") !important;
 }
 
 /* ----- DARK LIBRARY (Base Code by "cssnoob2") ----- */

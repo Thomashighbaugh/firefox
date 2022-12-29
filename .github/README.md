@@ -1,32 +1,37 @@
 # Higgs Boson 
 
-Among the protons, photons and other subatomic particles, this is Higgs Boson.  
+Among the protons, photons and other subatomic particles, this is the Higgs-Boson or as marketed by desperate physics departments as *the God Particle* which is a nickname I am so revolted by it continues the theme of my reaction to the subatomic particle naming convention used by Firefox UI branding pushes perfectly.   
 
 <img src="assets/1.png" alt="screenshot 1">
 
 <p>As you will notice from the figures above and below, there are bars on all 4 sides of the browser window.</p>
 
 <img src="assets/2.png" alt="screenshot 2">
-<p>Handling the "tree style" tab manager in house makes for a much less frustrating styling experience and streamlined feature set</p>
+<p>Handling the "tree style" tab manager in house, as opposed to an extension, makes for a much less frustrating styling experience, streamlined feature set free of the bloat that I'd rather not have bolted on and consistent in quality</p>
 <img src="assets/3.png" alt="screenshot 3">
 
 ## Wait, What is This?
 
-What happened after too many hours helplessly using Firefox after one of the many examples of the Firefox team at Mozilla throwing a monkey wrench in my workflow. A totally customized, battered configuration of the Firefox browser, written with Linux in mind because I use Linux and think Chrome is inherently creepy and limiting (especially since finding userscript loaders that restore the userchromejs functionality of Linux geeking lore). As you can see from the screenshots above, the result of these efforts is a highly modified departure from Firefox's default UI named after subatomic particles (which one, I don't really care), which I have optimized to fit my idiosyncratic tastes and particular workflow using the browser. How this was achieved was on two fronts:
+The result of the open source software community relying on the frustration of those using software to drive its development by reaching frustration levels sufficient to fix whatever is spurring the agitation. However, my frustration was for want of screen real estate to put the icons that enable quick access to browser functionality or web extensions without having to crawl through the overflow menu to find what I need which is result of my idiosyncratic needs and not something upstream would even be able to do much with and not sufficiently variant to prompt a need to create another fork tracking upstream so it became some quick `userchrome.js` scripts that fit in nicely with my `userchrome.css` 
 
-## Topology of the Configuration
+To load the userscripts, I have opted for the [Mr.OtherGuy autoconfig-fx userscript loader](https://github.com/MrOtherGuy/fx-autoconfig) due to the frontmatter like configuration in the script's header comment as well as my deep appreciation for the well documented explanations of the loader's provided API functions and especially the inclusion of a script toggle menu available via the tools dropdown that includes an option to clear the browser cache and restart it which eases the development hassle considerably. 
+
+Scripts generally are either the unaltered original or a modified variant I have tried to remember to include the references to the original or inspiration for in a comment both for obvious purposes of crediting the author's work (and in some scripts, it helps make clear not all the rambling walls of text in this repo are examples of me engaging in my infamous attack of the flap trap, other even more tangential unstoppable forces of the bramble ramble royale lurk in the userchromejs world than even my bombastic soliloquies)
+
+## Directory Topology of the Configuration
 
 1. CSS - utilizing the built in, but disabled by default, legacy user style sheets functionality. There are two stylesheets included in this repo that style the interface
    - userChrome - styles the browser window and that which is not the content of the document being displayed. This includes a lot of UI functionality changes that can be achieved with CSS alone, like hiding the tabs on top since I have an JS script providing me tabs on the side of the window.
-   - userContent - styles the documents being displayed, be they the pages various add-ons bring up, firefox's garish internal pages or even various webpages that I don't want to spend hours burning my eyes away reading from their 1997 geocities blog format _cough_ Wikipedia _cough_
+   - userContent - styles the documents being displayed, be they the pages various add-ons bring up, firefox's internal pages or even various webpages that I don't want to spend hours burning my eyes away reading from their 1997 geocities blog format _cough_ Wikipedia _cough_
 2. Javascript - Using JS scripts that generally exceed the possibilities opened up by the web extensions API, these extend the browser in some meaningful way and often take the place of web extensions. In order to use these scripts, one must provide a series of files, some of which go into the program's directory system wide and others into the same directory within your browser profile and basically shim Firefox to load these scripts when booting up thus providing their functionality to you as you use the browser.
 
 ## Design Considerations
 
-The following lists what I was thinking putting this all together in terms of how it would improve my workflow:
-
-- To the extent practical, limit the use of add-ons and instead try to bake the desired functionality into userChromeJS scripts as this minimizes attack surface in several ways while also making syncing for the first time much less annoying.
-- Surround the window with additional panel bars, split up various buttons between them and isolate certain functions to certain panels. This means no annoying dropdown menus to search, no need to remember some features name at the critical moment or a keybinding when I already use a tiling wm, no odd looking margins like a side and top bar alone produce, just four bars and the tabs bar that Mozilla keeps messing up is totally removed. The current bar layout is: - Top Bar - just the url/search bar, with the overflow menu - left bar - where the extensions go - bottom bar aka statusbar - where builtin functionality buttons or buttons derived from a userscript are placed, in the corner the downloads button - right bar - where tabs are managed, no not by Tree-whatever-tabs, I am not trying to liberate myself from Mozilla only to cede control to some other dev, this comes from a userscript that's part of Duskfox and as such is something I can easily modify the need arises (like preventing the icons from resizing when it hovers out, apparently not an issue I hope on that dev's system but annoying me senseless on Linux but lucky me, I can change it unlike TreeStyleTabs plugins UI which I don't have the code or patience for)
+- surround workspace with customizable bars to place the icons revealing all my necessary or sometimes useful functionality on screen without digging through menus because I get distracted from that.
+- remember it is Firefox and each update will mean needing to smack the thing with a wrench a few times before it will turn over thus retain awareness of when it updates 
+- fit it into my awesomeWM theme as precisely as possible 
+- Minimize distraction from the web content I am trying to work with or access
+- 
 
 ## Script Loader
 

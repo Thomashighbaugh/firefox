@@ -1172,12 +1172,12 @@ menupopup, panel {
     border: 1px solid #181818 !important; 
 }
 #alltabs-button[open] {
-    list-style-image: url("chrome://browser/skin/tab.svg") !important;
+    /* list-style-image: url("chrome://browser/skin/tab.svg") !important; */
     border: 1px solid #434546aa !important;
     background-image: linear-gradient(#282828, #282828), linear-gradient(#282828, #282828), var(--lwt-header-image, none) !important; 
 }
 #alltabs-button:hover {
-    list-style-image: url("chrome://browser/skin/tab.svg") !important;
+    /* list-style-image: url("chrome://browser/skin/tab.svg") !important; */
     border: 1px solid #434546aa !important;
     background-image: linear-gradient(#282828, #282828), linear-gradient(#282828, #282828), var(--lwt-header-image, none) !important; 
     margin-bottom: 0px !important;
@@ -1236,7 +1236,7 @@ border-radius: 4px !important;
 }
 
 #organizeButton {
-    list-style-image: url("chrome://browser/skin/window.svg ") !important;
+    /* list-style-image: url("chrome://browser/skin/window.svg ") !important; */
     margin-top: 10px !important;
     margin-bottom: 5px !important;
     margin-left: 10px !important;
@@ -1257,6 +1257,7 @@ border-radius: 4px !important;
     padding-bottom: 1px !important;
     padding-left: 9px !important;
 }
+
 
 
 
@@ -1437,6 +1438,7 @@ html#main-window body box toolbox#navigator-toolbox vbox#titlebar toolbar#toolba
 
 #TabsToolbar {
     margin-inline-start: 103px !important;
+    display: hidden !important;
 }
 
 #appMenu-popup {

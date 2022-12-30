@@ -261,7 +261,7 @@ html#main-window body box#navigator-toolbox-background toolbox#navigator-toolbox
 }
 
 #vertical-tabs-list .all-tabs-item .all-tabs-secondary-button[toggle-mute] {
-    list-style-image: url(chrome://global/skin/media/audio.svg) !important;
+    list-style-image: url("chrome://global/skin/media/audio.svg") !important;
     scale: 100% !important;
     margin-top: 0px !important;
     padding-left: 2px !important;
@@ -274,7 +274,7 @@ html#main-window body box#navigator-toolbox-background toolbox#navigator-toolbox
   }
 
 #vertical-tabs-list .all-tabs-item .all-tabs-secondary-button[soundplaying]:hover {
-    list-style-image: url(chrome://global/skin/media/audio.svg) !important;
+    list-style-image: url("chrome://global/skin/media/audio.svg") !important;
     scale: 100% !important;
     margin-top: 0px !important;
     padding-left: 2px !important;
@@ -287,7 +287,7 @@ html#main-window body box#navigator-toolbox-background toolbox#navigator-toolbox
 }
 
 /*  #vertical-tabs-list .all-tabs-item .all-tabs-secondary-button[mute-button] {
-    list-style-image: url(chrome://global/skin/media/audio.svg) !important;
+    list-style-image: url("chrome://global/skin/media/audio.svg") !important;
     scale: 100% !important;
     margin-top: 0px !important;
     padding-left: 2px !important;
@@ -304,7 +304,7 @@ html#main-window body hbox#browser vbox#vertical-tabs-pane.chromeclass-extrachro
   padding: 5px !important;
   margin-left: -4px !important;
   fill: white !important;
-  list-style-image: url(chrome://global/skin/media/audio.svg) !important;
+  list-style-image: url("chrome://global/skin/media/audio.svg") !important;
   background-image: linear-gradient(#555566, #555566), linear-gradient(#555566, #555566), var(--lwt-header-image, none) !important;
   border: 1px solid #555566 !important;
   background-size: 22px !important;
@@ -316,7 +316,7 @@ html#main-window body hbox#browser vbox#vertical-tabs-pane.chromeclass-extrachro
     padding: 5px !important;
     margin-left: -4px !important;
     fill: white !important;
-    list-style-image: url(chrome://global/skin/media/audio-muted.svg) !important;
+    list-style-image: url("chrome://global/skin/media/audio-muted.svg") !important;
     background-image: linear-gradient(#555566, #555566), linear-gradient(#555566, #555566), var(--lwt-header-image, none) !important;
     border: 1px solid #434546aa !important;
     background-size: 22px !important;
@@ -328,7 +328,7 @@ html#main-window body hbox#browser vbox#vertical-tabs-pane.chromeclass-extrachro
     padding: 5px !important;
     margin-left: -4px !important;
     fill: white !important;
-    list-style-image: url(chrome://global/skin/media/audio-muted.svg) !important;
+    list-style-image: url("chrome://global/skin/media/audio-muted.svg") !important;
     background-image: linear-gradient(#555566, #555566), linear-gradient(#555566, #555566), var(--lwt-header-image, none) !important;
     border: 1px solid #434546aa !important;
     background-size: 22px !important;
@@ -340,7 +340,7 @@ html#main-window body hbox#browser vbox#vertical-tabs-pane.chromeclass-extrachro
     padding: 5px !important;
     margin-left: -4px !important;
     fill: white !important;
-    list-style-image: url(chrome://global/skin/media/audio.svg) !important;
+    list-style-image: url("chrome://global/skin/media/audio.svg") !important;
     background-image: linear-gradient(#555566, #555566), linear-gradient(#555566, #555566), var(--lwt-header-image, none) !important;
     border: 1px solid #434546aa !important;
     border-radius: 1px !important;
@@ -366,7 +366,7 @@ html#main-window body hbox#browser vbox#vertical-tabs-pane.chromeclass-extrachro
     margin-left: -11px !important;
     scale: 100% !important;
     fill: white !important;
-    list-style-image: url(chrome://global/skin/media/audio.svg) !important;
+    list-style-image: url("chrome://global/skin/media/audio.svg") !important;
     border: 1px solid #434546aa !important;
     background-image: linear-gradient(#555566, #555566), linear-gradient(#555566, #555566), var(--lwt-header-image, none) !important;
 }
@@ -380,12 +380,12 @@ html#main-window body hbox#browser vbox#vertical-tabs-pane.chromeclass-extrachro
 .all-tabs-secondary-button[soundplaying]:hover {
     border: 1px solid #434546aa !important;
     background-image: linear-gradient(#555566, #555566), linear-gradient(#555566, #555566), var(--lwt-header-image, none) !important;
-    list-style-image: url(chrome://global/skin/media/audio-muted.svg) !important;
+    list-style-image: url("chrome://global/skin/media/audio-muted.svg") !important;
     background-color: transparent !important;
 }
 
 .all-tabs-secondary-button[muted]:hover {
-    list-style-image: url(chrome://global/skin/media/audio.svg) !important;
+    list-style-image: url("chrome://global/skin/media/audio.svg") !important;
     background-color: transparent !important;
     border: 1px solid #434546aa !important;
     background-image: linear-gradient(#555566, #555566), linear-gradient(#555566, #555566), var(--lwt-header-image, none) !important;
@@ -633,11 +633,11 @@ div.container.infobar button.close.ghost-button.notification-close {
 }
 
 .urlbar-page-action:hover pageAction-panel-bookmark[starred], .urlbar-page-action:hover #star-button[starred] {
-    list-style-image: url("Icons8-Filled-Bookmark-Ribbon.svg") !important;
+    list-style-image: url("chrome://userchrome/bookmarks.svg")!important;
 }
 
 .urlbar-page-action:hover #pageAction-panel-bookmark, .urlbar-page-action:hover #star-button {
-    list-style-image: url("Icons8-Bookmark.svg") !important;
+    list-style-image: url("chrome://userchrome/bookmark.svg") !important;
 }
 
 .identity-box-button:hover:not([open="true"]), #tracking-protection-icon-container:hover:not([open="true"]) {
@@ -802,7 +802,7 @@ html#main-window body popupset#mainPopupSet panel#appMenu-popup.cui-widget-panel
 }*/
 
 #PlacesChevron {
-    list-style-image: url("icons8-bookmark.svg") !important;
+    list-style-image: url("chrome://userchrome/bookmark.svg") !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
     padding-left: 13px !important;
     padding-right: 13px !important;
@@ -820,7 +820,7 @@ scrollbox[orient="horizontal"] {
 }
 
 #PlacesChevron {
-    list-style-image: url("icons8-bookmark.svg") !important;
+    list-style-image: url("chrome://userchrome/bookmark.svg") !important;
 }
 
 .notification-button:first-of-type {
@@ -1000,11 +1000,11 @@ html#main-window body hbox#browser vbox#appcontent tabbox#tabbrowser-tabbox tabp
 }
 
 pageAction-panel-bookmark[starred], #star-button[starred] {
-    list-style-image: url("icons8-filled-bookmark-ribbon.svg") !important;
+    list-style-image: url("chrome://userchrome/bookmarks.svg")!important;
 }    
 
 #pageAction-panel-bookmark, #star-button {
-    list-style-image: url("icons8-bookmark.svg") !important;
+    list-style-image: url("chrome://userchrome/bookmark.svg") !important;
 }
 
 #vertical-tabs-list .all-tabs-item .all-tabs-secondary-button {
@@ -1017,7 +1017,6 @@ pageAction-panel-bookmark[starred], #star-button[starred] {
     opacity: 1;
     margin-inline-start: 0px !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
-    background-image: url(chrome://userchrome/volume-on.svg) !important;
     border: 1px solid #222 !important;
     background-color: #555566 !important;
     list-style-image: none !important;
@@ -2008,7 +2007,7 @@ html#main-window body box toolbox#navigator-toolbox toolbar#nav-bar.browser-tool
 }
 
 /*#vertical-tabs-list .all-tabs-item .all-tabs-secondary-button[toggle-mute] {
-    list-style-image: url(chrome://global/skin/media/audio.svg) !important;
+    list-style-image: url("chrome://global/skin/media/audio.svg") !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
     transition: 0.25s cubic-bezier(0.07, 0.78, 0.21, 0.95) transform,
@@ -4566,7 +4565,10 @@ html#main-window body box#navigator-toolbox-background toolbox#navigator-toolbox
 /*.tabbrowser-tab:not(:hover):not([pinned]) .tab-label-container {
     margin-inline-end: 7px !important;
 }*/
-
+/* ---------------- Make Tabs Vanish --------------- */
+tabs#tabbrowser-tabs {
+    display: none !important;
+}
 #PlacesToolbar
   padding-left: 4px !important;
 }

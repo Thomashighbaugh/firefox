@@ -1438,7 +1438,7 @@ html#main-window body box toolbox#navigator-toolbox vbox#titlebar toolbar#toolba
 
 #TabsToolbar {
     margin-inline-start: 103px !important;
-    display: hidden !important;
+    display: none !important;
 }
 
 #appMenu-popup {
@@ -2137,7 +2137,8 @@ html#main-window body popupset#mainPopupSet panel#appMenu-popup.cui-widget-panel
     padding-right: 5px !important;
     margin-top: 0px !important;
     margin-right: 0px !important;
-    margin-bottom: 2px !important;
+    margin-bottom: 2px !important
+    display: hidden !important;
 }
 
 #ContentSelectDropdown > menupopup > menucaption, #ContentSelectDropdown > menupopup > menuitem {
@@ -2198,6 +2199,7 @@ treechildren::-moz-tree-row(selected, current, focus){
 /* ----- ACTIVE TAB FONT WEIGHT ----- */
 .tabbrowser-tab[selected="true"] .tab-text {
     margin-top: 2px !important;
+    display: hidden !important;
 }
 /* ----- INTERFACE FONT ----- */
 * {
@@ -3053,7 +3055,8 @@ urlbar-container, #search-container {
 
 /* ----- ALWAYS SHOW TAB CLOSE BUTTON ON TAB WHEN YOU HOVER OVER IT ----- */
 .tabbrowser-tab:not([selected]):not([pinned]) .tab-close-button {
-    display: -moz-box !important;
+    /* display: -moz-box !important; */
+    display: hidden !important;
 }
 
 
@@ -4565,6 +4568,7 @@ html#main-window body box#navigator-toolbox-background toolbox#navigator-toolbox
 
 html#main-window body box#navigator-toolbox-background toolbox#navigator-toolbox vbox#titlebar toolbar#TabsToolbar.browser-toolbar.titlebar-color hbox.toolbar-items hbox#TabsToolbar-customization-target.customization-target tabs#tabbrowser-tabs arrowscrollbox#tabbrowser-arrowscrollbox tab.tabbrowser-tab:hover stack.tab-stack hbox.tab-content vbox.tab-label-container {
     margin-inline-end: -7px !important;
+    display: hidden !important;
 }
 
 /*.tabbrowser-tab:not(:hover):not([pinned]) .tab-label-container {
@@ -4764,14 +4768,17 @@ tab:not([selected="true"]):hover .tab-content {
 .tabbrowser-tab:not([visuallyselected="true"]):hover .tab-text {
     font-weight: 200 !important;
     color: #f4f4f7 !important;
+    display: hidden !important;
 }
 
 .tabbrowser-tab:not([visuallyselected="true"]) .tab-text {
     font-weight: 200 !important;
+    display: hidden !important;
 }
 
 .tabbrowser-tab[visuallyselected="true"] .tab-text {
     font-weight: 400 !important;
+    display: hidden !important;
 }
 
 .tab-text {
@@ -4809,7 +4816,7 @@ tab:not([selected="true"]):hover .tab-content {
 .tabbrowser-tab {
     box-sizing: border-box;
     background-clip: padding-box;
-    display: none;
+    display: none !important;
 }
 
 /*.tabbrowser-tab[selected="true"] {

@@ -864,6 +864,7 @@ scrollbox[orient="horizontal"] {
     padding-left: 28px !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
     margin-left: -38px !important;
+    display: none !important;
 }
 
 #identity-box[pageproxystate="valid"].notSecureText > .identity-box-button, #identity-box[pageproxystate="valid"].chromeUI > .identity-box-button, #identity-box[pageproxystate="valid"].extensionPage > .identity-box-button, #urlbar-label-box {
@@ -888,6 +889,9 @@ html#main-window body box#navigator-toolbox-background toolbox#navigator-toolbox
 .titlebar-button > .toolbarbutton-icon {
     scale: 202% !important;
     display: none !important;
+}
+
+.titlebar-button{display: none !important;
 }
 
 .titlebar-min {

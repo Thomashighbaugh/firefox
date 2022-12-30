@@ -1,0 +1,6 @@
+/* ------------------ Common Init ------------------ */
+
+// Common functions, variable, other scss that is used is called by importing this file. Arranged with cascading and definition needs in mind.
+
+@import url("./colors.scss");
+@import url("./css_variables.scss");

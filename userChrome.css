@@ -4789,9 +4789,9 @@ tab:not([selected="true"]):hover .tab-content {
 
 
 
-:root {
+/* :root {
     --tab-min-height: 24px !important;
-}
+} */
 
 /*.tabbrowser-tab:hover .tab-background[selected="true"] {
     background-color: #555566 !important;
@@ -4804,6 +4804,7 @@ tab:not([selected="true"]):hover .tab-content {
 .tabbrowser-tab {
     box-sizing: border-box;
     background-clip: padding-box;
+    display: none;
 }
 
 /*.tabbrowser-tab[selected="true"] {
@@ -5296,9 +5297,11 @@ menuitem.subviewbutton[_moz-menuactive]:not(:-moz-any([disabled], :active)),
 }
 #tabbrowser-tabs:not([movingtab]) > .tabbrowser-tab[beforeselected-visible]::after, #tabbrowser-tabs[movingtab] > .tabbrowser-tab[visuallyselected]::before, .tabbrowser-tab[visuallyselected]::after {
     opacity: 0 !important;
+    display: none !important;
 }
 .tabbrowser-tab:not([visuallyselected="true"]) {
     color: #898989 !important;
+    display: none !important;
 }
 
 /* ----- NEW TAB BUTTON BG COLOR -----*/

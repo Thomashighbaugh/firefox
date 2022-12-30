@@ -1,41 +1,29 @@
-/* ----- ᗪ卂尺Ҝ爪卂ㄒㄒ乇尺  [匚尺ㄚ丂ㄒ卂ㄥㄥﾉ乙乇ᗪ] 乃ㄚ  乃ㄥㄖㄖᗪㄚ卄乇ㄥㄥϬ𝟙९ ----- */
-
-/*
-
-Made possible by the help of:
-The FirefoxCSS reddit community
-and above all, users:
-
-MotherStylus
-& 
-It_Was_The_Other_Guy
-
-*/
+/* based shamelessly on Darkmatter, but in progress rewrite in scss with my adjustments and experiments */
 
 /*body {
     background: #202020 !important;
 }*/
 
 html body div#full div#content div#main recommended-extensions-section recommended-addon-list recommended-addon-card div.card.addon div.addon-card-collapsed div.card-contents div.addon-name-container button.disco-cta-button {
-    border: 1px solid #555e70 !important;
+    border: 1px solid #555555 !important;
     background-image: linear-gradient(#282828, #282828), linear-gradient(#282828, #282828), var(--lwt-header-image, none) !important;
 }
 
 .disco-cta-button:hover {
-    border: 1px solid #555e70 !important
-    background-image: linear-gradient(#555566, #555566), linear-gradient(#555566, #555566), var(--lwt-header-image, none) !important;
+    border: 1px solid #555555 !important
+    background-image: linear-gradient(#555555, #555555), linear-gradient(#555555, #555555), var(--lwt-header-image, none) !important;
 }
 
 
 html body div#full div#content div#main recommended-extensions-section footer.view-footer div.amo-link-container.view-footer-item button.primary {
-    border: 1px solid #555e70 !important;
+    border: 1px solid #555555 !important;
     background-image: linear-gradient(#282828, #282828), linear-gradient(#282828, #282828), var(--lwt-header-image, none) !important;
     color: #bbb !important;
 }
 
 html body div#full div#content div#main recommended-extensions-section footer.view-footer div.amo-link-container.view-footer-item button.primary:hover {
-    background-color: #555566 !important;
-    color: #fff !important;
+    background-color: #555555 !important;
+    color: #f4f4f7 !important;
 }
 
 #categories > .category:hover {
@@ -45,8 +33,8 @@ html body div#full div#content div#main recommended-extensions-section footer.vi
 @-moz-document url("about:addons") {
 
 button:not([disabled="true"]):hover {
-    border: 1px solid #555e70 !important;
-    background-color: #555566 !important;
+    border: 1px solid #555555 !important;
+    background-color: #555555 !important;
 }
 
 button:not([disabled="true"]) {
@@ -54,12 +42,12 @@ button:not([disabled="true"]) {
 }
 
 button[autofocus]:enabled, button[type="submit"]:enabled, button.primary:enabled, button[default]:not([disabled="true"]), button.primary:not([disabled="true"]) {
-    border: 1px solid #555e70 !important;
+    border: 1px solid #555555 !important;
 }
 
 button[autofocus]:enabled:hover, button[type="submit"]:enabled:hover, button.primary:enabled:hover, button[default]:not([disabled="true"]):hover, button.primary:not([disabled="true"]):hover {
-    border: 1px solid #555e70 !important;
-    background-color: #555566 !important;
+    border: 1px solid #555555 !important;
+    background-color: #555555 !important;
 }
 }
 
@@ -108,12 +96,12 @@ html body main details#tab-pickup-container.content-container named-deck#tabpick
 }
 
 .card-outer:is(:hover, :focus, .active):not(.placeholder) .card-title {
-    color: #555566 !important;
+    color: #555555 !important;
 }
 
 .home-section .section .sponsored-checkbox:checked {
     fill: #222 !important;
-    background-color: #555566 !important;
+    background-color: #555555 !important;
     border-radius: 2px !important;
 }
 
@@ -122,7 +110,7 @@ html body main details#tab-pickup-container.content-container named-deck#tabpick
 }
 
 .ds-card .ds-card-link:hover header {
-    color: #555566 !important;
+    color: #555555 !important;
 }
 
 .ds-card .meta .title {
@@ -141,7 +129,7 @@ html body main details#tab-pickup-container.content-container named-deck#tabpick
 }
 
 .outer-wrapper a {
-    color: #555566 !important;
+    color: #555555 !important;
 }
 
 .ds-navigation {
@@ -244,7 +232,7 @@ html body.activity-stream div#root div div.outer-wrapper.visible-logo main div.b
 }
 
 html body.activity-stream div#root div div.outer-wrapper.visible-logo main div.body-wrapper.on div.sections-list section.collapsible-section.section.normal-cards div ul.section-list li.card-outer button.context-menu-button.icon:hover {
-    border: 2px solid #555566 !important;
+    border: 2px solid #555555 !important;
 }
 
 html body.activity-stream div#root div div.outer-wrapper.visible-logo main div.body-wrapper.on div.sections-list section.collapsible-section.section.compact-cards div ul.section-list li.card-outer button.context-menu-button.icon {
@@ -255,7 +243,7 @@ html body.activity-stream div#root div div.outer-wrapper.visible-logo main div.b
 }
 
 html body.activity-stream div#root div div.outer-wrapper.visible-logo main div.body-wrapper.on div.sections-list section.collapsible-section.section.compact-cards div ul.section-list li.card-outer button.context-menu-button.icon:hover {
-    border: 2px solid #555566 !important;
+    border: 2px solid #555555 !important;
 }
 
 
@@ -367,7 +355,7 @@ html body.activity-stream div#root div div.outer-wrapper.visible-logo main div.b
   }
 
 .card-outer .context-menu-button:hover {
-      fill:#555566 !important;
+      fill:#555555 !important;
 }
 
 .search-wrapper .search-inner-wrapper {
@@ -503,8 +491,8 @@ html body.activity-stream div#root div div.outer-wrapper.ds-outer-wrapper-search
 }
 
 html body.activity-stream div#root div div.outer-wrapper.ds-outer-wrapper-search-alignment.ds-outer-wrapper-breakpoint-override.visible-logo main div.body-wrapper.on section.collapsible-section.ds-layout div div.discovery-stream.ds-layout button.context-menu-button.icon:hover {
-    fill: #555566 !important;
-    border: 2px solid #555566 !important;
+    fill: #555555 !important;
+    border: 2px solid #555555 !important;
 }
 
 .ds-layout > .ds-column:nth-child(1) .ds-column-grid > :nth-child(2) .ds-navigation {
@@ -530,7 +518,7 @@ html body.activity-stream div#root div div.outer-wrapper.ds-outer-wrapper-search
 }
 
 .top-site-outer .context-menu-button:hover {
-    fill: #555566 !important;
+    fill: #555555 !important;
 }
 
 .top-site-outer .context-menu-button {
@@ -634,12 +622,10 @@ background: #202020 !important;
 }*/
 
 .context-menu > ul {
-    color: #fff !important;
+    color: #f4f4f7 !important;
 }
 
-.personalize-button {
-    background-image: url("Iconsdb.com-Personalize.png") !important;
-}
+
 
 input[type="checkbox"].toggle-button::before {
     background: #222 !important;
@@ -648,14 +634,14 @@ input[type="checkbox"].toggle-button::before {
 }
 
 input[type="checkbox"].toggle-button:checked {
-    background: linear-gradient(0.45turn, #43c8f3, #555e70) !important;
+    background: linear-gradient(0.45turn, #43c8f3, #555555) !important;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.50), 3px 0px 13px 1px #4040405c inset !important;
     border: 1px transparent !important;
 }
 
 html body div#full div#content div#main addon-list section addon-card div.card.addon div.addon-card-collapsed div.card-contents div.addon-name-container input.toggle-button.extension-enable-button:hover {
-    background-image: linear-gradient(#555566, #555566), linear-gradient(#555566, #555566), var(--lwt-header-image, none) !important;
-    border: 1px solid #555e70 !important;
+    background-image: linear-gradient(#555555, #555555), linear-gradient(#555555, #555555), var(--lwt-header-image, none) !important;
+    border: 1px solid #555555 !important;
 }
 
 .home-section .section .slider::before {
@@ -680,18 +666,18 @@ html body div#full div#content div#main addon-list section addon-card div.card.a
 
 .home-section .section input:checked + .slider {
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.50), 3px 0px 13px 1px #4040405c inset !important;
-    border: 1px solid #555e70 !important;
+    border: 1px solid #555555 !important;
     background-image: linear-gradient(#282828, #282828), linear-gradient(#282828, #282828), var(--lwt-header-image, none) !important;
 }
 .home-section .section input:checked + .slider:hover {
-    background: linear-gradient(#555566, #555566), linear-gradient(#555566, #555566), var(--lwt-header-image, none) !important;
+    background: linear-gradient(#555555, #555555), linear-gradient(#555555, #555555), var(--lwt-header-image, none) !important;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.50), 3px 0px 13px 1px #4040405c inset !important;
-    border: 1px solid #555e70 !important;
+    border: 1px solid #555555 !important;
 }
 
 html body div#full div#content div#main addon-list section addon-card div.card.addon div.addon-card-collapsed div.card-contents div.addon-name-container input.toggle-button.extension-enable-button {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
-    border: 1px solid #555e70 !important;
+    border: 1px solid #555555 !important;
     background-image: linear-gradient(#282828, #282828), linear-gradient(#282828, #282828), var(--lwt-header-image, none) !important; 
 } 
 
@@ -749,7 +735,7 @@ html body.illustrated div.container.restore-chosen div.button-container button#e
 }
 
 #tabsToggle:hover {
-    color: #fff !important;
+    color: #f4f4f7 !important;
 }
 
 .home-section .external-link:hover {
@@ -759,7 +745,7 @@ html body.illustrated div.container.restore-chosen div.button-container button#e
 
 html body.activity-stream.modal-open div#root div div.outer-wrapper.ds-outer-wrapper-breakpoint-override.visible-logo.newtab-experience main div.body-wrapper.on div.discovery-stream.ds-layout div.ds-column.ds-column-12 div.ds-column-grid div div.ds-top-sites section.collapsible-section.top-sites.animation-enabled div.section-body div.edit-topsites-wrapper div.edit-topsites div.modalOverlayOuter.active div.modal form.topsite-form section.actions button.cancel:hover {
     background-color: #292929 !important;
-    color: #fff !important; 
+    color: #f4f4f7 !important; 
 }
 html body.activity-stream.modal-open div#root div div.outer-wrapper.ds-outer-wrapper-breakpoint-override.visible-logo.newtab-experience main div.body-wrapper.on div.discovery-stream.ds-layout div.ds-column.ds-column-12 div.ds-column-grid div div.ds-top-sites section.collapsible-section.top-sites.animation-enabled div.section-body div.edit-topsites-wrapper div.edit-topsites div.modalOverlayOuter.active div.modal form.topsite-form section.actions button.cancel {
     color: #ccc !important;   
@@ -775,7 +761,7 @@ treecols {
 }
 
 input[type="checkbox"].toggle-button:checked {
-    background-color: #555566 !important;
+    background-color: #555555 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
 }
 
@@ -802,7 +788,7 @@ input[type="checkbox"].toggle-button {
     color: #282828 !important;
 }
 .button.primary:hover, .button.done:hover, .actions button.primary:hover, .actions button.done:hover {
-    background-color: #43c8f3 !important;
+    background-color: #555555 !important;
     color: #282828 !important;
 
 }
@@ -815,7 +801,7 @@ input[type="checkbox"].toggle-button {
 }
 
 #netErrorButtonContainer > .try-again:hover {
-    color: #fff !important;
+    color: #f4f4f7 !important;
     background-color: #282828 !important;
 }
 
@@ -848,12 +834,12 @@ menulist > menupopup > menuitem:hover {
 
 menulist > menupopup > menuitem[_moz-menuactive="true"], menulist > menupopup > menu[_moz-menuactive="true"] {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
-    color: #fff !important;
+    color: #f4f4f7 !important;
     background-color: #282828 !important;
 }   
 
 menulist > menupopup > menu:not([disabled="true"])[selected="true"], menulist > menupopup > menuitem:not([disabled="true"])[selected="true"] {
-    color: #fff !important;
+    color: #f4f4f7 !important;
     background-color: #282828 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
 }
@@ -867,7 +853,6 @@ window dialog#syncChooseOptions {
 }*/
 
 /*html body.activity-stream div#root div span button.icon.icon-settings.personalize-button.personalize-animate-appear-done.personalize-animate-enter-done;hover {
-    background-image: url("chrome://global/skin/icons/settings.svg") !important;
     background-repeat: no-repeat !important;
     -moz-appearance: none !important;
 }*/
@@ -888,7 +873,7 @@ html body.activity-stream div#root div span button.personalize-button:hover {
 
 
 .sections-list .section-empty-state .empty-state .empty-state-icon {
-    fill: #fff !important;
+    fill: #f4f4f7 !important;
 }
 
 .sections-list .section-empty-state {
@@ -900,7 +885,7 @@ html body.activity-stream div#root div span button.personalize-button:hover {
     cursor: default !important;
     font-weight: 400 !important;
     font-size: 14px !important;
-    color: #fff !important;
+    color: #f4f4f7 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
     padding-top: 5px !important;
     padding-right: 15px !important;
@@ -909,7 +894,7 @@ html body.activity-stream div#root div span button.personalize-button:hover {
     border-radius: 2px !important;
 }
 .customize-menu {
-    color: #fff !important;
+    color: #f4f4f7 !important;
     background-color: #222 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
 }
@@ -920,14 +905,14 @@ html body.activity-stream div#root div span button.personalize-button:hover {
 
 .customize-menu .close-button:hover {
     background-color: #282828 !important;
-    color: #fff !important;
+    color: #f4f4f7 !important;
 }
 .customize-menu .close-button {
     background-color: #222 !important;
     padding: 3px 34px !important;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 3px !important;
-    color: #fff !important;
+    color: #f4f4f7 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
     padding-top: 6px !important;
     border: 0px solid #282828 !important;
@@ -936,16 +921,16 @@ html body.activity-stream div#root div span button.personalize-button:hover {
 
 
 .home-section .section .selector {
-    color: #FFF !important;
+    color: #f4f4f7 !important;
     border: 0px solid #282828 !important;
     -moz-context-properties: fill;
-    fill: #fff !important;
+    fill: #f4f4f7 !important;
     background-color: #222 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
 }
 
 #tabbrowser-arrowscrollbox:not([scrolledtostart="true"])::part(scrollbutton-up):hover {
-    background-color: #555566 !important;
+    background-color: #555555 !important;
     color: inherit !important;
 }
 
@@ -957,12 +942,12 @@ html body.activity-stream div#root div span button.personalize-button:hover {
 html body div#full div#content div#main addon-list message-bar-stack.pending-uninstall message-bar button {
     background-color: #222 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
-    color: #fff !important;
+    color: #f4f4f7 !important;
 }
 tml body div#full div#content div#main addon-list message-bar-stack.pending-uninstall message-bar button:hover {
     background-color: #282828 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
-    color: #fff !important;
+    color: #f4f4f7 !important;
 }
 @-moz-document url-prefix("about:preference") {
 button {
@@ -970,7 +955,7 @@ button {
 }
 button:hover {
     background-color: #282828 !important;
-    color: #fff !important;
+    color: #f4f4f7 !important;
 }
 }
 .topsite-form .form-wrapper input[type="text"] {
@@ -985,12 +970,12 @@ button:hover {
 }
 
 richlistitem[selected="true"] {
-    color: #fff !important;
+    color: #f4f4f7 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
 }
 
 richlistitem:hover {
-    color: #fff !important;
+    color: #f4f4f7 !important;
     background-color: #282828 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
 }
@@ -1047,9 +1032,9 @@ html body.activity-stream.modal-open div#root div div.outer-wrapper.ds-outer-wra
 }
 
 html body.activity-stream.modal-open div#root div div.outer-wrapper.ds-outer-wrapper-breakpoint-override.visible-logo main div.body-wrapper.on div.discovery-stream.ds-layout div.ds-column.ds-column-12 div.ds-column-grid div div.ds-top-sites section.collapsible-section.top-sites div div.edit-topsites-wrapper div.edit-topsites div.modalOverlayOuter.active div.modal form.topsite-form section.actions button.cancel:hover {
-    color: #fff !important;
+    color: #f4f4f7 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
-    border: 1px solid #555e70 !important;
+    border: 1px solid #555555 !important;
     background-image: linear-gradient(#282828, #282828), linear-gradient(#282828, #282828), var(--lwt-header-image, none) !important;
 }
 
@@ -1059,16 +1044,16 @@ html body.activity-stream.modal-open div#root div div.outer-wrapper.ds-outer-wra
     margin-inline-start: 10px;
     margin-inline-end: 0;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
-    border: 1px solid #555e70 !important;
+    border: 1px solid #555555 !important;
     background-image: linear-gradient(#282828, #282828), linear-gradient(#282828, #282828), var(--lwt-header-image, none) !important;
 }
 
 html body.activity-stream.modal-open div#root div div.outer-wrapper.ds-outer-wrapper-breakpoint-override.visible-logo main div.body-wrapper.on div.discovery-stream.ds-layout div.ds-column.ds-column-12 div.ds-column-grid div div.ds-top-sites section.collapsible-section.top-sites div div.edit-topsites-wrapper div.edit-topsites div.modalOverlayOuter.active div.modal form.topsite-form section.actions button.done:hover {
-    color: #fff !important;
+    color: #f4f4f7 !important;
     margin-inline-start: 10px;
     margin-inline-end: 0;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
-    border: 1px solid #555e70 !important;
+    border: 1px solid #555555 !important;
     background-image: linear-gradient(#282828, #282828), linear-gradient(#282828, #282828), var(--lwt-header-image, none) !important;
 }
 
@@ -1080,7 +1065,7 @@ html body.activity-stream.modal-open div#root div div.outer-wrapper.ds-outer-wra
     font-weight: 300 !important;
 }
 .addon-name-link, .addon-name-link:hover {
-    color: #fff !important;
+    color: #f4f4f7 !important;
     font-size: 14px !important;
     font-weight: 300 !important;
 }
@@ -1117,7 +1102,7 @@ menulist {
 
 
 .accessory-button:hover {
-    color: #fff !important;
+    color: #f4f4f7 !important;
 }
 
 
@@ -1157,7 +1142,7 @@ alert-title {
 }
 
 div.container div.column form div.detail-row label.detail-cell a.origin-input {
-   color: #fff !important;
+   color: #f4f4f7 !important;
 }
 
 .header {
@@ -1203,14 +1188,14 @@ div.container div.column form div.detail-row label.detail-cell a.origin-input {
 .login-list-item {
     padding-block: 4px !important;
     font-size: 14px !important;
-    color: #fff
+    color: #f4f4f7
 }
 
 #login-sort {
     margin-left: -50px !important;
     padding-inline: 6px 16px !important;
     font-weight: 600 !important;
-    color: #fff !important;
+    color: #f4f4f7 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
     border: 0px solid #282828 !important;
 }
@@ -1225,7 +1210,6 @@ div.container div.column form div.detail-row label.detail-cell a.origin-input {
 .fxaccount-avatar {
     display: inline-block;
     vertical-align: middle;
-    background-image: url(Icons8.com-Avatar.png) !important;
     width: 24px !important;
     height: 24px !important;
 }
@@ -1234,7 +1218,6 @@ div.container div.column form div.detail-row label.detail-cell a.origin-input {
     fill: white !important;
     padding-bottom: 300px !important;
     box-sizing: border-box !important;
-    background: url(Lockwise-logo.png) no-repeat  !important;
     background-position-x: 50% !important;
     background-position-y: 50% !important;
     background-size: 55% !important;
@@ -1250,9 +1233,9 @@ div.container div.column form div.detail-row label.detail-cell a.origin-input {
 
 .filter[type="text"] {
     -moz-context-properties: fill, fill-opacity;
-    fill: #fff !important;
+    fill: #f4f4f7 !important;
     fill-opacity: 1 !important;
-    color: #fff !important;
+    color: #f4f4f7 !important;
     background-color: #242424 !important;
     border: 1px solid #171717 !important;
     border-radius: 4px;
@@ -1261,7 +1244,7 @@ div.container div.column form div.detail-row label.detail-cell a.origin-input {
 
 #login-sort:hover:not([disabled]) {
     background-color: #262626 !important;
-    color: #fff !important;  
+    color: #f4f4f7 !important;  
 }
 header {
     border-bottom: 1px solid #191919 !important;
@@ -1276,16 +1259,16 @@ login-list {
 .login-list-item:not(.selected):hover {
     background-color: #282828 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
-    color: #fff !important;
+    color: #f4f4f7 !important;
 }
 .login-list-item.selected:hover .title {
     background-color: #282828 !important;
-    color: #fff !important;
+    color: #f4f4f7 !important;
 }
 .login-list-item.selected:hover {
     background-color: #282828 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
-    color: #fff !important;
+    color: #f4f4f7 !important;
 } 
 .login-list-item.selected:hover .favicon-wrapper {
     -moz-context-properties: fill, fill-opacity;
@@ -1298,7 +1281,7 @@ login-list {
 }
 .login-list-item {
     border-inline-start: 4px solid #222 !important;
-    color: #fff !important;
+    color: #f4f4f7 !important;
 }
 .login-list-item:hover {
     background-color: #282828 !important;
@@ -1306,15 +1289,15 @@ login-list {
 .login-list-item.selected {
     background-color: #282828 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
-    color: #fff !important;
+    color: #f4f4f7 !important;
 }
 .create-login-button-container {
     border-top: 0px solid #191919 !important;
-    color: #fff !important;
+    color: #f4f4f7 !important;
     background-color: #202020 !important;
 }
 /*.create-login-button {
-    color: #fff !important;
+    color: #f4f4f7 !important;
     background-color: #282828 !important;
 }*/
 
@@ -1375,10 +1358,10 @@ div.container span.icon {
 }
 
 * { 
-   --in-content-link-color: #555e70 !important;
+   --in-content-link-color: #555555 !important;
    --in-content-link-color-hover: White !important;
    --in-content-link-color-active: White !important;
-   --in-content-link-color-visited: #555e70 !important;
+   --in-content-link-color-visited: #555555 !important;
 }
 
 @media (min-width:720px) {
@@ -1429,22 +1412,22 @@ html body div#full div#content div#main addon-list section addon-card div.card.a
     margin: 4px !important;
 }
 .sidebar-footer-link:hover {
-    color: #fff !important;
+    color: #f4f4f7 !important;
     background-color: #222 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.55), 0 0 0 1px #4040405c inset !important;
 }
 .sidebar-footer-label {
-    color: #fff !important;
+    color: #f4f4f7 !important;
 }
 
 /* ----- ADDON PAGE CATEGORY BUTTON COLORS ----- */
 #categories > .category[selected], #categories > .category.selected {
-    color: #fff !important;
+    color: #f4f4f7 !important;
     background-color: #242424 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
 }
 #categories > .category:hover, #categories > .category.selected:hover {
-    color: #fff !important;
+    color: #f4f4f7 !important;
     background-color: #282828 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
     border-radius: 2px !important;
@@ -1480,7 +1463,7 @@ html body.activity-stream.modal-open div#root div div.outer-wrapper.ds-outer-wra
 }
 
 /* ----- NEW TAB PAGE PINNED SITES 3DOT ICON ----- */
-.outer-wrapper.newtab-experience .top-site-outer .context-menu-button:focus{ fill: #fff !important; }
+.outer-wrapper.newtab-experience .top-site-outer .context-menu-button:focus{ fill: #f4f4f7 !important; }
 
 /* ------ NEW TAB PAGE CAPTION BUTTONS ----- */
 
@@ -1502,40 +1485,40 @@ hbox.dialog-button-box {
 
 .context-menu > ul > li > a:is(:focus, :hover, :active, .selected), .context-menu > ul > li > button:is(:focus, :hover, :active, .selected) {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
-    color: #fff !important;
+    color: #f4f4f7 !important;
     background: #282828 !important;
 }
 
 * {
     --newtab-primary-action-background-off: #ccc !important;
     --in-content-button-text-color: #ccc !important;
-    --in-content-button-text-color-hover: #fff !important;
+    --in-content-button-text-color-hover: #f4f4f7 !important;
     --in-content-box-background :#242424 !important;
     --in-content-page-background: #202020 !important;
     --newtab-element-hover-color: #282828 !important;
     --newtab-border-secondary-color: #282828 !important;
     --in-content-deemphasized-text: #7d7d7d !important;
-    --in-content-accent-color: #555566 !important;
+    --in-content-accent-color: #555555 !important;
     --in-content-button-background: #242424 !important;
     --in-content-button-background-hover: #282828 !important;
     --in-content-button-color: #282828 !important;
     --in-content-button-background-active: #303030 !important;
     --in-content-primary-button-text-color: #7d7d7d !important;
-    --in-content-primary-button-text-color-hover: #fff !important;
+    --in-content-primary-button-text-color-hover: #f4f4f7 !important;
     --in-content-primary-button-background: #222 !important;
     --in-content-primary-button-background-hover: #43c8f3 !important;
     --in-content-primary-button-background-active: #313131 !important;
     --checkbox-border-color: transparent !important;
     --checkbox-unchecked-bgcolor: #313131 !important;
     --checkbox-unchecked-hover-bgcolor: #4d4d4d !important;
-    --checkbox-unchecked-active-bgcolor: #555566 !important;
-    --checkbox-checked-bgcolor: #555566 !important;
+    --checkbox-unchecked-active-bgcolor: #555555 !important;
+    --checkbox-checked-bgcolor: #555555 !important;
     --checkbox-checked-color: #282828 !important;
     --checkbox-checked-hover-bgcolor: #43c8f3 !important;
     --checkbox-checked-active-bgcolor: #43c8f3 !important;
-    --checkbox-checked-border-color: #555566 !important;
+    --checkbox-checked-border-color: #555555 !important;
     --in-content-box-info-background: #282828 !important;
-    --in-content-danger-button-background-active: #555566 !important;
+    --in-content-danger-button-background-active: #555555 !important;
 }
 
 /* ----- NEW TAB FIREFOX TEXT COLOR ----- */
@@ -1547,12 +1530,12 @@ hbox.dialog-button-box {
 
 /* ----- CHECKBOX COLORS ----- */
 :root {
-   --checkbox-checked-bgcolor: #555566 !important;
+   --checkbox-checked-bgcolor: #555555 !important;
    --checkbox-checked-color: #282828 !important;
    --checkbox-checked-border-color: #222 !important;
-   --checkbox-checked-bgcolor: #555566 !important;
+   --checkbox-checked-bgcolor: #555555 !important;
    --checkbox-checked-hover-bgcolor: #f1f1f1 !important;
-   --checkbox-checked-active-bgcolor: #555566 !important;
+   --checkbox-checked-active-bgcolor: #555555 !important;
 }
 
 
@@ -1615,7 +1598,6 @@ html body div#full div#content div#main addon-list section addon-card div.card.a
 /* ---- SEARCHBOX GOOGLE LOGO & SHADOW ----- */
 @-moz-document url(about:newtab), url(about:home) {
   .search-handoff-button { 
-    background-image: url("Icons8.com-Google.png") !important;
     background-repeat: no-repeat !important;
     background-position: left 15px top 13px !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
@@ -1635,12 +1617,12 @@ html body div#full div#sidebar categories-box#categories button.category span.ca
 }
 
 html body div#full div#content div#main recommended-extensions-section footer.view-footer div.view-footer-item a.privacy-policy-link {
-    color: #555e70 !important;
+    color: #555555 !important;
     text-decoration: none !important;
 }
 
 html body div#full div#content div#main recommended-extensions-section recommended-addon-list recommended-addon-card div.card.addon div.addon-card-collapsed div.card-contents div.addon-name-container div.disco-card-head span.disco-addon-author a {
-    color: #555e70 !important;
+    color: #555555 !important;
     text-decoration: none !important;
 }
 
@@ -1651,7 +1633,7 @@ html body div#full div#sidebar categories-box#categories button.category span.ca
 
 
 input[type="checkbox"].toggle-button:hover {
-    border-color: #fff !important;
+    border-color: #f4f4f7 !important;
     background-color: #d2c6c6 !important;
 }
 
@@ -1664,7 +1646,7 @@ input[type="checkbox"].toggle-button:hover {
 
 /* ----- FIREFOX SET AS DEFULT SMILEY ----- */
 .face-smile {
-    list-style-image: url("Fox.png") !important;
+    list-style-image: url("chrome://userchrome/about-logo.svg") !important;
     width: 22px !important;
     height: 22px !important;
     margin-block: 5px !important;
@@ -1677,11 +1659,11 @@ html#preferences-root body#preferences-body stack#preferences-stack hbox vbox.ma
 }
 
 html#preferences-root body#preferences-body stack#preferences-stack hbox vbox.navigation richlistbox#categories richlistitem label.category-name {
-    color: #fff !important;
+    color: #f4f4f7 !important;
 }
 
 html#preferences-root body#preferences-body stack#preferences-stack hbox vbox.navigation richlistbox#categories richlistitem:hover label.category-name {
-    color: #fff !important;
+    color: #f4f4f7 !important;
 }
 
 html#preferences-root body#preferences-body stack#preferences-stack hbox vbox.navigation richlistbox#categories richlistitem:hover {
@@ -1696,7 +1678,7 @@ html#preferences-root body#preferences-body stack#preferences-stack hbox vbox.ma
 
 
 html#preferences-root body#preferences-body stack#preferences-stack hbox vbox.main-content vbox.pane-container vbox#mainPrefPane deck#weavePrefsDeck vbox#hasFxaAccount hbox vbox#fxaContentWrapper groupbox#fxaGroup deck#fxaLoginStatus hbox#fxaLoginVerified vbox hbox a#verifiedManage.openLink{
-    color: #555566 !important;
+    color: #555555 !important;
 }
 
 html body {
@@ -1705,7 +1687,7 @@ html body {
 }
 
 html .text-link {
-    color: #555566 !important;
+    color: #555555 !important;
 }
 
 html#preferences-root body#preferences-body stack#preferences-stack hbox vbox.navigation richlistbox#categories {
@@ -1714,19 +1696,19 @@ html#preferences-root body#preferences-body stack#preferences-stack hbox vbox.na
 }
 
 html body div.container div.title h1#warningTitle.title-text {
-    color: #555566 !important;
+    color: #555555 !important;
 }
 
 
 html body div.container div.button-container button#warningButton {
-    color: #fff !important;
+    color: #f4f4f7 !important;
     background-color: #242424 !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 0 0 1px #4040405c inset !important;
     border: 0px solid #282828 !important;
 }
 
 html body div.container div.button-container button#warningButton:hover {
-    color: #fff !important;
+    color: #f4f4f7 !important;
     background-color: #282828 !important;
 }
 
@@ -1743,12 +1725,12 @@ html body div.container div.button-container button#warningButton:hover {
 }
 
 html body div.container div.button-container button#warningButton {
-    color: #555566 !important;
+    color: #555555 !important;
     background-color: #202020 !important;
 }
 
 html#preferences-root body#preferences-body stack#preferences-stack hbox vbox.navigation richlistbox#categories .category image.category-icon {
-    color: #555566 !important;
+    color: #555555 !important;
 }
 
 #categories > .category[selected], #categories > .category.selected {
@@ -1759,8 +1741,8 @@ html#preferences-root body#preferences-body stack#preferences-stack hbox vbox.na
 
 /* ----- WEBSITE TEXT HIGHLIGHT COLOR ----- */ 
 ::-moz-selection {
-    background-color:#555566 !important;
-    color: #fff !important;
+    background-color:#555555 !important;
+    color: #f4f4f7 !important;
 }
 
 @-moz-document regexp("^(about:|chrome:|moz-extension:).*") {
@@ -1829,7 +1811,7 @@ body[lwt-newtab-brighttext] {
 	--in-content-box-border-color: #282828 !important;
 	--in-content-item-hover: #282828 !important;
 	--in-content-item-selected: #282828!important;
-    --in-content-item-selected-text: #fff !important;
+    --in-content-item-selected-text: #f4f4f7 !important;
 	--in-content-border-highlight: #282828 !important;
 	--in-content-border-focus: #08c !important;
 	--in-content-border-color: #282828 !important;
@@ -1837,7 +1819,7 @@ body[lwt-newtab-brighttext] {
 	--in-content-category-text: #c0c0c0!important;
 	--in-content-category-text-active: #c0c0c0!important;
 	--in-content-category-text-selected: #08c!important;
-	--in-content-category-text-selected-active: #fff!important;
+	--in-content-category-text-selected-active: #f4f4f7!important;
 	--in-content-category-background-hover: #282828 !important;
 	--in-content-category-background-active: #303030 !important;
 	--in-content-category-background-selected-hover: #282828 !important;
@@ -1847,7 +1829,7 @@ body[lwt-newtab-brighttext] {
 	--in-content-link-color-hover: #c0c0c0!important;
 	--in-content-link-color-active: #08c!important;
 	--in-content-link-color-visited: #268!important;
-	--in-content-primary-button-background: #555566 !important;
+	--in-content-primary-button-background: #555555 !important;
 	--in-content-primary-button-background-hover: #282828 !important;
 	--in-content-primary-button-background-active: #303030!important;
 	--in-content-table-background: #282828 !important;
@@ -1894,7 +1876,7 @@ richlistitem[selected="true"] {
 
 }
 #warningTitle {
-	color: #555e70!important;
+	color: #555555!important;
 }
 
 
@@ -1904,35 +1886,35 @@ richlistitem[selected="true"] {
 #appcontent,
 browser,
 html, body { 
-    --in-content-button-text-color-hover: #fff !important;
+    --in-content-button-text-color-hover: #f4f4f7 !important;
     --newtab-background-button-color: #222 !important;       
 	--newtab-background-color: #222 !important;
 	--newtab-border-primary-color: #444 !important;
 	--newtab-border-secondary-color: #444 !important;
-	--newtab-button-primary-color: #555566 !important; /* save button color */
+	--newtab-button-primary-color: #555555 !important; /* save button color */
 	--newtab-button-secondary-color: #242424 !important; /*close button*/
-	--newtab-element-active-color: #fff !important; /* 3dot menu select */
-	--newtab-element-hover-color: #555566 !important; /* 3dot menu hover */
-	--newtab-icon-primary-color: #fff !important; /* 3dot*/
-	--newtab-icon-secondary-color: #555566 !important;
-	--newtab-icon-tertiary-color: #555566 !important;
+	--newtab-element-active-color: #f4f4f7 !important; /* 3dot menu select */
+	--newtab-element-hover-color: #555555 !important; /* 3dot menu hover */
+	--newtab-icon-primary-color: #f4f4f7 !important; /* 3dot*/
+	--newtab-icon-secondary-color: #555555 !important;
+	--newtab-icon-tertiary-color: #555555 !important;
 	--newtab-inner-box-shadow-color: rgba(0, 0, 0, 0.1) !important;
-	--newtab-link-primary-color: #555566 !important;
-	--newtab-link-secondary-color: #555566 !important;
+	--newtab-link-primary-color: #555555 !important;
+	--newtab-link-secondary-color: #555555 !important;
 	--newtab-text-conditional-color: #666 !important;
 	--newtab-text-primary-color: #CCC !important;
 	--newtab-text-secondary-color: #888 !important;
 	--newtab-textbox-background-color: #282828 !important; /* fields */
 	--newtab-textbox-border: #202020 !important; /* field borders */
-	--newtab-textbox-focus-color: #555566 !important;
+	--newtab-textbox-focus-color: #555555 !important;
 	--newtab-textbox-focus-boxshadow: transparent !important;
 	--newtab-contextmenu-background-color: #242424 !important; /* 3dot menu background */
 	--newtab-contextmenu-button-color: #3a3a3a !important; /* 3dot menu button */
 	--newtab-modal-color: #252525 !important;
 	--newtab-overlay-color: rgba(0, 0, 0, 0.5) !important; /* BG fade when edit is open */
-	--newtab-section-header-text-color: #fff !important;
+	--newtab-section-header-text-color: #f4f4f7 !important;
 	--newtab-section-navigation-text-color: #0F0 !important;
-	--newtab-section-active-contextmenu-color: #fff !important;
+	--newtab-section-active-contextmenu-color: #f4f4f7 !important;
 	--newtab-search-border-color: #444 !important;
 	--newtab-search-dropdown-color: #222 !important;
 	--newtab-search-dropdown-header-color: #333 !important;
@@ -1953,30 +1935,30 @@ body[lwt-newtab-brighttext] {
 	--newtab-background-color: #222 !important;
 	--newtab-border-primary-color: #444 !important;
 	--newtab-border-secondary-color: #444 !important;
-	--newtab-button-primary-color: #555566 !important; /* save button color */
+	--newtab-button-primary-color: #555555 !important; /* save button color */
 	--newtab-button-secondary-color: #282828 !important; /*close button*/
-	--newtab-element-active-color: #555566 !important; /* 3dot menu select */
-	--newtab-element-hover-color: #555566 !important; /* 3dot menu hover */
-	--newtab-icon-primary-color: #fff !important; /* 3dot*/
-	--newtab-icon-secondary-color: #555566 !important;
+	--newtab-element-active-color: #555555 !important; /* 3dot menu select */
+	--newtab-element-hover-color: #555555 !important; /* 3dot menu hover */
+	--newtab-icon-primary-color: #f4f4f7 !important; /* 3dot*/
+	--newtab-icon-secondary-color: #555555 !important;
 	--newtab-icon-tertiary-color: red !important;
 	--newtab-inner-box-shadow-color: rgba(0, 0, 0, 0.1) !important;
-	--newtab-link-primary-color: #555566 !important;
-	--newtab-link-secondary-color: #555566 !important;
+	--newtab-link-primary-color: #555555 !important;
+	--newtab-link-secondary-color: #555555 !important;
 	--newtab-text-conditional-color: #666 !important;
 	--newtab-text-primary-color: #CCC !important;
 	--newtab-text-secondary-color: #888 !important;
 	--newtab-textbox-background-color: #282828 !important; /* fields */
 	--newtab-textbox-border: #202020 !important; /* field borders */
-	--newtab-textbox-focus-color: #555566 !important;
+	--newtab-textbox-focus-color: #555555 !important;
 	--newtab-textbox-focus-boxshadow: transparent !important;
 	--newtab-contextmenu-background-color: #242424 !important; /* 3dot menu background */
 	--newtab-contextmenu-button-color: #3a3a3a !important; /* 3dot menu button */	
     --newtab-modal-color: #252525 !important;
 	--newtab-overlay-color: rgba(0, 0, 0, 0.5) !important; /* BG fade when edit is open */
-	--newtab-section-header-text-color: #fff !important;
+	--newtab-section-header-text-color: #f4f4f7 !important;
 	--newtab-section-navigation-text-color: #0F0 !important;
-	--newtab-section-active-contextmenu-color: #fff !important;
+	--newtab-section-active-contextmenu-color: #f4f4f7 !important;
 	--newtab-search-border-color: #444 !important;
 	--newtab-search-dropdown-color: #222 !important;
 	--newtab-search-dropdown-header-color: #333 !important;
@@ -2001,7 +1983,7 @@ body[lwt-newtab-brighttext] {
 /*  text-align: center !important;
     font-size: 15px !important;
     font-weight: 100 !important;
-    color: #fff !important;
+    color: #f4f4f7 !important;
     opacity: 1 !important;
     margin-left: -32px !important;*/
 }
@@ -2009,7 +1991,6 @@ body[lwt-newtab-brighttext] {
 /* ----- NEW TAB FIREFOX LOGO ----- */
 /*@-moz-document url(about:newtab), url(about:home) {
   .logo {
-    background-image: url("Newtab-Firefox-Logo.svg") !important;
 }
 }*/
 

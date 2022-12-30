@@ -3,6 +3,7 @@
 // @author          xiaoxiaoflood
 // @include         main
 // @shutdown        UC.extensionOptionsMenu.destroy();
+// @description    provides a menu listing one's installed extensions with the addition of providing access to their stetings
 // @onlyonce
 // ==/UserScript==
 

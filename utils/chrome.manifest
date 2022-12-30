@@ -5,18 +5,6 @@ content userchromejs ./
 content userscripts ../JS/
 content userchrome ../resources/
 
-resource content-accessible chrome://userchrome/content/layout/contentaccessible/ contentaccessible=yes
-
-# ---------------------------------------------------------------------------- #
-
-# ---------------------------------------------------------------------------- #
-# Override the built-in styles for arrowscrollboxes, mainly to replace scrollbuttons with scrollbars.
-override chrome://global/skin/arrowscrollbox.css ../resources/layout/arrowscrollbox.css
-
-# ---------------------------------------------------------------------------- #
-# Override the tab element to restore the tab sound button and move the close button, among other things.
-override chrome://browser/content/tabbrowser-tab.js ../resources/script-override/tabMods.uc.js
-
 # ---------------------------------------------------------------------------- #
 # Basic content stylesheets, e.g., for plain text and "view source" documents.
 resource content-accessible chrome://userchrome/content/layout/contentaccessible/ contentaccessible=yes
@@ -33,10 +21,6 @@ override chrome://global/content/xml/XMLPrettyPrint.css ../resources/layout/XMLP
 # ---------------------------------------------------------------------------- #
 # The script for the searchbar on about:preferences.
 override chrome://browser/content/preferences/findInPage.js ../resources/script-override/findInPage.js
-
-# ---------------------------------------------------------------------------- #
-# tab bar modifications
-override chrome://browser/content/tabbrowser-tab.js ../resources/script-override/tabMods.uc.js
 
 # ---------------------------------------------------------------------------- #
 # Override a bunch of icons that appear all over the browser.

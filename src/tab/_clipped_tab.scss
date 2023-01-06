@@ -1,0 +1,15 @@
+/** Clipped tabs - Letters cleary *********************************************/
+@import "clipped_tab/letters_cleary";
+
+/** Clipped tabs - Show close button at hover *********************************/
+
+@import "clipped_tab/show_close_button_at_hover";
+
+/** Clipped tabs - Show close button at pinned tab ****************************/
+@include Option("userChrome.tab.close_button_at_pinned") {
+  @include NotOption("userChrome.tabbar.as_titlebar") {
+    @import "clipped_tab/pinned_close_button";
+  }
+}
+
+@import "clipped_tab/always_show_tab_icon";

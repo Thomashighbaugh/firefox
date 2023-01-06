@@ -38,3 +38,7 @@ user_pref("browser.tabs.tabmanager.enabled", true);
 // use and other reasons, addons should change this themselves
 // I would think but don't/can't
 user_pref("privacy.popups.disable_from_plugins", 0);
+
+// Enable Global Privacy Control functionality thus enriching others being creepy less 
+user_pref("privacy.globalprivacycontrol.enabled", true);
+user_pref("privacy.globalprivacycontrol.functionality.enabled", true);

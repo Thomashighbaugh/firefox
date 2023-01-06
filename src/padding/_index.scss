@@ -1,0 +1,53 @@
+/*= Tab Bar - Distribution padding, radius ===================================*/
+@import "tab_padding";
+
+/*= Tab Bar - Reduce Width, Show more tabs ===================================*/
+@import "first_tab";
+
+@import "tabbar_width";
+
+/*= Tab Bar - Reduce Height, Show more contents ==============================*/
+@import "drag_space";
+
+@import "tabbar_height";
+
+/*= Tool Bar - Button Padding ================================================*/
+
+@import "toolbar_button";
+
+/*= Nav Bar - Reduce Width ===================================================*/
+@import "navbar";
+
+/*= URL Bar - Reduce Padding =================================================*/
+@import "urlbar";
+
+@import "urlview_expanding";
+
+@import "urlview_result";
+
+/*= BookMark Bar - Reduce Height =============================================*/
+@import "bookmarkbar";
+
+/*= Info Bar - Reduce Padding ================================================*/
+#tab-notification-deck notification-message[message-bar-type="infobar"]:not([style*="margin-top"]) {
+  margin: var(--infobar-message-margin, 0 4px var(--infobar-message-vertical-margin, 8px)) !important;
+}
+
+@import "infobar";
+
+/*= Menu - Reduce Padding ====================================================*/
+@import "menu";
+
+/*= Bookmark Menu - Reduce Padding ===========================================*/
+@import "bookmark_menu";
+
+/*= Global Menu - Set Padding ===============================================*/
+@import "global_menubar";
+
+/*= Panel - Reduce padding ===================================================*/
+@import "panel";
+
+@import "panel_header";
+
+/*= Popup Panel - Reduce padding =============================================*/
+@import "popup_panel";

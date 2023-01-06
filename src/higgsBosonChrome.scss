@@ -1,0 +1,65 @@
+@use "utils/os" as *;
+@use "utils/option" as *;
+@use "utils/color_scheme" as *;
+@use "utils/theme" as *;
+@use "utils/accent_color" as *;
+@use "utils/native_menu" as *;
+@use "utils/one_liner" as *;
+@use "utils/proton_elements" as Proton;
+@use "sass:selector";
+
+/* ------------------------------------------------- */
+/* ------------ Default Theme - Contrast ----------- */
+/* ------------------------------------------------- */
+@import "theme/built_in";
+
+/* ------------------------------------------------- */
+/* -------------- Compatibility Fixes -------------- */
+/* ------------------------------------------------- */
+@import "compatibility/index";
+
+/* ------------------------------------------------- */
+/* --------------------- Theme --------------------- */
+/* ------------------------------------------------- */
+@import "theme/index";
+
+/** Decoration ****************************************************************/
+@import "decoration/index";
+
+/** Rounding ******************************************************************/
+// @import "rounding/index";
+
+/** Reduce Padding ************************************************************/
+@import "padding/index";
+
+/** Tab Bar UI ****************************************************************/
+@import "tabbar/index";
+
+/** Tab UI ****************************************************************/
+@import "tab/index";
+
+/** Url View UI ***************************************************************/
+@import "urlview/index";
+
+/** Panel UI ******************************************************************/
+@import "panel/index";
+
+/** Sidebar UI ****************************************************************/
+@import "sidebar/index";
+
+/** Fullscreen - Overlap toolbar **********************************************/
+@import "fullscreen/index";
+
+/** Centered ******************************************************************/
+@import "centered/index";
+
+/** Auto Hide *****************************************************************/
+@import "autohide/index";
+
+/** Hidden ********************************************************************/
+@import "hidden/index";
+
+@import "library/_darkmatter";
+
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";

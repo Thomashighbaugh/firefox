@@ -1,0 +1,14 @@
+#TabsToolbar {
+  display: none !important;
+}
+
+// #nav-bar {
+//   visibility: collapse; /* display: none is not work */
+// }
+
+#context-back,
+#context-forward {
+  &[disabled="true"] {
+    display: none !important;
+  }
+}

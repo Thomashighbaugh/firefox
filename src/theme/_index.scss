@@ -1,0 +1,22 @@
+/*= System Default Theme =====================================================*/
+
+@import "system_default_theme";
+
+/*= Fully Theme Mode =========================================================*/
+// Default Themes
+//   https://github.com/mozilla/gecko-dev/blob/master/toolkit/mozapps/extensions/default-theme/manifest.json
+//   https://github.com/mozilla/gecko-dev/blob/master/browser/themes/addons/light/manifest.json
+//   https://github.com/mozilla/gecko-dev/blob/master/browser/themes/addons/dark/manifest.json
+
+@import "proton_color";
+
+@import "fully_color";
+
+/*= Fully Dark Mode ==========================================================*/
+@import "fully_dark";
+
+/*= Proton Theme Mode ========================================================*/
+@import "proton_chrome";
+
+/*= Monospace ================================================================*/
+@import "monospace";

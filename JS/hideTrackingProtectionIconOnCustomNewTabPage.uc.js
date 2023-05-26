@@ -96,10 +96,7 @@
         let isInitial = isInitialPage(gBrowser.currentURI);
         if (this._showToastAfterRefresh) {
           this._showToastAfterRefresh = false;
-          if (
-            this._previousURI == currentURL &&
-            this._previousOuterWindowID == gBrowser.selectedBrowser.outerWindowID
-          )
+          if (this._previousURI == currentURL && this._previousOuterWindowID == gBrowser.selectedBrowser.outerWindowID)
             this.showProtectionsPopup({ toast: true });
         }
         this.hadShieldState = false;
@@ -107,16 +104,14 @@
           this._trackingProtectionIconContainer.setAttribute("view-source", true);
         else this._trackingProtectionIconContainer.removeAttribute("view-source");
         // make the identity box unfocusable on new tab page
-        if (gIdentityHandler._identityIconBox)
-          gIdentityHandler._identityIconBox.disabled = isInitial;
+        if (gIdentityHandler._identityIconBox) gIdentityHandler._identityIconBox.disabled = isInitial;
         // hide the TP icon on new tab page
         if (!ContentBlockingAllowList.canHandle(gBrowser.selectedBrowser) || isInitial) {
           this._trackingProtectionIconContainer.hidden = true;
           return;
         } else this._trackingProtectionIconContainer.hidden = false;
         this.hasException = ContentBlockingAllowList.includes(gBrowser.selectedBrowser);
-        if (this._protectionsPopup)
-          this._protectionsPopup.toggleAttribute("hasException", this.hasException);
+        if (this._protectionsPopup) this._protectionsPopup.toggleAttribute("hasException", this.hasException);
         this.iconBox.toggleAttribute("hasException", this.hasException);
         this.fingerprintersHistogramAdd("pageLoad");
         this.cryptominersHistogramAdd("pageLoad");

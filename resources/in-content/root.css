@@ -7,79 +7,94 @@
 /* fundamental content styles, e.g. plaintext pages. */
 
 @media (prefers-color-scheme: dark) {
-    ::selection {
-        background-color: var(--global-selection-bgcolor) !important;
-        color: var(--global-selection-color) !important;
-    }
+  ::selection {
+    background-color: var(--global-selection-bgcolor) !important;
+    color: var(--global-selection-color) !important;
+  }
 
-    :-moz-window-inactive::selection {
-        background-color: var(--global-selection-bgcolor-disabled) !important;
-    }
+  :-moz-window-inactive::selection {
+    background-color: var(--global-selection-bgcolor-disabled) !important;
+  }
 
-    /* pdf viewer: selection, findbar highlights */
-    .pdfViewer .textLayer .highlight {
-        background-color: var(--pdf-selection-bgcolor) !important;
-    }
+  /* pdf viewer: selection, findbar highlights */
+  .pdfViewer .textLayer .highlight {
+    background-color: var(--pdf-selection-bgcolor) !important;
+  }
 
-    .pdfViewer .textLayer .highlight.selected {
-        background-color: var(--pdf-highlight-bgcolor) !important;
-    }
+  .pdfViewer .textLayer .highlight.selected {
+    background-color: var(--pdf-highlight-bgcolor) !important;
+  }
 
-    .pdfViewer .textLayer ::selection {
-        background-color: var(--pdf-selection-bgcolor) !important;
-        color: revert !important;
-    }
+  .pdfViewer .textLayer ::selection {
+    background-color: var(--pdf-selection-bgcolor) !important;
+    color: revert !important;
+  }
 }
 
 :read-only:focus:not(:focus-visible),
-:not(textarea, [contenteditable]:read-write, input[type="text"], input[type="password"], input[type="date"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"]):focus:not(:focus-visible) {
-    outline: unset;
-    outline-offset: unset;
+:not(
+    textarea,
+    [contenteditable]:read-write,
+    input[type="text"],
+    input[type="password"],
+    input[type="date"],
+    input[type="datetime-local"],
+    input[type="email"],
+    input[type="month"],
+    input[type="number"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="time"],
+    input[type="url"],
+    input[type="week"]
+  ):focus:not(:focus-visible) {
+  outline: unset;
+  outline-offset: unset;
 }
 
 @-moz-document plain-text-document(), media-document(all) {
-    @font-face {
-        font-family: "Overpass Mono";
-        font-style: normal;
-        font-weight: 100;
-        src: local("Overpass Mono"), local("Overpass Mono Light"), local("OverpassMono-Light");
-    }
+  @font-face {
+    font-family: "Overpass Mono";
+    font-style: normal;
+    font-weight: 100;
+    src: local("Overpass Mono"), local("Overpass Mono Light"), local("OverpassMono-Light");
+  }
 
+  :root {
+    font-family: Overpass Mono, -moz-fixed;
+  }
+
+  xmp,
+  pre,
+  plaintext {
+    font-family: Overpass Mono, -moz-fixed;
+  }
+
+  img.transparent {
+    background: var(--transparent-img-background) !important;
+  }
+
+  @media (prefers-color-scheme: dark) {
     :root {
-        font-family: Overpass Mono, -moz-fixed;
+      color: var(--plaintext-color) !important;
+      background-color: var(--in-content-bg-dark) !important;
     }
 
-    xmp,
-    pre,
-    plaintext {
-        font-family: Overpass Mono, -moz-fixed;
+    body:not([style*="background"], [class], [id]) {
+      background-color: transparent !important;
     }
 
-    img.transparent {
-        background: var(--transparent-img-background) !important;
+    ::selection {
+      color: var(--content-selection-color) !important;
+      background-color: var(--content-selection-bgcolor) !important;
     }
 
-    @media (prefers-color-scheme: dark) {
-        :root {
-            color: var(--plaintext-color) !important;
-            background-color: var(--in-content-bg-dark) !important;
-        }
-
-        body:not([style*="background"], [class], [id]) {
-            background-color: transparent !important;
-        }
-
-        ::selection {
-            color: var(--content-selection-color) !important;
-            background-color: var(--content-selection-bgcolor) !important;
-        }
-
-        :-moz-window-inactive::selection {
-            background-color: var(--content-selection-bgcolor-disabled) !important;
-        }
+    :-moz-window-inactive::selection {
+      background-color: var(--content-selection-bgcolor-disabled) !important;
     }
+  }
 }
 
 .controlsContainer {
-    --control-focus-outline: 2px solid var(--purple-30) !important;
+  --control-focus-outline: 2px solid var(--purple-30) !important;
 }

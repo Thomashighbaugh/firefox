@@ -11,22 +11,32 @@
 // [!] Fix for WebExtensions with own windows by 黒仪大螃蟹 (for 1-N scripts)
 
 Components.utils.import("resource:///modules/CustomizableUI.jsm");
-var { Services } = Components.utils.import("resource://gre/modules/Services.jsm", {});
+var { Services } = Components.utils.import(
+  "resource://gre/modules/Services.jsm",
+  {}
+);
 var appversion = parseInt(Services.appinfo.version);
 
 var compact_buttons = false; // reduced toolbar height and smaller buttons
 
 var AddAddonbar = {
   init: function () {
-    if (appversion >= 76 && location != "chrome://browser/content/browser.xhtml") return;
+    if (
+      appversion >= 76 &&
+      location != "chrome://browser/content/browser.xhtml"
+    )
+      return;
 
     /* blank tab workaround */
     try {
-      if (gBrowser.selectedBrowser.getAttribute("blank")) gBrowser.selectedBrowser.removeAttribute("blank");
+      if (gBrowser.selectedBrowser.getAttribute("blank"))
+        gBrowser.selectedBrowser.removeAttribute("blank");
     } catch (e) {}
 
     try {
-      Services.prefs.getDefaultBranch("browser.addonbar.").setBoolPref("enabled", true);
+      Services.prefs
+        .getDefaultBranch("browser.addonbar.")
+        .setBoolPref("enabled", true);
     } catch (e) {}
 
     var addonbar_label = "Add-on Bar";
@@ -76,7 +86,7 @@ var AddAddonbar = {
 		  } \
 		  #addonbar { \
 			border-top: 1.5px solid var(--sidebar-border-color,rgba(0,0,0,0.3)) !important; \
-			min-height: 40px !important;\
+			min-height: 20px !important;\
 			background-color: var(--window-color); \
 			background-image: var(--toolbar-bgimage); \
 			-moz-window-dragging: no-drag !important; \
@@ -109,9 +119,9 @@ var AddAddonbar = {
           null,
           null
         ),
-        Components.classes["@mozilla.org/content/style-sheet-service;1"].getService(
-          Components.interfaces.nsIStyleSheetService
-        ).AGENT_SHEET
+        Components.classes[
+          "@mozilla.org/content/style-sheet-service;1"
+        ].getService(Components.interfaces.nsIStyleSheetService).AGENT_SHEET
       );
 
     // toolbar
@@ -128,7 +138,10 @@ var AddAddonbar = {
         tb_addonbar.setAttribute("iconsize", "small");
         tb_addonbar.setAttribute("context", "toolbar-context-menu");
         tb_addonbar.setAttribute("lockiconsize", "true");
-        tb_addonbar.setAttribute("class", "toolbar-primary chromeclass-toolbar browser-toolbar customization-target");
+        tb_addonbar.setAttribute(
+          "class",
+          "toolbar-primary chromeclass-toolbar browser-toolbar customization-target"
+        );
 
         document.getElementById("browser-bottombox").appendChild(tb_addonbar);
 

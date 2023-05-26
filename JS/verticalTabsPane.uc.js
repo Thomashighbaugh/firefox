@@ -62,7 +62,7 @@
         "Hover delay description": "How long should the collapsed pane wait before expanding?",
         "Hover out delay title": "Hover out delay (in milliseconds)",
         "Hover out delay description": "How long should the expanded pane wait before collapsing?",
-        "Invalid": "Invalid input!",
+        Invalid: "Invalid input!",
         "Invalid description": "This preference must be a positive integer.",
       },
     },
@@ -143,7 +143,7 @@
       { name: closedPref, value: false },
       { name: unpinnedPref, value: false },
       { name: noExpandPref, value: false },
-      { name: widthPref, value: 350 },
+      { name: widthPref, value: 18 },
       { name: reversePref, value: false },
       { name: hoverDelayPref, value: 100 },
       { name: hoverOutDelayPref, value: 100 },
@@ -169,9 +169,7 @@
           id: "vertical-tabs-context-menu",
         })
       );
-      this._innerBox = this.pane.appendChild(
-        create(document, "vbox", { id: "vertical-tabs-inner-box" })
-      );
+      this._innerBox = this.pane.appendChild(create(document, "vbox", { id: "vertical-tabs-inner-box" }));
       this._buttonsRow = this._innerBox.appendChild(
         create(document, "hbox", {
           id: "vertical-tabs-buttons-row",
@@ -231,7 +229,7 @@
           tooltiptext: config.l10n["Collapse button tooltip"],
         })
       );
-      this._pinButton.addEventListener("command", e => {
+      this._pinButton.addEventListener("command", (e) => {
         this.pane.getAttribute("unpinned") ? this.pane.removeAttribute("unpinned") : this.unpin();
         this._resetPinnedTooltip();
       });
@@ -243,11 +241,9 @@
         })
       );
       if ("key_toggleVerticalTabs" in window) {
-        this._closeButton.tooltipText += ` (${ShortcutUtils.prettifyShortcut(
-          window.key_toggleVerticalTabs
-        )})`;
+        this._closeButton.tooltipText += ` (${ShortcutUtils.prettifyShortcut(window.key_toggleVerticalTabs)})`;
       }
-      this._closeButton.addEventListener("command", e => this.toggle());
+      this._closeButton.addEventListener("command", (e) => this.toggle());
       this._innerBox.appendChild(create(document, "toolbarseparator"));
       this._innerBox.appendChild(create(document, "toolbartabstop", { "aria-hidden": true }));
       this._arrowscrollbox = this._innerBox.appendChild(
@@ -270,12 +266,9 @@
       this.tabToElement = new Map();
       this._listenersRegistered = false;
       // set up preferences if they don't already exist
-      this.preferences.forEach(pref => {
+      this.preferences.forEach((pref) => {
         if (!prefSvc.prefHasUserValue(pref.name))
-          prefSvc[`set${typeof pref.value === "number" ? "Int" : "Bool"}Pref`](
-            pref.name,
-            pref.value
-          );
+          prefSvc[`set${typeof pref.value === "number" ? "Int" : "Bool"}Pref`](pref.name, pref.value);
       });
       prefSvc.addObserver("userChrome.tabs.verticalTabsPane", this);
       prefSvc.addObserver("privacy.userContext", this);
@@ -290,7 +283,7 @@
         SidebarUI.setPosition.bind(SidebarUI)
       );
       // destroy the scrollbuttons.
-      ["#scrollbutton-up", "#scrollbutton-down"].forEach(id =>
+      ["#scrollbutton-up", "#scrollbutton-down"].forEach((id) =>
         this._arrowscrollbox.shadowRoot.querySelector(id).remove()
       );
       this._l10nIfNeeded();
@@ -298,7 +291,7 @@
       // but when the script initially starts, the prefs haven't been changed so
       // that logic isn't immediately invoked. we have to invoke it manually, as
       // if the prefs had been changed.
-      let readPref = pref => this.observe(prefSvc, "nsPref:read", pref);
+      let readPref = (pref) => this.observe(prefSvc, "nsPref:read", pref);
       readPref(noExpandPref);
       readPref(hoverDelayPref);
       readPref(hoverOutDelayPref);
@@ -356,23 +349,15 @@
     // to focus when pressing the right/left arrow keys.
     get _horizontalWalker() {
       if (!this.__horizontalWalker) {
-        this.__horizontalWalker = document.createTreeWalker(
-          this.pane,
-          NodeFilter.SHOW_ELEMENT,
-          node => {
-            if (node.tagName == "toolbartabstop") return NodeFilter.FILTER_ACCEPT;
-            if (node.disabled || node.hidden) return NodeFilter.FILTER_REJECT;
-            if (
-              node.tagName == "button" ||
-              node.tagName == "toolbarbutton" ||
-              node.tagName == "checkbox"
-            ) {
-              if (!node.hasAttribute("tabindex")) node.setAttribute("tabindex", "-1");
-              return NodeFilter.FILTER_ACCEPT;
-            }
-            return NodeFilter.FILTER_SKIP;
+        this.__horizontalWalker = document.createTreeWalker(this.pane, NodeFilter.SHOW_ELEMENT, (node) => {
+          if (node.tagName == "toolbartabstop") return NodeFilter.FILTER_ACCEPT;
+          if (node.disabled || node.hidden) return NodeFilter.FILTER_REJECT;
+          if (node.tagName == "button" || node.tagName == "toolbarbutton" || node.tagName == "checkbox") {
+            if (!node.hasAttribute("tabindex")) node.setAttribute("tabindex", "-1");
+            return NodeFilter.FILTER_ACCEPT;
           }
-        );
+          return NodeFilter.FILTER_SKIP;
+        });
       }
       return this.__horizontalWalker;
     }
@@ -382,25 +367,16 @@
     // very quickly, and arrow left/right to focus the mute and close buttons.
     get _verticalWalker() {
       if (!this.__verticalWalker) {
-        this.__verticalWalker = document.createTreeWalker(
-          this.pane,
-          NodeFilter.SHOW_ELEMENT,
-          node => {
-            if (node.tagName == "toolbartabstop") return NodeFilter.FILTER_ACCEPT;
-            if (node.disabled || node.hidden) return NodeFilter.FILTER_REJECT;
-            if (
-              node.tagName == "button" ||
-              node.tagName == "toolbarbutton" ||
-              node.tagName == "checkbox"
-            ) {
-              if (node.classList.contains("all-tabs-secondary-button"))
-                return NodeFilter.FILTER_SKIP;
-              if (!node.hasAttribute("tabindex")) node.setAttribute("tabindex", "-1");
-              return NodeFilter.FILTER_ACCEPT;
-            }
-            return NodeFilter.FILTER_SKIP;
+        this.__verticalWalker = document.createTreeWalker(this.pane, NodeFilter.SHOW_ELEMENT, (node) => {
+          if (node.tagName == "toolbartabstop") return NodeFilter.FILTER_ACCEPT;
+          if (node.disabled || node.hidden) return NodeFilter.FILTER_REJECT;
+          if (node.tagName == "button" || node.tagName == "toolbarbutton" || node.tagName == "checkbox") {
+            if (node.classList.contains("all-tabs-secondary-button")) return NodeFilter.FILTER_SKIP;
+            if (!node.hasAttribute("tabindex")) node.setAttribute("tabindex", "-1");
+            return NodeFilter.FILTER_ACCEPT;
           }
-        );
+          return NodeFilter.FILTER_SKIP;
+        });
       }
       return this.__verticalWalker;
     }
@@ -410,7 +386,7 @@
       let menus = [];
       let contextDefs = [...this.pane.querySelectorAll("[context]")];
       contextDefs.push(this.pane);
-      contextDefs.forEach(node => {
+      contextDefs.forEach((node) => {
         let menu = document.getElementById(node.getAttribute("context"));
         if (menus.indexOf(menu) === -1) menus.push(menu);
       });
@@ -426,7 +402,7 @@
       let menus = this._availContextMenus;
       if (!menus.length) return false;
       let openMenu = false;
-      menus.forEach(menu => {
+      menus.forEach((menu) => {
         if (menu.triggerNode && this.pane.contains(menu.triggerNode)) openMenu = menu;
       });
       return openMenu;
@@ -469,10 +445,7 @@
     _adoptFromWindow(sourceWindow) {
       let sourceUI = sourceWindow.verticalTabsPane;
       if (!sourceUI || !sourceUI.pane) return false;
-      this.pane.setAttribute(
-        "width",
-        sourceUI.pane.width || sourceUI.pane.getBoundingClientRect().width
-      );
+      this.pane.setAttribute("width", sourceUI.pane.width || sourceUI.pane.getBoundingClientRect().width);
       let sourcePinned = !!sourceUI.pane.getAttribute("unpinned");
       sourcePinned ? this.unpin() : this.pane.removeAttribute("unpinned");
       sourcePinned
@@ -495,8 +468,7 @@
     // unpinned it should say "Pin pane"
     _resetPinnedTooltip() {
       let newVal = this.pane.getAttribute("unpinned");
-      this._pinButton.tooltipText =
-        config.l10n[newVal ? "Pin button tooltip" : "Collapse button tooltip"];
+      this._pinButton.tooltipText = config.l10n[newVal ? "Pin button tooltip" : "Collapse button tooltip"];
     }
     /**
      * launch a modal prompt (attached to the window) asking the user to set the
@@ -529,11 +501,7 @@
       if (!ok) return;
       let int = parseInt(input.value, 10);
       let onFail = () => {
-        Services.prompt.alert(
-          win,
-          config.l10n.prompt.Invalid,
-          config.l10n.prompt["Invalid description"]
-        );
+        Services.prompt.alert(win, config.l10n.prompt.Invalid, config.l10n.prompt["Invalid description"]);
         this.promptForIntPref(pref);
       };
       if (!(int >= 0)) return onFail();
@@ -723,16 +691,10 @@
           let menuitem = this._contextMenu.menuitemPosition;
           if (value) {
             menuitem.label = config.l10n.context["Move Pane to Left"];
-            menuitem.setAttribute(
-              "oncommand",
-              `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, false);`
-            );
+            menuitem.setAttribute("oncommand", `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, false);`);
           } else {
             menuitem.label = config.l10n.context["Move Pane to Right"];
-            menuitem.setAttribute(
-              "oncommand",
-              `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, true);`
-            );
+            menuitem.setAttribute("oncommand", `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, true);`);
           }
           break;
       }
@@ -764,8 +726,7 @@
     _populate() {
       let fragment = document.createDocumentFragment();
       for (let tab of gBrowser.tabs)
-        if (this._filterFn(tab))
-          fragment[this._reversed ? `prepend` : `appendChild`](this._createRow(tab));
+        if (this._filterFn(tab)) fragment[this._reversed ? `prepend` : `appendChild`](this._createRow(tab));
       this._addElement(fragment);
       this._setupListeners();
       for (let row of this._rows) this._setImageAttributes(row, row.tab);
@@ -796,26 +757,24 @@
     _setupListeners() {
       this._listenersRegistered = true;
       window.addEventListener("deactivate", this);
-      tabEvents.forEach(ev => gBrowser.tabContainer.addEventListener(ev, this));
-      dragEvents.forEach(ev => this._arrowscrollbox.addEventListener(ev, this));
-      paneEvents.forEach(ev => this.pane.addEventListener(ev, this));
+      tabEvents.forEach((ev) => gBrowser.tabContainer.addEventListener(ev, this));
+      dragEvents.forEach((ev) => this._arrowscrollbox.addEventListener(ev, this));
+      paneEvents.forEach((ev) => this.pane.addEventListener(ev, this));
       if (gToolbarKeyNavEnabled) this.pane.addEventListener("keydown", this);
       this.pane.addEventListener("blur", this, true);
       gBrowser.addEventListener("TabMultiSelect", this, false);
-      for (let stop of this.pane.getElementsByTagName("toolbartabstop"))
-        stop.addEventListener("focus", this);
+      for (let stop of this.pane.getElementsByTagName("toolbartabstop")) stop.addEventListener("focus", this);
     }
     // invoked when closing the pane. clear all the aforementioned event listeners.
     _cleanupListeners() {
       window.removeEventListener("deactivate", this);
-      tabEvents.forEach(ev => gBrowser.tabContainer.removeEventListener(ev, this));
-      dragEvents.forEach(ev => this._arrowscrollbox.removeEventListener(ev, this));
-      paneEvents.forEach(ev => this.pane.removeEventListener(ev, this));
+      tabEvents.forEach((ev) => gBrowser.tabContainer.removeEventListener(ev, this));
+      dragEvents.forEach((ev) => this._arrowscrollbox.removeEventListener(ev, this));
+      paneEvents.forEach((ev) => this.pane.removeEventListener(ev, this));
       this.pane.removeEventListener("keydown", this);
       this.pane.removeEventListener("blur", this, true);
       gBrowser.removeEventListener("TabMultiSelect", this, false);
-      for (let stop of this.pane.getElementsByTagName("toolbartabstop"))
-        stop.removeEventListener("focus", this);
+      for (let stop of this.pane.getElementsByTagName("toolbartabstop")) stop.removeEventListener("focus", this);
       this._listenersRegistered = false;
     }
     /**
@@ -938,9 +897,7 @@
       row.closeButton.tab = tab;
 
       // sound overlay — it only shows when the pane is collapsed
-      row.soundOverlay = row.appendChild(
-        create(document, "image", { class: "sound-overlay" }, true)
-      );
+      row.soundOverlay = row.appendChild(create(document, "image", { class: "sound-overlay" }, true));
       row.soundOverlay.tab = tab;
 
       this._setRowAttributes(row, tab);
@@ -1036,8 +993,7 @@
       let oldFocus = document.activeElement;
       walker.currentNode = oldFocus;
       let newFocus = this.getNewFocus(walker, prev);
-      while (newFocus && newFocus.tagName == "toolbartabstop")
-        newFocus = this.getNewFocus(walker, prev);
+      while (newFocus && newFocus.tagName == "toolbartabstop") newFocus = this.getNewFocus(walker, prev);
       if (newFocus) this._focusButton(newFocus);
     }
     /**
@@ -1067,8 +1023,7 @@
       clearTimeout(this.hoverTimer);
       this.hoverOutQueued = false;
       this.hoverQueued = false;
-      if (this.pane.getAttribute("unpinned") && !this._noExpand)
-        this.pane.setAttribute("expanded", true);
+      if (this.pane.getAttribute("unpinned") && !this._noExpand) this.pane.setAttribute("expanded", true);
       if (e.target.tagName === "toolbartabstop") this._onTabStopFocus(e);
     }
     // invoked on a blur event. if the pane is no longer focused or hovered, and
@@ -1085,7 +1040,7 @@
       // behavior until the context menu is hidden.
       let { _openMenu } = this;
       if (_openMenu) {
-        _openMenu.addEventListener("popuphidden", e => this._onPaneBlur(e), {
+        _openMenu.addEventListener("popuphidden", (e) => this._onPaneBlur(e), {
           once: true,
         });
         return;
@@ -1109,10 +1064,9 @@
     _onTabStopFocus(e) {
       let walker = this._horizontalWalker;
       let oldFocus = e.relatedTarget;
-      let isButton = node => node.tagName == "button" || node.tagName == "toolbarbutton";
+      let isButton = (node) => node.tagName == "button" || node.tagName == "toolbarbutton";
       if (oldFocus) {
-        this._isFocusMovingBackward =
-          oldFocus.compareDocumentPosition(e.target) & Node.DOCUMENT_POSITION_PRECEDING;
+        this._isFocusMovingBackward = oldFocus.compareDocumentPosition(e.target) & Node.DOCUMENT_POSITION_PRECEDING;
         if (this._isFocusMovingBackward && oldFocus && isButton(oldFocus)) {
           document.commandDispatcher.rewindFocus();
           return;
@@ -1149,17 +1103,11 @@
       if (e.altKey || e.shiftKey || accelKey) return;
       switch (e.key) {
         case "ArrowLeft":
-          this.navigateButtons(
-            !window.RTL_UI,
-            !(this._noExpand && this.pane.getAttribute("unpinned"))
-          );
+          this.navigateButtons(!window.RTL_UI, !(this._noExpand && this.pane.getAttribute("unpinned")));
           break;
         case "ArrowRight":
           // Previous if UI is RTL, next if UI is LTR.
-          this.navigateButtons(
-            window.RTL_UI,
-            !(this._noExpand && this.pane.getAttribute("unpinned"))
-          );
+          this.navigateButtons(window.RTL_UI, !(this._noExpand && this.pane.getAttribute("unpinned")));
           break;
         case "ArrowUp":
           this.navigateButtons(true);
@@ -1246,8 +1194,7 @@
     _onMouseEnter(e) {
       clearTimeout(this.hoverOutTimer);
       this.hoverOutQueued = false;
-      if (!this.pane.getAttribute("unpinned") || this._noExpand)
-        return this.pane.removeAttribute("expanded");
+      if (!this.pane.getAttribute("unpinned") || this._noExpand) return this.pane.removeAttribute("expanded");
       if (this.hoverQueued) return;
       this.hoverQueued = true;
       this.hoverTimer = setTimeout(() => {
@@ -1275,7 +1222,7 @@
         // closed before collapsing the pane.
         let { _openMenu } = this;
         if (_openMenu) {
-          _openMenu.addEventListener("popuphidden", e => this._onMouseLeave(e, 0), {
+          _openMenu.addEventListener("popuphidden", (e) => this._onMouseLeave(e, 0), {
             once: true,
           });
           return;
@@ -1291,13 +1238,12 @@
       this.pane.removeAttribute("expanded");
     }
     unpin() {
-      this.pane.style.setProperty("--pane-width", this.pane.width + "px");
+      this.pane.style.setProperty("--pane-width", this.pane.width + "rem");
       this.pane.style.setProperty(
         "--pane-transition-duration",
         (Math.sqrt(this.pane.width / 350) * 0.25).toFixed(2) + "s"
       );
-      if (this.pane.matches(":hover, :focus-within") && !this._noExpand)
-        this.pane.setAttribute("expanded", true);
+      if (this.pane.matches(":hover, :focus-within") && !this._noExpand) this.pane.setAttribute("expanded", true);
       this.pane.setAttribute("unpinned", true);
     }
     // "click" events work kind of like "mouseup" events, but in this case we're
@@ -1318,9 +1264,7 @@
     // close button work, and ultimately how you select a tab with the keyboard.
     _onCommand(e, tab) {
       if (e.target.hasAttribute("toggle-mute")) {
-        tab.multiselected
-          ? gBrowser.toggleMuteAudioOnMultiSelectedTabs(tab)
-          : tab.toggleMuteAudio();
+        tab.multiselected ? gBrowser.toggleMuteAudioOnMultiSelectedTabs(tab) : tab.toggleMuteAudio();
         return;
       }
       if (e.target.hasAttribute("close-button")) {
@@ -1328,8 +1272,7 @@
         else gBrowser.removeTab(tab, { animate: true });
         return;
       }
-      if (!gSharedTabWarning.willShowSharedTabWarning(tab))
-        if (tab !== gBrowser.selectedTab) this._selectTab(tab);
+      if (!gSharedTabWarning.willShowSharedTabWarning(tab)) if (tab !== gBrowser.selectedTab) this._selectTab(tab);
       delete tab.noCanvas;
     }
     // invoked on "dragstart" event. first figure out what we're dragging and
@@ -1338,7 +1281,7 @@
       let row = e.target;
       if (!tab || gBrowser.tabContainer._isCustomizing) return;
       let selectedTabs = gBrowser.selectedTabs;
-      let otherSelectedTabs = selectedTabs.filter(selectedTab => selectedTab != tab);
+      let otherSelectedTabs = selectedTabs.filter((selectedTab) => selectedTab != tab);
       let dataTransferOrderedTabs = [tab].concat(otherSelectedTabs);
       let dt = e.dataTransfer;
       for (let i = 0; i < dataTransferOrderedTabs.length; i++) {
@@ -1376,10 +1319,7 @@
         let scale = window.devicePixelRatio;
         let canvas = this._dndCanvas;
         if (!canvas) {
-          this._dndCanvas = canvas = document.createElementNS(
-            "http://www.w3.org/1999/xhtml",
-            "canvas"
-          );
+          this._dndCanvas = canvas = document.createElementNS("http://www.w3.org/1999/xhtml", "canvas");
           canvas.style.width = "100%";
           canvas.style.height = "100%";
           canvas.mozOpaque = true;
@@ -1423,9 +1363,7 @@
         else if (rect.bottom - e.clientY < targetRect.height) pixelsToScroll = increment;
         if (pixelsToScroll) this._arrowscrollbox.scrollByPixels(pixelsToScroll, false);
       }
-      this._arrowscrollbox
-        .querySelectorAll("[dragpos]")
-        .forEach(item => item.removeAttribute("dragpos"));
+      this._arrowscrollbox.querySelectorAll("[dragpos]").forEach((item) => item.removeAttribute("dragpos"));
       if (!dt.types.includes("all-tabs-item") || !row || row.tab.multiselected) {
         dt.mozCursor = "auto";
         return;
@@ -1452,9 +1390,7 @@
       let dt = e.dataTransfer;
       dt.mozCursor = "auto";
       if (!dt.types.includes("all-tabs-item") || !row) return;
-      this._arrowscrollbox
-        .querySelectorAll("[dragpos]")
-        .forEach(item => item.removeAttribute("dragpos"));
+      this._arrowscrollbox.querySelectorAll("[dragpos]").forEach((item) => item.removeAttribute("dragpos"));
     }
     // invoked when we finally release the dragged tab(s). figure out where to
     // move the tab to, move it, do some cleanup.
@@ -1478,12 +1414,9 @@
       if (draggedTab) {
         let newIndex = row.tab._tPos;
         const dir = newIndex < movingTabs[0]._tPos;
-        movingTabs.forEach(tab => {
+        movingTabs.forEach((tab) => {
           if (tab.pinned !== row.tab.pinned) return;
-          gBrowser.moveTabTo(
-            dt.dropEffect == "copy" ? gBrowser.duplicateTab(tab) : tab,
-            dir ? newIndex++ : newIndex
-          );
+          gBrowser.moveTabTo(dt.dropEffect == "copy" ? gBrowser.duplicateTab(tab) : tab, dir ? newIndex++ : newIndex);
         });
       }
       row.removeAttribute("dragpos");
@@ -1504,9 +1437,7 @@
     // "multiselected" attribute for every row.
     _onTabMultiSelect() {
       for (let item of this._rows)
-        !!item.tab.multiselected
-          ? item.setAttribute("multiselected", true)
-          : item.removeAttribute("multiselected");
+        !!item.tab.multiselected ? item.setAttribute("multiselected", true) : item.removeAttribute("multiselected");
     }
     // invoked when mousing over a row. we use this to set a flag
     // mOverSecondaryButton on the row, which our drag handlers reference. we
@@ -1575,9 +1506,7 @@
       } else if (row.audioButton.matches(":hover")) {
         let stringID;
         if (contextTabInSelection) {
-          stringID = linkedBrowser.audioMuted
-            ? "tabs.unmuteAudio2.tooltip"
-            : "tabs.muteAudio2.tooltip";
+          stringID = linkedBrowser.audioMuted ? "tabs.unmuteAudio2.tooltip" : "tabs.muteAudio2.tooltip";
           label = stringWithShortcut(stringID, "key_toggleMute", affectedTabsLength);
         } else {
           if (tab.hasAttribute("activemedia-blocked")) stringID = "tabs.unblockAudio2.tooltip";
@@ -1585,10 +1514,10 @@
             stringID = linkedBrowser.audioMuted
               ? "tabs.unmuteAudio2.background.tooltip"
               : "tabs.muteAudio2.background.tooltip";
-          label = PluralForm.get(
-            affectedTabsLength,
-            gTabBrowserBundle.GetStringFromName(stringID)
-          ).replace("#1", affectedTabsLength);
+          label = PluralForm.get(affectedTabsLength, gTabBrowserBundle.GetStringFromName(stringID)).replace(
+            "#1",
+            affectedTabsLength
+          );
         }
         align = false;
       } else {
@@ -1596,10 +1525,7 @@
         // show the tab's process ID in the tooltip?
         if (prefSvc.getBoolPref("browser.tabs.tooltipsShowPidAndActiveness", false))
           if (linkedBrowser) {
-            let [contentPid, ...framePids] = this.E10SUtils.getBrowserPids(
-              linkedBrowser,
-              gFissionBrowser
-            );
+            let [contentPid, ...framePids] = this.E10SUtils.getBrowserPids(linkedBrowser, gFissionBrowser);
             if (contentPid) {
               label += " (pid " + contentPid + ")";
               if (gFissionBrowser) {
@@ -1645,13 +1571,9 @@
       // show a lock icon to show tab security/encryption
       let icon = e.target.querySelector("#places-tooltip-insecure-icon");
       let pending = tab.hasAttribute("pending") || !linkedBrowser.browsingContext;
-      let docURI = pending
-        ? linkedBrowser?.currentURI
-        : linkedBrowser?.documentURI || linkedBrowser?.currentURI;
+      let docURI = pending ? linkedBrowser?.currentURI : linkedBrowser?.documentURI || linkedBrowser?.currentURI;
       if (docURI) {
-        let homePage = new RegExp(`(${BROWSER_NEW_TAB_URL}|${HomePage.get(window)})`, "i").test(
-          docURI.spec
-        );
+        let homePage = new RegExp(`(${BROWSER_NEW_TAB_URL}|${HomePage.get(window)})`, "i").test(docURI.spec);
         if (homePage) {
           icon.setAttribute("type", "home-page");
           icon.hidden = false;
@@ -1716,8 +1638,7 @@
     // button's tooltip and context menu. so we need to observe this preference
     // and respond accordingly.
     _handlePrivacyChange() {
-      let containersEnabled =
-        prefSvc.getBoolPref(userContextPref) && !PrivateBrowsingUtils.isWindowPrivate(window);
+      let containersEnabled = prefSvc.getBoolPref(userContextPref) && !PrivateBrowsingUtils.isWindowPrivate(window);
       const newTabLeftClickOpensContainersMenu = prefSvc.getBoolPref(containerOnClickPref);
       let parent = this._newTabButton;
       parent.removeAttribute("type");
@@ -1765,7 +1686,7 @@
     border-inline-width: 0 1px;
 }
 #vertical-tabs-pane:not([unpinned]) {
-    min-width: 160px;
+    min-width: 8rem;
     max-width: 50vw;
 }
 #vertical-tabs-pane:not([hidden]) {
@@ -1790,9 +1711,9 @@
     margin-inline: 0;
 }
 #vertical-tabs-pane[unpinned][expanded] {
-    min-width: var(--pane-width, 350px);
-    width: var(--pane-width, 350px);
-    max-width: var(--pane-width, 350px);
+    min-width: var(--pane-width, 18rem);
+    width: var(--pane-width, 18rem);
+    max-width: var(--pane-width, 18rem);
     margin-inline: 0 calc(var(--collapsed-pane-width) - var(--pane-width, 350px));
 }
 #vertical-tabs-pane[unpinned][expanded]([positionstart="true"]) {
@@ -1916,7 +1837,7 @@
 #vertical-tabs-list
     .all-tabs-item:is(:hover, :focus-within)
     .all-tabs-secondary-button[close-button]:is(:hover, :focus):not([disabled]) {
-    background-color: var(--arrowpanel-dimmed) !important;
+    background-colo/r: var(--arrowpanel-dimmed) !important;
     opacity: 1;
     color: inherit;
 }
@@ -1929,7 +1850,7 @@
 /* audio button */
 #vertical-tabs-list .all-tabs-item .all-tabs-secondary-button[toggle-mute] {
     list-style-image: none !important;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 18 18"><path fill-opacity="context-fill-opacity" fill="context-fill" d="M3.52,5.367c-1.332,0-2.422,1.09-2.422,2.422v2.422c0,1.332,1.09,2.422,2.422,2.422h1.516l4.102,3.633 V1.735L5.035,5.367H3.52z M12.059,9c0-0.727-0.484-1.211-1.211-1.211v2.422C11.574,10.211,12.059,9.727,12.059,9z M14.48,9 c0-1.695-1.211-3.148-2.785-3.512l-0.363,1.09C12.422,6.82,13.27,7.789,13.27,9c0,1.211-0.848,2.18-1.938,2.422l0.484,1.09 C13.27,12.148,14.48,10.695,14.48,9z M12.543,3.188l-0.484,1.09C14.238,4.883,15.691,6.82,15.691,9c0,2.18-1.453,4.117-3.512,4.601 l0.484,1.09c2.422-0.605,4.238-2.906,4.238-5.691C16.902,6.215,15.086,3.914,12.543,3.188z"/></svg>') !important;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 18 18"><path fill-opacity="context-fill-opacity" fill="context-fill" d="M3.52,5.367c-1.332,0-2.422,1.09-2.422,2.422v2.422c0,1.332,1.09,2.422,2.422,2.422h1.516l4.102,3.633 V1.735L5.035,5.367H3.52z M12.059,9c0-0.727-0.484-1.211-1.211-1.211v2.422C11.574,10.211,12.059,9.727,12.059,9z M14.48,9 c0-1.695-1.211-3.148-2.785-3.512l-0.363,1.09C12.422,6.82,13.27,7.789,13.27,9c0,1.211-0.848,2.18-1.938,2.422l0.484,1.09 C13.27,12.148,14.48,10.695,14.48,9z M12.543,3.188l-0.484,1.09C14.238,4.883,15.691,6.82,15.691,9c0,2.18-1.453,4.117-3.512,4.601 l0.484,1.09c2.422-0.605,4.238-2.906,4.238-5.691C16.902,6.215,15.086,3.914,12.543,3.188z"/></svg>') !important;
     background-size: 14px !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
@@ -1993,8 +1914,8 @@
     position: absolute;
     left: calc(var(--arrowpanel-menuitem-padding-inline) + 8px);
     top: calc(var(--arrowpanel-menuitem-padding-block) + 8px);
-    width: 14px;
-    height: 14px;
+    width: 1rem;
+    height: 1rem;
     -moz-context-properties: fill, fill-opacity;
     fill: currentColor;
     fill-opacity: 0.7;
@@ -2014,11 +1935,11 @@
     fill-opacity: inherit;
 }
 #vertical-tabs-pane[unpinned] .all-tabs-item[soundplaying] .sound-overlay {
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 18 18"><path fill-opacity="context-fill-opacity" fill="context-fill" d="M3.52,5.367c-1.332,0-2.422,1.09-2.422,2.422v2.422c0,1.332,1.09,2.422,2.422,2.422h1.516l4.102,3.633 V1.735L5.035,5.367H3.52z M12.059,9c0-0.727-0.484-1.211-1.211-1.211v2.422C11.574,10.211,12.059,9.727,12.059,9z M14.48,9 c0-1.695-1.211-3.148-2.785-3.512l-0.363,1.09C12.422,6.82,13.27,7.789,13.27,9c0,1.211-0.848,2.18-1.938,2.422l0.484,1.09 C13.27,12.148,14.48,10.695,14.48,9z M12.543,3.188l-0.484,1.09C14.238,4.883,15.691,6.82,15.691,9c0,2.18-1.453,4.117-3.512,4.601 l0.484,1.09c2.422-0.605,4.238-2.906,4.238-5.691C16.902,6.215,15.086,3.914,12.543,3.188z"/></svg>')
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 16 16"><path fill-opacity="context-fill-opacity" fill="context-fill" d="M3.52,5.367c-1.332,0-2.422,1.09-2.422,2.422v2.422c0,1.332,1.09,2.422,2.422,2.422h1.516l4.102,3.633 V1.735L5.035,5.367H3.52z M12.059,9c0-0.727-0.484-1.211-1.211-1.211v2.422C11.574,10.211,12.059,9.727,12.059,9z M14.48,9 c0-1.695-1.211-3.148-2.785-3.512l-0.363,1.09C12.422,6.82,13.27,7.789,13.27,9c0,1.211-0.848,2.18-1.938,2.422l0.484,1.09 C13.27,12.148,14.48,10.695,14.48,9z M12.543,3.188l-0.484,1.09C14.238,4.883,15.691,6.82,15.691,9c0,2.18-1.453,4.117-3.512,4.601 l0.484,1.09c2.422-0.605,4.238-2.906,4.238-5.691C16.902,6.215,15.086,3.914,12.543,3.188z"/></svg>')
         center/12px no-repeat;
 }
 #vertical-tabs-pane[unpinned] .all-tabs-item[muted] .sound-overlay {
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 18 18"><path fill-opacity="context-fill-opacity" fill="context-fill" d="M3.52,5.367c-1.332,0-2.422,1.09-2.422,2.422v2.422c0,1.332,1.09,2.422,2.422,2.422h1.516l4.102,3.633V1.735L5.035,5.367H3.52z"/><path fill="context-fill" fill-rule="evenodd" d="M12.155,12.066l-1.138-1.138l4.872-4.872l1.138,1.138 L12.155,12.066z"/><path fill="context-fill" fill-rule="evenodd" d="M10.998,7.204l1.138-1.138l4.872,4.872l-1.138,1.138L10.998,7.204z"/></svg>')
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 16 16"><path fill-opacity="context-fill-opacity" fill="context-fill" d="M3.52,5.367c-1.332,0-2.422,1.09-2.422,2.422v2.422c0,1.332,1.09,2.422,2.422,2.422h1.516l4.102,3.633V1.735L5.035,5.367H3.52z"/><path fill="context-fill" fill-rule="evenodd" d="M12.155,12.066l-1.138-1.138l4.872-4.872l1.138,1.138 L12.155,12.066z"/><path fill="context-fill" fill-rule="evenodd" d="M10.998,7.204l1.138-1.138l4.872,4.872l-1.138,1.138L10.998,7.204z"/></svg>')
         center/12px no-repeat;
 }
 #vertical-tabs-pane[unpinned] .all-tabs-item[activemedia-blocked] .sound-overlay {
@@ -2144,7 +2065,7 @@
 }
 /* pinned indicator */
 #vertical-tabs-pane .all-tabs-item[pinned] > .all-tabs-button.subviewbutton > .toolbarbutton-text {
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M14.707 13.293L11.414 10l2.293-2.293a1 1 0 0 0 0-1.414A4.384 4.384 0 0 0 10.586 5h-.172A2.415 2.415 0 0 1 8 2.586V2a1 1 0 0 0-1.707-.707l-5 5A1 1 0 0 0 2 8h.586A2.415 2.415 0 0 1 5 10.414v.169a4.036 4.036 0 0 0 1.337 3.166 1 1 0 0 0 1.37-.042L10 11.414l3.293 3.293a1 1 0 0 0 1.414-1.414zm-7.578-1.837A2.684 2.684 0 0 1 7 10.583v-.169a4.386 4.386 0 0 0-1.292-3.121 4.414 4.414 0 0 0-1.572-1.015l2.143-2.142a4.4 4.4 0 0 0 1.013 1.571A4.384 4.384 0 0 0 10.414 7h.172a2.4 2.4 0 0 1 .848.152z"/></svg>')
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 16 16"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M14.707 13.293L11.414 10l2.293-2.293a1 1 0 0 0 0-1.414A4.384 4.384 0 0 0 10.586 5h-.172A2.415 2.415 0 0 1 8 2.586V2a1 1 0 0 0-1.707-.707l-5 5A1 1 0 0 0 2 8h.586A2.415 2.415 0 0 1 5 10.414v.169a4.036 4.036 0 0 0 1.337 3.166 1 1 0 0 0 1.37-.042L10 11.414l3.293 3.293a1 1 0 0 0 1.414-1.414zm-7.578-1.837A2.684 2.684 0 0 1 7 10.583v-.169a4.386 4.386 0 0 0-1.292-3.121 4.414 4.414 0 0 0-1.572-1.015l2.143-2.142a4.4 4.4 0 0 0 1.013 1.571A4.384 4.384 0 0 0 10.414 7h.172a2.4 2.4 0 0 1 .848.152z"/></svg>')
         no-repeat 6px/11px;
     padding-inline-start: 20px;
     -moz-context-properties: fill, fill-opacity;
@@ -2164,7 +2085,7 @@
 }
 /* the main toolbar button */
 #vertical-tabs-button {
-    list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="context-fill %230c0c0d"><path fill-opacity="context-fill-opacity" d="M2,7h3v6H2V7z"/><path d="M6,7v6H5V7H2V6h12v1H6z M13,1c1.657,0,3,1.343,3,3v8c0,1.657-1.343,3-3,3H3c-1.657,0-3-1.343-3-3V4c0-1.657,1.343-3,3-3H13z M3,3C2.448,3,2,3.448,2,4v8c0,0.6,0.4,1,1,1h10c0.6,0,1-0.4,1-1V4c0-0.6-0.4-1-1-1H3z"/></svg>');
+    list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 16 16" fill="context-fill %230c0c0d"><path fill-opacity="context-fill-opacity" d="M2,7h3v6H2V7z"/><path d="M6,7v6H5V7H2V6h12v1H6z M13,1c1.657,0,3,1.343,3,3v8c0,1.657-1.343,3-3,3H3c-1.657,0-3-1.343-3-3V4c0-1.657,1.343-3,3-3H13z M3,3C2.448,3,2,3.448,2,4v8c0,0.6,0.4,1,1,1h10c0.6,0,1-0.4,1-1V4c0-0.6-0.4-1-1-1H3z"/></svg>');
     fill-opacity: 0.4;
 }
 /* buttons at the top of the pane */
@@ -2173,17 +2094,17 @@
 }
 #vertical-tabs-button[checked],
 #vertical-tabs-close-button {
-    list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="context-fill %230c0c0d"><path fill-opacity="context-fill-opacity" d="M2,3h12v3H2V3z"/><path d="M6,7v6H5V7H2V6h12v1H6z M13,1c1.657,0,3,1.343,3,3v8c0,1.657-1.343,3-3,3H3c-1.657,0-3-1.343-3-3V4c0-1.657,1.343-3,3-3H13z M3,3C2.448,3,2,3.448,2,4v8c0,0.6,0.4,1,1,1h10c0.6,0,1-0.4,1-1V4c0-0.6-0.4-1-1-1H3z"/></svg>');
+    list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 16 16" fill="context-fill %230c0c0d"><path fill-opacity="context-fill-opacity" d="M2,3h12v3H2V3z"/><path d="M6,7v6H5V7H2V6h12v1H6z M13,1c1.657,0,3,1.343,3,3v8c0,1.657-1.343,3-3,3H3c-1.657,0-3-1.343-3-3V4c0-1.657,1.343-3,3-3H13z M3,3C2.448,3,2,3.448,2,4v8c0,0.6,0.4,1,1,1h10c0.6,0,1-0.4,1-1V4c0-0.6-0.4-1-1-1H3z"/></svg>');
     fill-opacity: 0.4;
 }
 #vertical-tabs-new-tab-button {
     list-style-image: url("chrome://browser/skin/new-tab.svg");
 }
 #vertical-tabs-pin-button {
-    list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M11.414 10l2.293-2.293a1 1 0 0 0 0-1.414 4.418 4.418 0 0 0-.8-.622L11.425 7.15h.008l-4.3 4.3v-.017l-1.48 1.476a3.865 3.865 0 0 0 .692.834 1 1 0 0 0 1.37-.042L10 11.414l3.293 3.293a1 1 0 0 0 1.414-1.414zm3.293-8.707a1 1 0 0 0-1.414 0L9.7 4.882A2.382 2.382 0 0 1 8 2.586V2a1 1 0 0 0-1.707-.707l-5 5A1 1 0 0 0 2 8h.586a2.382 2.382 0 0 1 2.3 1.7l-3.593 3.593a1 1 0 1 0 1.414 1.414l12-12a1 1 0 0 0 0-1.414zm-9 6a4.414 4.414 0 0 0-1.571-1.015l2.143-2.142a4.4 4.4 0 0 0 1.013 1.571 4.191 4.191 0 0 0 .9.684l-1.8 1.8a4.2 4.2 0 0 0-.684-.898z"/></svg>');
+    list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 16 16"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M11.414 10l2.293-2.293a1 1 0 0 0 0-1.414 4.418 4.418 0 0 0-.8-.622L11.425 7.15h.008l-4.3 4.3v-.017l-1.48 1.476a3.865 3.865 0 0 0 .692.834 1 1 0 0 0 1.37-.042L10 11.414l3.293 3.293a1 1 0 0 0 1.414-1.414zm3.293-8.707a1 1 0 0 0-1.414 0L9.7 4.882A2.382 2.382 0 0 1 8 2.586V2a1 1 0 0 0-1.707-.707l-5 5A1 1 0 0 0 2 8h.586a2.382 2.382 0 0 1 2.3 1.7l-3.593 3.593a1 1 0 1 0 1.414 1.414l12-12a1 1 0 0 0 0-1.414zm-9 6a4.414 4.414 0 0 0-1.571-1.015l2.143-2.142a4.4 4.4 0 0 0 1.013 1.571 4.191 4.191 0 0 0 .9.684l-1.8 1.8a4.2 4.2 0 0 0-.684-.898z"/></svg>');
 }
 #vertical-tabs-pane[unpinned] #vertical-tabs-pin-button {
-    list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M14.707 13.293L11.414 10l2.293-2.293a1 1 0 0 0 0-1.414A4.384 4.384 0 0 0 10.586 5h-.172A2.415 2.415 0 0 1 8 2.586V2a1 1 0 0 0-1.707-.707l-5 5A1 1 0 0 0 2 8h.586A2.415 2.415 0 0 1 5 10.414v.169a4.036 4.036 0 0 0 1.337 3.166 1 1 0 0 0 1.37-.042L10 11.414l3.293 3.293a1 1 0 0 0 1.414-1.414zm-7.578-1.837A2.684 2.684 0 0 1 7 10.583v-.169a4.386 4.386 0 0 0-1.292-3.121 4.414 4.414 0 0 0-1.572-1.015l2.143-2.142a4.4 4.4 0 0 0 1.013 1.571A4.384 4.384 0 0 0 10.414 7h.172a2.4 2.4 0 0 1 .848.152z"/></svg>');
+    list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 16 16"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M14.707 13.293L11.414 10l2.293-2.293a1 1 0 0 0 0-1.414A4.384 4.384 0 0 0 10.586 5h-.172A2.415 2.415 0 0 1 8 2.586V2a1 1 0 0 0-1.707-.707l-5 5A1 1 0 0 0 2 8h.586A2.415 2.415 0 0 1 5 10.414v.169a4.036 4.036 0 0 0 1.337 3.166 1 1 0 0 0 1.37-.042L10 11.414l3.293 3.293a1 1 0 0 0 1.414-1.414zm-7.578-1.837A2.684 2.684 0 0 1 7 10.583v-.169a4.386 4.386 0 0 0-1.292-3.121 4.414 4.414 0 0 0-1.572-1.015l2.143-2.142a4.4 4.4 0 0 0 1.013 1.571A4.384 4.384 0 0 0 10.414 7h.172a2.4 2.4 0 0 1 .848.152z"/></svg>');
 }
 #vertical-tabs-tooltip > .places-tooltip-box > hbox {
     -moz-box-align: center;
@@ -2213,7 +2134,7 @@
     list-style-image: url("chrome://global/skin/icons/security-warning.svg");
 }
 #vertical-tabs-tooltip #places-tooltip-insecure-icon[type="about-page"] {
-    list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M15.424 5.366A4.384 4.384 0 0 0 13.817 3.4a7.893 7.893 0 0 1 .811 2.353v.017c-.9-2.185-2.441-3.066-3.7-4.984l-.189-.3c-.035-.059-.063-.112-.088-.161a1.341 1.341 0 0 1-.119-.306.022.022 0 0 0-.013-.019.026.026 0 0 0-.019 0h-.006a5.629 5.629 0 0 0-2.755 4.308c.094-.006.187-.014.282-.014a4.069 4.069 0 0 1 3.51 1.983A2.838 2.838 0 0 0 9.6 5.824a3.2 3.2 0 0 1-1.885 6.013 3.651 3.651 0 0 1-1.042-.2c-.078-.028-.157-.059-.235-.093-.046-.02-.091-.04-.135-.062A3.282 3.282 0 0 1 4.415 8.95s.369-1.334 2.647-1.334a1.91 1.91 0 0 0 .964-.857 12.756 12.756 0 0 1-1.941-1.118c-.29-.277-.428-.411-.551-.511-.066-.054-.128-.1-.207-.152a3.481 3.481 0 0 1-.022-1.894 5.915 5.915 0 0 0-1.929 1.442A4.108 4.108 0 0 1 3.1 2.584a1.561 1.561 0 0 0-.267.138 5.767 5.767 0 0 0-.783.649 6.9 6.9 0 0 0-.748.868 6.446 6.446 0 0 0-1.08 2.348c0 .009-.076.325-.131.715l-.025.182c-.019.117-.033.245-.048.444v.023c-.005.076-.011.16-.016.258v.04A7.884 7.884 0 0 0 8.011 16a7.941 7.941 0 0 0 7.9-6.44l.036-.3a7.724 7.724 0 0 0-.523-3.894z" /></svg>');
+    list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M15.424 5.366A4.384 4.384 0 0 0 13.817 3.4a7.893 7.893 0 0 1 .811 2.353v.017c-.9-2.185-2.441-3.066-3.7-4.984l-.189-.3c-.035-.059-.063-.112-.088-.161a1.341 1.341 0 0 1-.119-.306.022.022 0 0 0-.013-.019.026.026 0 0 0-.019 0h-.006a5.629 5.629 0 0 0-2.755 4.308c.094-.006.187-.014.282-.014a4.069 4.069 0 0 1 3.51 1.983A2.838 2.838 0 0 0 9.6 5.824a3.2 3.2 0 0 1-1.885 6.013 3.651 3.651 0 0 1-1.042-.2c-.078-.028-.157-.059-.235-.093-.046-.02-.091-.04-.135-.062A3.282 3.282 0 0 1 4.415 8.95s.369-1.334 2.647-1.334a1.91 1.91 0 0 0 .964-.857 12.756 12.756 0 0 1-1.941-1.118c-.29-.277-.428-.411-.551-.511-.066-.054-.128-.1-.207-.152a3.481 3.481 0 0 1-.022-1.894 5.915 5.915 0 0 0-1.929 1.442A4.108 4.108 0 0 1 3.1 2.584a1.561 1.561 0 0 0-.267.138 5.767 5.767 0 0 0-.783.649 6.9 6.9 0 0 0-.748.868 6.446 6.446 0 0 0-1.08 2.348c0 .009-.076.325-.131.715l-.025.182c-.019.117-.033.245-.048.444v.023c-.005.076-.011.16-.016.258v.04A7.884 7.884 0 0 0 8.011 16a7.941 7.941 0 0 0 7.9-6.44l.036-.3a7.724 7.724 0 0 0-.523-3.894z" /></svg>');
 }
 #vertical-tabs-tooltip #places-tooltip-insecure-icon[type="local-page"] {
     list-style-image: url("chrome://browser/skin/notification-icons/persistent-storage.svg");
@@ -2239,9 +2160,7 @@
 #places-tooltip-insecure-icon[hidden] {
     display: none;
 }`;
-      let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(
-        Ci.nsIStyleSheetService
-      );
+      let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
       let uri = makeURI("data:text/css;charset=UTF=8," + encodeURIComponent(css));
       if (sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) return; // avoid loading duplicate sheets on subsequent window launches.
       sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
@@ -2255,12 +2174,10 @@
     // increasing the number of elements that use this context menu, it's now
     // pertinent to do this at startup.
     _l10nIfNeeded() {
-      let lazies = document
-        .getElementById("tabContextMenu")
-        .querySelectorAll("[data-lazy-l10n-id]");
+      let lazies = document.getElementById("tabContextMenu").querySelectorAll("[data-lazy-l10n-id]");
       if (lazies) {
         MozXULElement.insertFTLIfNeeded("browser/tabContextMenu.ftl");
-        lazies.forEach(el => {
+        lazies.forEach((el) => {
           el.setAttribute("data-l10n-id", el.getAttribute("data-lazy-l10n-id"));
           el.removeAttribute("data-lazy-l10n-id");
         });
@@ -2293,9 +2210,7 @@
     // SidebarUI.setPosition();
     eval(
       `gBrowserInit.onUnload = function ` +
-        gBrowserInit.onUnload
-          .toSource()
-          .replace(/(SidebarUI\.uninit\(\))/, `$1; verticalTabsPane.uninit()`)
+        gBrowserInit.onUnload.toSource().replace(/(SidebarUI\.uninit\(\))/, `$1; verticalTabsPane.uninit()`)
     );
     // reset the event handler since it used the bind method, which creates an
     // anonymous version of the function that we can't change. just re-bind our
@@ -2359,14 +2274,14 @@
         let doc = node.ownerDocument;
         node.appendChild(
           create(doc, "observes", {
-            "element": "vertical-tabs-pane",
-            "attribute": "checked",
+            element: "vertical-tabs-pane",
+            attribute: "checked",
           })
         );
         node.appendChild(
           create(doc, "observes", {
-            "element": "vertical-tabs-pane",
-            "attribute": "positionstart",
+            element: "vertical-tabs-pane",
+            attribute: "positionstart",
           })
         );
         if ("key_toggleVerticalTabs" in window) {

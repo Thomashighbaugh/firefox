@@ -1,10 +1,10 @@
 // ==UserScript==
-// @name           No Update Notification 
+// @name           No Update Notification
 // @author         aminomancer
 // @homepage       https://github.com/aminomancer
-// @description    I believe in well explained and documented code, as well as mitigating this to a certain extent with well named code that describes what it 
+// @description    I believe in well explained and documented code, as well as mitigating this to a certain extent with well named code that describes what it
 // does. This prevents browser update annoyances, I use a rolling distro and a
-//  package manager handles my updates so thanks but no thanks Mozilla 
+//  package manager handles my updates so thanks but no thanks Mozilla
 // ==/UserScript==
 
 (async function () {

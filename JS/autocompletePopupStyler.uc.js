@@ -35,14 +35,10 @@
       );
     }
     get autocomplete() {
-      return (
-        this._autocomplete || (this._autocomplete = document.getElementById("PopupAutoComplete"))
-      );
+      return this._autocomplete || (this._autocomplete = document.getElementById("PopupAutoComplete"));
     }
     get panelShadowContent() {
-      return this.autocomplete.anchorNode
-        ?.closest("panel")
-        .shadowRoot.querySelector(`[part="content"]`);
+      return this.autocomplete.anchorNode?.closest("panel").shadowRoot.querySelector(`[part="content"]`);
     }
   }
 

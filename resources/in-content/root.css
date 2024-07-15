@@ -1,19 +1,32 @@
 /* This Source Code Form is subject to the terms of the Creative Commons
-* Attribution-NonCommercial-ShareAlike International License, v. 4.0.
-* If a copy of the CC BY-NC-SA 4.0 was not distributed with this
-* file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/
-* or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. */
+ * Attribution-NonCommercial-ShareAlike International License, v. 4.0.
+ * If a copy of the CC BY-NC-SA 4.0 was not distributed with this
+ * file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/
+ * or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. */
 
 /* fundamental content styles, e.g. plaintext pages. */
+
+@namespace html url("http://www.w3.org/1999/xhtml");
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+html|tt,
+html|code,
+html|kbd,
+html|samp,
+html|xmp,
+html|pre,
+html|plaintext,
+html|listing,
+html|textarea,
+html|input:is([type="date"], [type="time"], [type="datetime-local"]) {
+  font-family: Fira Code UC, Fira Code, SF Mono, -moz-fixed, monospace;
+  font-weight: 300;
+}
 
 @media (prefers-color-scheme: dark) {
   ::selection {
     background-color: var(--global-selection-bgcolor) !important;
     color: var(--global-selection-color) !important;
-  }
-
-  :-moz-window-inactive::selection {
-    background-color: var(--global-selection-bgcolor-disabled) !important;
   }
 
   /* pdf viewer: selection, findbar highlights */
@@ -29,51 +42,35 @@
     background-color: var(--pdf-selection-bgcolor) !important;
     color: revert !important;
   }
+
+  /* optional dark mode for PDFs. to use, open the inspector
+  and change class="pdfViewer" to class="pdfViewer invert" */
+  .pdfViewer.invert {
+    filter: invert(1) brightness(1.15) contrast(0.85);
+  }
 }
 
 :read-only:focus:not(:focus-visible),
-:not(
-    textarea,
-    [contenteditable]:read-write,
-    input[type="text"],
-    input[type="password"],
-    input[type="date"],
-    input[type="datetime-local"],
-    input[type="email"],
-    input[type="month"],
-    input[type="number"],
-    input[type="search"],
-    input[type="tel"],
-    input[type="time"],
-    input[type="url"],
-    input[type="week"]
-  ):focus:not(:focus-visible) {
+:not(textarea, [contenteditable]:read-write, input[type="text"], input[type="password"], input[type="date"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"]):focus:not(:focus-visible) {
   outline: unset;
   outline-offset: unset;
 }
 
-@-moz-document plain-text-document(), media-document(all) {
-  @font-face {
-    font-family: "Overpass Mono";
-    font-style: normal;
-    font-weight: 100;
-    src: local("Overpass Mono"), local("Overpass Mono Light"), local("OverpassMono-Light");
-  }
-
+@-moz-document plain-text-document() {
   :root {
-    font-family: Overpass Mono, -moz-fixed;
+    font-family: Fira Code UC, Fira Code, SF Mono, -moz-fixed, monospace;
+    font-weight: 300;
   }
 
   xmp,
   pre,
   plaintext {
-    font-family: Overpass Mono, -moz-fixed;
+    font-family: Fira Code UC, Fira Code, SF Mono, -moz-fixed, monospace;
+    font-weight: 300;
   }
+}
 
-  img.transparent {
-    background: var(--transparent-img-background) !important;
-  }
-
+@-moz-document plain-text-document(), media-document(all) {
   @media (prefers-color-scheme: dark) {
     :root {
       color: var(--plaintext-color) !important;
@@ -88,13 +85,13 @@
       color: var(--content-selection-color) !important;
       background-color: var(--content-selection-bgcolor) !important;
     }
-
-    :-moz-window-inactive::selection {
-      background-color: var(--content-selection-bgcolor-disabled) !important;
-    }
   }
 }
 
 .controlsContainer {
   --control-focus-outline: 2px solid var(--purple-30) !important;
+}
+
+#texttracks {
+  font-family: SF Pro Text, SF Arabic, Segoe UI, sans-serif !important;
 }

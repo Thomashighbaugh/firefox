@@ -1,8 +1,6 @@
 @charset "utf-8";
 @import url(chrome://userchrome/content/layout/uc-low-globals.css);
 
-/* just like the name suggests, this is the stylesheet for "View Source" pages. */
-
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
@@ -10,22 +8,23 @@
 @namespace url(http://www.w3.org/1999/xhtml); /* set default namespace to HTML */
 
 @font-face {
-  font-family: "Overpass Mono";
+  font-family: "Fira Code UC";
   font-style: normal;
-  font-weight: 100;
-  src: local("Overpass Mono"), local("Overpass Mono Light"), local("OverpassMono-Light");
+  src: local("Fira Code"), local("Fira Code Light"), url(../fonts/FiraCode-VF.woff);
+  font-feature-settings: "cv14", "cv19", "cv30", "ss01", "ss02", "ss05", "ss07", "ss09";
 }
+
 *|*:root {
-  font-family: Overpass Mono, -moz-fixed;
-  background-color: white;
-  color: black;
+  color-scheme: light dark;
   direction: ltr;
   -moz-control-character-visibility: visible;
   height: 100%;
+  font-family: Fira Code UC, Fira Code, SF Mono, -moz-fixed, monospace;
+  font-weight: 300;
 }
 #viewsource {
-  font-family: Overpass Mono, -moz-fixed;
-  font-weight: normal;
+  font-family: Fira Code UC, Fira Code, SF Mono, -moz-fixed, monospace;
+  font-weight: 300;
   white-space: pre;
   counter-reset: line;
   height: 100%;
@@ -53,35 +52,34 @@ span[id]::before {
   margin: 0 0 0 -5ch;
   text-align: right;
   color: #ccc;
-  font-weight: normal;
+  font-weight: 300;
   font-style: normal;
 }
 xmp,
 pre,
 plaintext {
-  font-family: Overpass Mono, -moz-fixed;
+  font-family: Fira Code UC, Fira Code, SF Mono, -moz-fixed, monospace;
+  font-weight: 300;
 }
-.highlight .start-tag {
-  color: purple;
-  font-weight: bold;
-}
+.highlight .start-tag,
 .highlight .end-tag {
-  color: purple;
-  font-weight: bold;
+  color: #800080;
+  font-weight: 500;
 }
 .highlight .comment {
-  color: green;
+  color: #008000;
   font-style: italic;
 }
 .highlight .cdata {
   color: #cc0066;
 }
-.highlight .doctype {
-  color: steelblue;
+.highlight .doctype,
+.highlight .markupdeclaration {
+  color: #4682b4;
   font-style: italic;
 }
 .highlight .pi {
-  color: orchid;
+  color: #da70d6;
   font-style: italic;
 }
 .highlight .entity {
@@ -92,16 +90,11 @@ plaintext {
   font-weight: normal;
 }
 .highlight .attribute-name {
-  color: black;
-  font-weight: bold;
+  font-weight: 500;
 }
 .highlight .attribute-value {
-  color: blue;
+  color: #0000ff;
   font-weight: normal;
-}
-.highlight .markupdeclaration {
-  color: steelblue;
-  font-style: italic;
 }
 span:not(.error),
 a:not(.error) {
@@ -110,42 +103,36 @@ a:not(.error) {
 span[id] {
   unicode-bidi: isolate;
 }
-.highlight .error,
-.highlight
-  .error
-  > :is(.start-tag, .end-tag, .comment, .cdata, .doctype, .pi, .entity, .attribute-name, .attribute-value) {
-  color: red;
-  font-weight: bold;
+.highlight .error {
+  color: revert;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: #ff0000;
+  text-decoration-style: wavy;
+  text-decoration-skip-ink: none;
 }
 @media (prefers-color-scheme: dark) {
-  :root,
-  body {
-    color: var(--plaintext-color);
-    background-color: var(--in-content-bg-dark);
-  }
-  span {
-    color: var(--plaintext-color);
-  }
-  html:root {
-    color: var(--plaintext-color);
-  }
-  .highlight .attribute-name {
-    color: lightskyblue;
-  }
-  .highlight .attribute-value {
-    color: lightgreen;
-  }
-  .highlight .start-tag {
-    color: tan;
-  }
+  .highlight .start-tag,
   .highlight .end-tag {
-    color: indianred;
+    color: #f55e5e;
   }
-  .highlight .error {
-    color: white;
-    background-color: rgba(178, 34, 34, 0.5);
+  .highlight .comment {
+    color: #90ee90;
+  }
+  .highlight .cdata {
+    color: #f068ac;
+  }
+  .highlight .doctype,
+  .highlight .markupdeclaration {
+    color: #d3d3d3;
   }
   .highlight .entity {
-    color: mediumorchid;
+    color: #f18a65;
+  }
+  .highlight .attribute-value {
+    color: #97bbff;
+  }
+  .highlight .error {
+    text-decoration-color: #ff3b3b;
   }
 }

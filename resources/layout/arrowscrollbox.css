@@ -40,16 +40,8 @@ toolbarbutton > .toolbarbutton-text {
   display: none;
 }
 
-@media not (-moz-platform: macos) {
-  :host(:not([clicktoscroll="true"])) > toolbarbutton {
-    appearance: none;
-  }
-}
-
-scrollbox,
-.scrollbox-clip {
-  min-width: 0;
-  min-height: 0;
+:host(:not([clicktoscroll="true"])) > toolbarbutton {
+  appearance: none;
 }
 
 /* replace scrollbuttons with scrollbars for vertical scrollboxes.

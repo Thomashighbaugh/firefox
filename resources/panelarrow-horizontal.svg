@@ -1,7 +1,4 @@
-<!-- This Source Code Form is subject to the terms of the Mozilla Public
-   - License, v. 2.0. If a copy of the MPL was not distributed with this
-   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
-<svg xmlns="http://www.w3.org/2000/svg" width="10" height="20">
-  <path d="M 10,0 L 0,10 10,20 z" fill="context-stroke"/>
-  <path d="M 10,1 L 1,10 10,19 z" fill="context-fill"/>
+<svg width="10" height="20">
+  <path fill="#1b1d24" d="M10 0 0 10l10 10z"/>
+  <path fill="#f4f4f7" d="m10 1-9 9 9 9z"/>
 </svg>

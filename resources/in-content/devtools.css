@@ -1,13 +1,14 @@
 /* This Source Code Form is subject to the terms of the Creative Commons
- * Attribution-NonCommercial-ShareAlike International License, v. 4.0.
- * If a copy of the CC BY-NC-SA 4.0 was not distributed with this
- * file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/
- * or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. */
+* Attribution-NonCommercial-ShareAlike International License, v. 4.0.
+* If a copy of the CC BY-NC-SA 4.0 was not distributed with this
+* file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/
+* or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. */
 
 /* handles context menus opened in devtools processes,
 and a few elements like checkboxes */
 
-@-moz-document url-prefix("chrome://devtools/content/") {
+@-moz-document url-prefix("chrome://devtools/content/")
+{
   :root,
   menupopup {
     --focus-outline-color: var(--purple-30) !important;
@@ -16,7 +17,7 @@ and a few elements like checkboxes */
     --menu-color: var(--ui-text-80) !important;
     --menuitem-hover-background-color: var(--uc-arrowpanel-dimmed) !important;
     --menuitem-disabled-hover-background-color: initial !important;
-    --menu-disabled-color: var(--uc-menu-disabled-color) !important;
+    --menu-disabled-color: var(--context-menu-disabled-color) !important;
     --menu-border-color: var(--uc-menu-border-color) !important;
     --arrowpanel-border-color: var(--uc-menu-border-color) !important;
     --menu-icon-opacity: 1 !important;
@@ -49,8 +50,6 @@ and a few elements like checkboxes */
     appearance: none !important;
     width: 14px;
     height: 14px;
-    min-width: 14px;
-    min-height: 14px;
     fill: currentColor;
     -moz-context-properties: fill, fill-opacity, stroke;
     background-position: center;
@@ -58,7 +57,7 @@ and a few elements like checkboxes */
     background-size: contain;
     border: 1px solid var(--checkbox-border-color);
     background-color: var(--checkbox-unchecked-bgcolor);
-    color: var(--uc-parent-primary-button-text-color);
+    color: var(--in-parent-primary-button-text-color);
   }
 
   input[type="checkbox"] {
@@ -116,7 +115,6 @@ and a few elements like checkboxes */
     border-radius: var(--menupopup-border-radius) !important;
     margin: var(--menupopup-margin) !important;
     overflow: hidden !important;
-    -moz-window-shadow: none !important;
   }
 
   menupopup menu > menupopup {
@@ -221,7 +219,6 @@ and a few elements like checkboxes */
     width: 14px;
     height: 14px;
     margin-inline: var(--context-checkbox-margin);
-    box-sizing: border-box;
     fill: currentColor;
     -moz-context-properties: fill, fill-opacity, stroke;
     content: "";
@@ -230,7 +227,7 @@ and a few elements like checkboxes */
     background-size: contain;
     border: 1px solid var(--checkbox-border-color);
     background-color: var(--checkbox-unchecked-bgcolor);
-    color: var(--uc-parent-primary-button-text-color);
+    color: var(--in-parent-primary-button-text-color);
   }
 
   menupopup menuitem[type="checkbox"]::before {
@@ -285,23 +282,36 @@ and a few elements like checkboxes */
     border: none !important;
   }
 
-  :is(#ContentSelectDropdown, menupopup.in-menulist, .contentSelectDropdown-ingroup) :is(menu, menuitem, menucaption) > :is(label, .menu-iconic-text, .menu-text) {
+  :is(#ContentSelectDropdown, menupopup.in-menulist, .contentSelectDropdown-ingroup)
+    :is(menu, menuitem, menucaption)
+    > :is(label, .menu-iconic-text, .menu-text) {
     padding-inline: 0 !important;
     font: menu !important;
   }
 
   :is(#ContentSelectDropdown, menupopup.in-menulist, .contentSelectDropdown-ingroup) menucaption {
     font-weight: inherit !important;
-    min-height: 26px !important;
-    padding-block: 1px 2px !important;
-    padding-inline: 0 !important;
-    color: var(--panel-description-color) !important;
+    min-height: 22px !important;
+    border-bottom: 1px solid var(--menu-separator-color) !important;
+    margin-block: 1px 2px;
+    padding-inline: 5px !important;
   }
 
-  :is(#ContentSelectDropdown, menupopup.in-menulist, .contentSelectDropdown-ingroup) menucaption > :is(label, .menu-iconic-text, .menu-text) {
-    padding: 4px 5px !important;
+  :is(#ContentSelectDropdown, menupopup.in-menulist, .contentSelectDropdown-ingroup) menucaption:first-child {
+    margin-bottom: 2px !important;
     border-bottom: 1px solid var(--menu-separator-color) !important;
-    font-weight: var(--uc-font-weight-bold, 600) !important;
+  }
+
+  :is(#ContentSelectDropdown, menupopup.in-menulist, .contentSelectDropdown-ingroup)
+    menucaption
+    > :is(label, .menu-iconic-text, .menu-text) {
+    font-weight: 600 !important;
+  }
+
+  :is(#ContentSelectDropdown, menupopup.in-menulist, .contentSelectDropdown-ingroup)
+    menucaption:first-child
+    > :is(label, .menu-iconic-text, .menu-text) {
+    margin-block: -3px 0 !important;
   }
 
   #ContentSelectDropdown > menupopup {
@@ -332,6 +342,7 @@ and a few elements like checkboxes */
     overflow: hidden !important;
     color: var(--menu-color) !important;
     background-image: unset !important;
+    --menu-background-color: var(--ui-secondary-bg) !important;
   }
 
   #ContentSelectDropdown > menupopup .contentSelectDropdown-searchbox {
@@ -392,6 +403,24 @@ and a few elements like checkboxes */
     padding: 0 !important;
   }
 
+  menuseparator[id]:not(
+      #context-sep-open,
+      #context-media-sep-commands,
+      #context-sep-copylink,
+      #spell-suggestions-separator,
+      #context-sep-selectall
+    ) {
+    display: none !important;
+  }
+
+  menuseparator:not([id]) {
+    display: -moz-box !important;
+  }
+
+  menuseparator:last-child {
+    display: none;
+  }
+
   menupopup[menu-api] menuitem:is([type="checkbox"], [type="radio"]) .menu-iconic-left {
     display: none !important;
   }
@@ -415,26 +444,16 @@ and a few elements like checkboxes */
 
   /* highlight stylesheets owned by the user so they're easier to find */
   #style-editor-chrome-window
-    .stylesheet-name
-    label:is([value^="uc-"], [value^="userChrome"], [value^="userContent"], [value="custom-chrome.css"], [value="custom-content.css"], [tooltiptext^="chrome://userchrome/"], [tooltiptext^="file://"]),
-  .ruleview-rule-source-label:is(
-    [title^="file://"][title*="/chrome/"]:is(
-        [title*="uc-"],
-        [title*="userChrome"],
-        [title*="userContent"],
-        [title*="custom-chrome.css"],
-        [title*="custom-content.css"],
-        [title*="chrome/resources/"]
-      ),
-      [title^="chrome://userchrome/"]
-    ) {
+        .stylesheet-name
+        label:is([value^="uc-"], [value^="userChrome"], [value^="userContent"], [value="custom-chrome.css"], [value="custom-content.css"], [tooltiptext^="chrome://userchrome/"], [tooltiptext^="file://"])
+  {
     text-decoration: underline !important;
     color: var(--attention-color) !important;
   }
 
   /* make the highlighting on unsaved stylesheets more obvious */
   #style-editor-chrome-window li.unsaved:not(.splitview-active) {
-    background-color: var(--uc-content-box-background) !important;
+    background-color: var(--content-principal-box-background) !important;
   }
 
   #style-editor-chrome-window li.unsaved > hgroup .stylesheet-name label,
@@ -443,19 +462,21 @@ and a few elements like checkboxes */
     color: var(--low-warning-text-color) !important;
   }
 
-  @media (-moz-bool-pref: "userChrome.css.mac-ui-fonts") {
+  @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
     menupopup {
-      font-family: SF Pro Text, SF Arabic, Segoe UI, sans-serif !important;
+      font-family: SF Pro Text, Segoe UI, sans-serif !important;
       font-kerning: normal !important;
     }
 
-    :is(#ContentSelectDropdown, menupopup.in-menulist, .contentSelectDropdown-ingroup) :is(menu, menuitem, menucaption) > :is(label, .menu-iconic-text, .menu-text) {
-      font-family: SF Pro Text, SF Arabic, Segoe UI, sans-serif !important;
+    :is(#ContentSelectDropdown, menupopup.in-menulist, .contentSelectDropdown-ingroup)
+      :is(menu, menuitem, menucaption)
+      > :is(label, .menu-iconic-text, .menu-text) {
+      font-family: SF Pro Text, Segoe UI, sans-serif !important;
       font-kerning: normal !important;
     }
   }
 
-  @media (-moz-bool-pref: "userChrome.css.remove-menu-borders") {
+  @supports -moz-bool-pref("userChrome.css.remove-menu-borders") {
     .menupopup-arrowscrollbox {
       border: none !important;
     }
@@ -493,14 +514,5 @@ and a few elements like checkboxes */
     background-size: 16px;
     background-position: center;
     background-repeat: no-repeat;
-  }
-
-  .chrome-debug-toolbar {
-    background-color: var(--theme-sidebar-background) !important;
-  }
-
-  .chrome-debug-toolbar__modes label.selected {
-    border-color: hsla(0, 0%, 50%, 0.5) !important;
-    background-color: hsla(0, 0%, 50%, 0.15);
   }
 }

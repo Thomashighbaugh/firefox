@@ -1,30 +1,15 @@
 /* This Source Code Form is subject to the terms of the Creative Commons
- * Attribution-NonCommercial-ShareAlike International License, v. 4.0.
- * If a copy of the CC BY-NC-SA 4.0 was not distributed with this
- * file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/
- * or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. */
+* Attribution-NonCommercial-ShareAlike International License, v. 4.0.
+* If a copy of the CC BY-NC-SA 4.0 was not distributed with this
+* file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/
+* or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. */
 
 :root,
 tooltip {
-  --in-content-bg-dark: #19191b;
-  --in-content-bg-darker: #151517;
-  --in-content-box-bg-dark: hsl(240, 4%, 13%);
-  --in-content-button-highlight-dark: hsl(240, 4%, 15%);
-  --in-content-separator-dim: hsl(240, 4%, 26%);
-  --in-content-border-color-dim: hsl(240, 4%, 21%);
-  --plaintext-color: hsla(0, 0%, 100%, 0.932);
-  --uc-menu-border-color: hsl(233, 23%, 20%);
-  --tooltip-bgcolor: hsl(233, 36%, 11%);
-  --tooltip-color: white;
-  --tooltip-border-radius: 3px;
-  --tooltip-border-color: var(--uc-menu-border-color);
-  --tooltip-box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.2);
-  --transparent-img-background: center/16px repeat hsla(0, 0%, 80%) url(chrome://userchrome/content/checker.svg);
-  --transparent-img-background-context: center/16px repeat url(chrome://userchrome/content/checker-context.svg);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --transparent-img-background: center/16px repeat hsla(0, 0%, 20%) url(chrome://userchrome/content/checker-dark.svg);
-  }
+  --in-content-bg-dark: #1b1d24;
+  --in-content-box-bg-dark: #1c1b22;
+  --in-content-button-highlight-dark: #17191e;
+  --in-content-separator-dim: #2b2a33;
+  --in-content-border-color-dim: #272a34;
+  --plaintext-color: #f4f4f7;
 }

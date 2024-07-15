@@ -1,38 +1,29 @@
 /* This Source Code Form is subject to the terms of the Creative Commons
- * Attribution-NonCommercial-ShareAlike International License, v. 4.0.
- * If a copy of the CC BY-NC-SA 4.0 was not distributed with this
- * file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/
- * or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. */
+* Attribution-NonCommercial-ShareAlike International License, v. 4.0.
+* If a copy of the CC BY-NC-SA 4.0 was not distributed with this
+* file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/
+* or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. */
 
 /* for the places organizer, e.g. "Manage Bookmarks" */
 
-@-moz-document url-prefix("chrome://browser/content/places/places.xhtml"), url-prefix("about:downloads") {
+@-moz-document url-prefix("chrome://browser/content/places/places.xhtml")
+{
   :root {
     --in-content-button-background-disabled: hsla(0, 20%, 80%, 0.12);
     --in-content-button-background-hover: hsla(0, 20%, 90%, 0.15) !important;
     --in-content-button-background-active: hsla(0, 20%, 90%, 0.19) !important;
-    --in-content-button-background-bold: hsla(0, 20%, 90%, 0.23) !important;
-    --in-content-border-color: var(--dialog-box-border-color) !important;
     --in-content-border-hover: var(--dialog-box-border-hover) !important;
-    --arrowpanel-dimmed: color-mix(in srgb, currentColor 17%, transparent) !important;
-    --arrowpanel-dimmed-further: color-mix(in srgb, currentColor 25%, transparent) !important;
-    --arrowpanel-dimmed-even-further: color-mix(in srgb, currentColor 30%, transparent) !important;
     --organizer-color: var(--plaintext-color) !important;
-    --organizer-hover-color: var(--plaintext-color) !important;
-    --organizer-selected-color: var(--in-content-primary-button-text-color) !important;
-    --organizer-focus-selected-color: var(--in-content-primary-button-text-color) !important;
     --organizer-deemphasized-color: color-mix(in srgb, var(--plaintext-color) 75%, transparent) !important;
     --organizer-toolbar-background: var(--in-content-button-highlight-dark) !important;
     --organizer-pane-background: var(--in-content-box-bg-dark) !important;
     --organizer-content-background: var(--in-content-bg-dark) !important;
     --organizer-hover-background: var(--in-content-button-background-hover) !important;
     --organizer-selected-background: var(--in-content-button-background-active) !important;
-    --organizer-selected-active-background: var(--in-content-button-background-bold) !important;
-    --organizer-selected-focus-background: var(--in-content-primary-button-background-hover) !important;
     --organizer-outline-color: var(--purple-40) !important;
     --organizer-border-color: var(--in-content-border-color-dim) !important;
     --organizer-toolbar-field-background: var(--in-content-bg-dark) !important;
-    --organizer-toolbar-field-background-focused: var(--in-content-bg-dark) !important;
+    --organizer-toolbar-field-background-focused: var(--in-content-box-bg-dark) !important;
     --organizer-separator-color: var(--in-content-separator-dim) !important;
     --organizer-toolbar-field-focus-border-color: var(--organizer-outline-color) !important;
     --organizer-toolbar-field-focus-box-shadow: 0 0 0 0.5px var(--organizer-toolbar-field-focus-border-color) inset !important;
@@ -46,23 +37,17 @@
     border-radius: var(--general-button-border-radius) !important;
   }
 
-  #placesToolbar > toolbarbutton:is(:hover, :focus-visible):not([disabled="true"]) {
-    background-color: var(--organizer-hover-background) !important;
-    color: var(--organizer-hover-color) !important;
-  }
-
   #placesMenu > menu > .menubar-text {
     background-size: 12px !important;
     padding-inline-end: 16px !important;
   }
 
   #searchFilter[focused] {
-    outline-color: var(--organizer-toolbar-field-focus-border-color) !important;
-    outline-width: 2px !important;
-    outline-style: solid !important;
+    outline-color: var(--organizer-toolbar-field-focus-border-color);
+    outline-width: 1px;
+    outline-style: solid;
     box-shadow: none !important;
-    border-color: transparent !important;
-    outline-offset: 0 !important;
+    border-color: var(--organizer-toolbar-field-focus-border-color);
   }
 
   #places input[type="text"]:focus {
@@ -72,13 +57,6 @@
 
   #contentView treecol {
     box-shadow: inset 0 -1px var(--organizer-border-color);
-  }
-
-  tree {
-    appearance: none !important;
-    margin: 0 !important;
-    border: none !important;
-    padding: 0 !important;
   }
 
   treecol,
@@ -100,28 +78,7 @@
     color: var(--organizer-hover-color) !important;
   }
 
-  treechildren::-moz-tree-row(selected),
-  treechildren::-moz-tree-row(current, focus) {
-    background-color: var(--organizer-selected-background) !important;
-    outline: none !important;
-  }
-
-  treechildren::-moz-tree-row(selected, hover),
-  treechildren::-moz-tree-row(current, focus, hover) {
-    background-color: var(--organizer-selected-active-background) !important;
-  }
-
-  treechildren::-moz-tree-row(selected, focus),
-  treechildren::-moz-tree-row(current, selected, focus) {
-    background-color: var(--organizer-selected-focus-background) !important;
-  }
-
-  treechildren::-moz-tree-cell(cutting, selected),
-  treechildren::-moz-tree-cell(cutting, hover) {
-    background-color: color-mix(in srgb, transparent 50%, var(--organizer-selected-background)) !important;
-  }
-
-  treechildren::-moz-tree-cell-text(primary, dropOn) {
-    background-color: var(--organizer-selected-background) !important;
+  #downloadsRichListBox {
+    border: none !important;
   }
 }

@@ -1,62 +1,67 @@
 /* This Source Code Form is subject to the terms of the Creative Commons
- * Attribution-NonCommercial-ShareAlike International License, v. 4.0.
- * If a copy of the CC BY-NC-SA 4.0 was not distributed with this
- * file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/
- * or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. */
+* Attribution-NonCommercial-ShareAlike International License, v. 4.0.
+* If a copy of the CC BY-NC-SA 4.0 was not distributed with this
+* file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/
+* or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. */
 
 /* simple translate extension by sienori */
 
-@-moz-document regexp("^moz-extension://.*/popup/index.html") {
-  :root[uc-extension-id="simple-translate@sienori"] {
+@-moz-document url(moz-extension://482959ea-7a4a-4baa-900a-86fb03b08903/popup/index.html)
+{
+  :root {
     border-radius: 3px !important;
     background: none !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] body {
+  body {
     --main-text: var(--uc-arrowpanel-color) !important;
     --line: transparent !important;
     --main-bg: var(--uc-arrowpanel-background) !important;
     --sub-text: var(--uc-panel-description-color) !important;
-    --highlight: var(--uc-parent-link-color) !important;
+    --highlight: var(--in-parent-link-color) !important;
+  }
+
+  body {
     color: var(--uc-arrowpanel-color) !important;
     border-radius: 3px !important;
   }
 
-  @media (-moz-bool-pref: "userChrome.css.mac-ui-fonts") {
-    :root[uc-extension-id="simple-translate@sienori"] body {
-      font-family: SF Pro Text, SF Arabic, Segoe UI, sans-serif !important;
+  @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
+    body {
+      font-family: SF Pro Text, Segoe UI, sans-serif !important;
       font-kerning: normal !important;
     }
 
-    :root[uc-extension-id="simple-translate@sienori"] .title {
-      font-family: SF Pro Display, SF Arabic, Segoe UI, sans-serif !important;
+    .title {
+      font-family: SF Pro Display, Segoe UI, sans-serif !important;
     }
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] button:not([disabled="true"], :disabled) {
+  button:not([disabled="true"], :disabled) {
     display: flex;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] :is(textarea, select) {
+  textarea,
+  select {
     background-color: var(--search-box-color) !important;
     color: var(--ui-text-100) !important;
     border: 1px solid transparent !important;
     outline: none !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] :is(textarea, select):focus-within {
+  :is(textarea, select):focus-within {
     background-color: var(--search-box-focus) !important;
     color: var(--ui-text-100) !important;
     border-color: var(--highlight) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] #footer .selectWrap select {
+  #footer .selectWrap select {
     padding-block: 5px !important;
     height: auto !important;
     min-height: auto !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] #footer .selectWrap::before {
+  #footer .selectWrap::before {
     background: none !important;
     color: var(--sub-text) !important;
     fill: currentColor !important;
@@ -72,78 +77,80 @@
     top: 6px !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] #footer .selectWrap:focus-within::before {
+  #footer .selectWrap:focus-within::before {
     color: var(--ui-text-100) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] #footer .selectWrap select:is(:focus-within, :hover) {
+  #footer .selectWrap select:is(:focus-within, :hover) {
     background-color: var(--search-box-focus) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] body hr {
+  body hr {
     border-color: var(--uc-desaturate-dimmed) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] #resultArea {
+  #resultArea {
     background-color: transparent !important;
     color: var(--uc-arrowpanel-color) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] :is(.resultText, .candidateText, .mediaButtons),
-  :root[uc-extension-id="simple-translate@sienori"] .mediaButtons * {
+  .resultText,
+  .candidateText,
+  .mediaButtons,
+  .mediaButtons * {
     background: none !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] .mediaButtons {
+  .mediaButtons {
     user-select: none;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] .copy {
+  .copy {
     display: none !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] a {
-    color: var(--uc-parent-link-color) !important;
+  a {
+    color: var(--in-parent-link-color) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] a:is(:hover, :focus-visible) {
-    color: var(--uc-parent-link-color-hover) !important;
+  a:is(:hover, :focus-visible) {
+    color: var(--in-parent-link-color-hover) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] a:hover:active {
-    color: var(--uc-parent-link-color-active) !important;
+  a:hover:active {
+    color: var(--in-parent-link-color-active) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] .react-toggle .react-toggle-track {
+  .react-toggle .react-toggle-track {
     background-color: var(--sub-text) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] .react-toggle:is(:hover, :focus-within):not(.react-toggle--disabled) .react-toggle-track {
+  .react-toggle:is(:hover, :focus-within):not(.react-toggle--disabled) .react-toggle-track {
     background-color: color-mix(in srgb, black 20%, var(--sub-text)) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] .react-toggle--checked .react-toggle-track {
-    background-color: var(--uc-parent-link-color) !important;
+  .react-toggle--checked .react-toggle-track {
+    background-color: var(--in-parent-link-color) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] .react-toggle--checked:is(:hover, :focus-within):not(.react-toggle--disabled) .react-toggle-track {
-    background-color: var(--uc-parent-link-color-hover) !important;
+  .react-toggle--checked:is(:hover, :focus-within):not(.react-toggle--disabled) .react-toggle-track {
+    background-color: var(--in-parent-link-color-hover) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] .react-toggle--disabled {
+  .react-toggle--disabled {
     cursor: not-allowed !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] .react-toggle-thumb {
+  .react-toggle-thumb {
     border-color: transparent !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] #header .rightButtons .settingsButton:is(:hover, :focus-visible) svg {
+  #header .rightButtons .settingsButton:is(:hover, :focus-visible) svg {
     fill: var(--highlight) !important;
     transform: rotate(90deg) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] #header .rightButtons .heartButton:is(:hover, :focus-visible) svg {
+  #header .rightButtons .heartButton:is(:hover, :focus-visible) svg {
     fill: var(--confirm) !important;
   }
 }

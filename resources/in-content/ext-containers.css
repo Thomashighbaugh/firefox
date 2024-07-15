@@ -1,29 +1,30 @@
 /* This Source Code Form is subject to the terms of the Creative Commons
- * Attribution-NonCommercial-ShareAlike International License, v. 4.0.
- * If a copy of the CC BY-NC-SA 4.0 was not distributed with this
- * file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/
- * or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. */
+* Attribution-NonCommercial-ShareAlike International License, v. 4.0.
+* If a copy of the CC BY-NC-SA 4.0 was not distributed with this
+* file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/
+* or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. */
 
 /* firefox multi-account containers extension */
 
-@-moz-document regexp("^moz-extension://.*/pageActionPopup.html.*") {
-  :root[uc-extension-id="@testpilot-containers"] {
+@-moz-document url-prefix("moz-extension://14960f03-eca3-472b-b4d2-0b7f831ebe41/pageActionPopup.html")
+{
+  :root {
     background-color: var(--uc-arrowpanel-background) !important;
     font-size: 12px !important;
     color: var(--uc-arrowpanel-color) !important;
     letter-spacing: 0 !important;
   }
 
-  svg:root[uc-extension-id="@testpilot-containers"] {
+  svg:root {
     background: none !important;
   }
 
-  html:root[uc-extension-id="@testpilot-containers"],
-  :root[uc-extension-id="@testpilot-containers"] body {
+  html,
+  body {
     min-block-size: 0 !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] body {
+  body {
     --hr-grey: var(--uc-desaturate-dimmed) !important;
     font-size: 12px !important;
     color: inherit !important;
@@ -37,7 +38,7 @@
     background: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] h3.title {
+  h3.title {
     padding-block: 8px 4px !important;
     block-size: 40px !important;
     min-height: 40px !important;
@@ -52,24 +53,22 @@
     letter-spacing: inherit !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] hr {
+  hr {
     padding: 0 !important;
     margin: var(--menupopup-inner-padding) !important;
-    border-color: var(--menu-separator-color) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .scrollable,
-  :root[uc-extension-id="@testpilot-containers"] .identities-list {
+  .scrollable,
+  .identities-list {
     margin: 0 !important;
     padding: 0 !important;
-    block-size: auto !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu {
-    padding: 0 !important;
+  .menu {
+    padding-block: revert !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu-item {
+  .menu-item {
     cursor: default !important;
     border-radius: var(--context-menuitem-border-radius) !important;
     inline-size: unset !important;
@@ -77,49 +76,47 @@
     flex-flow: row nowrap;
     padding-inline: 0 8px !important;
     min-height: var(--subviewbutton-height) !important;
-    block-size: revert !important;
     user-select: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .controller,
-  :root[uc-extension-id="@testpilot-containers"] .hover-highlight {
+  .controller,
+  .hover-highlight {
     transition: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .hover-highlight:is(:focus):not(:hover, :focus-visible) {
+  .hover-highlight:is(:focus):not(:hover, :focus-visible) {
     background: revert !important;
     color: inherit !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .hover-highlight:is(:hover, :focus-visible) {
+  .hover-highlight:is(:hover, :focus-visible) {
     color: inherit !important;
     background: var(--uc-arrowpanel-dimmed) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .hover-highlight:is(:hover, :focus-visible):active {
+  .hover-highlight:is(:hover, :focus-visible):active {
     background: var(--uc-arrowpanel-dimmed-further) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu-item td {
+  .menu-item td {
     align-items: center !important;
     overflow: clip !important;
-    padding-inline-start: 0 !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu-icon {
+  .menu-icon {
     margin: 0 !important;
     margin-inline: 6px 8px !important;
     inline-size: 16px !important;
   }
 
-  @media (-moz-bool-pref: "userChrome.css.mac-ui-fonts") {
-    :root[uc-extension-id="@testpilot-containers"] body {
-      font-family: SF Pro Text, SF Arabic, Segoe UI, sans-serif !important;
+  @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
+    body {
+      font-family: SF Pro Text, Segoe UI, sans-serif !important;
       font-kerning: normal !important;
     }
 
-    :root[uc-extension-id="@testpilot-containers"] h3.title {
-      font-family: SF Pro Display, SF Arabic, Segoe UI, sans-serif !important;
+    h3.title {
+      font-family: SF Pro Display, Segoe UI, sans-serif !important;
       font-kerning: normal !important;
       font-size: 1.1em !important;
       font-weight: var(--uc-font-weight-bold, 600) !important;
@@ -127,8 +124,9 @@
   }
 }
 
-@-moz-document regexp("^moz-extension://.*/popup.html.*") {
-  :root[uc-extension-id="@testpilot-containers"] {
+@-moz-document url-prefix("moz-extension://14960f03-eca3-472b-b4d2-0b7f831ebe41/popup.html")
+{
+  :root {
     background-color: var(--uc-arrowpanel-background) !important;
     font-size: 12px !important;
     color: var(--uc-arrowpanel-color) !important;
@@ -136,16 +134,16 @@
     scrollbar-width: none !important;
   }
 
-  svg:root[uc-extension-id="@testpilot-containers"] {
+  svg:root {
     background: none !important;
   }
 
-  html[uc-extension-id="@testpilot-containers"],
-  :root[uc-extension-id="@testpilot-containers"] body {
-    min-block-size: 200px !important;
+  html,
+  body {
+    min-block-size: 0 !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] body {
+  body {
     --hr-grey: var(--uc-desaturate-dimmed) !important;
     --text-grey: var(--uc-arrowpanel-color) !important;
     font-size: 12px !important;
@@ -154,11 +152,11 @@
     background: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] div {
+  div {
     user-select: none;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input[type="text"] {
+  input[type="text"] {
     background-color: var(--uc-desaturate-faint) !important;
     border-color: var(--uc-desaturate-dimmed) !important;
     min-height: var(--subviewbutton-height) !important;
@@ -168,24 +166,26 @@
     padding-block: 0 !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .edit-container-panel input[type="text"] {
+  .edit-container-panel input[type="text"] {
     margin-inline: 2px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :where(:focus-visible, :-moz-focusring, :focus + label) {
+  :focus-visible,
+  :-moz-focusring,
+  :focus + label {
     outline: none !important;
     box-shadow: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input[type="text"]:focus-visible {
+  input[type="text"]:focus-visible {
     border-color: transparent !important;
     outline-style: solid !important;
     outline-width: 1.5px !important;
-    outline-color: var(--global-focus-outline-color) !important;
-    box-shadow: 0 0 0 3.5px var(--global-focus-shadow-color);
+    outline-color: var(--in-parent-border-highlight) !important;
+    box-shadow: 0 0 0 3.5px var(--in-parent-border-active-shadow);
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input[type="checkbox"] {
+  input[type="checkbox"] {
     appearance: none !important;
     min-width: 10px !important;
     min-height: 10px !important;
@@ -204,29 +204,30 @@
     background-color: var(--uc-arrowpanel-faint) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input[type="checkbox"]:is(:hover, :focus-visible) {
+  input[type="checkbox"]:is(:hover, :focus-visible) {
     background-color: var(--uc-arrowpanel-dimmed) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input[type="checkbox"]:is(:hover, :focus-visible):active {
+  input[type="checkbox"]:is(:hover, :focus-visible):active {
     background-color: var(--uc-arrowpanel-dimmed-further) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input[type="checkbox"]:is([checked="true"], :checked) {
+  input[type="checkbox"]:is([checked="true"], :checked) {
     background-image: url(chrome://userchrome/content/check.svg) !important;
     border-color: var(--uc-checkbox-checked-border-color) !important;
     background-color: var(--uc-checkbox-checked-bgcolor) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input[type="checkbox"]:is([checked="true"], :checked):is(:hover, :focus-visible) {
+  input[type="checkbox"]:is([checked="true"], :checked):is(:hover, :focus-visible) {
     background-color: var(--uc-checkbox-checked-hover-bgcolor) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input[type="checkbox"]:is([checked="true"], :checked):is(:hover, :focus-visible):active {
+  input[type="checkbox"]:is([checked="true"], :checked):is(:hover, :focus-visible):active {
     background-color: var(--uc-checkbox-checked-active-bgcolor) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :where(h3.title, .proxy-panel-title) {
+  h3.title,
+  .proxy-panel-title {
     background: none !important;
     padding-block: 8px 4px !important;
     block-size: 40px !important;
@@ -245,37 +246,36 @@
     box-shadow: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] h3.proxy-panel-title {
+  h3.proxy-panel-title {
     padding-bottom: calc(((40px - 1.1em) / 2) + var(--menupopup-inner-padding-magnitude)) !important;
     min-height: 44.5px !important;
     margin-inline: var(--menupopup-inner-padding-magnitude) !important;
     inline-size: calc(100% - (var(--menupopup-inner-padding-magnitude) * 2)) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] h4 {
+  h4 {
     font-weight: 400;
     font-size: 1.1em !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .sub-header-wrapper {
+  .sub-header-wrapper {
     margin: revert !important;
     color: inherit !important;
-    padding: 0 !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .sub-header {
+  .sub-header {
     padding-inline: 10px !important;
     color: inherit !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .info-icon {
+  .info-icon {
     fill-opacity: 0.8;
     -moz-context-properties: fill, fill-opacity;
     fill: var(--ui-text-80);
     cursor: default !important;
     width: 24px !important;
     height: 24px !important;
-    border-radius: var(--general-button-border-radius) !important;
+    border-radius: var(--general-button-border-radius);
     display: flex !important;
     align-items: center;
     justify-content: center;
@@ -283,20 +283,20 @@
     right: 10.5px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .info-icon:is(:hover, :focus-visible) {
+  .info-icon:is(:hover, :focus-visible) {
     fill-opacity: 1;
-    background-color: var(--uc-arrowpanel-dimmed) !important;
+    background-color: var(--uc-arrowpanel-dimmed);
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .info-icon:hover:active {
-    background-color: var(--uc-arrowpanel-dimmed-further) !important;
+  .info-icon:hover:active {
+    background-color: var(--uc-arrowpanel-dimmed-further);
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .info-icon img {
+  .info-icon img {
     display: none;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .info-icon::before {
+  .info-icon::before {
     content: "";
     display: block;
     width: 16px;
@@ -307,75 +307,65 @@
     background-repeat: no-repeat;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] hr {
+  hr {
     margin: var(--menupopup-inner-padding-magnitude) !important;
     padding-block: 0 !important;
-    border-color: var(--menu-separator-color) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel {
+  .panel {
     min-block-size: 0 !important;
     transition: none !important;
     background: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :where(.scrollable, .identities-list) {
+  .scrollable,
+  .identities-list {
     margin: 0 !important;
     padding: 0 !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .scrollable {
+  .scrollable {
     scrollbar-width: auto !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .identities-list {
+  .identities-list {
     margin-inline: var(--menupopup-inner-padding-magnitude) !important;
     inline-size: unset !important;
     max-block-size: 600px !important;
     padding-bottom: var(--menupopup-inner-padding-magnitude) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] table[hidden]:empty {
+  table[hidden]:empty {
     display: flex !important;
     flex-flow: row nowrap !important;
     height: 20px !important;
     margin-bottom: 4px !important;
     padding-inline: 10px !important;
     align-items: center !important;
-    color: var(--uc-menu-disabled-color) !important;
+    color: var(--context-menu-disabled-color) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] table[hidden]:empty::before {
+  table[hidden]:empty::before {
     content: "(empty)" !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #edit-container-assignments > .scrollable {
+  #edit-container-assignments > .scrollable {
     padding-bottom: var(--menupopup-inner-padding-magnitude) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #container-panel .identities-list {
+  #container-panel .identities-list {
     border-bottom: 1px solid var(--uc-desaturate-dimmed) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu {
-    padding-inline: revert !important;
-  }
-
-  :root[uc-extension-id="@testpilot-containers"] .searchbar {
-    margin-block: 4px !important;
-    padding-inline: 4px !important;
+  v-padding-hack-footer {
     display: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] v-padding-hack-footer {
+  v-padding-hack-4 {
     display: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] v-padding-hack-4 {
-    display: none !important;
-  }
-
-  :root[uc-extension-id="@testpilot-containers"] .bottom-btn {
+  .bottom-btn {
     appearance: none !important;
     position: relative !important;
     height: revert !important;
@@ -393,14 +383,14 @@
     color: inherit !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #manage-containers-link:not([hidden]) {
+  #manage-containers-link:not([hidden]) {
     display: flex !important;
     align-content: center !important;
     align-items: center !important;
     padding-inline-start: 0 !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #manage-containers-link::before {
+  #manage-containers-link::before {
     content: "";
     display: inline-block;
     width: 16px;
@@ -414,11 +404,11 @@
     fill: currentColor;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu {
+  .menu {
     padding-block: revert !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu-item {
+  .menu-item {
     cursor: default !important;
     border-radius: var(--context-menuitem-border-radius) !important;
     min-height: var(--subviewbutton-height) !important;
@@ -433,29 +423,31 @@
     overflow: clip !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .identities-list .menu-item {
+  .identities-list .menu-item {
     margin-inline: 0 !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu-item :is(td, .menu-item-name, .menu-right-float) {
+  .menu-item :is(td, .menu-item-name, .menu-right-float) {
     align-items: center;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .hover-highlight:is(:focus):not(:hover, :focus-visible) {
+  .hover-highlight:is(:focus):not(:hover, :focus-visible) {
     background: revert !important;
     color: inherit !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :is(.hover-highlight, .bottom-btn):is(:hover, :focus-visible) {
+  .hover-highlight:is(:hover, :focus-visible),
+  .bottom-btn:is(:hover, :focus-visible) {
     color: inherit !important;
     background: var(--uc-arrowpanel-dimmed) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :is(.hover-highlight, .bottom-btn):hover:active {
+  .hover-highlight:hover:active,
+  .bottom-btn:hover:active {
     background: var(--uc-arrowpanel-dimmed-further) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu-text {
+  .menu-text {
     flex-grow: 1 !important;
     word-break: break-all !important;
     align-self: start !important;
@@ -464,7 +456,7 @@
     overflow: hidden !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu-icon {
+  .menu-icon {
     display: block;
     margin-inline: 6px 8px !important;
     margin-block: 0 !important;
@@ -475,44 +467,40 @@
     -moz-context-properties: fill, fill-opacity;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu-icon img {
+  .menu-icon img {
     filter: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu-icon[src="/img/container-openin-16.svg"] {
+  .menu-icon[src="/img/container-openin-16.svg"] {
     padding-left: 16px !important;
     background-image: url(chrome://userchrome/content/skin/container-go.svg) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .mac-icon {
-    background-image: url(chrome://userchrome/content/skin/container-plus.svg) !important;
-  }
-
-  :root[uc-extension-id="@testpilot-containers"] .radio-choice > .radio-container > [type="radio"]:checked + label {
+  .radio-choice > .radio-container > [type="radio"]:checked + label {
     background: var(--uc-arrowpanel-color) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #edit-container-panel-choose-icon .radio-container:hover .usercontext-icon::before {
+  #edit-container-panel-choose-icon .radio-container:hover .usercontext-icon::before {
     fill: inherit !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .radio-container:active .usercontext-icon::before {
+  .radio-container:active .usercontext-icon::before {
     transform: scale(0.85) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] [data-identity-color="grey"] {
+  [data-identity-color="grey"] {
     --identity-icon-color: var(--uc-arrowpanel-color) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] [type="radio"]:checked + [data-identity-color="grey"] {
+  [type="radio"]:checked + [data-identity-color="grey"] {
     --identity-icon-color: var(--uc-arrowpanel-background) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .sub-header:empty {
+  .sub-header:empty {
     display: none;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] tr > td > .trash-button {
+  tr > td > .trash-button {
     visibility: hidden !important;
     display: block !important;
     background-image: url(chrome://userchrome/content/close.svg) !important;
@@ -527,23 +515,24 @@
     margin-block: 0 !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] tr:hover > td > .trash-button {
+  tr:hover > td > .trash-button {
     visibility: visible !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu-icon.hover-highlight:is(:hover, :focus, :focus-visible),
-  :root[uc-extension-id="@testpilot-containers"] .menu-icon.hover-highlight:is(:hover, :focus, :focus-visible):active {
+  .menu-icon.hover-highlight:is(:hover, :focus, :focus-visible),
+  .menu-icon.hover-highlight:is(:hover, :focus, :focus-visible):active {
     background-color: transparent !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu-right-float {
+  .menu-right-float {
     display: flex;
     flex-flow: row nowrap;
     justify-content: end;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu-arrow {
+  .menu-arrow {
     padding: 0px !important;
+    margin-right: var(--menu-right-margin) !important;
     min-width: 0 !important;
     width: var(--menu-right-size) !important;
     height: var(--menu-right-size) !important;
@@ -552,11 +541,11 @@
     fill: currentColor;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu-arrow img {
+  .menu-arrow img {
     display: none;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu-arrow::after {
+  .menu-arrow::after {
     content: "";
     background-image: var(--menu-right-img);
     background-position: center;
@@ -567,15 +556,17 @@
     display: block;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :is(.identities-list, #sort-containers-link) .menu-arrow {
+  .identities-list .menu-arrow,
+  #sort-containers-link .menu-arrow {
     display: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :is(.controller, .hover-highlight) {
+  .controller,
+  .hover-highlight {
     transition: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .btn-return {
+  .btn-return {
     background-color: transparent !important;
     background-image: url(chrome://userchrome/content/menu-arrow-left.svg) !important;
     background-size: 16px !important;
@@ -599,30 +590,33 @@
     background-color: transparent;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .btn-return:is(:hover, :focus-visible, :-moz-focusring) {
+  .btn-return:is(:hover, :focus-visible, :-moz-focusring) {
     background-color: var(--uc-arrowpanel-dimmed) !important;
     fill-opacity: 0.8;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .btn-return:is(:hover, :focus-visible, :-moz-focusring):active {
+  .btn-return:is(:hover, :focus-visible, :-moz-focusring):active {
     background-color: var(--uc-arrowpanel-dimmed-further) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu-item td {
+  .menu-item td {
     border: none !important;
     flex-grow: 1;
-    padding-inline: 0 !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu-item.drag-over td {
-    background-image: linear-gradient(180deg, var(--uc-desaturate-dimmed-even-further) 1.5px, transparent 1.5px) !important;
+  .menu-item.drag-over td {
+    background-image: linear-gradient(
+      180deg,
+      var(--uc-desaturate-dimmed-even-further) 1.5px,
+      transparent 1.5px
+    ) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .move-button img {
+  .move-button img {
     display: none;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .move-button {
+  .move-button {
     background-image: url(chrome://browser/skin/notification-icons/drag-indicator.svg);
     background-size: 14px var(--subviewbutton-height) !important;
     background-position: center !important;
@@ -633,62 +627,63 @@
     height: 16px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .edit-container-panel legend,
-  :root[uc-extension-id="@testpilot-containers"] .options-header {
+  .edit-container-panel legend,
+  .options-header {
     margin-block: 0 4px !important;
     margin-inline: 2px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .options-header {
+  .options-header {
     font-size: 1.1em !important;
     margin-block: 8px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :is(fieldset, .options-header) {
+  fieldset,
+  .options-header {
     padding-block-end: 8px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #edit-container-panel > .edit-form {
+  #edit-container-panel > .edit-form {
     padding: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
     padding-block: var(--menupopup-inner-padding-magnitude) 2px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #edit-container-options > .container-options > input[type="checkbox"] {
+  #edit-container-options > .container-options > input[type="checkbox"] {
     inset-inline-start: 20px;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .radio-choice > .radio-container {
+  .radio-choice > .radio-container {
     block-size: 28px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .options-label {
+  .options-label {
     cursor: default !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .manage-assigned-sites-list {
+  .manage-assigned-sites-list {
     cursor: pointer !important;
     width: max-content !important;
     color: var(--in-content-link-color-hover) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #manage-assigned-sites-list:is(:hover, :focus-visible, :-moz-focusring) {
+  #manage-assigned-sites-list:is(:hover, :focus-visible, :-moz-focusring) {
     text-decoration: underline !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #edit-container-options {
+  #edit-container-options {
     padding-block: 4px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .container-options {
+  .container-options {
     margin-inline: 2px 8px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .switch {
+  .switch {
     block-size: 14px !important;
     inline-size: 28px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .slider {
+  .slider {
     background-color: var(--uc-switch-off-background) !important;
     border-radius: 14px !important;
     inset-block-end: 0;
@@ -700,56 +695,55 @@
     transition: 0.1s ease-in-out;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .slider:hover {
+  .slider:hover {
     background-color: var(--uc-switch-off-hover-background) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .slider:hover:active {
+  .slider:hover:active {
     background-color: var(--uc-switch-off-active-background) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .slider::before {
-    background-color: #fff;
+  .slider::before {
+    background-color: #f4f4f7;
     inset-block-end: 2px !important;
     block-size: 10px !important;
     inset-inline-start: 2px !important;
     inline-size: 10px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input:checked + .slider::before {
+  input:checked + .slider::before {
     transform: translateX(14px) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input:checked + .slider {
+  input:checked + .slider {
     background-color: var(--purple-40) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input:checked + .slider:hover {
+  input:checked + .slider:hover {
     background-color: var(--purple-50) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input:checked + .slider:hover:active {
+  input:checked + .slider:hover:active {
     background-color: var(--purple-55) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-footer {
+  .panel-footer {
     padding: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
     padding-top: var(--menupopup-inner-padding-magnitude) !important;
     background: none !important;
-    color: inherit !important;
     border: none !important;
-    box-shadow: none !important;
     block-size: revert !important;
-    column-gap: 8px;
+    column-gap: 4px;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .alert-text {
+  .alert-text {
     font-family: inherit !important;
     text-align: inherit !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-footer > .button,
-  :root[uc-extension-id="@testpilot-containers"] :where(.primary-cta, .delete-btn) {
+  .panel-footer > .button,
+  .primary-cta,
+  .delete-btn {
     appearance: none !important;
     border-radius: var(--context-menuitem-border-radius) !important;
     height: revert !important;
@@ -758,52 +752,51 @@
     min-height: var(--subviewbutton-height) !important;
     width: 100% !important;
     inline-size: -moz-available !important;
-    margin-inline: 0 !important;
-    padding-inline: 8px !important;
+    margin-block-start: var(--menupopup-inner-padding-magnitude) !important;
+    padding-inline-start: 8px !important;
     cursor: default !important;
     background-color: var(--uc-arrowpanel-dimmed) !important;
-    color: var(--uc-parent-primary-button-text-color) !important;
     border: 1px solid transparent !important;
     transition: none !important;
     box-shadow: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-footer > .button:is(:hover, :focus-visible, :-moz-focusring) {
+  .panel-footer > .button:is(:hover, :focus-visible, :-moz-focusring) {
     background-color: var(--uc-arrowpanel-dimmed) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-footer > .button:hover:active {
+  .panel-footer > .button:hover:active {
     background-color: var(--uc-arrowpanel-dimmed-further) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-footer > .button.secondary:not([disabled]) {
+  .panel-footer > .button.secondary:not([disabled]) {
     background-color: transparent !important;
     border-color: var(--uc-arrowpanel-dimmed) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-footer > .button.secondary:not([disabled], :active):is(:hover, :focus-visible) {
+  .panel-footer > .button.secondary:not([disabled], :active):is(:hover, :focus-visible) {
     background-color: var(--uc-arrowpanel-dimmed) !important;
     border-color: transparent !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-footer > .button.secondary:not([disabled]):is(:hover:active, [open]) {
+  .panel-footer > .button.secondary:not([disabled]):is(:hover:active, [open]) {
     background-color: var(--uc-arrowpanel-dimmed-further) !important;
     border-color: transparent !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-footer > .button.primary:is(:hover, :focus-visible, :-moz-focusring),
-  :root[uc-extension-id="@testpilot-containers"] .primary-cta:is(:hover, :focus-visible, :-moz-focusring),
-  :root[uc-extension-id="@testpilot-containers"] .advanced-proxy-settings-btn:is(:hover, :focus-visible, :-moz-focusring) {
-    background-color: var(--uc-parent-primary-button-background) !important;
+  .panel-footer > .button.primary:is(:hover, :focus-visible, :-moz-focusring),
+  .primary-cta:is(:hover, :focus-visible, :-moz-focusring),
+  .advanced-proxy-settings-btn:is(:hover, :focus-visible, :-moz-focusring) {
+    background-color: var(--in-parent-primary-button-background) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-footer > .button.primary:hover:active,
-  :root[uc-extension-id="@testpilot-containers"] .primary-cta:hover:active,
-  :root[uc-extension-id="@testpilot-containers"] .advanced-proxy-settings-btn:hover:active {
-    background-color: var(--uc-parent-primary-button-background-hover) !important;
+  .panel-footer > .button.primary:hover:active,
+  .primary-cta:hover:active,
+  .advanced-proxy-settings-btn:hover:active {
+    background-color: var(--in-parent-primary-button-background-hover) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .delete-btn {
+  .delete-btn {
     background-color: hsla(2, 70%, 56%, 45%) !important;
     margin-block: var(--menupopup-inner-padding-magnitude) calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
     margin-inline: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
@@ -814,15 +807,15 @@
     block-size: 0 !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .delete-btn:is(:hover, :focus-visible, :-moz-focusring) {
+  .delete-btn:is(:hover, :focus-visible, :-moz-focusring) {
     background-color: hsla(358, 70%, 50%, 85%) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .delete-btn:is(:hover, :focus-visible, :-moz-focusring):active {
+  .delete-btn:is(:hover, :focus-visible, :-moz-focusring):active {
     background-color: hsl(353, 90%, 50%) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-content.delete-container-confirm {
+  .panel-content.delete-container-confirm {
     padding-block: var(--menupopup-inner-padding-magnitude) 0 !important;
     padding-inline: 16px 0 !important;
     display: flex;
@@ -830,53 +823,44 @@
     row-gap: 8px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-content.delete-container-confirm > * {
+  .panel-content.delete-container-confirm > * {
     padding-block: revert !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #delete-container-tab-warning:empty {
+  #delete-container-tab-warning:empty {
     display: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .blue-link,
-  :root[uc-extension-id="@testpilot-containers"] .blue-link span {
+  .blue-link,
+  .blue-link span {
     cursor: pointer !important;
     color: var(--purple-30) !important;
     transition: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .blue-link:hover,
-  :root[uc-extension-id="@testpilot-containers"] .blue-link:hover span {
+  .blue-link:hover,
+  .blue-link:hover span {
     color: var(--purple-25) !important;
     text-decoration: underline !important;
     transition: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :is(.moz-vpn-content, .moz-vpn-controller-content) {
+  .moz-vpn-content,
+  .moz-vpn-controller-content {
     min-block-size: 0 !important;
     box-shadow: none !important;
-    border-top: none !important;
+    border-top: 1px solid var(--hr-grey) !important;
     margin: var(--menupopup-inner-padding-magnitude) 0 !important;
-    padding-block: 0 !important;
+    padding-block: 8px 0 !important;
     transition: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :is(.moz-vpn-content, .moz-vpn-controller-content)::before {
-    display: block;
-    content: "";
-    width: 100%;
-    height: 0;
-    border-top: 1px solid var(--hr-grey);
-    margin: var(--menupopup-inner-padding-magnitude) 0;
-    margin-block: 0 8px;
-    transition: none !important;
-  }
-
-  :root[uc-extension-id="@testpilot-containers"] :is(.collapsible-content, .add-bg-color) {
+  .collapsible-content,
+  .add-bg-color {
     background-color: transparent !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .collapsible-content {
+  .collapsible-content {
     max-block-size: 0;
     opacity: 0;
     visibility: hidden;
@@ -884,7 +868,8 @@
     transition: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :is(.moz-vpn-logo, .moz-vpn-logotype) {
+  .moz-vpn-logo,
+  .moz-vpn-logotype {
     background-image: url("chrome://userchrome/content/material/firefox-vpn.svg") !important;
     color: inherit !important;
     font-family: inherit !important;
@@ -893,7 +878,7 @@
     font-size: 1.1em !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .moz-vpn-cta {
+  .moz-vpn-cta {
     block-size: var(--subviewbutton-height) !important;
     margin-block: 6px 0 !important;
     margin-inline: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
@@ -901,14 +886,14 @@
     line-height: normal !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .advanced-proxy-settings-btn {
+  .advanced-proxy-settings-btn {
     appearance: none !important;
     border-radius: var(--context-menuitem-border-radius) !important;
     min-height: var(--subviewbutton-height) !important;
     background-color: var(--uc-arrowpanel-dimmed) !important;
     transition: none !important;
-    block-size: revert !important;
-    min-block-size: var(--subviewbutton-height) !important;
+    block-size: var(--subviewbutton-height) !important;
+    min-block-size: revert !important;
     box-shadow: none !important;
     border: 1px solid transparent !important;
     margin-block: var(--menupopup-inner-padding-magnitude) !important;
@@ -916,7 +901,6 @@
     line-height: normal !important;
     text-align: initial !important;
     padding-inline-start: 30px !important;
-    padding-block: 5px !important;
     background-image: url(chrome://userchrome/content/settings.svg), var(--iconArrowRight) !important;
     -moz-context-properties: fill, fill-opacity;
     fill: currentColor !important;
@@ -924,36 +908,32 @@
     background-size: 16px 16px, 9px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .advanced-proxy-settings-btn #advanced-proxy-address {
-    color: var(--uc-panel-description-color) !important;
-  }
-
-  :root[uc-extension-id="@testpilot-containers"] .collapsible-content > .flx-row.flx-space-between {
+  .collapsible-content > .flx-row.flx-space-between {
     inline-size: calc(100% - ((var(--menupopup-inner-padding-magnitude) * 2) * 2)) !important;
     padding-block-start: 8px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .button-wrapper {
+  .button-wrapper {
     margin-inline: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .advanced-proxy-panel-content {
-    padding-block: calc(var(--menupopup-inner-padding-magnitude)) !important;
+  .advanced-proxy-panel-content {
+    padding-block: calc(var(--menupopup-inner-padding-magnitude) + 4px) !important;
     padding-inline: calc(var(--menupopup-inner-padding-magnitude) + 6px) !important;
     margin-block-start: 48.5px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .advanced-proxy-input-wrapper {
+  .advanced-proxy-input-wrapper {
     margin-block: var(--menupopup-inner-padding-magnitude) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .apply-to-container {
+  .apply-to-container {
     block-size: var(--subviewbutton-height) !important;
     margin-block: var(--menupopup-inner-padding-magnitude) !important;
     line-height: normal !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #clear-advanced-proxy-input {
+  #clear-advanced-proxy-input {
     inset-inline-end: 6px !important;
     inset-block-start: 6px !important;
     background-image: url(chrome://userchrome/content/textbox-clear.svg) !important;
@@ -974,11 +954,11 @@
     box-sizing: border-box !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #clear-advanced-proxy-input:hover {
+  #clear-advanced-proxy-input:hover {
     background-color: var(--uc-arrowpanel-dimmed) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .proxy-validity {
+  .proxy-validity {
     position: absolute;
     inset-block-start: 30px !important;
     inset-inline-start: 10px !important;
@@ -989,25 +969,26 @@
     padding-inline: 5px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .proxy-validity::after {
+  .proxy-validity::after {
     background-color: var(--warning-icon-background) !important;
     inset-inline-start: 8px !important;
   }
 
-  @media (-moz-bool-pref: "userChrome.css.mac-ui-fonts") {
-    :root[uc-extension-id="@testpilot-containers"] body {
-      font-family: SF Pro Text, SF Arabic, Segoe UI, sans-serif !important;
+  @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
+    body {
+      font-family: SF Pro Text, Segoe UI, sans-serif !important;
       font-kerning: normal !important;
     }
 
-    :root[uc-extension-id="@testpilot-containers"] :is(h3.title, .proxy-panel-title) {
-      font-family: SF Pro Display, SF Arabic, Segoe UI, sans-serif !important;
+    h3.title,
+    .proxy-panel-title {
+      font-family: SF Pro Display, Segoe UI, sans-serif !important;
       font-kerning: normal !important;
       font-size: 1.1em !important;
       font-weight: var(--uc-font-weight-bold, 600) !important;
     }
 
-    :root[uc-extension-id="@testpilot-containers"] h4 {
+    h4 {
       font-weight: 500 !important;
     }
   }

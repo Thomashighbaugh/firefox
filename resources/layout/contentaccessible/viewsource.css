@@ -1,6 +1,8 @@
 @charset "utf-8";
 @import url(chrome://userchrome/content/layout/uc-low-globals.css);
 
+/* just like the name suggests, this is the stylesheet for "View Source" pages. */
+
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
@@ -8,23 +10,22 @@
 @namespace url(http://www.w3.org/1999/xhtml); /* set default namespace to HTML */
 
 @font-face {
-  font-family: "Fira Code UC";
+  font-family: "Overpass Mono";
   font-style: normal;
-  src: local("Fira Code"), local("Fira Code Light"), url(../fonts/FiraCode-VF.woff);
-  font-feature-settings: "cv14", "cv19", "cv30", "ss01", "ss02", "ss05", "ss07", "ss09";
+  font-weight: 100;
+  src: local("Overpass Mono"), local("Overpass Mono Light"), local("OverpassMono-Light");
 }
-
 *|*:root {
-  color-scheme: light dark;
+  font-family: Overpass Mono, -moz-fixed;
+  background-color: white;
+  color: black;
   direction: ltr;
   -moz-control-character-visibility: visible;
   height: 100%;
-  font-family: Fira Code UC, Fira Code, SF Mono, -moz-fixed, monospace;
-  font-weight: 300;
 }
 #viewsource {
-  font-family: Fira Code UC, Fira Code, SF Mono, -moz-fixed, monospace;
-  font-weight: 300;
+  font-family: Overpass Mono, -moz-fixed;
+  font-weight: normal;
   white-space: pre;
   counter-reset: line;
   height: 100%;
@@ -52,34 +53,35 @@ span[id]::before {
   margin: 0 0 0 -5ch;
   text-align: right;
   color: #ccc;
-  font-weight: 300;
+  font-weight: normal;
   font-style: normal;
 }
 xmp,
 pre,
 plaintext {
-  font-family: Fira Code UC, Fira Code, SF Mono, -moz-fixed, monospace;
-  font-weight: 300;
+  font-family: Overpass Mono, -moz-fixed;
 }
-.highlight .start-tag,
+.highlight .start-tag {
+  color: purple;
+  font-weight: bold;
+}
 .highlight .end-tag {
-  color: #800080;
-  font-weight: 500;
+  color: purple;
+  font-weight: bold;
 }
 .highlight .comment {
-  color: #008000;
+  color: green;
   font-style: italic;
 }
 .highlight .cdata {
   color: #cc0066;
 }
-.highlight .doctype,
-.highlight .markupdeclaration {
-  color: #4682b4;
+.highlight .doctype {
+  color: steelblue;
   font-style: italic;
 }
 .highlight .pi {
-  color: #da70d6;
+  color: orchid;
   font-style: italic;
 }
 .highlight .entity {
@@ -90,11 +92,16 @@ plaintext {
   font-weight: normal;
 }
 .highlight .attribute-name {
-  font-weight: 500;
+  color: black;
+  font-weight: bold;
 }
 .highlight .attribute-value {
-  color: #0000ff;
+  color: blue;
   font-weight: normal;
+}
+.highlight .markupdeclaration {
+  color: steelblue;
+  font-style: italic;
 }
 span:not(.error),
 a:not(.error) {
@@ -103,36 +110,42 @@ a:not(.error) {
 span[id] {
   unicode-bidi: isolate;
 }
-.highlight .error {
-  color: revert;
-  font-weight: 500;
-  text-decoration: underline;
-  text-decoration-color: #ff0000;
-  text-decoration-style: wavy;
-  text-decoration-skip-ink: none;
+.highlight .error,
+.highlight
+  .error
+  > :is(.start-tag, .end-tag, .comment, .cdata, .doctype, .pi, .entity, .attribute-name, .attribute-value) {
+  color: red;
+  font-weight: bold;
 }
 @media (prefers-color-scheme: dark) {
-  .highlight .start-tag,
-  .highlight .end-tag {
-    color: #f55e5e;
+  :root,
+  body {
+    color: var(--plaintext-color);
+    background-color: var(--in-content-bg-dark);
   }
-  .highlight .comment {
-    color: #90ee90;
+  span {
+    color: var(--plaintext-color);
   }
-  .highlight .cdata {
-    color: #f068ac;
+  html:root {
+    color: var(--plaintext-color);
   }
-  .highlight .doctype,
-  .highlight .markupdeclaration {
-    color: #d3d3d3;
-  }
-  .highlight .entity {
-    color: #f18a65;
+  .highlight .attribute-name {
+    color: lightskyblue;
   }
   .highlight .attribute-value {
-    color: #97bbff;
+    color: lightgreen;
+  }
+  .highlight .start-tag {
+    color: tan;
+  }
+  .highlight .end-tag {
+    color: indianred;
   }
   .highlight .error {
-    text-decoration-color: #ff3b3b;
+    color: white;
+    background-color: rgba(178, 34, 34, 0.5);
+  }
+  .highlight .entity {
+    color: mediumorchid;
   }
 }

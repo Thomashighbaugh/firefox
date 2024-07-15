@@ -1,24 +1,18 @@
-<!-- This Source Code Form is subject to the terms of the Mozilla Public
-   - License, v. 2.0. If a copy of the MPL was not distributed with this
-   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+<svg width="16" height="16">
   <style>
-    :root > use:not(:target),
-    :root > g:not(:target) {
-      display: none;
-    }
+    <![CDATA[:root>g:not(:target),:root>use:not(:target){display:none}]]>
   </style>
   <defs>
-    <path id="arrow-icon" d="M7.293 12.725a1 1 0 0 0 1.414 0l5-5a1 1 0 0 0-1.414-1.413L9 9.605V1.019a1 1 0 0 0-2 0v8.586L3.707 6.312a1 1 0 0 0-1.414 1.413l5 5z"/>
-    <path id="short-bar-icon" d="m 13,14 a 1,1 0 1 1 0,2 h -10 a 1,1 0 1 1 0,-2 z"/>
-    <path id="long-bar-icon" d="m 14,14 a 1,1 0 1 1 0,2 h -12 a 1,1 0 1 1 0,-2"/>
+    <path id="download-icons_svg__arrow-icon" d="M7.293 12.725a1 1 0 0 0 1.414 0l5-5a1 1 0 0 0-1.414-1.413L9 9.605V1.019a1 1 0 0 0-2 0v8.586L3.707 6.312a1 1 0 0 0-1.414 1.413l5 5z"/>
+    <path id="download-icons_svg__short-bar-icon" d="M13 14a1 1 0 1 1 0 2H3a1 1 0 1 1 0-2z"/>
+    <path id="download-icons_svg__long-bar-icon" d="M14 14a1 1 0 1 1 0 2H2a1 1 0 1 1 0-2"/>
   </defs>
-  <use id="arrow" fill="context-fill" fill-opacity="context-fill-opacity" href="#arrow-icon"/>
-  <g id="arrow-with-bar" fill="context-fill" fill-opacity="context-fill-opacity">
-    <use href="#arrow-icon"/>
-    <use href="#short-bar-icon"/>
+  <use id="download-icons_svg__arrow" fill="#f4f4f7" fill-opacity="context-fill-opacity" href="#download-icons_svg__arrow-icon"/>
+  <g id="download-icons_svg__arrow-with-bar" fill="#f4f4f7" fill-opacity="context-fill-opacity">
+    <use href="#download-icons_svg__arrow-icon"/>
+    <use href="#download-icons_svg__short-bar-icon"/>
   </g>
-  <use id="default-bar" fill="context-fill" fill-opacity="context-fill-opacity" href="#short-bar-icon"/>
-  <use id="progress-bar-bg" fill="context-fill" fill-opacity="0.2" href="#long-bar-icon"/>
-  <use id="progress-bar-fg" fill="context-fill" fill-opacity="context-fill-opacity" href="#long-bar-icon"/>
+  <use id="download-icons_svg__default-bar" fill="#f4f4f7" fill-opacity="context-fill-opacity" href="#download-icons_svg__short-bar-icon"/>
+  <use id="download-icons_svg__progress-bar-bg" fill="#f4f4f7" fill-opacity=".2" href="#download-icons_svg__long-bar-icon"/>
+  <use id="download-icons_svg__progress-bar-fg" fill="#f4f4f7" fill-opacity="context-fill-opacity" href="#download-icons_svg__long-bar-icon"/>
 </svg>

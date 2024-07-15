@@ -23,7 +23,7 @@
 }
 
 .titlebar-button image {
-  height: 8px !important;
+  height: 14px !important;
   color: black;
 }
 
@@ -71,12 +71,12 @@ tab .tab-background {
 }
 
 tab[selected="true"] .tab-background {
-  background: #fdfdfd !important;
+  background: #f0f0ff !important;
 }
 
 tab {
   cursor: pointer;
-  margin-top: 3px !important;
+  margin-top: 1px !important;
 }
 
 tab:first-child {
@@ -114,8 +114,8 @@ tab:first-child {
   border-radius: 5px !important;
   cursor: pointer !important;
   padding: 3px !important;
-  height: 25px !important;
-  width: 25px !important;
+  height: 30px !important;
+  width: 30px !important;
   margin-left: 5px !important;
   margin-right: 5px !important;
 }
@@ -175,7 +175,7 @@ tab:first-child {
 }
 
 #nav-bar {
-  height: 40px;
+  height: 35px;
 }
 
 .toolbarbutton-badge-stack {
@@ -205,10 +205,9 @@ tab:first-child {
 }
 
 #PersonalToolbar {
-  height: 35px !important;
+  height: 30px !important;
 }
 
 body {
   background-color: #ecebf0 !important;
 }
-

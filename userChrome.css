@@ -76,7 +76,7 @@ tab[selected="true"] .tab-background {
 
 tab {
   cursor: pointer;
-  margin-top: 5px !important;
+  margin-top: 3px !important;
 }
 
 tab:first-child {
@@ -175,7 +175,7 @@ tab:first-child {
 }
 
 #nav-bar {
-  height: 50px;
+  height: 40px;
 }
 
 .toolbarbutton-badge-stack {
@@ -189,7 +189,7 @@ tab:first-child {
   box-shadow: 3px 3px 0px black;
   border-radius: 3px;
   margin-right: 14px !important;
-  margin-bottom: 5px !important;
+  margin-bottom: 3px !important;
 }
 
 .bookmark-item image {
@@ -205,7 +205,7 @@ tab:first-child {
 }
 
 #PersonalToolbar {
-  height: 30px !important;
+  height: 35px !important;
 }
 
 body {

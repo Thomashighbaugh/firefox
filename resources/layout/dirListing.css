@@ -9,6 +9,7 @@
   color: -moz-dialogtext;
   font: message-box;
   padding-inline: 2em;
+  color-scheme: light dark;
 }
 
 body {
@@ -96,13 +97,21 @@ td:not(:first-child) {
 }
 
 .up::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
   margin-inline: -20px 4px;
   vertical-align: middle;
-  content: url(chrome://global/skin/dirListing/up.png);
+  background: url(chrome://global/skin/dirListing/up.png) center/16px no-repeat;
 }
 
 .dir::before {
-  content: url(chrome://global/skin/dirListing/folder.png);
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url(chrome://global/skin/dirListing/folder.png) center/16px no-repeat;
 }
 
 @media (prefers-color-scheme: dark) {

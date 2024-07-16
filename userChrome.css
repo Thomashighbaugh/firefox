@@ -115,7 +115,7 @@ tab:first-child {
   
 }
 
-#tabs-newtab-button .toolbarbutton-icon, .toolbarbutton-1, .tabs-alltabs-button
+#tabs-newtab-button .toolbarbutton-icon, .tabs-alltabs-button
 #new-tab-button image {
   background-color: #f0f0ff;
   border: 1px solid black;
@@ -237,5 +237,7 @@ tab:first-child {
 }
 
 body {
-  background-color: #ecebf0 !important;
+
+   background-color: linear-gradient(-23deg, #eceaf2 #e8e8ea, #ededff, #f0f0ff);
+
 }

@@ -1,236 +1,41 @@
-/* @import url(CSS/uc-globals.css); */
-/* @import url(CSS/uc-variables.css); */
-/* @import url(CSS/uc-tabs-bar.css); */
-/* @import url(CSS/uc-context-menu-icons.css); */
-/* @import url(CSS/uc-panels.css); */
-/* @import url(CSS/uc-app-menu.css); */
-/* @import url(CSS/uc-tabs.css); */
-/* @import url(CSS/uc-urlbar.css); */
-/* @import url(CSS/uc-findbar.css); */
-/* @import url(CSS/uc-navbar.css); */
-/* @import url(CSS/uc-urlbar-results.css); */
-/* @import url(CSS/uc-search-one-offs.css); */
-/* @import url(CSS/uc-ctrl-tab.css); */
-/* @import url(CSS/uc-sidebar.css); */
-/* @import url(CSS/uc-bookmarks.css); */
-/* @import url(CSS/uc-context-menus.css); */
-/* @import url(CSS/uc-fullscreen.css); */
-/* @import url(CSS/resources/in-content/library.css); */
-/* @import url(CSS/resources/in-content/downloads.css); */
-/* @import url(CSS/uc-popups.css); */
-/* @import url(CSS/uc-search-mode-icons.css); */
-/* @import url(CSS/uc-extensions.css); */
-/* @import url(CSS/uc-unified-extensions.css); */
-/* @import url(CSS/uc-misc.css); */
-/* @import url(CSS/custom-chrome.css); */
+/* MPL 2.0 https://github.com/soulhotel/FF-ULTIMA/blob/main/LICENSE */
 
+/*  
+Change tab size?
+Change autohide option?
+Want to use sidebery instead? + More.
+Come to the modification page: https://github.com/soulhotel/FF-ULTIMA/blob/main/doc/Modification.md
+*/
 
-.browser-toolbar {
-  min-width: 0;
-  min-height: 0;
-  background-color: linear-gradient(-23deg, #eceaf2 #e8e8ea, #ededff, #f0f0ff);
-}
-.titlebar-button {
-  background-color: #f0f0ff !important;
-  color: black !important;
-  margin: 5px !important;
-  border: 1px solid black !important;
-  box-shadow: 3px 3px 0px black;
-  width: 25px !important;
-  height: 25px !important;
-  font-size: 10px !important;
-  border-radius: 3px !important;
-  padding: 0px !important;
-  cursor: pointer;
-  margin-top: 8px !important;
-}
+@import url(theme/all-global-positioning.css);
 
-.titlebar-button:last-child {
-  margin-right: 10px !important;
-}
+@import url(theme/all-global-theme-fullmoon.css);
+@import url(theme/all-global-theme-dusky.css);
 
-.titlebar-button image {
-  height: 14px !important;
-  color: black;
-}
+@import url(theme/position-tabs.css);
+@import url(theme/position-tabs-gone.css);
+@import url(theme/position-tabs-onlyprivate.css);
+@import url(theme/position-findbar.css);
 
-.titlebar-min image {
-  /*<!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->*/
-  list-style-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M32 416c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H32z'/%3E%3C/svg%3E") !important;
-}
+@import url(theme/function-tabs-autohide-i.css); 
+@import url(theme/function-mini-button-bar.css);
+@import url(theme/function-tabs-collapse.css);
+@import url(theme/function-sidebar-autohide.css);
+@import url(theme/function-sidebery-autohide.css);
+@import url(theme/function-containers-indicator.css);
+@import url(theme/function-menu-button.css);
+@import url(theme/function-privatemode-indicator.css); /* sourced from MOG */
+@import url(theme/function-urlbar.css);
+@import url(theme/function-extensions-menu.css);
+@import url(theme/function-safeguard.css);
 
-.titlebar-min:hover {
-  background-color: #26c73f !important;
-  transition: 0.5s;
-}
+@import url(theme/theme-return-window-controls.css);
+@import url(theme/theme-context-menu.css);
+@import url(theme/theme-menubar.css);
+@import url(theme/theme-statuspanel.css);
+@import url(theme/theme-PIP.css);
+@import url(theme/theme-tab-audio-indicator.css);
 
-.titlebar-restore:hover,
-.titlebar-max:hover {
-  background-color: #fdbc2d !important;
-  transition: 0.5s;
-}
-
-.titlebar-close:hover {
-  background-color: #fd5f56 !important;
-  transition: 0.5s;
-}
-
-.titlebar-close {
-  /*<!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->*/
-  list-style-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'%3E%3Cpath d='M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z'/%3E%3C/svg%3E") !important;
-}
-
-.titlebar-restore {
-  /*<!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->*/
-  list-style-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M432 48H208c-17.7 0-32 14.3-32 32V96H128V80c0-44.2 35.8-80 80-80H432c44.2 0 80 35.8 80 80V304c0 44.2-35.8 80-80 80H416V336h16c17.7 0 32-14.3 32-32V80c0-17.7-14.3-32-32-32zM48 448c0 8.8 7.2 16 16 16H320c8.8 0 16-7.2 16-16V256H48V448zM64 128H320c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V192c0-35.3 28.7-64 64-64z'/%3E%3C/svg%3E") !important;
-}
-
-.titlebar-max {
-  /*<!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->*/
-  list-style-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M384 80c8.8 0 16 7.2 16 16V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16H384zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z'/%3E%3C/svg%3E") !important;
-}
-
-tab .tab-background {
-  background-color: #e8e8ea !important;
-  border: 1px solid black !important;
-  box-shadow: 3px 3px 0px black !important;
-  border-radius: 5px !important;
-}
-
-tab[selected="true"] .tab-background {
-  background: #ffffff !important;
-}
-
-tab {
-  cursor: pointer;
-  margin-top: 1px !important;
-}
-
-tab:first-child {
-  margin-left: 10px !important;
-}
-
-
-#tabs-newtab-button .toolbarbutton-icon, .tabs-alltabs-button
-#new-tab-button image {
-  background-color: #f0f0ff;
-  border: 1px solid black;
-  box-shadow: 3px 3px 0px black !important;
-  border-radius: 5px !important;
-  margin-top: 5px !important;
-}
-
-#tabs-newtab-button,
-#new-tab-button {
-  cursor: pointer;
-}
-
-#back-button image,
-#forward-button image,
-#home-button image,
-#reload-button image,
-#downloads-button image,
-#unified-extensions-button image,
-#PanelUI-button image {
-  background-color: #f0f0ff;
-  border: 1px solid black;
-  box-shadow: 3px 3px 0px black !important;
-  border-radius: 5px !important;
-  cursor: pointer !important;
-  padding: 3px !important;
-  height: 30px !important;
-  width: 30px !important;
-  margin-left: 5px !important;
-  margin-right: 5px !important;
-}
-
-#back-button image {
-  list-style-image: url(https://firebasestorage.googleapis.com/v0/b/image-host-d4713.appspot.com/o/arrow-left-solid.svg?alt=media&token=47103f7d-749e-42e2-bd84-f4e7d8565126);
-}
-
-#forward-button image {
-  list-style-image: url(https://firebasestorage.googleapis.com/v0/b/image-host-d4713.appspot.com/o/arrow-right-solid.svg?alt=media&token=55da06aa-655b-47a6-b1f1-0bffd8a56509);
-}
-
-#PanelUI-button image {
-  list-style-image: url(https://firebasestorage.googleapis.com/v0/b/image-host-d4713.appspot.com/o/bars-solid.svg?alt=media&token=25c61983-c075-49e0-8fac-8a59a00ce698);
-}
-#unified-extensions-button image {
-  list-style-image: url(https://firebasestorage.googleapis.com/v0/b/image-host-d4713.appspot.com/o/puzzle-piece-solid.svg?alt=media&token=cf9a5ade-b15c-4247-8297-4bcef6feddfa);
-}
-
-#downloads-button image {
-  list-style-image: url(https://firebasestorage.googleapis.com/v0/b/image-host-d4713.appspot.com/o/download-solid.svg?alt=media&token=232669fc-3ee8-41ed-9661-1a28962b88b8) !important;
-}
-
-#reload-button image {
-  list-style-image: url(https://firebasestorage.googleapis.com/v0/b/image-host-d4713.appspot.com/o/rotate-right-solid.svg?alt=media&token=36ec6fef-0d35-4e34-af51-e4a091c961eb);
-}
-
-#home-button image {
-  list-style-image: url(https://firebasestorage.googleapis.com/v0/b/image-host-d4713.appspot.com/o/house-solid.svg?alt=media&token=4e8b0f36-b6b8-4e33-8712-252f4eaeb34f);
-}
-
-#identity-icon-box image {
-  list-style-image: url(https://firebasestorage.googleapis.com/v0/b/image-host-d4713.appspot.com/o/lock-solid.svg?alt=media&token=1f1fb871-aad0-4601-952e-ea8329fc7de4);
-}
-
-
-#urlbar-container {
-  height: 100% !important;
-}
-#urlbar-container #urlbar {
-  background-color: #f0f0ff !important;
-  border: 1px solid black !important;
-  border-radius: 5px !important;
-  box-shadow: 3px 3px 0px black;
-}
-
-#urlbar-container #urlbar #urlbar-background {
-  background-color: #f0f0ff !important;
-}
-
-#PersonalToolbar,
-#nav-bar {
-     background-color: linear-gradient(-23deg, #eceaf2 #e8e8ea, #ededff, #f0f0ff);
-
-}
-
-#nav-bar {
-  height: 35px;
-}
-
-.toolbarbutton-badge-stack {
-  padding: 0px !important;
-}
-
-.bookmark-item {
-  background-color: #f0f0ff !important;
-  padding: 3px;
-  border: 1px solid black;
-  box-shadow: 3px 3px 0px black;
-  border-radius: 3px;
-  margin-right: 14px !important;
-  margin-bottom: 3px !important;
-}
-
-.bookmark-item image {
-  list-style-image: url(https://firebasestorage.googleapis.com/v0/b/image-host-d4713.appspot.com/o/folder-regular.svg?alt=media&token=dc2a602a-afca-4082-968e-b2635aa7db44);
-}
-
-.bookmark-item:first-child {
-  margin-left: 7px !important;
-}
-
-#OtherBookmarks {
-  margin-right: 5px !important;
-}
-
-#PersonalToolbar {
-  height: 30px !important;
-}
-
-body {
-   background-color: linear-gradient(-23deg, #eceaf2 #e8e8ea, #ededff, #f0f0ff);
-
-}
+@import url(theme/override-linux.css);
+@import url(theme/override-mac.css);
+@import url(theme/override-styles.css);

@@ -8,9 +8,6 @@
     "lint": "eslint ./JS/ ./resources/aboutuserchrome/src/",
     "lint:fix": "eslint --fix ./JS/ ./resources/aboutuserchrome/src/"
   },
-  "engines": {
-    "node": "19.x"
-  },
   "targets": {
     "aboutuserchrome": {
       "source": "./resources/aboutuserchrome/src/aboutuserchrome.html",
@@ -48,5 +45,6 @@
     "react-markdown": "8.0.4",
     "react-syntax-highlighter": "15.5.0",
     "remark-breaks": "3.0.2"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

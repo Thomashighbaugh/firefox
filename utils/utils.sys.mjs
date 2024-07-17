@@ -1,3 +1,4 @@
+const { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 import { FileSystem as FS } from "chrome://userchromejs/content/fs.sys.mjs";
 
 export class Pref{

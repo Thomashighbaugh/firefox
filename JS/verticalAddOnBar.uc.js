@@ -1,17 +1,11 @@
-// 'Vertical Add-on Bar' script for Firefox 60+ by Aris
-//
-// no 'close' button
-// 'toggle' toolbar with 'Ctr + Alt + /' on Windows/Linux or 'Cmd + Alt + /' on macOS
-// optional toggle button hides the toolbar temporarily, it gets restored on every restart
-// 'Vertical Add-on Bar' entry is only visible in toolbars context menu when in customizing mode
-//
-// flexible spaces on toolbar work 'vertically'
-// toolbar can be on the left or on the right
-// toolbar is display horizontally in customizing mode
+// ==UserScript==
+// @name Veritcal Add-On Bar
+// @version 1.2.0
+// @author Thomas Leon Highbaugh
+// @description    Creates a bar opposite (hopefully) of the new tabs that you can add builtin function icons to, no more extensions so Mozilla, Mozilla'ed that to be more like Chrome for whatever reason they think I still use their browser and not Chrome but want a browser identical to Chrome...
+// ==/UserScript==
 
-// [!] Fix for WebExtensions with own windows by 黒仪大螃蟹 (for 1-N scripts)
-
-Components.utils.import("resource:///modules/CustomizableUI.jsm");
+Components.utils.import("resource:///modules/CustomizableUI.sys.mjs");
 var { Services } = Components.utils.import(
   "resource://gre/modules/Services.jsm",
   {}

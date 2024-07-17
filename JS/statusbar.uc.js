@@ -1,16 +1,10 @@
-// Add-on Bar script for Firefox 60+ by Aris
-//
-// no 'close' button
-// 'toggle' toolbar with 'Ctr + /' on Windows/Linux or 'Cmd + /' on macOS
-// no 'Add-on Bar' entry in toolbar context menu
-//
-// option: smaller buttons / reduced toolbar button height
-//
-// flexible spaces on add-on bar behave like on old Firefox versions
-
-// [!] Fix for WebExtensions with own windows by 黒仪大螃蟹 (for 1-N scripts)
-
-Components.utils.import("resource:///modules/CustomizableUI.jsm");
+// ==UserScript==
+// @name StatusBar
+// @version 1.2.0
+// @author Thomas Leon Highbaugh
+// @description    Without going aminomancer about it and writing a Tolstoy length novel on the subject, this creates a bar on the bottom of the browser's window that you can add the various builtins from the overflow menu too (because they locked away the add-ons in a hamburger menu, which isn't actually that bad tbh). This was once a feature, then Mozilla decided it worked too well and killed it, so this script reimplements it.
+// ==/UserScript==
+Components.utils.import("resource:///modules/CustomizableUI.sys.mjs");
 var { Services } = Components.utils.import(
   "resource://gre/modules/Services.jsm",
   {}

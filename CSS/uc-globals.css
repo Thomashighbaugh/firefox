@@ -31,7 +31,7 @@ but other than that these variables should be available everywhere. */
   --ui-text-90: hsla(0, 0%, 100%, 0.9);
   --ui-text-100: #fff;
 
-  --uc-accent-color: hsl(233, 59%, 8%);
+  --uc-accent-color: #e0e0ff;
   --uc-frame-color: var(--uc-accent-color);
   --uc-toolbar-bgcolor: hsl(233, 42%, 15%);
   --uc-toolbar-color: var(--ui-text-100);

@@ -1452,7 +1452,7 @@
         // we therefore have to update the "multiselected" attribute for every row.
         _onTabMultiSelect() {
             for (let item of this.rows)
-                !!item.tab.multiselected
+                item.tab.multiselected
                     ? item.setAttribute("multiselected", true)
                     : item.removeAttribute("multiselected");
         }

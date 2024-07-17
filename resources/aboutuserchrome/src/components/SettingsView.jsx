@@ -90,7 +90,7 @@ export const SettingsView = () => {
               </div>
               <a
                 href="https://github.com/MrOtherGuy/fx-autoconfig#startup-error"
-                target="_blank">
+                target="_blank" rel="noreferrer">
                 Learn more
               </a>
             </div>

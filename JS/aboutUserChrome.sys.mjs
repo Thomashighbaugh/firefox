@@ -45,7 +45,7 @@ function findResources() {
   let fileUri = chromeRegistry.convertChromeURL(uri);
   let file = fphs.getFileFromURLSpec(fileUri.spec).QueryInterface(Ci.nsIFile);
   if (file.exists()) return url;
-  // eslint-disable-next-line no-console
+   
   console.warn(
     `about:userchrome source files not found.
 Please download them from https://github.com/aminomancer/uc.css.js/tree/master/resources/aboutuserchrome`
@@ -117,7 +117,7 @@ function initUserChromeNotifications() {
       sss.AUTHOR_SHEET
     );
   } catch (error) {
-    console.error(`Failed to load aboutUserChrome stylesheet: ${error.name}`); // eslint-disable-line no-console
+    console.error(`Failed to load aboutUserChrome stylesheet: ${error.name}`);  
   }
 
   /** Per-window class to handle app menu banners. */
@@ -147,7 +147,7 @@ function initUserChromeNotifications() {
           Ci.nsIDOMWindowUtils.AUTHOR_SHEET
         );
       } catch (error) {
-        // eslint-disable-next-line no-console
+         
         console.error(
           `Failed to load aboutUserChrome stylesheet: ${error.name}`
         );
@@ -390,7 +390,7 @@ function initUserChromeNotifications() {
           return;
       }
 
-      // eslint-disable-next-line no-console
+       
       console.warn(warning);
     }
   }

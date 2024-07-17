@@ -273,7 +273,7 @@
 
 /*--when screen height falls below xx dont display buttons--*/
 
-@media (max-height: 600px) {
+@media (max-height: 300px) {
   #TabsToolbar:not([customizing="true"]) .toolbarbutton-1[removable="true"] {
     display: none !important;
   }

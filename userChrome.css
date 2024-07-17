@@ -110,10 +110,6 @@ tab:first-child {
   margin-left: 10px !important;
 }
 
-.tabs-alltabs-button {
-/*  display: none; */
-  
-}
 
 #tabs-newtab-button .toolbarbutton-icon, .tabs-alltabs-button
 #new-tab-button image {
@@ -179,9 +175,6 @@ tab:first-child {
   list-style-image: url(https://firebasestorage.googleapis.com/v0/b/image-host-d4713.appspot.com/o/lock-solid.svg?alt=media&token=1f1fb871-aad0-4601-952e-ea8329fc7de4);
 }
 
-#fxa-toolbar-menu-button {
-  display: none !important;
-}
 
 #urlbar-container {
   height: 100% !important;
@@ -199,7 +192,8 @@ tab:first-child {
 
 #PersonalToolbar,
 #nav-bar {
-  background-color: #eae8ef !important;
+     background-color: linear-gradient(-23deg, #eceaf2 #e8e8ea, #ededff, #f0f0ff);
+
 }
 
 #nav-bar {
@@ -237,7 +231,6 @@ tab:first-child {
 }
 
 body {
-
    background-color: linear-gradient(-23deg, #eceaf2 #e8e8ea, #ededff, #f0f0ff);
 
 }

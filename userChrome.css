@@ -8,9 +8,10 @@ Come to the modification page: https://github.com/soulhotel/FF-ULTIMA/blob/main/
 */
 
 @import url(theme/all-global-positioning.css);
-
+@import url(theme/color-schemes/catppuccin/theme/all-global-theme-catppuccin.css)
 @import url(theme/all-global-theme-fullmoon.css);
-/* @import url(theme/all-global-theme-dusky.css); */
+@import url(theme/all-global-theme-dusky.css);
+
 
 @import url(theme/position-tabs.css);
 @import url(theme/position-tabs-gone.css);

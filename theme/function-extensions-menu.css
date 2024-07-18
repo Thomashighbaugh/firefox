@@ -11,7 +11,7 @@
   }
 
   #unified-extensions-view {
-    --uei-icon-size: 32px; /*  Change icon size */
+    --uei-icon-size: 22px; /*  Change icon size */
     --firefoxcss-number-of-extensions-in-a-row: 3; /*  Increase to the number of icons you want in one row */
   }
 
@@ -63,7 +63,7 @@
   }
 
   #unified-extensions-view #unified-extensions-area {
-    background: linear-gradient(-32deg, #323232, #0c0c0c,  #1c1c1c) !important;
+    background: linear-gradient(-32deg, var(--uc-ultima-window), var(--uc-background-panel),  var(--uc-dark-color)) !important;
     border-radius: var(--uc-all-border-radiu s) !important;
   }
 }

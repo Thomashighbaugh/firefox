@@ -28,7 +28,7 @@ Global styling - Icons
   --uc-accent-vi: rgb(227, 140, 143); /*red*/
   --uc-accent-vii: rgb(44, 55, 80); /*darker blue*/
   --uc-background-main: rgb(38, 36, 50);
-  --uc-background-panel: rgba(28, 27, 34, 0.95);
+  --uc-background-panel: rgba(28, 27, 34, 1);
   --uc-background-solid: rgba(28, 27, 34, 1);
   --uc-background-secondary: var(--uc-background-main);
   --uc-transparent: rgba(0,0,0,0);

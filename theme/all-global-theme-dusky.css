@@ -531,14 +531,7 @@ splitter {@media (-moz-platform: windows) { & {
   text-shadow: #FDFFFF 0.5px 0 15px!important;
 }
 
-}#main-window:not([lwtheme]) #unified-extensions-button {
-   list-style-image: url("icons/extensions.svg") !important;
-   fill: var(--uc-accent-ii) !important;
- }
- #main-window[lwtheme="true"] #unified-extensions-button {
-   list-style-image: url("icons/extensions.svg") !important;
-   fill: var(--lwt-accent-color) !important;
- }
+}
  /*--bookmarks folder icon--*/
  .bookmark-item[container=true] {
    list-style-image: url("icons/bm.png") !important;

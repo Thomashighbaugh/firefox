@@ -574,15 +574,6 @@ Global styling - Icons
   /* Global styling - Icons --------------==========----------------------------------*/
 
   /*--extension menu--*/
-  #main-window:not([lwtheme]) #unified-extensions-button {
-    list-style-image: url("icons/extensions.svg") !important;
-    fill: var(--uc-accent-iii) !important;
-  }
-  #main-window[lwtheme="true"] #unified-extensions-button {
-    list-style-image: url("icons/extensions.svg") !important;
-    fill: var(--lwt-accent-color) !important;
-  }
-  /*--bookmarks folder icon--*/
   .bookmark-item[container="true"] {
     list-style-image: url("icons/bm.png") !important;
   }

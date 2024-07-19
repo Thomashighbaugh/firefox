@@ -16,7 +16,7 @@ user_pref("svg.context-properties.content.enabled", true);
 user_pref("layout.css.backdrop-filter.enabled", true);
 // prevent bugs that would otherwise be caused by the custom scrollbars in the user-agent sheet
 user_pref("layout.css.cached-scrollbar-styles.enabled", false);
-// 𝗻𝗼 𝗯𝗹𝗶𝗻𝗱𝗶𝗻𝗴, 𝗻𝗼 𝘁𝗲𝘅𝘁 𝗜 𝗰𝗮𝗻'𝘁 𝗿𝗲𝗮𝗱
+// don't blind me
 user_pref("browser.startup.blankWindow", false);
 user_pref("browser.startup.preXulSkeletonUI", false);
 user_pref("ui.systemUsesDarkTheme", 1);
@@ -40,13 +40,14 @@ user_pref("browser.tabs.tabmanager.enabled", true);
 // I would think but don't/can't
 user_pref("privacy.popups.disable_from_plugins", 0);
 
-// Enable Global Privacy Control functionality thus enriching others being creepy less
+// Enable Global Privacy Control functionality for Firefox
 user_pref("privacy.globalprivacycontrol.enabled", true);
 user_pref("privacy.globalprivacycontrol.functionality.enabled", true);
 // install addon from file > find the .zip file
 user_pref("xpinstall.signatures.required", false);
 user_pref("extensions.autoDisableScopes", 0);
-//// functionality oriented prefs
+
+// disable default browser check
 user_pref("browser.shell.checkDefaultBrowser", false);
 user_pref("browser.startup.homepage_override.mstone", "ignore");
 user_pref("browser.display.use_system_colors", false);
@@ -59,7 +60,10 @@ user_pref("layout.css.font-visibility.resistFingerprinting", 3);
 user_pref("toolkit.telemetry.enabled", false);
 user_pref("browser.discovery.enabled", false);
 user_pref("app.shield.optoutstudies.enabled", false);
-user_pref("datareporting.healthreport.documentServerURI", "http://%(server)s/healthreport/");
+user_pref(
+  "datareporting.healthreport.documentServerURI",
+  "http://%(server)s/healthreport/"
+);
 user_pref("datareporting.healthreport.uploadEnabled", false);
 user_pref("datareporting.policy.dataSubmissionPolicyBypassNotification", true);
 user_pref("browser.crashReports.unsubmittedCheck.autoSubmit2", false);
@@ -67,7 +71,6 @@ user_pref("browser.crashReports.unsubmittedCheck.autoSubmit2", false);
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("browser.proton.places-tooltip.enabled", true);
 user_pref("layout.css.moz-document.content.enabled", true);
-
 
 //       ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 //       ┃                                                              ┃

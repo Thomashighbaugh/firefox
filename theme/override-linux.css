@@ -20,7 +20,7 @@ Gnome compat. for themed Window decoration buttons
     }
 
     /*--update nav bar spacing--*/
-    #nav-bar {margin-right: 86px !important;}
+    /* #nav-bar {margin-right: 86px !important;} */
 
     /*--override inactive window style--*/
     :root:where([tabsintitlebar]) {
@@ -117,7 +117,7 @@ Gnome compat. for themed Window decoration buttons
         background-color: transparent !important;
         border-radius: var(--uc-button-border-radius);
     } .titlebar-close:hover {
-        background-color: rgb(191, 66, 66) !important;
+        background-color: #bf4242 !important;
     }
 
     /*--override padding--*/
@@ -137,7 +137,7 @@ Gnome compat. for themed Window decoration buttons
 @media (-moz-platform: linux), (-moz-os-version: linux) {
 
     /*--size and positioning of the nav bar for less titlebar buttons--*/
-    #nav-bar {margin-right: 100px !important;}
+    /* #nav-bar {margin-right: 100px !important;} */
 
     :root[tabsintitlebar] .titlebar-buttonbox {
         top: 8px !important;

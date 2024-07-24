@@ -1,6 +1,6 @@
 /*---------------------------- Dark Mode Global Variables -----------------------------
 - Global variables used for ease of modification, and future customization
- 
+
 [Index] ctrl+f a line to find the specified section:
 Establishing custom variables
 Overwriting existing variables
@@ -17,25 +17,25 @@ Global styling - Icons
   body,
   * {
     color-scheme: dark !important; /*--<--dont touch--*/
-    --uc-ultima-window: rgb(43, 42, 51);
+    --uc-ultima-window: #28282a;
     --uc-dark-color: #000;
     --uc-light-color: #fff;
     --uc-accent-i: #edf783; /* accent colors - blues, yellows, etc. */
-    --uc-accent-ii: rgb(90, 121, 156);
-    --uc-accent-iii: rgb(255, 255, 255);
-    --uc-accent-iv: rgba(28, 27, 34, 0.5);
-    --uc-accent-v: rgb(121, 161, 195);
-    --uc-background-main: rgba(28, 27, 34, 0.5);
-    --uc-background-panel: rgba(28, 27, 34, 0.95);
-    --uc-background-solid: rgba(28, 27, 34, 1);
-    --uc-background-secondary: rgb(35, 35, 42);
-    --uc-transparent: rgba(0, 0, 0, 0);
-    --uc-selected: rgba(0, 0, 0, 0.65);
-    --uc-active: rgba(0, 0, 0, 0.75);
-    --uc-text: rgb(255, 255, 255);
-    --uc-panel-border: rgba(25, 25, 25, 1);
-    --uc-panel-border-ii: rgba(45, 45, 45, 0.5);
-    --uc-context-menu: rgba(28, 27, 34, 1);
+    --uc-accent-ii: #5a799c;
+    --uc-accent-iii: #ffffff;
+    --uc-accent-iv: #01010380;
+    --uc-accent-v: #79a1c3;
+    --uc-background-main: #1c1b2280;
+    --uc-background-panel: #1c1b22f2;
+    --uc-background-solid: #1c1b22;
+    --uc-background-secondary: #23232a;
+    --uc-transparent: #00000000;
+    --uc-selected: #000000a6;
+    --uc-active: #000000bf;
+    --uc-text: #ffffff;
+    --uc-panel-border: #191919;
+    --uc-panel-border-ii: #2d2d2d80;
+    --uc-context-menu: #1c1b22;
     --uc-tabs-background: var(--uc-background-main);
     --uc-sb-background: var(--uc-background-main);
     --uc-sb-background-header: var(--uc-accent-iv);
@@ -108,9 +108,9 @@ Global styling - Icons
     --organizer-hover-background: var(--uc-accent-iv) !important;
     --organizer-selected-background: var(--uc-selected) !important;
     --organizer-focus-selected-color: var(--uc-selected) !important;
-    --organizer-outline-color: rgb(0, 221, 255) !important;
+    --organizer-outline-color: #00ddff !important;
     --organizer-toolbar-field-background: var(--uc-accent-iv) !important;
-    --organizer-toolbar-field-background-focused: rgb(66, 61, 98) !important;
+    --organizer-toolbar-field-background-focused: #423d62 !important;
     --content-select-background-image: none !important;
   }
 

@@ -53,8 +53,6 @@ toolbox#navigator-toolbox > toolbar#nav-bar.browser-toolbar{ animation: none; }
     }
 }
 
-/* (optional) flip button order
-.titlebar-buttonbox-container{ direction: rtl; } */
 
 /* when in fullscreen mode, and the navigation bar isnt hovered, workaround for fixed title bar buttons */
 

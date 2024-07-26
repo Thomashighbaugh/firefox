@@ -3,23 +3,20 @@
 // @version 1.2.0
 // @author Thomas Leon Highbaugh
 // @description    Without going aminomancer about it and writing a Tolstoy length novel on the subject, this creates a bar on the bottom of the browser's window that you can add the various builtins from the overflow menu too (because they locked away the add-ons in a hamburger menu, which isn't actually that bad tbh). This was once a feature, then Mozilla decided it worked too well and killed it, so this script reimplements it.
+// @include        main
+// @include       chrome://browser/content/browser.xhtml
 // ==/UserScript==
-Components.utils.import("resource:///modules/CustomizableUI.sys.mjs");
-var { Services } = Components.utils.import(
-  "resource://gre/modules/Services.jsm",
-  {}
-);
+ChromeUtils.defineESModuleGetters(lazy,{
+  CustomizableUI: "resource:///modules/CustomizableUI.sys.mjs"
+});
+go
 var appversion = parseInt(Services.appinfo.version);
 
 var compact_buttons = false; // reduced toolbar height and smaller buttons
 
 var AddAddonbar = {
   init: function () {
-    if (
-      appversion >= 76 &&
-      location != "chrome://browser/content/browser.xhtml"
-    )
-      return;
+
 
     /* blank tab workaround */
     try {
@@ -171,8 +168,7 @@ var AddAddonbar = {
 /* initialization delay workaround */
 document.addEventListener("DOMContentLoaded", AddAddonbar.init(), false);
 /* Use the below code instead of the one above this line, if issues occur */
-/*
 setTimeout(function(){
   AddAddonbar.init();
 },2000);
-*/
+

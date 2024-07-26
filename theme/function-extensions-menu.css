@@ -8,6 +8,7 @@
   /*  Clean and tight extensions menu */
   #unified-extensions-panel #unified-extensions-view {
     width: 100% !important; /*  For firefox v115.x */
+    min-width: 100%;
   }
 
   #unified-extensions-view {
@@ -16,7 +17,7 @@
   }
 
   #unified-extensions-view .panel-header,
-  #unified-extensions-view .panel-header + toolbarseparator,
+  #unified-extensions-view .panel-header + toolbarseparator
  {
     display: none !important;
   }
@@ -42,7 +43,7 @@
     );
     justify-items: center !important;
     align-items: middle !important;
-  } 
+  }
 
   #unified-extensions-view .unified-extensions-list .unified-extensions-item,
   #unified-extensions-view .unified-extensions-list {

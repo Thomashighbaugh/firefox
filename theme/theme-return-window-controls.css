@@ -43,7 +43,7 @@ toolbox#navigator-toolbox > toolbar#nav-bar.browser-toolbar{ animation: none; }
 
 /* adjust nav bar margin for fixed button */
 #nav-bar {
-    margin-right: 96px;
+    margin-right: 11px;
 } /* margin-left if you have it on left side*/
 
 /* 40px button, match nav bar */

@@ -1,23 +1,5 @@
-# Replace some of Firefox's internal files with our own versions. In order of startup priority.
-
-# Instantiate fx-autoconfig's main directories.
-# Where this file and the script loader exist.
 content userchromejs ./
-# Where your scripts exist and are loaded from.
 content userscripts ../JS/
-# Where icons and content stylesheets and other stuff exist.
-content userchrome ../resources/
+skin userstyles classic/1.0 ../CSS/
+content userchrome ../resources/ 
 
-
-
-
-# Basic content stylesheets, e.g., for plain text and "view source" documents.
-resource content-accessible chrome://userchrome/content/layout/contentaccessible/ contentaccessible=yes
-# Directory listing stylesheet, kind of like a file explorer.
-# Used when navigating to a folder e.g., file:///C: or resource://gre
-override chrome://global/skin/dirListing/dirListing.css ../resources/layout/dirListing.css
-# XML document stylesheet. Used when opening an XML file or response.
-override chrome://global/content/xml/XMLPrettyPrint.css ../resources/layout/XMLPrettyPrint.css
-# The script for the searchbar on about:preferences.
-# Its highlight color doesn't match the theme, so I changed how it works.
-override chrome://browser/content/preferences/findInPage.js ../resources/script-override/findInPage.js

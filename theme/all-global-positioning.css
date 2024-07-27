@@ -72,7 +72,7 @@ body,
   --uc-button-border: 4px;
 
   /* ^ > v < (space the windows from each other) */
-  /*tabs get there own margins*/
+  /*tabs get their own margins*/
   --uc-all-margins: 0px 6px 6px 6px;
   --uc-margin-inline: 6px; /* < > */
   --uc-margin-top: 0px;

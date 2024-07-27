@@ -1,6 +1,5 @@
 /* -------------------------------------------------------------
 - return the window-controls/titlebar-buttons
-- linux support added as of version 1.6.5 -> override-linux.css & override-mac.css
  ------------------------------------------------------------- */
 
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");

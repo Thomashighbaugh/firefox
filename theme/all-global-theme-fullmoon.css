@@ -199,7 +199,7 @@ Global styling - Icons
       background-color: var(--uc-accent-iv) !important;
       border-radius: 10px !important;
       border: 0 !important;
-      box-shadow: 0.1rem 0.4rem 0.4rem -0.1rem rgba(25, 25, 25, 0.8);
+      box-shadow: 0.1rem 0.4rem 0.4rem -0.1rem #191919cc;
     }
 
     & #urlbar[open] > #urlbar-background {
@@ -247,7 +247,7 @@ Global styling - Icons
     }
     @media (-moz-platform: windows) {
       .titlebar-close:hover {
-        background-color: rgb(191, 66, 66) !important;
+        background-color: #bf4242 !important;
       }
     }
 
@@ -353,14 +353,14 @@ Global styling - Icons
     }
     & #sidebar-box {
       background-color: var(--uc-transparent) !important;
-      box-shadow: 0.1rem 0.3rem 0.4rem -0.1rem rgba(25, 25, 25, 0.4);
+      box-shadow: 0.1rem 0.3rem 0.4rem -0.1rem #19191966;
     }
     & #sidebar-search-container #search-box,
     & #sidebar-search-container #viewButton {
       appearance: none !important;
       border-radius: 10px !important;
       background-color: var(--uc-accent-iv) !important;
-      box-shadow: 0.1rem 0.3rem 0.4rem -0.1rem rgba(25, 25, 25, 0.8);
+      box-shadow: 0.1rem 0.3rem 0.4rem -0.1rem #191919cc;
     }
     & #bookmarksPanel #sidebar-search-container #search-box {
       appearance: none !important;
@@ -454,11 +454,11 @@ Global styling - Icons
   /* scroll bars */
   * {
     scrollbar-width: auto !important;
-    scrollbar-color: rgba(50, 50, 60, 0) rgba(5, 5, 5, 0) !important;
+    scrollbar-color: #32323c00 #05050500 !important;
   }
   #navigator-toolbox {
     scrollbar-width: auto !important;
-    scrollbar-color: rgba(50, 50, 60, 0.3) rgba(5, 5, 5, 0) !important;
+    scrollbar-color: #32323c4d #05050500 !important;
   }
 
   /* global dialog box */
@@ -526,14 +526,14 @@ Global styling - Icons
   }
   #sidebar-box {
     background-color: transparent !important;
-    box-shadow: 0.1rem 0.3rem 0.4rem -0.1rem rgba(25, 25, 25, 0.7);
+    box-shadow: 0.1rem 0.3rem 0.4rem -0.1rem #191919b3;
   }
   #sidebar-search-container #search-box,
   & #sidebar-search-container #viewButton {
     appearance: none !important;
     border-radius: 10px !important;
     background-color: var(--uc-accent-iv) !important;
-    box-shadow: 0.1rem 0.3rem 0.4rem -0.1rem rgba(25, 25, 25, 0.8);
+    box-shadow: 0.1rem 0.3rem 0.4rem -0.1rem #191919cc;
   }
   #bookmarksPanel #sidebar-search-container #search-box {
     appearance: none !important;
@@ -596,7 +596,7 @@ Global styling - Icons
 
   /*--notification badges--*/
   .toolbarbutton-badge {
-    background-color: rgba(0, 0, 0, 0.3) !important;
+    background-color: #0000004d !important;
     box-shadow: 0 !important;
     color: var(--uc-text) !important;
     text-shadow: #fdffff 0.5px 0 15px !important;

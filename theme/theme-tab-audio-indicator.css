@@ -6,19 +6,19 @@
     --tab-icon-overlay-stroke: var(--uc-active) !important;
 }
 
-.tab-icon-image, .tab-throbber{ 
+.tab-icon-image, .tab-throbber{
     opacity: 1 !important;
 }
 
 
 .tab-icon-overlay:not([crashed]) {
-    z-index: 1; 
+    z-index: 1;
     opacity: 1 !important;
-    top: -5.5px; 
-    inset-inline-end: -6px; 
+    top: -5.5px;
+    inset-inline-end: -6px;
     padding: 2px;
-    stroke: var(--tab-icon-overlay-stroke, black) !important;
-    fill: var(--tab-icon-overlay-fill, white) !important;
+    stroke: var(--tab-icon-overlay-stroke, #000000) !important;
+    fill: var(--tab-icon-overlay-fill, #ffffff) !important;
     fill-opacity: 1 !important;
 }
 

@@ -149,24 +149,6 @@ Gnome compat. for themed Window decoration buttons
 } /*--<--end linuxmedia query--*/
 } /*--<--end OS preference query--*/
 
-/*------------------------------------------------------------------------*/
-/* Mac positioned controls (for any OS) */
-/* all mac overrides have been moved to a dedicated file override-mac.css*/
-/* this preferences will be recycled into an alternative style for titlebar buttons */
-
-@media (-moz-bool-pref: "ultima.OS.mac"), (-moz-os-version: linux) {
-        #nav-bar {
-            margin-left: 100px !important;
-            margin-right: 0px !important;
-        }
-        :root[tabsintitlebar] .titlebar-buttonbox {
-            top: 4px !important;
-            right: unset !important;
-            left: 3px !important;
-        }
-        /* optional: flip button order */
-        .titlebar-buttonbox-container { direction: rtl !important; }
-} /*--<--end OS preference query--*/
 
 /*------------------------------------------------------------------------*/
 /*--TEST--*/

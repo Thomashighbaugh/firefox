@@ -1,8 +1,10 @@
-/* ----------------------------------------------------------
+/* ---------------------------------------------------------------------------------
 - removing excess items from the context menu
 - context menu styling
 - color correction relative to system color scheme
------------------------------------------------------------*/
+- no need to rely on agent or author sheets
+- no need to read aminomancer's comments that dwarf War & Peace ;]
+------------------------------------------------------------------------------------*/
 
 #context-take-screenshot
 #context-sep-screenshots,
@@ -16,7 +18,7 @@
 
 #context-pocket,
 #context-savelinktopocket,
-#tabContextMenu #context_duplicateTab,         
+#tabContextMenu #context_duplicateTab,
 #tabContextMenu #context_duplicateTabs,
 #tabContextMenu #context_bookmarkSelectedTabs
     {
@@ -33,7 +35,7 @@ menupopup, panel {
   --panel-color: var(--uc-text);
   --panel-border-radius: var(--uc-all-border-radius) !important;
   --panel-border-color: var(--uc-panel-border-ii) !important;
-  --panel-shadow: 0 0 var(--panel-shadow-margin) hsla(0,0%,0%,.2); 
+  --panel-shadow: 0 0 var(--panel-shadow-margin) #00000033;
 }
 
 menuitem:hover{

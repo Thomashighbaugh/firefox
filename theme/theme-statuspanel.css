@@ -22,7 +22,7 @@
   @media (not (prefers-contrast)) and (not (-moz-platform: linux)) {
     & {
       background-color: var(--uc-background-solid) !important;
-      border-color: rgba(15, 15, 15, 0.5);
+      border-color: #0f0f0f80;
     }
   }
 }

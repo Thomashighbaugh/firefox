@@ -230,7 +230,7 @@ box-shadow: unset !important;
 .home-section .section .selector {
 border: none !important;
 box-shadow: 3px 10px 15px rgb(0 0 0 / 20%) !important;
-background: url("icons/down.svg") right no-repeat !important;
+background: url("../icons/down.svg") right no-repeat !important;
 background-origin: content-box !important;
 }
 
@@ -387,7 +387,7 @@ background-color: color-mix(in srgb, var(--contrast-color) 70%, transparent) !im
 fill: var(--newtab-text-primary-color) !important;
 border-color: transparent !important;
 transition-delay: 0ms !important;
-background-image: url("icons/more.svg") !important;
+background-image: url("../icons/more.svg") !important;
 }
 
 .card-outer .context-menu-button { box-shadow: unset !important; }
@@ -422,7 +422,7 @@ background-color: transparent !important;
   background-color: color-mix(in srgb, var(--contrast-color) 70%, transparent) !important;
   fill: var(--newtab-text-primary-color) !important;
   transition-delay: 0ms !important;
-  background-image: url("icons/more.svg") !important;
+  background-image: url("../icons/more.svg") !important;
 }
 }
 

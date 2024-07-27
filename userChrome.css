@@ -1,6 +1,6 @@
 /* MPL 2.0 https://github.com/soulhotel/FF-ULTIMA/blob/main/LICENSE */
 
-/*  
+/*
 Change tab size?
 Change autohide option?
 Want to use sidebery instead? + More.
@@ -40,3 +40,5 @@ Come to the modification page: https://github.com/soulhotel/FF-ULTIMA/blob/main/
 @import url(theme/override-linux.css);
 @import url(theme/override-mac.css);
 @import url(theme/override-styles.css);
+
+.titlebar-spacer{ display: none !important }

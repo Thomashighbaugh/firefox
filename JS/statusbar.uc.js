@@ -6,10 +6,7 @@
 // @include        main
 // @include       chrome://browser/content/browser.xhtml
 // ==/UserScript==
-ChromeUtils.defineESModuleGetters(lazy,{
-  CustomizableUI: "resource:///modules/CustomizableUI.sys.mjs"
-});
-go
+
 var appversion = parseInt(Services.appinfo.version);
 
 var compact_buttons = false; // reduced toolbar height and smaller buttons

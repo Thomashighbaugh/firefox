@@ -22,6 +22,7 @@
 @import url(theme/function-urlbar.css);
 @import url(theme/function-extensions-menu.css);
 @import url(theme/function-safeguard.css);
+@import url(theme/function-side-toolbar.css);
 
 @import url(theme/theme-return-window-controls.css);
 @import url(theme/theme-context-menu.css);

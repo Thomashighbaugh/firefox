@@ -11,7 +11,9 @@ pinned tabs alternative style
 /*-------no margins, borders, or rounded corners---------*/
 
 @media (-moz-bool-pref: "ultima.xstyle.squared") {
-  :root, body, * {
+  :root,
+  body,
+  * {
     --uc-all-margins: 0px 0px 0px 0px;
     --uc-margin-inline: 0px;
     --uc-margin-top: 0px;
@@ -28,68 +30,63 @@ pinned tabs alternative style
     --button-border-radius: 10px;
     --uc-button-border-radius: 10px;
   }
-  #main-window
-  #tabbrowser-tabpanels { browser[type] {
+  #main-window #tabbrowser-tabpanels {
+    browser[type] {
       outline: 0px solid var(--toolbar-bgcolor);
-  }}
-  #main-window[lwtheme="true"]
-  #tabbrowser-tabpanels { browser[type] {
+    }
+  }
+  #main-window[lwtheme="true"] #tabbrowser-tabpanels {
+    browser[type] {
       outline: 0px solid var(--lwt-accent-color);
-  }}
+    }
+  }
 } /* end alternative style squared */
-
-
 
 /* restore close tab buttons */
 /* ive opted for this styling option, which shows the close button only on the specified hovering tab,
 this simple approach still allows - closing multiple selected tabs when they are all selected, and one close button is triggered
 while keeping a clean consistent look across the theme, refer to position-verttab.css for styling of the close button */
 
-@media (-moz-bool-pref: "ultima.tabs.closetabsbutton") { @media not (-moz-bool-pref: "ultima.tabs.size.xs") {
-  #tabbrowser-tabs .tab-close-button,
-  #tabbrowser-tabs .close-icon {
-    display:flex !important;
-  }
-  @media (-moz-bool-pref: "ultima.tabs.autohide") {
-    :root:not([customizing]) #TabsToolbar-customization-target *:not(:hover) .tab-close-button,
-    :root:not([customizing]) #TabsToolbar-customization-target *:not(:hover) .close-icon {
-      display: none !important;
-      opacity: 0 !important;
+@media (-moz-bool-pref: "ultima.tabs.closetabsbutton") {
+  @media not (-moz-bool-pref: "ultima.tabs.size.xs") {
+    #tabbrowser-tabs .tab-close-button,
+    #tabbrowser-tabs .close-icon {
+      display: flex !important;
     }
-  }  
-}} /* end (-moz-bool-pref: "ultima.tabs.closetabsbutton") + tabs size xs */
-
-
+    @media (-moz-bool-pref: "ultima.tabs.autohide") {
+      :root:not([customizing])
+        #TabsToolbar-customization-target
+        *:not(:hover)
+        .tab-close-button,
+      :root:not([customizing])
+        #TabsToolbar-customization-target
+        *:not(:hover)
+        .close-icon {
+        display: none !important;
+        opacity: 0 !important;
+      }
+    }
+  }
+} /* end (-moz-bool-pref: "ultima.tabs.closetabsbutton") + tabs size xs */
 
 /* pinned tabs alternative style. Experimental. Havent decided on style yet. */
 
 @media (-moz-bool-pref: "ultima.xstyle.pinnedtabs.i") {
   @media (prefers-color-scheme: dark) {
-    .tabbrowser-tab[pinned=""] .tab-background, .tabbrowser-tab[pinned="true"] .tab-background {
+    .tabbrowser-tab[pinned=""] .tab-background,
+    .tabbrowser-tab[pinned="true"] .tab-background {
       background-color: var(--tab-selected-bgcolor) !important;
       box-shadow: inset 0 !important;
     }
   }
   @media (prefers-color-scheme: light) {
-    .tabbrowser-tab[pinned=""] .tab-background, .tabbrowser-tab[pinned="true"] .tab-background {
+    .tabbrowser-tab[pinned=""] .tab-background,
+    .tabbrowser-tab[pinned="true"] .tab-background {
       background-color: var(--tab-selected-bgcolor) !important;
       box-shadow: inset 0 !important;
     }
   }
 } /* end (-moz-bool-pref: "ultima.xstyle.pinnedtabs.i") */
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 delete later:

@@ -1,22 +1,22 @@
-/* 
+/*
 https://github.com/soulhotel/FF-ULTIMA
 
-z-sites-newtab.css ~ NEW TABS
+content/sites-newtab.css ~ NEW TABS
 
 
-z-site-scrollbars-and-pip.css ~ themes the scrollbar inside of your browser tab content
+content/site-scrollbars-and-pip.css ~ themes the scrollbar inside of your browser tab content
 
 To remove a certain feature, simple delete its line below, open website in new tab, no restart needed.
 */
 
 @import url(theme/z-about-addons.css);
 
-@import url(theme/z-site-scrollbars-and-pip.css);
+@import url(theme/content/site-scrollbars-and-pip.css);
 
-@import url(theme/z-site-newtab.css);
+@import url(theme/content/site-newtab.css);
 
-@import url(theme/z-site-reddit.css);
+@import url(theme/content/site-reddit.css);
 
-@import url(theme/z-site-yt.css);
+@import url(theme/content/site-yt.css);
 
 

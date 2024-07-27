@@ -3,11 +3,13 @@
 - https://github.com/hachikoharuno/Beautiful-newtab-Firefox
  ------------------------------------------------------------- */
 
-@import url('z-site-newtab-l.css');
+@import url('site-newtab-l.css');
 
 /*----------------------NEW TAB HOME-----------------------*/
 
-@-moz-document url(chrome://browser/content/browser.xul), url(about:newtab), url(about:home) {
+@-moz-document url("chrome://browser/content/browser.xul"),
+url(about:newtab),
+url(about:home) {
 
 @media (prefers-color-scheme: dark){
 
@@ -29,7 +31,7 @@ body {
 --newtab-border-color: color-mix(in srgb, var(--newtab-background-color) 88%, var(--newtab-wordmark-color)) !important;
 --newtab-primary-element-text-color: var(--newtab-text-primary-color) !important;
 --newtab-search-icon: url("chrome://global/skin/icons/search-glass.svg") !important;
-background-image: url("site-icons/newtab.png") !important;
+background-image: url("../site-icons/newtab.png") !important;
 background-repeat: no-repeat !important;
 background-position: center !important;
 background-size: cover !important;
@@ -95,7 +97,7 @@ background: var(--newtab-pinnedsites-background) !important;
 backdrop-filter: blur(33px) !important;
 filter: saturate(140%) !important;
 }}
-    
+
 .search-inner-wrapper:not(:focus) input, .search-wrapper:not(:active) input:focus{
 background-color: var(--newtab-pinnedsites-background) !important;
 backdrop-filter: blur(33px) !important;
@@ -108,7 +110,7 @@ border-color: transparent !important;
 border-radius: 34px !important;
 box-shadow: none !important;
 }
-    
+
 .search-wrapper .search-inner-wrapper:active input, .search-wrapper input:focus {
 outline: 1px solid var(--button-active-bgcolor) !important;
 outline-offset: -1px !important;
@@ -174,7 +176,7 @@ line-height: unset !important;
 font-weight: normal !important;
 color: var(--uc-text) !important;
 }
-    
+
 .context-menu > ul > li.separator {
 display:flex !important;
 border-bottom: none !important;
@@ -252,7 +254,7 @@ background-origin: content-box !important;
   --toggle-dot-width: var(--toggle-dot-height) !important;
   --toggle-dot-transform-x: calc(var(--toggle-width) - 1 * var(--toggle-dot-margin) - var(--toggle-dot-width)) !important;
   }
-    
+
 .customize-menu .close-button {
 box-shadow: 3px 10px 15px rgb(0 0 0 / 20%) !important;
 font-weight: unset !important;
@@ -351,20 +353,20 @@ inset-inline-end: 3px !important;
 inset-inline-start: auto;
 }
 
-.compact-cards .card-outer .card-preview-image-outer { 
+.compact-cards .card-outer .card-preview-image-outer {
 border-radius: 16px 16px 0 0 !important;
 }
-    
+
 .ds-highlights .section .section-list .card-outer .card-host-name {
 text-shadow: 1px -1px 2px color-mix(in srgb, var(--contrast-color) 60%, transparent) !important;
 color: var(--newtab-text-primary-color) !important;
 }
-    
+
 .card-outer:not(.placeholder) .card-title {
 text-shadow: 1px -1px 2px color-mix(in srgb, var(--contrast-color) 60%, transparent) !important;
 }
-    
-.card-outer:is(:hover, :focus, :active, :focus-within, .active):not(.placeholder) .card-title, 
+
+.card-outer:is(:hover, :focus, :active, :focus-within, .active):not(.placeholder) .card-title,
 .card-outer:is(:hover, :focus, .active):not(.placeholder) .card-title {
 --newtab-primary-action-background: blue !important;
 color: var(--newtab-text-primary-color) !important;
@@ -377,7 +379,7 @@ fill: var(--newtab-text-primary-color) !important;
 opacity: 0.7 !important;
 }
 
-    
+
 .card-outer .context-menu-button, .card-outer .context-menu-button:active, .card-outer .context-menu-button:focus{
 margin-top: -5px !important;
 margin-right: -5px !important;

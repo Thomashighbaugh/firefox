@@ -12,9 +12,9 @@
         grid-template-areas: "hd hd" "cd cd";
         grid-auto-columns: 1fr;
         column-gap: 1em;
-        height: 8rem !important
-        minimum-height:8rem !important
-        maxmium-height: 8rem !important
+        height: 8rem !important;
+        min-height:8rem !important;
+        max-height: 8rem !important;
         overflow: hidden !important;
 
       }
@@ -28,8 +28,8 @@
         padding-top: 0px !important;
         grid-area: auto;
         height: 8rem !important;
-        minimum-height:8rem !important;
-        maxmium-height: 8rem !important;
+        min-height:8rem !important;
+        max-height: 8rem !important;
         overflow: hidden !important;
 
       }
@@ -144,7 +144,7 @@
     addon-list[type="extension"] > section {
       grid-template-areas: "hd hd hd hd hd hd" "cd cd cd cd cd cd";
     }
-  }
+  
   /* Note: addon-card verified and recommended badges are hidden here. They should remain visible in the "manage" addon page though.  */
   addon-card:not([expanded]) .addon-badge-verified,
   addon-card:not([expanded]) .addon-badge-recommended,

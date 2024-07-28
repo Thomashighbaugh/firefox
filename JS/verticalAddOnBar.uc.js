@@ -5,11 +5,8 @@
 // @description    Creates a bar opposite (hopefully) of the new tabs that you can add builtin function icons to, no more extensions so Mozilla, Mozilla'ed that to be more like Chrome for whatever reason they think I still use their browser and not Chrome but want a browser identical to Chrome...
 // ==/UserScript==
 
-Components.utils.import("resource:///modules/CustomizableUI.sys.mjs");
-var { Services } = Components.utils.import(
-  "resource://gre/modules/Services.jsm",
-  {}
-);
+ChromeUtils.importESModule("resource:///modules/CustomizableUI.sys.mjs");
+
 var appversion = parseInt(Services.appinfo.version);
 
 var AddonbarVertical = {

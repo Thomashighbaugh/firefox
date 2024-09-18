@@ -5,12 +5,15 @@
 // @description    Creates a bar opposite (hopefully) of the new tabs that you can add builtin function icons to, no more extensions so Mozilla, Mozilla'ed that to be more like Chrome for whatever reason they think I still use their browser and not Chrome but want a browser identical to Chrome...
 // ==/UserScript==
 
-ChromeUtils.importESModule("resource:///modules/CustomizableUI.sys.mjs");
-
+Components.utils.import("resource:///modules/CustomizableUI.sys.mjs");
+var { Services } = Components.utils.import(
+  "resource://gre/modules/Services.jsm",
+  {},
+);
 var appversion = parseInt(Services.appinfo.version);
 
 var AddonbarVertical = {
-  init: function () {
+  init: function() {
     if (
       appversion >= 76 &&
       location != "chrome://browser/content/browser.xhtml"
@@ -21,7 +24,7 @@ var AddonbarVertical = {
     try {
       if (gBrowser.selectedBrowser.getAttribute("blank"))
         gBrowser.selectedBrowser.removeAttribute("blank");
-    } catch (e) {}
+    } catch (e) { }
 
     var addonbar_v_label = "Vertical Add-on Bar"; // toolbar name
     var button_label = "Toggle vertical Add-on Bar"; // Toggle button name
@@ -51,7 +54,7 @@ var AddonbarVertical = {
         tb_addonbarv.setAttribute("customizable", "true");
         tb_addonbarv.setAttribute(
           "class",
-          "toolbar-primary chromeclass-toolbar browser-toolbar customization-target"
+          "toolbar-primary chromeclass-toolbar browser-toolbar customization-target",
         );
         tb_addonbarv.setAttribute("mode", "icons");
         tb_addonbarv.setAttribute("iconsize", "small");
@@ -75,14 +78,14 @@ var AddonbarVertical = {
               .getElementById("browser")
               .insertBefore(
                 toolbox_abv,
-                document.getElementById("browser").firstChild
+                document.getElementById("browser").firstChild,
               );
           else
             document
               .getElementById("browser")
               .insertBefore(
                 toolbox_abv,
-                document.getElementById("browser").firstChild.nextSibling
+                document.getElementById("browser").firstChild.nextSibling,
               );
         } else {
           if (insert_before_borders)
@@ -92,12 +95,12 @@ var AddonbarVertical = {
               .getElementById("browser")
               .insertBefore(
                 toolbox_abv,
-                document.getElementById("browser").lastChild
+                document.getElementById("browser").lastChild,
               );
         }
 
-        var observer = new MutationObserver(function (mutations) {
-          mutations.forEach(function (mutation) {
+        var observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
             try {
               if (
                 document
@@ -118,7 +121,7 @@ var AddonbarVertical = {
                   .querySelector("#toolbox_abv")
                   .appendChild(document.querySelector("#addonbar_v"));
               }
-            } catch (e) {}
+            } catch (e) { }
           });
         });
 
@@ -135,15 +138,15 @@ var AddonbarVertical = {
             document.getElementById("addonbar_v"),
             Services.prefs
               .getBranch("browser.vaddonbar.")
-              .getBoolPref("enabled")
+              .getBoolPref("enabled"),
           );
           setToolbarVisibility(
             document.getElementById("toolbox_abv"),
             Services.prefs
               .getBranch("browser.vaddonbar.")
-              .getBoolPref("enabled")
+              .getBoolPref("enabled"),
           );
-        } catch (e) {}
+        } catch (e) { }
 
         if (addonbar_v_togglebutton) {
           /* -------------------------------------------------------------------------- */
@@ -153,7 +156,7 @@ var AddonbarVertical = {
             removable: true,
             label: button_label, // button title
             tooltiptext: button_label, // tooltip title
-            onClick: function (event) {
+            onClick: function(event) {
               var windows = Services.wm.getEnumerator(null);
               while (windows.hasMoreElements()) {
                 var win = windows.getNext();
@@ -178,7 +181,7 @@ var AddonbarVertical = {
                     .removeAttribute("checked");
               }
             },
-            onCreated: function (button) {
+            onCreated: function(button) {
               if (
                 Services.prefs
                   .getBranch("browser.vaddonbar.")
@@ -211,11 +214,11 @@ var AddonbarVertical = {
 			win.document.querySelector("#tooglebutton_addonbar_v").setAttribute("checked","true");\
 		  else win.document.querySelector("#tooglebutton_addonbar_v").removeAttribute("checked");\
 		}\
-	  '
+	  ',
         );
         document.getElementById("mainKeyset").appendChild(key);
       }
-    } catch (e) {}
+    } catch (e) { }
     /* -------------------------------------------------------------------------- */
     // style toolbar & toggle button
     var addonbar_v_style = "";
@@ -345,21 +348,21 @@ var AddonbarVertical = {
 
     var uri = Services.io.newURI(
       "data:text/css;charset=utf-8," +
-        encodeURIComponent(
-          "\
+      encodeURIComponent(
+        "\
 	  " +
-            addonbar_v_style +
-            " \
+        addonbar_v_style +
+        " \
 	  " +
-            tooglebutton_addonbar_v_style +
-            " \
+        tooglebutton_addonbar_v_style +
+        " \
 	  " +
-            compact_buttons_code +
-            " \
-	"
-        ),
+        compact_buttons_code +
+        " \
+	",
+      ),
       null,
-      null
+      null,
     );
 
     var sss = Components.classes[
@@ -373,6 +376,6 @@ var AddonbarVertical = {
 document.addEventListener("DOMContentLoaded", AddonbarVertical.init(), false);
 /* Use the below code instead of the one above this line, if issues occur */
 
-setTimeout(function () {
+setTimeout(function() {
   AddonbarVertical.init();
 }, 2000);

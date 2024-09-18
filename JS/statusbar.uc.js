@@ -1,12 +1,14 @@
 // ==UserScript==
-// @name           Statusbar
-// @version        x.x.x
-// @description    Make the statusbar into a customizable toolbar, updated to use the ESModule version of customizable UI among other goodies.
+// @name StatusBar
+// @version 1.2.0
+// @author Thomas Leon Highbaugh
+// @description    Without going aminomancer about it and writing a Tolstoy length novel on the subject, this creates a bar on the bottom of the browser's window that you can add the various builtins from the overflow menu too (because they locked away the add-ons in a hamburger menu, which isn't actually that bad tbh). This was once a feature, then Mozilla decided it worked too well and killed it, so this script reimplements it.
 // ==/UserScript==
-
-
- ChromeUtils.importESModule("resource:///modules/CustomizableUI.sys.mjs");
-
+Components.utils.import("resource:///modules/CustomizableUI.sys.mjs");
+var { Services } = Components.utils.import(
+  "resource://gre/modules/Services.jsm",
+  {}
+);
 var appversion = parseInt(Services.appinfo.version);
 
 var compact_buttons = false; // reduced toolbar height and smaller buttons

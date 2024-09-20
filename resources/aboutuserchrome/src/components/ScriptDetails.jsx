@@ -98,7 +98,7 @@ export const ScriptDetails = ({ script, launchLocalFile }) => {
           hidden={!author}>
           <label className="script-detail-label">Author</label>
           {authorURL ? (
-            <a target="_blank" href={authorURL} rel="noreferrer">
+            <a target="_blank" href={authorURL}>
               {author}
             </a>
           ) : (
@@ -109,7 +109,7 @@ export const ScriptDetails = ({ script, launchLocalFile }) => {
           className="script-detail-row script-detail-homepageURL"
           hidden={!homepageURL}>
           <label className="script-detail-label">Homepage</label>
-          <a target="_blank" href={homepageURL} rel="noreferrer">
+          <a target="_blank" href={homepageURL}>
             {script.homepageURL}
           </a>
         </div>
@@ -124,7 +124,7 @@ export const ScriptDetails = ({ script, launchLocalFile }) => {
               (isValidURL(script.downloadURL)
                 ? script.downloadURL
                 : `file:///${script.downloadURL}`)
-            } rel="noreferrer">
+            }>
             {script.downloadURL}
           </a>
         </div>
@@ -139,7 +139,7 @@ export const ScriptDetails = ({ script, launchLocalFile }) => {
               (isValidURL(script.updateURL)
                 ? script.updateURL
                 : `file:///${script.updateURL}`)
-            } rel="noreferrer">
+            }>
             {script.updateURL}
           </a>
         </div>
@@ -154,7 +154,7 @@ export const ScriptDetails = ({ script, launchLocalFile }) => {
               (isValidURL(script.optionsURL)
                 ? script.optionsURL
                 : `file:///${script.optionsURL}`)
-            } rel="noreferrer">
+            }>
             {script.optionsURL}
           </a>
         </div>

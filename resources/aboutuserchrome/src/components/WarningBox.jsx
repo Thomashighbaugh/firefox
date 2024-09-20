@@ -11,7 +11,7 @@ const MessageBox = ({ description, linkText, linkURL }) => {
         <p>{description}</p>
         {linkText && linkURL ? (
           <p>
-            <a href={linkURL} target="_blank" rel="noreferrer">
+            <a href={linkURL} target="_blank">
               {linkText}
             </a>
           </p>

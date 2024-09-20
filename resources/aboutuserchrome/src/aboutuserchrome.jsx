@@ -69,7 +69,7 @@ const UserChromeManager = () => {
                 id="get-more-button"
                 className="sidebar-footer-link"
                 target="_blank"
-                title="Get more scripts" rel="noreferrer">
+                title="Get more scripts">
                 <img
                   src="chrome://global/skin/icons/search-glass.svg"
                   alt=""
@@ -83,7 +83,7 @@ const UserChromeManager = () => {
                 id="help-button"
                 className="sidebar-footer-link"
                 target="_blank"
-                title="Help/Documentation" rel="noreferrer">
+                title="Help/Documentation">
                 <img
                   src="chrome://global/skin/icons/help.svg"
                   alt=""
@@ -109,7 +109,7 @@ const UserChromeManager = () => {
 
 history.scrollRestoration = "manual";
 
- 
+// eslint-disable-next-line no-console
 console.log(`UserChrome Manager v${version}`);
 
 createRoot(document.getElementById("root")).render(

@@ -4,11 +4,9 @@
 - Also scroll bars
  ------------------------------------------------------------- */
 
-.pip-wrapper {
-  transform: scale(0.6);
-}
+.pip-wrapper {transform: scale(0.6);}
 
 * {
-  scrollbar-width: auto !important;
-  scrollbar-color: rgba(170, 170, 170, 0.4) rgba(255, 255, 255, 0) !important;
+    scrollbar-width: auto !important;
+    scrollbar-color: rgba(170, 170, 170, 0.4) rgba(255,255,255, 0) !important;
 }

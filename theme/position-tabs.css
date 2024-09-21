@@ -44,10 +44,10 @@ patch, tabs slide out of view when attempting to rearrange them
 
   :root:not([customizing]) #tabbrowser-tabs {
     position: relative !important;
-    height: var(--uc-tabbar-height) !important;
+    /* height: var(--uc-tabbar-height) !important; */
     height: 300px !important;
     width: var(--uc-vertical-tabs-width);
-    left: 0px;
+    /* left: 0px; */
     contain: size !important;
     overflow: hidden !important;
     order: 0;
@@ -80,9 +80,6 @@ patch, tabs slide out of view when attempting to rearrange them
   scrollbox[orient="horizontal"] {
     display: var(--uc-scrollbox-box-model, flex);
     -webkit-box-orient: vertical;
-    -moz-box-orient: vertical;
-
-    
     height: 100%;
     overflow: var(--uc-scrollbox-overflow, initial) !important;
   }
@@ -120,20 +117,22 @@ patch, tabs slide out of view when attempting to rearrange them
 
   /*--------------------------Individual tabs---------------------------*/
 
+  /*--do not touch or i will find you. and when i find you..--*/
   .tabbrowser-tab:not([pinned]),
   .tabbrowser-tab:is([pinned]) {
-    min-width: calc(var(--uc-vertical-tabs-width) + -1px) !important;
-    width: calc(var(--uc-vertical-tabs-width) + -1px) !important;
+    min-width: calc(var(--uc-vertical-tabs-width)-1px) !important;
+    width: calc(var(--uc-vertical-tabs-width)-1px) !important;
     padding: 0 2px !important;
     --tab-label-mask-size: 0.6em !important;
   }
 
   .tabbrowser-tab:not([pinned]) {
-    max-width: calc(var(--uc-vertical-tabs-width) + -1px) !important;
-    min-width: calc(var(--uc-vertical-tabs-width) + -1px) !important;
-    transiti on: min-width 100ms ease-out, max-width 100ms ease-out;
+    max-width: calc(var(--uc-vertical-tabs-width)-1px) !important;
+    min-width: calc(var(--uc-vertical-tabs-width)-1px) !important;
+    transition: min-width 100ms ease-out, max-width 100ms ease-out;
   }
 
+  /*--i will kill you...--*/
 
   /*--pinned position, ignore above :)--*/
 

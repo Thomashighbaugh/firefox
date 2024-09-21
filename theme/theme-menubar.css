@@ -12,13 +12,12 @@
   justify-content: center !important;
   color: var(--uc-text) !important;
 }
-#toolbar-menubar:not([inactive="true"]) #main-menubar > menu {
-  &[_moz-menuactive] {
-    background-color: var(--uc-selected) !important;
-    color: var(--uc-text) !important;
-    border-radius: 5px !important;
-  }
-}
+#toolbar-menubar:not([inactive="true"]) #main-menubar > menu { &[_moz-menuactive] {
+  background-color: var(--uc-selected) !important;
+  color: var(--uc-text) !important;
+  border-radius: 5px !important;
+}}
+
 
 /* positioning when active */
 
@@ -27,15 +26,14 @@
   position: fixed;
   left: calc(50vw - 150px);
   top: var(--uc-navbar-height);
-  height: 23px !important;
+  height:23px !important;
 }
-#toolbar-menubar:not([inactive="true"]) #main-menubar > menu {
-  &[_moz-menuactive] {
-    background-color: var(--uc-selected) !important;
-    color: var(--uc-text) !important;
-    border-radius: 5px !important;
-  }
-}
+#toolbar-menubar:not([inactive="true"]) #main-menubar > menu { &[_moz-menuactive] {
+  background-color: var(--uc-selected) !important;
+  color: var(--uc-text) !important;
+  border-radius: 5px !important;
+}}
+
 
 /* positioning when pressing alt */
 
@@ -44,7 +42,7 @@
   position: fixed;
   left: calc(50vw - 150px);
   top: var(--uc-navbar-height);
-  height: 23px !important;
+  height:23px !important;
 }
 
 /*-------------------fin--------------------*/

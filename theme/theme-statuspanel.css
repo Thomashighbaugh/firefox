@@ -7,7 +7,6 @@
 }
 
 #statuspanel {
-  &:not([hidden]) {
     max-width: calc(100% - 5px);
     position: absolute;
     bottom: 1vh !important;
@@ -15,7 +14,6 @@
     border-radius: 7px !important;
     padding-top: 2em;
     pointer-events: none;
-  }
 }
 
 #main-window:not([lwtheme="true"]) #statuspanel-label {

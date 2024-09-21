@@ -6,7 +6,8 @@
 
 /* firefox multi-account containers extension */
 
-@-moz-document regexp("^moz-extension://.*/pageActionPopup.html.*") {
+@-moz-document regexp("^moz-extension://.*/pageActionPopup.html.*")
+{
   :root[uc-extension-id="@testpilot-containers"] {
     background-color: var(--uc-arrowpanel-background) !important;
     font-size: 12px !important;
@@ -86,17 +87,20 @@
     transition: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .hover-highlight:is(:focus):not(:hover, :focus-visible) {
+  :root[uc-extension-id="@testpilot-containers"]
+    .hover-highlight:is(:focus):not(:hover, :focus-visible) {
     background: revert !important;
     color: inherit !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .hover-highlight:is(:hover, :focus-visible) {
+  :root[uc-extension-id="@testpilot-containers"]
+    .hover-highlight:is(:hover, :focus-visible) {
     color: inherit !important;
     background: var(--uc-arrowpanel-dimmed) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .hover-highlight:is(:hover, :focus-visible):active {
+  :root[uc-extension-id="@testpilot-containers"]
+    .hover-highlight:is(:hover, :focus-visible):active {
     background: var(--uc-arrowpanel-dimmed-further) !important;
   }
 
@@ -114,12 +118,20 @@
 
   @media (-moz-bool-pref: "userChrome.css.mac-ui-fonts") {
     :root[uc-extension-id="@testpilot-containers"] body {
-      font-family: SF Pro Text, SF Arabic, Segoe UI, sans-serif !important;
+      font-family:
+        SF Pro Text,
+        SF Arabic,
+        Segoe UI,
+        sans-serif !important;
       font-kerning: normal !important;
     }
 
     :root[uc-extension-id="@testpilot-containers"] h3.title {
-      font-family: SF Pro Display, SF Arabic, Segoe UI, sans-serif !important;
+      font-family:
+        SF Pro Display,
+        SF Arabic,
+        Segoe UI,
+        sans-serif !important;
       font-kerning: normal !important;
       font-size: 1.1em !important;
       font-weight: var(--uc-font-weight-bold, 600) !important;
@@ -127,7 +139,8 @@
   }
 }
 
-@-moz-document regexp("^moz-extension://.*/popup.html.*") {
+@-moz-document regexp("^moz-extension://.*/popup.html.*")
+{
   :root[uc-extension-id="@testpilot-containers"] {
     background-color: var(--uc-arrowpanel-background) !important;
     font-size: 12px !important;
@@ -168,16 +181,20 @@
     padding-block: 0 !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .edit-container-panel input[type="text"] {
+  :root[uc-extension-id="@testpilot-containers"]
+    .edit-container-panel
+    input[type="text"] {
     margin-inline: 2px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :where(:focus-visible, :-moz-focusring, :focus + label) {
+  :root[uc-extension-id="@testpilot-containers"]
+    :where(:focus-visible, :-moz-focusring, :focus + label) {
     outline: none !important;
     box-shadow: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input[type="text"]:focus-visible {
+  :root[uc-extension-id="@testpilot-containers"]
+    input[type="text"]:focus-visible {
     border-color: transparent !important;
     outline-style: solid !important;
     outline-width: 1.5px !important;
@@ -204,29 +221,41 @@
     background-color: var(--uc-arrowpanel-faint) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input[type="checkbox"]:is(:hover, :focus-visible) {
+  :root[uc-extension-id="@testpilot-containers"]
+    input[type="checkbox"]:is(:hover, :focus-visible) {
     background-color: var(--uc-arrowpanel-dimmed) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input[type="checkbox"]:is(:hover, :focus-visible):active {
+  :root[uc-extension-id="@testpilot-containers"]
+    input[type="checkbox"]:is(:hover, :focus-visible):active {
     background-color: var(--uc-arrowpanel-dimmed-further) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input[type="checkbox"]:is([checked="true"], :checked) {
+  :root[uc-extension-id="@testpilot-containers"]
+    input[type="checkbox"]:is([checked="true"], :checked) {
     background-image: url(chrome://userchrome/content/check.svg) !important;
     border-color: var(--uc-checkbox-checked-border-color) !important;
     background-color: var(--uc-checkbox-checked-bgcolor) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input[type="checkbox"]:is([checked="true"], :checked):is(:hover, :focus-visible) {
+  :root[uc-extension-id="@testpilot-containers"]
+    input[type="checkbox"]:is([checked="true"], :checked):is(
+      :hover,
+      :focus-visible
+    ) {
     background-color: var(--uc-checkbox-checked-hover-bgcolor) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input[type="checkbox"]:is([checked="true"], :checked):is(:hover, :focus-visible):active {
+  :root[uc-extension-id="@testpilot-containers"]
+    input[type="checkbox"]:is([checked="true"], :checked):is(
+      :hover,
+      :focus-visible
+    ):active {
     background-color: var(--uc-checkbox-checked-active-bgcolor) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :where(h3.title, .proxy-panel-title) {
+  :root[uc-extension-id="@testpilot-containers"]
+    :where(h3.title, .proxy-panel-title) {
     background: none !important;
     padding-block: 8px 4px !important;
     block-size: 40px !important;
@@ -246,10 +275,14 @@
   }
 
   :root[uc-extension-id="@testpilot-containers"] h3.proxy-panel-title {
-    padding-bottom: calc(((40px - 1.1em) / 2) + var(--menupopup-inner-padding-magnitude)) !important;
+    padding-bottom: calc(
+      ((40px - 1.1em) / 2) + var(--menupopup-inner-padding-magnitude)
+    ) !important;
     min-height: 44.5px !important;
     margin-inline: var(--menupopup-inner-padding-magnitude) !important;
-    inline-size: calc(100% - (var(--menupopup-inner-padding-magnitude) * 2)) !important;
+    inline-size: calc(
+      100% - (var(--menupopup-inner-padding-magnitude) * 2)
+    ) !important;
   }
 
   :root[uc-extension-id="@testpilot-containers"] h4 {
@@ -283,7 +316,8 @@
     right: 10.5px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .info-icon:is(:hover, :focus-visible) {
+  :root[uc-extension-id="@testpilot-containers"]
+    .info-icon:is(:hover, :focus-visible) {
     fill-opacity: 1;
     background-color: var(--uc-arrowpanel-dimmed) !important;
   }
@@ -319,7 +353,8 @@
     background: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :where(.scrollable, .identities-list) {
+  :root[uc-extension-id="@testpilot-containers"]
+    :where(.scrollable, .identities-list) {
     margin: 0 !important;
     padding: 0 !important;
   }
@@ -349,11 +384,15 @@
     content: "(empty)" !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #edit-container-assignments > .scrollable {
+  :root[uc-extension-id="@testpilot-containers"]
+    #edit-container-assignments
+    > .scrollable {
     padding-bottom: var(--menupopup-inner-padding-magnitude) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #container-panel .identities-list {
+  :root[uc-extension-id="@testpilot-containers"]
+    #container-panel
+    .identities-list {
     border-bottom: 1px solid var(--uc-desaturate-dimmed) !important;
   }
 
@@ -393,14 +432,16 @@
     color: inherit !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #manage-containers-link:not([hidden]) {
+  :root[uc-extension-id="@testpilot-containers"]
+    #manage-containers-link:not([hidden]) {
     display: flex !important;
     align-content: center !important;
     align-items: center !important;
     padding-inline-start: 0 !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #manage-containers-link::before {
+  :root[uc-extension-id="@testpilot-containers"]
+    #manage-containers-link::before {
     content: "";
     display: inline-block;
     width: 16px;
@@ -437,21 +478,26 @@
     margin-inline: 0 !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu-item :is(td, .menu-item-name, .menu-right-float) {
+  :root[uc-extension-id="@testpilot-containers"]
+    .menu-item
+    :is(td, .menu-item-name, .menu-right-float) {
     align-items: center;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .hover-highlight:is(:focus):not(:hover, :focus-visible) {
+  :root[uc-extension-id="@testpilot-containers"]
+    .hover-highlight:is(:focus):not(:hover, :focus-visible) {
     background: revert !important;
     color: inherit !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :is(.hover-highlight, .bottom-btn):is(:hover, :focus-visible) {
+  :root[uc-extension-id="@testpilot-containers"]
+    :is(.hover-highlight, .bottom-btn):is(:hover, :focus-visible) {
     color: inherit !important;
     background: var(--uc-arrowpanel-dimmed) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :is(.hover-highlight, .bottom-btn):hover:active {
+  :root[uc-extension-id="@testpilot-containers"]
+    :is(.hover-highlight, .bottom-btn):hover:active {
     background: var(--uc-arrowpanel-dimmed-further) !important;
   }
 
@@ -479,7 +525,8 @@
     filter: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu-icon[src="/img/container-openin-16.svg"] {
+  :root[uc-extension-id="@testpilot-containers"]
+    .menu-icon[src="/img/container-openin-16.svg"] {
     padding-left: 16px !important;
     background-image: url(chrome://userchrome/content/skin/container-go.svg) !important;
   }
@@ -488,15 +535,24 @@
     background-image: url(chrome://userchrome/content/skin/container-plus.svg) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .radio-choice > .radio-container > [type="radio"]:checked + label {
+  :root[uc-extension-id="@testpilot-containers"]
+    .radio-choice
+    > .radio-container
+    > [type="radio"]:checked
+    + label {
     background: var(--uc-arrowpanel-color) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #edit-container-panel-choose-icon .radio-container:hover .usercontext-icon::before {
+  :root[uc-extension-id="@testpilot-containers"]
+    #edit-container-panel-choose-icon
+    .radio-container:hover
+    .usercontext-icon::before {
     fill: inherit !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .radio-container:active .usercontext-icon::before {
+  :root[uc-extension-id="@testpilot-containers"]
+    .radio-container:active
+    .usercontext-icon::before {
     transform: scale(0.85) !important;
   }
 
@@ -504,7 +560,9 @@
     --identity-icon-color: var(--uc-arrowpanel-color) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] [type="radio"]:checked + [data-identity-color="grey"] {
+  :root[uc-extension-id="@testpilot-containers"]
+    [type="radio"]:checked
+    + [data-identity-color="grey"] {
     --identity-icon-color: var(--uc-arrowpanel-background) !important;
   }
 
@@ -531,8 +589,10 @@
     visibility: visible !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .menu-icon.hover-highlight:is(:hover, :focus, :focus-visible),
-  :root[uc-extension-id="@testpilot-containers"] .menu-icon.hover-highlight:is(:hover, :focus, :focus-visible):active {
+  :root[uc-extension-id="@testpilot-containers"]
+    .menu-icon.hover-highlight:is(:hover, :focus, :focus-visible),
+  :root[uc-extension-id="@testpilot-containers"]
+    .menu-icon.hover-highlight:is(:hover, :focus, :focus-visible):active {
     background-color: transparent !important;
   }
 
@@ -567,11 +627,14 @@
     display: block;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :is(.identities-list, #sort-containers-link) .menu-arrow {
+  :root[uc-extension-id="@testpilot-containers"]
+    :is(.identities-list, #sort-containers-link)
+    .menu-arrow {
     display: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :is(.controller, .hover-highlight) {
+  :root[uc-extension-id="@testpilot-containers"]
+    :is(.controller, .hover-highlight) {
     transition: none !important;
   }
 
@@ -599,12 +662,14 @@
     background-color: transparent;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .btn-return:is(:hover, :focus-visible, :-moz-focusring) {
+  :root[uc-extension-id="@testpilot-containers"]
+    .btn-return:is(:hover, :focus-visible, :-moz-focusring) {
     background-color: var(--uc-arrowpanel-dimmed) !important;
     fill-opacity: 0.8;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .btn-return:is(:hover, :focus-visible, :-moz-focusring):active {
+  :root[uc-extension-id="@testpilot-containers"]
+    .btn-return:is(:hover, :focus-visible, :-moz-focusring):active {
     background-color: var(--uc-arrowpanel-dimmed-further) !important;
   }
 
@@ -615,7 +680,11 @@
   }
 
   :root[uc-extension-id="@testpilot-containers"] .menu-item.drag-over td {
-    background-image: linear-gradient(180deg, var(--uc-desaturate-dimmed-even-further) 1.5px, transparent 1.5px) !important;
+    background-image: linear-gradient(
+      180deg,
+      var(--uc-desaturate-dimmed-even-further) 1.5px,
+      transparent 1.5px
+    ) !important;
   }
 
   :root[uc-extension-id="@testpilot-containers"] .move-button img {
@@ -644,20 +713,28 @@
     margin-block: 8px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :is(fieldset, .options-header) {
+  :root[uc-extension-id="@testpilot-containers"]
+    :is(fieldset, .options-header) {
     padding-block-end: 8px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #edit-container-panel > .edit-form {
+  :root[uc-extension-id="@testpilot-containers"]
+    #edit-container-panel
+    > .edit-form {
     padding: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
     padding-block: var(--menupopup-inner-padding-magnitude) 2px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #edit-container-options > .container-options > input[type="checkbox"] {
+  :root[uc-extension-id="@testpilot-containers"]
+    #edit-container-options
+    > .container-options
+    > input[type="checkbox"] {
     inset-inline-start: 20px;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .radio-choice > .radio-container {
+  :root[uc-extension-id="@testpilot-containers"]
+    .radio-choice
+    > .radio-container {
     block-size: 28px !important;
   }
 
@@ -671,7 +748,8 @@
     color: var(--in-content-link-color-hover) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #manage-assigned-sites-list:is(:hover, :focus-visible, :-moz-focusring) {
+  :root[uc-extension-id="@testpilot-containers"]
+    #manage-assigned-sites-list:is(:hover, :focus-visible, :-moz-focusring) {
     text-decoration: underline !important;
   }
 
@@ -716,7 +794,9 @@
     inline-size: 10px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input:checked + .slider::before {
+  :root[uc-extension-id="@testpilot-containers"]
+    input:checked
+    + .slider::before {
     transform: translateX(14px) !important;
   }
 
@@ -728,7 +808,9 @@
     background-color: var(--purple-50) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] input:checked + .slider:hover:active {
+  :root[uc-extension-id="@testpilot-containers"]
+    input:checked
+    + .slider:hover:active {
     background-color: var(--purple-55) !important;
   }
 
@@ -749,7 +831,8 @@
   }
 
   :root[uc-extension-id="@testpilot-containers"] .panel-footer > .button,
-  :root[uc-extension-id="@testpilot-containers"] :where(.primary-cta, .delete-btn) {
+  :root[uc-extension-id="@testpilot-containers"]
+    :where(.primary-cta, .delete-btn) {
     appearance: none !important;
     border-radius: var(--context-menuitem-border-radius) !important;
     height: revert !important;
@@ -768,45 +851,67 @@
     box-shadow: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-footer > .button:is(:hover, :focus-visible, :-moz-focusring) {
+  :root[uc-extension-id="@testpilot-containers"]
+    .panel-footer
+    > .button:is(:hover, :focus-visible, :-moz-focusring) {
     background-color: var(--uc-arrowpanel-dimmed) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-footer > .button:hover:active {
+  :root[uc-extension-id="@testpilot-containers"]
+    .panel-footer
+    > .button:hover:active {
     background-color: var(--uc-arrowpanel-dimmed-further) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-footer > .button.secondary:not([disabled]) {
+  :root[uc-extension-id="@testpilot-containers"]
+    .panel-footer
+    > .button.secondary:not([disabled]) {
     background-color: transparent !important;
     border-color: var(--uc-arrowpanel-dimmed) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-footer > .button.secondary:not([disabled], :active):is(:hover, :focus-visible) {
+  :root[uc-extension-id="@testpilot-containers"]
+    .panel-footer
+    > .button.secondary:not([disabled], :active):is(:hover, :focus-visible) {
     background-color: var(--uc-arrowpanel-dimmed) !important;
     border-color: transparent !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-footer > .button.secondary:not([disabled]):is(:hover:active, [open]) {
+  :root[uc-extension-id="@testpilot-containers"]
+    .panel-footer
+    > .button.secondary:not([disabled]):is(:hover:active, [open]) {
     background-color: var(--uc-arrowpanel-dimmed-further) !important;
     border-color: transparent !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-footer > .button.primary:is(:hover, :focus-visible, :-moz-focusring),
-  :root[uc-extension-id="@testpilot-containers"] .primary-cta:is(:hover, :focus-visible, :-moz-focusring),
-  :root[uc-extension-id="@testpilot-containers"] .advanced-proxy-settings-btn:is(:hover, :focus-visible, :-moz-focusring) {
+  :root[uc-extension-id="@testpilot-containers"]
+    .panel-footer
+    > .button.primary:is(:hover, :focus-visible, :-moz-focusring),
+  :root[uc-extension-id="@testpilot-containers"]
+    .primary-cta:is(:hover, :focus-visible, :-moz-focusring),
+  :root[uc-extension-id="@testpilot-containers"]
+    .advanced-proxy-settings-btn:is(:hover, :focus-visible, :-moz-focusring) {
     background-color: var(--uc-parent-primary-button-background) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-footer > .button.primary:hover:active,
+  :root[uc-extension-id="@testpilot-containers"]
+    .panel-footer
+    > .button.primary:hover:active,
   :root[uc-extension-id="@testpilot-containers"] .primary-cta:hover:active,
-  :root[uc-extension-id="@testpilot-containers"] .advanced-proxy-settings-btn:hover:active {
-    background-color: var(--uc-parent-primary-button-background-hover) !important;
+  :root[uc-extension-id="@testpilot-containers"]
+    .advanced-proxy-settings-btn:hover:active {
+    background-color: var(
+      --uc-parent-primary-button-background-hover
+    ) !important;
   }
 
   :root[uc-extension-id="@testpilot-containers"] .delete-btn {
     background-color: hsla(2, 70%, 56%, 45%) !important;
-    margin-block: var(--menupopup-inner-padding-magnitude) calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
-    margin-inline: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
+    margin-block: var(--menupopup-inner-padding-magnitude)
+      calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
+    margin-inline: calc(
+      var(--menupopup-inner-padding-magnitude) * 2
+    ) !important;
     justify-content: inherit !important;
     align-content: center !important;
     align-items: center !important;
@@ -814,15 +919,18 @@
     block-size: 0 !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .delete-btn:is(:hover, :focus-visible, :-moz-focusring) {
+  :root[uc-extension-id="@testpilot-containers"]
+    .delete-btn:is(:hover, :focus-visible, :-moz-focusring) {
     background-color: hsla(358, 70%, 50%, 85%) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .delete-btn:is(:hover, :focus-visible, :-moz-focusring):active {
+  :root[uc-extension-id="@testpilot-containers"]
+    .delete-btn:is(:hover, :focus-visible, :-moz-focusring):active {
     background-color: hsl(353, 90%, 50%) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-content.delete-container-confirm {
+  :root[uc-extension-id="@testpilot-containers"]
+    .panel-content.delete-container-confirm {
     padding-block: var(--menupopup-inner-padding-magnitude) 0 !important;
     padding-inline: 16px 0 !important;
     display: flex;
@@ -830,11 +938,14 @@
     row-gap: 8px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .panel-content.delete-container-confirm > * {
+  :root[uc-extension-id="@testpilot-containers"]
+    .panel-content.delete-container-confirm
+    > * {
     padding-block: revert !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #delete-container-tab-warning:empty {
+  :root[uc-extension-id="@testpilot-containers"]
+    #delete-container-tab-warning:empty {
     display: none !important;
   }
 
@@ -852,7 +963,8 @@
     transition: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :is(.moz-vpn-content, .moz-vpn-controller-content) {
+  :root[uc-extension-id="@testpilot-containers"]
+    :is(.moz-vpn-content, .moz-vpn-controller-content) {
     min-block-size: 0 !important;
     box-shadow: none !important;
     border-top: none !important;
@@ -861,7 +973,8 @@
     transition: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :is(.moz-vpn-content, .moz-vpn-controller-content)::before {
+  :root[uc-extension-id="@testpilot-containers"]
+    :is(.moz-vpn-content, .moz-vpn-controller-content)::before {
     display: block;
     content: "";
     width: 100%;
@@ -872,7 +985,8 @@
     transition: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :is(.collapsible-content, .add-bg-color) {
+  :root[uc-extension-id="@testpilot-containers"]
+    :is(.collapsible-content, .add-bg-color) {
     background-color: transparent !important;
   }
 
@@ -884,7 +998,8 @@
     transition: none !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] :is(.moz-vpn-logo, .moz-vpn-logotype) {
+  :root[uc-extension-id="@testpilot-containers"]
+    :is(.moz-vpn-logo, .moz-vpn-logotype) {
     background-image: url("chrome://userchrome/content/material/firefox-vpn.svg") !important;
     color: inherit !important;
     font-family: inherit !important;
@@ -896,7 +1011,9 @@
   :root[uc-extension-id="@testpilot-containers"] .moz-vpn-cta {
     block-size: var(--subviewbutton-height) !important;
     margin-block: 6px 0 !important;
-    margin-inline: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
+    margin-inline: calc(
+      var(--menupopup-inner-padding-magnitude) * 2
+    ) !important;
     text-align: inherit !important;
     line-height: normal !important;
   }
@@ -912,34 +1029,51 @@
     box-shadow: none !important;
     border: 1px solid transparent !important;
     margin-block: var(--menupopup-inner-padding-magnitude) !important;
-    margin-inline: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
+    margin-inline: calc(
+      var(--menupopup-inner-padding-magnitude) * 2
+    ) !important;
     line-height: normal !important;
     text-align: initial !important;
     padding-inline-start: 30px !important;
     padding-block: 5px !important;
-    background-image: url(chrome://userchrome/content/settings.svg), var(--iconArrowRight) !important;
+    background-image: url(chrome://userchrome/content/settings.svg),
+      var(--iconArrowRight) !important;
     -moz-context-properties: fill, fill-opacity;
     fill: currentColor !important;
-    background-position: 6px center, calc(100% - 10px) center !important;
-    background-size: 16px 16px, 9px !important;
+    background-position:
+      6px center,
+      calc(100% - 10px) center !important;
+    background-size:
+      16px 16px,
+      9px !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .advanced-proxy-settings-btn #advanced-proxy-address {
+  :root[uc-extension-id="@testpilot-containers"]
+    .advanced-proxy-settings-btn
+    #advanced-proxy-address {
     color: var(--uc-panel-description-color) !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] .collapsible-content > .flx-row.flx-space-between {
-    inline-size: calc(100% - ((var(--menupopup-inner-padding-magnitude) * 2) * 2)) !important;
+  :root[uc-extension-id="@testpilot-containers"]
+    .collapsible-content
+    > .flx-row.flx-space-between {
+    inline-size: calc(
+      100% - ((var(--menupopup-inner-padding-magnitude) * 2) * 2)
+    ) !important;
     padding-block-start: 8px !important;
   }
 
   :root[uc-extension-id="@testpilot-containers"] .button-wrapper {
-    margin-inline: calc(var(--menupopup-inner-padding-magnitude) * 2) !important;
+    margin-inline: calc(
+      var(--menupopup-inner-padding-magnitude) * 2
+    ) !important;
   }
 
   :root[uc-extension-id="@testpilot-containers"] .advanced-proxy-panel-content {
     padding-block: calc(var(--menupopup-inner-padding-magnitude)) !important;
-    padding-inline: calc(var(--menupopup-inner-padding-magnitude) + 6px) !important;
+    padding-inline: calc(
+      var(--menupopup-inner-padding-magnitude) + 6px
+    ) !important;
     margin-block-start: 48.5px !important;
   }
 
@@ -974,7 +1108,8 @@
     box-sizing: border-box !important;
   }
 
-  :root[uc-extension-id="@testpilot-containers"] #clear-advanced-proxy-input:hover {
+  :root[uc-extension-id="@testpilot-containers"]
+    #clear-advanced-proxy-input:hover {
     background-color: var(--uc-arrowpanel-dimmed) !important;
   }
 
@@ -996,12 +1131,21 @@
 
   @media (-moz-bool-pref: "userChrome.css.mac-ui-fonts") {
     :root[uc-extension-id="@testpilot-containers"] body {
-      font-family: SF Pro Text, SF Arabic, Segoe UI, sans-serif !important;
+      font-family:
+        SF Pro Text,
+        SF Arabic,
+        Segoe UI,
+        sans-serif !important;
       font-kerning: normal !important;
     }
 
-    :root[uc-extension-id="@testpilot-containers"] :is(h3.title, .proxy-panel-title) {
-      font-family: SF Pro Display, SF Arabic, Segoe UI, sans-serif !important;
+    :root[uc-extension-id="@testpilot-containers"]
+      :is(h3.title, .proxy-panel-title) {
+      font-family:
+        SF Pro Display,
+        SF Arabic,
+        Segoe UI,
+        sans-serif !important;
       font-kerning: normal !important;
       font-size: 1.1em !important;
       font-weight: var(--uc-font-weight-bold, 600) !important;

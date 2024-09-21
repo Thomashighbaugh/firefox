@@ -6,7 +6,8 @@
 
 /* simple translate extension by sienori */
 
-@-moz-document regexp("^moz-extension://.*/popup/index.html") {
+@-moz-document regexp("^moz-extension://.*/popup/index.html")
+{
   :root[uc-extension-id="simple-translate@sienori"] {
     border-radius: 3px !important;
     background: none !important;
@@ -24,16 +25,25 @@
 
   @media (-moz-bool-pref: "userChrome.css.mac-ui-fonts") {
     :root[uc-extension-id="simple-translate@sienori"] body {
-      font-family: SF Pro Text, SF Arabic, Segoe UI, sans-serif !important;
+      font-family:
+        SF Pro Text,
+        SF Arabic,
+        Segoe UI,
+        sans-serif !important;
       font-kerning: normal !important;
     }
 
     :root[uc-extension-id="simple-translate@sienori"] .title {
-      font-family: SF Pro Display, SF Arabic, Segoe UI, sans-serif !important;
+      font-family:
+        SF Pro Display,
+        SF Arabic,
+        Segoe UI,
+        sans-serif !important;
     }
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] button:not([disabled="true"], :disabled) {
+  :root[uc-extension-id="simple-translate@sienori"]
+    button:not([disabled="true"], :disabled) {
     display: flex;
   }
 
@@ -44,7 +54,8 @@
     outline: none !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] :is(textarea, select):focus-within {
+  :root[uc-extension-id="simple-translate@sienori"]
+    :is(textarea, select):focus-within {
     background-color: var(--search-box-focus) !important;
     color: var(--ui-text-100) !important;
     border-color: var(--highlight) !important;
@@ -56,7 +67,9 @@
     min-height: auto !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] #footer .selectWrap::before {
+  :root[uc-extension-id="simple-translate@sienori"]
+    #footer
+    .selectWrap::before {
     background: none !important;
     color: var(--sub-text) !important;
     fill: currentColor !important;
@@ -72,11 +85,16 @@
     top: 6px !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] #footer .selectWrap:focus-within::before {
+  :root[uc-extension-id="simple-translate@sienori"]
+    #footer
+    .selectWrap:focus-within::before {
     color: var(--ui-text-100) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] #footer .selectWrap select:is(:focus-within, :hover) {
+  :root[uc-extension-id="simple-translate@sienori"]
+    #footer
+    .selectWrap
+    select:is(:focus-within, :hover) {
     background-color: var(--search-box-focus) !important;
   }
 
@@ -89,7 +107,8 @@
     color: var(--uc-arrowpanel-color) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] :is(.resultText, .candidateText, .mediaButtons),
+  :root[uc-extension-id="simple-translate@sienori"]
+    :is(.resultText, .candidateText, .mediaButtons),
   :root[uc-extension-id="simple-translate@sienori"] .mediaButtons * {
     background: none !important;
   }
@@ -106,7 +125,8 @@
     color: var(--uc-parent-link-color) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] a:is(:hover, :focus-visible) {
+  :root[uc-extension-id="simple-translate@sienori"]
+    a:is(:hover, :focus-visible) {
     color: var(--uc-parent-link-color-hover) !important;
   }
 
@@ -114,19 +134,29 @@
     color: var(--uc-parent-link-color-active) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] .react-toggle .react-toggle-track {
+  :root[uc-extension-id="simple-translate@sienori"]
+    .react-toggle
+    .react-toggle-track {
     background-color: var(--sub-text) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] .react-toggle:is(:hover, :focus-within):not(.react-toggle--disabled) .react-toggle-track {
+  :root[uc-extension-id="simple-translate@sienori"]
+    .react-toggle:is(:hover, :focus-within):not(.react-toggle--disabled)
+    .react-toggle-track {
     background-color: color-mix(in srgb, black 20%, var(--sub-text)) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] .react-toggle--checked .react-toggle-track {
+  :root[uc-extension-id="simple-translate@sienori"]
+    .react-toggle--checked
+    .react-toggle-track {
     background-color: var(--uc-parent-link-color) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] .react-toggle--checked:is(:hover, :focus-within):not(.react-toggle--disabled) .react-toggle-track {
+  :root[uc-extension-id="simple-translate@sienori"]
+    .react-toggle--checked:is(:hover, :focus-within):not(
+      .react-toggle--disabled
+    )
+    .react-toggle-track {
     background-color: var(--uc-parent-link-color-hover) !important;
   }
 
@@ -138,12 +168,20 @@
     border-color: transparent !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] #header .rightButtons .settingsButton:is(:hover, :focus-visible) svg {
+  :root[uc-extension-id="simple-translate@sienori"]
+    #header
+    .rightButtons
+    .settingsButton:is(:hover, :focus-visible)
+    svg {
     fill: var(--highlight) !important;
     transform: rotate(90deg) !important;
   }
 
-  :root[uc-extension-id="simple-translate@sienori"] #header .rightButtons .heartButton:is(:hover, :focus-visible) svg {
+  :root[uc-extension-id="simple-translate@sienori"]
+    #header
+    .rightButtons
+    .heartButton:is(:hover, :focus-visible)
+    svg {
     fill: var(--confirm) !important;
   }
 }
@@ -152,5 +190,7 @@
   background-color: rgba(48, 48, 50, 0.97) !important;
   -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity !important;
   fill: rgba(255, 255, 255, 0.9) !important;
-  box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.23), 0 0 2px 1px rgba(0, 0, 0, 0.02) !important;
+  box-shadow:
+    0 0 5px -1px rgba(0, 0, 0, 0.23),
+    0 0 2px 1px rgba(0, 0, 0, 0.02) !important;
 }

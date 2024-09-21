@@ -19,7 +19,12 @@ html|plaintext,
 html|listing,
 html|textarea,
 html|input:is([type="date"], [type="time"], [type="datetime-local"]) {
-  font-family: Fira Code UC, Fira Code, SF Mono, -moz-fixed, monospace;
+  font-family:
+    Fira Code UC,
+    Fira Code,
+    SF Mono,
+    -moz-fixed,
+    monospace;
   font-weight: 300;
 }
 
@@ -51,21 +56,46 @@ html|input:is([type="date"], [type="time"], [type="datetime-local"]) {
 }
 
 :read-only:focus:not(:focus-visible),
-:not(textarea, [contenteditable]:read-write, input[type="text"], input[type="password"], input[type="date"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"]):focus:not(:focus-visible) {
+:not(
+    textarea,
+    [contenteditable]:read-write,
+    input[type="text"],
+    input[type="password"],
+    input[type="date"],
+    input[type="datetime-local"],
+    input[type="email"],
+    input[type="month"],
+    input[type="number"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="time"],
+    input[type="url"],
+    input[type="week"]
+  ):focus:not(:focus-visible) {
   outline: unset;
   outline-offset: unset;
 }
 
 @-moz-document plain-text-document() {
   :root {
-    font-family: Fira Code UC, Fira Code, SF Mono, -moz-fixed, monospace;
+    font-family:
+      Fira Code UC,
+      Fira Code,
+      SF Mono,
+      -moz-fixed,
+      monospace;
     font-weight: 300;
   }
 
   xmp,
   pre,
   plaintext {
-    font-family: Fira Code UC, Fira Code, SF Mono, -moz-fixed, monospace;
+    font-family:
+      Fira Code UC,
+      Fira Code,
+      SF Mono,
+      -moz-fixed,
+      monospace;
     font-weight: 300;
   }
 }
@@ -93,5 +123,9 @@ html|input:is([type="date"], [type="time"], [type="datetime-local"]) {
 }
 
 #texttracks {
-  font-family: SF Pro Text, SF Arabic, Segoe UI, sans-serif !important;
+  font-family:
+    SF Pro Text,
+    SF Arabic,
+    Segoe UI,
+    sans-serif !important;
 }

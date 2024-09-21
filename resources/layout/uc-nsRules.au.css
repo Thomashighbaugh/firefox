@@ -6,11 +6,17 @@ from the style editor in the browser toolbox. */
 @-moz-document regexp("^((chrome|resource|file)://|about:).*$")
 {
   menupopup:not([is="places-popup-arrow"]) {
-    -moz-window-input-region-margin: var(--menupopup-inner-box-margin, 4px) !important;
+    -moz-window-input-region-margin: var(
+      --menupopup-inner-box-margin,
+      4px
+    ) !important;
   }
 
   :is(panel, menupopup)[type="arrow"]:where(:not(.tooltip-xul-wrapper)) {
-    -moz-window-input-region-margin: var(--panel-inner-box-margin, 4px) !important;
+    -moz-window-input-region-margin: var(
+      --panel-inner-box-margin,
+      4px
+    ) !important;
   }
 
   panel:where(:not(.tooltip-xul-wrapper)),
@@ -131,7 +137,10 @@ from the style editor in the browser toolbox. */
       /* Set a margin relative to the difference in widths of the
       .toolbarbutton-icon and the .toolbar-animatable-box. This is correct even in
       RTL because the item is positioned using `left`. */
-      left: calc(var(--library-icon-x) + (16px + 2 * var(--toolbarbutton-inner-padding) - 22px) / 2);
+      left: calc(
+        var(--library-icon-x) +
+          (16px + 2 * var(--toolbarbutton-inner-padding) - 22px) / 2
+      );
       width: 22px; /* Width of each frame within the SVG sprite */
       height: 54px; /* Height of each frame within the SVG sprite */
 
@@ -181,14 +190,21 @@ from the style editor in the browser toolbox. */
   }
 
   #star-button {
-    width: calc(var(--urlbar-min-height) - 2px - 2 * var(--urlbar-container-padding));
-    height: calc(var(--urlbar-min-height) - 2px - 2 * var(--urlbar-container-padding));
+    width: calc(
+      var(--urlbar-min-height) - 2px - 2 * var(--urlbar-container-padding)
+    );
+    height: calc(
+      var(--urlbar-min-height) - 2px - 2 * var(--urlbar-container-padding)
+    );
     padding: var(--urlbar-icon-padding);
 
     /* Preload the bookmark animations to prevent a flicker during the first
     playing of the animations. */
-    &[preloadanimations] + #star-button-animatable-box > #star-button-animatable-image {
-      background-image: url(chrome://userchrome/content/skin/bookmark-animation.svg), url(chrome://userchrome/content/skin/library-bookmark-animation.svg);
+    &[preloadanimations]
+      + #star-button-animatable-box
+      > #star-button-animatable-image {
+      background-image: url(chrome://userchrome/content/skin/bookmark-animation.svg),
+        url(chrome://userchrome/content/skin/library-bookmark-animation.svg);
       background-size: 0, 0;
     }
 
@@ -225,18 +241,24 @@ from the style editor in the browser toolbox. */
         }
       }
 
-      &:-moz-locale-dir(rtl) + #star-button-animatable-box > #star-button-animatable-image {
+      &:-moz-locale-dir(rtl)
+        + #star-button-animatable-box
+        > #star-button-animatable-image {
         scale: -1 1;
       }
     }
   }
 
-  :root[uidensity="compact"] #star-button[starred][animate] + #star-button-animatable-box {
+  :root[uidensity="compact"]
+    #star-button[starred][animate]
+    + #star-button-animatable-box {
     /* .urlbar-icon has width 24px in this case */
     margin-inline-start: -4.5px;
   }
 
-  :root[uidensity="touch"] #star-button[starred][animate] + #star-button-animatable-box {
+  :root[uidensity="touch"]
+    #star-button[starred][animate]
+    + #star-button-animatable-box {
     /* .urlbar-icon has width 30px in this case */
     margin-inline-start: -1.5px;
   }
@@ -286,7 +308,8 @@ from the style editor in the browser toolbox. */
     }
   }
 
-  #confirmation-hint-checkmark-animation-container[animate] > #confirmation-hint-checkmark-image {
+  #confirmation-hint-checkmark-animation-container[animate]
+    > #confirmation-hint-checkmark-image {
     -moz-context-properties: fill;
     background-image: url(chrome://userchrome/content/skin/success-animation.svg);
     display: block;
@@ -331,7 +354,9 @@ from the style editor in the browser toolbox. */
     #confirmation-hint-message-container {
       transform: scale(0.8);
       opacity: 0;
-      transition: transform 120ms cubic-bezier(0.25, 1.27, 0.35, 1.18), opacity 60ms linear;
+      transition:
+        transform 120ms cubic-bezier(0.25, 1.27, 0.35, 1.18),
+        opacity 60ms linear;
     }
   }
 
@@ -422,7 +447,9 @@ of moz-document in stylesheets with file:// urls */
     width: var(--panel-width);
   }
 
-  :is(panel, menupopup)[type="arrow"]:where(:not(.tooltip-xul-wrapper))::part(content),
+  :is(panel, menupopup)[type="arrow"]:where(:not(.tooltip-xul-wrapper))::part(
+      content
+    ),
   panel#feature-callout::part(content) {
     box-shadow: var(--uc-panel-shadow);
     margin: var(--panel-inner-box-margin, 4px);
@@ -556,7 +583,9 @@ of moz-document in stylesheets with file:// urls */
 
   #managed-bookmarks > .toolbarbutton-icon,
   #bookmarks-toolbar-placeholder > .toolbarbutton-icon,
-  #PlacesToolbarItems > .bookmark-item > .toolbarbutton-icon[label]:not([label=""]),
+  #PlacesToolbarItems
+    > .bookmark-item
+    > .toolbarbutton-icon[label]:not([label=""]),
   #OtherBookmarks.bookmark-item[container] > .toolbarbutton-icon {
     margin-inline-end: var(--context-iconic-margin-end);
   }
@@ -569,9 +598,18 @@ of moz-document in stylesheets with file:// urls */
   }
 
   /* focused buttons to look like hovered buttons */
-  panelview :is(.toolbarbutton-1, toolbarbutton.subviewbutton, .navigable.subviewbutton):not([disabled], [open]):focus-visible,
+  panelview
+    :is(
+      .toolbarbutton-1,
+      toolbarbutton.subviewbutton,
+      .navigable.subviewbutton
+    ):not([disabled], [open]):focus-visible,
   .widget-overflow-list .toolbarbutton-1:not([disabled], [open]):focus-visible,
-  .toolbaritem-combined-buttons:is(:not([cui-areatype="toolbar"]), [overflowedItem="true"]) > toolbarbutton:not([disabled], [open]):focus-visible {
+  .toolbaritem-combined-buttons:is(
+      :not([cui-areatype="toolbar"]),
+      [overflowedItem="true"]
+    )
+    > toolbarbutton:not([disabled], [open]):focus-visible {
     background-color: var(--panel-item-hover-bgcolor);
   }
 
@@ -579,11 +617,17 @@ of moz-document in stylesheets with file:// urls */
     &:not([disabled]) {
       &:hover,
       &:focus-visible {
-        background-color: var(--button-hover-bgcolor, color-mix(in srgb, currentColor 17%, transparent));
+        background-color: var(
+          --button-hover-bgcolor,
+          color-mix(in srgb, currentColor 17%, transparent)
+        );
       }
 
       &:hover:active {
-        background-color: var(--button-active-bgcolor, color-mix(in srgb, currentColor 30%, transparent));
+        background-color: var(
+          --button-active-bgcolor,
+          color-mix(in srgb, currentColor 30%, transparent)
+        );
       }
 
       &[default],
@@ -665,7 +709,13 @@ of moz-document in stylesheets with file:// urls */
     line-height: revert;
   }
 
-  :is(.tab-throbber, .tab-icon-pending, .tab-icon-image, .tab-sharing-icon-overlay, .tab-icon-overlay):not([pinned]) {
+  :is(
+      .tab-throbber,
+      .tab-icon-pending,
+      .tab-icon-image,
+      .tab-sharing-icon-overlay,
+      .tab-icon-overlay
+    ):not([pinned]) {
     margin-inline-end: 0;
   }
 
@@ -723,8 +773,10 @@ of moz-document in stylesheets with file:// urls */
   /* hide tab bar's arrow buttons and spacers */
   #tabbrowser-arrowscrollbox::part(overflow-start-indicator),
   #tabbrowser-arrowscrollbox::part(overflow-end-indicator),
-  #tabbrowser-tabs:not([movingtab]) #tabbrowser-arrowscrollbox::part(scrollbutton-up),
-  #tabbrowser-tabs:not([movingtab]) #tabbrowser-arrowscrollbox::part(scrollbutton-down) {
+  #tabbrowser-tabs:not([movingtab])
+    #tabbrowser-arrowscrollbox::part(scrollbutton-up),
+  #tabbrowser-tabs:not([movingtab])
+    #tabbrowser-arrowscrollbox::part(scrollbutton-down) {
     visibility: collapse;
   }
 
@@ -772,18 +824,39 @@ of moz-document in stylesheets with file:// urls */
   we can make the instantaneous change happen more slowly, causing the tab to
   grow over 300ms from the time it's born. this way we don't animate tabs that
   were simply moved rather than created */
-  :root[sessionrestored] #tabbrowser-tabs:not([movingtab]) .tabbrowser-tab:not([pinned], [justmoved], [tab-grouping], [tabdrop-samewindow]) {
+  :root[sessionrestored]
+    #tabbrowser-tabs:not([movingtab])
+    .tabbrowser-tab:not(
+      [pinned],
+      [justmoved],
+      [tab-grouping],
+      [tabdrop-samewindow]
+    ) {
     flex: 0;
-    transition: min-width 100ms ease-out, max-width 100ms ease-out, flex 100ms ease-out;
+    transition:
+      min-width 100ms ease-out,
+      max-width 100ms ease-out,
+      flex 100ms ease-out;
   }
 
   /* animate tab pinning/unpinning. experimental. */
-  :root[sessionrestored] #tabbrowser-tabs:not([movingtab]) .tabbrowser-tab[pinned]:not([justmoved], [tab-grouping], [tabdrop-samewindow]) {
+  :root[sessionrestored]
+    #tabbrowser-tabs:not([movingtab])
+    .tabbrowser-tab[pinned]:not(
+      [justmoved],
+      [tab-grouping],
+      [tabdrop-samewindow]
+    ) {
     flex: 0;
-    transition: min-width 100ms ease-out, max-width 100ms ease-out, flex 100ms ease-out;
+    transition:
+      min-width 100ms ease-out,
+      max-width 100ms ease-out,
+      flex 100ms ease-out;
   }
 
-  :root[sessionrestored] #tabbrowser-tabs:not([movingtab]) .tabbrowser-tab[fadein]:not([pinned], [justmoved]) {
+  :root[sessionrestored]
+    #tabbrowser-tabs:not([movingtab])
+    .tabbrowser-tab[fadein]:not([pinned], [justmoved]) {
     flex: 100 100;
   }
 
@@ -793,7 +866,9 @@ of moz-document in stylesheets with file:// urls */
     max-width: var(--pinned-tab-width, 36px);
   }
 
-  #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab[first-visible-unpinned-tab] {
+  #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
+    > #tabbrowser-arrowscrollbox
+    > .tabbrowser-tab[first-visible-unpinned-tab] {
     margin-inline-start: revert !important;
   }
 
@@ -803,7 +878,10 @@ of moz-document in stylesheets with file:// urls */
   }
 
   /* when drag mode is enabled. this enables the tab shadows to draw onto the drag space. */
-  :root[sizemode="normal"] #TabsToolbar > .toolbar-items #tabbrowser-arrowscrollbox::part(scrollbox) {
+  :root[sizemode="normal"]
+    #TabsToolbar
+    > .toolbar-items
+    #tabbrowser-arrowscrollbox::part(scrollbox) {
     min-height: calc(var(--min-tab-height) + var(--space-above-tabbar));
     padding-block-start: var(--space-above-tabbar);
   }
@@ -820,11 +898,15 @@ of moz-document in stylesheets with file:// urls */
   }
 
   /* dim unloaded/discarded tabs */
-  .tabbrowser-tab[pending] .tab-content :is(.tab-icon-image, .tab-label, .tab-sharing-icon-overlay) {
+  .tabbrowser-tab[pending]
+    .tab-content
+    :is(.tab-icon-image, .tab-label, .tab-sharing-icon-overlay) {
     opacity: 0.7;
   }
 
-  .tabbrowser-tab[pending]:is(:hover, .keyboard-focused-tab, [open]) .tab-content :is(.tab-icon-image, .tab-label, .tab-sharing-icon-overlay) {
+  .tabbrowser-tab[pending]:is(:hover, .keyboard-focused-tab, [open])
+    .tab-content
+    :is(.tab-icon-image, .tab-label, .tab-sharing-icon-overlay) {
     opacity: 0.8;
   }
 
@@ -843,10 +925,15 @@ of moz-document in stylesheets with file:// urls */
 
   #PanelUI-whatsNew .whatsNew-message-title,
   #protections-popup-message .whatsNew-message-title,
-  #contextual-feature-recommendation-notification[data-notification-category="icon_and_message"] .popup-notification-description,
+  #contextual-feature-recommendation-notification[data-notification-category="icon_and_message"]
+    .popup-notification-description,
   menulist:not([native])::part(label-box),
   #cfr-notification-header-label,
-  panel:is([type="autocomplete-richlistbox"], #PopupAutoComplete) > richlistbox > richlistitem[originaltype="insecureWarning"] > .ac-title .ac-emphasize-text-title {
+  panel:is([type="autocomplete-richlistbox"], #PopupAutoComplete)
+    > richlistbox
+    > richlistitem[originaltype="insecureWarning"]
+    > .ac-title
+    .ac-emphasize-text-title {
     font-weight: var(--uc-font-weight-bold, 600);
   }
 
@@ -857,15 +944,28 @@ of moz-document in stylesheets with file:// urls */
   }
 
   #customizationui-widget-panel[viewId^="PanelUI-webext-"]::part(arrow) {
-    stroke: var(--customized-webextension-panel-stroke, var(--arrowpanel-background));
+    stroke: var(
+      --customized-webextension-panel-stroke,
+      var(--arrowpanel-background)
+    );
   }
 
-  #customizationui-widget-panel[viewId^="PanelUI-webext-"][side="top"]::part(arrow) {
-    margin-bottom: var(--customized-webextension-panel-margin-bottom, calc(-1px - var(--panel-inner-box-margin, 4px)));
+  #customizationui-widget-panel[viewId^="PanelUI-webext-"][side="top"]::part(
+      arrow
+    ) {
+    margin-bottom: var(
+      --customized-webextension-panel-margin-bottom,
+      calc(-1px - var(--panel-inner-box-margin, 4px))
+    );
   }
 
-  #customizationui-widget-panel[viewId^="PanelUI-webext-"][side="bottom"]::part(arrow) {
-    margin-top: var(--customized-webextension-panel-margin-top, calc(-1px - var(--panel-inner-box-margin, 4px)));
+  #customizationui-widget-panel[viewId^="PanelUI-webext-"][side="bottom"]::part(
+      arrow
+    ) {
+    margin-top: var(
+      --customized-webextension-panel-margin-top,
+      calc(-1px - var(--panel-inner-box-margin, 4px))
+    );
   }
 
   #customization-panelWrapper {
@@ -883,9 +983,21 @@ of moz-document in stylesheets with file:// urls */
   #sidebarMenu-popup[backdrop-color="gray"]::part(content),
   window#alertNotification #alertSettings :is(menupopup, panel)::part(content),
   :is(menupopup[menu-api], menupopup[menu-api] menupopup)::part(content) {
-    --arrowpanel-dimmed: color-mix(in srgb, var(--uc-toolbar-color) 7%, transparent);
-    --arrowpanel-dimmed-further: color-mix(in srgb, var(--uc-toolbar-color) 12%, transparent);
-    --arrowpanel-dimmed-even-further: color-mix(in srgb, var(--uc-toolbar-color) 15%, transparent);
+    --arrowpanel-dimmed: color-mix(
+      in srgb,
+      var(--uc-toolbar-color) 7%,
+      transparent
+    );
+    --arrowpanel-dimmed-further: color-mix(
+      in srgb,
+      var(--uc-toolbar-color) 12%,
+      transparent
+    );
+    --arrowpanel-dimmed-even-further: color-mix(
+      in srgb,
+      var(--uc-toolbar-color) 15%,
+      transparent
+    );
     --arrowpanel-background: var(--in-content-bg-darker, rgb(21, 21, 23));
     --panel-background: var(--arrowpanel-background);
     --button-bgcolor: var(--arrowpanel-dimmed);
@@ -899,13 +1011,33 @@ of moz-document in stylesheets with file:// urls */
     --panel-shortcut-color: var(--ui-text-40);
     --panel-description-color: var(--ui-text-40);
     --uc-panel-description-color: var(--ui-text-40);
-    --arrowpanel-border-color: color-mix(in srgb, currentColor 12%, var(--in-content-bg-darker, rgb(21, 21, 23))) !important;
+    --arrowpanel-border-color: color-mix(
+      in srgb,
+      currentColor 12%,
+      var(--in-content-bg-darker, rgb(21, 21, 23))
+    ) !important;
     --panel-border-color: var(--arrowpanel-border-color) !important;
     --menu-separator-color: var(--arrowpanel-border-color) !important;
-    --uc-checkbox-unchecked-bgcolor: color-mix(in srgb, var(--toolbar-color) 7%, transparent);
-    --uc-checkbox-unchecked-hover-bgcolor: color-mix(in srgb, var(--toolbar-color) 12%, transparent);
-    --uc-checkbox-unchecked-active-bgcolor: color-mix(in srgb, var(--toolbar-color) 15%, transparent);
-    --urlbar-input-bgcolor: color-mix(in srgb, currentColor 4%, var(--in-content-button-highlight-dark));
+    --uc-checkbox-unchecked-bgcolor: color-mix(
+      in srgb,
+      var(--toolbar-color) 7%,
+      transparent
+    );
+    --uc-checkbox-unchecked-hover-bgcolor: color-mix(
+      in srgb,
+      var(--toolbar-color) 12%,
+      transparent
+    );
+    --uc-checkbox-unchecked-active-bgcolor: color-mix(
+      in srgb,
+      var(--toolbar-color) 15%,
+      transparent
+    );
+    --urlbar-input-bgcolor: color-mix(
+      in srgb,
+      currentColor 4%,
+      var(--in-content-button-highlight-dark)
+    );
   }
 
   /* dark gray context menus/menulists in system pages with gray theme */
@@ -915,9 +1047,21 @@ of moz-document in stylesheets with file:// urls */
     url-prefix("chrome://devtools/content/")
   {
     :is(menupopup)::part(content) {
-      --arrowpanel-dimmed: color-mix(in srgb, var(--uc-toolbar-color) 7%, transparent);
-      --arrowpanel-dimmed-further: color-mix(in srgb, var(--uc-toolbar-color) 12%, transparent);
-      --arrowpanel-dimmed-even-further: color-mix(in srgb, var(--uc-toolbar-color) 15%, transparent);
+      --arrowpanel-dimmed: color-mix(
+        in srgb,
+        var(--uc-toolbar-color) 7%,
+        transparent
+      );
+      --arrowpanel-dimmed-further: color-mix(
+        in srgb,
+        var(--uc-toolbar-color) 12%,
+        transparent
+      );
+      --arrowpanel-dimmed-even-further: color-mix(
+        in srgb,
+        var(--uc-toolbar-color) 15%,
+        transparent
+      );
       --arrowpanel-background: var(--in-content-bg-darker, rgb(21, 21, 23));
       --button-bgcolor: var(--arrowpanel-dimmed);
       --button-hover-bgcolor: var(--arrowpanel-dimmed-further);
@@ -932,12 +1076,28 @@ of moz-document in stylesheets with file:// urls */
       --uc-panel-shortcut-color: var(--ui-text-40);
       --panel-description-color: var(--ui-text-40);
       --uc-panel-description-color: var(--ui-text-40);
-      --arrowpanel-border-color: color-mix(in srgb, currentColor 12%, var(--in-content-bg-darker, rgb(21, 21, 23))) !important;
+      --arrowpanel-border-color: color-mix(
+        in srgb,
+        currentColor 12%,
+        var(--in-content-bg-darker, rgb(21, 21, 23))
+      ) !important;
       --panel-border-color: var(--arrowpanel-border-color) !important;
       --menu-separator-color: var(--arrowpanel-border-color) !important;
-      --uc-checkbox-unchecked-bgcolor: color-mix(in srgb, var(--toolbar-color) 7%, transparent);
-      --uc-checkbox-unchecked-hover-bgcolor: color-mix(in srgb, var(--toolbar-color) 12%, transparent);
-      --uc-checkbox-unchecked-active-bgcolor: color-mix(in srgb, var(--toolbar-color) 15%, transparent);
+      --uc-checkbox-unchecked-bgcolor: color-mix(
+        in srgb,
+        var(--toolbar-color) 7%,
+        transparent
+      );
+      --uc-checkbox-unchecked-hover-bgcolor: color-mix(
+        in srgb,
+        var(--toolbar-color) 12%,
+        transparent
+      );
+      --uc-checkbox-unchecked-active-bgcolor: color-mix(
+        in srgb,
+        var(--toolbar-color) 15%,
+        transparent
+      );
     }
   }
 
@@ -996,7 +1156,9 @@ of moz-document in stylesheets with file:// urls */
     background-color: var(--in-content-primary-button-background);
   }
 
-  #customization-done-button:is(:active, :focus-visible, :hover):not([disabled]) {
+  #customization-done-button:is(:active, :focus-visible, :hover):not(
+      [disabled]
+    ) {
     background-color: var(--in-content-primary-button-background-hover);
   }
 
@@ -1006,18 +1168,26 @@ of moz-document in stylesheets with file:// urls */
 
   @-moz-document url(chrome://browser/content/browser.xhtml)
   {
-    :is(#customization-lwtheme-menu, #customization-uidensity-menu):is([side="bottom"], [side="right"])::part(arrowbox) {
+    :is(#customization-lwtheme-menu, #customization-uidensity-menu):is(
+        [side="bottom"],
+        [side="right"]
+      )::part(arrowbox) {
       order: 2;
     }
 
-    :is(#customization-lwtheme-menu, #customization-uidensity-menu)::part(arrow) {
+    :is(#customization-lwtheme-menu, #customization-uidensity-menu)::part(
+        arrow
+      ) {
       transform: scaleY(-1);
       margin-bottom: revert;
       position: relative;
       margin-inline: 10px;
     }
 
-    :is(#customization-lwtheme-menu, #customization-uidensity-menu)[side="top"]::part(arrow) {
+    :is(
+        #customization-lwtheme-menu,
+        #customization-uidensity-menu
+      )[side="top"]::part(arrow) {
       margin-top: -5px;
     }
 
@@ -1050,12 +1220,18 @@ of moz-document in stylesheets with file:// urls */
 
     :root[dialogroot] select:not([size], [multiple])[iconic] {
       padding-inline-start: calc(8px + 16px + 4px);
-      background-size: auto 12px, 16px;
-      background-position: right 19px center, left 8px center;
+      background-size:
+        auto 12px,
+        16px;
+      background-position:
+        right 19px center,
+        left 8px center;
     }
 
     #printer-picker {
-      background-position: right 6px center, left 8px center;
+      background-position:
+        right 6px center,
+        left 8px center;
     }
 
     :is(panel, dialog) menulist {
@@ -1067,7 +1243,8 @@ of moz-document in stylesheets with file:// urls */
       --menulist-dropmarker-opacity: 0.8;
     }
 
-    :is(panel, dialog) menulist:is(:focus-visible, :hover:active, [open="true"]) {
+    :is(panel, dialog)
+      menulist:is(:focus-visible, :hover:active, [open="true"]) {
       --menulist-dropmarker-opacity: 1;
     }
 
@@ -1139,16 +1316,29 @@ of moz-document in stylesheets with file:// urls */
   }
 
   #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):first-child,
-  #nav-bar-customization-target > toolbarpaletteitem:first-child > :is(toolbarbutton, toolbaritem) {
+  #nav-bar-customization-target
+    > toolbarpaletteitem:first-child
+    > :is(toolbarbutton, toolbaritem) {
     padding: 0 var(--toolbarbutton-outer-padding);
   }
 
   /* prevent hiding the close button when audio is playing.
   undoes an irritating rule in the proton update */
-  :root[uidensity="compact"] .tab-icon-stack[indicator-replaces-favicon] > :not(.tab-icon-overlay),
-  #tabbrowser-tabs[secondarytext-unsupported] .tab-icon-stack[indicator-replaces-favicon] > :not(.tab-icon-overlay),
-  :root:not([uidensity="compact"]) #tabbrowser-tabs:not([secondarytext-unsupported]) .tabbrowser-tab:not(:hover) .tab-icon-overlay[indicator-replaces-favicon],
-  :root:not([uidensity="compact"]) #tabbrowser-tabs:not([secondarytext-unsupported]) .tabbrowser-tab:hover .tab-icon-stack[indicator-replaces-favicon] > :not(.tab-icon-overlay) {
+  :root[uidensity="compact"]
+    .tab-icon-stack[indicator-replaces-favicon]
+    > :not(.tab-icon-overlay),
+  #tabbrowser-tabs[secondarytext-unsupported]
+    .tab-icon-stack[indicator-replaces-favicon]
+    > :not(.tab-icon-overlay),
+  :root:not([uidensity="compact"])
+    #tabbrowser-tabs:not([secondarytext-unsupported])
+    .tabbrowser-tab:not(:hover)
+    .tab-icon-overlay[indicator-replaces-favicon],
+  :root:not([uidensity="compact"])
+    #tabbrowser-tabs:not([secondarytext-unsupported])
+    .tabbrowser-tab:hover
+    .tab-icon-stack[indicator-replaces-favicon]
+    > :not(.tab-icon-overlay) {
     opacity: revert;
   }
 
@@ -1194,12 +1384,19 @@ of moz-document in stylesheets with file:// urls */
   #PlacesToolbar menuitem:not([disabled])[_moz-menuactive]:active,
   #PlacesToolbar menu:not([disabled])[_moz-menuactive]:active,
   menuitem.subviewbutton:not([disabled])[_moz-menuactive]:active,
-  .widget-overflow-list .toolbarbutton-1:not([disabled]):is([open], :hover:active),
-  .toolbaritem-combined-buttons:is(:not([cui-areatype="toolbar"]), [overflowedItem="true"]) > toolbarbutton:not([disabled]):is([open], :hover:active) {
+  .widget-overflow-list
+    .toolbarbutton-1:not([disabled]):is([open], :hover:active),
+  .toolbaritem-combined-buttons:is(
+      :not([cui-areatype="toolbar"]),
+      [overflowedItem="true"]
+    )
+    > toolbarbutton:not([disabled]):is([open], :hover:active) {
     box-shadow: revert;
   }
 
-  #downloads-button > .toolbarbutton-badge-stack > #downloads-indicator-progress-outer {
+  #downloads-button
+    > .toolbarbutton-badge-stack
+    > #downloads-indicator-progress-outer {
     top: calc(50% - 10px);
     left: calc(50% - 10px);
     width: 20px;
@@ -1211,11 +1408,15 @@ of moz-document in stylesheets with file:// urls */
     background-size: 20px;
   }
 
-  #downloads-button > .toolbarbutton-badge-stack > .toolbarbutton-animatable-box {
+  #downloads-button
+    > .toolbarbutton-badge-stack
+    > .toolbarbutton-animatable-box {
     z-index: initial;
   }
 
-  .customization-target :is(#reload-button, #stop-button) > .toolbarbutton-icon {
+  .customization-target
+    :is(#reload-button, #stop-button)
+    > .toolbarbutton-icon {
     padding: var(--toolbarbutton-inner-padding) !important;
   }
 
@@ -1223,12 +1424,17 @@ of moz-document in stylesheets with file:// urls */
     translate: revert;
   }
 
-  #stop-reload-button > :is(#reload-button, #stop-button) > .toolbarbutton-animatable-box {
+  #stop-reload-button
+    > :is(#reload-button, #stop-button)
+    > .toolbarbutton-animatable-box {
     display: block;
   }
 
   #stop-reload-button[animate] > #reload-button > .toolbarbutton-icon,
-  #stop-reload-button[animate] > #reload-button[displaystop] + #stop-button > .toolbarbutton-icon {
+  #stop-reload-button[animate]
+    > #reload-button[displaystop]
+    + #stop-button
+    > .toolbarbutton-icon {
     fill: transparent;
   }
 
@@ -1264,36 +1470,60 @@ of moz-document in stylesheets with file:// urls */
     height: 20px;
   }
 
-  #stop-reload-button[animate] > #reload-button > .toolbarbutton-animatable-box > .toolbarbutton-animatable-image {
+  #stop-reload-button[animate]
+    > #reload-button
+    > .toolbarbutton-animatable-box
+    > .toolbarbutton-animatable-image {
     background-image: url(chrome://userchrome/content/skin/reload-to-stop.svg);
     width: 468px;
   }
 
-  #stop-reload-button[animate] > #reload-button:not([displaystop]) > .toolbarbutton-animatable-box > .toolbarbutton-animatable-image {
+  #stop-reload-button[animate]
+    > #reload-button:not([displaystop])
+    > .toolbarbutton-animatable-box
+    > .toolbarbutton-animatable-image {
     animation-name: reload-to-stop;
   }
 
-  #reload-button:not([displaystop]) > .toolbarbutton-animatable-box > .toolbarbutton-animatable-image {
+  #reload-button:not([displaystop])
+    > .toolbarbutton-animatable-box
+    > .toolbarbutton-animatable-image {
     animation-timing-function: steps(25);
     animation-duration: 200ms;
   }
 
-  #stop-reload-button[animate] > #reload-button[displaystop] + #stop-button > .toolbarbutton-animatable-box > .toolbarbutton-animatable-image {
+  #stop-reload-button[animate]
+    > #reload-button[displaystop]
+    + #stop-button
+    > .toolbarbutton-animatable-box
+    > .toolbarbutton-animatable-image {
     background-image: url(chrome://userchrome/content/skin/stop-to-reload.svg);
     width: 468px;
   }
 
-  #stop-reload-button[animate] > #reload-button[displaystop] + #stop-button > .toolbarbutton-animatable-box > .toolbarbutton-animatable-image {
+  #stop-reload-button[animate]
+    > #reload-button[displaystop]
+    + #stop-button
+    > .toolbarbutton-animatable-box
+    > .toolbarbutton-animatable-image {
     animation-name: stop-to-reload;
   }
 
-  #reload-button[displaystop] + #stop-button > .toolbarbutton-animatable-box > .toolbarbutton-animatable-image {
+  #reload-button[displaystop]
+    + #stop-button
+    > .toolbarbutton-animatable-box
+    > .toolbarbutton-animatable-image {
     animation-timing-function: steps(25);
     animation-duration: 200ms;
   }
 
-  #reload-button > .toolbarbutton-animatable-box > .toolbarbutton-animatable-image,
-  #reload-button[displaystop] + #stop-button > .toolbarbutton-animatable-box > .toolbarbutton-animatable-image {
+  #reload-button
+    > .toolbarbutton-animatable-box
+    > .toolbarbutton-animatable-image,
+  #reload-button[displaystop]
+    + #stop-button
+    > .toolbarbutton-animatable-box
+    > .toolbarbutton-animatable-image {
     transform: translateX(-450px);
   }
 
@@ -1328,7 +1558,10 @@ of moz-document in stylesheets with file:// urls */
 
   #history-panelmenu,
   #sidebar-switcher-history > .toolbarbutton-icon,
-  #sidebar-box[sidebarcommand="viewHistorySidebar"] > #sidebar-header > #sidebar-switcher-target > #sidebar-icon {
+  #sidebar-box[sidebarcommand="viewHistorySidebar"]
+    > #sidebar-header
+    > #sidebar-switcher-target
+    > #sidebar-icon {
     list-style-image: url(chrome://userchrome/content/skin/history.svg);
   }
 
@@ -1353,7 +1586,10 @@ of moz-document in stylesheets with file:// urls */
   }
 
   #sync-button,
-  #sidebar-box[sidebarcommand="viewTabsSidebar"] > #sidebar-header > #sidebar-switcher-target > #sidebar-icon {
+  #sidebar-box[sidebarcommand="viewTabsSidebar"]
+    > #sidebar-header
+    > #sidebar-switcher-target
+    > #sidebar-icon {
     list-style-image: url(chrome://userchrome/content/skin/synced-tabs.svg);
   }
 
@@ -1502,19 +1738,25 @@ of moz-document in stylesheets with file:// urls */
     top: calc(50% - 18px);
     /* Since .toolbarbutton-icon uses a different width than the animatable box,
     we need to set a padding relative to the difference in widths. */
-    margin-inline-start: calc((16px + 2 * var(--toolbarbutton-inner-padding) - 18px) / 2);
+    margin-inline-start: calc(
+      (16px + 2 * var(--toolbarbutton-inner-padding) - 18px) / 2
+    );
     /* Width of each frame within the SVG sprite */
     width: 18px;
     /* Height of each frame within the SVG sprite */
     height: 36px;
   }
 
-  #nav-bar-overflow-button > .toolbarbutton-animatable-box > .toolbarbutton-animatable-image {
+  #nav-bar-overflow-button
+    > .toolbarbutton-animatable-box
+    > .toolbarbutton-animatable-image {
     /* Minimum height must be equal to the height of the SVG sprite */
     min-height: 36px;
   }
 
-  #nav-bar-overflow-button[animate] > .toolbarbutton-animatable-box > .toolbarbutton-animatable-image {
+  #nav-bar-overflow-button[animate]
+    > .toolbarbutton-animatable-box
+    > .toolbarbutton-animatable-image {
     animation-name: overflow-animation;
     animation-timing-function: steps(70);
     animation-duration: 1167ms;
@@ -1522,7 +1764,9 @@ of moz-document in stylesheets with file:// urls */
     width: 1278px;
   }
 
-  #nav-bar-overflow-button[animate][fade] > .toolbarbutton-animatable-box > .toolbarbutton-animatable-image {
+  #nav-bar-overflow-button[animate][fade]
+    > .toolbarbutton-animatable-box
+    > .toolbarbutton-animatable-image {
     animation-name: overflow-fade;
     animation-timing-function: ease-out;
     animation-duration: 730ms;
@@ -1584,7 +1828,9 @@ of moz-document in stylesheets with file:// urls */
     margin-inline: 6px 0;
   }
 
-  #urlbar #identity-box :is(.sharing-icon, .notification-anchor-icon, .blocked-permission-icon) {
+  #urlbar
+    #identity-box
+    :is(.sharing-icon, .notification-anchor-icon, .blocked-permission-icon) {
     margin-inline-start: 6px;
   }
 
@@ -1872,7 +2118,8 @@ of moz-document in stylesheets with file:// urls */
     list-style-image: url(chrome://userchrome/content/material/extension.svg);
   }
 
-  #addon-install-confirmation-notification[warning] .popup-notification-icon[popupid="addon-install-confirmation"] {
+  #addon-install-confirmation-notification[warning]
+    .popup-notification-icon[popupid="addon-install-confirmation"] {
     list-style-image: url(chrome://userchrome/content/skin/addons/addon-install-warning.svg);
   }
 
@@ -1901,7 +2148,8 @@ of moz-document in stylesheets with file:// urls */
     transition: opacity 1.5s;
   }
 
-  #plugins-notification-icon:not(.plugin-blocked)[extraAttr="inactive"] > .plugin-icon {
+  #plugins-notification-icon:not(.plugin-blocked)[extraAttr="inactive"]
+    > .plugin-icon {
     fill-opacity: 0.25;
   }
 
@@ -1909,7 +2157,8 @@ of moz-document in stylesheets with file:// urls */
     opacity: 1;
   }
 
-  #plugins-notification-icon[extraAttr="inactive"] > #plugin-icon-badge[animate] {
+  #plugins-notification-icon[extraAttr="inactive"]
+    > #plugin-icon-badge[animate] {
     animation: blink-badge 1000ms ease 0s 5 alternate both;
   }
 
@@ -1966,12 +2215,14 @@ of moz-document in stylesheets with file:// urls */
   .popup-notification-icon[popupid="update-manual"],
   .popup-notification-icon[popupid="update-other-instance"],
   .popup-notification-icon[popupid="update-restart"] {
-    background: #74bf43 url(chrome://userchrome/content/notifications/update.svg) no-repeat center;
+    background: #74bf43
+      url(chrome://userchrome/content/notifications/update.svg) no-repeat center;
     border-radius: 50%;
   }
 
   .popup-notification-icon[popupid="update-unsupported"] {
-    background: #ffe900 url(chrome://userchrome/content/notifications/update.svg) no-repeat center;
+    background: #ffe900
+      url(chrome://userchrome/content/notifications/update.svg) no-repeat center;
     border-radius: 50%;
   }
 
@@ -2141,15 +2392,24 @@ of moz-document in stylesheets with file:// urls */
 
   checkbox:not([disabled="true"]):hover {
     > .checkbox-check {
-      background-color: var(--checkbox-unchecked-hover-bgcolor, color-mix(in srgb, AccentColor 4%, Field));
+      background-color: var(
+        --checkbox-unchecked-hover-bgcolor,
+        color-mix(in srgb, AccentColor 4%, Field)
+      );
 
       @media (prefers-contrast) {
         /* color will set the border-color on the check due to how HCM works for in-content pages. */
-        color: var(--checkbox-checked-border-color, color-mix(in srgb, AccentColor 4%, Field));
+        color: var(
+          --checkbox-checked-border-color,
+          color-mix(in srgb, AccentColor 4%, Field)
+        );
       }
 
       &[checked] {
-        background-color: var(--checkbox-checked-hover-bgcolor, color-mix(in srgb, currentColor 12.5%, AccentColor));
+        background-color: var(
+          --checkbox-checked-hover-bgcolor,
+          color-mix(in srgb, currentColor 12.5%, AccentColor)
+        );
 
         @media (prefers-contrast) {
           color: var(--checkbox-checked-border-color, AccentColorText);
@@ -2160,10 +2420,16 @@ of moz-document in stylesheets with file:// urls */
     }
 
     &:active > .checkbox-check {
-      background-color: var(--checkbox-unchecked-active-bgcolor, color-mix(in srgb, AccentColor 8%, Field));
+      background-color: var(
+        --checkbox-unchecked-active-bgcolor,
+        color-mix(in srgb, AccentColor 8%, Field)
+      );
 
       &[checked] {
-        background-color: var(--checkbox-checked-active-bgcolor, color-mix(in srgb, currentColor 25%, AccentColor));
+        background-color: var(
+          --checkbox-checked-active-bgcolor,
+          color-mix(in srgb, currentColor 25%, AccentColor)
+        );
 
         @media (prefers-contrast) {
           color: var(--checkbox-checked-border-color, AccentColorText);
@@ -2191,12 +2457,22 @@ of moz-document in stylesheets with file:// urls */
       --in-content-text-color: var(--in-content-page-color);
       --in-content-box-background: #fff;
       --in-content-box-background-odd: rgba(12, 12, 13, 0.05);
-      --in-content-box-border-color: color-mix(in srgb, currentColor 41%, transparent);
+      --in-content-box-border-color: color-mix(
+        in srgb,
+        currentColor 41%,
+        transparent
+      );
       --in-content-box-info-background: #f0f0f4;
-      --in-content-item-hover: color-mix(in srgb, var(--in-content-primary-button-background) 20%, transparent);
+      --in-content-item-hover: color-mix(
+        in srgb,
+        var(--in-content-primary-button-background) 20%,
+        transparent
+      );
       --in-content-item-hover-text: var(--in-content-page-color);
       --in-content-item-selected: var(--in-content-primary-button-background);
-      --in-content-item-selected-text: var(--in-content-primary-button-text-color);
+      --in-content-item-selected-text: var(
+        --in-content-primary-button-text-color
+      );
       --in-content-icon-color: rgb(91, 91, 102);
       --in-content-accent-color: #0a84ff;
       --in-content-accent-color-active: #0060df;
@@ -2210,34 +2486,54 @@ of moz-document in stylesheets with file:// urls */
       --in-content-link-color-visited: var(--blue-60);
       --in-content-button-text-color: var(--in-content-text-color);
       --in-content-button-text-color-hover: var(--in-content-text-color);
-      --in-content-button-text-color-active: var(--in-content-button-text-color-hover);
+      --in-content-button-text-color-active: var(
+        --in-content-button-text-color-hover
+      );
       --in-content-button-background: rgba(207, 207, 216, 0.33);
       --in-content-button-background-hover: rgba(207, 207, 216, 0.66);
       --in-content-button-background-active: rgb(207, 207, 216);
       --in-content-button-border-color: transparent;
       --in-content-button-border-color-hover: transparent;
-      --in-content-button-border-color-active: var(--in-content-button-border-color-hover);
+      --in-content-button-border-color-active: var(
+        --in-content-button-border-color-hover
+      );
       --in-content-primary-button-text-color: rgb(251, 251, 254);
-      --in-content-primary-button-text-color-hover: var(--in-content-primary-button-text-color);
+      --in-content-primary-button-text-color-hover: var(
+        --in-content-primary-button-text-color
+      );
       --in-content-primary-button-background: #0061e0;
       --in-content-primary-button-background-hover: #0250bb;
       --in-content-primary-button-background-active: #053e94;
       --in-content-primary-button-border-color: transparent;
       --in-content-primary-button-border-hover: transparent;
-      --in-content-focus-outline-color: var(--in-content-primary-button-background);
+      --in-content-focus-outline-color: var(
+        --in-content-primary-button-background
+      );
       --in-content-table-background: #f8f8fa;
       --in-content-table-border-color: var(--in-content-box-border-color);
-      --in-content-table-header-background: var(--in-content-primary-button-background);
-      --in-content-table-header-color: var(--in-content-primary-button-text-color);
+      --in-content-table-header-background: var(
+        --in-content-primary-button-background
+      );
+      --in-content-table-header-color: var(
+        --in-content-primary-button-text-color
+      );
       --checkbox-border-color: var(--in-content-box-border-color);
       --checkbox-unchecked-bgcolor: var(--in-content-button-background);
-      --checkbox-unchecked-hover-bgcolor: var(--in-content-button-background-hover);
-      --checkbox-unchecked-active-bgcolor: var(--in-content-button-background-active);
+      --checkbox-unchecked-hover-bgcolor: var(
+        --in-content-button-background-hover
+      );
+      --checkbox-unchecked-active-bgcolor: var(
+        --in-content-button-background-active
+      );
       --checkbox-checked-bgcolor: var(--in-content-primary-button-background);
       --checkbox-checked-color: var(--in-content-primary-button-text-color);
       --checkbox-checked-border-color: transparent;
-      --checkbox-checked-hover-bgcolor: var(--in-content-primary-button-background-hover);
-      --checkbox-checked-active-bgcolor: var(--in-content-primary-button-background-active);
+      --checkbox-checked-hover-bgcolor: var(
+        --in-content-primary-button-background-hover
+      );
+      --checkbox-checked-active-bgcolor: var(
+        --in-content-primary-button-background-active
+      );
       --blue-40: #45a1ff;
       --blue-50: #0a84ff;
       --blue-60: #0060df;
@@ -2293,24 +2589,40 @@ of moz-document in stylesheets with file:// urls */
         --in-content-primary-button-background-active: rgb(170, 242, 255);
         --in-content-table-background: rgb(35, 34, 43);
         --in-content-accent-color: var(--in-content-primary-button-background);
-        --in-content-accent-color-active: var(--in-content-primary-button-background-hover);
+        --in-content-accent-color-active: var(
+          --in-content-primary-button-background-hover
+        );
         --in-content-link-color: var(--in-content-primary-button-background);
-        --in-content-link-color-hover: var(--in-content-primary-button-background-hover);
-        --in-content-link-color-active: var(--in-content-primary-button-background-active);
+        --in-content-link-color-hover: var(
+          --in-content-primary-button-background-hover
+        );
+        --in-content-link-color-active: var(
+          --in-content-primary-button-background-active
+        );
         --in-content-link-color-visited: var(--in-content-link-color);
         --link-color: var(--in-content-primary-button-background);
         --link-color-hover: var(--in-content-primary-button-background-hover);
         --link-color-active: var(--in-content-primary-button-background-active);
         --link-color-visited: var(--in-content-link-color);
         --checkbox-border-color: var(--uc-checkbox-border-color);
-        --checkbox-checked-border-color: var(--uc-checkbox-checked-border-color);
+        --checkbox-checked-border-color: var(
+          --uc-checkbox-checked-border-color
+        );
         --checkbox-unchecked-bgcolor: var(--uc-checkbox-unchecked-bgcolor);
-        --checkbox-unchecked-hover-bgcolor: var(--uc-checkbox-unchecked-hover-bgcolor);
-        --checkbox-unchecked-active-bgcolor: var(--uc-checkbox-unchecked-active-bgcolor);
+        --checkbox-unchecked-hover-bgcolor: var(
+          --uc-checkbox-unchecked-hover-bgcolor
+        );
+        --checkbox-unchecked-active-bgcolor: var(
+          --uc-checkbox-unchecked-active-bgcolor
+        );
         --checkbox-checked-bgcolor: var(--uc-checkbox-checked-bgcolor);
         --checkbox-checked-color: var(--uc-checkbox-checked-color);
-        --checkbox-checked-hover-bgcolor: var(--uc-checkbox-checked-hover-bgcolor);
-        --checkbox-checked-active-bgcolor: var(--uc-checkbox-checked-active-bgcolor);
+        --checkbox-checked-hover-bgcolor: var(
+          --uc-checkbox-checked-hover-bgcolor
+        );
+        --checkbox-checked-active-bgcolor: var(
+          --uc-checkbox-checked-active-bgcolor
+        );
       }
     }
 
@@ -2364,7 +2676,7 @@ of moz-document in stylesheets with file:// urls */
 
     checkbox:focus-visible > .checkbox-check,
     radiogroup:focus-visible > radio[focused] > .radio-check,
-    radiogroup:focus-visible radio[focused] .radio-check  {
+    radiogroup:focus-visible radio[focused] .radio-check {
       outline: var(--global-focus-outline);
     }
 
@@ -2397,19 +2709,31 @@ of moz-document in stylesheets with file:// urls */
     }
 
     radio:not([disabled="true"]):hover:active > .radio-check[selected] {
-      background-color: var(--checkbox-checked-active-bgcolor, color-mix(in srgb, currentColor 25%));
+      background-color: var(
+        --checkbox-checked-active-bgcolor,
+        color-mix(in srgb, currentColor 25%)
+      );
     }
 
     radio:not([disabled="true"]):hover > .radio-check[selected] {
-      background-color: var(--checkbox-checked-hover-bgcolor, color-mix(in srgb, currentColor 12.5%));
+      background-color: var(
+        --checkbox-checked-hover-bgcolor,
+        color-mix(in srgb, currentColor 12.5%)
+      );
     }
 
     radio:not([disabled="true"]):hover:active > .radio-check {
-      background-color: var(--checkbox-unchecked-active-bgcolor, color-mix(in srgb 8%, Field));
+      background-color: var(
+        --checkbox-unchecked-active-bgcolor,
+        color-mix(in srgb 8%, Field)
+      );
     }
 
     radio:not([disabled="true"]):hover > .radio-check {
-      background-color: var(--checkbox-unchecked-hover-bgcolor, color-mix(in srgb 4%, Field));
+      background-color: var(
+        --checkbox-unchecked-hover-bgcolor,
+        color-mix(in srgb 4%, Field)
+      );
     }
 
     radio[disabled="true"] {

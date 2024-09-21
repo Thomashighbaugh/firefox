@@ -18,16 +18,16 @@ export const SearchBar = ({
   let searchValue = useMemo(() => terms || "", [terms]);
 
   const onChange = useCallback(
-    event => {
+    (event) => {
       doSearch(event.target.value);
     },
-    [doSearch]
+    [doSearch],
   );
   const onClear = useCallback(() => {
     doSearch("");
   }, [doSearch]);
   const onKeyDown = useCallback(
-    event => {
+    (event) => {
       if (event.repeat) return;
       switch (event.key) {
         case "Escape":
@@ -42,9 +42,9 @@ export const SearchBar = ({
           break;
       }
     },
-    [onClear, doSearch, doSubmit]
+    [onClear, doSearch, doSubmit],
   );
-  const onSearchboxClick = useCallback(event => {
+  const onSearchboxClick = useCallback((event) => {
     if (
       event.target === event.currentTarget &&
       !event.target.matches(":focus-within")
@@ -61,7 +61,8 @@ export const SearchBar = ({
       id={id}
       className="search-textbox"
       onClick={onSearchboxClick}
-      role="search">
+      role="search"
+    >
       <div className="textbox-search-sign" hidden={!searchIcon} />
       <input
         type="search"

@@ -57,7 +57,7 @@ let registrar = Components.manager.QueryInterface(Ci.nsIComponentRegistrar);
 function findAboutConfig() {
   if (config.pathOverride) return config.pathOverride;
   let dir = Services.dirsvc.get("UChrm", Ci.nsIFile);
-  let appendFn = nm => dir.append(nm);
+  let appendFn = (nm) => dir.append(nm);
 
   // fx-autoconfig
   ["resources", "aboutconfig", "config.xhtml"].forEach(appendFn);
@@ -135,7 +135,7 @@ if (urlString) {
     generateFreeCID(),
     `about:${config.address}`,
     `@mozilla.org/network/protocol/about;1?what=${config.address}`,
-    AboutModuleFactory
+    AboutModuleFactory,
   );
 }
 

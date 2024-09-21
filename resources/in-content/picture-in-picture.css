@@ -72,12 +72,20 @@
 
 @media (-moz-bool-pref: "userChrome.css.mac-ui-fonts") {
   .pip-wrapper .pip-icon-label {
-    font-family: SF Pro, SF Arabic, Segoe UI, sans-serif !important;
+    font-family:
+      SF Pro,
+      SF Arabic,
+      Segoe UI,
+      sans-serif !important;
     font-kerning: normal !important;
   }
 
   .pictureInPictureOverlay {
-    font-family: SF Pro Display, SF Arabic, Segoe UI, sans-serif !important;
+    font-family:
+      SF Pro Display,
+      SF Arabic,
+      Segoe UI,
+      sans-serif !important;
     font-kerning: normal !important;
   }
 }
@@ -112,12 +120,16 @@
   opacity: 0 !important;
   transform-style: flat !important;
   backface-visibility: hidden !important;
-  transition: opacity 250ms, translate 190ms !important;
+  transition:
+    opacity 250ms,
+    translate 190ms !important;
   translate: 8px !important;
 }
 
 .pip-wrapper[position="left"] .pip-expanded,
-.controlsOverlay[hidetoggle="true"].hovering > .pip-wrapper[position="left"] > .pip-expanded {
+.controlsOverlay[hidetoggle="true"].hovering
+  > .pip-wrapper[position="left"]
+  > .pip-expanded {
   translate: calc(-100% - 8px) !important;
 }
 

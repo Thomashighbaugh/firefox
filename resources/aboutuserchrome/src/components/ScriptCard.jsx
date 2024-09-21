@@ -14,10 +14,10 @@ import {
 import { GlobalContext } from "./GlobalContext";
 import { ScriptDetails } from "./ScriptDetails";
 const { gScriptUpdater } = ChromeUtils.importESModule(
-  "chrome://userchrome/content/aboutuserchrome/modules/UCMSingletonData.sys.mjs"
+  "chrome://userchrome/content/aboutuserchrome/modules/UCMSingletonData.sys.mjs",
 );
 const { _ucUtils: ucUtils } = ChromeUtils.importESModule(
-  "chrome://userchromejs/content/utils.sys.mjs"
+  "chrome://userchromejs/content/utils.sys.mjs",
 );
 
 export const ScriptCard = ({
@@ -44,15 +44,15 @@ export const ScriptCard = ({
   let handle = useMemo(() => gScriptUpdater.getHandle(script), []);
   let normalizedScriptId = useMemo(
     () => script.id.toLowerCase().replace(/[^a-z0-9_-]/g, "_"),
-    [script.id]
+    [script.id],
   );
   let cardId = useMemo(
     () => `script-card-${normalizedScriptId}`,
-    [normalizedScriptId]
+    [normalizedScriptId],
   );
   let nameId = useMemo(
     () => `script-name-${normalizedScriptId}`,
-    [normalizedScriptId]
+    [normalizedScriptId],
   );
   let truncatedDescription = useMemo(() => {
     return script.description && script.description.length > 200
@@ -75,7 +75,7 @@ export const ScriptCard = ({
         </span>
       );
     },
-    [normalizedScriptId]
+    [normalizedScriptId],
   );
   const nameWithHighlights = useMemo(() => {
     if (!highlights) return null;
@@ -89,17 +89,17 @@ export const ScriptCard = ({
   }, [highlightToNode, highlights]);
 
   const onCardActivate = useCallback(
-    event => {
+    (event) => {
       if (expanded) return;
       navigate(`scripts/${script.filename}`);
       window.scrollTo(0, 0);
       event.preventDefault();
       event.stopPropagation();
     },
-    [expanded, navigate, script.filename]
+    [expanded, navigate, script.filename],
   );
   const onCardClick = useCallback(
-    event => {
+    (event) => {
       switch (event.target.localName) {
         case "button":
         case "input":
@@ -108,10 +108,10 @@ export const ScriptCard = ({
       }
       onCardActivate(event);
     },
-    [onCardActivate]
+    [onCardActivate],
   );
   const onCardKeyDown = useCallback(
-    event => {
+    (event) => {
       if (event.repeat) return;
       switch (event.key) {
         case "Enter":
@@ -126,11 +126,11 @@ export const ScriptCard = ({
           break;
       }
     },
-    [onCardActivate]
+    [onCardActivate],
   );
   const onNameButtonClick = useCallback(onCardActivate, [onCardActivate]);
   const onNameButtonKeyDown = useCallback(
-    event => {
+    (event) => {
       if (event.repeat) return;
       switch (event.key) {
         case "Enter":
@@ -139,34 +139,34 @@ export const ScriptCard = ({
           break;
       }
     },
-    [onCardActivate]
+    [onCardActivate],
   );
-  const onNameButtonFocus = useCallback(event => {
+  const onNameButtonFocus = useCallback((event) => {
     setFocused(true);
   }, []);
-  const onNameButtonBlur = useCallback(event => {
+  const onNameButtonBlur = useCallback((event) => {
     setFocused(false);
   }, []);
   const onIconError = useCallback(() => {
     setIconHidden(true);
   }, []);
   const launchLocalFile = useCallback(
-    event => {
+    (event) => {
       handle.launchLocalFile();
       event.preventDefault();
     },
-    [handle]
+    [handle],
   );
   const toggleScript = useCallback(
     () => ucUtils.toggleScript(script.filename),
-    [script.filename]
+    [script.filename],
   );
   const onNotification = useCallback(
-    scriptHandle => {
+    (scriptHandle) => {
       let remoteScriptData = scriptHandle.remoteFile
         ? ucUtils.parseStringAsScriptInfo(
             scriptHandle.filename,
-            scriptHandle.remoteFile
+            scriptHandle.remoteFile,
           )
         : {};
       let newVersion = remoteScriptData.version;
@@ -187,7 +187,7 @@ export const ScriptCard = ({
         updater.update = null;
         console.error(
           `Error overwriting ${scriptHandle.filename} :>> `,
-          scriptHandle.updateError
+          scriptHandle.updateError,
         );
       } else if (scriptHandle.pendingRestart) {
         setUpdateButtonLabel("Updated");
@@ -202,7 +202,7 @@ export const ScriptCard = ({
         updater = null;
         console.error(
           `Error downloading ${scriptHandle.filename} :>> `,
-          scriptHandle.downloadError
+          scriptHandle.downloadError,
         );
       } else if (
         Services.vc.compare(newVersion, scriptHandle.currentVersion) > 0
@@ -223,7 +223,7 @@ export const ScriptCard = ({
       }
       setUpdater(scriptHandle.filename, updater);
     },
-    [setUpdater]
+    [setUpdater],
   );
 
   useEffect(() => {
@@ -256,7 +256,8 @@ export const ScriptCard = ({
       onClick={onCardClick}
       onKeyDown={onCardKeyDown}
       role="presentation"
-      {...props}>
+      {...props}
+    >
       <div className="script-card-collapsed">
         <img
           className="script-icon"
@@ -276,7 +277,8 @@ export const ScriptCard = ({
               disabled={expanded}
               aria-expanded={expanded ? "true" : "false"}
               aria-controls={cardId}
-              ref={nameButtonRef}>
+              ref={nameButtonRef}
+            >
               <h3
                 id={nameId}
                 className="script-name"
@@ -285,7 +287,8 @@ export const ScriptCard = ({
                 }`}
                 aria-label={`${script.name || script.filename}${
                   enabled ? "" : " (disabled)"
-                }`}>
+                }`}
+              >
                 {nameWithHighlights || script.name || script.filename}
               </h3>
             </button>
@@ -307,7 +310,8 @@ export const ScriptCard = ({
         className="script-card-message"
         align="center"
         type={updateBarType}
-        hidden={updateBarHidden}>
+        hidden={updateBarHidden}
+      >
         <div className="message-inner">
           <span className="message-icon" />
           <span className="message-content">
@@ -317,7 +321,8 @@ export const ScriptCard = ({
                 updateButtonDisabled ? "" : "primary"
               }`}
               disabled={updateButtonDisabled}
-              onClick={handle.updateScript}>
+              onClick={handle.updateScript}
+            >
               {updateButtonLabel}
             </button>
           </span>

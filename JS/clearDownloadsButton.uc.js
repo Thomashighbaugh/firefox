@@ -18,7 +18,9 @@
     }
     async genStrings() {
       this.strings = await new Localization(["browser/downloads.ftl"], true);
-      const messages = await this.strings.formatMessages(["downloads-cmd-clear-downloads"]);
+      const messages = await this.strings.formatMessages([
+        "downloads-cmd-clear-downloads",
+      ]);
       this.label = messages[0].attributes[0].value;
       this.accessKey = messages[0].attributes[1].value;
       return [this.label, this.accessKey];
@@ -26,7 +28,9 @@
     async makeButton() {
       this.clearPanelButton = document.createXULElement("button");
       let strings = await this.genStrings();
-      let labelString = config["Label in sentence case"] ? this.sentenceCase(strings[0]) : strings[0];
+      let labelString = config["Label in sentence case"]
+        ? this.sentenceCase(strings[0])
+        : strings[0];
       for (const [key, val] of Object.entries({
         id: "clearDownloadsPanel",
         class:
@@ -57,8 +61,8 @@
           .toSource()
           .replace(
             /hiddenCount \> 0\;\n/,
-            `hiddenCount > 0;\n    Services.obs.notifyObservers(null, "downloads-panel-count-changed", String(count));\n`
-          )}`
+            `hiddenCount > 0;\n    Services.obs.notifyObservers(null, "downloads-panel-count-changed", String(count));\n`,
+          )}`,
       );
     }
     observe(_sub, _top, data) {
@@ -78,6 +82,9 @@
         init();
       }
     };
-    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
+    Services.obs.addObserver(
+      delayedListener,
+      "browser-delayed-startup-finished",
+    );
   }
 })();

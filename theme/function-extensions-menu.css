@@ -17,8 +17,7 @@
   }
 
   #unified-extensions-view .panel-header,
-  #unified-extensions-view .panel-header + toolbarseparator
- {
+  #unified-extensions-view .panel-header + toolbarseparator {
     display: none !important;
   }
 
@@ -64,7 +63,12 @@
   }
 
   #unified-extensions-view #unified-extensions-area {
-    background: linear-gradient(-32deg, var(--uc-ultima-window), var(--uc-background-panel),  var(--uc-dark-color)) !important;
+    background: linear-gradient(
+      -32deg,
+      var(--uc-ultima-window),
+      var(--uc-background-panel),
+      var(--uc-dark-color)
+    ) !important;
     border-radius: var(--uc-all-border-radiu s) !important;
   }
 }

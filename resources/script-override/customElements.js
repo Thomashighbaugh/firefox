@@ -28,9 +28,15 @@
   const MozElements = {};
   window.MozElements = MozElements;
 
-  const { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-  const { AppConstants } = ChromeUtils.import("resource://gre/modules/AppConstants.jsm");
-  const env = Cc["@mozilla.org/process/environment;1"].getService(Ci.nsIEnvironment);
+  const { Services } = ChromeUtils.import(
+    "resource://gre/modules/Services.jsm",
+  );
+  const { AppConstants } = ChromeUtils.import(
+    "resource://gre/modules/AppConstants.jsm",
+  );
+  const env = Cc["@mozilla.org/process/environment;1"].getService(
+    Ci.nsIEnvironment,
+  );
   const instrumentClasses = env.get("MOZ_INSTRUMENT_CUSTOM_ELEMENTS");
   const instrumentedClasses = instrumentClasses ? new Set() : null;
   const instrumentedBaseClasses = instrumentClasses ? new WeakSet() : null;
@@ -48,7 +54,7 @@
       () => {
         MozElements.printInstrumentation(true);
       },
-      { once: true, capture: true }
+      { once: true, capture: true },
     );
   }
 
@@ -60,7 +66,9 @@
       // Allow passing in something like MOZ_INSTRUMENT_CUSTOM_ELEMENTS=MozXULElement,Button to filter
       let includeClass =
         instrumentClasses == 1 ||
-        instrumentClasses.split(",").some((n) => c.name.toLowerCase().includes(n.toLowerCase()));
+        instrumentClasses
+          .split(",")
+          .some((n) => c.name.toLowerCase().includes(n.toLowerCase()));
       let summary = c.__instrumentation_summary;
       if (includeClass && summary) {
         summaries.push(summary);
@@ -71,7 +79,9 @@
     if (summaries.length) {
       let groupName = `Instrumentation data for custom elements in ${document.documentURI}`;
       console[collapsed ? "groupCollapsed" : "group"](groupName);
-      console.log(`Total function calls ${totalCalls} and total time spent inside ${totalTime.toFixed(2)}`);
+      console.log(
+        `Total function calls ${totalCalls} and total time spent inside ${totalTime.toFixed(2)}`,
+      );
       for (let summary of summaries) {
         console.log(`${summary.name} (# instances: ${summary.instances})`);
         if (Object.keys(summary.data).length > 1) {
@@ -218,7 +228,7 @@
       }
       gElementsPendingConnection.clear();
     },
-    { once: true, capture: true }
+    { once: true, capture: true },
   );
 
   const gXULDOMParser = new DOMParser();
@@ -283,7 +293,10 @@
                 if (!this._flippedInheritedAttributes[attrName]) {
                   this._flippedInheritedAttributes[attrName] = [];
                 }
-                this._flippedInheritedAttributes[attrName].push([selector, attrNewName]);
+                this._flippedInheritedAttributes[attrName].push([
+                  selector,
+                  attrNewName,
+                ]);
               }
             }
           }
@@ -362,7 +375,8 @@
 
         for (let [selector, newAttr] of list) {
           if (!(selector in this._inheritedElements)) {
-            this._inheritedElements[selector] = this.getElementForAttrInheritance(selector);
+            this._inheritedElements[selector] =
+              this.getElementForAttrInheritance(selector);
           }
           let el = this._inheritedElements[selector];
           if (el) {
@@ -490,7 +504,10 @@
         if (!this.hasOwnProperty("_fragment")) {
           let markup = this.markup;
           if (markup) {
-            this._fragment = MozXULElement.parseXULToFragment(markup, this.entities);
+            this._fragment = MozXULElement.parseXULToFragment(
+              markup,
+              this.entities,
+            );
           } else {
             throw new Error("Markup is null");
           }
@@ -546,7 +563,7 @@
         ${str}
       </box>
     `,
-          "application/xml"
+          "application/xml",
         );
 
         if (doc.documentElement.localName === "parsererror") {
@@ -587,7 +604,8 @@
         let container = document.head || document.querySelector("linkset");
         if (!container) {
           if (
-            document.documentElement.namespaceURI === "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+            document.documentElement.namespaceURI ===
+            "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
           ) {
             container = document.createXULElement("linkset");
             document.documentElement.appendChild(container);
@@ -596,7 +614,9 @@
             // just insert the link at the end of the window.
             container = document.documentElement;
           } else {
-            throw new Error("Attempt to inject localization link before document.head is available");
+            throw new Error(
+              "Attempt to inject localization link before document.head is available",
+            );
           }
         }
 
@@ -606,7 +626,10 @@
           }
         }
 
-        let link = document.createElementNS("http://www.w3.org/1999/xhtml", "link");
+        let link = document.createElementNS(
+          "http://www.w3.org/1999/xhtml",
+          "link",
+        );
         link.setAttribute("rel", "localization");
         link.setAttribute("href", path);
 
@@ -633,12 +656,17 @@
         cls.prototype.customInterfaces = ifaces;
 
         cls.prototype.QueryInterface = ChromeUtils.generateQI(ifaces);
-        cls.prototype.getCustomInterfaceCallback = function getCustomInterfaceCallback(ifaceToCheck) {
-          if (cls.prototype.customInterfaces.some((iface) => iface.equals(ifaceToCheck))) {
-            return getInterfaceProxy(this);
-          }
-          return null;
-        };
+        cls.prototype.getCustomInterfaceCallback =
+          function getCustomInterfaceCallback(ifaceToCheck) {
+            if (
+              cls.prototype.customInterfaces.some((iface) =>
+                iface.equals(ifaceToCheck),
+              )
+            ) {
+              return getInterfaceProxy(this);
+            }
+            return null;
+          };
       }
     };
 
@@ -706,7 +734,9 @@
       }
     }
 
-    MozXULElement.implementCustomInterface(BaseControl, [Ci.nsIDOMXULControlElement]);
+    MozXULElement.implementCustomInterface(BaseControl, [
+      Ci.nsIDOMXULControlElement,
+    ]);
     return BaseControl;
   };
   MozElements.BaseControl = MozElements.BaseControlMixin(MozXULElement);
@@ -756,7 +786,9 @@
       }
 
       get accessKey() {
-        return this.labelElement ? this.labelElement.accessKey : this.getAttribute("accesskey");
+        return this.labelElement
+          ? this.labelElement.accessKey
+          : this.getAttribute("accesskey");
       }
     };
   MozElements.BaseTextMixin = BaseTextMixin;
@@ -767,7 +799,10 @@
   window.MozHTMLElement = MozHTMLElement;
 
   customElements.setElementCreationCallback("browser", () => {
-    Services.scriptloader.loadSubScript("chrome://global/content/elements/browser-custom-element.js", window);
+    Services.scriptloader.loadSubScript(
+      "chrome://global/content/elements/browser-custom-element.js",
+      window,
+    );
   });
 
   // Skip loading any extra custom elements in the extension dummy document
@@ -810,9 +845,18 @@
       ["named-deck-button", "chrome://global/content/elements/named-deck.js"],
       ["search-textbox", "chrome://global/content/elements/search-textbox.js"],
       ["stringbundle", "chrome://global/content/elements/stringbundle.js"],
-      ["printpreview-toolbar", "chrome://global/content/printPreviewToolbar.js"],
-      ["printpreview-pagination", "chrome://global/content/printPreviewPagination.js"],
-      ["autocomplete-input", "chrome://global/content/elements/autocomplete-input.js"],
+      [
+        "printpreview-toolbar",
+        "chrome://global/content/printPreviewToolbar.js",
+      ],
+      [
+        "printpreview-pagination",
+        "chrome://global/content/printPreviewPagination.js",
+      ],
+      [
+        "autocomplete-input",
+        "chrome://global/content/elements/autocomplete-input.js",
+      ],
       ["editor", "chrome://global/content/elements/editor.js"],
     ]) {
       customElements.setElementCreationCallback(tag, () => {
@@ -951,7 +995,10 @@
           container.style.removeProperty("-moz-box-direction");
           this.setAttribute("side", isRTL ? "right" : "left");
         }
-      } else if (position.indexOf("before_") == 0 || position.indexOf("after_") == 0) {
+      } else if (
+        position.indexOf("before_") == 0 ||
+        position.indexOf("after_") == 0
+      ) {
         container.removeAttribute("orient");
         arrowbox.removeAttribute("orient");
         if (position.indexOf("_end") > 0) {
@@ -974,13 +1021,17 @@
     on_popupshowing(event) {
       if (this.isArrowPanel && event.target == this) {
         if (this.isAnchored && this.anchorNode) {
-          let anchorRoot = this.anchorNode.closest("toolbarbutton, .anchor-root") || this.anchorNode;
+          let anchorRoot =
+            this.anchorNode.closest("toolbarbutton, .anchor-root") ||
+            this.anchorNode;
           anchorRoot.setAttribute("open", "true");
         }
 
         var arrow = this.shadowRoot.querySelector(".panel-arrow");
         arrow.hidden = !this.isAnchored;
-        this.shadowRoot.querySelector(".panel-arrowbox").style.removeProperty("transform");
+        this.shadowRoot
+          .querySelector(".panel-arrowbox")
+          .style.removeProperty("transform");
 
         if (this.getAttribute("animate") != "false") {
           this.setAttribute("animate", "open");
@@ -999,13 +1050,19 @@
         }
 
         if (fadeDelay != 0) {
-          this._fadeTimer = setTimeout(() => this.hidePopup(true), fadeDelay, this);
+          this._fadeTimer = setTimeout(
+            () => this.hidePopup(true),
+            fadeDelay,
+            this,
+          );
         }
       }
 
       // Capture the previous focus before has a chance to get set inside the panel
       try {
-        this._prevFocus = Cu.getWeakReference(document.commandDispatcher.focusedElement);
+        this._prevFocus = Cu.getWeakReference(
+          document.commandDispatcher.focusedElement,
+        );
         if (!this._prevFocus.get()) {
           this._prevFocus = Cu.getWeakReference(document.activeElement);
           return;
@@ -1041,7 +1098,9 @@
         }
 
         if (this.isAnchored && this.anchorNode) {
-          let anchorRoot = this.anchorNode.closest("toolbarbutton, .anchor-root") || this.anchorNode;
+          let anchorRoot =
+            this.anchorNode.closest("toolbarbutton, .anchor-root") ||
+            this.anchorNode;
           anchorRoot.removeAttribute("open");
         }
       }

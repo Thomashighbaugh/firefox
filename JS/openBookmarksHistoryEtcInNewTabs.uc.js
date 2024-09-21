@@ -31,7 +31,7 @@
           .toSource()
           .replace(/\(function PUIU_openNodeWithEvent/, "")
           .replace(/ && lazy.PlacesUtils\.nodeIsBookmark\(aNode\)/, "")
-          .replace(/\)$/, "")}`
+          .replace(/\)$/, "")}`,
       );
       PlacesUIUtils._hasBeenModifiedForOBHNT = true;
     }
@@ -87,7 +87,7 @@
               () => target.removeAttribute("closemenu"),
               {
                 once: true,
-              }
+              },
             );
           } else {
             target.removeAttribute("closemenu");
@@ -96,11 +96,11 @@
         let popup = document.getElementById("historyMenuPopup");
         popup.setAttribute(
           "onclick",
-          `this.parentNode._placesView._onClick(event);`
+          `this.parentNode._placesView._onClick(event);`,
         );
         popup.setAttribute(
           "onmouseup",
-          `this.parentNode._placesView._onMouseUp(event);`
+          `this.parentNode._placesView._onMouseUp(event);`,
         );
         proto._hasBeenModifiedForOBHNT = true;
       }
@@ -114,12 +114,12 @@
             .replace(/_onCommand/, "")
             .replace(
               /(button\.parentNode\.id == \"panelMenu_bookmarksMenu\")/,
-              `$1 || button.parentNode.id == "appMenu_historyMenu"`
+              `$1 || button.parentNode.id == "appMenu_historyMenu"`,
             )
             .replace(
               /(button\.parentNode\.id != \"panelMenu_bookmarksMenu\")/,
-              `($1 && button.parentNode.id != "appMenu_historyMenu")`
-            )}`
+              `($1 && button.parentNode.id != "appMenu_historyMenu")`,
+            )}`,
         );
         proto._hasBeenModifiedForOBHNT = true;
       }
@@ -134,8 +134,8 @@
             .replace(/BrowserUtils\.whereToOpenLink\(e\)/, "preWhere")
             .replace(
               /document\.defaultView\.openUILink\(tabInfo\.url, e, {\n[^\S\r\n]*triggeringPrincipal.*\n[^\S\r\n]*{}\n[^\S\r\n]*\),\n[^\S\r\n]*}\);/,
-              `let where = BrowserUtils.whereToOpenLink(e, false, true);\n      let preWhere = where;\n      if (document.defaultView.PlacesUIUtils.loadBookmarksInTabs) {\n        if (where == "current") where = "tab";\n        if (where == "tab" && document.defaultView.gBrowser.selectedTab.isEmpty) where = "current";\n      }\n      document.defaultView.openTrustedLinkIn(tabInfo.url, where);`
-            )}`
+              `let where = BrowserUtils.whereToOpenLink(e, false, true);\n      let preWhere = where;\n      if (document.defaultView.PlacesUIUtils.loadBookmarksInTabs) {\n        if (where == "current") where = "tab";\n        if (where == "tab" && document.defaultView.gBrowser.selectedTab.isEmpty) where = "current";\n      }\n      document.defaultView.openTrustedLinkIn(tabInfo.url, where);`,
+            )}`,
         );
         proto._hasBeenModifiedForOBHNT = true;
       }
@@ -172,7 +172,7 @@
     };
     Services.obs.addObserver(
       delayedListener,
-      "browser-delayed-startup-finished"
+      "browser-delayed-startup-finished",
     );
   }
 })();

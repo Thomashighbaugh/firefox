@@ -12,7 +12,10 @@
     for (let prop in props) el.setAttribute(prop, props[prop]);
     return el;
   }
-  [document.getElementById("back-button-tooltip"), document.getElementById("forward-button-tooltip")].forEach((tip) => {
+  [
+    document.getElementById("back-button-tooltip"),
+    document.getElementById("forward-button-tooltip"),
+  ].forEach((tip) => {
     let box = create(document, "vbox", {
       id: tip.id + "-box",
       class: "uc-tooltip-box",

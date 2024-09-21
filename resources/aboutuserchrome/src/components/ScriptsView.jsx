@@ -36,7 +36,7 @@ export const ScriptsView = () => {
 
   const filteredScripts = useMemo(
     () => fuzzyFilter(scripts, search, { fields: ["name", "filename"] }),
-    [scripts, search]
+    [scripts, search],
   );
 
   const goBack = useCallback(() => {
@@ -44,7 +44,7 @@ export const ScriptsView = () => {
   }, []);
   const setUpdater = useCallback(
     (name, updater) =>
-      setUpdaters(currentUpdaters => {
+      setUpdaters((currentUpdaters) => {
         let newUpdaters = { ...currentUpdaters };
         if (updater) {
           newUpdaters[name] = updater;
@@ -53,17 +53,17 @@ export const ScriptsView = () => {
         }
         return newUpdaters;
       }),
-    []
+    [],
   );
   const updateAll = useCallback(() => {
-    Object.values(updaters).forEach(updater => updater?.update?.());
+    Object.values(updaters).forEach((updater) => updater?.update?.());
   }, [updaters]);
   const doSearch = useCallback(
-    val => {
+    (val) => {
       setSearch(val);
       if (expandedCard) navigate("scripts");
     },
-    [expandedCard, navigate, setSearch]
+    [expandedCard, navigate, setSearch],
   );
   const doSubmit = useCallback(() => {
     let matchingScript = filteredScripts[0]?.item;
@@ -76,24 +76,24 @@ export const ScriptsView = () => {
   }, [filteredScripts, navigate]);
   const onSearchFocus = useCallback(
     () => setInitialFocus(false),
-    [setInitialFocus]
+    [setInitialFocus],
   );
 
   useEffect(() => {
-    let values = Object.values(updaters).filter(updater => updater);
+    let values = Object.values(updaters).filter((updater) => updater);
     if (!values.length) {
       setUpdateAllHidden(true);
       setRestartHidden(true);
       setUpdateCount(0);
       return;
     }
-    if (values.every(updater => updater.disabled)) {
-      if (values.some(updater => updater.writing)) {
+    if (values.every((updater) => updater.disabled)) {
+      if (values.some((updater) => updater.writing)) {
         setUpdateAllButtonDisabled(true);
         setUpdateAllDesc("Updating…");
         setUpdateAllHidden(false);
         setRestartHidden(true);
-      } else if (values.some(updater => updater.pendingRestart)) {
+      } else if (values.some((updater) => updater.pendingRestart)) {
         setUpdateAllHidden(true);
         setRestartHidden(false);
       } else {
@@ -110,15 +110,15 @@ export const ScriptsView = () => {
     }
     setUpdateCount(
       values.filter(
-        updater =>
-          !(updater.disabled || updater.writing || updater.pendingRestart)
-      ).length
+        (updater) =>
+          !(updater.disabled || updater.writing || updater.pendingRestart),
+      ).length,
     );
   }, [setUpdateCount, updaters]);
 
   useEffect(() => {
     let expandedCardScript = scripts.find(
-      script => script.filename === expandedCard
+      (script) => script.filename === expandedCard,
     );
     if (expandedCard && !expandedCardScript) {
       navigate("scripts", false);
@@ -159,7 +159,8 @@ export const ScriptsView = () => {
                 id="update-all-button"
                 className={updateAllButtonDisabled ? undefined : "primary"}
                 disabled={updateAllButtonDisabled}
-                onClick={updateAll}>
+                onClick={updateAll}
+              >
                 Update all
               </button>
             </div>
@@ -170,7 +171,8 @@ export const ScriptsView = () => {
               <button
                 id="restart-button"
                 className={"primary"}
-                onClick={restart}>
+                onClick={restart}
+              >
                 Restart
               </button>
             </div>
@@ -203,7 +205,9 @@ export const ScriptsView = () => {
               // Add the rest of the scripts that aren't in the filtered list
               // (but hidden) because it makes searching feel more responsive
               scripts.map((script, index) =>
-                filteredScripts.find(match => match.item === script) ? null : (
+                filteredScripts.find(
+                  (match) => match.item === script,
+                ) ? null : (
                   <ScriptCard
                     key={`${script.id}-card`}
                     script={script}
@@ -216,8 +220,8 @@ export const ScriptsView = () => {
                     aria-posinset={index + 1}
                     hidden={true}
                   />
-                )
-              )
+                ),
+              ),
             )}
         </div>
       </div>

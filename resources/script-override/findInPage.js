@@ -47,7 +47,7 @@ var gSearchResultsPane = {
     this.inited = true;
     this.searchInput = document.getElementById("searchInput");
     this.searchInput.hidden = !Services.prefs.getBoolPref(
-      "browser.preferences.search"
+      "browser.preferences.search",
     );
     if (!this.searchInput.hidden) {
       this.searchInput.addEventListener("input", this);
@@ -78,8 +78,8 @@ var gSearchResultsPane = {
    */
   fixInputPosition() {
     let innerContainer = document.querySelector(".sticky-inner-container");
-    let width = window.windowUtils.getBoundsWithoutFlushing(innerContainer)
-      .width;
+    let width =
+      window.windowUtils.getBoundsWithoutFlushing(innerContainer).width;
     innerContainer.style.maxWidth = width + "px";
   },
 
@@ -229,13 +229,13 @@ var gSearchResultsPane = {
     let rgb = getComputedStyle(temp).color;
     temp.remove();
     rgb = rgb
-        .split("(")[1]
-        .split(")")[0]
-        .split(rgb.indexOf(",") > -1 ? "," : " ");
+      .split("(")[1]
+      .split(")")[0]
+      .split(rgb.indexOf(",") > -1 ? "," : " ");
     rgb.length = 3;
     rgb.forEach((c, i) => {
-        c = (+c).toString(16);
-        rgb[i] = c.length === 1 ? "0" + c : c.slice(0, 2);
+      c = (+c).toString(16);
+      rgb[i] = c.length === 1 ? "0" + c : c.slice(0, 2);
     });
     return (this._hex = "#" + rgb.join(""));
   },
@@ -256,7 +256,7 @@ var gSearchResultsPane = {
       .QueryInterface(Ci.nsISelectionController);
 
     let selection = controller.getSelection(
-      Ci.nsISelectionController.SELECTION_FIND
+      Ci.nsISelectionController.SELECTION_FIND,
     );
     selection.setColors("white", this.hex, "white", this.hex);
 
@@ -306,7 +306,7 @@ var gSearchResultsPane = {
       // Building the range for highlighted areas
       let rootPreferencesChildren = [
         ...document.querySelectorAll(
-          "#mainPrefPane > *:not([data-hidden-from-search], script, stringbundle)"
+          "#mainPrefPane > *:not([data-hidden-from-search], script, stringbundle)",
         ),
       ];
 
@@ -314,7 +314,7 @@ var gSearchResultsPane = {
         // Since the previous query is a subset of the current query,
         // there is no need to check elements that is hidden already.
         rootPreferencesChildren = rootPreferencesChildren.filter(
-          el => !el.hidden
+          (el) => !el.hidden,
         );
       }
 
@@ -336,8 +336,8 @@ var gSearchResultsPane = {
           for (let anchorNode of this.listSearchTooltips) {
             this.createSearchTooltip(anchorNode, this.query);
           }
-          ts = await new Promise(resolve =>
-            window.requestAnimationFrame(resolve)
+          ts = await new Promise((resolve) =>
+            window.requestAnimationFrame(resolve),
           );
           if (query !== this.query) {
             return;
@@ -393,7 +393,7 @@ var gSearchResultsPane = {
             Services.telemetry.keyedScalarAdd(
               "preferences.search_query",
               this.query,
-              1
+              1,
             );
           }, 1000);
         }
@@ -417,7 +417,7 @@ var gSearchResultsPane = {
     }
 
     window.dispatchEvent(
-      new CustomEvent("PreferencesSearchCompleted", { detail: query })
+      new CustomEvent("PreferencesSearchCompleted", { detail: query }),
     );
   },
 
@@ -447,7 +447,7 @@ var gSearchResultsPane = {
           [node],
           [node.length],
           node.textContent.toLowerCase(),
-          searchPhrase
+          searchPhrase,
         );
         matchesFound = matchesFound || result;
       }
@@ -477,13 +477,13 @@ var gSearchResultsPane = {
         accessKeyTextNodes,
         nodeSizes,
         allNodeText.toLowerCase(),
-        searchPhrase
+        searchPhrase,
       );
 
       // Searching some elements, such as xul:button, have a 'label' attribute that contains the user-visible text.
       let labelResult = this.queryMatchesContent(
         nodeObject.getAttribute("label"),
-        searchPhrase
+        searchPhrase,
       );
 
       // Searching some elements, such as xul:label, store their user-visible text in a "value" attribute.
@@ -492,7 +492,7 @@ var gSearchResultsPane = {
         nodeObject.tagName !== "menuitem" && nodeObject.tagName !== "radio"
           ? this.queryMatchesContent(
               nodeObject.getAttribute("value"),
-              searchPhrase
+              searchPhrase,
             )
           : false;
 
@@ -510,7 +510,7 @@ var gSearchResultsPane = {
           nodeObject.hasAttribute("searchkeywords") &&
           this.queryMatchesContent(
             nodeObject.getAttribute("searchkeywords"),
-            searchPhrase
+            searchPhrase,
           );
       }
 
@@ -555,7 +555,7 @@ var gSearchResultsPane = {
         let result = await this.searchChildNodeIfVisible(
           nodeObject,
           index,
-          searchPhrase
+          searchPhrase,
         );
         matchesFound = matchesFound || result;
       }
@@ -564,7 +564,7 @@ var gSearchResultsPane = {
         let result = await this.searchChildNodeIfVisible(
           nodeObject,
           i,
-          searchPhrase
+          searchPhrase,
         );
         matchesFound = matchesFound || result;
       }
@@ -633,11 +633,11 @@ var gSearchResultsPane = {
       const refs = nodeObject
         .getAttribute("search-l10n-ids")
         .split(",")
-        .map(s => s.trim().split("."))
-        .filter(s => !!s[0].length);
+        .map((s) => s.trim().split("."))
+        .filter((s) => !!s[0].length);
 
       const messages = await document.l10n.formatMessages(
-        refs.map(ref => ({ id: ref[0] }))
+        refs.map((ref) => ({ id: ref[0] })),
       );
 
       // Map the localized messages taking value or a selected attribute and
@@ -651,14 +651,14 @@ var gSearchResultsPane = {
           }
           if (refAttr) {
             let attr =
-              msg.attributes && msg.attributes.find(a => a.name === refAttr);
+              msg.attributes && msg.attributes.find((a) => a.name === refAttr);
             if (!attr) {
               console.error(`Missing search l10n id "${refId}.${refAttr}"`);
               return null;
             }
             if (attr.value === "") {
               console.error(
-                `Empty value added to search-l10n-ids "${refId}.${refAttr}"`
+                `Empty value added to search-l10n-ids "${refId}.${refAttr}"`,
               );
             }
             return attr.value;
@@ -668,7 +668,7 @@ var gSearchResultsPane = {
           }
           return msg.value;
         })
-        .filter(keyword => keyword !== null)
+        .filter((keyword) => keyword !== null)
         .join(" ");
 
       this.searchKeywords.set(nodeObject, keywords);
@@ -677,7 +677,7 @@ var gSearchResultsPane = {
 
     return this.queryMatchesContent(
       this.searchKeywords.get(nodeObject),
-      searchPhrase
+      searchPhrase,
     );
   },
 
@@ -716,7 +716,7 @@ var gSearchResultsPane = {
     let tooltipRect = searchTooltip.getBoundingClientRect();
     searchTooltip.style.setProperty(
       "left",
-      `calc(50% - ${tooltipRect.width / 2}px)`
+      `calc(50% - ${tooltipRect.width / 2}px)`,
     );
   },
 

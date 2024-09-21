@@ -151,7 +151,7 @@ class UnloadedTabMenuBase {
           case this.contentContextMenu:
             gContextMenu.showItem(
               "context-openlinkinunloadedtab",
-              gContextMenu.onSaveableLink || gContextMenu.onPlainTextLink
+              gContextMenu.onSaveableLink || gContextMenu.onPlainTextLink,
             );
             break;
           case this.placesContextMenu:
@@ -205,7 +205,7 @@ class UnloadedTabMenuBase {
     return (
       this._contentContextMenu ||
       (this._contentContextMenu = document.getElementById(
-        "contentAreaContextMenu"
+        "contentAreaContextMenu",
       ))
     );
   }
@@ -213,7 +213,7 @@ class UnloadedTabMenuBase {
     return (
       this._syncedContextMenu ||
       (this._syncedContextMenu = document.getElementById(
-        "SyncedTabsSidebarContext"
+        "SyncedTabsSidebarContext",
       ))
     );
   }
@@ -240,7 +240,7 @@ class UnloadedTabMenuBase {
     return (
       this._placesMenuOpenContainer ||
       (this._placesMenuOpenContainer = document.getElementById(
-        "placesContext_openContainer:tabs"
+        "placesContext_openContainer:tabs",
       ))
     );
   }
@@ -248,7 +248,7 @@ class UnloadedTabMenuBase {
     return (
       this._placesMenuOpenBookmarkContainer ||
       (this._placesMenuOpenBookmarkContainer = document.getElementById(
-        "placesContext_openBookmarkContainer:tabs"
+        "placesContext_openBookmarkContainer:tabs",
       ))
     );
   }
@@ -256,7 +256,7 @@ class UnloadedTabMenuBase {
     return (
       this._placesMenuOpenBookmarkLinks ||
       (this._placesMenuOpenBookmarkLinks = document.getElementById(
-        "placesContext_openBookmarkLinks:tabs"
+        "placesContext_openBookmarkLinks:tabs",
       ))
     );
   }
@@ -264,7 +264,7 @@ class UnloadedTabMenuBase {
     return (
       this._placesMenuOpenAllLinks ||
       (this._placesMenuOpenAllLinks = document.getElementById(
-        "placesContext_openLinks:tabs"
+        "placesContext_openLinks:tabs",
       ))
     );
   }
@@ -272,7 +272,7 @@ class UnloadedTabMenuBase {
     return (
       this._placesMenuOpenNewTab ||
       (this._placesMenuOpenNewTab = document.getElementById(
-        "placesContext_open:newtab"
+        "placesContext_open:newtab",
       ))
     );
   }
@@ -280,7 +280,7 @@ class UnloadedTabMenuBase {
     return (
       this._syncedMenuOpenAll ||
       (this._syncedMenuOpenAll = this.syncedContextMenu.querySelector(
-        "#syncedTabsOpenAllInTabs"
+        "#syncedTabsOpenAllInTabs",
       ))
     );
   }
@@ -288,7 +288,7 @@ class UnloadedTabMenuBase {
     return (
       this._syncedMenuOpenTab ||
       (this._syncedMenuOpenTab = this.syncedContextMenu.querySelector(
-        "#syncedTabsOpenSelectedInTab"
+        "#syncedTabsOpenSelectedInTab",
       ))
     );
   }
@@ -296,7 +296,7 @@ class UnloadedTabMenuBase {
     return (
       this._contentMenuOpenLink ||
       (this._contentMenuOpenLink = document.getElementById(
-        "context-openlinkintab"
+        "context-openlinkintab",
       ))
     );
   }
@@ -335,7 +335,7 @@ class UnloadedTabMenuBase {
     } else {
       items = folder;
     }
-    items.forEach(item => this.openTab(item, { bulkOpen: true }));
+    items.forEach((item) => this.openTab(item, { bulkOpen: true }));
   }
   openSyncedTabUnloaded() {
     if (!this.syncedContextMenuInited) return;
@@ -346,8 +346,8 @@ class UnloadedTabMenuBase {
   openAllSyncedFromDevice() {
     if (!this.syncedContextMenuInited) return;
     if (this.syncedTabsStore._selectedRow[0] >= 0) {
-      this.selectedSyncedRow.tabs.forEach(item =>
-        this.openTab(item, { bulkOpen: true, syncedTabs: true })
+      this.selectedSyncedRow.tabs.forEach((item) =>
+        this.openTab(item, { bulkOpen: true, syncedTabs: true }),
       );
     }
   }
@@ -392,7 +392,7 @@ class UnloadedTabMenuBase {
             info?.title ||
             (this.useLinkAsTabTitle && params.linkText),
           triggeringPrincipal_base64: this.E10SUtils.serializePrincipal(
-            tabParams.triggeringPrincipal
+            tabParams.triggeringPrincipal,
           ),
         },
       ],
@@ -409,18 +409,18 @@ class UnloadedTabMenuBase {
           tab,
           iconURL,
           isReady,
-          tabParams.triggeringPrincipal
+          tabParams.triggeringPrincipal,
         );
       },
-      { once: true }
+      { once: true },
     );
     let tempURL =
       (await PlacesUtils.promiseFaviconData(uri.spec, 256).then(
-        data => data?.uri?.spec
+        (data) => data?.uri?.spec,
       )) || tentativeIcon;
     if (tempURL) {
       let blob = await fetch(tempURL)
-        .then(r => r.blob())
+        .then((r) => r.blob())
         .catch(() => {
           if (
             params.fromContent &&
@@ -432,7 +432,7 @@ class UnloadedTabMenuBase {
               tab,
               iconURL,
               isReady,
-              tabParams.triggeringPrincipal
+              tabParams.triggeringPrincipal,
             );
           }
         });
@@ -443,7 +443,7 @@ class UnloadedTabMenuBase {
           tab,
           iconURL,
           isReady,
-          tabParams.triggeringPrincipal
+          tabParams.triggeringPrincipal,
         );
       };
       reader.readAsDataURL(blob);

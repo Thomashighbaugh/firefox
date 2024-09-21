@@ -33,10 +33,10 @@ try {
 
 const registrar = Components.manager.QueryInterface(Ci.nsIComponentRegistrar);
 const chromeRegistry = Cc["@mozilla.org/chrome/chrome-registry;1"].getService(
-  Ci.nsIChromeRegistry
+  Ci.nsIChromeRegistry,
 );
 const fphs = Cc["@mozilla.org/network/protocol;1?name=file"].getService(
-  Ci.nsIFileProtocolHandler
+  Ci.nsIFileProtocolHandler,
 );
 
 function findResources() {
@@ -45,10 +45,10 @@ function findResources() {
   let fileUri = chromeRegistry.convertChromeURL(uri);
   let file = fphs.getFileFromURLSpec(fileUri.spec).QueryInterface(Ci.nsIFile);
   if (file.exists()) return url;
-   
+
   console.warn(
     `about:userchrome source files not found.
-Please download them from https://github.com/aminomancer/uc.css.js/tree/master/resources/aboutuserchrome`
+Please download them from https://github.com/aminomancer/uc.css.js/tree/master/resources/aboutuserchrome`,
   );
   return false;
 }
@@ -99,7 +99,7 @@ if (urlString) {
     generateFreeCID(),
     "about:userchrome",
     "@mozilla.org/network/protocol/about;1?what=userchrome",
-    AboutModuleFactory
+    AboutModuleFactory,
   );
 }
 
@@ -108,16 +108,16 @@ function initUserChromeNotifications() {
   let gStylesheet;
   try {
     let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(
-      Ci.nsIStyleSheetService
+      Ci.nsIStyleSheetService,
     );
     gStylesheet = sss.preloadSheet(
       Services.io.newURI(
-        "chrome://userchrome/content/aboutuserchrome/chrome/userchrome-notifications.css"
+        "chrome://userchrome/content/aboutuserchrome/chrome/userchrome-notifications.css",
       ),
-      sss.AUTHOR_SHEET
+      sss.AUTHOR_SHEET,
     );
   } catch (error) {
-    console.error(`Failed to load aboutUserChrome stylesheet: ${error.name}`);  
+    console.error(`Failed to load aboutUserChrome stylesheet: ${error.name}`);
   }
 
   /** Per-window class to handle app menu banners. */
@@ -144,12 +144,11 @@ function initUserChromeNotifications() {
       try {
         this.win.windowUtils.addSheet(
           gStylesheet,
-          Ci.nsIDOMWindowUtils.AUTHOR_SHEET
+          Ci.nsIDOMWindowUtils.AUTHOR_SHEET,
         );
       } catch (error) {
-         
         console.error(
-          `Failed to load aboutUserChrome stylesheet: ${error.name}`
+          `Failed to load aboutUserChrome stylesheet: ${error.name}`,
         );
       }
       this.#updateBanner();
@@ -185,7 +184,7 @@ function initUserChromeNotifications() {
         if (!this.#banner) {
           let sibling = this.win.PanelMultiView.getViewNode(
             this.win.document,
-            "appMenu-proton-update-banner"
+            "appMenu-proton-update-banner",
           );
           let banner = sibling.ownerDocument.createXULElement("toolbarbutton");
           banner.className = "panel-banner-item subviewbutton";
@@ -199,7 +198,7 @@ function initUserChromeNotifications() {
           } else {
             switchToTabHavingURI("about:userchrome", true);
           }
-          event.preventDefault();`
+          event.preventDefault();`,
           );
           this.#setBannerAttributes(banner, notificationId);
           sibling.after(banner);
@@ -243,7 +242,7 @@ function initUserChromeNotifications() {
       // Add button to the app menu
       let addonsButton = this.win.PanelMultiView.getViewNode(
         this.win.document,
-        "appMenu-extensions-themes-button"
+        "appMenu-extensions-themes-button",
       );
       let button = this.utils.createElement(
         addonsButton.ownerDocument,
@@ -254,18 +253,18 @@ function initUserChromeNotifications() {
           label: "UserChrome Manager",
           key: "key_openAboutUserchrome",
           oncommand: `switchToTabHavingURI("about:userchrome", true)`,
-        }
+        },
       );
       addonsButton.after(button);
 
       // Add a hotkey to open the manager
       this.utils.registerHotkey(
         { modifiers: "accel shift", key: "U", id: "key_openAboutUserchrome" },
-        win => {
+        (win) => {
           if (win === this.win) {
             this.win.switchToTabHavingURI("about:userchrome", true);
           }
-        }
+        },
       );
     }
 
@@ -285,7 +284,7 @@ function initUserChromeNotifications() {
     constructor(utils) {
       this.utils = utils;
       Services.obs.addObserver(this, lazy.UPDATE_CHANGED_TOPIC);
-      utils.getScriptData().forEach(script => {
+      utils.getScriptData().forEach((script) => {
         lazy.gScriptUpdater.getHandle(script).checkRemoteFile();
       });
       this.#updateBadge();
@@ -300,12 +299,12 @@ function initUserChromeNotifications() {
       let { notificationId } = this;
       if (!notificationId) {
         lazy.AppMenuNotifications.removeNotification(
-          "script-updates-available"
+          "script-updates-available",
         );
         lazy.AppMenuNotifications.removeNotification("script-updates-restart");
       } else if (notificationId === "script-updates-restart") {
         lazy.AppMenuNotifications.removeNotification(
-          "script-updates-available"
+          "script-updates-available",
         );
         lazy.AppMenuNotifications.showBadgeOnlyNotification(notificationId);
       } else {
@@ -316,13 +315,13 @@ function initUserChromeNotifications() {
 
     get notificationId() {
       let { handles } = lazy.gScriptUpdater;
-      let updates = handles.filter(handle => {
+      let updates = handles.filter((handle) => {
         if (!handle.remoteFile || handle.writing || handle.updateError) {
           return false;
         }
         let remoteScriptData = this.utils.parseStringAsScriptInfo(
           handle.filename,
-          handle.remoteFile
+          handle.remoteFile,
         );
         let newVersion = remoteScriptData.version;
         return Services.vc.compare(newVersion, handle.currentVersion) > 0;
@@ -330,7 +329,7 @@ function initUserChromeNotifications() {
       if (!updates.length) {
         return null;
       }
-      if (updates.every(handle => handle.pendingRestart)) {
+      if (updates.every((handle) => handle.pendingRestart)) {
         return "script-updates-restart";
       }
       return "script-updates-available";
@@ -339,7 +338,7 @@ function initUserChromeNotifications() {
     async #warnOnMismatchedVersions() {
       if (!this.utils) return;
       let chromeUri = Services.io.newURI(
-        "chrome://userchrome/content/aboutuserchrome/src/aboutuserchrome.json"
+        "chrome://userchrome/content/aboutuserchrome/src/aboutuserchrome.json",
       );
       let fileUri = chromeRegistry.convertChromeURL(chromeUri);
       let file = fphs
@@ -368,7 +367,7 @@ function initUserChromeNotifications() {
       let scriptVersion = "unknown";
       let script = this.utils
         .getScriptData()
-        .find(script => script.name === "about:userchrome");
+        .find((script) => script.name === "about:userchrome");
       if (script) scriptVersion = script.version;
 
       let warning;
@@ -390,7 +389,6 @@ function initUserChromeNotifications() {
           return;
       }
 
-       
       console.warn(warning);
     }
   }
@@ -398,14 +396,14 @@ function initUserChromeNotifications() {
   // Setup for each window.
   lazy.EveryWindow.registerCallback(
     "userChromeNotifications",
-    win => {
+    (win) => {
       win.userChromeWindowNotifications = new UserChromeWindowNotifications(
-        win
+        win,
       );
     },
-    win => {
+    (win) => {
       win.userChromeWindowNotifications.uninit();
-    }
+    },
   );
 }
 

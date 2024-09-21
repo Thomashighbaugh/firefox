@@ -35,7 +35,7 @@ XPCOMUtils.defineLazyPreferenceGetter(
   lazy,
   "UPDATE_INTERVAL",
   PREF_UPDATE_INTERVAL,
-  86400000 // 24 hours
+  86400000, // 24 hours
 );
 
 export const UPDATE_CHANGED_TOPIC = "userChromeManager:script-updater-changed";
@@ -73,7 +73,7 @@ class ScriptHandle {
     lazy.gUpdateTimerManager.registerTimer(
       this.timerTopic,
       () => this.checkRemoteFile(),
-      lazy.UPDATE_INTERVAL / 1000 // in seconds
+      lazy.UPDATE_INTERVAL / 1000, // in seconds
     );
   }
 
@@ -147,7 +147,7 @@ class ScriptHandle {
     ) {
       return;
     }
-    this.#finishedWritingPromise = new Promise(resolve => {
+    this.#finishedWritingPromise = new Promise((resolve) => {
       this.#finishedWritingResolve = resolve;
     });
     this.writing = true;
@@ -186,7 +186,7 @@ class ScriptHandle {
     let isWindows = AppConstants.platform == "win";
     let isWindowsExe = isWindows && fileExtension?.toLowerCase() == "exe";
     let isScript = ["js", "mjs", "jsm", "sjs"].includes(
-      fileExtension?.toLowerCase()
+      fileExtension?.toLowerCase(),
     );
     if (
       file.isExecutable() &&
@@ -199,7 +199,7 @@ class ScriptHandle {
     try {
       mimeInfo = lazy.gMIMEService.getFromTypeAndExtension(
         lazy.gMIMEService.getTypeFromFile(file),
-        fileExtension
+        fileExtension,
       );
     } catch (e) {}
     if (!fileExtension && isWindows) {
@@ -211,7 +211,7 @@ class ScriptHandle {
       let { parent } = file;
       if (!parent) {
         throw new Error(
-          "Unexpected reference to a top-level directory instead of a file"
+          "Unexpected reference to a top-level directory instead of a file",
         );
       }
       try {
@@ -220,7 +220,7 @@ class ScriptHandle {
       } catch (ex) {}
       lazy.gExternalProtocolService.loadURI(
         lazy.NetUtil.newURI(parent),
-        Services.scriptSecurityManager.getSystemPrincipal()
+        Services.scriptSecurityManager.getSystemPrincipal(),
       );
       return;
     }
@@ -237,7 +237,7 @@ class ScriptHandle {
     } catch (ex) {}
     lazy.gExternalProtocolService.loadURI(
       lazy.NetUtil.newURI(file),
-      Services.scriptSecurityManager.getSystemPrincipal()
+      Services.scriptSecurityManager.getSystemPrincipal(),
     );
   }
 }
@@ -255,7 +255,7 @@ class ScriptUpdater {
     if (!this.#handles.has(script.filename)) {
       let handle = new ScriptHandle(script);
       handle.subscribe(() =>
-        Services.obs.notifyObservers(null, UPDATE_CHANGED_TOPIC)
+        Services.obs.notifyObservers(null, UPDATE_CHANGED_TOPIC),
       );
       this.#handles.set(script.filename, handle);
     }

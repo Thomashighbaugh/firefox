@@ -67,7 +67,8 @@
 
         .textbox-search-sign {
           width: 12px;
-          background: url("chrome://global/skin/icons/search-textbox.svg") no-repeat center/contain;
+          background: url("chrome://global/skin/icons/search-textbox.svg")
+            no-repeat center/contain;
           margin-inline-end: 5px;
           pointer-events: none;
 
@@ -83,7 +84,8 @@
           min-width: revert;
           width: 14px;
           background-size: 14px;
-          background: url("resource://content-accessible/searchfield-cancel.svg") no-repeat center/14px;
+          background: url("resource://content-accessible/searchfield-cancel.svg")
+            no-repeat center/14px;
           margin-inline-start: 5px;
 
           &:not([disabled]) {
@@ -135,7 +137,9 @@
 
   .script.card {
     margin-bottom: var(--card-padding);
-    transition: opacity 150ms, box-shadow 150ms;
+    transition:
+      opacity 150ms,
+      box-shadow 150ms;
     overflow: hidden;
     border: 0;
     padding: var(--card-padding);
@@ -372,7 +376,17 @@
               background: var(--in-content-box-background-odd);
               padding: 0.15em 0.4em;
               border-radius: 4px;
-              font-family: "Fira Code", "Fira Mono", SFMono-Regular, SF Mono, Menlo, Consolas, "DejaVu Sans Mono", Liberation Mono, ui-monospace, monospace;
+              font-family:
+                "Fira Code",
+                "Fira Mono",
+                SFMono-Regular,
+                SF Mono,
+                Menlo,
+                Consolas,
+                "DejaVu Sans Mono",
+                Liberation Mono,
+                ui-monospace,
+                monospace;
               white-space: break-spaces;
             }
           }
@@ -434,8 +448,14 @@
 
       &[focused] {
         outline: none;
-        --card-outline-color: color-mix(in srgb, var(--in-content-accent-color) 70%, transparent);
-        box-shadow: var(--card-shadow), 0 0 0 5px var(--card-outline-color);
+        --card-outline-color: color-mix(
+          in srgb,
+          var(--in-content-accent-color) 70%,
+          transparent
+        );
+        box-shadow:
+          var(--card-shadow),
+          0 0 0 5px var(--card-outline-color);
       }
 
       .card-contents {
@@ -574,7 +594,8 @@
 
   &.error {
     border-color: transparent;
-    outline: 2px solid color-mix(in srgb, var(--in-content-border-invalid) 30%, transparent);
+    outline: 2px solid
+      color-mix(in srgb, var(--in-content-border-invalid) 30%, transparent);
 
     &:focus-within {
       outline-color: var(--in-content-border-invalid);
@@ -602,7 +623,7 @@ input[type="checkbox"].toggle-button {
   --dot-margin: 2px;
   /* --dot-transform-x = button-width - 2*dot-margin - dot-size - 2*button-border-width */
   --dot-transform-x: 10px;
-  --border-color: hsla(210,4%,10%,.14);
+  --border-color: hsla(210, 4%, 10%, 0.14);
 }
 
 input[type="checkbox"].toggle-button {

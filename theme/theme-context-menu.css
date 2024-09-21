@@ -6,30 +6,28 @@
 - no need to read aminomancer's comments that dwarf War & Peace ;]
 ------------------------------------------------------------------------------------*/
 
-#context-take-screenshot
-#context-sep-screenshots,
+#context-take-screenshot #context-sep-screenshots,
 #context-sendimage,
 #context-setDesktopBackground,
 #context-sep-setbackground,
-#context-openlinkinusercontext-menu
-    {
-        display: none !important;
-    }
+#context-openlinkinusercontext-menu {
+  display: none !important;
+}
 
 #context-pocket,
 #context-savelinktopocket,
 #tabContextMenu #context_duplicateTab,
 #tabContextMenu #context_duplicateTabs,
-#tabContextMenu #context_bookmarkSelectedTabs
-    {
-        display: none !important;
-    }
+#tabContextMenu #context_bookmarkSelectedTabs {
+  display: none !important;
+}
 
 /* ----------------------------------------------------------
 Theming Context Menu
 -----------------------------------------------------------*/
 
-menupopup, panel {
+menupopup,
+panel {
   color-scheme: light dark;
   --panel-background: var(--uc-context-menu) !important;
   --panel-color: var(--uc-text);
@@ -38,20 +36,13 @@ menupopup, panel {
   --panel-shadow: 0 0 var(--panel-shadow-margin) #00000033;
 }
 
-menuitem:hover{
-  background-color: var(--uc-active) !important;
-  color: var(--uc-text) !important;
- }
-
-menu:where([_moz-menuactive="true"]:not([disabled="true"])),
-menuitem:where([_moz-menuactive="true"]:not([disabled="true"])){
+menuitem:hover {
   background-color: var(--uc-active) !important;
   color: var(--uc-text) !important;
 }
 
-
-
-
-
-
-
+menu:where([_moz-menuactive="true"]:not([disabled="true"])),
+menuitem:where([_moz-menuactive="true"]:not([disabled="true"])) {
+  background-color: var(--uc-active) !important;
+  color: var(--uc-text) !important;
+}

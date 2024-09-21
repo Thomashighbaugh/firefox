@@ -6,7 +6,8 @@
 
 /* nord VPN extension */
 
-@-moz-document regexp("^moz-extension://.*/.*") {
+@-moz-document regexp("^moz-extension://.*/.*")
+{
   :root[uc-extension-id="nordvpnproxy@nordvpn.com"] {
     color-scheme: dark;
   }

@@ -17,7 +17,7 @@ export function getValueString(value) {
 }
 
 export const PeriodInputField = ({ id, value, suffix, ...props }) => {
-  const focusInput = useCallback(event => {
+  const focusInput = useCallback((event) => {
     event.target.querySelector("input").focus();
   }, []);
   return (
@@ -25,7 +25,8 @@ export const PeriodInputField = ({ id, value, suffix, ...props }) => {
       htmlFor={id}
       className="period-input-field"
       onFocus={focusInput}
-      onMouseUp={focusInput}>
+      onMouseUp={focusInput}
+    >
       <input type="text" id={id} value={value} size="1" {...props} />
       <span className="period-input-sizer">{value || "0"}</span>
       {suffix && <span>{suffix}</span>}
@@ -44,14 +45,14 @@ export const PeriodInput = ({
 }) => {
   const [days, setDays] = useState(Math.floor(defaultValue / 86400000) || null);
   const [hours, setHours] = useState(
-    Math.floor((defaultValue % 86400000) / 3600000) || null
+    Math.floor((defaultValue % 86400000) / 3600000) || null,
   );
   const [minutes, setMinutes] = useState(
-    Math.floor((defaultValue % 3600000) / 60000) || null
+    Math.floor((defaultValue % 3600000) / 60000) || null,
   );
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const handleInput = useCallback(event => {
+  const handleInput = useCallback((event) => {
     let { value } = event.target;
     if (value?.toString().length > 10) return;
     let valueAsNumber = parseInt(value, 10);
@@ -68,7 +69,7 @@ export const PeriodInput = ({
     }
   }, []);
   const handleBlur = useCallback(
-    event => {
+    (event) => {
       let blurredInput = event.target?.closest(".period-input");
       let focusedInput = event.relatedTarget?.closest(".period-input");
       if (focusedInput && focusedInput === blurredInput) return;
@@ -82,9 +83,9 @@ export const PeriodInput = ({
         setMinutes(Math.floor((totalMs % 3600000) / 60000));
       }
     },
-    [days, hours, max, min, minutes]
+    [days, hours, max, min, minutes],
   );
-  const selectNearestInput = useCallback(event => {
+  const selectNearestInput = useCallback((event) => {
     if (event.target.localName !== "div") return;
     let inputs = [...event.target.querySelectorAll("input")];
     let clickX = event.clientX;
@@ -123,7 +124,8 @@ export const PeriodInput = ({
         role="form"
         onMouseDown={selectNearestInput}
         onBlurCapture={handleBlur}
-        {...props}>
+        {...props}
+      >
         <PeriodInputField
           name="days"
           id={id ? `${id}-days` : null}

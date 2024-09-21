@@ -1,10 +1,10 @@
 import React, { createContext } from "react";
 const { PREF_UPDATE_INTERVAL, PREF_NOTIFICATIONS_ENABLED } =
   ChromeUtils.importESModule(
-    "chrome://userchrome/content/aboutuserchrome/modules/UCMSingletonData.sys.mjs"
+    "chrome://userchrome/content/aboutuserchrome/modules/UCMSingletonData.sys.mjs",
   );
 const { _ucUtils: ucUtils } = ChromeUtils.importESModule(
-  "chrome://userchromejs/content/utils.sys.mjs"
+  "chrome://userchromejs/content/utils.sys.mjs",
 );
 
 export const PREF_BRANCH = "userChromeJS.";
@@ -59,32 +59,32 @@ export class GlobalContextProvider extends React.Component {
         this.setState({ path, initialFocus: false });
         window.history[pushState ? "pushState" : "replaceState"](
           { ...window.history.state, path, initialFocus: false },
-          ""
+          "",
         );
       }
     };
-    this.setSearch = terms => {
+    this.setSearch = (terms) => {
       if (!this.state.search && terms) {
         window.history.pushState(
           { ...window.history.state, search: terms },
-          ""
+          "",
         );
       } else {
         window.history.replaceState(
           { ...window.history.state, search: terms },
-          ""
+          "",
         );
       }
       this.setState({ search: terms });
     };
-    this.setUpdateCount = count => {
+    this.setUpdateCount = (count) => {
       this.setState({ updateCount: count });
     };
-    this.setInitialFocus = focus => {
+    this.setInitialFocus = (focus) => {
       this.setState({ initialFocus: focus });
       window.history.replaceState(
         { ...window.history.state, initialFocus: focus },
-        ""
+        "",
       );
     };
 
@@ -98,7 +98,7 @@ export class GlobalContextProvider extends React.Component {
       outdatedFxAutoconfig:
         !ucUtils?.parseStringAsScriptInfo ||
         ucUtils?.getScriptData.toString().startsWith("()"),
-      scripts: ucUtils?.getScriptData().map(script => ({
+      scripts: ucUtils?.getScriptData().map((script) => ({
         ...script,
         path: script.asFile().path,
       })),
@@ -120,7 +120,7 @@ export class GlobalContextProvider extends React.Component {
         initialFocus: this.state.initialFocus,
         search: this.state.search,
       },
-      ""
+      "",
     );
 
     window.addEventListener("popstate", this);
@@ -161,7 +161,7 @@ export class GlobalContextProvider extends React.Component {
             this.setState({
               gBrowserHackRequired: gPrefs.get(
                 PREF_GBROWSERHACK_REQUIRED,
-                false
+                false,
               ),
             });
             break;
@@ -174,7 +174,7 @@ export class GlobalContextProvider extends React.Component {
             this.setState({
               notificationsEnabled: gPrefs.get(
                 PREF_NOTIFICATIONS_ENABLED,
-                true
+                true,
               ),
             });
             break;

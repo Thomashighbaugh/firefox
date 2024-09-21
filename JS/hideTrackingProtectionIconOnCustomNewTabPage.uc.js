@@ -49,7 +49,11 @@
     // toolbar.
     _getAnchor(panel) {
       if (this.hideBookmarks)
-        for (let id of ["star-button-box", "bookmarks-menu-button", "libary-button"]) {
+        for (let id of [
+          "star-button-box",
+          "bookmarks-menu-button",
+          "libary-button",
+        ]) {
           let node = document.getElementById(id);
           if (node && !node.hidden) {
             let bounds = window.windowUtils.getBoundsWithoutFlushing(node);
@@ -75,7 +79,7 @@
         this,
         "hideBookmarks",
         "userChrome.urlbar.hide-bookmarks-button-on-system-pages",
-        false
+        false,
       );
       eval(
         `StarUI.showEditBookmarkPopup = async function ` +
@@ -87,8 +91,8 @@
             .replace(/async function\s*/, "")
             .replace(
               /this\.panel\.openPopup\(BookmarkingUI\.anchor, \"bottomcenter topright\"\)\;/,
-              `this.panel.openPopup(hideOnNTP?._getAnchor(this.panel) || BookmarkingUI.anchor, \"bottomcenter topright\");`
-            )
+              `this.panel.openPopup(hideOnNTP?._getAnchor(this.panel) || BookmarkingUI.anchor, \"bottomcenter topright\");`,
+            ),
       );
       // the main part of this script. hide the tracking protection icon on new tab page.
       gProtectionsHandler.onLocationChange = function onLocationChange() {
@@ -96,22 +100,40 @@
         let isInitial = isInitialPage(gBrowser.currentURI);
         if (this._showToastAfterRefresh) {
           this._showToastAfterRefresh = false;
-          if (this._previousURI == currentURL && this._previousOuterWindowID == gBrowser.selectedBrowser.outerWindowID)
+          if (
+            this._previousURI == currentURL &&
+            this._previousOuterWindowID ==
+              gBrowser.selectedBrowser.outerWindowID
+          )
             this.showProtectionsPopup({ toast: true });
         }
         this.hadShieldState = false;
         if (currentURL.startsWith("view-source:"))
-          this._trackingProtectionIconContainer.setAttribute("view-source", true);
-        else this._trackingProtectionIconContainer.removeAttribute("view-source");
+          this._trackingProtectionIconContainer.setAttribute(
+            "view-source",
+            true,
+          );
+        else
+          this._trackingProtectionIconContainer.removeAttribute("view-source");
         // make the identity box unfocusable on new tab page
-        if (gIdentityHandler._identityIconBox) gIdentityHandler._identityIconBox.disabled = isInitial;
+        if (gIdentityHandler._identityIconBox)
+          gIdentityHandler._identityIconBox.disabled = isInitial;
         // hide the TP icon on new tab page
-        if (!ContentBlockingAllowList.canHandle(gBrowser.selectedBrowser) || isInitial) {
+        if (
+          !ContentBlockingAllowList.canHandle(gBrowser.selectedBrowser) ||
+          isInitial
+        ) {
           this._trackingProtectionIconContainer.hidden = true;
           return;
         } else this._trackingProtectionIconContainer.hidden = false;
-        this.hasException = ContentBlockingAllowList.includes(gBrowser.selectedBrowser);
-        if (this._protectionsPopup) this._protectionsPopup.toggleAttribute("hasException", this.hasException);
+        this.hasException = ContentBlockingAllowList.includes(
+          gBrowser.selectedBrowser,
+        );
+        if (this._protectionsPopup)
+          this._protectionsPopup.toggleAttribute(
+            "hasException",
+            this.hasException,
+          );
         this.iconBox.toggleAttribute("hasException", this.hasException);
         this.fingerprintersHistogramAdd("pageLoad");
         this.cryptominersHistogramAdd("pageLoad");
@@ -131,6 +153,9 @@
         init();
       }
     };
-    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
+    Services.obs.addObserver(
+      delayedListener,
+      "browser-delayed-startup-finished",
+    );
   }
 })();

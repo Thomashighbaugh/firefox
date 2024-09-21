@@ -1,7 +1,8 @@
 /* handles context menus opened in devtools processes,
 and a few elements like checkboxes */
 
-@-moz-document url-prefix("chrome://devtools/content/") {
+@-moz-document url-prefix("chrome://devtools/content/")
+{
   :root,
   menupopup {
     --focus-outline-color: var(--purple-30) !important;
@@ -16,14 +17,26 @@ and a few elements like checkboxes */
     --menu-icon-opacity: 1 !important;
     --panel-separator-margin: var(--uc-panel-separator-margin) !important;
     --checkbox-border-color: var(--uc-checkbox-border-color) !important;
-    --checkbox-checked-border-color: var(--uc-checkbox-checked-border-color) !important;
-    --checkbox-unchecked-bgcolor: var(--uc-checkbox-unchecked-bgcolor) !important;
-    --checkbox-unchecked-hover-bgcolor: var(--uc-checkbox-unchecked-hover-bgcolor) !important;
-    --checkbox-unchecked-active-bgcolor: var(--uc-checkbox-unchecked-active-bgcolor) !important;
+    --checkbox-checked-border-color: var(
+      --uc-checkbox-checked-border-color
+    ) !important;
+    --checkbox-unchecked-bgcolor: var(
+      --uc-checkbox-unchecked-bgcolor
+    ) !important;
+    --checkbox-unchecked-hover-bgcolor: var(
+      --uc-checkbox-unchecked-hover-bgcolor
+    ) !important;
+    --checkbox-unchecked-active-bgcolor: var(
+      --uc-checkbox-unchecked-active-bgcolor
+    ) !important;
     --checkbox-checked-bgcolor: var(--uc-checkbox-checked-bgcolor) !important;
     --checkbox-checked-color: var(--uc-checkbox-checked-color) !important;
-    --checkbox-checked-hover-bgcolor: var(--uc-checkbox-checked-hover-bgcolor) !important;
-    --checkbox-checked-active-bgcolor: var(--uc-checkbox-checked-active-bgcolor) !important;
+    --checkbox-checked-hover-bgcolor: var(
+      --uc-checkbox-checked-hover-bgcolor
+    ) !important;
+    --checkbox-checked-active-bgcolor: var(
+      --uc-checkbox-checked-active-bgcolor
+    ) !important;
     --error-text-color: var(--warning-color) !important;
   }
 
@@ -34,7 +47,15 @@ and a few elements like checkboxes */
     --checkbox-unchecked-active-bgcolor: #ddd !important;
   }
 
-  menupopup > :is(menuitem, menu, menucaption, menugroup, menuseparator, search-textbox),
+  menupopup
+    > :is(
+      menuitem,
+      menu,
+      menucaption,
+      menugroup,
+      menuseparator,
+      search-textbox
+    ),
   panel > richlistbox > richlistitem {
     margin-inline: var(--menupopup-inner-padding-magnitude);
   }
@@ -74,15 +95,24 @@ and a few elements like checkboxes */
     background-color: var(--checkbox-unchecked-hover-bgcolor);
   }
 
-  input:is([type="checkbox"], [type="radio"]):is(:hover, :focus-visible):active {
+  input:is([type="checkbox"], [type="radio"]):is(
+      :hover,
+      :focus-visible
+    ):active {
     background-color: var(--checkbox-unchecked-active-bgcolor);
   }
 
-  input:is([type="checkbox"], [type="radio"]):is([checked="true"], :checked):is(:hover, :focus-visible) {
+  input:is([type="checkbox"], [type="radio"]):is([checked="true"], :checked):is(
+      :hover,
+      :focus-visible
+    ) {
     background-color: var(--checkbox-checked-hover-bgcolor);
   }
 
-  input:is([type="checkbox"], [type="radio"]):is([checked="true"], :checked):is(:hover, :focus-visible):active {
+  input:is([type="checkbox"], [type="radio"]):is([checked="true"], :checked):is(
+      :hover,
+      :focus-visible
+    ):active {
     background-color: var(--checkbox-checked-active-bgcolor);
   }
 
@@ -130,7 +160,10 @@ and a few elements like checkboxes */
   }
 
   .menupopup-arrowscrollbox[orient="vertical"][overflowing="true"] {
-    margin-block: var(--menupopup-overflowing-inner-box-margin, var(--menupopup-inner-box-margin)) !important;
+    margin-block: var(
+      --menupopup-overflowing-inner-box-margin,
+      var(--menupopup-inner-box-margin)
+    ) !important;
   }
 
   :is(menuitem, menu),
@@ -143,7 +176,9 @@ and a few elements like checkboxes */
   }
 
   :is(menuitem, menu)[disabled="true"],
-  panel[type="autocomplete-richlistbox"] > richlistbox > richlistitem[disabled="true"] {
+  panel[type="autocomplete-richlistbox"]
+    > richlistbox
+    > richlistitem[disabled="true"] {
     appearance: none !important;
     color: var(--menu-disabled-color) !important;
     background-color: initial !important;
@@ -159,7 +194,10 @@ and a few elements like checkboxes */
     margin-inline: var(--context-iconic-margin);
   }
 
-  panel[type="autocomplete-richlistbox"] > richlistbox > richlistitem :is(.ac-site-icon, .ac-type-icon) {
+  panel[type="autocomplete-richlistbox"]
+    > richlistbox
+    > richlistitem
+    :is(.ac-site-icon, .ac-type-icon) {
     margin-inline: var(--context-iconic-margin) !important;
     margin-inline-start: 0 !important;
   }
@@ -200,7 +238,11 @@ and a few elements like checkboxes */
     appearance: none !important;
   }
 
-  .subviewbutton:is(:hover, :focus-visible, [_moz-menuactive="true"])[disabled="true"] {
+  .subviewbutton:is(
+      :hover,
+      :focus-visible,
+      [_moz-menuactive="true"]
+    )[disabled="true"] {
     color: var(--menu-disabled-color) !important;
   }
 
@@ -231,19 +273,35 @@ and a few elements like checkboxes */
     border-radius: 2px;
   }
 
-  menupopup menuitem:is([type="checkbox"], [type="radio"])[_moz-menuactive="true"]::before {
+  menupopup
+    menuitem:is(
+      [type="checkbox"],
+      [type="radio"]
+    )[_moz-menuactive="true"]::before {
     background-color: var(--checkbox-unchecked-hover-bgcolor);
   }
 
-  menupopup menuitem:is([type="checkbox"], [type="radio"])[_moz-menuactive="true"]:active::before {
+  menupopup
+    menuitem:is(
+      [type="checkbox"],
+      [type="radio"]
+    )[_moz-menuactive="true"]:active::before {
     background-color: var(--checkbox-unchecked-active-bgcolor);
   }
 
-  menupopup menuitem:is([type="checkbox"], [type="radio"])[checked="true"][_moz-menuactive="true"]::before {
+  menupopup
+    menuitem:is(
+      [type="checkbox"],
+      [type="radio"]
+    )[checked="true"][_moz-menuactive="true"]::before {
     background-color: var(--checkbox-checked-hover-bgcolor);
   }
 
-  menupopup menuitem:is([type="checkbox"], [type="radio"])[checked="true"][_moz-menuactive="true"]:active::before {
+  menupopup
+    menuitem:is(
+      [type="checkbox"],
+      [type="radio"]
+    )[checked="true"][_moz-menuactive="true"]:active::before {
     background-color: var(--checkbox-checked-active-bgcolor);
   }
 
@@ -267,24 +325,43 @@ and a few elements like checkboxes */
     display: none;
   }
 
-  #ContentSelectDropdown > menupopup > :where(menucaption, menuitem) > .menu-iconic-text,
+  #ContentSelectDropdown
+    > menupopup
+    > :where(menucaption, menuitem)
+    > .menu-iconic-text,
   menupopup.in-menulist > :where(menucaption, menuitem) > .menu-iconic-text {
     padding-block: unset !important;
   }
 
-  :is(#ContentSelectDropdown, menupopup.in-menulist, .contentSelectDropdown-ingroup) :is(menu, menuitem, menucaption),
+  :is(
+      #ContentSelectDropdown,
+      menupopup.in-menulist,
+      .contentSelectDropdown-ingroup
+    )
+    :is(menu, menuitem, menucaption),
   panel[type="autocomplete-richlistbox"] > richlistbox > richlistitem {
     padding-inline: 8px !important;
     min-height: var(--menuitem-height) !important;
     border: none !important;
   }
 
-  :is(#ContentSelectDropdown, menupopup.in-menulist, .contentSelectDropdown-ingroup) :is(menu, menuitem, menucaption) > :is(label, .menu-iconic-text, .menu-text) {
+  :is(
+      #ContentSelectDropdown,
+      menupopup.in-menulist,
+      .contentSelectDropdown-ingroup
+    )
+    :is(menu, menuitem, menucaption)
+    > :is(label, .menu-iconic-text, .menu-text) {
     padding-inline: 0 !important;
     font: menu !important;
   }
 
-  :is(#ContentSelectDropdown, menupopup.in-menulist, .contentSelectDropdown-ingroup) menucaption {
+  :is(
+      #ContentSelectDropdown,
+      menupopup.in-menulist,
+      .contentSelectDropdown-ingroup
+    )
+    menucaption {
     font-weight: inherit !important;
     min-height: 26px !important;
     padding-block: 1px 2px !important;
@@ -292,7 +369,13 @@ and a few elements like checkboxes */
     color: var(--panel-description-color) !important;
   }
 
-  :is(#ContentSelectDropdown, menupopup.in-menulist, .contentSelectDropdown-ingroup) menucaption > :is(label, .menu-iconic-text, .menu-text) {
+  :is(
+      #ContentSelectDropdown,
+      menupopup.in-menulist,
+      .contentSelectDropdown-ingroup
+    )
+    menucaption
+    > :is(label, .menu-iconic-text, .menu-text) {
     padding: 4px 5px !important;
     border-bottom: 1px solid var(--menu-separator-color) !important;
     font-weight: var(--uc-font-weight-bold, 600) !important;
@@ -342,12 +425,17 @@ and a few elements like checkboxes */
     -moz-user-modify: read-write !important;
   }
 
-  #ContentSelectDropdown > menupopup .contentSelectDropdown-searchbox:focus-within {
+  #ContentSelectDropdown
+    > menupopup
+    .contentSelectDropdown-searchbox:focus-within {
     background-color: var(--search-box-focus) !important;
     transition: 300ms background-color !important;
   }
 
-  #ContentSelectDropdown > menupopup .contentSelectDropdown-searchbox + :is(menu, menuitem) {
+  #ContentSelectDropdown
+    > menupopup
+    .contentSelectDropdown-searchbox
+    + :is(menu, menuitem) {
     margin-top: 4px;
   }
 
@@ -386,7 +474,9 @@ and a few elements like checkboxes */
     padding: 0 !important;
   }
 
-  menupopup[menu-api] menuitem:is([type="checkbox"], [type="radio"]) .menu-iconic-left {
+  menupopup[menu-api]
+    menuitem:is([type="checkbox"], [type="radio"])
+    .menu-iconic-left {
     display: none !important;
   }
 
@@ -439,12 +529,26 @@ and a few elements like checkboxes */
 
   @media (-moz-bool-pref: "userChrome.css.mac-ui-fonts") {
     menupopup {
-      font-family: SF Pro Text, SF Arabic, Segoe UI, sans-serif !important;
+      font-family:
+        SF Pro Text,
+        SF Arabic,
+        Segoe UI,
+        sans-serif !important;
       font-kerning: normal !important;
     }
 
-    :is(#ContentSelectDropdown, menupopup.in-menulist, .contentSelectDropdown-ingroup) :is(menu, menuitem, menucaption) > :is(label, .menu-iconic-text, .menu-text) {
-      font-family: SF Pro Text, SF Arabic, Segoe UI, sans-serif !important;
+    :is(
+        #ContentSelectDropdown,
+        menupopup.in-menulist,
+        .contentSelectDropdown-ingroup
+      )
+      :is(menu, menuitem, menucaption)
+      > :is(label, .menu-iconic-text, .menu-text) {
+      font-family:
+        SF Pro Text,
+        SF Arabic,
+        Segoe UI,
+        sans-serif !important;
       font-kerning: normal !important;
     }
   }
@@ -479,7 +583,8 @@ and a few elements like checkboxes */
     background-repeat: no-repeat;
   }
 
-  .devtools-tab[data-extension-id="{8c161eb2-86b5-49e8-8e49-c789821be12e}"] > img {
+  .devtools-tab[data-extension-id="{8c161eb2-86b5-49e8-8e49-c789821be12e}"]
+    > img {
     padding-inline: 0 16px !important;
     max-width: 16px !important;
     box-sizing: border-box !important;

@@ -14,7 +14,7 @@ import { WarningBox } from "./WarningBox";
 import { PeriodInput } from "./PeriodInput";
 const { PREF_UPDATE_INTERVAL, PREF_NOTIFICATIONS_ENABLED } =
   ChromeUtils.importESModule(
-    "chrome://userchrome/content/aboutuserchrome/modules/UCMSingletonData.sys.mjs"
+    "chrome://userchrome/content/aboutuserchrome/modules/UCMSingletonData.sys.mjs",
   );
 
 export const SettingsView = () => {
@@ -28,11 +28,11 @@ export const SettingsView = () => {
     notificationsEnabled,
   } = useContext(GlobalContext);
 
-  const setBoolPref = useCallback(event => {
+  const setBoolPref = useCallback((event) => {
     let pref = event.target?.getAttribute("pref");
     if (pref) gPrefs.set(pref, event.target.checked);
   }, []);
-  const setUpdateInterval = useCallback(value => {
+  const setUpdateInterval = useCallback((value) => {
     gPrefs.set(PREF_UPDATE_INTERVAL, value);
   }, []);
 
@@ -66,7 +66,8 @@ export const SettingsView = () => {
                   pref={PREF_ENABLED}
                   checked={ucjsEnabled}
                   disabled={missingFxAutoconfig}
-                  onChange={setBoolPref}></input>
+                  onChange={setBoolPref}
+                ></input>
                 <label htmlFor="userChromeJS-enabled" className="checkbox-text">
                   Load userChrome.js scripts
                 </label>
@@ -81,16 +82,19 @@ export const SettingsView = () => {
                   pref={PREF_GBROWSERHACK_ENABLED}
                   checked={gBrowserHackEnabled}
                   disabled={gBrowserHackRequired}
-                  onChange={setBoolPref}></input>
+                  onChange={setBoolPref}
+                ></input>
                 <label
                   htmlFor="gBrowser_hack-enabled"
-                  className="checkbox-text">
+                  className="checkbox-text"
+                >
                   Enable gBrowser hack
                 </label>
               </div>
               <a
                 href="https://github.com/MrOtherGuy/fx-autoconfig#startup-error"
-                target="_blank">
+                target="_blank"
+              >
                 Learn more
               </a>
             </div>
@@ -105,10 +109,12 @@ export const SettingsView = () => {
                   className="checkbox"
                   pref={PREF_NOTIFICATIONS_ENABLED}
                   checked={notificationsEnabled}
-                  onChange={setBoolPref}></input>
+                  onChange={setBoolPref}
+                ></input>
                 <label
                   htmlFor="manager-notifications"
-                  className="checkbox-text">
+                  className="checkbox-text"
+                >
                   Show update notification badges
                 </label>
               </div>

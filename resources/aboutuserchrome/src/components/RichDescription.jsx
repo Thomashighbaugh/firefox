@@ -55,18 +55,18 @@ export const RichDescription = ({ description, prefix = "" }) => {
   const [descriptionCollapsed, setDescriptionCollapsed] = useState(true);
   const [descriptionToggleHidden, setDescriptionToggleHidden] = useState(true);
   const [darkTheme, setDarkTheme] = useState(
-    window.matchMedia("(prefers-color-scheme: dark)").matches
+    window.matchMedia("(prefers-color-scheme: dark)").matches,
   );
 
   const toggleDescriptionCollapsed = useCallback(() => {
-    setDescriptionCollapsed(previous => !previous);
+    setDescriptionCollapsed((previous) => !previous);
   }, []);
 
   useLayoutEffect(() => {
     const { current } = descriptionRef;
     if (current) {
       const remSize = parseFloat(
-        window.getComputedStyle(document.documentElement).fontSize
+        window.getComputedStyle(document.documentElement).fontSize,
       );
       const maxHeight = 20 * remSize + 8;
       let { height } = current.firstElementChild.getBoundingClientRect();
@@ -82,7 +82,7 @@ export const RichDescription = ({ description, prefix = "" }) => {
 
   useLayoutEffect(() => {
     let query = window.matchMedia("(prefers-color-scheme: dark)");
-    const listener = event => {
+    const listener = (event) => {
       setDarkTheme(event.matches);
     };
     query.addEventListener("change", listener);
@@ -95,7 +95,8 @@ export const RichDescription = ({ description, prefix = "" }) => {
     <div
       className={`${prefix}description-wrapper ${
         descriptionCollapsed ? `${prefix}description-collapse` : ""
-      }`}>
+      }`}
+    >
       <div className={`${prefix}description`} ref={descriptionRef}>
         <ReactMarkdown
           children={description}
@@ -132,7 +133,8 @@ export const RichDescription = ({ description, prefix = "" }) => {
       <button
         className={`button-link ${prefix}description-toggle`}
         hidden={descriptionToggleHidden}
-        onClick={toggleDescriptionCollapsed}>
+        onClick={toggleDescriptionCollapsed}
+      >
         {descriptionCollapsed ? "Show more" : "Show less"}
       </button>
     </div>

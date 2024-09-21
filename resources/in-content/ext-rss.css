@@ -6,7 +6,8 @@
 
 /* Want My RSS extension */
 
-@-moz-document regexp("^moz-extension://.*/popup.html.*") {
+@-moz-document regexp("^moz-extension://.*/popup.html.*")
+{
   :root[uc-extension-id="{4d567245-e70d-466a-bb2f-390fc7fb25c2}"i],
   :root[uc-extension-id="{4d567245-e70d-466a-bb2f-390fc7fb25c2}"i] body {
     color-scheme: dark;
@@ -22,7 +23,8 @@
     padding: 0 !important;
   }
 
-  :root[uc-extension-id="{4d567245-e70d-466a-bb2f-390fc7fb25c2}"i] .items__item {
+  :root[uc-extension-id="{4d567245-e70d-466a-bb2f-390fc7fb25c2}"i]
+    .items__item {
     border-radius: var(--context-menuitem-border-radius) !important;
     display: flex !important;
     flex-flow: row nowrap !important;
@@ -35,31 +37,41 @@
     line-height: 1 !important;
   }
 
-  :root[uc-extension-id="{4d567245-e70d-466a-bb2f-390fc7fb25c2}"i] .items__item:is(:hover, :focus-visible) {
+  :root[uc-extension-id="{4d567245-e70d-466a-bb2f-390fc7fb25c2}"i]
+    .items__item:is(:hover, :focus-visible) {
     background: var(--uc-arrowpanel-dimmed) !important;
   }
 
-  :root[uc-extension-id="{4d567245-e70d-466a-bb2f-390fc7fb25c2}"i] .items__item:hover:active {
+  :root[uc-extension-id="{4d567245-e70d-466a-bb2f-390fc7fb25c2}"i]
+    .items__item:hover:active {
     background: var(--uc-arrowpanel-dimmed-further) !important;
   }
 
-  :root[uc-extension-id="{4d567245-e70d-466a-bb2f-390fc7fb25c2}"i] .items__item-link {
+  :root[uc-extension-id="{4d567245-e70d-466a-bb2f-390fc7fb25c2}"i]
+    .items__item-link {
     cursor: default !important;
     color: var(--uc-arrowpanel-color) !important;
-    padding: var(--uc-arrowpanel-menuitem-padding-block) var(--uc-arrowpanel-menuitem-padding-inline) !important;
+    padding: var(--uc-arrowpanel-menuitem-padding-block)
+      var(--uc-arrowpanel-menuitem-padding-inline) !important;
     flex-grow: 1 !important;
     flex-shrink: 1 !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
   }
 
-  :root[uc-extension-id="{4d567245-e70d-466a-bb2f-390fc7fb25c2}"i] .items__item-link span {
+  :root[uc-extension-id="{4d567245-e70d-466a-bb2f-390fc7fb25c2}"i]
+    .items__item-link
+    span {
     opacity: revert !important;
   }
 
   @media (-moz-bool-pref: "userChrome.css.mac-ui-fonts") {
     :root[uc-extension-id="{4d567245-e70d-466a-bb2f-390fc7fb25c2}"i] body {
-      font-family: SF Pro Text, SF Arabic, Segoe UI, sans-serif !important;
+      font-family:
+        SF Pro Text,
+        SF Arabic,
+        Segoe UI,
+        sans-serif !important;
       font-kerning: normal !important;
     }
   }

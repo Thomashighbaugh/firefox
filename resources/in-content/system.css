@@ -57,7 +57,9 @@
     --checkbox-checked-bgcolor: var(--uc-checkbox-checked-bgcolor);
     --checkbox-checked-color: var(--uc-checkbox-checked-color);
     --checkbox-checked-hover-bgcolor: var(--uc-checkbox-checked-hover-bgcolor);
-    --checkbox-checked-active-bgcolor: var(--uc-checkbox-checked-active-bgcolor);
+    --checkbox-checked-active-bgcolor: var(
+      --uc-checkbox-checked-active-bgcolor
+    );
   }
 
   html:not([role="dialog"]),
@@ -77,10 +79,18 @@
     --in-content-border-hover: var(--uc-content-border-hover) !important;
     --in-content-border-active: var(--uc-content-border-active) !important;
     --in-content-box-background: var(--uc-content-box-background) !important;
-    --in-content-box-background-odd: var(--uc-content-box-background-odd) !important;
-    --in-content-box-background-dim: var(--uc-content-box-background-dim) !important;
-    --in-content-box-border-color: var(--uc-content-box-border-color) !important;
-    --in-content-box-info-background: var(--in-content-button-background-solid) !important;
+    --in-content-box-background-odd: var(
+      --uc-content-box-background-odd
+    ) !important;
+    --in-content-box-background-dim: var(
+      --uc-content-box-background-dim
+    ) !important;
+    --in-content-box-border-color: var(
+      --uc-content-box-border-color
+    ) !important;
+    --in-content-box-info-background: var(
+      --in-content-button-background-solid
+    ) !important;
     --in-content-table-background: var(--in-content-box-background) !important;
     --in-content-table-header-background: var(--purple-40-a50) !important;
     --in-content-link-color: var(--purple-30) !important;
@@ -96,67 +106,148 @@
     --link-visited-color-hover: var(--pink-35) !important;
     --link-visited-color-active: var(--pink-30) !important;
     --button-background: var(--uc-content-button-background) !important;
-    --button-background-hover: var(--uc-content-button-background-hover) !important;
-    --button-background-active: var(--uc-content-button-background-active) !important;
+    --button-background-hover: var(
+      --uc-content-button-background-hover
+    ) !important;
+    --button-background-active: var(
+      --uc-content-button-background-active
+    ) !important;
     --button-background-solid: var(--uc-content-button-background-solid);
-    --in-content-button-background: var(--uc-content-button-background) !important;
-    --in-content-button-background-hover: var(--uc-content-button-background-hover) !important;
-    --in-content-button-background-active: var(--uc-content-button-background-active) !important;
-    --in-content-button-background-solid: var(--uc-content-button-background-solid);
-    --in-content-button-text-color-hover: var(--light-on-dark-button-text-color) !important;
-    --in-content-button-text-color-active: var(--in-content-button-text-color-hover) !important;
+    --in-content-button-background: var(
+      --uc-content-button-background
+    ) !important;
+    --in-content-button-background-hover: var(
+      --uc-content-button-background-hover
+    ) !important;
+    --in-content-button-background-active: var(
+      --uc-content-button-background-active
+    ) !important;
+    --in-content-button-background-solid: var(
+      --uc-content-button-background-solid
+    );
+    --in-content-button-text-color-hover: var(
+      --light-on-dark-button-text-color
+    ) !important;
+    --in-content-button-text-color-active: var(
+      --in-content-button-text-color-hover
+    ) !important;
     --in-content-primary-button-background: var(--purple-40) !important;
     --in-content-primary-button-background-hover: var(--purple-35) !important;
     --in-content-primary-button-background-active: var(--purple-30) !important;
-    --in-content-primary-button-text-color: var(--light-on-dark-button-text-color) !important;
-    --in-content-primary-button-text-color-hover: var(--light-on-dark-button-text-color) !important;
+    --in-content-primary-button-text-color: var(
+      --light-on-dark-button-text-color
+    ) !important;
+    --in-content-primary-button-text-color-hover: var(
+      --light-on-dark-button-text-color
+    ) !important;
     --color-accent-primary: var(--purple-40) !important;
     --color-accent-primary-hover: var(--purple-35) !important;
     --color-accent-primary-active: var(--purple-30) !important;
-    --in-content-button-border-radius: var(--general-button-border-radius) !important;
+    --in-content-button-border-radius: var(
+      --general-button-border-radius
+    ) !important;
     --in-content-item-selected: var(--purple-40) !important;
-    --in-content-item-hover: color-mix(in srgb, var(--purple-30) 45%, transparent) !important;
+    --in-content-item-hover: color-mix(
+      in srgb,
+      var(--purple-30) 45%,
+      transparent
+    ) !important;
     --in-content-item-hover-text: var(--in-content-text-color) !important;
     --focus-outline-color: var(--global-focus-outline-color) !important;
     --focus-outline-offset: 2px !important;
-    --default-focusring: var(--global-focus-outline-width) solid var(--global-focus-outline-color) !important;
+    --default-focusring: var(--global-focus-outline-width) solid
+      var(--global-focus-outline-color) !important;
     --newtab-background-color: var(--in-content-page-background) !important;
     --newtab-text-primary-color: var(--in-content-page-color) !important;
     --lwt-sidebar-background-color: var(--in-content-box-background) !important;
     --lwt-sidebar-text-color: var(--in-content-page-color) !important;
-    --newtab-search-header-background-color: color-mix(in srgb, var(--uc-content-page-background) 70%, transparent) !important;
-    --newtab-search-header-background-intermediate: color-mix(in srgb, var(--uc-content-page-background) 80%, transparent) !important;
-    --newtab-seperator-line-color: var(--in-content-button-background-hover) !important;
+    --newtab-search-header-background-color: color-mix(
+      in srgb,
+      var(--uc-content-page-background) 70%,
+      transparent
+    ) !important;
+    --newtab-search-header-background-intermediate: color-mix(
+      in srgb,
+      var(--uc-content-page-background) 80%,
+      transparent
+    ) !important;
+    --newtab-seperator-line-color: var(
+      --in-content-button-background-hover
+    ) !important;
     --newtab-modal-color: var(--in-content-box-background) !important;
     --newtab-focus-outline: var(--purple-40-a50) !important;
     --newtab-focus-border: var(--purple-40) !important;
     --newtab-focus-border-selected: var(--purple-30) !important;
-    --newtab-textbox-background-color: var(--in-content-button-background) !important;
+    --newtab-textbox-background-color: var(
+      --in-content-button-background
+    ) !important;
     --newtab-textbox-focus-color: var(--purple-40) !important;
-    --newtab-primary-action-background: var(--in-content-primary-button-background-hover) !important;
-    --newtab-primary-action-background-hover: color-mix(in srgb, var(--purple-30) 60%, var(--newtab-primary-action-background)) !important;
-    --newtab-primary-action-background-active: color-mix(in srgb, var(--purple-25) 60%, var(--newtab-primary-action-background)) !important;
+    --newtab-primary-action-background: var(
+      --in-content-primary-button-background-hover
+    ) !important;
+    --newtab-primary-action-background-hover: color-mix(
+      in srgb,
+      var(--purple-30) 60%,
+      var(--newtab-primary-action-background)
+    ) !important;
+    --newtab-primary-action-background-active: color-mix(
+      in srgb,
+      var(--purple-25) 60%,
+      var(--newtab-primary-action-background)
+    ) !important;
     --newtab-primary-element-text-color: var(--ui-text-80) !important;
-    --newtab-element-secondary-color: var(--in-content-button-background-hover) !important;
-    --newtab-element-secondary-color-hover: color-mix(in srgb, var(--ui-text-40) 50%, var(--in-content-button-background-solid)) !important;
-    --newtab-element-secondary-color-active: color-mix(in srgb, var(--ui-text-50) 50%, var(--in-content-button-background-solid)) !important;
-    --newtab-button-primary-color: var(--in-content-primary-button-background-hover) !important;
-    --newtab-border-primary-color: var(--in-content-button-background-active) !important;
-    --newtab-background-color-secondary: var(--in-content-button-background-solid) !important;
-    --newtab-card-active-outline-color: var(--in-content-button-background) !important;
+    --newtab-element-secondary-color: var(
+      --in-content-button-background-hover
+    ) !important;
+    --newtab-element-secondary-color-hover: color-mix(
+      in srgb,
+      var(--ui-text-40) 50%,
+      var(--in-content-button-background-solid)
+    ) !important;
+    --newtab-element-secondary-color-active: color-mix(
+      in srgb,
+      var(--ui-text-50) 50%,
+      var(--in-content-button-background-solid)
+    ) !important;
+    --newtab-button-primary-color: var(
+      --in-content-primary-button-background-hover
+    ) !important;
+    --newtab-border-primary-color: var(
+      --in-content-button-background-active
+    ) !important;
+    --newtab-background-color-secondary: var(
+      --in-content-button-background-solid
+    ) !important;
+    --newtab-card-active-outline-color: var(
+      --in-content-button-background
+    ) !important;
     --newtab-link-primary-color: var(--in-content-link-color-active) !important;
     --newtab-link-secondary-color: var(--in-content-link-color) !important;
-    --newtab-topsites-background-color: var(--in-content-button-background) !important;
+    --newtab-topsites-background-color: var(
+      --in-content-button-background
+    ) !important;
     --customize-menu-background: var(--in-content-box-background) !important;
-    --customize-menu-secondary-action-background: var(--in-content-button-background) !important;
-    --customize-menu-secondary-action-background-hover: var(--in-content-button-background-hover) !important;
-    --customize-menu-secondary-action-background-active: var(--in-content-button-background-active) !important;
+    --customize-menu-secondary-action-background: var(
+      --in-content-button-background
+    ) !important;
+    --customize-menu-secondary-action-background-hover: var(
+      --in-content-button-background-hover
+    ) !important;
+    --customize-menu-secondary-action-background-active: var(
+      --in-content-button-background-active
+    ) !important;
     --customize-menu-first-shadow: hsla(250, 3%, 2%, 0.2) !important;
     --customize-menu-second-shadow: hsla(250, 3%, 2%, 0.4) !important;
-    --newtab-contextmenu-background-color: var(--in-content-table-background) !important;
-    --newtab-contextmenu-button-color: var(--in-content-box-background) !important;
+    --newtab-contextmenu-background-color: var(
+      --in-content-table-background
+    ) !important;
+    --newtab-contextmenu-button-color: var(
+      --in-content-box-background
+    ) !important;
     --newtab-card-background-color: var(--in-content-box-background) !important;
-    --newtab-card-placeholder-color: var(--in-content-box-background) !important;
+    --newtab-card-placeholder-color: var(
+      --in-content-box-background
+    ) !important;
     --newtab-search-text-color: var(--ui-text-70) !important;
     --newtab-search-first-shadow: rgba(21, 20, 26, 0.5);
     --newtab-search-second-shadow: rgba(21, 20, 26, 0.75);
@@ -166,10 +257,18 @@
     --in-content-button-background: var(--purple-50) !important;
     --in-content-button-background-hover: var(--purple-55) !important;
     --in-content-button-background-active: var(--purple-60) !important;
-    --in-content-button-text-color: var(--in-content-item-selected-text) !important;
-    --in-content-button-text-color-hover: var(--in-content-item-selected-text) !important;
-    --in-content-button-text-color-active: var(--in-content-button-text-color-hover) !important;
-    --in-content-focus-outline-color: var(--in-content-item-selected-text) !important;
+    --in-content-button-text-color: var(
+      --in-content-item-selected-text
+    ) !important;
+    --in-content-button-text-color-hover: var(
+      --in-content-item-selected-text
+    ) !important;
+    --in-content-button-text-color-active: var(
+      --in-content-button-text-color-hover
+    ) !important;
+    --in-content-focus-outline-color: var(
+      --in-content-item-selected-text
+    ) !important;
   }
 
   html:not([role="dialog"]) richlistitem menulist {
@@ -178,8 +277,14 @@
     outline: none !important;
   }
 
-  window:not([chromehidden]) > dialog richlistbox[seltype="multiple"]:focus > richlistitem[current="true"],
-  window:not([chromehidden]) > dialog richlistbox.theme-listbox:focus > richlistitem[current="true"] {
+  window:not([chromehidden])
+    > dialog
+    richlistbox[seltype="multiple"]:focus
+    > richlistitem[current="true"],
+  window:not([chromehidden])
+    > dialog
+    richlistbox.theme-listbox:focus
+    > richlistitem[current="true"] {
     outline: none !important;
   }
 
@@ -195,11 +300,28 @@
     background-color: transparent !important;
     backdrop-filter: blur(12px); */
 
-    background-image: linear-gradient(180deg, var(--in-content-page-background) 0%, color-mix(in srgb, var(--uc-content-page-background) 80%, var(--in-content-page-background)) 50%, color-mix(in srgb, var(--uc-content-page-background) 70%, var(--in-content-page-background)) 100%) !important;
+    background-image: linear-gradient(
+      180deg,
+      var(--in-content-page-background) 0%,
+      color-mix(
+          in srgb,
+          var(--uc-content-page-background) 80%,
+          var(--in-content-page-background)
+        )
+        50%,
+      color-mix(
+          in srgb,
+          var(--uc-content-page-background) 70%,
+          var(--in-content-page-background)
+        )
+        100%
+    ) !important;
     background-color: transparent !important;
   }
 
-  body:not(.inline-onboarding) .fixed-search.newtab-experience .search-handoff-button {
+  body:not(.inline-onboarding)
+    .fixed-search.newtab-experience
+    .search-handoff-button {
     background-color: var(--in-content-button-background-solid) !important;
   }
 
@@ -212,7 +334,9 @@
     border-color: var(--newtab-focus-border) !important;
   }
 
-  [lwt-newtab-brighttext] .ds-card-grid.ds-card-grid-border .ds-card:not(.placeholder) {
+  [lwt-newtab-brighttext]
+    .ds-card-grid.ds-card-grid-border
+    .ds-card:not(.placeholder) {
     background: var(--in-content-box-background) !important;
   }
 
@@ -239,7 +363,9 @@
 
   .showPrivate .search-handoff-button {
     background-color: var(--newtab-textbox-background-color) !important;
-    box-shadow: 0 3px 8px var(--newtab-search-first-shadow), 0 0 2px var(--newtab-search-second-shadow) !important;
+    box-shadow:
+      0 3px 8px var(--newtab-search-first-shadow),
+      0 0 2px var(--newtab-search-second-shadow) !important;
     border: 1px solid transparent !important;
     color: var(--newtab-search-text-color) !important;
   }
@@ -268,11 +394,19 @@
   .search-tooltip {
     color: var(--global-selection-color) !important;
     background-color: var(--aboutPrefs-find-tags) !important;
-    border-color: color-mix(in srgb, black 18%, var(--aboutPrefs-find-tags)) !important;
+    border-color: color-mix(
+      in srgb,
+      black 18%,
+      var(--aboutPrefs-find-tags)
+    ) !important;
   }
 
   .search-tooltip::before {
-    border-top-color: color-mix(in srgb, black 18%, var(--aboutPrefs-find-tags)) !important;
+    border-top-color: color-mix(
+      in srgb,
+      black 18%,
+      var(--aboutPrefs-find-tags)
+    ) !important;
   }
 
   .search-tooltip::after {
@@ -298,7 +432,8 @@
 
   link[rel="stylesheet"] {
     &[href="chrome://global/content/elements/message-bar.css"],
-    &[href="chrome://global/content/elements/moz-message-bar.css"] {
+    &[href="chrome://global/content/elements/moz-message-bar.css"]
+    {
       ~ .container {
         padding: 8px !important;
         border-radius: 0 !important;
@@ -360,24 +495,39 @@
     }
 
     &[type="error"]:not([message-bar-type="infobar"]) {
-      --message-bar-background-color: color-mix(in srgb, transparent 15%, var(--uc-warning-background)) !important;
+      --message-bar-background-color: color-mix(
+        in srgb,
+        transparent 15%,
+        var(--uc-warning-background)
+      ) !important;
       --message-bar-text-color: var(--text-color) !important;
     }
 
     &[type="critical"]:not([message-bar-type="infobar"]) {
-      --message-bar-background-color: color-mix(in srgb, hsla(-2, 100%, 60%, 0.5) 45%, var(--uc-warning-background)) !important;
+      --message-bar-background-color: color-mix(
+        in srgb,
+        hsla(-2, 100%, 60%, 0.5) 45%,
+        var(--uc-warning-background)
+      ) !important;
       --message-bar-text-color: var(--text-color) !important;
     }
 
     &[type="success"]:not([message-bar-type="infobar"]) {
-      --message-bar-background-color: color-mix(in srgb, transparent 75%, var(--secure-color)) !important;
+      --message-bar-background-color: color-mix(
+        in srgb,
+        transparent 75%,
+        var(--secure-color)
+      ) !important;
       --message-bar-text-color: var(--text-color) !important;
     }
   }
 
   @-moz-document regexp("^(about:|chrome:|moz-extension:).*") {
     mark {
-      background-color: var(--solid-selection-bgcolor, hsl(340, 73%, 58%)) !important;
+      background-color: var(
+        --solid-selection-bgcolor,
+        hsl(340, 73%, 58%)
+      ) !important;
       color: white !important;
     }
   }
@@ -414,7 +564,9 @@
     padding-inline: 10px 12px !important;
   }
 
-  .home-section .section :is(.sponsored-checkbox, .slider, .selector):is(:hover, :focus-visible) {
+  .home-section
+    .section
+    :is(.sponsored-checkbox, .slider, .selector):is(:hover, :focus-visible) {
     background-color: var(--newtab-element-secondary-color-hover) !important;
   }
 
@@ -457,7 +609,10 @@
     word-wrap: anywhere;
   }
 
-  .onboardingContainer.featureCallout .screen[pos="callout"] .section-main .main-content,
+  .onboardingContainer.featureCallout
+    .screen[pos="callout"]
+    .section-main
+    .main-content,
   .onboardingContainer.featureCallout.callout-arrow::before {
     background-color: var(--newtab-background-color-secondary) !important;
     border-color: var(--fxview-contrast-border) !important;
@@ -480,18 +635,32 @@
       --in-content-button-background-active: #3e0200 !important;
       --in-content-button-border-color: white !important;
       --in-content-primary-button-background: var(--ui-text-90) !important;
-      --in-content-primary-button-background-hover: var(--ui-text-80) !important;
-      --in-content-primary-button-background-active: var(--ui-text-70) !important;
+      --in-content-primary-button-background-hover: var(
+        --ui-text-80
+      ) !important;
+      --in-content-primary-button-background-active: var(
+        --ui-text-70
+      ) !important;
       --in-content-primary-button-text-color: black !important;
-      --in-content-link-color: var(--in-content-primary-button-background) !important;
-      --in-content-link-color-hover: var(--in-content-primary-button-background-hover) !important;
-      --in-content-link-color-active: var(--in-content-primary-button-background-active) !important;
+      --in-content-link-color: var(
+        --in-content-primary-button-background
+      ) !important;
+      --in-content-link-color-hover: var(
+        --in-content-primary-button-background-hover
+      ) !important;
+      --in-content-link-color-active: var(
+        --in-content-primary-button-background-active
+      ) !important;
       --in-content-link-visited-color: var(--ui-text-70) !important;
       --in-content-link-visited-color-hover: var(--ui-text-60) !important;
       --in-content-link-visited-color-active: var(--ui-text-50) !important;
       --link-color: var(--in-content-primary-button-background) !important;
-      --link-color-hover: var(--in-content-primary-button-background-hover) !important;
-      --link-color-active: var(--in-content-primary-button-background-active) !important;
+      --link-color-hover: var(
+        --in-content-primary-button-background-hover
+      ) !important;
+      --link-color-active: var(
+        --in-content-primary-button-background-active
+      ) !important;
       --link-visited-color: var(--ui-text-70) !important;
       --link-visited-color-hover: var(--ui-text-60) !important;
       --link-visited-color-active: var(--ui-text-50) !important;
@@ -559,11 +728,15 @@
     }
 
     .stp_button.stp_button_primary:hover {
-      background-color: var(--uc-parent-primary-button-background-hover) !important;
+      background-color: var(
+        --uc-parent-primary-button-background-hover
+      ) !important;
     }
 
     .stp_button.stp_button_primary:hover:active {
-      background-color: var(--uc-parent-primary-button-background-active) !important;
+      background-color: var(
+        --uc-parent-primary-button-background-active
+      ) !important;
     }
 
     .stp_button.stp_button_secondary {
@@ -613,7 +786,9 @@
       background-color: var(--uc-arrowpanel-dimmed) !important;
     }
 
-    .stp_popular_topics .stp_popular_topic .stp_popular_topic_link:hover:active {
+    .stp_popular_topics
+      .stp_popular_topic
+      .stp_popular_topic_link:hover:active {
       background-color: var(--uc-arrowpanel-dimmed-further) !important;
     }
 
@@ -625,7 +800,8 @@
       background-color: var(--uc-arrowpanel-dimmed) !important;
     }
 
-    .stp_article_list .stp_article_list_thumb:not(.stp_article_list_thumb_placeholder) {
+    .stp_article_list
+      .stp_article_list_thumb:not(.stp_article_list_thumb_placeholder) {
       background-color: transparent !important;
       border-radius: 3px !important;
     }
@@ -645,7 +821,8 @@
       row-gap: 5px;
     }
 
-    .stp_article_list :is(.stp_article_list_saved_article, .stp_article_list_link) {
+    .stp_article_list
+      :is(.stp_article_list_saved_article, .stp_article_list_link) {
       flex-flow: row nowrap;
       align-items: center;
     }
@@ -725,7 +902,8 @@
       box-sizing: content-box !important;
       padding: 0 !important;
       margin-inline-start: 4px !important;
-      background: url(chrome://userchrome/content/close.svg) center/11px no-repeat !important;
+      background: url(chrome://userchrome/content/close.svg) center/11px
+        no-repeat !important;
       -moz-context-properties: fill, fill-opacity;
       fill: var(--uc-panel-description-color);
       color: transparent !important;
@@ -746,7 +924,11 @@
 
     @media (-moz-bool-pref: "userChrome.css.mac-ui-fonts") {
       body {
-        font-family: SF Pro Text, SF Arabic, Segoe UI, sans-serif !important;
+        font-family:
+          SF Pro Text,
+          SF Arabic,
+          Segoe UI,
+          sans-serif !important;
         font-kerning: normal !important;
       }
 
@@ -757,7 +939,11 @@
 
       .stp_button {
         font-weight: var(--uc-font-weight-bold, 500) !important;
-        font-family: SF Pro Display, SF Arabic, Segoe UI, sans-serif !important;
+        font-family:
+          SF Pro Display,
+          SF Arabic,
+          Segoe UI,
+          sans-serif !important;
       }
 
       .stp_article_list .stp_article_list_header {
@@ -880,8 +1066,16 @@
     }
 
     .message--level-error {
-      --message-background-color: color-mix(in srgb, transparent 15%, var(--uc-warning-background)) !important;
-      --message-border-color: color-mix(in srgb, transparent 30%, var(--uc-warning-background)) !important;
+      --message-background-color: color-mix(
+        in srgb,
+        transparent 15%,
+        var(--uc-warning-background)
+      ) !important;
+      --message-border-color: color-mix(
+        in srgb,
+        transparent 30%,
+        var(--uc-warning-background)
+      ) !important;
       --message-color: var(--text-color) !important;
       --message-icon-color: var(--warning-color) !important;
     }
@@ -891,13 +1085,22 @@
 @-moz-document url-prefix("about:reader") {
   body.dark {
     --main-background: var(--in-content-page-background) !important;
-    --tooltip-background: color-mix(in srgb, black 40%, var(--in-content-bg-dark)) !important;
+    --tooltip-background: color-mix(
+      in srgb,
+      black 40%,
+      var(--in-content-bg-dark)
+    ) !important;
     --active-color: var(--purple-35) !important;
     --selected-background: var(--attention-color) !important;
     --link-foreground: var(--in-content-link-color) !important;
     --visited-link-foreground: #823afc !important;
-    --proportional-width: calc(100% - (122.5em - (var(--content-width, 60em) * 2)));
-    --final-content-width: max(var(--content-width, 60em), var(--proportional-width, var(--content-width, 60em)));
+    --proportional-width: calc(
+      100% - (122.5em - (var(--content-width, 60em) * 2))
+    );
+    --final-content-width: max(
+      var(--content-width, 60em),
+      var(--proportional-width, var(--content-width, 60em))
+    );
   }
 
   .container {
@@ -1010,7 +1213,8 @@
     background-color: var(--in-content-button-background) !important;
   }
 
-  .panel > button::before, .panel > button::after {
+  .panel > button::before,
+  .panel > button::after {
     background: var(--in-content-page-color) !important;
   }
 
@@ -1062,7 +1266,7 @@
     border-color: var(--in-content-border-hover) !important;
   }
 
-  .table-inspector tr:nth-of-type(2n+1) {
+  .table-inspector tr:nth-of-type(2n + 1) {
     background-color: var(--in-content-box-background-odd) !important;
   }
 
@@ -1087,7 +1291,12 @@
   | https://github.com/storybookjs/react-inspector/blob/master/src/styles/themes/chromeLight.tsx
   */
   [style*="monospace"i] {
-    font-family: Fira Code UC, Fira Code, SF Mono, -moz-fixed, monospace !important;
+    font-family:
+      Fira Code UC,
+      Fira Code,
+      SF Mono,
+      -moz-fixed,
+      monospace !important;
     font-weight: 400 !important;
     font-size: revert !important;
   }
@@ -1120,14 +1329,19 @@
 }
 
 /* firefox screenshots addon overlay */
-@-moz-document regexp("^moz-extension://.*/blank.html.*") {
+@-moz-document regexp("^moz-extension://.*/blank.html.*")
+{
   :root[uc-extension-id="screenshots@mozilla.org"] .all-buttons-container {
     background-color: var(--uc-content-box-background) !important;
     height: 88px !important;
-    box-shadow: 0 0 0 1px rgba(12, 12, 13, 0.1), 0 0 8px rgba(12, 12, 13, 0.1) !important;
+    box-shadow:
+      0 0 0 1px rgba(12, 12, 13, 0.1),
+      0 0 8px rgba(12, 12, 13, 0.1) !important;
   }
 
-  :root[uc-extension-id="screenshots@mozilla.org"] .all-buttons-container button {
+  :root[uc-extension-id="screenshots@mozilla.org"]
+    .all-buttons-container
+    button {
     color: var(--uc-content-page-color) !important;
     background-color: transparent !important;
     border-radius: var(--general-button-border-radius) !important;
@@ -1138,7 +1352,9 @@
     -moz-context-properties: fill, stroke !important;
   }
 
-  :root[uc-extension-id="screenshots@mozilla.org"] .all-buttons-container button:hover {
+  :root[uc-extension-id="screenshots@mozilla.org"]
+    .all-buttons-container
+    button:hover {
     background-color: var(--uc-content-button-background) !important;
     border: 1px solid var(--uc-content-button-background) !important;
   }
@@ -1147,13 +1363,20 @@
     margin-block-start: -5px;
     margin-inline-start: -5px;
     color: #fff !important;
-    text-shadow: 0.5px 0.5px 0.5px black, 0 0 1px black, 0 0 1px black !important;
+    text-shadow:
+      0.5px 0.5px 0.5px black,
+      0 0 1px black,
+      0 0 1px black !important;
   }
 
   @media (-moz-bool-pref: "userChrome.css.mac-ui-fonts") {
     :root[uc-extension-id="screenshots@mozilla.org"] .pixel-dimensions {
       font-weight: var(--uc-font-weight-bold) !important;
-      font-family: SF Pro Text, SF Arabic, Segoe UI, sans-serif !important;
+      font-family:
+        SF Pro Text,
+        SF Arabic,
+        Segoe UI,
+        sans-serif !important;
       font-size: normal !important;
     }
   }

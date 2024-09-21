@@ -7,7 +7,7 @@
 Components.utils.import("resource:///modules/CustomizableUI.sys.mjs");
 var { Services } = Components.utils.import(
   "resource://gre/modules/Services.jsm",
-  {}
+  {},
 );
 var appversion = parseInt(Services.appinfo.version);
 
@@ -108,14 +108,14 @@ var AddAddonbar = {
 		  ' +
                 compact_buttons_code +
                 "\
-	  "
+	  ",
             ),
           null,
-          null
+          null,
         ),
         Components.classes[
           "@mozilla.org/content/style-sheet-service;1"
-        ].getService(Components.interfaces.nsIStyleSheetService).AGENT_SHEET
+        ].getService(Components.interfaces.nsIStyleSheetService).AGENT_SHEET,
       );
 
     // toolbar
@@ -134,7 +134,7 @@ var AddAddonbar = {
         tb_addonbar.setAttribute("lockiconsize", "true");
         tb_addonbar.setAttribute(
           "class",
-          "toolbar-primary chromeclass-toolbar browser-toolbar customization-target"
+          "toolbar-primary chromeclass-toolbar browser-toolbar customization-target",
         );
 
         document.getElementById("browser-bottombox").appendChild(tb_addonbar);
@@ -153,14 +153,16 @@ var AddAddonbar = {
         key.setAttribute("modifiers", "accel");
         key.setAttribute(
           "oncommand",
-          'var newAddonBar = document.getElementById("addonbar"); setToolbarVisibility(newAddonBar, newAddonBar.collapsed);Services.prefs.getBranch("browser.addonbar.").setBoolPref("enabled",!newAddonBar.collapsed)'
+          'var newAddonBar = document.getElementById("addonbar"); setToolbarVisibility(newAddonBar, newAddonBar.collapsed);Services.prefs.getBranch("browser.addonbar.").setBoolPref("enabled",!newAddonBar.collapsed)',
         );
         document.getElementById("mainKeyset").appendChild(key);
 
         try {
           setToolbarVisibility(
             document.getElementById("addonbar"),
-            Services.prefs.getBranch("browser.addonbar.").getBoolPref("enabled")
+            Services.prefs
+              .getBranch("browser.addonbar.")
+              .getBoolPref("enabled"),
           );
         } catch (e) {}
       }

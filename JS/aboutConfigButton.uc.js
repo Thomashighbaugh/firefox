@@ -19,7 +19,7 @@
       onBuild: function (aDocument) {
         var toolbaritem = aDocument.createElementNS(
           "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul",
-          "toolbarbutton"
+          "toolbarbutton",
         );
         var props = {
           id: "aboutconfig-ToolBarButton",

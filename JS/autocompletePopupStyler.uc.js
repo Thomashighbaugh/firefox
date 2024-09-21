@@ -35,10 +35,15 @@
       );
     }
     get autocomplete() {
-      return this._autocomplete || (this._autocomplete = document.getElementById("PopupAutoComplete"));
+      return (
+        this._autocomplete ||
+        (this._autocomplete = document.getElementById("PopupAutoComplete"))
+      );
     }
     get panelShadowContent() {
-      return this.autocomplete.anchorNode?.closest("panel").shadowRoot.querySelector(`[part="content"]`);
+      return this.autocomplete.anchorNode
+        ?.closest("panel")
+        .shadowRoot.querySelector(`[part="content"]`);
     }
   }
 
@@ -50,6 +55,9 @@
         new AutocompletePopupStyler();
       }
     };
-    Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
+    Services.obs.addObserver(
+      delayedListener,
+      "browser-delayed-startup-finished",
+    );
   }
 })();

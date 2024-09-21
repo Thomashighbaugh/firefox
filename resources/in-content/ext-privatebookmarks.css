@@ -6,7 +6,8 @@
 
 /* private bookmarks extension */
 
-@-moz-document regexp("^moz-extension://.*/popup_ui/.*") {
+@-moz-document regexp("^moz-extension://.*/popup_ui/.*")
+{
   :root[uc-extension-id="private-bookmarks@rharel"] {
     letter-spacing: inherit !important;
   }
@@ -71,7 +72,8 @@
     justify-content: center !important;
   }
 
-  :root[uc-extension-id="private-bookmarks@rharel"] .secondary-buttons-container {
+  :root[uc-extension-id="private-bookmarks@rharel"]
+    .secondary-buttons-container {
     display: flex !important;
     flex-flow: column nowrap !important;
     align-items: stretch !important;
@@ -91,23 +93,32 @@
   }
 
   :root[uc-extension-id="private-bookmarks@rharel"] button:hover:active {
-    background-color: var(--uc-parent-primary-button-background-hover) !important;
+    background-color: var(
+      --uc-parent-primary-button-background-hover
+    ) !important;
   }
 
   :root[uc-extension-id="private-bookmarks@rharel"] button.negative,
-  :root[uc-extension-id="private-bookmarks@rharel"] .secondary-buttons-container button {
+  :root[uc-extension-id="private-bookmarks@rharel"]
+    .secondary-buttons-container
+    button {
     background-color: transparent !important;
     border-color: var(--uc-arrowpanel-dimmed) !important;
   }
 
   :root[uc-extension-id="private-bookmarks@rharel"] button.negative:hover,
-  :root[uc-extension-id="private-bookmarks@rharel"] .secondary-buttons-container button:hover {
+  :root[uc-extension-id="private-bookmarks@rharel"]
+    .secondary-buttons-container
+    button:hover {
     border-color: transparent !important;
     background-color: var(--uc-arrowpanel-dimmed-further) !important;
   }
 
-  :root[uc-extension-id="private-bookmarks@rharel"] button.negative:hover:active,
-  :root[uc-extension-id="private-bookmarks@rharel"] .secondary-buttons-container button:hover:active {
+  :root[uc-extension-id="private-bookmarks@rharel"]
+    button.negative:hover:active,
+  :root[uc-extension-id="private-bookmarks@rharel"]
+    .secondary-buttons-container
+    button:hover:active {
     background-color: var(--uc-arrowpanel-dimmed-even-further) !important;
   }
 
@@ -147,7 +158,8 @@
     appearance: none !important;
   }
 
-  :root[uc-extension-id="private-bookmarks@rharel"] #authentication-buttons-container {
+  :root[uc-extension-id="private-bookmarks@rharel"]
+    #authentication-buttons-container {
     row-gap: 8px !important;
     margin-block: 16px 0 !important;
   }
@@ -186,11 +198,15 @@
     border-radius: var(--general-button-border-radius) !important;
   }
 
-  :root[uc-extension-id="private-bookmarks@rharel"] #footer > .icon-button:hover {
+  :root[uc-extension-id="private-bookmarks@rharel"]
+    #footer
+    > .icon-button:hover {
     background-color: var(--uc-arrowpanel-dimmed) !important;
   }
 
-  :root[uc-extension-id="private-bookmarks@rharel"] #footer > .icon-button:hover:active {
+  :root[uc-extension-id="private-bookmarks@rharel"]
+    #footer
+    > .icon-button:hover:active {
     background-color: var(--uc-arrowpanel-dimmed-further) !important;
   }
 
@@ -223,20 +239,26 @@
     flex-grow: 0 !important;
   }
 
-  :root[uc-extension-id="private-bookmarks@rharel"] :is(#change-password-button, #confirm-authentication-button) > img {
+  :root[uc-extension-id="private-bookmarks@rharel"]
+    :is(#change-password-button, #confirm-authentication-button)
+    > img {
     background-image: url(chrome://browser/skin/login.svg) !important;
     rotate: -90deg !important;
   }
 
-  :root[uc-extension-id="private-bookmarks@rharel"] #cancel-authentication-button > img {
+  :root[uc-extension-id="private-bookmarks@rharel"]
+    #cancel-authentication-button
+    > img {
     background-image: url(chrome://userchrome/content/close-big.svg) !important;
   }
 
-  :root[uc-extension-id="private-bookmarks@rharel"] :is(#on-hold-animation-gear-A, #on-hold-animation-gear-B) {
+  :root[uc-extension-id="private-bookmarks@rharel"]
+    :is(#on-hold-animation-gear-A, #on-hold-animation-gear-B) {
     display: none !important;
   }
 
-  :root[uc-extension-id="private-bookmarks@rharel"] :is(#on-hold-panel, #success-panel) {
+  :root[uc-extension-id="private-bookmarks@rharel"]
+    :is(#on-hold-panel, #success-panel) {
     align-items: center !important;
     transition: none !important;
   }
@@ -272,7 +294,8 @@
     transition: none !important;
   }
 
-  :root[uc-extension-id="private-bookmarks@rharel"] #on-hold-progress-bar::before {
+  :root[uc-extension-id="private-bookmarks@rharel"]
+    #on-hold-progress-bar::before {
     content: "" !important;
     display: flex !important;
     background-repeat: no-repeat !important;
@@ -284,11 +307,13 @@
     animation: uc-tab-throbber-spinner-sprite 0.85s steps(12) infinite !important;
   }
 
-  :root[uc-extension-id="private-bookmarks@rharel"] #on-hold-progress-bar:-moz-locale-dir(rtl)::before {
+  :root[uc-extension-id="private-bookmarks@rharel"]
+    #on-hold-progress-bar:-moz-locale-dir(rtl)::before {
     animation-name: uc-tab-throbber-spinner-sprite-rtl !important;
   }
 
-  :root[uc-extension-id="private-bookmarks@rharel"] #on-hold-progress-indicator {
+  :root[uc-extension-id="private-bookmarks@rharel"]
+    #on-hold-progress-indicator {
     display: none !important;
   }
 
@@ -305,18 +330,28 @@
 
   @media (-moz-bool-pref: "userChrome.css.mac-ui-fonts") {
     :root[uc-extension-id="private-bookmarks@rharel"] * {
-      font-family: SF Pro Text, SF Arabic, Segoe UI, sans-serif !important;
+      font-family:
+        SF Pro Text,
+        SF Arabic,
+        Segoe UI,
+        sans-serif !important;
     }
 
     :root[uc-extension-id="private-bookmarks@rharel"] .section-header {
-      font-family: SF Pro Display, SF Arabic, Segoe UI, sans-serif !important;
+      font-family:
+        SF Pro Display,
+        SF Arabic,
+        Segoe UI,
+        sans-serif !important;
       font-kerning: normal !important;
       font-weight: var(--uc-font-weight-bold, 600) !important;
     }
 
     :root[uc-extension-id="private-bookmarks@rharel"] button.large > label {
       flex-grow: 0 !important;
-      font-family: SF Pro Rounded, SF Pro Display !important;
+      font-family:
+        SF Pro Rounded,
+        SF Pro Display !important;
       font-kerning: none !important;
       font-size: 18px !important;
       font-weight: var(--uc-font-weight-bold) !important;

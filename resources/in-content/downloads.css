@@ -1,7 +1,8 @@
 /* just for downloads in the places organizer */
 
 /* downloads panel and places organizer */
-@-moz-document url("chrome://browser/content/browser.xhtml"), url-prefix("chrome://browser/content/places/places.xhtml"), url-prefix("about:downloads") {
+@-moz-document url("chrome://browser/content/browser.xhtml"), url-prefix("chrome://browser/content/places/places.xhtml"), url-prefix("about:downloads")
+{
   #downloadsPanel-mainView,
   #downloadsPanel-blockedSubview {
     min-width: revert !important;
@@ -51,7 +52,9 @@
   }
 
   #downloadsFooter[showingsummary] > toolbarseparator,
-  #downloadsFooter:not([showingsummary]) #downloadsFooterButtons[uc-hbox] > toolbarseparator {
+  #downloadsFooter:not([showingsummary])
+    #downloadsFooterButtons[uc-hbox]
+    > toolbarseparator {
     display: none !important;
   }
 
@@ -129,8 +132,10 @@
     order: 2 !important;
   }
 
-  #downloadsPanel-blockedSubview[verdict="Insecure"] #downloadsPanel-blockedSubview-title,
-  #downloadsPanel-blockedSubview[verdict="Malware"] #downloadsPanel-blockedSubview-title {
+  #downloadsPanel-blockedSubview[verdict="Insecure"]
+    #downloadsPanel-blockedSubview-title,
+  #downloadsPanel-blockedSubview[verdict="Malware"]
+    #downloadsPanel-blockedSubview-title {
     color: var(--warning-text-color) !important;
   }
 
@@ -167,7 +172,9 @@
     outline: none !important;
   }
 
-  panel richlistitem.download-state[state="1"]:not([exists]) :is(.downloadTarget, .downloadDetails) {
+  panel
+    richlistitem.download-state[state="1"]:not([exists])
+    :is(.downloadTarget, .downloadDetails) {
     color: var(--panel-disabled-color);
   }
 
@@ -207,7 +214,10 @@
   }
 
   richlistitem.download-state[state="1"][exists]:is(:hover, :focus-visible),
-  richlistitem.download-state:is([verdict], .openWhenFinished):is(:hover, :focus-visible) {
+  richlistitem.download-state:is([verdict], .openWhenFinished):is(
+      :hover,
+      :focus-visible
+    ) {
     background: var(--download-button-hover-bg) !important;
   }
 
@@ -216,14 +226,25 @@
     background: var(--download-button-active-bg) !important;
   }
 
-  #downloadsListBox > richlistitem.download-state.downloadHoveringButton[state="1"][exists]:hover,
-  #downloadsListBox > richlistitem.download-state.downloadHoveringButton:is([verdict], .openWhenFinished):hover,
-  richlistitem.download-state[state="1"][exists]:focus-within:not(:focus-visible),
-  richlistitem.download-state:is([verdict], .openWhenFinished):focus-within:not(:focus-visible) {
+  #downloadsListBox
+    > richlistitem.download-state.downloadHoveringButton[state="1"][exists]:hover,
+  #downloadsListBox
+    > richlistitem.download-state.downloadHoveringButton:is(
+      [verdict],
+      .openWhenFinished
+    ):hover,
+  richlistitem.download-state[state="1"][exists]:focus-within:not(
+      :focus-visible
+    ),
+  richlistitem.download-state:is([verdict], .openWhenFinished):focus-within:not(
+      :focus-visible
+    ) {
     background: var(--download-button-focus-within-bg) !important;
   }
 
-  richlistitem.download-state > .downloadButton:is(:hover, :focus-visible) .button-box {
+  richlistitem.download-state
+    > .downloadButton:is(:hover, :focus-visible)
+    .button-box {
     background: var(--uc-content-button-background-hover) !important;
   }
 
@@ -235,7 +256,8 @@
     background-color: revert;
   }
 
-  #downloadsListBox:not([force-focus-visible]) .downloadsPanelFooterButton:focus-visible {
+  #downloadsListBox:not([force-focus-visible])
+    .downloadsPanelFooterButton:focus-visible {
     outline: none;
   }
 
@@ -247,14 +269,20 @@
   #downloadsHistory:not([disabled]):hover,
   #downloadsListBox:focus-visible > richlistitem[selected],
   #downloadsListBox[force-focus-visible]:focus > richlistitem[selected],
-  #downloadsListBox[force-focus-visible] .downloadsPanelFooterButton:not([disabled]):focus-visible,
-  #downloadsListBox[force-focus-visible] #downloadsListBox:focus-visible > richlistitem[selected],
-  #downloadsListBox[force-focus-visible] #downloadsHistory:not([disabled]):focus-visible {
+  #downloadsListBox[force-focus-visible]
+    .downloadsPanelFooterButton:not([disabled]):focus-visible,
+  #downloadsListBox[force-focus-visible]
+    #downloadsListBox:focus-visible
+    > richlistitem[selected],
+  #downloadsListBox[force-focus-visible]
+    #downloadsHistory:not([disabled]):focus-visible {
     background-color: var(--download-button-hover-bg) !important;
   }
 
-  #downloadsListBox > richlistitem[state="1"][exists].hoveringMainArea:hover:active,
-  #downloadsListBox > richlistitem:is(.openWhenFinished).hoveringMainArea:hover:active,
+  #downloadsListBox
+    > richlistitem[state="1"][exists].hoveringMainArea:hover:active,
+  #downloadsListBox
+    > richlistitem:is(.openWhenFinished).hoveringMainArea:hover:active,
   #downloadsListBox > richlistitem[verdict]:hover:active,
   .downloadsPanelFooterButton:not([disabled]):is([open="true"], :hover:active),
   #downloadsHistory:not([disabled]):is([open], :hover:active) {
@@ -303,7 +331,10 @@
     transform: scaleX(-1);
   }
 
-  richlistitem.download-state > .downloadButton:is(.downloadIconCancel, .downloadIconSubviewArrow) .button-box .button-icon {
+  richlistitem.download-state
+    > .downloadButton:is(.downloadIconCancel, .downloadIconSubviewArrow)
+    .button-box
+    .button-icon {
     width: 21px !important;
   }
 
@@ -318,24 +349,33 @@
     margin-inline-end: 0 !important;
   }
 
-  #downloadsPanel-blockedSubview[verdict="Insecure"] .downloadsPanel-blockedSubview-image,
-  #downloadsPanel-blockedSubview[verdict="Malware"] .downloadsPanel-blockedSubview-image,
+  #downloadsPanel-blockedSubview[verdict="Insecure"]
+    .downloadsPanel-blockedSubview-image,
+  #downloadsPanel-blockedSubview[verdict="Malware"]
+    .downloadsPanel-blockedSubview-image,
   #downloadsListBox > richlistitem[verdict="Insecure"] .downloadBlockedBadge,
   #downloadsListBox > richlistitem[verdict="Malware"] .downloadBlockedBadge {
     background-image: url(chrome://userchrome/content/error.svg) !important;
     fill: var(--warning-color) !important;
   }
 
-  #downloadsPanel-blockedSubview[verdict="Uncommon"] .downloadsPanel-blockedSubview-image,
+  #downloadsPanel-blockedSubview[verdict="Uncommon"]
+    .downloadsPanel-blockedSubview-image,
   #downloadsListBox > richlistitem[verdict="Uncommon"] .downloadBlockedBadge {
     background-image: url(chrome://userchrome/content/info-filled.svg) !important;
     fill: var(--purple-25) !important;
   }
 
-  #downloadsPanel-blockedSubview[verdict="PotentiallyUnwanted"] .downloadsPanel-blockedSubview-image,
-  #downloadsPanel-blockedSubview[verdict="DownloadSpam"] .downloadsPanel-blockedSubview-image,
-  #downloadsListBox > richlistitem[verdict="PotentiallyUnwanted"] .downloadBlockedBadge,
-  #downloadsListBox > richlistitem[verdict="DownloadSpam"] .downloadBlockedBadge {
+  #downloadsPanel-blockedSubview[verdict="PotentiallyUnwanted"]
+    .downloadsPanel-blockedSubview-image,
+  #downloadsPanel-blockedSubview[verdict="DownloadSpam"]
+    .downloadsPanel-blockedSubview-image,
+  #downloadsListBox
+    > richlistitem[verdict="PotentiallyUnwanted"]
+    .downloadBlockedBadge,
+  #downloadsListBox
+    > richlistitem[verdict="DownloadSpam"]
+    .downloadBlockedBadge {
     background-image: url(chrome://userchrome/content/warning-big.svg) !important;
     fill: var(--low-warning-icon-background) !important;
   }
@@ -380,7 +420,10 @@
   }
 
   .downloadProgress:not(:indeterminate)::-moz-progress-bar {
-    mask: linear-gradient(#fff, #fff), url(chrome://userchrome/content/layout/contentaccessible/progress-bar-mask.svg) center right/14px;
+    mask:
+      linear-gradient(#fff, #fff),
+      url(chrome://userchrome/content/layout/contentaccessible/progress-bar-mask.svg)
+        center right/14px;
     mask-repeat: no-repeat;
     mask-composite: subtract;
     animation: none !important;
@@ -388,7 +431,14 @@
 
   .downloadProgress:indeterminate::-moz-progress-bar {
     border-radius: 0 !important;
-    background-image: linear-gradient(90deg, transparent 0%, var(--download-progress-flare-color) 25%, transparent 50%, var(--download-progress-flare-color) 75%, transparent 100%) !important;
+    background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--download-progress-flare-color) 25%,
+      transparent 50%,
+      var(--download-progress-flare-color) 75%,
+      transparent 100%
+    ) !important;
   }
 
   .downloadProgress[paused]:indeterminate::-moz-progress-bar {
@@ -398,8 +448,16 @@
 }
 
 /* downloads panel */
-@-moz-document url("chrome://browser/content/browser.xhtml") {
-  richlistitem.download-state:is([state="-1"], [state="5"], [state="0"], [state="4"], [state="7"]) .downloadMainArea {
+@-moz-document url("chrome://browser/content/browser.xhtml")
+{
+  richlistitem.download-state:is(
+      [state="-1"],
+      [state="5"],
+      [state="0"],
+      [state="4"],
+      [state="7"]
+    )
+    .downloadMainArea {
     padding-block: 0 !important;
 
     .downloadContainer {
@@ -413,7 +471,8 @@
 }
 
 /* places organizer */
-@-moz-document url-prefix("chrome://browser/content/places/places.xhtml"), url-prefix("about:downloads") {
+@-moz-document url-prefix("chrome://browser/content/places/places.xhtml"), url-prefix("about:downloads")
+{
   #downloadsListBox {
     border: none !important;
     outline: none !important;
@@ -426,15 +485,26 @@
 
   richlistitem.download-state:is(:hover, :focus-visible),
   richlistitem.download-state[state="1"][exists]:is(:hover, :focus-visible),
-  richlistitem.download-state:is([verdict], .openWhenFinished):is(:hover, :focus-visible),
+  richlistitem.download-state:is([verdict], .openWhenFinished):is(
+      :hover,
+      :focus-visible
+    ),
   richlistitem.download-state[state="1"][exists]:hover:active,
   richlistitem.download-state:is([verdict], .openWhenFinished):hover:active {
     background: var(--uc-content-button-background-hover) !important;
   }
 
-  richlistitem.download-state[state="1"][exists]:focus-within:not(:focus-visible),
-  richlistitem.download-state:is([verdict], .openWhenFinished):focus-within:not(:focus-visible),
-  richlistitem.download-state[selected]:not(:hover, :focus-visible, :focus-within) {
+  richlistitem.download-state[state="1"][exists]:focus-within:not(
+      :focus-visible
+    ),
+  richlistitem.download-state:is([verdict], .openWhenFinished):focus-within:not(
+      :focus-visible
+    ),
+  richlistitem.download-state[selected]:not(
+      :hover,
+      :focus-visible,
+      :focus-within
+    ) {
     background: var(--uc-content-button-background) !important;
   }
 

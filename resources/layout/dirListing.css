@@ -111,7 +111,8 @@ td:not(:first-child) {
   display: inline-block;
   width: 16px;
   height: 16px;
-  background: url(chrome://global/skin/dirListing/folder.png) center/16px no-repeat;
+  background: url(chrome://global/skin/dirListing/folder.png) center/16px
+    no-repeat;
 }
 
 @media (prefers-color-scheme: dark) {

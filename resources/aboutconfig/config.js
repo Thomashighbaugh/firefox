@@ -12,9 +12,8 @@ const nsIClipboardHelper = Ci.nsIClipboardHelper;
 const nsClipboardHelper_CONTRACTID = "@mozilla.org/widget/clipboardhelper;1";
 
 const gPrefBranch = Services.prefs;
-const gClipboardHelper = Cc[nsClipboardHelper_CONTRACTID].getService(
-  nsIClipboardHelper
-);
+const gClipboardHelper =
+  Cc[nsClipboardHelper_CONTRACTID].getService(nsIClipboardHelper);
 
 var gLockProps = ["default", "user", "locked"];
 // we get these from a string bundle
@@ -130,7 +129,7 @@ var view = {
     }
     col.element.setAttribute(
       "sortDirection",
-      gSortDirection > 0 ? "ascending" : "descending"
+      gSortDirection > 0 ? "ascending" : "descending",
     );
     this.treebox.invalidate();
     if (index >= 0) {
@@ -346,7 +345,7 @@ function fetchPref(prefName, prefIndex) {
         ) {
           pref.valueCol = gPrefBranch.getComplexValue(
             prefName,
-            nsIPrefLocalizedString
+            nsIPrefLocalizedString,
           ).data;
         }
         break;
@@ -359,7 +358,7 @@ function fetchPref(prefName, prefIndex) {
 
 async function onConfigLoad() {
   let configContext = document.getElementById("configContext");
-  configContext.addEventListener("popupshowing", function(event) {
+  configContext.addEventListener("popupshowing", function (event) {
     if (event.target == this) {
       updateContextMenu();
     }
@@ -374,24 +373,24 @@ async function onConfigLoad() {
     resetSelected: ResetSelected,
   };
 
-  configContext.addEventListener("command", e => {
+  configContext.addEventListener("command", (e) => {
     if (e.target.id in commandListeners) {
       commandListeners[e.target.id]();
     }
   });
 
   let configString = document.getElementById("configString");
-  configString.addEventListener("command", function() {
+  configString.addEventListener("command", function () {
     NewPref(nsIPrefBranch.PREF_STRING);
   });
 
   let configInt = document.getElementById("configInt");
-  configInt.addEventListener("command", function() {
+  configInt.addEventListener("command", function () {
     NewPref(nsIPrefBranch.PREF_INT);
   });
 
   let configBool = document.getElementById("configBool");
-  configBool.addEventListener("command", function() {
+  configBool.addEventListener("command", function () {
     NewPref(nsIPrefBranch.PREF_BOOL);
   });
 
@@ -402,12 +401,12 @@ async function onConfigLoad() {
   textBox.addEventListener("command", FilterPrefs);
 
   let configFocuSearch = document.getElementById("configFocuSearch");
-  configFocuSearch.addEventListener("command", function() {
+  configFocuSearch.addEventListener("command", function () {
     textBox.focus();
   });
 
   let configFocuSearch2 = document.getElementById("configFocuSearch2");
-  configFocuSearch2.addEventListener("command", function() {
+  configFocuSearch2.addEventListener("command", function () {
     textBox.focus();
   });
 
@@ -415,23 +414,23 @@ async function onConfigLoad() {
   warningButton.addEventListener("command", ShowPrefs);
 
   let configTree = document.getElementById("configTree");
-  configTree.addEventListener("select", function() {
+  configTree.addEventListener("select", function () {
     window.updateCommands("select");
   });
 
   let configTreeBody = document.getElementById("configTreeBody");
-  configTreeBody.addEventListener("dblclick", function(event) {
+  configTreeBody.addEventListener("dblclick", function (event) {
     if (event.button == 0) {
       ModifySelected();
     }
   });
 
-  gLockStrs[PREF_IS_DEFAULT_VALUE] = 'default';
-  gLockStrs[PREF_IS_MODIFIED] = 'modified';
-  gLockStrs[PREF_IS_LOCKED] = 'locked';
-  gTypeStrs[nsIPrefBranch.PREF_STRING] = 'string';
-  gTypeStrs[nsIPrefBranch.PREF_INT] = 'integer';
-  gTypeStrs[nsIPrefBranch.PREF_BOOL] = 'boolean';
+  gLockStrs[PREF_IS_DEFAULT_VALUE] = "default";
+  gLockStrs[PREF_IS_MODIFIED] = "modified";
+  gLockStrs[PREF_IS_LOCKED] = "locked";
+  gTypeStrs[nsIPrefBranch.PREF_STRING] = "string";
+  gTypeStrs[nsIPrefBranch.PREF_INT] = "integer";
+  gTypeStrs[nsIPrefBranch.PREF_BOOL] = "boolean";
 
   var showWarning = gPrefBranch.getBoolPref("general.warnOnAboutConfig");
 
@@ -448,7 +447,7 @@ function ShowPrefs() {
 
   var descending = document.getElementsByAttribute(
     "sortDirection",
-    "descending"
+    "descending",
   );
   if (descending.item(0)) {
     gSortedColumn = descending[0].id;
@@ -456,7 +455,7 @@ function ShowPrefs() {
   } else {
     var ascending = document.getElementsByAttribute(
       "sortDirection",
-      "ascending"
+      "ascending",
     );
     if (ascending.item(0)) {
       gSortedColumn = ascending[0].id;
@@ -534,7 +533,7 @@ function FilterPrefs() {
         .replace(/([^* \w])/g, "\\$1")
         .replace(/^\*+/, "")
         .replace(/\*+/g, ".*"),
-      "i"
+      "i",
     );
   } else {
     gFilter = null;
@@ -688,7 +687,10 @@ async function NewPref(type) {
   var result = { value: "" };
   var dummy = { value: 0 };
 
-  let [newTitle, newPrompt] = [`New ${gTypeStrs[type]} value`, 'Enter the preference name'];
+  let [newTitle, newPrompt] = [
+    `New ${gTypeStrs[type]} value`,
+    "Enter the preference name",
+  ];
 
   if (
     Services.prompt.prompt(window, newTitle, newPrompt, result, null, dummy)
@@ -743,7 +745,7 @@ async function ModifyPref(entry) {
         title,
         entry.prefCol,
         [false, true],
-        check
+        check,
       )
     ) {
       return false;
@@ -762,7 +764,10 @@ async function ModifyPref(entry) {
       // Thus, this check should catch all cases.
       var val = result.value | 0;
       if (val != result.value - 0) {
-        const [err_title, err_text] = ['Invalid value', 'The text you entered is not a number.'];
+        const [err_title, err_text] = [
+          "Invalid value",
+          "The text you entered is not a number.",
+        ];
 
         Services.prompt.alert(window, err_title, err_text);
         return false;

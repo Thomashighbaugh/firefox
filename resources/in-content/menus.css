@@ -20,7 +20,10 @@ menupopup.in-menulist {
   -moz-window-shadow: none !important;
 }
 
-#ContentSelectDropdown > menupopup > :where(menucaption, menuitem) > .menu-iconic-text,
+#ContentSelectDropdown
+  > menupopup
+  > :where(menucaption, menuitem)
+  > .menu-iconic-text,
 menupopup.in-menulist > :where(menucaption, menuitem) > .menu-iconic-text {
   padding-block: unset !important;
 }
@@ -45,8 +48,13 @@ menupopup.in-menulist > :where(menucaption, menuitem) {
 
 #ContentSelectDropdown > menupopup .menu-text,
 menupopup.in-menulist .menu-text,
-#ContentSelectDropdown > menupopup > :where(menucaption, menuitem) > :where(.menu-text, .menu-iconic-text, .menu-iconic-highlightable-text),
-menupopup.in-menulist > :where(menucaption, menuitem) > :where(.menu-text, .menu-iconic-text, .menu-iconic-highlightable-text) {
+#ContentSelectDropdown
+  > menupopup
+  > :where(menucaption, menuitem)
+  > :where(.menu-text, .menu-iconic-text, .menu-iconic-highlightable-text),
+menupopup.in-menulist
+  > :where(menucaption, menuitem)
+  > :where(.menu-text, .menu-iconic-text, .menu-iconic-highlightable-text) {
   padding-inline: 0 !important;
 }
 
@@ -55,8 +63,13 @@ menupopup.in-menulist > :where(menucaption, menuitem) > :where(.menu-text, .menu
   padding-inline-start: 0 !important;
 }
 
-#ContentSelectDropdown > menupopup :where(menucaption, menuitem) > :is(label, .menu-iconic-text, .menu-text),
-menupopup.in-menulist > :where(menucaption, menuitem) > :is(label, .menu-iconic-text, .menu-text) {
+#ContentSelectDropdown
+  > menupopup
+  :where(menucaption, menuitem)
+  > :is(label, .menu-iconic-text, .menu-text),
+menupopup.in-menulist
+  > :where(menucaption, menuitem)
+  > :is(label, .menu-iconic-text, .menu-text) {
   font: menu !important;
 }
 
@@ -69,8 +82,13 @@ menupopup.in-menulist > menucaption {
   color: var(--panel-description-color) !important;
 }
 
-#ContentSelectDropdown > menupopup menucaption > :is(label, .menu-iconic-text, .menu-text),
-menupopup.in-menulist > menucaption > :is(label, .menu-iconic-text, .menu-text) {
+#ContentSelectDropdown
+  > menupopup
+  menucaption
+  > :is(label, .menu-iconic-text, .menu-text),
+menupopup.in-menulist
+  > menucaption
+  > :is(label, .menu-iconic-text, .menu-text) {
   padding: 4px 5px !important;
   border-bottom: 1px solid var(--menu-separator-color) !important;
   font-weight: var(--uc-font-weight-bold, 600) !important;
@@ -118,14 +136,21 @@ menupopup.in-menulist .contentSelectDropdown-searchbox {
   -moz-user-modify: read-write !important;
 }
 
-#ContentSelectDropdown > menupopup .contentSelectDropdown-searchbox:focus-within,
+#ContentSelectDropdown
+  > menupopup
+  .contentSelectDropdown-searchbox:focus-within,
 menupopup.in-menulist .contentSelectDropdown-searchbox:focus-within {
   background-color: var(--search-box-focus) !important;
   transition: 300ms background-color !important;
 }
 
-#ContentSelectDropdown > menupopup .contentSelectDropdown-searchbox + :is(menu, menuitem, menucaption),
-menupopup.in-menulist .contentSelectDropdown-searchbox + :is(menu, menuitem, menucaption) {
+#ContentSelectDropdown
+  > menupopup
+  .contentSelectDropdown-searchbox
+  + :is(menu, menuitem, menucaption),
+menupopup.in-menulist
+  .contentSelectDropdown-searchbox
+  + :is(menu, menuitem, menucaption) {
   margin-top: 4px;
 }
 
@@ -145,7 +170,9 @@ menupopup.in-menulist :is(menu, menuitem, menucaption) {
   padding-block: 0 !important;
 }
 
-#ContentSelectDropdown > menupopup :is(menu, menuitem, menucaption)[disabled="true"],
+#ContentSelectDropdown
+  > menupopup
+  :is(menu, menuitem, menucaption)[disabled="true"],
 menupopup.in-menulist :is(menu, menuitem, menucaption)[disabled="true"] {
   appearance: none !important;
   color: var(--menu-disabled-color) !important;
@@ -158,7 +185,10 @@ menupopup.in-menulist .menuitem-iconic {
   fill: currentColor;
 }
 
-#ContentSelectDropdown > menupopup :is(menu, menuitem, menucaption) .menu-iconic-icon,
+#ContentSelectDropdown
+  > menupopup
+  :is(menu, menuitem, menucaption)
+  .menu-iconic-icon,
 menupopup.in-menulist :is(menu, menuitem, menucaption) .menu-iconic-icon {
   margin-inline: var(--context-iconic-margin) !important;
 }
@@ -192,30 +222,52 @@ menupopup.in-menulist menu[disabled="true"] > .menu-right {
   visibility: collapse;
 }
 
-#ContentSelectDropdown > menupopup :is(menu, menuitem)[_moz-menuactive="true"]:not([disabled="true"]),
-menupopup.in-menulist :is(menu, menuitem)[_moz-menuactive="true"]:not([disabled="true"]) {
+#ContentSelectDropdown
+  > menupopup
+  :is(menu, menuitem)[_moz-menuactive="true"]:not([disabled="true"]),
+menupopup.in-menulist
+  :is(menu, menuitem)[_moz-menuactive="true"]:not([disabled="true"]) {
   appearance: none !important;
   background-color: var(--menuitem-hover-background-color) !important;
 }
 
-#ContentSelectDropdown > menupopup :is(menu, menuitem)[_moz-menuactive="true"][disabled="true"],
-menupopup.in-menulist :is(menu, menuitem)[_moz-menuactive="true"][disabled="true"] {
+#ContentSelectDropdown
+  > menupopup
+  :is(menu, menuitem)[_moz-menuactive="true"][disabled="true"],
+menupopup.in-menulist
+  :is(menu, menuitem)[_moz-menuactive="true"][disabled="true"] {
   background: none !important;
   appearance: none !important;
 }
 
-#ContentSelectDropdown > menupopup .subviewbutton:is(:hover, :focus-visible, [_moz-menuactive="true"])[disabled="true"],
-menupopup.in-menulist .subviewbutton:is(:hover, :focus-visible, [_moz-menuactive="true"])[disabled="true"] {
+#ContentSelectDropdown
+  > menupopup
+  .subviewbutton:is(
+    :hover,
+    :focus-visible,
+    [_moz-menuactive="true"]
+  )[disabled="true"],
+menupopup.in-menulist
+  .subviewbutton:is(
+    :hover,
+    :focus-visible,
+    [_moz-menuactive="true"]
+  )[disabled="true"] {
   color: var(--menu-disabled-color) !important;
 }
 
-#ContentSelectDropdown > menupopup menu.subviewbutton:not([disabled="true"])[_moz-menuactive="true"]:active,
-menupopup.in-menulist menu.subviewbutton:not([disabled="true"])[_moz-menuactive="true"]:active {
+#ContentSelectDropdown
+  > menupopup
+  menu.subviewbutton:not([disabled="true"])[_moz-menuactive="true"]:active,
+menupopup.in-menulist
+  menu.subviewbutton:not([disabled="true"])[_moz-menuactive="true"]:active {
   background: var(--menuitem-hover-background-color) !important;
   box-shadow: none !important;
 }
 
-#ContentSelectDropdown > menupopup menuitem:is([type="checkbox"], [type="radio"])::before,
+#ContentSelectDropdown
+  > menupopup
+  menuitem:is([type="checkbox"], [type="radio"])::before,
 menupopup.in-menulist menuitem:is([type="checkbox"], [type="radio"])::before {
   position: relative;
   display: -moz-inline-box;
@@ -239,27 +291,65 @@ menupopup.in-menulist menuitem[type="checkbox"]::before {
   border-radius: 2px;
 }
 
-#ContentSelectDropdown > menupopup menuitem:is([type="checkbox"], [type="radio"])[_moz-menuactive="true"]::before,
-menupopup.in-menulist menuitem:is([type="checkbox"], [type="radio"])[_moz-menuactive="true"]::before {
+#ContentSelectDropdown
+  > menupopup
+  menuitem:is(
+    [type="checkbox"],
+    [type="radio"]
+  )[_moz-menuactive="true"]::before,
+menupopup.in-menulist
+  menuitem:is(
+    [type="checkbox"],
+    [type="radio"]
+  )[_moz-menuactive="true"]::before {
   background-color: var(--checkbox-unchecked-hover-bgcolor);
 }
 
-#ContentSelectDropdown > menupopup menuitem:is([type="checkbox"], [type="radio"])[_moz-menuactive="true"]:active::before,
-menupopup.in-menulist menuitem:is([type="checkbox"], [type="radio"])[_moz-menuactive="true"]:active::before {
+#ContentSelectDropdown
+  > menupopup
+  menuitem:is(
+    [type="checkbox"],
+    [type="radio"]
+  )[_moz-menuactive="true"]:active::before,
+menupopup.in-menulist
+  menuitem:is(
+    [type="checkbox"],
+    [type="radio"]
+  )[_moz-menuactive="true"]:active::before {
   background-color: var(--checkbox-unchecked-active-bgcolor);
 }
 
-#ContentSelectDropdown > menupopup menuitem:is([type="checkbox"], [type="radio"])[checked="true"][_moz-menuactive="true"]::before,
-menupopup.in-menulist menuitem:is([type="checkbox"], [type="radio"])[checked="true"][_moz-menuactive="true"]::before {
+#ContentSelectDropdown
+  > menupopup
+  menuitem:is(
+    [type="checkbox"],
+    [type="radio"]
+  )[checked="true"][_moz-menuactive="true"]::before,
+menupopup.in-menulist
+  menuitem:is(
+    [type="checkbox"],
+    [type="radio"]
+  )[checked="true"][_moz-menuactive="true"]::before {
   background-color: var(--checkbox-checked-hover-bgcolor);
 }
 
-#ContentSelectDropdown > menupopup menuitem:is([type="checkbox"], [type="radio"])[checked="true"][_moz-menuactive="true"]:active::before,
-menupopup.in-menulist menuitem:is([type="checkbox"], [type="radio"])[checked="true"][_moz-menuactive="true"]:active::before {
+#ContentSelectDropdown
+  > menupopup
+  menuitem:is(
+    [type="checkbox"],
+    [type="radio"]
+  )[checked="true"][_moz-menuactive="true"]:active::before,
+menupopup.in-menulist
+  menuitem:is(
+    [type="checkbox"],
+    [type="radio"]
+  )[checked="true"][_moz-menuactive="true"]:active::before {
   background-color: var(--checkbox-checked-active-bgcolor);
 }
 
-#ContentSelectDropdown > menupopup menuitem[type="checkbox"][checked="true"]::before,
+#ContentSelectDropdown
+  > menupopup
+  menuitem[type="checkbox"][checked="true"]::before,
 menupopup.in-menulist menuitem[type="checkbox"][checked="true"]::before {
   background-image: url(chrome://userchrome/content/check.svg);
   border-color: var(--checkbox-checked-border-color);
@@ -271,30 +361,46 @@ menupopup.in-menulist menuitem[type="radio"]::before {
   border-radius: 100%;
 }
 
-#ContentSelectDropdown > menupopup menuitem[type="radio"][checked="true"]::before,
+#ContentSelectDropdown
+  > menupopup
+  menuitem[type="radio"][checked="true"]::before,
 menupopup.in-menulist menuitem[type="radio"][checked="true"]::before {
   background-image: url(chrome://userchrome/content/radio.svg);
   border-color: var(--checkbox-checked-border-color);
   background-color: var(--checkbox-checked-bgcolor);
 }
 
-#ContentSelectDropdown > menupopup menuitem:is([type="checkbox"], [type="radio"]) .menu-iconic-left,
-menupopup.in-menulist menuitem:is([type="checkbox"], [type="radio"]) .menu-iconic-left {
+#ContentSelectDropdown
+  > menupopup
+  menuitem:is([type="checkbox"], [type="radio"])
+  .menu-iconic-left,
+menupopup.in-menulist
+  menuitem:is([type="checkbox"], [type="radio"])
+  .menu-iconic-left {
   display: none;
 }
 
-#ContentSelectDropdown > menupopup[menu-api] menuitem:is([type="checkbox"], [type="radio"]) .menu-iconic-left,
-menupopup.in-menulist[menu-api] menuitem:is([type="checkbox"], [type="radio"]) .menu-iconic-left {
+#ContentSelectDropdown
+  > menupopup[menu-api]
+  menuitem:is([type="checkbox"], [type="radio"])
+  .menu-iconic-left,
+menupopup.in-menulist[menu-api]
+  menuitem:is([type="checkbox"], [type="radio"])
+  .menu-iconic-left {
   display: none !important;
 }
 
-#ContentSelectDropdown > menupopup > :is(menuitem, menu, menucaption, menugroup, menuseparator, search-textbox),
-menupopup.in-menulist > :is(menuitem, menu, menucaption, menugroup, menuseparator, search-textbox),
+#ContentSelectDropdown
+  > menupopup
+  > :is(menuitem, menu, menucaption, menugroup, menuseparator, search-textbox),
+menupopup.in-menulist
+  > :is(menuitem, menu, menucaption, menugroup, menuseparator, search-textbox),
 #PopupAutoComplete > richlistbox > richlistitem {
   margin-inline: var(--menupopup-inner-padding-magnitude);
 }
 
-link[href="chrome://global/skin/global.css"] ~ .menupopup-arrowscrollbox {
+link[href="chrome://global/skin/global.css"] ~ .menupopup-arrowscrollbox
+{
   background-color: var(--menu-background-color) !important;
   color: var(--menu-color) !important;
   border-radius: var(--menupopup-border-radius) !important;
@@ -307,13 +413,23 @@ menupopup.in-menulist :is(.menu-accel, .menu-iconic-accel)[value] {
   padding-block: 0 !important;
 }
 
-#ContentSelectDropdown > menupopup menuitem:not([disabled="true"]) :is(.menu-accel, .menu-iconic-accel),
-menupopup.in-menulist menuitem:not([disabled="true"]) :is(.menu-accel, .menu-iconic-accel) {
+#ContentSelectDropdown
+  > menupopup
+  menuitem:not([disabled="true"])
+  :is(.menu-accel, .menu-iconic-accel),
+menupopup.in-menulist
+  menuitem:not([disabled="true"])
+  :is(.menu-accel, .menu-iconic-accel) {
   color: var(--uc-panel-shortcut-color);
 }
 
-#ContentSelectDropdown > menupopup menuitem[disabled="true"] :is(.menu-accel, .menu-iconic-accel),
-menupopup.in-menulist menuitem[disabled="true"] :is(.menu-accel, .menu-iconic-accel) {
+#ContentSelectDropdown
+  > menupopup
+  menuitem[disabled="true"]
+  :is(.menu-accel, .menu-iconic-accel),
+menupopup.in-menulist
+  menuitem[disabled="true"]
+  :is(.menu-accel, .menu-iconic-accel) {
   opacity: 0.6;
 }
 
@@ -326,7 +442,15 @@ menupopup.in-menulist menuseparator {
   padding: 0 !important;
 }
 
-#ContentSelectDropdown > menupopup menuseparator[id]:not(#context-sep-open, #context-media-sep-commands, #context-sep-copylink, #spell-suggestions-separator, #context-sep-selectall) {
+#ContentSelectDropdown
+  > menupopup
+  menuseparator[id]:not(
+    #context-sep-open,
+    #context-media-sep-commands,
+    #context-sep-copylink,
+    #spell-suggestions-separator,
+    #context-sep-selectall
+  ) {
   display: none !important;
 }
 
@@ -354,25 +478,39 @@ menulist > menupopup > :where(menuitem, menucaption, menu) > .menu-iconic-left {
   display: none;
 }
 
-menulist[indicator="true"] > menupopup.in-menulist menuitem:not([image]) > .menu-iconic-left {
+menulist[indicator="true"]
+  > menupopup.in-menulist
+  menuitem:not([image])
+  > .menu-iconic-left {
   display: flex;
   min-width: unset !important;
   margin-inline-end: unset !important;
 }
 
-menulist[indicator="true"] > menupopup.in-menulist menuitem:not([image]) > .menu-iconic-left > .menu-iconic-icon {
+menulist[indicator="true"]
+  > menupopup.in-menulist
+  menuitem:not([image])
+  > .menu-iconic-left
+  > .menu-iconic-icon {
   width: 16px !important;
   height: 16px !important;
 }
 
-menulist[indicator="true"] > menupopup.in-menulist menuitem[indicator="true"]:not([image]) > .menu-iconic-left > .menu-iconic-icon {
+menulist[indicator="true"]
+  > menupopup.in-menulist
+  menuitem[indicator="true"]:not([image])
+  > .menu-iconic-left
+  > .menu-iconic-icon {
   list-style-image: url(chrome://userchrome/content/indicator-tab-attention.svg) !important;
   filter: hue-rotate(55deg);
   width: 16px !important;
   height: 16px !important;
 }
 
-menulist[indicator="true"] menupopup.in-menulist > :where(menucaption, menuitem) > :is(label, .menu-iconic-text, .menu-text, .menu-iconic-highlightable-text) {
+menulist[indicator="true"]
+  menupopup.in-menulist
+  > :where(menucaption, menuitem)
+  > :is(label, .menu-iconic-text, .menu-text, .menu-iconic-highlightable-text) {
   padding-inline: 0 !important;
   margin-inline: 0 !important;
 }
@@ -405,26 +543,51 @@ menuitem[image="chrome://browser/skin/preferences/application.png"]
   background-image: url(chrome://userchrome/content/shortcut.svg);
 }
 
-menuitem[image="chrome://browser/skin/preferences/application.png"] .menu-iconic-icon {
+menuitem[image="chrome://browser/skin/preferences/application.png"] .menu-iconic-icon
+{
   display: none;
 }
 
 @media (-moz-bool-pref: "userChrome.css.mac-ui-fonts") {
   #ContentSelectDropdown,
   menupopup.in-menulist {
-    font-family: SF Pro Text, SF Arabic, Segoe UI, sans-serif !important;
+    font-family:
+      SF Pro Text,
+      SF Arabic,
+      Segoe UI,
+      sans-serif !important;
     font-kerning: normal !important;
   }
 
-  #ContentSelectDropdown > menupopup :where(menucaption, menuitem) > :is(label, .menu-iconic-text, .menu-text, .menu-iconic-highlightable-text),
-  menupopup.in-menulist > :where(menucaption, menuitem) > :is(label, .menu-iconic-text, .menu-text, .menu-iconic-highlightable-text) {
-    font-family: SF Pro Text, SF Arabic, Segoe UI, sans-serif !important;
+  #ContentSelectDropdown
+    > menupopup
+    :where(menucaption, menuitem)
+    > :is(
+      label,
+      .menu-iconic-text,
+      .menu-text,
+      .menu-iconic-highlightable-text
+    ),
+  menupopup.in-menulist
+    > :where(menucaption, menuitem)
+    > :is(
+      label,
+      .menu-iconic-text,
+      .menu-text,
+      .menu-iconic-highlightable-text
+    ) {
+    font-family:
+      SF Pro Text,
+      SF Arabic,
+      Segoe UI,
+      sans-serif !important;
     font-kerning: normal !important;
   }
 }
 
 @media (-moz-bool-pref: "userChrome.css.remove-menu-borders") {
-  link[href="chrome://global/skin/global.css"] ~ .menupopup-arrowscrollbox {
+  link[href="chrome://global/skin/global.css"] ~ .menupopup-arrowscrollbox
+  {
     border: none !important;
   }
 }

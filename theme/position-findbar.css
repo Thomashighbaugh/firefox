@@ -2,19 +2,19 @@
 - findbar styling
 -----------------------------------------------------------*/
 
-findbar{
+findbar {
   border-top: 0px !important;
   padding-block: 2px !important;
   margin-inline: 4px !important;
   border-radius: 10px !important;
 }
 
-.findbar-container{
+.findbar-container {
   height: 38px !important;
   padding-bottom: 4px !important;
 }
 
-.findbar-textbox{
+.findbar-textbox {
   width: 20em !important;
   padding-bottom: 9px !important;
   padding-top: 8px !important;
@@ -23,6 +23,6 @@ findbar{
   color: var(--uc-text) !important;
 }
 
-.findbar-textbox:focus{
+.findbar-textbox:focus {
   background-color: var(--uc-background-main) !important;
 }

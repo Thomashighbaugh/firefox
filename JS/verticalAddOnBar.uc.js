@@ -190,7 +190,7 @@ var AddAddonbar = {
 };
 
 /* initialization delay workaround */
-document.addEventListener("DOMContentLoaded", AddAddonbar.init(), false);
+// document.addEventListener("DOMContentLoaded", AddAddonbar.init(), false);
 /* Use the below code instead of the one above this line, if issues occur */
 setTimeout(function() {
   AddAddonbar.init();

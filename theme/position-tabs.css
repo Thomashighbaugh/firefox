@@ -76,16 +76,16 @@ tabs on top ~ setting
     #tabbrowser-tabs[positionpinnedtabs] scrollbox[orient="horizontal"],
     scrollbox[orient="horizontal"] {
       display: var(--uc-scrollbox-box-model, flex);
-      -webkit-box-orient: vertical;
-      -moz-box-orient: vertical;
+      -webkit-box-orient: vertical !important;
+      -moz-box-orient: vertical !important;
       height: 100%;
       overflow: var(--uc-scrollbox-overflow, initial) !important;
     }
     #tabbrowser-tabs:is(haspinnedtabs="") scrollbox[orient="horizontal"],
     #tabbrowser-tabs[positionpinnedtabs] scrollbox[orient="horizontal"] {
       display: var(--uc-scrollbox-box-model, flex);
-      -webkit-box-orient: vertical;
-      moz-box-orient: vertical;
+      -webkit-box-orient: vertical !important;
+      moz-box-orient: vertical !important;
       height: 100%;
       overflow: var(--uc-scrollbox-overflow, initial);
     }

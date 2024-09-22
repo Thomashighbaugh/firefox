@@ -4,8 +4,8 @@
 // @author Thomas Leon Highbaugh
 // @description    Without going aminomancer about it and writing a Tolstoy length novel on the subject, this creates a bar on the bottom of the browser's window that you can add the various builtins from the overflow menu too (because they locked away the add-ons in a hamburger menu, which isn't actually that bad tbh). This was once a feature, then Mozilla decided it worked too well and killed it, so this script reimplements it.
 // ==/UserScript==
-Components.utils.import("resource:///modules/CustomizableUI.sys.mjs");
-var { Services } = Components.utils.import(
+ChromeUtils.importESModule("resource:///modules/CustomizableUI.sys.mjs");
+var { Services } = ChromeUtils.importESModule(
   "resource://gre/modules/Services.jsm",
   {},
 );
@@ -14,7 +14,7 @@ var appversion = parseInt(Services.appinfo.version);
 var compact_buttons = false; // reduced toolbar height and smaller buttons
 
 var AddAddonbar = {
-  init: function () {
+  init: function() {
     if (
       appversion >= 76 &&
       location != "chrome://browser/content/browser.xhtml"
@@ -25,13 +25,13 @@ var AddAddonbar = {
     try {
       if (gBrowser.selectedBrowser.getAttribute("blank"))
         gBrowser.selectedBrowser.removeAttribute("blank");
-    } catch (e) {}
+    } catch (e) { }
 
     try {
       Services.prefs
         .getDefaultBranch("browser.addonbar.")
         .setBoolPref("enabled", true);
-    } catch (e) {}
+    } catch (e) { }
 
     var addonbar_label = "Add-on Bar";
     var compact_buttons_code = "";
@@ -64,8 +64,8 @@ var AddAddonbar = {
       .loadAndRegisterSheet(
         Services.io.newURI(
           "data:text/css;charset=utf-8," +
-            encodeURIComponent(
-              '\
+          encodeURIComponent(
+            '\
 		  \
 		  #addonbar toolbarpaletteitem[place=toolbar][id^=wrapper-customizableui-special-spring],\
 		  #addonbar toolbarspring {\
@@ -106,10 +106,10 @@ var AddAddonbar = {
 			max-height: 24px !important; \
 		  } \
 		  ' +
-                compact_buttons_code +
-                "\
+            compact_buttons_code +
+            "\
 	  ",
-            ),
+          ),
           null,
           null,
         ),
@@ -164,9 +164,9 @@ var AddAddonbar = {
               .getBranch("browser.addonbar.")
               .getBoolPref("enabled"),
           );
-        } catch (e) {}
+        } catch (e) { }
       }
-    } catch (e) {}
+    } catch (e) { }
   },
 };
 

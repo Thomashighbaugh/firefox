@@ -378,13 +378,11 @@ menubar > menu[open] {
 }
         
 @media not (-moz-bool-pref: "ultima.tabs.disabled") {
-@media not (-moz-bool-pref: "sidebar.verticalTabs") {
     @media (-moz-bool-pref: "ultima.keep.titlebar") {
         #nav-bar {
             margin-left:0px !important;
             margin-right: 0px !important;
         }
-    }
 }
 }
 
@@ -396,7 +394,6 @@ when off hide titlebar, accessible via alt key or toggling the menubar on,
 when on merge the titlebar (window controls) into the navigation bar */
 
 /* when using vert tabs */
-@media (-moz-bool-pref: "sidebar.verticalTabs") {
     /*when on, merge window controls into the nav bar*/
     @media (-moz-bool-pref: "ultima.keep.titlebar") {
         #TabsToolbar .toolbar-items {
@@ -428,7 +425,6 @@ when on merge the titlebar (window controls) into the navigation bar */
             margin-right: 0px !important;
         }
     }
-}
 
 
 /*Autohide implementation ------------------------------------------------------------*/

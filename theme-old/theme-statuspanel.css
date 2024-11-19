@@ -1,0 +1,30 @@
+/* -------------------------------------------------------------
+- status panel theming
+ ------------------------------------------------------------- */
+
+#statuspanel-label {
+  border-radius: 7px !important;
+}
+
+#statuspanel {
+  max-width: calc(100% - 5px);
+  position: absolute;
+  bottom: 1vh !important;
+  left: 1vw !important;
+  border-radius: 7px !important;
+  padding-top: 2em;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+#main-window:not([lwtheme="true"]) #statuspanel-label {
+  @media (not (prefers-contrast)) and (not (-moz-platform: linux)) {
+    & {
+      background-color: var(--uc-background-solid) !important;
+      border-color: #0f0f0f80;
+    }
+  }
+}

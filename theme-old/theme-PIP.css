@@ -1,0 +1,32 @@
+/* ----------------------------------------------------------
+- PIP player styling
+-----------------------------------------------------------*/
+
+/*seek bar progress bar*/
+
+#scrubber::-moz-range-progress {
+  background-color: #fbf268cc !important;
+}
+#scrubber::-moz-range-thumb {
+  background-color: #fbf268cc !important;
+  border: 3px solid #fbf268cc !important;
+}
+
+/*close and PIP buttons are hovered*/
+
+#close,
+#unpip {
+  background-color: #ffffff1a !important;
+  fill: #fff !important;
+}
+
+#close:is(:hover, :focus-visible),
+#unpip:is(:hover, :focus-visible) {
+  background-color: #bf4242cc !important;
+  fill: #1c1c1c !important;
+}
+
+/*remove rounded corners*/
+.player-holder #browser {
+  border-radius: 0px !important;
+}

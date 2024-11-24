@@ -1,39 +1,23 @@
 // ==UserScript==
 // @name           Vertical Tabs Pane
-// @version        1.6.7
+// @version        1.8.1
 // @author         aminomancer
-// @homepage       https://github.com/aminomancer/uc.css.js
-// @description    Create a vertical pane across from the sidebar that functions
-// like the vertical tab pane in Microsoft Edge. It doesn't hide the tab bar
-// since people have different preferences on how to do that, but it sets an
-// attribute on the root element that you can use to hide the regular tab bar
-// while the vertical pane is open, for example :root[vertical-tabs]
-// #TabsToolbar... By default, the pane is resizable just like the sidebar is.
-// And like the pane in Edge, you can press a button to collapse it, and it will
-// hide the tab labels and become a thin strip that just shows the tabs'
-// favicons. Hovering the collapsed pane will expand it without moving the
-// browser content. As with the [vertical-tabs] attribute, this "unpinned" state
-// is reflected on the root element, so you can select it like
-// :root[vertical-tabs-unpinned]... Like the sidebar, the state of the pane is
-// stored between windows and recorded in preferences. There's no need to edit
-// these preferences directly. There are a few other preferences that can be
-// edited in about:config, but they can all be changed on the fly by opening the
-// context menu within the pane. The new tab button and the individual tabs all
-// have their own context menus, but right-clicking anything else will open the
-// pane's context menu, which has options for changing these preferences. "Move
-// Pane to Right/Left" will change which side the pane (and by extension, the
-// sidebar) is displayed on, relative to the browser content. Since the pane
-// always mirrors the position of the sidebar, moving the pane to the right will
-// move the sidebar to the left, and vice versa. "Reverse Tab Order" changes the
-// direction of the pane so that newer tabs are displayed on top rather than on
-// bottom. "Expand Pane on Hover/Focus" causes the pane to expand on hover when
-// it's collapsed. When you collapse the pane with the unpin button, it
-// collapses to a small width and then temporarily expands if you hover it,
-// after a delay of 100ms. Then when your mouse leaves the pane, it collapses
-// again, after a delay of 100ms. Both of these delays can be changed with the
-// "Configure Hover Delay" and "Configure Hover Out Delay" options in the
-// context menu, or in about:config. For languages other than English, the
-// labels and tooltips can be modified directly in the l10n object below.
+// @homepageURL    https://github.com/aminomancer/uc.css.js
+// @long-description
+// @description
+/*
+Create a vertical pane across from the sidebar that functions like the vertical tab pane in Microsoft Edge. It doesn't hide the tab bar since people have different preferences on how to do that, but it sets an attribute on the root element that you can use to hide the regular tab bar while the vertical pane is open, for example `:root[vertical-tabs] #TabsToolbar...`.
+
+By default, the pane is resizable just like the sidebar is. And like the pane in Edge, you can press a button to collapse it, and it will hide the tab labels and become a thin strip that just shows the tabs' favicons. Hovering the collapsed pane will expand it without moving the browser content. As with the `[vertical-tabs]` attribute, this "unpinned" state is reflected on the root element, so you can select it like `:root[vertical-tabs-unpinned]...`
+
+Like the sidebar, the state of the pane is stored between windows and recorded in preferences. There's no need to edit these preferences directly. There are a few other preferences that can be edited in <about:config>, but they can all be changed on the fly by opening the context menu within the pane. The new tab button and the individual tabs all have their own context menus, but right-clicking anything else will open the pane's context menu, which has options for changing these preferences.
+
+"Move Pane to Right/Left" will change which side the pane (and by extension, the sidebar) is displayed on, relative to the browser content. Since the pane always mirrors the position of the sidebar, moving the pane to the right will move the sidebar to the left, and vice versa. "Reverse Tab Order" changes the direction of the pane so that newer tabs are displayed on top rather than on bottom. "Expand Pane on Hover/Focus" causes the pane to expand on hover when it's collapsed.
+
+When you collapse the pane with the unpin button, it collapses to a small width and then temporarily expands if you hover it, after a delay of 100ms. Then when your mouse leaves the pane, it collapses again, after a delay of 100ms. Both of these delays can be changed with the "Configure Hover Delay" and "Configure Hover Out Delay" options in the context menu, or in about:config. For languages other than English, the labels and tooltips can be modified directly in the l10n object below.
+*/
+// @downloadURL    https://cdn.jsdelivr.net/gh/aminomancer/uc.css.js@master/JS/verticalTabsPane.uc.js
+// @updateURL      https://cdn.jsdelivr.net/gh/aminomancer/uc.css.js@master/JS/verticalTabsPane.uc.js
 // @license        This Source Code Form is subject to the terms of the Creative Commons Attribution-NonCommercial-ShareAlike International License, v. 4.0. If a copy of the CC BY-NC-SA 4.0 was not distributed with this file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 // ==/UserScript==
 
@@ -68,19 +52,26 @@
         "Invalid description": "This preference must be a positive integer.",
       },
     },
-    // settings for the hotkey
+    // settings for the hotkey. add these settings in about:config if you want
+    // them to persist between script updates without having to reapply them.
     hotkey: {
       // set to false if you don't want any hotkey
-      enabled: true,
+      enabled: Services.prefs.getBoolPref(
+        "verticalTabsPane.hotkey.enabled",
+        true,
+      ),
 
       // valid modifiers are "alt", "shift", "ctrl", "meta" and "accel". accel
       // is equal to ctrl on windows and linux, but meta (cmd ⌘) on macOS. meta
       // is the windows key on windows. it's variable on linux.
-      modifiers: "accel alt",
+      modifiers: Services.prefs.getCharPref(
+        "verticalTabsPane.hotkey.modifiers",
+        "accel alt",
+      ),
 
       // the actual key. valid keys are letters, the hyphen key - and F1-F12.
       // digits and F13-F24 are not supported by firefox.F
-      key: "V",
+      key: Services.prefs.getCharPref("verticalTabsPane.hotkey.key", "V"),
     },
   };
   if (location.href !== "chrome://browser/content/browser.xhtml") return;
@@ -137,16 +128,17 @@
    * @returns the DOM node
    */
   function setAttributes(el, attrs) {
-    for (let [name, value] of Object.entries(attrs))
+    for (let [name, value] of Object.entries(attrs)) {
       if (value) el.setAttribute(name, value);
       else el.removeAttribute(name);
+    }
   }
   class VerticalTabsPaneBase {
     preferences = [
       { name: closedPref, value: false },
       { name: unpinnedPref, value: false },
       { name: noExpandPref, value: false },
-      { name: widthPref, value: 18 },
+      { name: widthPref, value: 350 },
       { name: reversePref, value: false },
       { name: hoverDelayPref, value: 100 },
       { name: hoverOutDelayPref, value: 100 },
@@ -159,7 +151,7 @@
         E10SUtils: "resource://gre/modules/E10SUtils.jsm",
       });
       // get some localized strings for the tooltip
-      XPCOMUtils.defineLazyGetter(this, "_l10n", function () {
+      ChromeUtils.defineLazyGetter(this, "_l10n", function () {
         return new Localization(["browser/browser.ftl"], true);
       });
       this._formatFluentStrings();
@@ -184,7 +176,7 @@
         create(document, "menuitem", {
           id: "vertical-tabs-context-position",
           label: config.l10n.context["Move Pane to Right"],
-          oncommand: `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, true);`,
+          oncommand: `Services.prefs.setBoolPref(SidebarController.POSITION_START_PREF, true);`,
         }),
       );
       this._contextMenu.menuitemExpand = this._contextMenu.appendChild(
@@ -256,7 +248,9 @@
         }),
       );
       if ("key_toggleVerticalTabs" in window) {
-        this._closeButton.tooltipText += ` (${ShortcutUtils.prettifyShortcut(window.key_toggleVerticalTabs)})`;
+        this._closeButton.tooltipText += ` (${ShortcutUtils.prettifyShortcut(
+          window.key_toggleVerticalTabs,
+        )})`;
       }
       this._closeButton.addEventListener("command", (e) => this.toggle());
       this._innerBox.appendChild(create(document, "toolbarseparator"));
@@ -264,11 +258,10 @@
         create(document, "toolbartabstop", { "aria-hidden": true }),
       );
       this._arrowscrollbox = this._innerBox.appendChild(
-        create(document, "arrowscrollbox", {
+        create(document, "vbox", {
           id: "vertical-tabs-list",
           tooltip: "vertical-tabs-tooltip",
           context: "tabContextMenu",
-          orient: "vertical",
           flex: "1",
         }),
       );
@@ -287,27 +280,24 @@
       this._listenersRegistered = false;
       // set up preferences if they don't already exist
       this.preferences.forEach((pref) => {
-        if (!prefSvc.prefHasUserValue(pref.name))
+        if (!prefSvc.prefHasUserValue(pref.name)) {
           prefSvc[`set${typeof pref.value === "number" ? "Int" : "Bool"}Pref`](
             pref.name,
             pref.value,
           );
+        }
       });
       prefSvc.addObserver("userChrome.tabs.verticalTabsPane", this);
       prefSvc.addObserver("privacy.userContext", this);
-      prefSvc.addObserver(SidebarUI.POSITION_START_PREF, this);
+      prefSvc.addObserver(window.SidebarController.POSITION_START_PREF, this);
       // re-initialize the sidebar's positionstart pref callback since we
       // changed it earlier at the bottom to make it also move the pane.
       XPCOMUtils.defineLazyPreferenceGetter(
-        SidebarUI,
+        window.SidebarController,
         "_positionStart",
-        SidebarUI.POSITION_START_PREF,
+        window.SidebarController.POSITION_START_PREF,
         true,
-        SidebarUI.setPosition.bind(SidebarUI),
-      );
-      // destroy the scrollbuttons.
-      ["#scrollbutton-up", "#scrollbutton-down"].forEach((id) =>
-        this._arrowscrollbox.shadowRoot.querySelector(id).remove(),
+        window.SidebarController.setPosition.bind(window.SidebarController),
       );
       this._l10nIfNeeded();
       // the pref observer changes stuff in the script when the pref is changed.
@@ -339,15 +329,17 @@
         if (window.closed) return;
         readPref(reversePref);
         readPref(userContextPref);
-        readPref(SidebarUI.POSITION_START_PREF);
+        readPref(window.SidebarController.POSITION_START_PREF);
         // try to adopt from previous window, otherwise restore from prefs.
         let sourceWindow = window.opener;
-        if (sourceWindow)
-          if (
-            !sourceWindow.closed &&
-            sourceWindow.location.protocol == "chrome:"
-          )
-            if (this._adoptFromWindow(sourceWindow)) return;
+        if (
+          sourceWindow &&
+          !sourceWindow.closed &&
+          sourceWindow.location.protocol == "chrome:" &&
+          this._adoptFromWindow(sourceWindow)
+        ) {
+          return;
+        }
         readPref(widthPref);
         readPref(unpinnedPref);
         readPref(closedPref);
@@ -357,6 +349,21 @@
     get _root() {
       if (!this.__root) this.__root = document.documentElement;
       return this.__root;
+    }
+    get _width() {
+      return (
+        parseFloat(this.pane.style.width) ||
+        this.pane.getBoundingClientRect().width ||
+        prefSvc.getIntPref(widthPref, 350)
+      );
+    }
+    set _width(val) {
+      this.pane.style.width = `${val}px`;
+      this.pane.style.setProperty("--pane-width", `${val}px`);
+      this.pane.style.setProperty(
+        "--pane-transition-duration",
+        `${(Math.sqrt(val / 350) * 0.25).toFixed(2)}s`,
+      );
     }
     // return all the DOM nodes for tab rows in the pane.
     get _rows() {
@@ -379,16 +386,18 @@
           this.pane,
           NodeFilter.SHOW_ELEMENT,
           (node) => {
-            if (node.tagName == "toolbartabstop")
+            if (node.tagName == "toolbartabstop") {
               return NodeFilter.FILTER_ACCEPT;
+            }
             if (node.disabled || node.hidden) return NodeFilter.FILTER_REJECT;
             if (
               node.tagName == "button" ||
               node.tagName == "toolbarbutton" ||
               node.tagName == "checkbox"
             ) {
-              if (!node.hasAttribute("tabindex"))
+              if (!node.hasAttribute("tabindex")) {
                 node.setAttribute("tabindex", "-1");
+              }
               return NodeFilter.FILTER_ACCEPT;
             }
             return NodeFilter.FILTER_SKIP;
@@ -407,18 +416,21 @@
           this.pane,
           NodeFilter.SHOW_ELEMENT,
           (node) => {
-            if (node.tagName == "toolbartabstop")
+            if (node.tagName == "toolbartabstop") {
               return NodeFilter.FILTER_ACCEPT;
+            }
             if (node.disabled || node.hidden) return NodeFilter.FILTER_REJECT;
             if (
               node.tagName == "button" ||
               node.tagName == "toolbarbutton" ||
               node.tagName == "checkbox"
             ) {
-              if (node.classList.contains("all-tabs-secondary-button"))
+              if (node.classList.contains("all-tabs-secondary-button")) {
                 return NodeFilter.FILTER_SKIP;
-              if (!node.hasAttribute("tabindex"))
+              }
+              if (!node.hasAttribute("tabindex")) {
                 node.setAttribute("tabindex", "-1");
+              }
               return NodeFilter.FILTER_ACCEPT;
             }
             return NodeFilter.FILTER_SKIP;
@@ -435,7 +447,7 @@
       contextDefs.push(this.pane);
       contextDefs.forEach((node) => {
         let menu = document.getElementById(node.getAttribute("context"));
-        if (menus.indexOf(menu) === -1) menus.push(menu);
+        if (!menus.includes(menu)) menus.push(menu);
       });
       return menus;
     }
@@ -450,8 +462,9 @@
       if (!menus.length) return false;
       let openMenu = false;
       menus.forEach((menu) => {
-        if (menu.triggerNode && this.pane.contains(menu.triggerNode))
+        if (menu.triggerNode && this.pane.contains(menu.triggerNode)) {
           openMenu = menu;
+        }
       });
       return openMenu;
     }
@@ -494,13 +507,10 @@
     _adoptFromWindow(sourceWindow) {
       let sourceUI = sourceWindow.verticalTabsPane;
       if (!sourceUI || !sourceUI.pane) return false;
-      this.pane.setAttribute(
-        "width",
-        sourceUI.pane.width || sourceUI.pane.getBoundingClientRect().width,
-      );
-      let sourcePinned = !!sourceUI.pane.getAttribute("unpinned");
-      sourcePinned ? this.unpin() : this.pane.removeAttribute("unpinned");
-      sourcePinned
+      this._width = sourceUI._width;
+      let sourceUnpinned = !!sourceUI.pane.getAttribute("unpinned");
+      sourceUnpinned ? this.unpin() : this.pane.removeAttribute("unpinned");
+      sourceUnpinned
         ? this._root.setAttribute("vertical-tabs-unpinned", true)
         : this._root.removeAttribute("vertical-tabs-unpinned");
       this._resetPinnedTooltip();
@@ -513,7 +523,7 @@
      * @returns the ancestor tab row
      */
     _findRow(el) {
-      return el.classList.contains("all-tabs-item")
+      return el?.classList.contains("all-tabs-item")
         ? el
         : el.closest(".all-tabs-item");
     }
@@ -565,16 +575,17 @@
         );
         this.promptForIntPref(pref);
       };
-      if (!(int >= 0)) return onFail();
-      else
-        try {
-          prefSvc.setIntPref(pref, int);
-        } catch (e) {
-          return onFail();
-        }
+      if (!(int >= 0)) {
+        return onFail();
+      }
+      try {
+        prefSvc.setIntPref(pref, int);
+      } catch (e) {
+        return onFail();
+      }
     }
     /**
-     * universal event handler — we generally pass the whole class to
+     * universal event handler - we generally pass the whole class to
      * addEventListener and let this function decide which callback to invoke.
      * @param {object} e (an event object)
      */
@@ -652,10 +663,11 @@
           this._onTabMultiSelect();
           break;
         case "TabSelect":
-          if (this.isOpen)
+          if (this.isOpen) {
             this.tabToElement
               .get(e.target)
               .scrollIntoView({ block: "nearest" });
+          }
           break;
       }
     }
@@ -710,7 +722,7 @@
       switch (pref) {
         case widthPref:
           if (value === null) value = 350;
-          this.pane.width = value;
+          this._width = value;
           break;
         case closedPref:
           value ? this.close() : this.open();
@@ -740,9 +752,11 @@
             this.tabToElement = new Map();
             this._populate();
           }
-          if (value)
+          if (value) {
             this._contextMenu.menuitemReverse.setAttribute("checked", true);
-          else this._contextMenu.menuitemReverse.removeAttribute("checked");
+          } else {
+            this._contextMenu.menuitemReverse.removeAttribute("checked");
+          }
           break;
         case hoverDelayPref:
           this._hoverDelay = value ?? 100;
@@ -754,22 +768,23 @@
         case containerOnClickPref:
           this._handlePrivacyChange();
           break;
-        case SidebarUI.POSITION_START_PREF:
+        case window.SidebarController.POSITION_START_PREF: {
           let menuitem = this._contextMenu.menuitemPosition;
           if (value) {
             menuitem.label = config.l10n.context["Move Pane to Left"];
             menuitem.setAttribute(
               "oncommand",
-              `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, false);`,
+              `Services.prefs.setBoolPref(SidebarController.POSITION_START_PREF, false);`,
             );
           } else {
             menuitem.label = config.l10n.context["Move Pane to Right"];
             menuitem.setAttribute(
               "oncommand",
-              `Services.prefs.setBoolPref(SidebarUI.POSITION_START_PREF, true);`,
+              `Services.prefs.setBoolPref(SidebarController.POSITION_START_PREF, true);`,
             );
           }
           break;
+        }
       }
     }
     toggle() {
@@ -783,8 +798,9 @@
       if (!this._listenersRegistered) this._populate();
     }
     close() {
-      if (this.pane.contains(document.activeElement))
+      if (this.pane.contains(document.activeElement)) {
         document.activeElement.blur();
+      }
       this.pane.hidden = this._splitter.hidden = true;
       this.pane.removeAttribute("checked");
       this.isOpen = false;
@@ -799,11 +815,13 @@
     // fill the pane with tab rows
     _populate() {
       let fragment = document.createDocumentFragment();
-      for (let tab of gBrowser.tabs)
-        if (this._filterFn(tab))
+      for (let tab of gBrowser.tabs) {
+        if (this._filterFn(tab)) {
           fragment[this._reversed ? `prepend` : `appendChild`](
             this._createRow(tab),
           );
+        }
+      }
       this._addElement(fragment);
       this._setupListeners();
       for (let row of this._rows) this._setImageAttributes(row, row.tab);
@@ -846,9 +864,10 @@
       paneEvents.forEach((ev) => this.pane.addEventListener(ev, this));
       if (gToolbarKeyNavEnabled) this.pane.addEventListener("keydown", this);
       this.pane.addEventListener("blur", this, true);
-      gBrowser.addEventListener("TabMultiSelect", this, false);
-      for (let stop of this.pane.getElementsByTagName("toolbartabstop"))
+      gBrowser.addEventListener("TabMultiSelect", this);
+      for (let stop of this.pane.getElementsByTagName("toolbartabstop")) {
         stop.addEventListener("focus", this);
+      }
     }
     // invoked when closing the pane. clear all the aforementioned event listeners.
     _cleanupListeners() {
@@ -862,9 +881,10 @@
       paneEvents.forEach((ev) => this.pane.removeEventListener(ev, this));
       this.pane.removeEventListener("keydown", this);
       this.pane.removeEventListener("blur", this, true);
-      gBrowser.removeEventListener("TabMultiSelect", this, false);
-      for (let stop of this.pane.getElementsByTagName("toolbartabstop"))
+      gBrowser.removeEventListener("TabMultiSelect", this);
+      for (let stop of this.pane.getElementsByTagName("toolbartabstop")) {
         stop.removeEventListener("focus", this);
+      }
       this._listenersRegistered = false;
     }
     /**
@@ -878,7 +898,9 @@
       if (item) {
         if (!this._filterFn(tab)) this._removeItem(item, tab);
         else this._setRowAttributes(item, tab);
-      } else if (this._filterFn(tab)) this._addTab(tab);
+      } else if (this._filterFn(tab)) {
+        this._addTab(tab);
+      }
     }
     /**
      * the key implies that we're moving a tab, but this doesn't tell us where
@@ -910,15 +932,17 @@
       if (!this._filterFn(newTab)) return;
       let newRow = this._createRow(newTab);
       let nextTab = newTab.nextElementSibling;
-      while (nextTab && !this._filterFn(nextTab))
+      while (nextTab && !this._filterFn(nextTab)) {
         nextTab = nextTab.nextElementSibling;
+      }
       let nextRow = this.tabToElement.get(nextTab);
       if (this._reversed) {
         if (nextRow) nextRow.after(newRow);
         else this._arrowscrollbox.prepend(newRow);
+      } else if (nextRow) {
+        nextRow.parentNode.insertBefore(newRow, nextRow);
       } else {
-        if (nextRow) nextRow.parentNode.insertBefore(newRow, nextRow);
-        else this._addElement(newRow);
+        this._addElement(newRow);
       }
     }
     /**
@@ -933,7 +957,7 @@
     /**
      * remove a tab/item pair from the map, and remove the item from the DOM.
      * @param {object} item (a row element, e.g. with class all-tabs-item)
-     * @param {object} tab (a corresponding tab element — every all-tabs-item
+     * @param {object} tab (a corresponding tab element - every all-tabs-item
      *                     has a reference to its corresponding tab at item.tab)
      */
     _removeItem(item, tab) {
@@ -990,7 +1014,7 @@
       );
       row.closeButton.tab = tab;
 
-      // sound overlay — it only shows when the pane is collapsed
+      // sound overlay - it only shows when the pane is collapsed
       row.soundOverlay = row.appendChild(
         create(document, "image", { class: "sound-overlay" }, true),
       );
@@ -1098,8 +1122,9 @@
       let oldFocus = document.activeElement;
       walker.currentNode = oldFocus;
       let newFocus = this.getNewFocus(walker, prev);
-      while (newFocus && newFocus.tagName == "toolbartabstop")
+      while (newFocus && newFocus.tagName == "toolbartabstop") {
         newFocus = this.getNewFocus(walker, prev);
+      }
       if (newFocus) this._focusButton(newFocus);
     }
     /**
@@ -1129,8 +1154,9 @@
       clearTimeout(this.hoverTimer);
       this.hoverOutQueued = false;
       this.hoverQueued = false;
-      if (this.pane.getAttribute("unpinned") && !this._noExpand)
+      if (this.pane.getAttribute("unpinned") && !this._noExpand) {
         this.pane.setAttribute("expanded", true);
+      }
       if (e.target.tagName === "toolbartabstop") this._onTabStopFocus(e);
     }
     // invoked on a blur event. if the pane is no longer focused or hovered, and
@@ -1201,16 +1227,20 @@
             if (
               window.windowUtils?.getBoundsWithoutFlushing(stopContainer)
                 .height > 0
-            )
+            ) {
               break;
+            }
             earlierVisibleStopIndex--;
           }
-          if (earlierVisibleStopIndex == -1)
+          if (earlierVisibleStopIndex == -1) {
             this._isFocusMovingBackward = false;
+          }
         }
-        if (this._isFocusMovingBackward)
+        if (this._isFocusMovingBackward) {
           document.commandDispatcher.rewindFocus();
-        else document.commandDispatcher.advanceFocus();
+        } else {
+          document.commandDispatcher.advanceFocus();
+        }
         return;
       }
       this._focusButton(button);
@@ -1265,23 +1295,27 @@
         }
         gBrowser.addRangeToMultiSelectedTabs(lastSelectedTab, tab);
       } else if (accelKey) {
-        if (tab.multiselected) gBrowser.removeFromMultiSelectedTabs(tab);
-        else if (tab != gBrowser.selectedTab) {
+        if (tab.multiselected) {
+          gBrowser.removeFromMultiSelectedTabs(tab);
+        } else if (tab != gBrowser.selectedTab) {
           gBrowser.addToMultiSelectedTabs(tab);
           gBrowser.lastMultiSelectedTab = tab;
         }
       } else {
-        if (!tab.selected && tab.multiselected)
+        if (!tab.selected && tab.multiselected) {
           gBrowser.lockClearMultiSelectionOnce();
+        }
         if (
           !e.shiftKey &&
           !accelKey &&
           !e.target.classList.contains("all-tabs-secondary-button") &&
           tab !== gBrowser.selectedTab
         ) {
-          if (tab.getAttribute("pending") || tab.getAttribute("busy"))
+          if (tab.getAttribute("pending") || tab.getAttribute("busy")) {
             tab.noCanvas = true;
-          else delete tab.noCanvas;
+          } else {
+            delete tab.noCanvas;
+          }
           if (gBrowser.selectedTab != tab) gBrowser.selectedTab = tab;
           else gBrowser.tabContainer._handleTabSelect();
         }
@@ -1320,8 +1354,9 @@
     _onMouseEnter(e) {
       clearTimeout(this.hoverOutTimer);
       this.hoverOutQueued = false;
-      if (!this.pane.getAttribute("unpinned") || this._noExpand)
+      if (!this.pane.getAttribute("unpinned") || this._noExpand) {
         return this.pane.removeAttribute("expanded");
+      }
       if (this.hoverQueued) return;
       this.hoverQueued = true;
       this.hoverTimer = setTimeout(() => {
@@ -1349,8 +1384,9 @@
             _x <= rect.right &&
             _y >= rect.top &&
             _y <= rect.bottom
-          )
+          ) {
             return;
+          }
         }
         if (this._noExpand) return this.pane.removeAttribute("expanded");
         // again, don't collapse the pane yet if the mouse left because a
@@ -1378,13 +1414,14 @@
       this.pane.removeAttribute("expanded");
     }
     unpin() {
-      this.pane.style.setProperty("--pane-width", this.pane.width + "rem");
+      this.pane.style.setProperty("--pane-width", `${this._width}px`);
       this.pane.style.setProperty(
         "--pane-transition-duration",
-        (Math.sqrt(this.pane.width / 350) * 0.25).toFixed(2) + "s",
+        `${(Math.sqrt(this._width / 350) * 0.25).toFixed(2)}s`,
       );
-      if (this.pane.matches(":hover, :focus-within") && !this._noExpand)
+      if (this.pane.matches(":hover, :focus-within") && !this._noExpand) {
         this.pane.setAttribute("expanded", true);
+      }
       this.pane.setAttribute("unpinned", true);
     }
     // "click" events work kind of like "mouseup" events, but in this case we're
@@ -1395,8 +1432,9 @@
           e.target.classList.contains("all-tabs-secondary-button") &&
           !e.shiftKey &&
           !(AppConstants.platform == "macosx" ? e.metaKey : e.ctrlKey)
-        )
+        ) {
           return;
+        }
         e.preventDefault();
       }
     }
@@ -1415,8 +1453,9 @@
         else gBrowser.removeTab(tab, { animate: true });
         return;
       }
-      if (!gSharedTabWarning.willShowSharedTabWarning(tab))
+      if (!gSharedTabWarning.willShowSharedTabWarning(tab)) {
         if (tab !== gBrowser.selectedTab) this._selectTab(tab);
+      }
       delete tab.noCanvas;
     }
     // invoked on "dragstart" event. first figure out what we're dragging and
@@ -1424,7 +1463,7 @@
     _onDragStart(e, tab) {
       let row = e.target;
       if (!tab || gBrowser.tabContainer._isCustomizing) return;
-      let selectedTabs = gBrowser.selectedTabs;
+      let { selectedTabs } = gBrowser;
       let otherSelectedTabs = selectedTabs.filter(
         (selectedTab) => selectedTab != tab,
       );
@@ -1448,8 +1487,12 @@
         let insertAtPos = draggedTabPos - 1;
         for (let i = tabIndex - 1; i > -1; i--) {
           insertAtPos = newIndex(selectedTabs[i], insertAtPos);
-          if (insertAtPos && !selectedTabs[i].nextElementSibling.multiselected)
+          if (
+            insertAtPos &&
+            !selectedTabs[i].nextElementSibling.multiselected
+          ) {
             gBrowser.moveTabTo(selectedTabs[i], insertAtPos);
+          }
         }
         // tabs to the right
         insertAtPos = draggedTabPos + 1;
@@ -1458,8 +1501,9 @@
           if (
             insertAtPos &&
             !selectedTabs[i].previousElementSibling.multiselected
-          )
+          ) {
             gBrowser.moveTabTo(selectedTabs[i], insertAtPos);
+          }
         }
       }
       // tab preview
@@ -1513,20 +1557,6 @@
     _onDragOver(e) {
       let row = this._findRow(e.target);
       let dt = e.dataTransfer;
-      // scroll when dragging near the ends of the scrollbox
-      let pixelsToScroll = 0;
-      let rect = this._arrowscrollbox.getBoundingClientRect();
-      if (row) {
-        let targetRect = row.getBoundingClientRect();
-        let increment =
-          (targetRect.height || this._arrowscrollbox.scrollIncrement) * 3;
-        if (e.clientY - rect.top < targetRect.height)
-          pixelsToScroll = increment * -1;
-        else if (rect.bottom - e.clientY < targetRect.height)
-          pixelsToScroll = increment;
-        if (pixelsToScroll)
-          this._arrowscrollbox.scrollByPixels(pixelsToScroll, false);
-      }
       this._arrowscrollbox
         .querySelectorAll("[dragpos]")
         .forEach((item) => item.removeAttribute("dragpos"));
@@ -1576,7 +1606,7 @@
       if (!dt.types.includes("all-tabs-item") || !row) return;
 
       let draggedTab = dt.mozGetDataAt("all-tabs-item", 0);
-      let movingTabs = draggedTab._dragData.movingTabs;
+      let { movingTabs } = draggedTab._dragData;
 
       if (
         !movingTabs ||
@@ -1618,10 +1648,11 @@
     // specify which row's attributes to change. we therefore have to update the
     // "multiselected" attribute for every row.
     _onTabMultiSelect() {
-      for (let item of this._rows)
-        !!item.tab.multiselected
+      for (let item of this._rows) {
+        item.tab.multiselected
           ? item.setAttribute("multiselected", true)
           : item.removeAttribute("multiselected");
+      }
     }
     // invoked when mousing over a row. we use this to set a flag
     // mOverSecondaryButton on the row, which our drag handlers reference. we
@@ -1653,114 +1684,59 @@
     // when the vertical-tabs-tooltip is about to be shown.
     createTabTooltip(e) {
       e.stopPropagation();
-      let row = e.target.triggerNode
-        ? this._findRow(e.target.triggerNode)
-        : null;
-      if (!row) return e.preventDefault();
-      let { tab } = row;
-      if (!tab) return e.preventDefault();
-      // get a localized string, replace any plural variables with the passed
-      // number, and add a shortcut string (e.g. Ctrl+M) matching the passed key
-      // element ID.
-      let stringWithShortcut = (stringId, keyElemId, pluralCount) => {
-        let keyElem = document.getElementById(keyElemId);
-        let shortcut = ShortcutUtils.prettifyShortcut(keyElem);
-        return PluralForm.get(
-          pluralCount,
-          gTabBrowserBundle.GetStringFromName(stringId),
-        )
-          .replace("%S", shortcut)
-          .replace("#1", pluralCount);
-      };
-      let label;
+      let row = this._findRow(e.target.triggerNode);
+      let tab = row?.tab;
+      if (!tab) {
+        e.preventDefault();
+        return;
+      }
+
+      const tooltip = e.target;
+      tooltip.removeAttribute("data-l10n-id");
+
+      let id, args, raw;
       // should we align to the tab or to the mouse? depends on which element
       // was hovered.
       let align = true;
       let { linkedBrowser } = tab;
-      const selectedTabs = gBrowser.selectedTabs;
-      const contextTabInSelection = selectedTabs.includes(tab);
-      const affectedTabsLength = contextTabInSelection
-        ? selectedTabs.length
-        : 1;
+      const contextTabInSelection = gBrowser.selectedTabs.includes(tab);
+      const tabCount = contextTabInSelection ? gBrowser.selectedTabs.length : 1;
       // a bunch of localization
       if (row.closeButton.matches(":hover")) {
-        let shortcut = ShortcutUtils.prettifyShortcut(window.key_close);
-        label = PluralForm.get(
-          affectedTabsLength,
-          gTabBrowserBundle.GetStringFromName("tabs.closeTabs.tooltip"),
-        ).replace("#1", affectedTabsLength);
-        if (contextTabInSelection && shortcut) {
-          if (label.includes("%S")) label = label.replace("%S", shortcut);
-          else label = label + " (" + shortcut + ")";
-        }
+        id = "tabbrowser-close-tabs-tooltip";
+        args = { tabCount };
         align = false;
       } else if (row.audioButton.matches(":hover")) {
-        let stringID;
+        args = { tabCount };
         if (contextTabInSelection) {
-          stringID = linkedBrowser.audioMuted
-            ? "tabs.unmuteAudio2.tooltip"
-            : "tabs.muteAudio2.tooltip";
-          label = stringWithShortcut(
-            stringID,
-            "key_toggleMute",
-            affectedTabsLength,
-          );
+          id = linkedBrowser.audioMuted
+            ? "tabbrowser-unmute-tab-audio-tooltip"
+            : "tabbrowser-mute-tab-audio-tooltip";
+          const keyElem = document.getElementById("key_toggleMute");
+          args.shortcut = ShortcutUtils.prettifyShortcut(keyElem);
+        } else if (tab.hasAttribute("activemedia-blocked")) {
+          id = "tabbrowser-unblock-tab-audio-tooltip";
         } else {
-          if (tab.hasAttribute("activemedia-blocked"))
-            stringID = "tabs.unblockAudio2.tooltip";
-          else
-            stringID = linkedBrowser.audioMuted
-              ? "tabs.unmuteAudio2.background.tooltip"
-              : "tabs.muteAudio2.background.tooltip";
-          label = PluralForm.get(
-            affectedTabsLength,
-            gTabBrowserBundle.GetStringFromName(stringID),
-          ).replace("#1", affectedTabsLength);
+          id = linkedBrowser.audioMuted
+            ? "tabbrowser-unmute-tab-audio-background-tooltip"
+            : "tabbrowser-mute-tab-audio-background-tooltip";
         }
         align = false;
       } else {
-        label = tab._fullLabel || tab.getAttribute("label");
-        // show the tab's process ID in the tooltip?
-        if (
-          prefSvc.getBoolPref(
-            "browser.tabs.tooltipsShowPidAndActiveness",
-            false,
-          )
-        )
-          if (linkedBrowser) {
-            let [contentPid, ...framePids] = this.E10SUtils.getBrowserPids(
-              linkedBrowser,
-              gFissionBrowser,
-            );
-            if (contentPid) {
-              label += " (pid " + contentPid + ")";
-              if (gFissionBrowser) {
-                label += " [F";
-                if (framePids.length) label += " " + framePids.join(", ");
-                label += "]";
-              }
-            }
-            if (linkedBrowser.docShellIsActive) label += " [A]";
-          }
-        // add the container name to the tooltip?
-        if (tab.userContextId)
-          label = gTabBrowserBundle.formatStringFromName(
-            "tabs.containers.tooltip",
-            [
-              label,
-              ContextualIdentityService.getUserContextLabel(tab.userContextId),
-            ],
-          );
+        raw = gBrowser.getTabTooltip(tab, true);
         // if hovering the sound overlay, show the current media state of the
         // tab, after the tab title. "playing" or "muted" or "media blocked"
-        if (row.soundOverlay.matches(":hover") && this._fluentStrings)
-          label += ` (${this._fluentStrings[
-            tab.hasAttribute("activemedia-blocked")
-              ? "blockedString"
-              : linkedBrowser.audioMuted
-                ? "mutedString"
-                : "playingString"
-          ].toLowerCase()})`;
+        if (row.soundOverlay.matches(":hover") && this._fluentStrings) {
+          let stateKey;
+          if (tab.hasAttribute("activemedia-blocked")) {
+            stateKey = "blockedString";
+          } else if (linkedBrowser.audioMuted) {
+            stateKey = "mutedString";
+          } else {
+            stateKey = "playingString";
+          }
+          raw += ` (${this._fluentStrings[stateKey].toLowerCase()})`;
+        }
       }
       // align to the row
       if (align) {
@@ -1768,19 +1744,28 @@
         e.target.moveToAnchor(row, "after_start");
       }
       let title = e.target.querySelector(".places-tooltip-title");
-      title.textContent = label;
+      let localized = {};
+      if (raw) {
+        localized.label = raw;
+      } else if (id) {
+        let [msg] = gBrowser.tabLocalization.formatMessagesSync([{ id, args }]);
+        localized.value = msg.value;
+        if (msg.attributes) {
+          for (let attr of msg.attributes) localized[attr.name] = attr.value;
+        }
+      }
+      title.textContent = localized.label ?? "";
       if (tab.getAttribute("customizemode") === "true") {
         e.target
           .querySelector(".places-tooltip-box")
           .setAttribute("desc-hidden", "true");
         return;
-      } else {
-        let url = e.target.querySelector(".places-tooltip-uri");
-        url.value = linkedBrowser?.currentURI?.spec.replace(/^https:\/\//, "");
-        e.target
-          .querySelector(".places-tooltip-box")
-          .removeAttribute("desc-hidden");
       }
+      let url = e.target.querySelector(".places-tooltip-uri");
+      url.value = linkedBrowser?.currentURI?.spec.replace(/^https:\/\//, "");
+      e.target
+        .querySelector(".places-tooltip-box")
+        .removeAttribute("desc-hidden");
       // show a lock icon to show tab security/encryption
       let icon = e.target.querySelector("#places-tooltip-insecure-icon");
       let pending =
@@ -1805,7 +1790,7 @@
             icon.setAttribute("type", "local-page");
             icon.hidden = false;
             return;
-          case "about":
+          case "about": {
             let pathQueryRef = docURI?.pathQueryRef;
             if (
               pathQueryRef &&
@@ -1823,6 +1808,7 @@
             icon.setAttribute("type", "about-page");
             icon.hidden = false;
             return;
+          }
           case "moz-extension":
             icon.setAttribute("type", "extension-page");
             icon.hidden = false;
@@ -1897,501 +1883,583 @@
     _registerSheet() {
       let css = /* css */ `
 #vertical-tabs-pane {
-    --vertical-tabs-padding: 4px;
-    --collapsed-pane-width: calc(
-        16px + var(--vertical-tabs-padding) * 2 + var(--arrowpanel-menuitem-padding-inline) * 2
-    );
-    background-color: var(--vertical-tabs-pane-background, var(--lwt-accent-color));
-    padding: var(--vertical-tabs-padding);
-    border-color: var(--sidebar-border-color);
-    border-block-style: none;
-    border-inline-style: solid;
-    border-inline-width: 1px 0;
-    z-index: 2;
+  --vertical-tabs-padding: 4px;
+  --collapsed-pane-width: calc(
+    16px + var(--vertical-tabs-padding) * 2 +
+      var(--arrowpanel-menuitem-padding-inline) * 2
+  );
+  background-color: var(
+    --vertical-tabs-pane-background,
+    var(--lwt-accent-color)
+  );
+  padding: var(--vertical-tabs-padding);
+  padding-inline-end: 0;
+  border-color: var(--sidebar-border-color);
+  border-block-style: none;
+  border-inline-style: solid;
+  border-inline-width: 1px 0;
+  z-index: 2;
 }
 #vertical-tabs-pane[positionstart] {
-    border-inline-width: 0 1px;
+  border-inline-width: 0 1px;
 }
 #vertical-tabs-pane:not([unpinned]) {
-    min-width: 8rem;
-    max-width: 50vw;
+  min-width: 160px;
+  max-width: 50vw;
 }
 #vertical-tabs-pane:not([hidden]) {
-    min-height: 0;
-    display: flex;
+  min-height: 0;
+  display: flex;
 }
 #vertical-tabs-pane[unpinned]:not([hidden]) {
-    position: relative;
-    z-index: 1;
-    margin-inline: 0;
-    max-width: var(--collapsed-pane-width);
-    min-width: var(--collapsed-pane-width);
-    width: var(--collapsed-pane-width);
-    height: 0;
-    transition-property: min-width, max-width, margin;
-    transition-timing-function: ease-in-out, ease-in-out, ease-in-out;
-    transition-duration: var(--pane-transition-duration), var(--pane-transition-duration), var(--pane-transition-duration);
+  position: relative;
+  z-index: 1;
+  margin-inline: 0;
+  max-width: var(--collapsed-pane-width);
+  min-width: var(--collapsed-pane-width);
+  width: var(--collapsed-pane-width);
+  transition-property: min-width, max-width, margin;
+  transition-timing-function: ease-in-out, ease-in-out, ease-in-out;
+  transition-duration: var(--pane-transition-duration),
+    var(--pane-transition-duration), var(--pane-transition-duration);
 }
 #vertical-tabs-pane[unpinned]:not([positionstart="true"]) {
-    left: 0;
-    right: auto;
-    margin-inline: 0;
+  left: auto;
+  right: 0;
+  margin-inline: 0;
 }
 #vertical-tabs-pane[unpinned][expanded] {
-    min-width: var(--pane-width, 18rem);
-    width: var(--pane-width, 18rem);
-    max-width: var(--pane-width, 18rem);
-    margin-inline: 0 calc(var(--collapsed-pane-width) - var(--pane-width, 350px));
+  min-width: var(--pane-width, 350px);
+  width: var(--pane-width, 350px);
+  max-width: var(--pane-width, 350px);
+  margin-inline: 0 calc(var(--collapsed-pane-width) - var(--pane-width, 350px));
 }
-#vertical-tabs-pane[unpinned][expanded]([positionstart="true"]) {
-    margin-inline: calc(var(--collapsed-pane-width) - var(--pane-width, 350px)) 0;
+#vertical-tabs-pane[unpinned][expanded]:not([positionstart="true"]) {
+  margin-inline: calc(var(--collapsed-pane-width) - var(--pane-width, 350px)) 0;
 }
 #vertical-tabs-pane[no-expand] {
-    transition: none !important;
+  transition: none !important;
 }
 #vertical-tabs-splitter {
-    border: none;
+  border: none;
 }
 #vertical-tabs-pane[unpinned] ~ #vertical-tabs-splitter {
-    display: none;
+  display: none;
 }
 #vertical-tabs-inner-box {
-    overflow: hidden;
-    width: -moz-available;
-    min-width: calc(16px + var(--arrowpanel-menuitem-padding-inline) * 2);
-    height: min-content;
-    max-height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  overflow: hidden;
+  width: -moz-available;
+  min-width: calc(16px + var(--arrowpanel-menuitem-padding-inline) * 2);
+  height: min-content;
+  max-height: 100%;
 }
 #vertical-tabs-buttons-row {
-    min-width: 0 !important;
+  min-width: 0 !important;
+  margin-inline-end: var(--vertical-tabs-padding);
 }
 #vertical-tabs-pane[no-expand][unpinned] #vertical-tabs-buttons-row {
-    -moz-box-orient: vertical;
+  flex-flow: column nowrap;
 }
 #vertical-tabs-buttons-row > toolbarbutton {
-    margin: 0 !important;
+  margin: 0 !important;
 }
-#vertical-tabs-pane[unpinned]:not([expanded]) #vertical-tabs-buttons-row > toolbarbutton {
-    min-width: calc(16px + var(--arrowpanel-menuitem-padding-inline) * 2) !important;
+#vertical-tabs-pane[unpinned]:not([expanded])
+  #vertical-tabs-buttons-row
+  > toolbarbutton {
+  min-width: calc(
+    16px + var(--arrowpanel-menuitem-padding-inline) * 2
+  ) !important;
+}
+#vertical-tabs-list {
+  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-inline-end: 4px;
+}
+#vertical-tabs-pane[unpinned]:not([expanded]) #vertical-tabs-list {
+  scrollbar-width: none;
 }
 /* tabs */
 #vertical-tabs-list .all-tabs-item {
-    border-radius: var(--arrowpanel-menuitem-border-radius);
-    box-shadow: none;
-    -moz-box-align: center;
-    padding-inline-end: 2px;
-    margin: 0;
-    overflow: clip;
-    position: relative;
+  border-radius: var(--arrowpanel-menuitem-border-radius);
+  box-shadow: none;
+  align-items: center;
+  padding-inline-end: 2px;
+  margin: 0;
+  overflow: clip;
+  position: relative;
 }
-#vertical-tabs-pane[unpinned]:not([expanded]) #vertical-tabs-list .all-tabs-item {
-    padding-inline-end: 0;
-}
-#vertical-tabs-list .all-tabs-item .all-tabs-button:not([disabled], [open]):focus {
-    background: none;
+#vertical-tabs-pane[unpinned]:not([expanded])
+  #vertical-tabs-list
+  .all-tabs-item {
+  padding-inline-end: 0;
 }
 #vertical-tabs-list
-    .all-tabs-item:is([selected], [multiselected], [usercontextid]:is(:hover, [_moz-menuactive]))
-    .all-tabs-button:not([disabled]) {
-    background-image: linear-gradient(
-        to right,
-        var(--main-stripe-color) 0,
-        var(--main-stripe-color) 4px,
-        transparent 4px
-    ) !important;
+  .all-tabs-item
+  .all-tabs-button:not([disabled], [open]):focus {
+  background: none;
+}
+#vertical-tabs-list
+  .all-tabs-item:is(
+    [selected],
+    [multiselected],
+    [usercontextid]:is(:hover, [_moz-menuactive])
+  )
+  .all-tabs-button:not([disabled]) {
+  background-image: linear-gradient(
+    to right,
+    var(--main-stripe-color) 0,
+    var(--main-stripe-color) 4px,
+    transparent 4px
+  ) !important;
 }
 #vertical-tabs-list .all-tabs-item[selected] {
-    font-weight: normal;
-    background-color: var(--arrowpanel-dimmed-further) !important;
-    --main-stripe-color: var(--panel-item-active-bgcolor);
+  font-weight: normal;
+  background-color: var(--arrowpanel-dimmed-further) !important;
+  --main-stripe-color: var(--panel-item-active-bgcolor);
 }
 #vertical-tabs-list .all-tabs-item .all-tabs-button {
-    min-height: revert;
+  min-height: revert;
 }
 #vertical-tabs-list .all-tabs-item[usercontextid]:not([multiselected]) {
-    --main-stripe-color: var(--identity-tab-color);
+  --main-stripe-color: var(--identity-tab-color);
 }
 #vertical-tabs-list .all-tabs-item[multiselected] {
-    --main-stripe-color: var(--multiselected-color, var(--toolbarbutton-icon-fill-attention));
+  --main-stripe-color: var(
+    --multiselected-color,
+    var(--toolbarbutton-icon-fill-attention)
+  );
 }
 #vertical-tabs-list
-    .all-tabs-item:not([selected]):is(:hover, :focus-within, [_moz-menuactive], [multiselected]) {
-    background-color: var(--arrowpanel-dimmed) !important;
-}
-#vertical-tabs-list .all-tabs-item[multiselected]:not([selected]):is(:hover, [_moz-menuactive]) {
-    background-color: var(--arrowpanel-dimmed-further) !important;
+  .all-tabs-item:not([selected]):is(
+    :hover,
+    :focus-within,
+    [_moz-menuactive],
+    [multiselected]
+  ) {
+  background-color: var(--arrowpanel-dimmed) !important;
 }
 #vertical-tabs-list
-    .all-tabs-item[pending]:not([selected]):is(:hover, :focus-within, [_moz-menuactive], [multiselected]) {
-    background-color: var(
-        --arrowpanel-faint,
-        color-mix(in srgb, var(--arrowpanel-dimmed) 60%, transparent)
-    ) !important;
+  .all-tabs-item[multiselected]:not([selected]):is(:hover, [_moz-menuactive]) {
+  background-color: var(--arrowpanel-dimmed-further) !important;
 }
-#vertical-tabs-list .all-tabs-item[pending][multiselected]:not([selected]):is(:hover, [_moz-menuactive]) {
-    background-color: var(--arrowpanel-dimmed) !important;
+#vertical-tabs-list
+  .all-tabs-item[pending]:not([selected]):is(
+    :hover,
+    :focus-within,
+    [_moz-menuactive],
+    [multiselected]
+  ) {
+  background-color: var(
+    --arrowpanel-faint,
+    color-mix(in srgb, var(--arrowpanel-dimmed) 60%, transparent)
+  ) !important;
+}
+#vertical-tabs-list
+  .all-tabs-item[pending][multiselected]:not([selected]):is(
+    :hover,
+    [_moz-menuactive]
+  ) {
+  background-color: var(--arrowpanel-dimmed) !important;
 }
 #vertical-tabs-list .all-tabs-item[pending] > .all-tabs-button {
-    opacity: 0.6;
+  opacity: 0.6;
 }
-:root[italic-unread-tabs] .all-tabs-item[notselectedsinceload]:not([pending]) > .all-tabs-button,
-:root[italic-unread-tabs] .all-tabs-item[notselectedsinceload][pending] > .all-tabs-button[busy] {
-    font-style: italic;
+:root[italic-unread-tabs]
+  .all-tabs-item[notselectedsinceload]:not([pending])
+  > .all-tabs-button,
+:root[italic-unread-tabs]
+  .all-tabs-item[notselectedsinceload][pending]
+  > .all-tabs-button[busy] {
+  font-style: italic;
 }
 /* secondary buttons inside a tab row */
 #vertical-tabs-list .all-tabs-item .all-tabs-secondary-button {
-    width: 18px;
-    height: 18px;
-    border-radius: var(--tab-button-border-radius, 2px);
-    color: inherit;
-    background-color: transparent !important;
-    opacity: 0.7;
-    min-height: revert;
-    min-width: revert;
-    padding: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--tab-button-border-radius, 2px);
+  color: inherit;
+  background-color: transparent !important;
+  opacity: 0.7;
+  min-height: revert;
+  min-width: revert;
+  padding: 0;
 }
-#vertical-tabs-list .all-tabs-item .all-tabs-secondary-button > .toolbarbutton-icon {
-    min-width: 18px;
-    min-height: 18px;
-    fill: inherit;
-    fill-opacity: inherit;
-    -moz-context-properties: inherit;
+#vertical-tabs-list
+  .all-tabs-item
+  .all-tabs-secondary-button
+  > .toolbarbutton-icon {
+  min-width: 18px;
+  min-height: 18px;
+  fill: inherit;
+  fill-opacity: inherit;
+  -moz-context-properties: inherit;
 }
 #vertical-tabs-list .all-tabs-item .all-tabs-secondary-button > label:empty {
-    display: none;
+  display: none;
 }
-#vertical-tabs-list .all-tabs-item .all-tabs-secondary-button:is(:hover, :focus):not([disabled]),
 #vertical-tabs-list
-    .all-tabs-item:is(:hover, :focus-within)
-    .all-tabs-secondary-button[close-button]:is(:hover, :focus):not([disabled]) {
-    background-colo/r: var(--arrowpanel-dimmed) !important;
-    opacity: 1;
-    color: inherit;
+  .all-tabs-item
+  .all-tabs-secondary-button:is(:hover, :focus):not([disabled]),
+#vertical-tabs-list
+  .all-tabs-item:is(:hover, :focus-within)
+  .all-tabs-secondary-button[close-button]:is(:hover, :focus):not([disabled]) {
+  background-color: var(--arrowpanel-dimmed) !important;
+  opacity: 1;
+  color: inherit;
 }
-#vertical-tabs-list .all-tabs-item .all-tabs-secondary-button:hover:active:not([disabled]),
 #vertical-tabs-list
-    .all-tabs-item:is(:hover, :focus-within)
-    .all-tabs-secondary-button[close-button]:hover:active:not([disabled]) {
-    background-color: var(--arrowpanel-dimmed-further) !important;
+  .all-tabs-item
+  .all-tabs-secondary-button:hover:active:not([disabled]),
+#vertical-tabs-list
+  .all-tabs-item:is(:hover, :focus-within)
+  .all-tabs-secondary-button[close-button]:hover:active:not([disabled]) {
+  background-color: var(--arrowpanel-dimmed-further) !important;
 }
 /* audio button */
 #vertical-tabs-list .all-tabs-item .all-tabs-secondary-button[toggle-mute] {
-    list-style-image: none !important;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 18 18"><path fill-opacity="context-fill-opacity" fill="context-fill" d="M3.52,5.367c-1.332,0-2.422,1.09-2.422,2.422v2.422c0,1.332,1.09,2.422,2.422,2.422h1.516l4.102,3.633 V1.735L5.035,5.367H3.52z M12.059,9c0-0.727-0.484-1.211-1.211-1.211v2.422C11.574,10.211,12.059,9.727,12.059,9z M14.48,9 c0-1.695-1.211-3.148-2.785-3.512l-0.363,1.09C12.422,6.82,13.27,7.789,13.27,9c0,1.211-0.848,2.18-1.938,2.422l0.484,1.09 C13.27,12.148,14.48,10.695,14.48,9z M12.543,3.188l-0.484,1.09C14.238,4.883,15.691,6.82,15.691,9c0,2.18-1.453,4.117-3.512,4.601 l0.484,1.09c2.422-0.605,4.238-2.906,4.238-5.691C16.902,6.215,15.086,3.914,12.543,3.188z"/></svg>') !important;
-    background-size: 14px !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    padding: 0 !important;
-    margin-inline-end: 8.5px;
-    margin-inline-start: -27px;
-    transition: 0.25s cubic-bezier(0.07, 0.78, 0.21, 0.95) transform,
-        0.2s cubic-bezier(0.07, 0.74, 0.24, 0.95) margin, 0.075s linear opacity;
-    display: block !important;
-}
-#vertical-tabs-list .all-tabs-item .all-tabs-secondary-button[toggle-mute][hidden] {
-    transform: translateX(14px);
-    opacity: 0;
+  list-style-image: none !important;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 18 18"><path fill-opacity="context-fill-opacity" fill="context-fill" d="M3.52,5.367c-1.332,0-2.422,1.09-2.422,2.422v2.422c0,1.332,1.09,2.422,2.422,2.422h1.516l4.102,3.633 V1.735L5.035,5.367H3.52z M12.059,9c0-0.727-0.484-1.211-1.211-1.211v2.422C11.574,10.211,12.059,9.727,12.059,9z M14.48,9 c0-1.695-1.211-3.148-2.785-3.512l-0.363,1.09C12.422,6.82,13.27,7.789,13.27,9c0,1.211-0.848,2.18-1.938,2.422l0.484,1.09 C13.27,12.148,14.48,10.695,14.48,9z M12.543,3.188l-0.484,1.09C14.238,4.883,15.691,6.82,15.691,9c0,2.18-1.453,4.117-3.512,4.601 l0.484,1.09c2.422-0.605,4.238-2.906,4.238-5.691C16.902,6.215,15.086,3.914,12.543,3.188z"/></svg>') !important;
+  background-size: 14px !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  padding: 0 !important;
+  margin-inline-end: 8.5px;
+  margin-inline-start: -27px;
+  transition: 0.25s cubic-bezier(0.07, 0.78, 0.21, 0.95) transform,
+    0.2s cubic-bezier(0.07, 0.74, 0.24, 0.95) margin, 0.075s linear opacity;
+  display: block !important;
 }
 #vertical-tabs-list
-    .all-tabs-item:is(:hover, :focus-within)
-    .all-tabs-secondary-button[toggle-mute] {
-    transform: translateX(48px);
+  .all-tabs-item
+  .all-tabs-secondary-button[toggle-mute][hidden] {
+  transform: translateX(14px);
+  opacity: 0;
+}
+#vertical-tabs-list
+  .all-tabs-item:is(:hover, :focus-within)
+  .all-tabs-secondary-button[toggle-mute] {
+  transform: translateX(48px);
 }
 #vertical-tabs-list .all-tabs-item .all-tabs-secondary-button[soundplaying] {
-    transform: none !important;
-    opacity: 0.7;
-    margin-inline-start: -2px;
+  transform: none !important;
+  opacity: 0.7;
+  margin-inline-start: -2px;
 }
 #vertical-tabs-list .all-tabs-item .all-tabs-secondary-button[muted] {
-    list-style-image: none !important;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 18 18"><path fill-opacity="context-fill-opacity" fill="context-fill" d="M3.52,5.367c-1.332,0-2.422,1.09-2.422,2.422v2.422c0,1.332,1.09,2.422,2.422,2.422h1.516l4.102,3.633V1.735L5.035,5.367H3.52z"/><path fill="context-fill" fill-rule="evenodd" d="M12.155,12.066l-1.138-1.138l4.872-4.872l1.138,1.138 L12.155,12.066z"/><path fill="context-fill" fill-rule="evenodd" d="M10.998,7.204l1.138-1.138l4.872,4.872l-1.138,1.138L10.998,7.204z"/></svg>') !important;
-    transform: none !important;
-    opacity: 0.7;
-    margin-inline-start: -2px;
-}
-#vertical-tabs-list .all-tabs-item .all-tabs-secondary-button[activemedia-blocked] {
-    list-style-image: none !important;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path fill-opacity="context-fill-opacity" fill="context-fill" d="M2.128.13A.968.968 0 0 0 .676.964v10.068a.968.968 0 0 0 1.452.838l8.712-5.034a.968.968 0 0 0 0-1.676L2.128.13z"/></svg>') !important;
-    background-size: 10px !important;
-    background-position: 4.5px center !important;
-    transform: none !important;
-    opacity: 0.7;
-    margin-inline-start: -2px;
+  list-style-image: none !important;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 18 18"><path fill-opacity="context-fill-opacity" fill="context-fill" d="M3.52,5.367c-1.332,0-2.422,1.09-2.422,2.422v2.422c0,1.332,1.09,2.422,2.422,2.422h1.516l4.102,3.633V1.735L5.035,5.367H3.52z"/><path fill="context-fill" fill-rule="evenodd" d="M12.155,12.066l-1.138-1.138l4.872-4.872l1.138,1.138 L12.155,12.066z"/><path fill="context-fill" fill-rule="evenodd" d="M10.998,7.204l1.138-1.138l4.872,4.872l-1.138,1.138L10.998,7.204z"/></svg>') !important;
+  transform: none !important;
+  opacity: 0.7;
+  margin-inline-start: -2px;
 }
 #vertical-tabs-list
-    > .all-tabs-item:not(:hover, :focus-within)
-    .all-tabs-secondary-button[pictureinpicture] {
-    list-style-image: none !important;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 625.8 512"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M568.9 0h-512C25.6 0 0 25 0 56.3v398.8C0 486.4 25.6 512 56.9 512h512c31.3 0 56.9-25.6 56.9-56.9V56.3C625.8 25 600.2 0 568.9 0zm-512 425.7V86c0-16.5 13.5-30 30-30h452c16.5 0 30 13.5 30 30v339.6c0 16.5-13.5 30-30 30h-452c-16.5.1-30-13.4-30-29.9zM482 227.6H314.4c-16.5 0-30 13.5-30 30v110.7c0 16.5 13.5 30 30 30H482c16.5 0 30-13.5 30-30V257.6c0-16.5-13.5-30-30-30z"/></svg>') !important;
-    border-radius: 0 !important;
+  .all-tabs-item
+  .all-tabs-secondary-button[activemedia-blocked] {
+  list-style-image: none !important;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path fill-opacity="context-fill-opacity" fill="context-fill" d="M2.128.13A.968.968 0 0 0 .676.964v10.068a.968.968 0 0 0 1.452.838l8.712-5.034a.968.968 0 0 0 0-1.676L2.128.13z"/></svg>') !important;
+  background-size: 10px !important;
+  background-position: 4.5px center !important;
+  transform: none !important;
+  opacity: 0.7;
+  margin-inline-start: -2px;
 }
-#vertical-tabs-list .all-tabs-item .all-tabs-secondary-button[pictureinpicture] {
-    transform: none !important;
-    opacity: 0.7;
-    margin-inline-start: -2px;
+#vertical-tabs-list
+  > .all-tabs-item:not(:hover, :focus-within)
+  .all-tabs-secondary-button[pictureinpicture] {
+  list-style-image: none !important;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 625.8 512"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M568.9 0h-512C25.6 0 0 25 0 56.3v398.8C0 486.4 25.6 512 56.9 512h512c31.3 0 56.9-25.6 56.9-56.9V56.3C625.8 25 600.2 0 568.9 0zm-512 425.7V86c0-16.5 13.5-30 30-30h452c16.5 0 30 13.5 30 30v339.6c0 16.5-13.5 30-30 30h-452c-16.5.1-30-13.4-30-29.9zM482 227.6H314.4c-16.5 0-30 13.5-30 30v110.7c0 16.5 13.5 30 30 30H482c16.5 0 30-13.5 30-30V257.6c0-16.5-13.5-30-30-30z"/></svg>') !important;
+  border-radius: 0 !important;
+}
+#vertical-tabs-list
+  .all-tabs-item
+  .all-tabs-secondary-button[pictureinpicture] {
+  transform: none !important;
+  opacity: 0.7;
+  margin-inline-start: -2px;
 }
 /* sound overlay on the favicon */
 #vertical-tabs-pane .sound-overlay {
-    display: none;
+  display: none;
 }
 #vertical-tabs-pane
-    .all-tabs-item:is([muted], [soundplaying], [activemedia-blocked])
-    .sound-overlay {
-    display: block;
-    position: absolute;
-    left: calc(var(--arrowpanel-menuitem-padding-inline) + 8px);
-    top: calc(var(--arrowpanel-menuitem-padding-block) + 8px);
-    width: 1rem;
-    height: 1rem;
-    -moz-context-properties: fill, fill-opacity;
-    fill: currentColor;
-    fill-opacity: 0.7;
-    opacity: 0;
-    pointer-events: none;
-    transition-property: opacity;
-    transition-timing-function: ease-in-out;
-    transition-duration: var(--pane-transition-duration);
+  .all-tabs-item:is([muted], [soundplaying], [activemedia-blocked])
+  .sound-overlay {
+  display: block;
+  position: absolute;
+  left: calc(var(--arrowpanel-menuitem-padding-inline) + 8px);
+  top: calc(var(--arrowpanel-menuitem-padding-block) + 8px);
+  width: 14px;
+  height: 14px;
+  -moz-context-properties: fill, fill-opacity;
+  fill: currentColor;
+  fill-opacity: 0.7;
+  opacity: 0;
+  pointer-events: none;
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+  transition-duration: var(--pane-transition-duration);
 }
 #vertical-tabs-pane[unpinned]:not([expanded])
-    .all-tabs-item:is([muted], [soundplaying], [activemedia-blocked])
-    .sound-overlay {
-    opacity: 1;
-    pointer-events: auto;
+  .all-tabs-item:is([muted], [soundplaying], [activemedia-blocked])
+  .sound-overlay {
+  opacity: 1;
+  pointer-events: auto;
 }
 #vertical-tabs-pane[unpinned] .all-tabs-item[selected] .sound-overlay {
-    fill-opacity: inherit;
+  fill-opacity: inherit;
 }
 #vertical-tabs-pane[unpinned] .all-tabs-item[soundplaying] .sound-overlay {
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 16 16"><path fill-opacity="context-fill-opacity" fill="context-fill" d="M3.52,5.367c-1.332,0-2.422,1.09-2.422,2.422v2.422c0,1.332,1.09,2.422,2.422,2.422h1.516l4.102,3.633 V1.735L5.035,5.367H3.52z M12.059,9c0-0.727-0.484-1.211-1.211-1.211v2.422C11.574,10.211,12.059,9.727,12.059,9z M14.48,9 c0-1.695-1.211-3.148-2.785-3.512l-0.363,1.09C12.422,6.82,13.27,7.789,13.27,9c0,1.211-0.848,2.18-1.938,2.422l0.484,1.09 C13.27,12.148,14.48,10.695,14.48,9z M12.543,3.188l-0.484,1.09C14.238,4.883,15.691,6.82,15.691,9c0,2.18-1.453,4.117-3.512,4.601 l0.484,1.09c2.422-0.605,4.238-2.906,4.238-5.691C16.902,6.215,15.086,3.914,12.543,3.188z"/></svg>')
-        center/12px no-repeat;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 18 18"><path fill-opacity="context-fill-opacity" fill="context-fill" d="M3.52,5.367c-1.332,0-2.422,1.09-2.422,2.422v2.422c0,1.332,1.09,2.422,2.422,2.422h1.516l4.102,3.633 V1.735L5.035,5.367H3.52z M12.059,9c0-0.727-0.484-1.211-1.211-1.211v2.422C11.574,10.211,12.059,9.727,12.059,9z M14.48,9 c0-1.695-1.211-3.148-2.785-3.512l-0.363,1.09C12.422,6.82,13.27,7.789,13.27,9c0,1.211-0.848,2.18-1.938,2.422l0.484,1.09 C13.27,12.148,14.48,10.695,14.48,9z M12.543,3.188l-0.484,1.09C14.238,4.883,15.691,6.82,15.691,9c0,2.18-1.453,4.117-3.512,4.601 l0.484,1.09c2.422-0.605,4.238-2.906,4.238-5.691C16.902,6.215,15.086,3.914,12.543,3.188z"/></svg>')
+    center/12px no-repeat;
 }
 #vertical-tabs-pane[unpinned] .all-tabs-item[muted] .sound-overlay {
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 16 16"><path fill-opacity="context-fill-opacity" fill="context-fill" d="M3.52,5.367c-1.332,0-2.422,1.09-2.422,2.422v2.422c0,1.332,1.09,2.422,2.422,2.422h1.516l4.102,3.633V1.735L5.035,5.367H3.52z"/><path fill="context-fill" fill-rule="evenodd" d="M12.155,12.066l-1.138-1.138l4.872-4.872l1.138,1.138 L12.155,12.066z"/><path fill="context-fill" fill-rule="evenodd" d="M10.998,7.204l1.138-1.138l4.872,4.872l-1.138,1.138L10.998,7.204z"/></svg>')
-        center/12px no-repeat;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 18 18"><path fill-opacity="context-fill-opacity" fill="context-fill" d="M3.52,5.367c-1.332,0-2.422,1.09-2.422,2.422v2.422c0,1.332,1.09,2.422,2.422,2.422h1.516l4.102,3.633V1.735L5.035,5.367H3.52z"/><path fill="context-fill" fill-rule="evenodd" d="M12.155,12.066l-1.138-1.138l4.872-4.872l1.138,1.138 L12.155,12.066z"/><path fill="context-fill" fill-rule="evenodd" d="M10.998,7.204l1.138-1.138l4.872,4.872l-1.138,1.138L10.998,7.204z"/></svg>')
+    center/12px no-repeat;
 }
-#vertical-tabs-pane[unpinned] .all-tabs-item[activemedia-blocked] .sound-overlay {
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 12 12" fill-opacity="context-fill-opacity" fill="context-fill"><path d="M2.128.13A.968.968 0 0 0 .676.964v10.068a.968.968 0 0 0 1.452.838l8.712-5.034a.968.968 0 0 0 0-1.676L2.128.13z"/></svg>')
-        3px 3px/9px no-repeat;
+#vertical-tabs-pane[unpinned]
+  .all-tabs-item[activemedia-blocked]
+  .sound-overlay {
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 12 12" fill-opacity="context-fill-opacity" fill="context-fill"><path d="M2.128.13A.968.968 0 0 0 .676.964v10.068a.968.968 0 0 0 1.452.838l8.712-5.034a.968.968 0 0 0 0-1.676L2.128.13z"/></svg>')
+    3px 3px/9px no-repeat;
 }
 /* take a chunk out of the favicon so the overlay is more visible */
 #vertical-tabs-pane
-    .all-tabs-item:is([muted], [soundplaying], [activemedia-blocked])
-    .all-tabs-button
-    .toolbarbutton-icon {
-    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><circle cx="100%" cy="100%" r="9"/></svg>')
-            exclude 0/100% 100% no-repeat,
-        linear-gradient(#fff, #fff);
-    mask-position: 8px 8px;
-    transition-property: mask;
-    transition-timing-function: ease-in-out;
-    transition-duration: calc(var(--pane-transition-duration) / 2);
+  .all-tabs-item:is([muted], [soundplaying], [activemedia-blocked])
+  .all-tabs-button
+  .toolbarbutton-icon {
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><circle cx="100%" cy="100%" r="9"/></svg>')
+      exclude 0/100% 100% no-repeat,
+    linear-gradient(#fff, #fff);
+  mask-position: 8px 8px;
+  transition-property: mask;
+  transition-timing-function: ease-in-out;
+  transition-duration: calc(var(--pane-transition-duration) / 2);
 }
 #vertical-tabs-pane[unpinned]:not([expanded])
-    .all-tabs-item:is([muted], [soundplaying], [activemedia-blocked])
-    .all-tabs-button
-    .toolbarbutton-icon {
-    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><circle cx="100%" cy="100%" r="9"/></svg>')
-            exclude 0/100% 100% no-repeat,
-        linear-gradient(#fff, #fff);
+  .all-tabs-item:is([muted], [soundplaying], [activemedia-blocked])
+  .all-tabs-button
+  .toolbarbutton-icon {
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><circle cx="100%" cy="100%" r="9"/></svg>')
+      exclude 0/100% 100% no-repeat,
+    linear-gradient(#fff, #fff);
 }
 /* close button */
 #vertical-tabs-list .all-tabs-item .all-tabs-secondary-button[close-button] {
-    fill-opacity: 0;
-    transform: translateX(14px);
-    opacity: 0;
-    margin-inline-start: -27px;
-    transition: 0.25s cubic-bezier(0.07, 0.78, 0.21, 0.95) transform,
-        0.2s cubic-bezier(0.07, 0.74, 0.24, 0.95) margin, 0.075s linear opacity;
-    display: block;
-    -moz-context-properties: fill, fill-opacity, stroke;
-    fill: currentColor;
-    fill-opacity: 0;
-    border-radius: var(--tab-button-border-radius, 2px);
-    list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><rect fill='context-fill' fill-opacity='context-fill-opacity' width='20' height='20' rx='2' ry='2'/><path fill='context-fill' fill-opacity='context-stroke-opacity' d='M11.06 10l3.47-3.47a.75.75 0 00-1.06-1.06L10 8.94 6.53 5.47a.75.75 0 10-1.06 1.06L8.94 10l-3.47 3.47a.75.75 0 101.06 1.06L10 11.06l3.47 3.47a.75.75 0 001.06-1.06z'/></svg>");
+  fill-opacity: 0;
+  transform: translateX(14px);
+  opacity: 0;
+  margin-inline-start: -27px;
+  transition: 0.25s cubic-bezier(0.07, 0.78, 0.21, 0.95) transform,
+    0.2s cubic-bezier(0.07, 0.74, 0.24, 0.95) margin, 0.075s linear opacity;
+  display: block;
+  -moz-context-properties: fill, fill-opacity, stroke;
+  fill: currentColor;
+  fill-opacity: 0;
+  border-radius: var(--tab-button-border-radius, 2px);
+  list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><rect fill='context-fill' fill-opacity='context-fill-opacity' width='20' height='20' rx='2' ry='2'/><path fill='context-fill' fill-opacity='context-stroke-opacity' d='M11.06 10l3.47-3.47a.75.75 0 00-1.06-1.06L10 8.94 6.53 5.47a.75.75 0 10-1.06 1.06L8.94 10l-3.47 3.47a.75.75 0 101.06 1.06L10 11.06l3.47 3.47a.75.75 0 001.06-1.06z'/></svg>");
 }
 #vertical-tabs-list
-    .all-tabs-item:is(:hover, :focus-within)
-    .all-tabs-secondary-button[close-button] {
-    transform: none;
-    opacity: 0.7;
-    margin-inline-start: -2px;
+  .all-tabs-item:is(:hover, :focus-within)
+  .all-tabs-secondary-button[close-button] {
+  transform: none;
+  opacity: 0.7;
+  margin-inline-start: -2px;
+}
+#vertical-tabs-pane[unpinned]:not([expanded]) #vertical-tabs-list .all-tabs-item .all-tabs-secondary-button {
+	transform: translateX(27px);
+	margin-inline: revert;
+  opacity: 0;
 }
 /* drag/drop indicator */
 #vertical-tabs-list .all-tabs-item[dragpos] {
-    background-color: color-mix(
-        in srgb,
-        transparent 30%,
-        var(--arrowpanel-faint, color-mix(in srgb, var(--arrowpanel-dimmed) 60%, transparent))
-    );
+  background-color: color-mix(
+    in srgb,
+    transparent 30%,
+    var(
+      --arrowpanel-faint,
+      color-mix(in srgb, var(--arrowpanel-dimmed) 60%, transparent)
+    )
+  );
 }
 #vertical-tabs-list .all-tabs-item[dragpos]::before {
-    content: "";
-    position: absolute;
-    pointer-events: none;
-    height: 0;
-    z-index: 1000;
-    width: 100%;
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  height: 0;
+  z-index: 1000;
+  width: 100%;
 }
-#vertical-tabs-pane:not([no-expand][unpinned]) #vertical-tabs-list .all-tabs-item[dragpos]::before {
-    border-image: linear-gradient(
-        to right,
-        transparent,
-        var(--panel-item-active-bgcolor) 1%,
-        var(--panel-item-active-bgcolor) 25%,
-        transparent 90%
-    );
-    border-image-slice: 1;
+#vertical-tabs-pane:not([no-expand][unpinned])
+  #vertical-tabs-list
+  .all-tabs-item[dragpos]::before {
+  border-image: linear-gradient(
+    to right,
+    transparent,
+    var(--panel-item-active-bgcolor) 1%,
+    var(--panel-item-active-bgcolor) 25%,
+    transparent 90%
+  );
+  border-image-slice: 1;
 }
 #vertical-tabs-list .all-tabs-item[dragpos="before"]::before {
-    inset-block-start: 0;
-    border-top: 1px solid var(--panel-item-active-bgcolor);
+  inset-block-start: 0;
+  border-top: 1px solid var(--panel-item-active-bgcolor);
 }
 #vertical-tabs-list .all-tabs-item[dragpos="after"]::before {
-    inset-block-end: 0;
-    border-bottom: 1px solid var(--panel-item-active-bgcolor);
+  inset-block-end: 0;
+  border-bottom: 1px solid var(--panel-item-active-bgcolor);
 }
 #vertical-tabs-pane[unpinned]:not([expanded])
-    #vertical-tabs-list
-    .all-tabs-item
-    .all-tabs-secondary-button[toggle-mute] {
-    transform: none !important;
-    margin-inline: revert !important;
+  #vertical-tabs-list
+  .all-tabs-item
+  .all-tabs-secondary-button[toggle-mute] {
+  transform: none !important;
+  margin-inline: revert !important;
 }
 #vertical-tabs-pane[unpinned]:not([expanded]) .all-tabs-item {
-    min-width: 0 !important;
+  min-width: 0 !important;
 }
-#vertical-tabs-pane[unpinned]:not([expanded]) :is(.all-tabs-item, .subviewbutton) {
-    margin: 0 !important;
-    -moz-box-pack: start !important;
+#vertical-tabs-pane[unpinned]:not([expanded])
+  :is(.all-tabs-item, .subviewbutton) {
+  margin: 0 !important;
+  justify-items: start !important;
 }
 #vertical-tabs-pane[unpinned]:not([no-expand])
-    #vertical-tabs-buttons-row
-    > toolbarbutton:not(#vertical-tabs-new-tab-button),
-#vertical-tabs-pane[unpinned] :is(.all-tabs-item, .subviewbutton) .toolbarbutton-text {
-    transition-property: opacity;
-    transition-timing-function: ease-in-out;
-    transition-duration: var(--pane-transition-duration);
+  #vertical-tabs-buttons-row
+  > toolbarbutton:not(#vertical-tabs-new-tab-button),
+#vertical-tabs-pane[unpinned]
+  :is(.all-tabs-item, .subviewbutton)
+  .toolbarbutton-text {
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+  transition-duration: var(--pane-transition-duration);
 }
 #vertical-tabs-pane[unpinned]:not([expanded]) .all-tabs-secondary-button {
-    visibility: collapse;
+  visibility: collapse;
 }
 #vertical-tabs-pane[unpinned]:not([expanded], [no-expand])
-    #vertical-tabs-buttons-row
-    > toolbarbutton:not(#vertical-tabs-new-tab-button),
+  #vertical-tabs-buttons-row
+  > toolbarbutton:not(#vertical-tabs-new-tab-button),
 #vertical-tabs-pane[unpinned]:not([expanded])
-    :is(.all-tabs-item, .subviewbutton)
-    .toolbarbutton-text {
-    opacity: 0 !important;
+  :is(.all-tabs-item, .subviewbutton)
+  .toolbarbutton-text {
+  opacity: 0 !important;
 }
 #vertical-tabs-pane .subviewbutton-iconic > .toolbarbutton-icon {
-    -moz-context-properties: fill, fill-opacity;
-    fill: var(--toolbarbutton-icon-fill);
+  -moz-context-properties: fill, fill-opacity;
+  fill: var(--toolbarbutton-icon-fill);
 }
 #vertical-tabs-pane .subviewbutton.no-label .toolbarbutton-text {
-    display: none;
+  display: none;
 }
 /* pinned indicator */
-#vertical-tabs-pane .all-tabs-item[pinned] > .all-tabs-button.subviewbutton > .toolbarbutton-text {
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 16 16"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M14.707 13.293L11.414 10l2.293-2.293a1 1 0 0 0 0-1.414A4.384 4.384 0 0 0 10.586 5h-.172A2.415 2.415 0 0 1 8 2.586V2a1 1 0 0 0-1.707-.707l-5 5A1 1 0 0 0 2 8h.586A2.415 2.415 0 0 1 5 10.414v.169a4.036 4.036 0 0 0 1.337 3.166 1 1 0 0 0 1.37-.042L10 11.414l3.293 3.293a1 1 0 0 0 1.414-1.414zm-7.578-1.837A2.684 2.684 0 0 1 7 10.583v-.169a4.386 4.386 0 0 0-1.292-3.121 4.414 4.414 0 0 0-1.572-1.015l2.143-2.142a4.4 4.4 0 0 0 1.013 1.571A4.384 4.384 0 0 0 10.414 7h.172a2.4 2.4 0 0 1 .848.152z"/></svg>')
-        no-repeat 6px/11px;
-    padding-inline-start: 20px;
-    -moz-context-properties: fill, fill-opacity;
-    fill: currentColor;
+#vertical-tabs-pane
+  .all-tabs-item[pinned]
+  > .all-tabs-button.subviewbutton
+  > .toolbarbutton-text {
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M14.707 13.293L11.414 10l2.293-2.293a1 1 0 0 0 0-1.414A4.384 4.384 0 0 0 10.586 5h-.172A2.415 2.415 0 0 1 8 2.586V2a1 1 0 0 0-1.707-.707l-5 5A1 1 0 0 0 2 8h.586A2.415 2.415 0 0 1 5 10.414v.169a4.036 4.036 0 0 0 1.337 3.166 1 1 0 0 0 1.37-.042L10 11.414l3.293 3.293a1 1 0 0 0 1.414-1.414zm-7.578-1.837A2.684 2.684 0 0 1 7 10.583v-.169a4.386 4.386 0 0 0-1.292-3.121 4.414 4.414 0 0 0-1.572-1.015l2.143-2.142a4.4 4.4 0 0 0 1.013 1.571A4.384 4.384 0 0 0 10.414 7h.172a2.4 2.4 0 0 1 .848.152z"/></svg>')
+    no-repeat 6px/11px;
+  padding-inline-start: 20px;
+  -moz-context-properties: fill, fill-opacity;
+  fill: currentColor;
 }
 #vertical-tabs-pane toolbarseparator {
-    appearance: none;
-    min-height: 0;
-    border-top: 1px solid var(--panel-separator-color);
-    border-bottom: none;
-    margin: var(--panel-separator-margin);
-    margin-inline: 0;
-    padding: 0;
+  appearance: none;
+  min-height: 0;
+  border-top: 1px solid var(--panel-separator-color);
+  border-bottom: none;
+  margin: var(--panel-separator-margin);
+  margin-inline: 0 var(--vertical-tabs-padding);
+  padding: 0;
 }
 #vertical-tabs-pane[checked] toolbartabstop {
-    -moz-user-focus: normal;
+  -moz-user-focus: normal;
 }
 /* the main toolbar button */
 #vertical-tabs-button {
-    list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 16 16" fill="context-fill %230c0c0d"><path fill-opacity="context-fill-opacity" d="M2,7h3v6H2V7z"/><path d="M6,7v6H5V7H2V6h12v1H6z M13,1c1.657,0,3,1.343,3,3v8c0,1.657-1.343,3-3,3H3c-1.657,0-3-1.343-3-3V4c0-1.657,1.343-3,3-3H13z M3,3C2.448,3,2,3.448,2,4v8c0,0.6,0.4,1,1,1h10c0.6,0,1-0.4,1-1V4c0-0.6-0.4-1-1-1H3z"/></svg>');
-    fill-opacity: 0.4;
+  list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="context-fill %230c0c0d"><path fill-opacity="context-fill-opacity" d="M2,7h3v6H2V7z"/><path d="M6,7v6H5V7H2V6h12v1H6z M13,1c1.657,0,3,1.343,3,3v8c0,1.657-1.343,3-3,3H3c-1.657,0-3-1.343-3-3V4c0-1.657,1.343-3,3-3H13z M3,3C2.448,3,2,3.448,2,4v8c0,0.6,0.4,1,1,1h10c0.6,0,1-0.4,1-1V4c0-0.6-0.4-1-1-1H3z"/></svg>');
+  fill-opacity: 0.4;
 }
 /* buttons at the top of the pane */
 #vertical-tabs-button:not([positionstart="true"]) .toolbarbutton-icon {
-    transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 #vertical-tabs-button[checked],
 #vertical-tabs-close-button {
-    list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 16 16" fill="context-fill %230c0c0d"><path fill-opacity="context-fill-opacity" d="M2,3h12v3H2V3z"/><path d="M6,7v6H5V7H2V6h12v1H6z M13,1c1.657,0,3,1.343,3,3v8c0,1.657-1.343,3-3,3H3c-1.657,0-3-1.343-3-3V4c0-1.657,1.343-3,3-3H13z M3,3C2.448,3,2,3.448,2,4v8c0,0.6,0.4,1,1,1h10c0.6,0,1-0.4,1-1V4c0-0.6-0.4-1-1-1H3z"/></svg>');
-    fill-opacity: 0.4;
+  list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="context-fill %230c0c0d"><path fill-opacity="context-fill-opacity" d="M2,3h12v3H2V3z"/><path d="M6,7v6H5V7H2V6h12v1H6z M13,1c1.657,0,3,1.343,3,3v8c0,1.657-1.343,3-3,3H3c-1.657,0-3-1.343-3-3V4c0-1.657,1.343-3,3-3H13z M3,3C2.448,3,2,3.448,2,4v8c0,0.6,0.4,1,1,1h10c0.6,0,1-0.4,1-1V4c0-0.6-0.4-1-1-1H3z"/></svg>');
+  fill-opacity: 0.4;
 }
 #vertical-tabs-new-tab-button {
-    list-style-image: url("chrome://browser/skin/new-tab.svg");
+  list-style-image: url("chrome://browser/skin/new-tab.svg");
 }
 #vertical-tabs-pin-button {
-    list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 16 16"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M11.414 10l2.293-2.293a1 1 0 0 0 0-1.414 4.418 4.418 0 0 0-.8-.622L11.425 7.15h.008l-4.3 4.3v-.017l-1.48 1.476a3.865 3.865 0 0 0 .692.834 1 1 0 0 0 1.37-.042L10 11.414l3.293 3.293a1 1 0 0 0 1.414-1.414zm3.293-8.707a1 1 0 0 0-1.414 0L9.7 4.882A2.382 2.382 0 0 1 8 2.586V2a1 1 0 0 0-1.707-.707l-5 5A1 1 0 0 0 2 8h.586a2.382 2.382 0 0 1 2.3 1.7l-3.593 3.593a1 1 0 1 0 1.414 1.414l12-12a1 1 0 0 0 0-1.414zm-9 6a4.414 4.414 0 0 0-1.571-1.015l2.143-2.142a4.4 4.4 0 0 0 1.013 1.571 4.191 4.191 0 0 0 .9.684l-1.8 1.8a4.2 4.2 0 0 0-.684-.898z"/></svg>');
+  list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M11.414 10l2.293-2.293a1 1 0 0 0 0-1.414 4.418 4.418 0 0 0-.8-.622L11.425 7.15h.008l-4.3 4.3v-.017l-1.48 1.476a3.865 3.865 0 0 0 .692.834 1 1 0 0 0 1.37-.042L10 11.414l3.293 3.293a1 1 0 0 0 1.414-1.414zm3.293-8.707a1 1 0 0 0-1.414 0L9.7 4.882A2.382 2.382 0 0 1 8 2.586V2a1 1 0 0 0-1.707-.707l-5 5A1 1 0 0 0 2 8h.586a2.382 2.382 0 0 1 2.3 1.7l-3.593 3.593a1 1 0 1 0 1.414 1.414l12-12a1 1 0 0 0 0-1.414zm-9 6a4.414 4.414 0 0 0-1.571-1.015l2.143-2.142a4.4 4.4 0 0 0 1.013 1.571 4.191 4.191 0 0 0 .9.684l-1.8 1.8a4.2 4.2 0 0 0-.684-.898z"/></svg>');
 }
 #vertical-tabs-pane[unpinned] #vertical-tabs-pin-button {
-    list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 16 16"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M14.707 13.293L11.414 10l2.293-2.293a1 1 0 0 0 0-1.414A4.384 4.384 0 0 0 10.586 5h-.172A2.415 2.415 0 0 1 8 2.586V2a1 1 0 0 0-1.707-.707l-5 5A1 1 0 0 0 2 8h.586A2.415 2.415 0 0 1 5 10.414v.169a4.036 4.036 0 0 0 1.337 3.166 1 1 0 0 0 1.37-.042L10 11.414l3.293 3.293a1 1 0 0 0 1.414-1.414zm-7.578-1.837A2.684 2.684 0 0 1 7 10.583v-.169a4.386 4.386 0 0 0-1.292-3.121 4.414 4.414 0 0 0-1.572-1.015l2.143-2.142a4.4 4.4 0 0 0 1.013 1.571A4.384 4.384 0 0 0 10.414 7h.172a2.4 2.4 0 0 1 .848.152z"/></svg>');
+  list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M14.707 13.293L11.414 10l2.293-2.293a1 1 0 0 0 0-1.414A4.384 4.384 0 0 0 10.586 5h-.172A2.415 2.415 0 0 1 8 2.586V2a1 1 0 0 0-1.707-.707l-5 5A1 1 0 0 0 2 8h.586A2.415 2.415 0 0 1 5 10.414v.169a4.036 4.036 0 0 0 1.337 3.166 1 1 0 0 0 1.37-.042L10 11.414l3.293 3.293a1 1 0 0 0 1.414-1.414zm-7.578-1.837A2.684 2.684 0 0 1 7 10.583v-.169a4.386 4.386 0 0 0-1.292-3.121 4.414 4.414 0 0 0-1.572-1.015l2.143-2.142a4.4 4.4 0 0 0 1.013 1.571A4.384 4.384 0 0 0 10.414 7h.172a2.4 2.4 0 0 1 .848.152z"/></svg>');
 }
 #vertical-tabs-tooltip > .places-tooltip-box > hbox {
-    -moz-box-align: center;
+  align-items: center;
 }
 #vertical-tabs-tooltip #places-tooltip-insecure-icon {
-    min-width: 1em;
-    min-height: 1em;
+  min-width: 1em;
+  min-height: 1em;
 }
 #vertical-tabs-tooltip #places-tooltip-insecure-icon[hidden] {
-    display: none;
+  display: none;
 }
-@supports -moz-bool-pref("userChrome.tabs.tooltip.always-show-lock-icon") {
-    #vertical-tabs-tooltip #places-tooltip-insecure-icon {
-        display: inline-block !important;
-    }
+@media (-moz-bool-pref: "userChrome.tabs.tooltip.always-show-lock-icon") {
+  #vertical-tabs-tooltip #places-tooltip-insecure-icon {
+    display: inline-block !important;
+  }
 }
 #vertical-tabs-tooltip #places-tooltip-insecure-icon[pending] {
-    display: none !important;
+  display: none !important;
 }
 #vertical-tabs-tooltip #places-tooltip-insecure-icon[type="secure"] {
-    list-style-image: url("chrome://global/skin/icons/security.svg");
+  list-style-image: url("chrome://global/skin/icons/security.svg");
 }
 #vertical-tabs-tooltip #places-tooltip-insecure-icon[type="insecure"] {
-    list-style-image: url("chrome://global/skin/icons/security-broken.svg");
+  list-style-image: url("chrome://global/skin/icons/security-broken.svg");
 }
 #vertical-tabs-tooltip #places-tooltip-insecure-icon[type="mixed-passive"] {
-    list-style-image: url("chrome://global/skin/icons/security-warning.svg");
+  list-style-image: url("chrome://global/skin/icons/security-warning.svg");
 }
 #vertical-tabs-tooltip #places-tooltip-insecure-icon[type="about-page"] {
-    list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M15.424 5.366A4.384 4.384 0 0 0 13.817 3.4a7.893 7.893 0 0 1 .811 2.353v.017c-.9-2.185-2.441-3.066-3.7-4.984l-.189-.3c-.035-.059-.063-.112-.088-.161a1.341 1.341 0 0 1-.119-.306.022.022 0 0 0-.013-.019.026.026 0 0 0-.019 0h-.006a5.629 5.629 0 0 0-2.755 4.308c.094-.006.187-.014.282-.014a4.069 4.069 0 0 1 3.51 1.983A2.838 2.838 0 0 0 9.6 5.824a3.2 3.2 0 0 1-1.885 6.013 3.651 3.651 0 0 1-1.042-.2c-.078-.028-.157-.059-.235-.093-.046-.02-.091-.04-.135-.062A3.282 3.282 0 0 1 4.415 8.95s.369-1.334 2.647-1.334a1.91 1.91 0 0 0 .964-.857 12.756 12.756 0 0 1-1.941-1.118c-.29-.277-.428-.411-.551-.511-.066-.054-.128-.1-.207-.152a3.481 3.481 0 0 1-.022-1.894 5.915 5.915 0 0 0-1.929 1.442A4.108 4.108 0 0 1 3.1 2.584a1.561 1.561 0 0 0-.267.138 5.767 5.767 0 0 0-.783.649 6.9 6.9 0 0 0-.748.868 6.446 6.446 0 0 0-1.08 2.348c0 .009-.076.325-.131.715l-.025.182c-.019.117-.033.245-.048.444v.023c-.005.076-.011.16-.016.258v.04A7.884 7.884 0 0 0 8.011 16a7.941 7.941 0 0 0 7.9-6.44l.036-.3a7.724 7.724 0 0 0-.523-3.894z" /></svg>');
+  list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="context-fill" fill-opacity="context-fill-opacity" d="M15.424 5.366A4.384 4.384 0 0 0 13.817 3.4a7.893 7.893 0 0 1 .811 2.353v.017c-.9-2.185-2.441-3.066-3.7-4.984l-.189-.3c-.035-.059-.063-.112-.088-.161a1.341 1.341 0 0 1-.119-.306.022.022 0 0 0-.013-.019.026.026 0 0 0-.019 0h-.006a5.629 5.629 0 0 0-2.755 4.308c.094-.006.187-.014.282-.014a4.069 4.069 0 0 1 3.51 1.983A2.838 2.838 0 0 0 9.6 5.824a3.2 3.2 0 0 1-1.885 6.013 3.651 3.651 0 0 1-1.042-.2c-.078-.028-.157-.059-.235-.093-.046-.02-.091-.04-.135-.062A3.282 3.282 0 0 1 4.415 8.95s.369-1.334 2.647-1.334a1.91 1.91 0 0 0 .964-.857 12.756 12.756 0 0 1-1.941-1.118c-.29-.277-.428-.411-.551-.511-.066-.054-.128-.1-.207-.152a3.481 3.481 0 0 1-.022-1.894 5.915 5.915 0 0 0-1.929 1.442A4.108 4.108 0 0 1 3.1 2.584a1.561 1.561 0 0 0-.267.138 5.767 5.767 0 0 0-.783.649 6.9 6.9 0 0 0-.748.868 6.446 6.446 0 0 0-1.08 2.348c0 .009-.076.325-.131.715l-.025.182c-.019.117-.033.245-.048.444v.023c-.005.076-.011.16-.016.258v.04A7.884 7.884 0 0 0 8.011 16a7.941 7.941 0 0 0 7.9-6.44l.036-.3a7.724 7.724 0 0 0-.523-3.894z" /></svg>');
 }
 #vertical-tabs-tooltip #places-tooltip-insecure-icon[type="local-page"] {
-    list-style-image: url("chrome://browser/skin/notification-icons/persistent-storage.svg");
+  list-style-image: url("chrome://browser/skin/notification-icons/persistent-storage.svg");
 }
 #vertical-tabs-tooltip #places-tooltip-insecure-icon[type="extension-page"] {
-    list-style-image: url("chrome://mozapps/skin/extensions/extension.svg");
+  list-style-image: url("chrome://mozapps/skin/extensions/extension.svg");
 }
 #vertical-tabs-tooltip #places-tooltip-insecure-icon[type="home-page"] {
-    display: none;
+  display: none;
 }
 #vertical-tabs-tooltip #places-tooltip-insecure-icon[type="error-page"] {
-    list-style-image: url("chrome://global/skin/icons/warning.svg");
+  list-style-image: url("chrome://global/skin/icons/warning.svg");
 }
 #places-tooltip-insecure-icon {
-    -moz-context-properties: fill;
-    fill: currentColor;
-    width: 1em;
-    height: 1em;
-    margin-inline-start: 0;
-    margin-inline-end: .2em;
-    min-width: 1em !important;
+  -moz-context-properties: fill;
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0.2em;
+  min-width: 1em !important;
 }
 #places-tooltip-insecure-icon[hidden] {
-    display: none;
+  display: none;
 }`;
       let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(
         Ci.nsIStyleSheetService,
       );
       let uri = makeURI(
-        "data:text/css;charset=UTF=8," + encodeURIComponent(css),
+        `data:text/css;charset=UTF=8,${encodeURIComponent(css)}`,
       );
       if (sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) return; // avoid loading duplicate sheets on subsequent window launches.
       sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
@@ -2421,22 +2489,22 @@
     uninit() {
       let enumerator = Services.wm.getEnumerator("navigator:browser");
       if (!enumerator.hasMoreElements()) {
-        let xulStore = Services.xulStore;
-        if (this.pane.hasAttribute("checked"))
+        let { xulStore } = Services;
+        if (this.pane.hasAttribute("checked")) {
           xulStore.persist(this.pane, "checked");
-        else
+        } else {
           xulStore.removeValue(
             document.documentURI,
             "vertical-tabs-pane",
             "checked",
           );
-        xulStore.persist(this.pane, "width");
+        }
         prefSvc.setBoolPref(closedPref, this.pane.hidden || false);
         prefSvc.setBoolPref(
           unpinnedPref,
           this.pane.getAttribute("unpinned") || false,
         );
-        prefSvc.setIntPref(widthPref, this.pane.width || 350);
+        prefSvc.setIntPref(widthPref, this._width || 350);
       }
     }
   }
@@ -2449,12 +2517,14 @@
     // set the sidebar position since we modified this function. change the
     // onUnload function (invoked when window is closed) so that it calls our
     // uninit function too.
-    // SidebarUI.setPosition();
+    window.SidebarController.setPosition();
     eval(
-      `gBrowserInit.onUnload = function ` +
-        gBrowserInit.onUnload
-          .toSource()
-          .replace(/(SidebarUI\.uninit\(\))/, `$1; verticalTabsPane.uninit()`),
+      `gBrowserInit.onUnload = function ${gBrowserInit.onUnload
+        .toSource()
+        .replace(
+          /(SidebarController\.uninit\(\))/,
+          `$1; verticalTabsPane.uninit()`,
+        )}`,
     );
     // reset the event handler since it used the bind method, which creates an
     // anonymous version of the function that we can't change. just re-bind our
@@ -2462,35 +2532,37 @@
     window.onunload = gBrowserInit.onUnload.bind(gBrowserInit);
     // looks unread but this is required for the following functions
     let gNextWindowID = 0;
+    const TOGGLE_HAS_USED_PREF =
+      "media.videocontrols.picture-in-picture.video-toggle.has-used";
     // make the PictureInPicture methods dispatch an event to the tab container
     // informing us that a tab's "pictureinpicture" attribute has changed. this
     // is how we capture all changes to the sound icon in real-time. obviously
     // this behavior isn't built-in.
     let handleRequestSrc =
       PictureInPicture.handlePictureInPictureRequest.toSource();
-    if (!handleRequestSrc.includes("_tabAttrModified"))
+    if (!handleRequestSrc.includes("_tabAttrModified")) {
       eval(
-        `PictureInPicture.handlePictureInPictureRequest = async function ` +
-          handleRequestSrc
-            .replace(/async handlePictureInPictureRequest/, "")
-            .replace(/\sServices\.telemetry.*\s*.*\s*.*\s*.*/, "")
-            .replace(/gCurrentPlayerCount.*/g, "")
-            .replace(
-              /(tab\.setAttribute\(\"pictureinpicture\".*)/,
-              `$1 parentWin.gBrowser._tabAttrModified(tab, ["pictureinpicture"]);`,
-            ),
+        `PictureInPicture.handlePictureInPictureRequest = async function ${handleRequestSrc
+          .replace(/async handlePictureInPictureRequest/, "")
+          .replace(/\sServices\.telemetry.*\s*.*\s*.*\s*.*/, "")
+          .replace(/gCurrentPlayerCount.*/g, "")
+          .replace(
+            /(tab\.setAttribute\(\"pictureinpicture\".*)/,
+            `$1 parentWin.gBrowser._tabAttrModified(tab, ["pictureinpicture"]);`,
+          )}`,
       );
+    }
     let clearIconSrc = PictureInPicture.clearPipTabIcon.toSource();
-    if (!clearIconSrc.includes("_tabAttrModified"))
+    if (!clearIconSrc.includes("_tabAttrModified")) {
       eval(
-        `PictureInPicture.clearPipTabIcon = function ` +
-          clearIconSrc
-            .replace(/WINDOW\_TYPE/, `"Toolkit:PictureInPicture"`)
-            .replace(
-              /(tab\.removeAttribute\(\"pictureinpicture\".*)/,
-              `$1 gBrowser._tabAttrModified(tab, ["pictureinpicture"]);`,
-            ),
+        `PictureInPicture.clearPipTabIcon = function ${clearIconSrc
+          .replace(/WINDOW\_TYPE/, `"Toolkit:PictureInPicture"`)
+          .replace(
+            /(tab\.removeAttribute\(\"pictureinpicture\".*)/,
+            `$1 gBrowser._tabAttrModified(tab, ["pictureinpicture"]);`,
+          )}`,
       );
+    }
   }
 
   // create the main button that goes in the tabs toolbar and opens the pane.
@@ -2498,8 +2570,9 @@
     // if you create a widget in the first window, it will automatically be
     // created in subsequent videos. so we stop the script from re-registering
     // it on every subsequent window load.
-    if (CustomizableUI.getPlacementOfWidget("vertical-tabs-button", true))
+    if (CustomizableUI.getPlacementOfWidget("vertical-tabs-button", true)) {
       return;
+    }
     CustomizableUI.createWidget({
       id: "vertical-tabs-button",
       type: "button",
@@ -2534,14 +2607,16 @@
           }),
         );
         if ("key_toggleVerticalTabs" in window) {
-          node.tooltipText += ` (${ShortcutUtils.prettifyShortcut(window.key_toggleVerticalTabs)})`;
+          node.tooltipText += ` (${ShortcutUtils.prettifyShortcut(
+            window.key_toggleVerticalTabs,
+          )})`;
         }
       },
     });
   }
 
   // make the hotkey (Ctrl+Alt+V by default)
-  if (config.hotkey.enabled && _ucUtils?.registerHotkey)
+  if (config.hotkey.enabled && _ucUtils?.registerHotkey) {
     _ucUtils.registerHotkey(
       {
         id: "key_toggleVerticalTabs",
@@ -2551,6 +2626,7 @@
       (win, key) =>
         Services.obs.notifyObservers(win, "vertical-tabs-pane-toggle"),
     );
+  }
 
   // make the main elements
   document.getElementById("sidebar-splitter").after(
@@ -2573,20 +2649,20 @@
 
   // tab pane's horizontal alignment should mirror that of the sidebar, which
   // can be moved from left to right.
-  SidebarUI.setPosition = function () {
-    let appcontent = document.getElementById("appcontent");
+  window.SidebarController.setPosition = function () {
+    let tabbox = document.getElementById("tabbrowser-tabbox");
     let verticalSplitter = document.getElementById("vertical-tabs-splitter");
     let verticalPane = document.getElementById("vertical-tabs-pane");
-    this._box.style.MozBoxOrdinalGroup = 1;
-    this._splitter.style.MozBoxOrdinalGroup = 2;
-    appcontent.style.MozBoxOrdinalGroup = 3;
-    verticalSplitter.style.MozBoxOrdinalGroup = 4;
-    verticalPane.style.MozBoxOrdinalGroup = 5;
+    this._box.style.order = 1;
+    this._splitter.style.order = 2;
+    tabbox.style.order = 3;
+    verticalSplitter.style.order = 4;
+    verticalPane.style.order = 5;
     if (!this._positionStart) {
-      this._box.style.MozBoxOrdinalGroup = 5;
-      this._splitter.style.MozBoxOrdinalGroup = 4;
-      verticalSplitter.style.MozBoxOrdinalGroup = 2;
-      verticalPane.style.MozBoxOrdinalGroup = 1;
+      this._box.style.order = 5;
+      this._splitter.style.order = 4;
+      verticalSplitter.style.order = 2;
+      verticalPane.style.order = 1;
       this._box.setAttribute("positionend", true);
       verticalPane.setAttribute("positionstart", true);
     } else {
@@ -2594,13 +2670,14 @@
       verticalPane.removeAttribute("positionstart");
     }
     this.hideSwitcherPanel();
-    let content = SidebarUI.browser.contentWindow;
+    let content = window.SidebarController.browser.contentWindow;
     if (content && content.updatePosition) content.updatePosition();
   };
 
   // wait for delayed startup for some parts of the script to execute.
-  if (gBrowserInit.delayedStartupFinished) init();
-  else {
+  if (gBrowserInit.delayedStartupFinished) {
+    init();
+  } else {
     let delayedListener = (subject, topic) => {
       if (topic == "browser-delayed-startup-finished" && subject == window) {
         Services.obs.removeObserver(delayedListener, topic);

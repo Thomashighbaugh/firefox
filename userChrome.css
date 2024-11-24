@@ -4,23 +4,6 @@
   display: none !important;
 }
 
-@import url(theme/all-global-positioning.css);
-@import url(theme/all-color-schemes.css);
-@import url(theme/all-global-theme-fullmoon.css);
-
-@import url(theme/function-sidebar-autohide.css);
-@import url(theme/function-sidebar-width.css) @import
-  url(theme/function-sidebery-autohide.css);
-@import url(theme/function-privatemode.css); /* sourced from MOG */
-@import url(theme/function-urlbar.css);
-@import url(theme/function-extensions-menu.css);
-/*@import url(theme/function-safeguard.css);*/
-@import url(theme/position-tabs.css) @import url(theme/theme-xstyle.css);
-@import url(theme/theme-context-menu.css);
-@import url(theme/theme-statuspanel.css);
-@import url(theme/theme-findbar.css);
-@import url(theme/theme-PIP.css);
-@import url(theme/theme-tab-audio-indicator.css);
 
 #TabsToolbar {
   visibility: collapse;
@@ -32,11 +15,11 @@
   background-color: #222428; /* Dark background */
 }
 .titlebar-button {
-  background-color: #eee; /* Light background */
-  color: #222428; /* Dark text */
+  background-color: #222428; /* Light background */
+  color: #f4f4f7; /* Dark text */
   margin: 5px !important;
-  border: 1px solid #222428; /* Dark border */
-  box-shadow: 1px 1px 0px #222428; /* Dark shadow */
+  border: 1px solid #f4f4f7; /* Dark border */
+  box-shadow: 1px 1px 0px #f4f4f7; /* Dark shadow */
   width: 20px !important;
   height: 20px !important;
   font-size: 10px !important;
@@ -52,7 +35,7 @@
 
 .titlebar-button image {
   height: 8px !important;
-  color: #222428; /* Dark color */
+  color: #f4f4f7; /* Dark color */
 }
 
 .titlebar-min image,
@@ -79,14 +62,14 @@
 }
 
 tab .tab-background {
-  background-color: #eee; /* Light background */
-  border: 1px solid #222428; /* Dark border */
-  box-shadow: 1px 1px 0px #222428; /* Dark shadow */
+  background-color: #222428; /* Light background */
+  border: 1px solid #f4f4f7; /* Dark border */
+  box-shadow: 1px 1px 0px #323232; /* Dark shadow */
   border-radius: 5px !important;
 }
 
 tab[selected="true"] .tab-background {
-  background: #e8e8ea !important;
+  background: #2c2c2c !important;
 }
 
 tab {
@@ -104,9 +87,9 @@ tab:first-child {
 
 #tabs-newtab-button .toolbarbutton-icon,
 #new-tab-button image {
-  background-color: #eee; /* Light background */
-  border: 1px solid #222428; /* Dark border */
-  box-shadow: 1px 1px 0px #222428; /* Dark shadow */
+  background-color: #222428; /* Light background */
+  border: 1px solid #f4f4f7; /* Dark border */
+  box-shadow: 1px 1px 0px #f4f4f7; /* Dark shadow */
   border-radius: 5px !important;
   margin-top: 5px !important;
   filter: invert(1); /* Invert the SVGs for better contrast */
@@ -124,9 +107,9 @@ tab:first-child {
 #downloads-button image,
 #unified-extensions-button image,
 #PanelUI-button image {
-  background-color: #eee; /* Light background */
-  border: 1px solid #222428; /* Dark border */
-  box-shadow: 1px 1px 0px #222428; /* Dark shadow */
+  background-color: #222428; /* Light background */
+  border: 1px solid #f4f4f7; /* Dark border */
+  box-shadow: 1px 1px 0px #f4f4f7; /* Dark shadow */
   border-radius: 5px !important;
   cursor: pointer !important;
   padding: 3px !important;
@@ -149,19 +132,20 @@ tab:first-child {
   height: 100% !important;
 }
 #urlbar-container #urlbar {
-  background-color: #eee; /* Light background */
-  border: 1px solid #222428; /* Dark border */
+  background-color: #222428; /* Light background */
+  border: 1px solid #f4f4f7; /* Dark border */
   border-radius: 5px !important;
-  box-shadow: 1px 1px 0px #222428; /* Dark shadow */
+  box-shadow: 1px 1px 0px #f4f4f7; /* Dark shadow */
+  color: #f4f4f7; /* Light text */
 }
 
-#urlbar-container #urlbar #urlbar-background {
-  background-color: #eee; /* Light background */
+#urlbar-container #urlbar 8; /* Dark border */#urlbar-background {
+  background-color: #222428; /* Light background */
 }
 
 #PersonalToolbar,
 #nav-bar {
-  background-color: #eee; /*Light background*/
+  background-color: #222428; /*Light background*/
 }
 
 #nav-bar {
@@ -173,10 +157,10 @@ tab:first-child {
 }
 
 .bookmark-item {
-  background-color: #eee; /* Light background */
+  background-color: #222428; /* Light background */
   padding: 3px;
-  border: 1px solid #222428; /* Dark border */
-  box-shadow: 1px 1px 0px #222428; /* Dark shadow */
+  border: 1px solid #f4f4f7; /* Dark border */
+  box-shadow: 1px 1px 0px #f4f4f7f4f4f7; /* Dark shadow */
   border-radius: 3px;
   margin-right: 14px !important;
   margin-bottom: 5px !important;
@@ -200,5 +184,5 @@ tab:first-child {
 
 body {
   background-color: #222428; /* Dark background */
-  color: #eee; /* Light text */
+  color: #f4f4f7; /* Light text */
 }

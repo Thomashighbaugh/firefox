@@ -1,30 +1,78 @@
-/*
-https://github.com/soulhotel/FF-ULTIMA
+/*================ GLOBAL COLORS ================*/
+:root {
+	--accent-color: 55, 73, 115; /* Swapped with --dark-color */
+	--secondary-accent-color: 188, 199, 219; /* A lighter shade chosen to complement the new accent */
+	--light-color: 55, 73, 115; /* Swapped with --dark-color */
+	--dark-color: 255, 255, 255; /* Swapped with --light-color */
+}
 
-content/sites-newtab.css ~ NEW TABS
+/*================ LIGHT THEME ================*/
+:root {
+	--main-bgcolor: var(--dark-color); /* Now a light background */
+	--transparent-bgcolor: var(--dark-color); /* Now a light background */
+}
 
+/*================ DARK THEME ================*/
+:root:-moz-lwtheme-brighttext {
+	--main-bgcolor: var(--light-color); /* Now a dark background */
+	--transparent-bgcolor: var(--light-color); /* Now a dark background */
+}
 
-content/site-scrollbars-and-pip.css ~ themes the scrollbar inside of your browser tab content
+/*================== NEW TAB BG COLOR ==================*/
+@media (prefers-color-scheme: dark) {
+@-moz-document url("about:newtab"), url("about:home"), url("about:blank") {
+ body { background-color: rgba(var(--light-color), 1) !important;}
+}
+}
 
-To remove a certain feature, simple delete its line below, open website in new tab, no restart needed.
-*/
+@media (prefers-color-scheme: light) {
+@-moz-document url("about:newtab"), url("about:home"), url("about:blank") {
+ body { background-color: rgba(var(--dark-color), 1) !important;}
+}
+}
 
-/* @import url(theme/content/site-scrollbars-and-pip.css); */
-/**/
-/* @import url(theme/content/site-newtab.css); */
-/**/
-/* @import url(theme/content/site-reddit.css); */
-/**/
-/* @import url(theme/content/site-yt.css); */
+/*================== SEARCH BAR ==================*/
+.search-wrapper input {
+	transition: all 0.3s ease !important;
+    background: rgba(var(--accent-color), 0.1) var(--newtab-search-icon) 12px center no-repeat !important;
+	background-size: 20px !important;
+	border: 2px solid !important;
+	border-color: rgba(var(--accent-color), 0.2) !important;
+	box-shadow: none !important;
+}
+.search-wrapper .search-inner-wrapper:hover input,
+.search-wrapper .search-inner-wrapper:active input,
+.search-wrapper input:focus {
+	border-color: rgba(var(--accent-color), 0.4) !important;
+}
 
-/* @import url(theme/z-about-addons.css); */
-/**/
-@import url(theme/website-styles.css);
+.search-wrapper .search-button,
+.search-wrapper .search-button {
+	transition: all 0.3s ease !important;
+}
+.search-wrapper .search-button:focus,
+.search-wrapper .search-button:hover {
+    background-color: rgba(var(--accent-color), 0.2) !important;
+}
 
-@import url(theme/website-newtab.css);
+/*================== SEARCH BAR RESULTS ==================*/
+.contentSearchSuggestionTable .contentSearchSuggestionsContainer,
+.contentSearchSuggestionTable .contentSearchHeader {
+    background-color: rgba(var(--accent-color), 0.1) !important;
+}
+.contentSearchSuggestionTable .contentSearchSuggestionRow.selected,
+.contentSearchSuggestionTable .contentSearchOneOffItem.selected {
+	background-color: rgba(var(--accent-color), 0.1) !important;
+}
 
-@import url(theme/website-reddit.css);
+.contentSearchSuggestionTable .contentSearchHeader,
+.contentSearchSuggestionTable .contentSearchSettingsButton,
+.contentSearchSuggestionTable .contentSearchOneOffsTable {
+	border-color: rgba(var(--accent-color), 0.2) !important;
+}
 
-@import url(theme/website-yt.css);
-
-@import url(theme/website-private.css);
+.contentSearchSuggestionTable {
+	box-shadow: none !important;
+	border: 2px solid rgba(var(--accent-color), 0.4) !important;
+	border-radius: 3px !important;
+}

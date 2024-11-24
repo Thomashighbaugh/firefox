@@ -11,21 +11,21 @@ rgb(40, 40, 45);       gruvbox dark
 rgb(5, 5, 5);          midnight dark
 */
 
-@media (prefers-color-scheme: dark) {
-  #root.root {
+@media (prefers-color-scheme: dark) { #root.root {
+
     /* dark mode background here */
     --frame-bg: rgba(35, 35, 42);
     --toolbar-bg: rgba(35, 35, 42);
-  }
-}
 
-@media (prefers-color-scheme: light) {
-  #root.root {
+}}
+
+@media (prefers-color-scheme: light) { #root.root {
+
     /* light mode background here */
     --frame-bg: rgb(216, 217, 248);
     --toolbar-bg: rgb(216, 217, 248);
-  }
-}
+
+}}
 
 /* Header Panel ------------------------------------------------*/
 

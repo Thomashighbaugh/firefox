@@ -2,25 +2,27 @@
 - status panel theming
  ------------------------------------------------------------- */
 
-#statuspanel-label {
-  border-radius: 7px !important;
-}
+#statuspanel-label {border-radius: 7px !important;}
 
 #statuspanel {
-  max-width: calc(100% - 5px);
-  position: absolute;
-  bottom: 1vh !important;
-  left: 1vw !important;
-  border-radius: 7px !important;
-  padding-top: 2em;
-  pointer-events: none;
+&:not([hidden]) {
+    max-width: calc(100% - 5px);
+    position: absolute;
+    bottom: 1vh !important;
+    left: 1vw !important;
+    border-radius: 7px !important;
+    padding-top: 2em;
+    pointer-events: none;  
+}
 }
 
 #main-window:not([lwtheme="true"]) #statuspanel-label {
   @media (not (prefers-contrast)) and (not (-moz-platform: linux)) {
     & {
       background-color: var(--uc-background-layered) !important;
-      border-color: rgba(15, 15, 15, 0.5);
+      border-color: rgba(15,15,15,0.5);
     }
   }
 }
+
+

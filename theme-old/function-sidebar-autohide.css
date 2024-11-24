@@ -153,17 +153,17 @@ possible spacing issues when the two are present at the same time. (temporarily 
 } /* -moz-bool-pref"ultima.tabs.vertical.hide" & "ultima.tabs.sidebar.autohide" */
 
 /* @media (-moz-bool-pref: "ultima.sidebar.autohide") { */
-/*   /* remove header */ 
-/*   /* note: youll lose the ability to switch sidebar from left to right */ 
-/*   /* #sidebar-header { display: none !important; } */ 
+/*   /* remove header */
+/*   /* note: youll lose the ability to switch sidebar from left to right */
+/*   /* #sidebar-header { display: none !important; } */
 /**/
-/*   /* remove splitter (responsible for adjusting sidebar width) */ 
+/*   /* remove splitter (responsible for adjusting sidebar width) */
 /**/
 /*   #sidebar-splitter { */
 /*     display: none !important; */
 /*   } */
 /**/
-/*   /* use variables. one for collapsed width, one for hover width */ 
+/*   /* use variables. one for collapsed width, one for hover width */
 /**/
 /*   #sidebar-box { */
 /*     --uc-sidebar-width: 38px; /* width when not in view */
@@ -191,7 +191,7 @@ possible spacing issues when the two are present at the same time. (temporarily 
 /*     direction: rtl; */
 /*   } */
 /**/
-/*   /* on full screen collapse to 1 NOT 0 */ 
+/*   /* on full screen collapse to 1 NOT 0 */
 /**/
 /*   #main-window[sizemode="fullscreen"] #sidebar-box { */
 /*     --uc-sidebar-width: 1px; */
@@ -201,7 +201,7 @@ possible spacing issues when the two are present at the same time. (temporarily 
 /*     margin-inline: 0px !important; */
 /*   } */
 /**/
-/*   /* header adjustments */ 
+/*   /* header adjustments */
 /**/
 /*   #sidebar-header { */
 /*     overflow: hidden; */
@@ -215,7 +215,7 @@ possible spacing issues when the two are present at the same time. (temporarily 
 /*     padding-left: 1px; */
 /*   } */
 /**/
-/*   /* final adjustments pre styling */ 
+/*   /* final adjustments pre styling */
 /**/
 /*   #sidebar, */
 /*   #sidebar-header { */
@@ -237,7 +237,7 @@ possible spacing issues when the two are present at the same time. (temporarily 
 /*     border-left-style: solid !important; */
 /*   } */
 /**/
-/*   /* hide/show/animation */ 
+/*   /* hide/show/animation */
 /**/
 /*   #sidebar, */
 /*   #sidebar-header { */
@@ -257,7 +257,7 @@ possible spacing issues when the two are present at the same time. (temporarily 
 /*     min-width: var(--uc-sidebar-hover-width) !important; */
 /*   } */
 /**/
-/*   /*------------------------------------------------------------------------------*/ 
+/*   /*------------------------------------------------------------------------------*/
 /**/
 /*   /* light styling. mostly centering and positioning. */
 /**/
@@ -272,7 +272,7 @@ possible spacing issues when the two are present at the same time. (temporarily 
 /*     margin-right: 7px !important; */
 /*   } */
 /**/
-/*   /* color correction dark mode */ 
+/*   /* color correction dark mode */
 /**/
 /*   @media (prefers-color-scheme: dark) { */
 /*     #sidebar-header, */

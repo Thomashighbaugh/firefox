@@ -21,150 +21,222 @@ Vertical Tabs settings ***
 Autohide
 */
 
-
 /* Global variables for quick modifications ------------------------------------------*/
 
-:root, body, * {
-    --chrome-content-separator-color: transparent;
-    --uc-collapsed-tabs-width: 41px;
-    --uc-navbar-height: 40px;
-    --uc-bookbar-height: 22px;
+:root,
+body,
+* {
+  --chrome-content-separator-color: transparent;
+  --uc-collapsed-tabs-width: 41px;
+  --uc-navbar-height: 40px;
+  --uc-bookbar-height: 22px;
 
-    /*rounded corners*/
-    --uc-all-border-radius: 10px;
-    --uc-content-border-radius: var(--uc-all-border-radius);
-    --uc-tab-border-radius: var(--uc-all-border-radius);
-    /*--uc-sidebar-border-radius: var(--uc-all-border-radius);*/
-    --uc-sidebar-border-radius: 0;
-    --uc-button-border: 4px;
+  /*rounded corners*/
+  --uc-all-border-radius: 10px;
+  --uc-content-border-radius: var(--uc-all-border-radius);
+  --uc-tab-border-radius: var(--uc-all-border-radius);
+  /*--uc-sidebar-border-radius: var(--uc-all-border-radius);*/
+  --uc-sidebar-border-radius: 0;
+  --uc-button-border: 4px;
 
-    /* margins */
-    --uc-content-margins: 2px 5px 5px 5px; 
-    --uc-tab-margins-left: 3.5px 0 5px 0px; /*placehold*/
-    --uc-tab-margins-right: 3.5px 0px 5px 0; /*placehold*/
-        
-    --uc-sb-margins: 2px 5px 5px 1px;
-    --uc-sb-margins-right: 2px 1px 5px 5px;
-    --uc-tab-padding: 2px;
-    
-    /* OS window controls margins */
-    --uc-window-control-margins: 86px;
+  /* margins */
+  --uc-content-margins: 2px 5px 5px 5px;
+  --uc-tab-margins-left: 3.5px 0 5px 0px; /*placehold*/
+  --uc-tab-margins-right: 3.5px 0px 5px 0; /*placehold*/
 
-    /*global spacing pixels*/
-    --uc-spacing-px0: 0px;
-    --uc-spacing-px1: 1px;
-    --uc-spacing-px2: 2px;
-    --uc-spacing-px3: 3px;
-    --uc-spacing-px4: 4px;
-    --uc-spacing-px5: 5px;
-    
-    /*tabs*/
-    --uc-vertical-collapsed-width:50px;
-    --uc-vertical-expanded-width:250px;
-    
-    /*individual tabs*/
-    --tab-min-height: 35px;
-    --tab-min-width: initial !important; /*dont touch*/
-    --tab-overflow-pinned-tabs-width: initial !important; /*dont touch*/
-    --inline-tab-padding: 10px;
-    --tab-block-margin: 2px;
+  --uc-sb-margins: 2px 5px 5px 1px;
+  --uc-sb-margins-right: 2px 1px 5px 5px;
+  --uc-tab-padding: 2px;
+
+  /* OS window controls margins */
+  --uc-window-control-margins: 86px;
+
+  /*global spacing pixels*/
+  --uc-spacing-px0: 0px;
+  --uc-spacing-px1: 1px;
+  --uc-spacing-px2: 2px;
+  --uc-spacing-px3: 3px;
+  --uc-spacing-px4: 4px;
+  --uc-spacing-px5: 5px;
+
+  /*tabs*/
+  --uc-vertical-collapsed-width: 50px;
+  --uc-vertical-expanded-width: 250px;
+
+  /*individual tabs*/
+  --tab-min-height: 35px;
+  --tab-min-width: initial !important; /*dont touch*/
+  --tab-overflow-pinned-tabs-width: initial !important; /*dont touch*/
+  --inline-tab-padding: 10px;
+  --tab-block-margin: 2px;
 }
 
-:root[uidensity="compact"]:not([customizing],[chromehidden~="menubar"]) {
-    --uc-navbar-height: 34px;
+:root[uidensity="compact"]:not([customizing], [chromehidden~="menubar"]) {
+  --uc-navbar-height: 34px;
 }
-
 
 /* Compact spacing -----------------------------------------------------------------------*/
 
 /*compact spacing setting*/
-@media (-moz-bool-pref: "ultima.spacing.compact") { 
-    :root, body, * {
-        /*rounded corners*/
-        --uc-content-border-radius: 0px;
-        --uc-tab-border-radius: 0px;
-        --uc-sidebar-border-radius: 0px;
-        --uc-button-border: 4px;
-        /* margins */
-        --uc-content-margins: 0px;
-        --uc-tab-margins-left: 0px;
-        --uc-tab-margins-right: 0px; 
-        --uc-sb-margins: 0px;
-        --uc-sb-margins-right: 0px;
-        }
-}
-
-/*full screen compacting*/
-#main-window[sizemode="fullscreen"] * {
+@media (-moz-bool-pref: "ultima.spacing.compact") {
+  :root,
+  body,
+  * {
     /*rounded corners*/
     --uc-content-border-radius: 0px;
     --uc-tab-border-radius: 0px;
     --uc-sidebar-border-radius: 0px;
+    --uc-button-border: 4px;
     /* margins */
     --uc-content-margins: 0px;
     --uc-tab-margins-left: 0px;
-    --uc-tab-margins-right: 0px; 
+    --uc-tab-margins-right: 0px;
     --uc-sb-margins: 0px;
     --uc-sb-margins-right: 0px;
+  }
 }
 
+/*full screen compacting*/
+#main-window[sizemode="fullscreen"] * {
+  /*rounded corners*/
+  --uc-content-border-radius: 0px;
+  --uc-tab-border-radius: 0px;
+  --uc-sidebar-border-radius: 0px;
+  /* margins */
+  --uc-content-margins: 0px;
+  --uc-tab-margins-left: 0px;
+  --uc-tab-margins-right: 0px;
+  --uc-sb-margins: 0px;
+  --uc-sb-margins-right: 0px;
+}
 
 /* OS Window control margins -------------------------------------------------------------*/
 
 /*mac*/
 @media (-moz-os-version: macos), (-moz-platform: macos) {
-    :root, body, * { --uc-window-control-margins: 84px;}
-    #nav-bar { margin-left: var(--uc-window-control-margins) !important;}
-    toolbar {min-height: 0px !important;}
+  :root,
+  body,
+  * {
+    --uc-window-control-margins: 84px;
+  }
+  #nav-bar {
+    margin-left: var(--uc-window-control-margins) !important;
+  }
+  toolbar {
+    min-height: 0px !important;
+  }
 }
 
 /*windows*/
 @media (-moz-platform: windows) {
-    :root, body, * { --uc-window-control-margins: 105px;}
-    #nav-bar { margin-right: var(--uc-window-control-margins) !important;}
-    .titlebar-button {padding: 11px 11px !important;margin-top:3px !important;margin-bottom:3px !important;}
+  :root,
+  body,
+  * {
+    --uc-window-control-margins: 105px;
+  }
+  #nav-bar {
+    margin-right: var(--uc-window-control-margins) !important;
+  }
+  .titlebar-button {
+    padding: 11px 11px !important;
+    margin-top: 3px !important;
+    margin-bottom: 3px !important;
+  }
 }
 
 /*linux - kde spacing*/
 @media (-moz-platform: linux), (-moz-os-version: linux) {
-    :root, body, * { --uc-window-control-margins: 86px;}
-    #nav-bar { margin-right: var(--uc-window-control-margins) !important;}
-    :root .titlebar-button {--uc-button-selected: transparent !important;background: transparent !important;background-color: transparent !important;}
+  :root,
+  body,
+  * {
+    --uc-window-control-margins: 86px;
+  }
+  #nav-bar {
+    margin-right: var(--uc-window-control-margins) !important;
+  }
+  :root .titlebar-button {
+    --uc-button-selected: transparent !important;
+    background: transparent !important;
+    background-color: transparent !important;
+  }
 }
 
 /*linux - gnome & cinnamon spacing*/
-@media (-moz-bool-pref: "ultima.fix.gnome.titlebar") { @media (-moz-platform: linux), (-moz-os-version: linux) {
-    :root, body, * { --uc-window-control-margins: 108px;}
-    #nav-bar { margin-right: var(--uc-window-control-margins) !important;}
-    :root .titlebar-button {--uc-button-selected: transparent !important;background: transparent !important;background-color: transparent !important;}
-}}
+@media (-moz-bool-pref: "ultima.fix.gnome.titlebar") {
+  @media (-moz-platform: linux), (-moz-os-version: linux) {
+    :root,
+    body,
+    * {
+      --uc-window-control-margins: 108px;
+    }
+    #nav-bar {
+      margin-right: var(--uc-window-control-margins) !important;
+    }
+    :root .titlebar-button {
+      --uc-button-selected: transparent !important;
+      background: transparent !important;
+      background-color: transparent !important;
+    }
+  }
+}
 
 /*linux - gnome & cinnamon spacing*/
-@media (-moz-bool-pref: "ultima.fix.gnome.titlebar.small") { @media (-moz-platform: linux), (-moz-os-version: linux) {
-    :root, body, * { --uc-window-control-margins: 44px;}
-    #nav-bar { margin-right: var(--uc-window-control-margins) !important;}
-    :root .titlebar-button {--uc-button-selected: transparent !important;background: transparent !important;background-color: transparent !important;}
-}}
+@media (-moz-bool-pref: "ultima.fix.gnome.titlebar.small") {
+  @media (-moz-platform: linux), (-moz-os-version: linux) {
+    :root,
+    body,
+    * {
+      --uc-window-control-margins: 44px;
+    }
+    #nav-bar {
+      margin-right: var(--uc-window-control-margins) !important;
+    }
+    :root .titlebar-button {
+      --uc-button-selected: transparent !important;
+      background: transparent !important;
+      background-color: transparent !important;
+    }
+  }
+}
 
 /* Title bar ----------------------------------------------------------------------*/
 
 /*titlebar corrections*/
-.titlebar-spacer[type="pre-tabs"] {width:4px !important;}
-.titlebar-spacer[type="post-tabs"] {width:1px !important;}
-#tabbrowser-tabs {border-inline-start: 0px !important;}
-#TabsToolbar { margin: 2px 2px 0 0 !important; }
+.titlebar-spacer[type="pre-tabs"] {
+  width: 4px !important;
+}
+.titlebar-spacer[type="post-tabs"] {
+  width: 1px !important;
+}
+#tabbrowser-tabs {
+  border-inline-start: 0px !important;
+}
+#TabsToolbar {
+  margin: 2px 2px 0 0 !important;
+}
 @media (-moz-bool-pref: "ultima.disable.alltabsbutton") {
-    #alltabs-button {
-    	display: none !important;
-    }
+  #alltabs-button {
+    display: none !important;
+  }
 }
 
 /*titlebar corrections*/
-#main-window:not([lwtheme]) .titlebar-button { stroke: initial !important; }
-#main-window[lwtheme] .titlebar-button { stroke: var(--toolbarbutton-icon-fill) !important; }
-#main-window:not([lwtheme]) .titlebar-button:hover { fill: initial !important; }
-#main-window[lwtheme] .titlebar-button:hover { fill: var(--toolbarbutton-icon-fill) !important; }
-:root:where([tabsintitlebar]){--inactive-titlebar-opacity: 1 !important;--toolbox-non-lwt-textcolor-inactive:var(--toolbox-non-lwt-textcolor);}
+#main-window:not([lwtheme]) .titlebar-button {
+  stroke: initial !important;
+}
+#main-window[lwtheme] .titlebar-button {
+  stroke: var(--toolbarbutton-icon-fill) !important;
+}
+#main-window:not([lwtheme]) .titlebar-button:hover {
+  fill: initial !important;
+}
+#main-window[lwtheme] .titlebar-button:hover {
+  fill: var(--toolbarbutton-icon-fill) !important;
+}
+:root:where([tabsintitlebar]) {
+  --inactive-titlebar-opacity: 1 !important;
+  --toolbox-non-lwt-textcolor-inactive: var(--toolbox-non-lwt-textcolor);
+}
 toolbar {
   &:-moz-window-inactive {
     background-color: var(--toolbar-bgcolor) !important;
@@ -175,35 +247,38 @@ toolbar {
 /* Nav bar ------------------------------------------------------------------------*/
 
 #nav-bar {
-    min-height:var(--uc-navbar-height) !important;
-}    
+  min-height: var(--uc-navbar-height) !important;
+}
 
 #nav-bar .toolbarbutton-1 {
-    margin-top:4.5px !important;
+  margin-top: 4.5px !important;
 }
 
 /*URL bar*/
 
 /*fix overlapping buttons (spacing) - when the Browser falls under a certain width*/
 @media (max-width: 700px) {
-  #nav-bar[downloadsbuttonshown][unifiedextensionsbuttonshown] #urlbar-container {
+  #nav-bar[downloadsbuttonshown][unifiedextensionsbuttonshown]
+    #urlbar-container {
     width: 120px !important;
   }
 }
 @media (max-width: 600px) {
-  #unified-extensions-button, #PanelUI-button {display:none}
+  #unified-extensions-button,
+  #PanelUI-button {
+    display: none;
+  }
 }
-
 
 /* Menu bar -----------------------------------------------------------------------*/
 
 #toolbar-menubar {
-    max-height: var(--uc-navbar-height) !important;
-    height: var(--uc-navbar-height);
-    margin-left:8px !important;
+  max-height: var(--uc-navbar-height) !important;
+  height: var(--uc-navbar-height);
+  margin-left: 8px !important;
 }
 #main-menubar menu {
-   border-radius: 10px !important; 
+  border-radius: 10px !important;
 }
 #menubar-items {
   background: var(--uc-ultima-window) !important;
@@ -211,136 +286,158 @@ toolbar {
   justify-content: center !important;
   color: var(--uc-text) !important;
 }
-#toolbar-menubar:not([inactive="true"]) #main-menubar > menu { &[_moz-menuactive] {
-  background-color: var(--uc-button-selected) !important;
-  color: var(--uc-text) !important;
-  border-radius: 5px !important;
-}}
-menubar > menu[open] {
-    border-bottom: 1px var(--uc-accent-ii) solid !important;
+#toolbar-menubar:not([inactive="true"]) #main-menubar > menu {
+  &[_moz-menuactive] {
+    background-color: var(--uc-button-selected) !important;
+    color: var(--uc-text) !important;
+    border-radius: 5px !important;
+  }
 }
-
+menubar > menu[open] {
+  border-bottom: 1px var(--uc-accent-ii) solid !important;
+}
 
 /* Browser Content ----------------------------------------------------------------------*/
 
 /* remove default borders and shadows v131 */
 
-#appcontent { @media (-moz-bool-pref: "sidebar.revamp") { & {
-    border-top: 0 !important;
-    border-inline-start: 0 !important;
-    box-shadow: none !important;
-}}}
-#tabbrowser-tabbox { @media (-moz-bool-pref: "sidebar.revamp") {
+#appcontent {
+  @media (-moz-bool-pref: "sidebar.revamp") {
+    & {
+      border-top: 0 !important;
+      border-inline-start: 0 !important;
+      box-shadow: none !important;
+    }
+  }
+}
+#tabbrowser-tabbox {
+  @media (-moz-bool-pref: "sidebar.revamp") {
     outline: 0px solid var(--chrome-content-separator-color) !important;
     box-shadow: none !important;
-}}
-
+  }
+}
 
 /* use my custom outline border */
 
 #main-window {
-    & #tabbrowser-tabpanels browser[type] {
-        margin: var(--uc-content-margins) !important;
-        border-radius: var(--uc-content-border-radius) !important;
-        outline: 4px solid var(--toolbar-bgcolor) !important;
-        @media (-moz-bool-pref: "ultima.spacing.compact") {
-            outline: 0px solid var(--arrowpanel-background) !important;
-        }
-    }          
-}
-#main-window[lwtheme] {        
-    & #tabbrowser-tabpanels browser[type] {
-        outline: 3px solid var(--lwt-accent-color) !important;
-        @media (-moz-bool-pref: "ultima.spacing.compact") {
-            outline: 0px solid var(--arrowpanel-background) !important;
-        }
+  & #tabbrowser-tabpanels browser[type] {
+    margin: var(--uc-content-margins) !important;
+    border-radius: var(--uc-content-border-radius) !important;
+    outline: 4px solid var(--toolbar-bgcolor) !important;
+    @media (-moz-bool-pref: "ultima.spacing.compact") {
+      outline: 0px solid var(--arrowpanel-background) !important;
     }
+  }
 }
-
+#main-window[lwtheme] {
+  & #tabbrowser-tabpanels browser[type] {
+    outline: 3px solid var(--lwt-accent-color) !important;
+    @media (-moz-bool-pref: "ultima.spacing.compact") {
+      outline: 0px solid var(--arrowpanel-background) !important;
+    }
+  }
+}
 
 /* Side bar *** ------------------------------------------------------------------------*/
 
 /* bigger sidebar, 50vw = 50% of the screen width */
 /* great for view-tab-in-sidebar extensions */
 #sidebar-box {
-    max-width: 50vw !important;
-    min-width: 40px !important;
-    width: 18em;
-    z-index:998 !important;
+  max-width: 50vw !important;
+  min-width: 40px !important;
+  width: 18em;
+  z-index: 998 !important;
 }
 /* rework default spacing */
-#sidebar-box { @media (-moz-bool-pref: "sidebar.revamp") { & {
+#sidebar-box {
+  @media (-moz-bool-pref: "sidebar.revamp") {
+    & {
       padding-block-end: 0 !important;
       padding-inline-end: 0 !important;
-}}}
+    }
+  }
+}
 
-#sidebar-box { @media (-moz-bool-pref: "sidebar.revamp") { &[positionend] {
+#sidebar-box {
+  @media (-moz-bool-pref: "sidebar.revamp") {
+    &[positionend] {
       padding-inline-end: 0 !important;
       /*padding-inline-start: 0 !important;*/
-}}}
+    }
+  }
+}
 /*custom margins*/
 #sidebar-box {
-    margin: var(--uc-sb-margins) !important;
+  margin: var(--uc-sb-margins) !important;
 }
 #sidebar-box[positionend] {
-    margin: var(--uc-sb-margins-right) !important;
+  margin: var(--uc-sb-margins-right) !important;
 }
 /*smaller splitter, less visible*/
 #sidebar-splitter {
-    background-color: transparent !important;
-    border: transparent solid 0px !important;
-    width: 2px !important;
+  background-color: transparent !important;
+  border: transparent solid 0px !important;
+  width: 2px !important;
 }
 /* custom border */
-#sidebar-box, #sidebar {
-    border-radius: var(--uc-sidebar-border-radius) !important;
+#sidebar-box,
+#sidebar {
+  border-radius: var(--uc-sidebar-border-radius) !important;
 }
 
 #main-window[inFullscreen="true"] {
-    #sidebar-box, #sidebar {
-        border-radius: 0px !important;
-    }
+  #sidebar-box,
+  #sidebar {
+    border-radius: 0px !important;
+  }
 }
 
-#sidebar { @media (-moz-bool-pref: "sidebar.revamp") { & {
+#sidebar {
+  @media (-moz-bool-pref: "sidebar.revamp") {
+    & {
       box-shadow: 0 2px 6px 0 light-dark(rgb(0, 0, 0, 0.2), rgb(0, 0, 0, 0.8)) !important;
       border: 0px solid var(--sidebar-border-color) !important;
-}}}
+    }
+  }
+}
 
 #sidebar {
-    margin-top:-2px !important;
+  margin-top: -2px !important;
 }
 
 /* Vertical Tabs ----------------------------------------------------------------------*/
 
 /*spacing corrections*/
-#sidebar-main:has([expanded]) #vertical-tabs { &[visible] {
+#sidebar-main:has([expanded]) #vertical-tabs {
+  &[visible] {
     margin-inline-end: -4px !important;
-}}
-#sidebar-main *, #sidebar-main .wrapper {
-    border-inline-end: 0px solid red !important;
+  }
+}
+#sidebar-main *,
+#sidebar-main .wrapper {
+  border-inline-end: 0px solid red !important;
 }
 #sidebar-main:has([expanded]) .tab-label-container {
   margin-left: 10px !important;
 }
 #sidebar-main:not([positionend="true"]) {
-	margin: var(--uc-tab-margins-left) !important;
-}      
+  margin: var(--uc-tab-margins-left) !important;
+}
 #sidebar-main[positionend="true"] {
-	margin: var(--uc-tab-margins-right) !important;
+  margin: var(--uc-tab-margins-right) !important;
 }
 
 /*quick styling*/
 #sidebar-main {
-    border-radius: var(--uc-sidebar-border-radius);
+  border-radius: var(--uc-sidebar-border-radius);
 }
 /*new tab button*/
 #vertical-tabs-newtab-button {
-    border-radius:10px !important;
+  border-radius: 10px !important;
 }
 /*pinned tabs*/
 #vertical-tabs .tabbrowser-tab[pinned] .tab-background {
-    box-shadow: 0.1rem 0.4rem 0.4rem -0.1rem rgba(25,25,25,0.6);
+  box-shadow: 0.1rem 0.4rem 0.4rem -0.1rem rgba(25, 25, 25, 0.6);
 }
 
 /* Vertical Tabs settings *** -----------------------------------------------------------*/
@@ -348,58 +445,60 @@ menubar > menu[open] {
 /* Disable tabs completely for sidebery-like setups */
 
 @media (-moz-bool-pref: "ultima.disable.verttab.bar") {
-    @media (-moz-bool-pref: "sidebar.verticalTabs") {
-        #sidebar-main:has([expanded=""]) {
-            display: none !important;
-        }
+  @media (-moz-bool-pref: "sidebar.verticalTabs") {
+    #sidebar-main:has([expanded=""]) {
+      display: none !important;
     }
-    @media not (-moz-bool-pref: "sidebar.verticalTabs") {
-        #sidebar-main:has([expanded=""]) {
-            display: none !important;
-        }            
-        #TabsToolbar .toolbar-items {
-            opacity:0;
-            pointer-events: none;
-        }
-        #titlebar {
-            height:var(--uc-navbar-height) !important; width:100vw;
-            position: absolute;
-            top:0px;right:0px;z-index:999;
-        }
-        #titlebar:has([inactive="true"]) {
-            z-index:997 !important;
-        }
-        #nav-bar {
-            z-index:998 !important;
-        }
-        @media (-moz-bool-pref: "ultima.disable.windowcontrols") {
-            #nav-bar {
-                margin-left:0px !important;
-                margin-right: 0px !important;
-            }
-        }
+  }
+  @media not (-moz-bool-pref: "sidebar.verticalTabs") {
+    #sidebar-main:has([expanded=""]) {
+      display: none !important;
     }
-    @media not (-moz-bool-pref: "ultima.spacing.compact") {
-        #sidebar-main:has([expanded=""]) + #sidebar-box[checked="true"] {
-            margin-inline:5px !important;
-            }
-        #sidebar-main:has([expanded=""]) + #sidebar-box[positionend="true"] {
-            margin-inline:0 5px !important;
-            }
-        }
-}
-        
-@media not (-moz-bool-pref: "ultima.disable.verttab.bar") {
-@media not (-moz-bool-pref: "sidebar.verticalTabs") {
-    @media not (-moz-bool-pref: "ultima.disable.windowcontrols") {
-        #nav-bar {
-            margin-left:0px !important;
-            margin-right: 0px !important;
-        }
+    #TabsToolbar .toolbar-items {
+      opacity: 0;
+      pointer-events: none;
     }
-}
+    #titlebar {
+      height: var(--uc-navbar-height) !important;
+      width: 100vw;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      z-index: 999;
+    }
+    #titlebar:has([inactive="true"]) {
+      z-index: 997 !important;
+    }
+    #nav-bar {
+      z-index: 998 !important;
+    }
+    @media (-moz-bool-pref: "ultima.disable.windowcontrols") {
+      #nav-bar {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+      }
+    }
+  }
+  @media not (-moz-bool-pref: "ultima.spacing.compact") {
+    #sidebar-main:has([expanded=""]) + #sidebar-box[checked="true"] {
+      margin-inline: 5px !important;
+    }
+    #sidebar-main:has([expanded=""]) + #sidebar-box[positionend="true"] {
+      margin-inline: 0 5px !important;
+    }
+  }
 }
 
+@media not (-moz-bool-pref: "ultima.disable.verttab.bar") {
+  @media not (-moz-bool-pref: "sidebar.verticalTabs") {
+    @media not (-moz-bool-pref: "ultima.disable.windowcontrols") {
+      #nav-bar {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+      }
+    }
+  }
+}
 
 /* keep titlebar window controls */
 
@@ -409,49 +508,50 @@ when on merge the titlebar (window controls) into the navigation bar */
 
 /* when using vert tabs */
 @media (-moz-bool-pref: "sidebar.verticalTabs") {
-    /*when on, merge window controls into the nav bar*/
-    @media not (-moz-bool-pref: "ultima.disable.windowcontrols") {
-        #TabsToolbar .toolbar-items {
-            opacity:0;
-            pointer-events: none;
-        }
-        #titlebar {
-            height:var(--uc-navbar-height) !important;
-            width:100vw;
-            position: absolute;
-            top:0px;
-            right:0px;
-            z-index:999;
-        }
-        #titlebar:has([inactive="true"]){
-            /* for menu bar visibility */
-            z-index:997 !important;}
-        #nav-bar {
-            z-index:998 !important;
-        }
+  /*when on, merge window controls into the nav bar*/
+  @media not (-moz-bool-pref: "ultima.disable.windowcontrols") {
+    #TabsToolbar .toolbar-items {
+      opacity: 0;
+      pointer-events: none;
     }
-    /*when off hide titlebar, accessible via alt key or toggling the menubar on*/
-    @media (-moz-bool-pref: "ultima.disable.windowcontrols") {
-        #TabsToolbar, #TabsToolbar-customization-target {
-            display: none !important;
-        }
-        #nav-bar {
-            margin-left:0px !important;
-            margin-right: 0px !important;
-        }
+    #titlebar {
+      height: var(--uc-navbar-height) !important;
+      width: 100vw;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      z-index: 999;
     }
+    #titlebar:has([inactive="true"]) {
+      /* for menu bar visibility */
+      z-index: 997 !important;
+    }
+    #nav-bar {
+      z-index: 998 !important;
+    }
+  }
+  /*when off hide titlebar, accessible via alt key or toggling the menubar on*/
+  @media (-moz-bool-pref: "ultima.disable.windowcontrols") {
+    #TabsToolbar,
+    #TabsToolbar-customization-target {
+      display: none !important;
+    }
+    #nav-bar {
+      margin-left: 0px !important;
+      margin-right: 0px !important;
+    }
+  }
 }
-
 
 /*888888888888888888888888888888888888888888888888888888888888888888888888888888888888*/
 
 @media (-moz-platform: windows) {
-    :root, body, * {
-        --arrowpanel-background: var(--uc-ultima-window) !important;
-    }
+  :root,
+  body,
+  * {
+    --arrowpanel-background: var(--uc-ultima-window) !important;
+  }
 }
-
-
 
 /*Autohide implementation ------------------------------------------------------------*/
 
@@ -463,64 +563,90 @@ full screen optimization needs improvement but firefox developers are changing F
 so this optimization will have to wait
 */
 
-
-@media (-moz-bool-pref: "ultima.tabs.autohide") { @media not (-moz-bool-pref: "ultima.disable.verticaltab.bar") {
-
+@media (-moz-bool-pref: "ultima.tabs.autohide") {
+  @media not (-moz-bool-pref: "ultima.disable.verticaltab.bar") {
     /*fixed positioning to overlay content instead of pushing it to the side*/
-    #sidebar-main {       
-        position:fixed !important;
-        top:36px !important;
-        left:0px !important;
-        height:calc(100vh - 40px) !important;
-        z-index:997 !important;
+    #sidebar-main {
+      position: fixed !important;
+      top: 36px !important;
+      left: 0px !important;
+      height: calc(100vh - 40px) !important;
+      z-index: 997 !important;
     }
-    
+
     @media (-moz-bool-pref: "sidebar.revamp") {
-        #main-window:not([inFullscreen="true"]) #browser {
-            margin-left:55px !important;
-        }
-        #main-window[inFullscreen="true"] #sidebar-main {
-            top:0 !important;
-            height:100vh !important;   
-        }  
+      #main-window:not([inFullscreen="true"]) #browser {
+        margin-left: 55px !important;
+      }
+      #main-window[inFullscreen="true"] #sidebar-main {
+        top: 0 !important;
+        height: 100vh !important;
+      }
     }
-    #main-window:not([inFullscreen="true"]) #navigator-toolbox:has([collapsed="false"]) + #browser #sidebar-main {
-        top:calc(var(--uc-navbar-height) + var(--uc-bookbar-height) + 3px) !important;
-        height:calc(100vh - var(--uc-navbar-height) - var(--uc-bookbar-height)) !important;
+    #main-window:not([inFullscreen="true"])
+      #navigator-toolbox:has([collapsed="false"])
+      + #browser
+      #sidebar-main {
+      top: calc(
+        var(--uc-navbar-height) + var(--uc-bookbar-height) + 3px
+      ) !important;
+      height: calc(
+        100vh - var(--uc-navbar-height) - var(--uc-bookbar-height)
+      ) !important;
     }
-    
-    
+
     /*autohide*/
     #sidebar-main:has([expanded]) {
-        transition: width 80ms linear 70ms !important;
-        will-change: width !important;
-        width:var(--uc-vertical-expanded-width) !important;
-    }    
+      transition: width 80ms linear 70ms !important;
+      will-change: width !important;
+      width: var(--uc-vertical-expanded-width) !important;
+    }
     #sidebar-main:has([expanded]):not(:hover) {
-        width: var(--uc-vertical-collapsed-width) !important;
-        z-index: 0;
+      width: var(--uc-vertical-collapsed-width) !important;
+      z-index: 0;
     }
     #sidebar-main:has([expanded]):not(:hover) + #sidebar-box {
-        margin-left:var(--uc-spacing-px5) !important;
+      margin-left: var(--uc-spacing-px5) !important;
     }
     #sidebar-main:has([expanded]):hover + #sidebar-box {
-        margin-left:var(--uc-spacing-px0) !important;
+      margin-left: var(--uc-spacing-px0) !important;
     }
 
     /*adjustments for elements within the autohidden state*/
-    #sidebar-main:has([expanded=""]):not(:hover) .tabbrowser-tab{width: 56px !important; min-width: 0px !important} /*all tabs*/
-    #sidebar-main:has([expanded=""]):not(:hover) .tabbrowser-tab[pinned=""]{width: 43px !important; min-width: 0px !important} /*pinned tabs*/
-    #sidebar-main:has([expanded=""]):not(:hover) .tab-label-container, #sidebar-main:not(:hover) .tab-close-button{ display: none !important; }
-    #sidebar-main:has([expanded=""]):not(:hover) #vertical-tabs-newtab-button{min-width: 0px !important; appearance: none !important;}
+    #sidebar-main:has([expanded=""]):not(:hover) .tabbrowser-tab {
+      width: 56px !important;
+      min-width: 0px !important;
+    } /*all tabs*/
+    #sidebar-main:has([expanded=""]):not(:hover) .tabbrowser-tab[pinned=""] {
+      width: 43px !important;
+      min-width: 0px !important;
+    } /*pinned tabs*/
+    #sidebar-main:has([expanded=""]):not(:hover) .tab-label-container,
+    #sidebar-main:not(:hover) .tab-close-button {
+      display: none !important;
+    }
+    #sidebar-main:has([expanded=""]):not(:hover) #vertical-tabs-newtab-button {
+      min-width: 0px !important;
+      appearance: none !important;
+    }
 
     /*styling toolbar buttons within*/
-    .tools-and-extensions:not(:hover){ opacity:0.5 !important;}
-    .button-background {&.labelled { gap: 15px !important;}}
-    #tabbrowser-arrowscrollbox[orient="vertical"] > #tabbrowser-arrowscrollbox-periphery > #tabs-newtab-button, #vertical-tabs-newtab-button {
-        & > .toolbarbutton-text {
-            padding-inline-start: var(--tab-icon-end-margin);
-            margin-left:7px !important;
-        }
-    }	
-
-}}
+    .tools-and-extensions:not(:hover) {
+      opacity: 0.5 !important;
+    }
+    .button-background {
+      &.labelled {
+        gap: 15px !important;
+      }
+    }
+    #tabbrowser-arrowscrollbox[orient="vertical"]
+      > #tabbrowser-arrowscrollbox-periphery
+      > #tabs-newtab-button,
+    #vertical-tabs-newtab-button {
+      & > .toolbarbutton-text {
+        padding-inline-start: var(--tab-icon-end-margin);
+        margin-left: 7px !important;
+      }
+    }
+  }
+}

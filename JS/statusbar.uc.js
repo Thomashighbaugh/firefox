@@ -14,7 +14,7 @@ var appversion = parseInt(Services.appinfo.version);
 var compact_buttons = false; // reduced toolbar height and smaller buttons
 
 var AddAddonbar = {
-  init: function() {
+  init: function () {
     if (
       appversion >= 76 &&
       location != "chrome://browser/content/browser.xhtml"
@@ -25,13 +25,13 @@ var AddAddonbar = {
     try {
       if (gBrowser.selectedBrowser.getAttribute("blank"))
         gBrowser.selectedBrowser.removeAttribute("blank");
-    } catch (e) { }
+    } catch (e) {}
 
     try {
       Services.prefs
         .getDefaultBranch("browser.addonbar.")
         .setBoolPref("enabled", true);
-    } catch (e) { }
+    } catch (e) {}
 
     var addonbar_label = "Add-on Bar";
     var compact_buttons_code = "";
@@ -64,8 +64,8 @@ var AddAddonbar = {
       .loadAndRegisterSheet(
         Services.io.newURI(
           "data:text/css;charset=utf-8," +
-          encodeURIComponent(
-            '\
+            encodeURIComponent(
+              '\
 		  \
 		  #addonbar toolbarpaletteitem[place=toolbar][id^=wrapper-customizableui-special-spring],\
 		  #addonbar toolbarspring {\
@@ -106,10 +106,10 @@ var AddAddonbar = {
 			max-height: 24px !important; \
 		  } \
 		  ' +
-            compact_buttons_code +
-            "\
+                compact_buttons_code +
+                "\
 	  ",
-          ),
+            ),
           null,
           null,
         ),
@@ -164,9 +164,9 @@ var AddAddonbar = {
               .getBranch("browser.addonbar.")
               .getBoolPref("enabled"),
           );
-        } catch (e) { }
+        } catch (e) {}
       }
-    } catch (e) { }
+    } catch (e) {}
   },
 };
 
@@ -174,7 +174,6 @@ var AddAddonbar = {
 document.addEventListener("DOMContentLoaded", AddAddonbar.init(), false);
 /* Use the below code instead of the one above this line, if issues occur */
 
-setTimeout(function(){
+setTimeout(function () {
   AddAddonbar.init();
-},2000);
-
+}, 2000);

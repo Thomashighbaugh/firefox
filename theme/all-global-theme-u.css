@@ -7,13 +7,15 @@
 
 -------------------------------------------------------------------------------------*/
 
-:root, body, * {
+:root,
+body,
+* {
   color-scheme: dark !important; /*--<--dont touch--*/
   /*--toolbar-bgcolor:hmm;*/
   /*--uc-ultima-window: hmm;*/
   --uc-dark-color: #000;
   --uc-light-color: #fff;
-  --uc-accent-i: #EDF783; /* accent colors - blues, yellows, etc. */
+  --uc-accent-i: #edf783; /* accent colors - blues, yellows, etc. */
   --uc-accent-ii: rgb(90, 121, 156);
   --uc-accent-iii: rgb(255, 255, 255);
   --uc-accent-iv: rgba(28, 27, 34, 0.5);
@@ -22,13 +24,13 @@
   --uc-background-panel: rgba(28, 27, 34, 0.95);
   --uc-background-solid: rgba(28, 27, 34, 1);
   --uc-background-secondary: rgb(35, 35, 42);
-  --uc-transparent: rgba(0,0,0,0);
+  --uc-transparent: rgba(0, 0, 0, 0);
   --uc-selected: rgba(25, 25, 35, 0.8);
   --uc-active: rgb(35, 35, 42);
   --uc-text: rgb(255, 255, 255);
   --uc-panel-border: rgba(25, 25, 25, 1);
   --uc-panel-border-ii: rgba(45, 45, 45, 0.5);
-  --uc-context-menu: rgba(28, 27, 34,1);
+  --uc-context-menu: rgba(28, 27, 34, 1);
   --uc-tabs-background: var(--uc-background-main);
   --uc-sb-background: var(--uc-background-main);
   --uc-sb-background-header: var(--uc-accent-iv);
@@ -47,7 +49,9 @@
 /*-----------------------------------------------------------------------------------*/
 /*quick adjustments*/
 
-:root{ --toolbar-bgcolor:rgb(0,0,0) !important;}
+:root {
+  --toolbar-bgcolor: rgb(0, 0, 0) !important;
+}
 
 #navigator-toolbox {
   background-color: var(--toolbar-bgcolor) !important;

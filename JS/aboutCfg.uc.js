@@ -25,6 +25,10 @@ Compatible with my [appMenuAboutConfigButton][] script. That button will automat
 // @backgroundmodule
 // ==/UserScript==
 
+const { Services, Components, ChromeUtils, Ci } = Components.utils.import(
+  "resource://gre/modules/Services.jsm",
+);
+
 /**
  * @settings (edit in about:config):
  *
@@ -98,37 +102,37 @@ function generateFreeCID() {
   return uuid;
 }
 
-function VintageAboutConfig() {}
-
-let urlString = findAboutConfig();
-
-VintageAboutConfig.prototype = {
+class VintageAboutConfig {
   get uri() {
     if (!urlString) return null;
     return this._uri || (this._uri = Services.io.newURI(urlString));
-  },
+  }
   newChannel(_uri, loadInfo) {
     const ch = Services.io.newChannelFromURIWithLoadInfo(this.uri, loadInfo);
     ch.owner = Services.scriptSecurityManager.getSystemPrincipal();
     return ch;
-  },
+  }
   getURIFlags(_uri) {
     return (
       Ci.nsIAboutModule.ALLOW_SCRIPT | Ci.nsIAboutModule.IS_SECURE_CHROME_UI
     );
-  },
+  }
   getChromeURI(_uri) {
     return this.uri;
-  },
-  QueryInterface: ChromeUtils.generateQI(["nsIAboutModule"]),
-};
+  }
+}
+VintageAboutConfig.prototype.QueryInterface = ChromeUtils.generateQI([
+  "nsIAboutModule",
+]);
 
-var AboutModuleFactory = {
+const AboutModuleFactory = {
   createInstance(aIID) {
     return new VintageAboutConfig().QueryInterface(aIID);
   },
   QueryInterface: ChromeUtils.generateQI(["nsIFactory"]),
 };
+
+let urlString = findAboutConfig();
 
 if (urlString) {
   registrar.registerFactory(
@@ -138,5 +142,3 @@ if (urlString) {
     AboutModuleFactory,
   );
 }
-
-let EXPORTED_SYMBOLS = [];

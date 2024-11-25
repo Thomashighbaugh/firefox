@@ -1,4 +1,4 @@
-Components.utils.import("resource:///modules/CustomizableUI.sys.mjs");
+Components.utils.importESModule("resource:///modules/CustomizableUI.sys.mjs");
 var { Services } = Components.utils.import(
   "resource://gre/modules/Services.jsm",
   {},

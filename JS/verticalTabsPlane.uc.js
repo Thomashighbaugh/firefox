@@ -20,7 +20,8 @@ When you collapse the pane with the unpin button, it collapses to a small width 
 // @updateURL      https://cdn.jsdelivr.net/gh/aminomancer/uc.css.js@master/JS/verticalTabsPane.uc.js
 // @license        This Source Code Form is subject to the terms of the Creative Commons Attribution-NonCommercial-ShareAlike International License, v. 4.0. If a copy of the CC BY-NC-SA 4.0 was not distributed with this file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 // ==/UserScript==
-import Hotkeys from "chrome://userchromejs/content/uc_api.sys.mjs" ;
+import Hotkeys from "chrome://userchromejs/content/uc_api.sys.mjs";
+const { Services, Cc, Ci, Cu, XPCOMUtils, ChromeUtils } = Components.utils.import("resource://gre/modules/Services.jsm");
 (function () {
   let config = {
     // localization strings. change these if your UI is not in english.
@@ -2624,7 +2625,7 @@ import Hotkeys from "chrome://userchromejs/content/uc_api.sys.mjs" ;
         key: config.hotkey.key,
         command: (win, commandEvent) =>   Services.obs.notifyObservers(win, "vertical-tabs-pane-toggle"),
       },
-      
+
     ).autoAttach({suppressOriginalKey: true});
   }
 

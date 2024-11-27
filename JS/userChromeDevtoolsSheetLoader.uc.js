@@ -7,7 +7,9 @@
 // @backgroundmodule
 // ==/UserScript==
 
-const { Services, Ci, Cc } = Components.utils.import("resource://gre/modules/Services.jsm");
+const { Services, Ci, Cc } = Components.utils.import(
+  "resource://gre/modules/Services.jsm",
+);
 
 class ToolboxProcessSheetLoader {
   constructor() {
@@ -30,18 +32,25 @@ class ToolboxProcessSheetLoader {
   }
 
   getChromePath(win) {
-    return Services.io.getProtocolHandler("file").QueryInterface(win.Ci.nsIFileProtocolHandler).getURLSpecFromDir(this.traverseToMainProfile(win, "UChrm"));
+    return Services.io
+      .getProtocolHandler("file")
+      .QueryInterface(win.Ci.nsIFileProtocolHandler)
+      .getURLSpecFromDir(this.traverseToMainProfile(win, "UChrm"));
   }
 
   loadSheet(win, path, name, type) {
-    const sss = win.Cc["@mozilla.org/content/style-sheet-service;1"].getService(win.Ci.nsIStyleSheetService);
+    const sss = win.Cc["@mozilla.org/content/style-sheet-service;1"].getService(
+      win.Ci.nsIStyleSheetService,
+    );
     try {
       sss.loadAndRegisterSheet(Services.io.newURI(path + name), sss[type]);
     } catch (e) {}
   }
 
   unloadSheet(win, path, name, type) {
-    const sss = win.Cc["@mozilla.org/content/style-sheet-service;1"].getService(win.Ci.nsIStyleSheetService);
+    const sss = win.Cc["@mozilla.org/content/style-sheet-service;1"].getService(
+      win.Ci.nsIStyleSheetService,
+    );
     try {
       sss.unegisterSheet(Services.io.newURI(path + name), sss[type]);
     } catch (e) {}
@@ -68,7 +77,13 @@ class ToolboxProcessSheetLoader {
     const document = e.target;
     const win = document.defaultView;
     this.lastSubject.removeEventListener("DOMContentLoaded", this);
-    if (!Services.dirsvc.get("UChrm", Ci.nsIFile).target.includes("chrome_debugger_profile") || !this.regex.test(win.location.href)) return;
+    if (
+      !Services.dirsvc
+        .get("UChrm", Ci.nsIFile)
+        .target.includes("chrome_debugger_profile") ||
+      !this.regex.test(win.location.href)
+    )
+      return;
     const path = this.getChromePath(win);
     this.loadSheet(win, path, "userChrome.css", "AUTHOR_SHEET");
     this.loadSheet(win, path, "userContent.css", "USER_SHEET");
@@ -77,7 +92,13 @@ class ToolboxProcessSheetLoader {
 
   _onWindowUninit(e) {
     const win = e.target;
-    if (!Services.dirsvc.get("UChrm", Ci.nsIFile).target.includes("chrome_debugger_profile") || !this.regex.test(win.location.href)) return;
+    if (
+      !Services.dirsvc
+        .get("UChrm", Ci.nsIFile)
+        .target.includes("chrome_debugger_profile") ||
+      !this.regex.test(win.location.href)
+    )
+      return;
     const path = this.getChromePath(win);
     this.unloadSheet(win, path, "userChrome.css", "AUTHOR_SHEET");
     this.unloadSheet(win, path, "userContent.css", "USER_SHEET");

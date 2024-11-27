@@ -32,7 +32,7 @@ export class SidebarMainSettingsController {
         this.sidebarController.autoHideForwardButton = autoHideForwardButton;
         this.sidebarController.savePref();
         this.sidebarMainPopupSettings.hidePopup();
-      }
+      },
     );
   }
 
@@ -46,7 +46,7 @@ export class SidebarMainSettingsController {
     this.sidebarMainPopupSettings.setDefaults(
       this.sidebarController.getPosition(),
       this.sidebarController.autoHideBackButton,
-      this.sidebarController.autoHideForwardButton
+      this.sidebarController.autoHideForwardButton,
     );
   }
 }

@@ -42,7 +42,7 @@ export class WebPanelNewController {
   setupDependencies(
     sidebarController,
     webPanelsController,
-    webPanelEditController
+    webPanelEditController,
   ) {
     this.sidebarController = sidebarController;
     this.webPanelsController = webPanelsController;
@@ -80,7 +80,7 @@ export class WebPanelNewController {
       webPanelTab,
       uuid,
       url,
-      faviconURL
+      faviconURL,
     );
     const webPanelButton =
       this.webPanelsController.makeWebPanelButton(webPanel);
@@ -88,12 +88,12 @@ export class WebPanelNewController {
     const webPanelController = new WebPanelController(
       webPanel,
       webPanelButton,
-      webPanelTab
+      webPanelTab,
     );
     webPanelController.setupDependencies(
       this.webPanelsController,
       this.sidebarController,
-      this.webPanelEditController
+      this.webPanelEditController,
     );
 
     this.webPanelsController.injectWebPanelTab(webPanelTab);
@@ -109,7 +109,7 @@ export class WebPanelNewController {
       webPanel.width,
       webPanel.canGoBack(),
       webPanel.canGoForward(),
-      webPanel.getTitle()
+      webPanel.getTitle(),
     );
     webPanelController.show();
 

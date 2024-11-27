@@ -15,7 +15,7 @@ var AddStatusbar = {
     )
       return;
 
-    /* blank tab workaround */xxxxx
+    /* blank tab workaround */ xxxxx;
     try {
       if (gBrowser.selectedBrowser.getAttribute("blank"))
         gBrowser.selectedBrowser.removeAttribute("blank");

@@ -66,7 +66,7 @@ export class WebPanelsController {
   getActive() {
     return (
       Object.values(this.webPanelControllers).find((webPanelController) =>
-        webPanelController.webPanel.isActive()
+        webPanelController.webPanel.isActive(),
       ) ?? null
     );
   }
@@ -124,7 +124,7 @@ export class WebPanelsController {
    */
   getIndex(uuid) {
     return this.webPanelControllers.findIndex(
-      (webPanelController) => webPanelController.getUUID() === uuid
+      (webPanelController) => webPanelController.getUUID() === uuid,
     );
   }
 
@@ -170,7 +170,7 @@ export class WebPanelsController {
 
       this.webPanelButtons.element.insertBefore(
         webPanelController.webPanelButton.element,
-        webPanelController.webPanelButton.element.previousSibling
+        webPanelController.webPanelButton.element.previousSibling,
       );
     }
   }
@@ -187,7 +187,7 @@ export class WebPanelsController {
 
       this.webPanelButtons.element.insertBefore(
         webPanelController.webPanelButton.element.nextSibling,
-        webPanelController.webPanelButton.element
+        webPanelController.webPanelButton.element,
       );
     }
 
@@ -228,7 +228,7 @@ export class WebPanelsController {
       mobile = false,
       loadOnStartup = false,
       unloadOnClose = false,
-    } = {}
+    } = {},
   ) {
     return new WebPanel(
       webPanelTab,
@@ -239,7 +239,7 @@ export class WebPanelsController {
       width,
       mobile,
       loadOnStartup,
-      unloadOnClose
+      unloadOnClose,
     );
   }
 
@@ -262,7 +262,7 @@ export class WebPanelsController {
         loadOnStartup: webPanelPref.loadOnStartup ?? false,
         unloadOnClose: webPanelPref.unloadOnClose ?? false,
         webPanelTab,
-      }
+      },
     ).hide();
   }
 
@@ -288,12 +288,12 @@ export class WebPanelsController {
     const webPanelController = new WebPanelController(
       webPanel,
       webPanelButton,
-      webPanelTab
+      webPanelTab,
     );
     webPanelController.setupDependencies(
       this,
       this.sidebarController,
-      this.webPanelEditController
+      this.webPanelEditController,
     );
     return webPanelController;
   }
@@ -312,7 +312,7 @@ export class WebPanelsController {
       const webPanelController = this.#makeWebPanelController(
         webPanel,
         webPanelButton,
-        webPanelTab
+        webPanelTab,
       );
 
       if (webPanel.loadOnStartup) {

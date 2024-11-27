@@ -6,8 +6,8 @@
 possible spacing issues when the two are present at the same time. (temporarily removing this limitation)
 -----------------------------------------------------------*/
 
-@media (-moz-bool-pref: "ultima.sidebar.hidden") {
-  @media (-moz-bool-pref: "ultima.sidebar.autohide") {
+@media (-moz-bool-pref: "higgs-boson.sidebar.hidden") {
+  @media (-moz-bool-pref: "higgs-boson.sidebar.autohide") {
     #sidebar-box {
       --uc-sidebar-width: 0.4px !important;
       margin-inline: 0px !important;
@@ -15,15 +15,15 @@ possible spacing issues when the two are present at the same time. (temporarily 
   }
 }
 
-@media (-moz-bool-pref: "ultima.sidebar.autohide") {
-  @media (-moz-bool-pref: "ultima.sidebar.longer") {
+@media (-moz-bool-pref: "higgs-boson.sidebar.autohide") {
+  @media (-moz-bool-pref: "higgs-boson.sidebar.longer") {
     #sidebar-box {
       --uc-sidebar-hover-width: 350px !important;
     }
   }
 }
 
-@media (-moz-bool-pref: "ultima.sidebar.autohide") {
+@media (-moz-bool-pref: "higgs-boson.sidebar.autohide") {
   /* remove header */
   /* note: youll lose the ability to switch sidebar from left to right */
   /* #sidebar-header { display: none !important; } */
@@ -171,4 +171,4 @@ possible spacing issues when the two are present at the same time. (temporarily 
       background: var(--uc-tabs-lwt) !important;
     }
   }
-} /* -moz-bool-pref"ultima.tabs.vertical.hide" & "ultima.tabs.sidebar.autohide" */
+} /* -moz-bool-pref"higgs-boson.tabs.vertical.hide" & "higgs-boson.tabs.sidebar.autohide" */

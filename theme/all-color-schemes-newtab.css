@@ -3,9 +3,6 @@
   @media not (-moz-bool-pref: "browser.newtabpage.activity-stream.newtabWallpapers.v2.enabled") {
     /*
 This file handles New Tab Backgrounds for Color Schemes.
-Create Your Own - TUTORIAL: https://github.com/soulhotel/FF-ULTIMA/blob/main/doc/new-color-scheme.md
-
-Use the template below to enter your theme into the list:
 
 @media (-moz-bool-pref: "user.theme.dark.MYTHEME"){body{background-image: url("pic/MYTHEME.png") !important;}
 
@@ -40,6 +37,16 @@ Use the template below to enter your theme into the list:
       }
 
       @media (-moz-bool-pref: "user.theme.dark.midnight") {
+        body {
+          background-image: url("pic/midnight.png") !important;
+        }
+      }
+      @media (-moz-bool-pref: "user.theme.dark.monokaipro-spectrum") {
+        body {
+          background-image: url("pic/midnight.png") !important;
+        }
+      }
+      @media (-moz-bool-pref: "user.theme.dark.vice") {
         body {
           background-image: url("pic/midnight.png") !important;
         }

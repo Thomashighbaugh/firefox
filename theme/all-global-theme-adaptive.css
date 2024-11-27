@@ -1,5 +1,5 @@
 /*---------------------------- Global Color Scheme Fallback -----------------------------
-- This file serves as a fallback for default color/design around the FF Ultima theme
+- This file serves as a fallback for default color/design around the FF higgs-boson theme
 - Including global/default styles that are used throughout every other color scheme
 - Including a base/foundation for tab autotab color extension
 
@@ -17,7 +17,7 @@ Global styling - Icons
 :root,
 body,
 * {
-  --uc-ultima-window: var(--toolbar-bgcolor);
+  --uc-higgs-boson-window: var(--toolbar-bgcolor);
   --uc-text: var(--toolbox-non-lwt-textcolor);
   --uc-dark-color: #000;
   --uc-light-color: #fff;
@@ -68,7 +68,7 @@ body,
 
 #main-window:not([lwtheme]),
 :root:not([lwtheme]) {
-  /*--toolbar-bgcolor: var(--uc-ultima-window) !important;*/
+  /*--toolbar-bgcolor: var(--uc-higgs-boson-window) !important;*/
 
   --tab-selected-bgcolor: var(--uc-tab-selected-bg) !important;
   --tab-selected-textcolor: var(--uc-text) !important;
@@ -132,9 +132,9 @@ body,
 
 #main-window:not([lwtheme]) {
   /* main browser window background color */
-  background-color: var(--uc-ultima-window) !important;
+  background-color: var(--uc-higgs-boson-window) !important;
   & body {
-    background: var(--uc-ultima-window) !important;
+    background: var(--uc-higgs-boson-window) !important;
   }
   /* keep consistency with the navigation assets (including the tabs container) */
   & #navigator-toolbox {
@@ -167,7 +167,7 @@ body,
 
 #main-window:not([lwtheme]) {
   #sidebar-main {
-    background: var(--uc-ultima-window) !important;
+    background: var(--uc-higgs-boson-window) !important;
   }
   #sidebar {
     background: var(--uc-sb-background) !important;
@@ -325,7 +325,7 @@ body,
   }
   /* extra styling - customize toolbar page */
   & #customization-container {
-    background-color: var(--uc-ultima-window) !important;
+    background-color: var(--uc-higgs-boson-window) !important;
   }
 
   /* menu popups */
@@ -333,7 +333,7 @@ body,
     background: color-mix(
       in srgb,
       var(--uc-panel-background) 10%,
-      var(--ultima-window) 90%
+      var(--higgs-boson-window) 90%
     ) !important;
   }
   & .menupopup-arrowscrollbox {
@@ -343,7 +343,7 @@ body,
 
 /* Custom Icons -----------------------------------------------------------------*/
 
-@media (-moz-bool-pref: "ultima.theme.icons") {
+@media (-moz-bool-pref: "higgs-boson.theme.icons") {
   /* extension menu */
   #main-window:not([lwtheme]) #unified-extensions-button {
     list-style-image: url("icons/extensions.svg") !important;

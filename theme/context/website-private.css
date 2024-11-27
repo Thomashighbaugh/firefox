@@ -1,5 +1,5 @@
 @-moz-document url(about:privatebrowsing) {
-  @media (-moz-bool-pref: "ultima.xstyle.private") {
+  @media (-moz-bool-pref: "higgs-boson.xstyle.private") {
     /*hide private browsing tab info*/ /*
         .showPrivate {
             display: none !important;

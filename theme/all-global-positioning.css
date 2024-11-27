@@ -71,7 +71,7 @@ Vertical Tabs Disabled - setting
 /* Compact spacing -----------------------------------------------------------------------*/
 
 /*compact spacing setting*/
-@media (-moz-bool-pref: "ultima.spacing.compact") {
+@media (-moz-bool-pref: "higgs-boson.spacing.compact") {
   :root {
     /*rounded corners*/
     --uc-content-border-radius: 0px;
@@ -126,7 +126,7 @@ Vertical Tabs Disabled - setting
   }
 }
 /*option to disable window controls*/
-@media (-moz-bool-pref: "ultima.disable.windowcontrols.button") {
+@media (-moz-bool-pref: "higgs-boson.disable.windowcontrols.button") {
   #toolbar-menubar:not([inactive="true"]) .titlebar-buttonbox-container {
     display: flex !important;
   }
@@ -163,7 +163,7 @@ Vertical Tabs Disabled - setting
 #TabsToolbar {
   margin: 2px 2px 0 0 !important;
 }
-@media (-moz-bool-pref: "ultima.disable.alltabs.button") {
+@media (-moz-bool-pref: "higgs-boson.disable.alltabs.button") {
   #alltabs-button {
     display: none !important;
   }
@@ -237,7 +237,7 @@ toolbar {
   border-radius: 10px !important;
 }
 #menubar-items {
-  background: var(--uc-ultima-window) !important;
+  background: var(--uc-higgs-boson-window) !important;
   border-radius: 10px !important;
   justify-content: center !important;
   color: var(--uc-text) !important;
@@ -254,14 +254,14 @@ menubar > menu[open] {
 }
 
 @media not (-moz-os-version: macos) {
-  @media (-moz-bool-pref: "ultima.theme.menubar") {
+  @media (-moz-bool-pref: "higgs-boson.theme.menubar") {
     #toolbar-menubar {
       position: fixed !important;
       z-index: 999999 !important;
       right: 0;
     }
     #toolbar-menubar:not([inactive="true"]) .titlebar-buttonbox-container {
-      background: var(--uc-ultima-window) !important;
+      background: var(--uc-higgs-boson-window) !important;
     }
   }
 }
@@ -292,13 +292,13 @@ menubar > menu[open] {
   & #tabbrowser-tabpanels browser[type] {
     margin: var(--uc-content-margins) !important;
     border-radius: var(--uc-content-border-radius) !important;
-    outline: 4px solid var(--uc-ultima-window) !important;
+    outline: 4px solid var(--uc-higgs-boson-window) !important;
   }
 }
 #main-window[lwtheme] {
   & #tabbrowser-tabpanels browser[type] {
     outline: 3px solid var(--lwt-accent-color) !important;
-    @media (-moz-bool-pref: "ultima.xstyle.lwtheme") {
+    @media (-moz-bool-pref: "higgs-boson.xstyle.lwtheme") {
       outline: 3px solid var(--arrowpanel-background) !important;
     }
   }
@@ -311,7 +311,7 @@ menubar > menu[open] {
     #sidebar-main {
       visibility: collapse !important;
     }
-    @media not (-moz-bool-pref: "ultima.spacing.compact") {
+    @media not (-moz-bool-pref: "higgs-boson.spacing.compact") {
       :root:has(#sidebar-box[positionend]) #browser {
         margin-right: 5px !important;
       }
@@ -414,10 +414,10 @@ menubar > menu[open] {
 
 @media (-moz-bool-pref: "sidebar.verticalTabs") {
   /* small width tabs */
-  @media (-moz-bool-pref: "ultima.tabs.width.small") {
-    @media not (-moz-bool-pref: "ultima.tabs.width.medium") {
-      @media not (-moz-bool-pref: "ultima.tabs.width.large") {
-        @media not (-moz-bool-pref: "ultima.tabs.width.huge") {
+  @media (-moz-bool-pref: "higgs-boson.tabs.width.small") {
+    @media not (-moz-bool-pref: "higgs-boson.tabs.width.medium") {
+      @media not (-moz-bool-pref: "higgs-boson.tabs.width.large") {
+        @media not (-moz-bool-pref: "higgs-boson.tabs.width.huge") {
           :root,
           body,
           * {
@@ -431,10 +431,10 @@ menubar > menu[open] {
     }
   }
   /* medium width tabs */
-  @media (-moz-bool-pref: "ultima.tabs.width.medium") {
-    @media not (-moz-bool-pref: "ultima.tabs.width.small") {
-      @media not (-moz-bool-pref: "ultima.tabs.width.large") {
-        @media not (-moz-bool-pref: "ultima.tabs.width.huge") {
+  @media (-moz-bool-pref: "higgs-boson.tabs.width.medium") {
+    @media not (-moz-bool-pref: "higgs-boson.tabs.width.small") {
+      @media not (-moz-bool-pref: "higgs-boson.tabs.width.large") {
+        @media not (-moz-bool-pref: "higgs-boson.tabs.width.huge") {
           :root,
           body,
           * {
@@ -448,10 +448,10 @@ menubar > menu[open] {
     }
   }
   /* large width tabs */
-  @media (-moz-bool-pref: "ultima.tabs.width.large") {
-    @media not (-moz-bool-pref: "ultima.tabs.width.small") {
-      @media not (-moz-bool-pref: "ultima.tabs.width.medium") {
-        @media not (-moz-bool-pref: "ultima.tabs.width.huge") {
+  @media (-moz-bool-pref: "higgs-boson.tabs.width.large") {
+    @media not (-moz-bool-pref: "higgs-boson.tabs.width.small") {
+      @media not (-moz-bool-pref: "higgs-boson.tabs.width.medium") {
+        @media not (-moz-bool-pref: "higgs-boson.tabs.width.huge") {
           :root,
           body,
           * {
@@ -465,10 +465,10 @@ menubar > menu[open] {
     }
   }
   /* huge width tabs */
-  @media (-moz-bool-pref: "ultima.tabs.width.huge") {
-    @media not (-moz-bool-pref: "ultima.tabs.width.small") {
-      @media not (-moz-bool-pref: "ultima.tabs.width.medium") {
-        @media not (-moz-bool-pref: "ultima.tabs.width.large") {
+  @media (-moz-bool-pref: "higgs-boson.tabs.width.huge") {
+    @media not (-moz-bool-pref: "higgs-boson.tabs.width.small") {
+      @media not (-moz-bool-pref: "higgs-boson.tabs.width.medium") {
+        @media not (-moz-bool-pref: "higgs-boson.tabs.width.large") {
           :root,
           body,
           * {
@@ -540,7 +540,7 @@ menubar > menu[open] {
     width: var(--uc-vertical-collapsed-width) !important;
   }
   /* keep tab group labels shrunken/hidden*/
-  @media (-moz-bool-pref: "ultima.xstyle.tabgroups.ii") {
+  @media (-moz-bool-pref: "higgs-boson.xstyle.tabgroups.ii") {
     & .tab-group-label-container {
       width: 23px !important;
     }
@@ -687,9 +687,9 @@ menupopup menuseparator {
 
 /*Autohide Vertical Tabs - setting -------------------------------------------------------*/
 
-@media (-moz-bool-pref: "ultima.tabs.autohide") {
+@media (-moz-bool-pref: "higgs-boson.tabs.autohide") {
   @media (-moz-bool-pref: "sidebar.verticalTabs") {
-    @media not (-moz-bool-pref: "ultima.disable.verticaltab.bar") {
+    @media not (-moz-bool-pref: "higgs-boson.disable.verticaltab.bar") {
       /*fixed positioning*/
       #sidebar-main {
         position: fixed !important;
@@ -790,7 +790,7 @@ menupopup menuseparator {
 
 /* Vertical Tabs Disabled - setting ------------------------------------------------------*/
 
-@media (-moz-bool-pref: "ultima.disable.verticaltab.bar") {
+@media (-moz-bool-pref: "higgs-boson.disable.verticaltab.bar") {
   @media (-moz-bool-pref: "sidebar.verticalTabs") {
     /*accessibility button*/
     #sidebar-main:not(:hover) {
@@ -813,7 +813,7 @@ menupopup menuseparator {
       background: var(--uc-accent-ii) !important;
     }
     /* sidebar triggered by screen edge*/
-    @media not (-moz-bool-pref: "ultima.spacing.compact") {
+    @media not (-moz-bool-pref: "higgs-boson.spacing.compact") {
       #sidebar-box::before {
         content: "";
         background-color: none;
@@ -896,14 +896,14 @@ menupopup menuseparator {
   }
 }
 
-@media (-moz-bool-pref: "ultima.tabs.autohide") {
+@media (-moz-bool-pref: "higgs-boson.tabs.autohide") {
   @media (-moz-bool-pref: "sidebar.verticalTabs") {
     :root:has(#sidebar-box:not([hidden])) {
       --uc-sb-margins: 2px 5px -2px 0px;
       --uc-sb-margins-right: 2px 5px -2px 5px;
     }
   }
-  @media (-moz-bool-pref: "ultima.disable.verticaltab.bar") {
+  @media (-moz-bool-pref: "higgs-boson.disable.verticaltab.bar") {
     @media (-moz-bool-pref: "sidebar.verticalTabs") {
       :root:has(#sidebar-box:not([hidden])) {
         --uc-sb-margins: 2px 5px -1px 5px;

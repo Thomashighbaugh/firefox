@@ -15,7 +15,7 @@ Custom Icons
   body,
   * {
     color-scheme: dark !important; /*--<--dont touch--*/
-    --uc-ultima-window: rgb(47, 47, 47);
+    --uc-higgs-boson-window: rgb(47, 47, 47);
     --uc-text: rgb(237, 221, 170);
     --uc-dark-color: rgb(27, 25, 35);
     --uc-light-color: rgb(215, 218, 224);
@@ -65,7 +65,7 @@ Custom Icons
 
   #main-window:not([lwtheme]),
   :root:not([lwtheme]) {
-    --toolbar-bgcolor: var(--uc-ultima-window) !important;
+    --toolbar-bgcolor: var(--uc-higgs-boson-window) !important;
 
     --tab-selected-bgcolor: var(--uc-tab-selected-bg) !important;
     --tab-hover-background-color: var(--uc-tab-selected-bg) !important;
@@ -131,9 +131,9 @@ Custom Icons
 
   #main-window:not([lwtheme]) {
     /* main browser window background color */
-    background-color: var(--uc-ultima-window) !important;
+    background-color: var(--uc-higgs-boson-window) !important;
     & body {
-      background: var(--uc-ultima-window) !important;
+      background: var(--uc-higgs-boson-window) !important;
     }
     /* keep consistency with the navigation assets (including the tabs container) */
     & #navigator-toolbox {
@@ -166,7 +166,7 @@ Custom Icons
 
   #main-window:not([lwtheme]) {
     #sidebar-main {
-      background: var(--uc-ultima-window) !important;
+      background: var(--uc-higgs-boson-window) !important;
     }
     #sidebar {
       background: var(--uc-sb-background) !important;
@@ -324,7 +324,7 @@ Custom Icons
     }
     /* extra styling - customize toolbar page */
     & #customization-container {
-      background-color: var(--uc-ultima-window) !important;
+      background-color: var(--uc-higgs-boson-window) !important;
     }
 
     /* menu popups */
@@ -332,7 +332,7 @@ Custom Icons
       background: color-mix(
         in srgb,
         var(--uc-panel-background) 10%,
-        var(--ultima-window) 90%
+        var(--higgs-boson-window) 90%
       ) !important;
     }
     & .menupopup-arrowscrollbox {
@@ -343,7 +343,7 @@ Custom Icons
 
 /* Global styling - Icons ------------------------------------------------------------*/
 
-@media (-moz-bool-pref: "ultima.theme.icons") {
+@media (-moz-bool-pref: "higgs-boson.theme.icons") {
   /*--extension menu--*/
   #main-window:not([lwtheme]) #unified-extensions-button {
     list-style-image: url("icons/extensions.svg") !important;

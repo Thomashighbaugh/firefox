@@ -1,15 +1,6 @@
-/*///////////////////////////////////////////////////////////////////////////////////////\
 
-┏┓┏┓  ┳┳┓ ┏┳┓┳┳┳┓┏┓
-┣ ┣   ┃┃┃  ┃ ┃┃┃┃┣┫
-┻ ┻   ┗┛┗┛ ┻ ┻┛ ┗┛┗
-                   
-FF Ultima:         https://github.com/soulhotel/FF-ULTIMA
-Wiki:              https://github.com/soulhotel/FF-ULTIMA/wiki
-Latest Version:    https://github.com/soulhotel/FF-ULTIMA/releases/latest                 
-License:           MPL 2.0 https://github.com/soulhotel/FF-ULTIMA/blob/main/LICENSE
-
-\////////////////////////////////////////////////////////////////////////////////////////*/
+@namespace html url("http://www.w3.org/1999/xhtml");
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
 @import url(theme/all-global-positioning.css);
 @import url(theme/all-color-schemes.css);

@@ -4,8 +4,8 @@
 - it will not affect other sidebars (history, favorites, notes, sideview, etc.)
 -----------------------------------------------------------*/
 
-@media (-moz-bool-pref: "ultima.sidebar.hidden") {
-  @media (-moz-bool-pref: "ultima.sidebery.autohide") {
+@media (-moz-bool-pref: "higgs-boson.sidebar.hidden") {
+  @media (-moz-bool-pref: "higgs-boson.sidebery.autohide") {
     #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] {
       --uc-sidebar-width: 0.4px !important;
       margin: 0 !important;
@@ -13,15 +13,15 @@
   }
 }
 
-@media (-moz-bool-pref: "ultima.sidebery.autohide") {
-  @media (-moz-bool-pref: "ultima.sidebar.longer") {
+@media (-moz-bool-pref: "higgs-boson.sidebery.autohide") {
+  @media (-moz-bool-pref: "higgs-boson.sidebar.longer") {
     #sidebar-box {
       --uc-sidebar-hover-width: 400px !important;
     }
   }
 }
 
-@media (-moz-bool-pref: "ultima.sidebery.autohide") {
+@media (-moz-bool-pref: "higgs-boson.sidebery.autohide") {
   :root {
     --bg: #1a1b26;
   }

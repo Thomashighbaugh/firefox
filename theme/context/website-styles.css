@@ -28,9 +28,9 @@
       background: #353538 !important;
     }
   }
-  /* ff ultima guide - style 1 */
+  /* ff higgs-boson guide - style 1 */
   #toolbar::after {
-    content: "🇺 Type 'ultima' or 'user.theme' for FF Ultima theme settings";
+    content: "⚛ Type 'higgs-boson' or 'user.theme' for FF higgs-boson theme settings";
     display: flex;
     padding: 10px 1px 0px 5px;
     border-radius: var(--uc-all-border-radius);
@@ -38,10 +38,10 @@
     color: #f7f1ff;
     font-size: 16px;
   }
-  /* ff ultima guide - style 2 */
+  /* ff higgs-boson guide - style 2 */
   /*
     body::before {
-        content: "↓ type 'ultima' to configure the FF Ultima theme ⤝⥄⤞ type 'user.theme' to switch between color schemes ↓";
+        content: "↓ type 'higgs-boson' to configure the FF higgs-boson theme ⤝⥄⤞ type 'user.theme' to switch between color schemes ↓";
         display: flex;
         padding: 8px 8px 8px 3%;
         border-radius: var(--uc-all-border-radius);

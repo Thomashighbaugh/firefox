@@ -4,7 +4,7 @@
 - https://github.com/datguypiko/Firefox-Mod-Blur
 -----------------------------------------------------------------------------*/
 
-@media (-moz-bool-pref: "ultima.theme.extensions") {
+@media (-moz-bool-pref: "higgs-boson.theme.extensions") {
   /*  Clean and tight extensions menu */
   #unified-extensions-panel #unified-extensions-view {
     width: 100% !important; /*  For firefox v115.x */

@@ -26,4 +26,5 @@ Use the template below to enter your theme into the list:
 (-moz-bool-pref: "user.theme.dark.midnight");
 @import url("all-global-theme-vice.css")
 (-moz-bool-pref: "user.theme.dark.vice");
-
+@import url("all-global-theme-monokaipro-spectrum.css")
+(-moz-bool-pref: "user.theme.dark.monokaipro-spectrum");

@@ -1,6 +1,6 @@
 /*---------------------------- Dark Mode Global Variables -----------------------------
 - Global variables used for ease of modification, and future customization
- 
+
 [Index] ctrl+f a line to find the specified section:
 Establishing custom variables
 Overwriting existing variables
@@ -13,7 +13,7 @@ Custom UI - Background
 @media (prefers-color-scheme: dark) {
 
 /* Establishing custom variables - allowing most(/all) customization to be done in one place. */
-    
+
 :root, body, * {
     color-scheme: dark !important; /*--<--dont touch--*/
     --uc-ultima-window: rgb(1, 1, 1);
@@ -61,13 +61,13 @@ Custom UI - Background
     --button-background-color-active: var(--uc-button-selected) !important;
 }
 
-    
-    
-    
+
+
+
 /* Overwriting existing variables -------------------------------------------------*/
-  
-#main-window:not([lwtheme]), :root:not([lwtheme]) {    
-    
+
+#main-window:not([lwtheme]), :root:not([lwtheme]) {
+
     --toolbar-bgcolor: var(--uc-ultima-window) !important;
 
     --tab-selected-bgcolor: var(--uc-tab-selected-bg) !important;
@@ -122,19 +122,19 @@ Custom UI - Background
     --organizer-toolbar-field-background: var(--uc-accent-iv) !important;
     --organizer-toolbar-field-background-focused: rgb(66, 61, 98) !important;
     --content-select-background-image: none !important;
-} 
-    
-    
-    
-    
+}
+
+
+
+
 /* Applying variables to create the Dark Mode theme --------------------------------*/
 
 /* Main window adjustments ----------------------------------------*/
-    
-#main-window:not([lwtheme]) {  
+
+#main-window:not([lwtheme]) {
     /* main browser window background color */
-    background-color: var(--uc-ultima-window) !important;  
-    & body {background: var(--uc-ultima-window) !important;}    
+    background-color: var(--uc-ultima-window) !important;
+    & body {background: var(--uc-ultima-window) !important;}
     /* keep consistency with the navigation assets (including the tabs container) */
     & #navigator-toolbox {
         background-color: var(--toolbar-bgcolor) !important;
@@ -142,34 +142,34 @@ Custom UI - Background
     &:-moz-window-inactive {
         background-color: var(--toolbar-bgcolor) !important;
         color: var(--uc-text) !important;}
-    }    
+    }
 }
 
 /* Browser Content adjustments ------------------------------------*/
-    
-#main-window:not([lwtheme]) {  
+
+#main-window:not([lwtheme]) {
     /* content window */
-    & #appcontent, & #browser, & #tabbrowser-tabbox, 
-    & #tabbrowser-tabpanels, & .browserSidebarContainer { 
-        background: var(--toolbar-bgcolor) !important; 
+    & #appcontent, & #browser, & #tabbrowser-tabbox,
+    & #tabbrowser-tabpanels, & .browserSidebarContainer {
+        background: var(--toolbar-bgcolor) !important;
     }
     & .browserStack { background: var(--uc-transparent) !important; }
 }
 
 /* Sidebars -------------------------------------------------------*/
 
-#main-window:not([lwtheme]) {  
+#main-window:not([lwtheme]) {
     #sidebar-main {
         background:var(--uc-ultima-window) !important;
     }
     #sidebar {
         background:var(--uc-sb-background) !important;
     }
-}    
+}
 
 /* Tabs -----------------------------------------------------------*/
-    
-#main-window:not([lwtheme]) {  
+
+#main-window:not([lwtheme]) {
     /* tabs container */
     & #tabbrowser-tabs {
         --tab-loading-fill: var(--uc-accent-i) !important;
@@ -213,7 +213,7 @@ Custom UI - Background
 
 /* URL Bar ----------------------------------------*/
 
-#main-window:not([lwtheme]) {  
+#main-window:not([lwtheme]) {
     /* URL bar */
     & #urlbar:is([focused="true"], & [open]) > #urlbar-background, & #searchbar:focus-within {
         margin-top: 3px !important; /*new*/
@@ -250,12 +250,12 @@ Custom UI - Background
 
 /* Buttons --------------------------------------------------------*/
 
-#main-window:not([lwtheme]) {  
+#main-window:not([lwtheme]) {
     /* toolbar buttons */
     & .toolbarbutton-icon:hover,
     & .toolbarbutton-icon[open] {
         background-color: var(--uc-button-selected) !important;
-    }        
+    }
     & #TabsToolbar #firefox-view-button:hover:not([open]) > .toolbarbutton-icon
       {background-color: var(--uc-button-selected) !important;}
     /* bookmark button in URL bar */
@@ -276,10 +276,10 @@ Custom UI - Background
         }
     }
 }
-    
+
 /* Popups/Menus ---------------------------------------------------*/
 
-#main-window:not([lwtheme]) {  
+#main-window:not([lwtheme]) {
     /* other panels & extensions panel */
     & .panel-subview-body {
         background: var(--uc-panel-background) !important;
@@ -287,7 +287,7 @@ Custom UI - Background
     & panelview,
     & #unified-extensions-view {
         background: var(--uc-panel-background) !important;
-    }    
+    }
     /* drop down menus */
     & #ContentSelectDropdown > menupopup[customoptionstyling="true"]::part(arrowscrollbox) {
         --panel-color: black !important;
@@ -298,13 +298,13 @@ Custom UI - Background
     & #ContentSelectDropdownPopup menupopup,
     & #ContentSelectDropdownPopup panel {
         --panel-color: black !important;
-    }        
-        
+    }
+
     /* extra styling - bookmark toolbar adjustment */
-    & #PersonalToolbar {background: var(--uc-transparent) !important;}        
-    /* extra styling - customize toolbar page */     
-    & #customization-container {background-color: var(--uc-ultima-window) !important;}    
-    
+    & #PersonalToolbar {background: var(--uc-transparent) !important;}
+    /* extra styling - customize toolbar page */
+    & #customization-container {background-color: var(--uc-ultima-window) !important;}
+
     /* menu popups */
     & .panel-subview-body {
         background: color-mix(in srgb, var(--uc-panel-background) 10%, var(--ultima-window) 90%) !important;
@@ -312,16 +312,16 @@ Custom UI - Background
     & .menupopup-arrowscrollbox {
         background-color: var(--uc-panel-background) !important;
     }
-}   
-    
+}
+
 } /* < end of Theming */
-    
-    
-    
-    
+
+
+
+
 /* Global styling - Icons --------------------------------------------------------*/
- 
-@media (-moz-bool-pref: "ultima.theme.icons") {  
+
+@media (-moz-bool-pref: "ultima.theme.icons") {
     /*--extension menu--*/
     #main-window:not([lwtheme]) #unified-extensions-button {
       list-style-image: url("icons/extensions.svg") !important;
@@ -357,13 +357,13 @@ Custom UI - Background
     #alltabs-button {
         list-style-image: url("chrome://global/skin/icons/arrow-down-12.svg") !important;
     }
-}    
+}
 
 
 
-    
-/* Custom UI - Background ----------------------------------------------------------*/    
- 
+
+/* Custom UI - Background ----------------------------------------------------------*/
+
 #main-window:not([lwtheme]) #nav-bar {transition: var(--ext-theme-background-transition) !important;
 background-image: url(pic/midnight-ui.gif) !important;
 background-repeat: no-repeat, no-repeat !important;background-position: 115% 100% !important;}
@@ -372,6 +372,5 @@ background-repeat: no-repeat, no-repeat !important;background-position: 115% 100
 color: var(--toolbar-color) !important; color-scheme: var(--toolbar-color-scheme) !important;
 background-image: url(pic/midnight-ui.gif) !important; border-top: 0px !important;
 background-repeat: no-repeat, no-repeat !important;background-position: 100% 100% !important;}
-    
-    
-}
+
+

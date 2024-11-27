@@ -1,6 +1,6 @@
 /*---------------------------- Dark Mode Global Variables -----------------------------
 - Global variables used for ease of modification, and future customization
- 
+
 [Index] ctrl+f a line to find the specified section:
 Establishing custom variables
 Overwriting existing variables
@@ -12,7 +12,7 @@ Custom Icons
 @media (prefers-color-scheme: dark) {
 
 /* Establishing custom variables - allowing most(/all) customization to be done in one place. */
-    
+
 :root, body, * {
     color-scheme: dark !important; /*--<--dont touch--*/
     --uc-ultima-window: rgb(43, 42, 51);
@@ -60,11 +60,11 @@ Custom Icons
 
 
 
-    
+
 /* Overwriting existing variables ---------------------------------------------------*/
-  
-#main-window:not([lwtheme]), :root:not([lwtheme]) {    
-    
+
+#main-window:not([lwtheme]), :root:not([lwtheme]) {
+
     --toolbar-bgcolor: var(--uc-ultima-window) !important;
 
     --tab-selected-bgcolor: var(--uc-tab-selected-bg) !important;
@@ -119,19 +119,19 @@ Custom Icons
     --organizer-toolbar-field-background: var(--uc-accent-iv) !important;
     --organizer-toolbar-field-background-focused: rgb(66, 61, 98) !important;
     --content-select-background-image: none !important;
-} 
-    
-    
-    
-   
+}
+
+
+
+
 /* Applying variables to create the Dark Mode theme --------------------------------*/
 
 /* Main window adjustments ----------------------------------------*/
-    
-#main-window:not([lwtheme]) {  
+
+#main-window:not([lwtheme]) {
     /* main browser window background color */
-    background-color: var(--uc-ultima-window) !important;  
-    & body {background: var(--uc-ultima-window) !important;}    
+    background-color: var(--uc-ultima-window) !important;
+    & body {background: var(--uc-ultima-window) !important;}
     /* keep consistency with the navigation assets (including the tabs container) */
     & #navigator-toolbox {
         background-color: var(--toolbar-bgcolor) !important;
@@ -139,34 +139,34 @@ Custom Icons
     &:-moz-window-inactive {
         background-color: var(--toolbar-bgcolor) !important;
         color: var(--uc-text) !important;}
-    }    
+    }
 }
 
 /* Browser Content adjustments ------------------------------------*/
-    
-#main-window:not([lwtheme]) {  
+
+#main-window:not([lwtheme]) {
     /* content window */
-    & #appcontent, & #browser, & #tabbrowser-tabbox, 
-    & #tabbrowser-tabpanels, & .browserSidebarContainer { 
-        background: var(--toolbar-bgcolor) !important; 
+    & #appcontent, & #browser, & #tabbrowser-tabbox,
+    & #tabbrowser-tabpanels, & .browserSidebarContainer {
+        background: var(--toolbar-bgcolor) !important;
     }
     & .browserStack { background: var(--uc-transparent) !important; }
 }
 
 /* Sidebars -------------------------------------------------------*/
 
-#main-window:not([lwtheme]) {  
+#main-window:not([lwtheme]) {
     #sidebar-main {
         background:var(--uc-ultima-window) !important;
     }
     #sidebar {
         background:var(--uc-sb-background) !important;
     }
-}    
+}
 
 /* Tabs -----------------------------------------------------------*/
-    
-#main-window:not([lwtheme]) {  
+
+#main-window:not([lwtheme]) {
     /* tabs container */
     & #tabbrowser-tabs {
         background: transparent !important;
@@ -211,7 +211,7 @@ Custom Icons
 
 /* URL Bar ----------------------------------------*/
 
-#main-window:not([lwtheme]) {  
+#main-window:not([lwtheme]) {
     /* URL bar */
     & #urlbar:is([focused="true"], & [open]) > #urlbar-background, & #searchbar:focus-within {
         margin-top: 3px !important; /*new*/
@@ -248,13 +248,13 @@ Custom Icons
 
 /* Buttons --------------------------------------------------------*/
 
-#main-window:not([lwtheme]) {  
+#main-window:not([lwtheme]) {
     /* toolbar buttons */
     & #nav-bar .toolbarbutton-1 {color:var(--uc-accent-ii) !important;}
     & .toolbarbutton-icon:hover,
     & .toolbarbutton-icon[open] {
         background-color: var(--uc-button-selected) !important;
-    }        
+    }
     & #TabsToolbar #firefox-view-button:hover:not([open]) > .toolbarbutton-icon
       {background-color: var(--uc-button-selected) !important;}
     /* bookmark button in URL bar */
@@ -275,10 +275,10 @@ Custom Icons
         }
     }
 }
-    
+
 /* Popups/Menus ---------------------------------------------------*/
 
-#main-window:not([lwtheme]) {  
+#main-window:not([lwtheme]) {
     /* other panels & extensions panel */
     & .panel-subview-body {
         background: var(--uc-panel-background) !important;
@@ -286,7 +286,7 @@ Custom Icons
     & panelview,
     & #unified-extensions-view {
         background: var(--uc-panel-background) !important;
-    }    
+    }
     /* drop down menus */
     & #ContentSelectDropdown > menupopup[customoptionstyling="true"]::part(arrowscrollbox) {
         --panel-color: black !important;
@@ -297,13 +297,13 @@ Custom Icons
     & #ContentSelectDropdownPopup menupopup,
     & #ContentSelectDropdownPopup panel {
         --panel-color: black !important;
-    }        
-        
+    }
+
     /* extra styling - bookmark toolbar adjustment */
-    & #PersonalToolbar {background: var(--uc-transparent) !important;}        
-    /* extra styling - customize toolbar page */     
-    & #customization-container {background-color: var(--uc-ultima-window) !important;}    
-    
+    & #PersonalToolbar {background: var(--uc-transparent) !important;}
+    /* extra styling - customize toolbar page */
+    & #customization-container {background-color: var(--uc-ultima-window) !important;}
+
     /* menu popups */
     & .panel-subview-body {
         background: color-mix(in srgb, var(--uc-panel-background) 10%, var(--ultima-window) 90%) !important;
@@ -311,16 +311,16 @@ Custom Icons
     & .menupopup-arrowscrollbox {
         background-color: var(--uc-panel-background) !important;
     }
-}   
-    
+}
+
 } /* < end of Theming */
-    
 
 
-    
+
+
 /* Custom Icons -----------------------------------------------------------------*/
 
-@media (-moz-bool-pref: "ultima.theme.icons") {  
+@media (-moz-bool-pref: "ultima.theme.icons") {
     /* extension menu */
     #main-window:not([lwtheme]) #unified-extensions-button {
       list-style-image: url("icons/extensions.svg") !important;
@@ -356,9 +356,9 @@ Custom Icons
     #alltabs-button {
         list-style-image: url("chrome://global/skin/icons/arrow-down-12.svg") !important;
     }
-}    
+}
 
 
 
 
-} /* fin */
+ /* fin */

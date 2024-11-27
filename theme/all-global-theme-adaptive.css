@@ -2,7 +2,7 @@
 - This file serves as a fallback for default color/design around the FF Ultima theme
 - Including global/default styles that are used throughout every other color scheme
 - Including a base/foundation for tab autotab color extension
- 
+
 [Index] ctrl+f a line to find the specified section:
 Establishing custom variables
 Overwriting existing variables
@@ -21,11 +21,11 @@ body,
   --uc-text: var(--toolbox-non-lwt-textcolor);
   --uc-dark-color: #000;
   --uc-light-color: #fff;
-  --uc-accent-i: #edf783; /* accent colors - blues, yellows, etc. */
-  --uc-accent-ii: rgb(90, 121, 156);
+  --uc-accent-i: #5d5d5d; /* accent colors - blues, yellows, etc. */
+  --uc-accent-ii: rgb(156, 156, 156);
   --uc-accent-iii: rgb(255, 255, 255);
   --uc-accent-iv: rgba(28, 27, 34, 0.5);
-  --uc-accent-v: rgb(121, 161, 195);
+  --uc-accent-v: rgb(121, 121, 121);
   --uc-background-main: var(--toolbox-non-lwt-bgcolor);
   --uc-background-layered: var(--toolbox-non-lwt-bgcolor);
   --uc-transparent: rgba(0, 0, 0, 0);

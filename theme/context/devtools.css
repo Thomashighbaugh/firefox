@@ -1,9 +1,3 @@
-/* This Source Code Form is subject to the terms of the Creative Commons
- * Attribution-NonCommercial-ShareAlike International License, v. 4.0.
- * If a copy of the CC BY-NC-SA 4.0 was not distributed with this
- * file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/
- * or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. */
-
 /* handles context menus opened in devtools processes,
 and a few elements like checkboxes */
 
@@ -413,12 +407,6 @@ and a few elements like checkboxes */
     margin-inline-end: 4px !important;
   }
 
-  /* highlight stylesheets owned by the user so they're easier to find */
-  #style-editor-chrome-window .stylesheet-name label:is([value^="uc-"], [value^="userChrome"], [value^="userContent"], [value="custom-chrome.css"], [value="custom-content.css"], [tooltiptext^="chrome://userchrome/"], [tooltiptext^="file://"]),
-  .ruleview-rule-source-label:is([title^="file://"][title*="/chrome/"]:is([title*="uc-"], [title*="userChrome"], [title*="userContent"], [title*="custom-chrome.css"], [title*="custom-content.css"], [title*="chrome/resources/"]), [title^="chrome://userchrome/"]) {
-    text-decoration: underline !important;
-    color: var(--uc-accent-i) !important; /* Closest approximation */
-  }
 
   /* make the highlighting on unsaved stylesheets more obvious */
   #style-editor-chrome-window li.unsaved:not(.splitview-active) {

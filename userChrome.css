@@ -1,4 +1,3 @@
-
 @namespace html url("http://www.w3.org/1999/xhtml");
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
@@ -6,11 +5,10 @@
 @import url(theme/all-color-schemes.css);
 
 @import url(theme/function-sidebar-autohide.css);
-@import url(theme/function-sidebery-autohide.css);
 @import url(theme/function-privatemode.css); /* sourced from MOG */
 @import url(theme/function-urlbar.css);
 @import url(theme/function-extensions-menu.css);
-/*@import url(theme/function-safeguard.css);*/
+@import url(theme/function-safeguard.css);
 
 @import url(theme/theme-xstyle.css);
 @import url(theme/theme-context-menu.css);
@@ -18,3 +16,4 @@
 @import url(theme/theme-findbar.css);
 @import url(theme/theme-PIP.css);
 @import url(theme/theme-tab-audio-indicator.css);
+@import url(theme/nightly-override.css);

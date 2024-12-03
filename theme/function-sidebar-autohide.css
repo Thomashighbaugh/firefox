@@ -24,23 +24,13 @@ possible spacing issues when the two are present at the same time. (temporarily 
 }
 
 @media (-moz-bool-pref: "higgs-boson.sidebar.autohide") {
-  /* remove header */
-  /* note: youll lose the ability to switch sidebar from left to right */
-  /* #sidebar-header { display: none !important; } */
-
-  /* remove splitter (responsible for adjusting sidebar width) */
-
-  #sidebar-splitter {
-    display: none !important;
-  }
-
   /* use variables. one for collapsed width, one for hover width */
 
   #sidebar-box {
     --uc-sidebar-width: 38px; /* width when not in view */
     --uc-sidebar-hover-width: 270px; /* width when in full view */
     --uc-autohide-sidebar-delay: 300ms;
-    --uc-autohide-transition-duration: 80ms;
+    --uc-autohide-transition-duration: 180ms;
     --uc-autohide-transition-type: linear;
     position: relative;
     min-width: var(--uc-sidebar-width) !important;

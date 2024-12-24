@@ -3,6 +3,8 @@ This file contains segments of code that serve as quick-patches/repairs for chan
 If necessary these patches will eventually be moved into the main files, and removed from here.
 */
 
+#vertical-spacer{display:none !important;}
+
 @media (-moz-bool-pref: "nightly.override") {
   /* VT Toolbar buttons using inconsistent style between firefox versions, requires this patch to correct positioning of button + labels */
 

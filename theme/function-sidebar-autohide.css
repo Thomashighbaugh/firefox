@@ -6,15 +6,6 @@
 possible spacing issues when the two are present at the same time. (temporarily removing this limitation)
 -----------------------------------------------------------*/
 
-@media (-moz-bool-pref: "higgs-boson.sidebar.hidden") {
-  @media (-moz-bool-pref: "higgs-boson.sidebar.autohide") {
-    #sidebar-box {
-      --uc-sidebar-width: 0.4px !important;
-      margin-inline: 0px !important;
-    }
-  }
-}
-
 @media (-moz-bool-pref: "higgs-boson.sidebar.autohide") {
   @media (-moz-bool-pref: "higgs-boson.sidebar.longer") {
     #sidebar-box {
@@ -23,7 +14,6 @@ possible spacing issues when the two are present at the same time. (temporarily 
   }
 }
 
-@media (-moz-bool-pref: "higgs-boson.sidebar.autohide") {
   /* use variables. one for collapsed width, one for hover width */
 
   #sidebar-box {
@@ -161,4 +151,3 @@ possible spacing issues when the two are present at the same time. (temporarily 
       background: var(--uc-tabs-lwt) !important;
     }
   }
-} /* -moz-bool-pref"higgs-boson.tabs.vertical.hide" & "higgs-boson.tabs.sidebar.autohide" */

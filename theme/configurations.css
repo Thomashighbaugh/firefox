@@ -1,0 +1,90 @@
+@import url("animations.css");
+
+
+
+/* Vertical Tab Adjustments */
+     :root {
+      --uc-vertical-collapsed-width: 101px;
+    }
+    /* but the content inside of the verttab container should remain how it was, 56px works */
+    #sidebar-main * {
+      --uc-vertical-collapsed-width: 56px !important;
+    }
+    /* the tabbrowsertabbox (browser content) needs to overlay the extra unused verttab container space, when not hovered */
+    #sidebar-main:has(#tabbrowser-tabs[expanded]):not(:hover)
+      ~ #tabbrowser-tabbox {
+      z-index: 1000 !important;
+    }
+    /* the verttab container should not overlay browser content when it is in firefox's built-in collapsed-state */
+    #sidebar-main:not(:has(#tabbrowser-tabs[expanded])) {
+      z-index: 0 !important;
+    }
+    @media (-moz-bool-pref: "higgs-boson.disable.verticaltab.bar.withindicator") {
+      #sidebar-main:not(:has(#tabbrowser-tabs[expanded])) {
+        z-index: 1001 !important;
+      }
+    }
+
+    /* Animations */
+
+
+/* Glow and wobble-skew effects on hover */
+.close-icon:hover,
+.urlbar-history-dropmarker:hover,
+#page-action-buttons > .urlbar-icon:hover,
+.urlbar-icon-wrapper:hover > .urlbar-icon,
+toolbar .toolbarbutton-1:not([disabled]):hover .toolbarbutton-icon,
+#TabsToolbar toolbarbutton:not([disabled]):hover .toolbarbutton-icon,
+toolbar #downloads-button:hover #downloads-indicator-anchor,
+.identity-box-button:hover,
+#tracking-protection-icon:hover,
+.findbar-textbox ~ toolbarbutton:not([disabled]):hover,
+toolbarbutton.scrollbutton-up:not([disabled]):hover,
+toolbarbutton.scrollbutton-down:not([disabled]):hover,
+toolbarbutton#scrollbutton-up:not([disabled]):hover,
+toolbarbutton#scrollbutton-down:not([disabled]):hover {
+  filter: drop-shadow(0 0 2px #c0c0c0)
+    drop-shadow(0 0 1px #ffffff);
+  animation: wobbleSkew 0.1s ease-in-out infinite;
+}
+
+
+
+/* Based on: <https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/button_effect_scale_onclick.css> */
+/* Button Effect - Scale on click */
+.urlbar-icon,
+.toolbarbutton-icon,
+.tab-close-button,
+.downloadIconShow > .button-box > .button-icon,
+.menuitem-iconic .menu-iconic-icon,
+#downloads-indicator-icon,
+.urlbar-input-container [role="button"] image {
+  transition: transform 90ms linear !important;
+}
+
+toolbar .toolbarbutton-1 > .toolbarbutton-icon {
+  transition: padding 90ms linear !important;
+}
+
+.urlbar-input-container [role="button"]:active image,
+.tab-close-button:active,
+.downloadIconShow:active > .button-box > .button-icon,
+#downloads-button:active #downloads-indicator-icon,
+toolbarbutton#scrollbutton-up:active > .toolbarbutton-icon,
+toolbarbutton:not(.toolbarbutton-1):active > .toolbarbutton-icon,
+toolbar
+  .toolbarbutton-1:not([disabled]):active
+  > .toolbarbutton-badge-stack
+  > .toolbarbutton-icon,
+.menuitem-iconic:active .menu-iconic-icon,
+.urlbar-page-action:active > .urlbar-icon {
+  transform: scale(0.65) !important;
+}
+
+toolbarbutton#scrollbutton-down:active > .toolbarbutton-icon {
+  transform: scale(-0.65) !important;
+}
+
+toolbar .toolbarbutton-1:not([disabled]):active > .toolbarbutton-icon {
+  padding: calc(var(--toolbarbutton-inner-padding) + 3px) !important;
+}

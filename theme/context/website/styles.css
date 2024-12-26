@@ -1,0 +1,70 @@
+/* -------------------------------------------------------------
+- for userContent
+
+- modifications for multiple websites
+- all scrollbars
+- PIP button (picture in picture)
+- about:config page
+- bing declutter
+ ------------------------------------------------------------- */
+
+/* all scrollbars */
+:root {
+  scrollbar-width: auto !important;
+  scrollbar-color: rgba(53, 53, 56, 0.4) rgba(255, 255, 255, 0) !important;
+}
+
+/* PIP button */
+.pip-wrapper {
+  transform: scale(0.6);
+}
+
+/* about:config page*/
+@-moz-document url(chrome://browser/content/browser.xul), url(about:config)
+{
+  @media (prefers-color-scheme: dark) {
+    html,
+    body {
+      background: #353538 !important;
+    }
+  }
+  /* ff higgs-boson guide - style 1 */
+  #toolbar::after {
+    content: "⚛ Type 'higgs-boson' or 'user.theme' for FF higgs-boson theme settings";
+    display: flex;
+    padding: 10px 1px 0px 5px;
+    border-radius: var(--uc-all-border-radius);
+    background: var(--in-content-page-background);
+    color: #f7f1ff;
+    font-size: 16px;
+  }
+  /* ff higgs-boson guide - style 2 */
+  /*
+    body::before {
+        content: "↓ type 'higgs-boson' to configure the FF higgs-boson theme ⤝⥄⤞ type 'user.theme' to switch between color schemes ↓";
+        display: flex;
+        padding: 8px 8px 8px 3%;
+        border-radius: var(--uc-all-border-radius);
+        background: #2c2c2c;
+        color: #f7f1ff;
+        font-weight: bolder;
+        font-size: 16px;
+    }
+    */
+}
+
+/*--------------------------------------------------------------------------------*/
+
+/*bing declutter*/
+
+@-moz-document domain("bing.com") {
+  .vs_cont .vs,
+  .vs_cont .mc_caro {
+    display: none !important;
+  }
+
+  .sb_feedback_button {
+    opacity: 0.4 !important;
+    border-radius: 10px !important;
+  }
+}

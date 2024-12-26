@@ -1,7 +1,0 @@
-* {
-  scrollbar-width: thin !important;
-}
-
-*:not(select) {
-  scrollbar-color: #c38f8f #202020 !important;
-}

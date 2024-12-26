@@ -1,0 +1,72 @@
+/*///////////////////////////////////////////////////////////////////////////////////////\
+
+FF Ultima:         https://github.com/soulhotel/FF-ULTIMA
+File Desc:         Theming the status panel
+
+\////////////////////////////////////////////////////////////////////////////////////////*/
+
+#statuspanel-label {
+  border-radius: 7px !important;
+}
+
+#statuspanel {
+  &:not([hidden]) {
+    max-width: calc(100% - 5px);
+    position: absolute;
+    bottom: 1vh !important;
+    left: 1vw !important;
+    border-radius: 7px !important;
+    padding-top: 2em;
+    pointer-events: none;
+  }
+}
+
+#main-window:not([lwtheme="true"]) #statuspanel-label {
+  @media (not (prefers-contrast)) and (not (-moz-platform: linux)) {
+    & {
+      background-color: var(--uc-background-layered) !important;
+      border-color: rgba(15, 15, 15, 0.5);
+    }
+  }
+}
+@keyframes statusline-anim {
+  from {
+    background-position-x: left;
+  }
+  to {
+    background-position-x: right;
+  }
+}
+
+#statuspanel[type="status"]::after {
+  content: "";
+  pointer-events: none;
+  background-repeat: no-repeat;
+
+  animation: statusline-anim 500ms alternate infinite ease-in-out;
+}
+
+@media (min-width: 1000px) {
+  #statuspanel[type="status"]::after {
+    animation-duration: 460ms;
+  }
+}
+@media (min-width: 1400px) {
+  #statuspanel[type="status"]::after {
+    animation-duration: 520ms;
+  }
+}
+@media (min-width: 1700px) {
+  #statuspanel[type="status"]::after {
+    background-size: 15%;
+    animation-duration: 550ms;
+  }
+}
+@media (min-width: 2200px) {
+  #statuspanel[type="status"]::after {
+    animation-duration: 600ms;
+  }
+}
+.browserContainer {
+  transform: translate(0);
+}

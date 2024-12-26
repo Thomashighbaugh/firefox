@@ -1,4 +1,0 @@
-/* Remove border radius from developer tools */
-browser[class*="devtools-toolbox"] {
-  border-radius: 0px;
-}

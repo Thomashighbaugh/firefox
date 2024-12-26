@@ -1,0 +1,7 @@
+/* Remove Black Friday Deal button from https://mail.proton.me */
+
+@-moz-document domain("mail.proton.me") {
+  .text-semibold.text-uppercase.button-promotion--bf-2024.items-center.flex.max-w-full.button-ghost-norm.button-medium.button {
+    display: none !important;
+  }
+}

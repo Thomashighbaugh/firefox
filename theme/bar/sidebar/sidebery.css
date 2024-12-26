@@ -1,0 +1,115 @@
+/* Based on: <https://raw.githubusercontent.com/mgastonportillo/gale-for-ff/main/userChrome.css> */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* Hide the sidebar header/title */
+#sidebar-header {
+  display: none !important;
+}
+
+.tab[selected="true"] {
+  visibility: collapse;
+  height: 0px;
+}
+
+.tabbrowser-tab {
+  visibility: collapse;
+  height: 0px;
+}
+
+.tabbrowser-tab[visuallyselected="true"] {
+  visibility: collapse;
+  height: 0px;
+}
+
+#sidebar-box {
+  --uc-sidebar-width: 42px;
+  --uc-sidebar-hover-width: 300px;
+  --uc-autohide-sidebar-delay: 400ms;
+  position: relative;
+  min-width: var(--uc-sidebar-width) !important;
+  width: var(--uc-sidebar-width) !important;
+  max-width: var(--uc-sidebar-width) !important;
+  z-index: 1;
+}
+
+#sidebar-box[positionend] {
+  direction: rtl;
+}
+
+#sidebar-box[positionend] > * {
+  direction: ltr;
+}
+
+#sidebar-box[positionend]:-moz-locale-dir(rtl) {
+  direction: ltr;
+}
+
+#sidebar-box[positionend]:-moz-locale-dir(rtl) > * {
+  direction: rtl;
+}
+
+#main-window[sizemode="fullscreen"] #sidebar-box {
+  --uc-sidebar-width: 1px;
+}
+
+#sidebar-splitter {
+  display: none;
+}
+
+#sidebar-header {
+  overflow: hidden;
+  color: var(--chrome-color, inherit) !important;
+}
+
+#sidebar {
+  transition: min-width 200ms ease-in-out var(--uc-autohide-sidebar-delay) !important;
+  min-width: var(--uc-sidebar-width) !important;
+  will-change: min-width;
+}
+
+/* Make the transition smoother with a delay */
+#sidebar-box:hover > #sidebar {
+  min-width: var(--uc-sidebar-hover-width) !important;
+  transition-delay: 50ms !important;
+}
+
+/* Additional smoothing for the sidebar */
+#sidebar-box:hover #sidebar {
+  transition: min-width 200ms ease-in-out var(--uc-autohide-sidebar-delay) !important;
+  transition-delay: 50ms !important;
+}
+
+.sidebar-panel {
+  background-color: transparent !important;
+  color: var(--newtab-text-primary-color) !important;
+}
+
+.sidebar-panel #search-box {
+  -moz-appearance: none !important;
+  background-color: rgba(249, 249, 250, 0.1) !important;
+  color: inherit !important;
+}
+
+/* Add sidebar divider and give it background */
+#sidebar,
+#sidebar-header {
+  background-color: inherit !important;
+  border-inline: 1px solid #c38f8f;
+  border-inline-width: 0px 0px;
+}
+
+#sidebar-box:not([positionend]) > :-moz-locale-dir(rtl),
+#sidebar-box[positionend] > * {
+  border-inline-width: 1px 0px;
+}
+
+/* Move statuspanel to the other side when sidebar is hovered so it doesn't get covered by sidebar */
+#sidebar-box:not([positionend]):hover ~ #appcontent #statuspanel {
+  inset-inline: auto 0px !important;
+}
+
+#sidebar-box:not([positionend]):hover ~ #appcontent #statuspanel-label {
+  margin-inline: 0px !important;
+  border-left-style: solid !important;
+}

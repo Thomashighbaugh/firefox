@@ -1,0 +1,173 @@
+@import "../styling/animations.css";
+/* TODO: Glassy UI 
+  Inspiration: <https://uso.kkx.one/style/257857>, <https://userstyles.world/style/14367/tubeplus> and
+  <https://userstyles.world/style/6219/youtube-music-frosted-glass>
+*/
+
+/* Subtitles/Closed Captions (c) */
+/*
+  - Subtitles are white with a dark shadow for better readability.
+  - Font weight is set to bolder for clearer text.
+  - Background is removed to avoid any distraction.
+  - Text is centered and kept on a single line.
+  - Font size is adjusted for different modes.
+  - Caption window is centered and positioned slightly above the bottom of the video.
+*/
+@-moz-document url-prefix("https://www.youtube.com/watch")
+{
+  .ytp-caption-segment {
+    color: #ffffff !important;
+    text-shadow: 0px 0px 6px #000000 !important;
+    font-weight: bolder !important;
+    background: none !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    line-height: normal !important;
+  }
+
+  .ytp-big-mode > div > div > span > span > span,
+  .ytp-hide-info-bar > div > div > span > span > span {
+    font-size: 30px !important;
+  }
+
+  .caption-window {
+    text-align: center !important;
+    width: 100% !important;
+    height: auto !important;
+    left: 0% !important;
+    margin-left: auto !important;
+    bottom: 5% !important;
+  }
+
+  .ytp-big-mode.ytp-autohide-active > div > .caption-window,
+  .ytp-autohide > div > .caption-window {
+    bottom: 10% !important;
+  }
+}
+
+/* Custom Soft RGB (RosyBrownRGB) Youtube Progress Bar Animation */
+@-moz-document domain(youtube.com) {
+  .ytp-play-progress,
+  .ytp-swatch-background-color {
+    animation: softbgcolorCycle 8s ease-in-out infinite;
+  }
+}
+
+/* Based on: <https://userstyles.world/style/13339/youtube-full-theater> */
+@-moz-document url-prefix("https://www.youtube.com/watch")
+{
+  /* Full height player */
+  ytd-watch-flexy[theater] #player-wide-container,
+  ytd-watch-flexy[theater] #player-theater-container,
+  ytd-watch-flexy[theater] #full-bleed-container {
+    max-height: 100vh !important;
+    min-height: 100vh !important;
+  }
+  /* Hide top bar */
+  #masthead[theater] {
+    height: 0 !important;
+    opacity: 0 !important;
+    transition: opacity 0.1s ease-in-out !important;
+  }
+
+  /* Show on hover */
+  #masthead[theater]:hover {
+    opacity: 1 !important;
+  }
+
+  /* Remove top margin */
+  #masthead-container {
+    position: sticky !important;
+  }
+
+  #page-manager {
+    margin-top: 0 !important;
+  }
+}
+
+/* Remove "i" (info) icon on the video player from top right corner */
+@-moz-document domain("youtube.com") {
+  .ytp-cards-button-icon-default > .ytp-cards-button-icon {
+    display: none !important;
+  }
+}
+
+/* Remove create button */
+@-moz-document domain("youtube.com") {
+  .ytd-topbar-menu-button-renderer.style-scope
+    > .yt-spec-icon-shape.yt-icon-shape
+    > div,
+  .ytd-topbar-menu-button-renderer.style-scope
+    > .yt-spec-icon-shape.yt-icon-shape,
+  #button > .ytd-topbar-menu-button-renderer.style-scope {
+    display: none !important;
+  }
+}
+
+/* Remove voice search button */
+@-moz-document domain("youtube.com") {
+  .ytd-masthead.style-scope
+    > yt-button-shape
+    > .yt-spec-button-shape-next--icon-only-default.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text.yt-spec-button-shape-next
+    > yt-touch-feedback-shape
+    > .yt-spec-touch-feedback-shape--touch-response.yt-spec-touch-feedback-shape
+    > .yt-spec-touch-feedback-shape__fill,
+  .ytd-masthead.style-scope
+    > yt-button-shape
+    > .yt-spec-button-shape-next--icon-only-default.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text.yt-spec-button-shape-next
+    > yt-touch-feedback-shape
+    > .yt-spec-touch-feedback-shape--touch-response.yt-spec-touch-feedback-shape
+    > .yt-spec-touch-feedback-shape__stroke,
+  .ytd-masthead.style-scope
+    > yt-button-shape
+    > .yt-spec-button-shape-next--icon-only-default.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text.yt-spec-button-shape-next
+    > yt-touch-feedback-shape
+    > .yt-spec-touch-feedback-shape--touch-response.yt-spec-touch-feedback-shape,
+  .ytd-masthead.style-scope
+    > yt-button-shape
+    > .yt-spec-button-shape-next--icon-only-default.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text.yt-spec-button-shape-next
+    > .yt-spec-button-shape-next__icon
+    > yt-icon
+    > .yt-spec-icon-shape.yt-icon-shape
+    > div,
+  .ytd-masthead.style-scope
+    > yt-button-shape
+    > .yt-spec-button-shape-next--icon-only-default.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text.yt-spec-button-shape-next
+    > .yt-spec-button-shape-next__icon
+    > yt-icon
+    > .yt-spec-icon-shape.yt-icon-shape,
+  .ytd-masthead.style-scope
+    > yt-button-shape
+    > .yt-spec-button-shape-next--icon-only-default.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text.yt-spec-button-shape-next
+    > .yt-spec-button-shape-next__icon
+    > yt-icon,
+  .ytd-masthead.style-scope
+    > yt-button-shape
+    > .yt-spec-button-shape-next--icon-only-default.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text.yt-spec-button-shape-next__icon,
+  .ytd-masthead.style-scope
+    > yt-button-shape
+    > .yt-spec-button-shape-next--icon-only-default.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text.yt-spec-button-shape-next,
+  .yt-spec-button-shape-next--icon-only-default.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text.yt-spec-button-shape-next
+    > yt-touch-feedback-shape
+    > .yt-spec-touch-feedback-shape--overlay-touch-response.yt-spec-touch-feedback-shape
+    > .yt-spec-touch-feedback-shape__fill,
+  .yt-spec-button-shape-next--icon-only-default.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text.yt-spec-button-shape-next
+    > yt-touch-feedback-shape
+    > .yt-spec-touch-feedback-shape--overlay-touch-response.yt-spec-touch-feedback-shape
+    > .yt-spec-touch-feedback-shape__stroke,
+  .yt-spec-button-shape-next--icon-only-default.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text.yt-spec-button-shape-next
+    > yt-touch-feedback-shape
+    > .yt-spec-touch-feedback-shape--overlay-touch-response.yt-spec-touch-feedback-shape,
+  .yt-spec-button-shape-next--icon-only-default.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text.yt-spec-button-shape-next
+    > .yt-spec-button-shape-next__icon
+    > yt-icon
+    > .yt-spec-icon-shape.yt-icon-shape
+    > div,
+  .yt-spec-button-shape-next--icon-only-default.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text.yt-spec-button-shape-next
+    > .yt-spec-button-shape-next__icon
+    > yt-icon
+    > .yt-spec-icon-shape.yt-icon-shape,
+  .yt-spec-button-shape-next--icon-only-default.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text.yt-spec-button-shape-next {
+    display: none !important;
+  }
+}

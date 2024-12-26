@@ -1,0 +1,30 @@
+/* Remove white flash when reloading a page */
+body,
+html,
+.browserContainer,
+#mainPopupSet:not(url("about:config")),
+#main-window:not(url("about:config")),
+#tabbrowser-tabbox:not(url("about:config")) {
+  background-color: #202020 !important;
+}
+.browserContainer,
+#tabbrowser-tabpanels {
+  background: #202020 !important;
+}
+
+/* Autoscroll */
+.autoscroller {
+  --panel-border-color: transparent !important;
+  background-color: transparent !important;
+  opacity: 1 !important;
+}
+
+/* Remove site/browser boundary line */
+#tabbrowser-tabbox {
+  outline: none !important;
+  box-shadow: none !important;
+}
+#tabbrowser-tabbox {
+  outline: none !important;
+  box-shadow: none !important;
+}

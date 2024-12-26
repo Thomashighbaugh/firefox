@@ -1,19 +1,19 @@
-@namespace html url("http://www.w3.org/1999/xhtml");
-@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
-
-@import url(theme/all-global-positioning.css);
-@import url(theme/all-color-schemes.css);
-
-@import url(theme/function-sidebar-autohide.css);
-@import url(theme/function-privatemode.css); /* sourced from MOG */
-@import url(theme/function-urlbar.css);
-@import url(theme/function-extensions-menu.css);
-@import url(theme/function-safeguard.css);
-
-@import url(theme/theme-xstyle.css);
-@import url(theme/theme-context-menu.css);
-@import url(theme/theme-statuspanel.css);
-@import url(theme/theme-findbar.css);
-@import url(theme/theme-PIP.css);
-@import url(theme/theme-tab-audio-indicator.css);
-@import url(theme/nightly-override.css);
+@import "theme/browser/icons.css";
+@import "theme/bar/buttons.css";
+@import "theme/bar/tabbar.css";
+@import "theme/bar/toolbar.css";
+@import "theme/bar/sidebar.css";
+@import "theme/bar/urlbar.css";
+@import "theme/bar/findbar.css";
+@import "theme/menu/appmenu.css";
+@import "theme/menu/contextmenu.css";
+@import "theme/menu/extensions-menu.css";
+@import "theme/menu/developer-tools.css";
+@import "theme/browser/navigation.css";
+@import "theme/misc/round-items.css";
+@import "theme/panel/statuspanel.css";
+@import "theme/browser/indicators.css";
+@import "theme/browser/dialogs.css";
+@import "theme/styling/fonts.css";
+@import "theme/browser/tweaks.css";
+@import "theme/styling/colors.css";

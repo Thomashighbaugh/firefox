@@ -1,0 +1,27 @@
+/* Hide sidebar header, when using Tree Style Tab. */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]
+  #sidebar-header {
+  visibility: collapse;
+}
+
+/* Hide splitter, when using Tree Style Tab. */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]
+  + #sidebar-splitter {
+  display: none !important;
+}
+
+/* Remove maximum/minimum  width restriction of sidebar */
+#sidebar {
+  max-width: none !important;
+  min-width: 0px !important;
+}
+
+.sidebar-header {
+  max-height: 0px !important;
+  transition: max-height 0.2s ease-out;
+  overflow: hidden;
+}
+
+.sidebar-header:hover {
+  max-height: 100% !important;
+}

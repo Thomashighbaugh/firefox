@@ -1,0 +1,33 @@
+@import "../styling/animations.css";
+
+/* Move the window modal dialog to the center */
+#window-modal-dialog {
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(
+    -25%,
+    -75%
+  ) !important; /* Adjusting for sidebar (sidebery) */
+  margin-left: 0 !important;
+  width: 10% !important;
+  opacity: 0;
+  animation: dialogfadeIn 0.5s forwards;
+}
+
+#window-modal-dialog > .dialogOverlay > .dialogBox {
+  width: 100% !important;
+  height: 100% !important;
+  margin-top: 0px !important;
+  margin-left: 0px !important;
+}
+
+/* Center the tab prompt dialog */
+.tab-prompt-dialog > .dialogOverlay {
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.tab-prompt-dialog > .dialogOverlay > .dialogBox {
+  margin-top: 0px !important;
+  margin-left: 0px !important;
+}

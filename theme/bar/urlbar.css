@@ -1,0 +1,406 @@
+@import "../styling/animations.css";
+/* Remove the zoom button from the URL bar */
+#urlbar-zoom-button {
+  display: none !important;
+}
+
+/* Remove the tracking protection icon from the URL bar */
+/*
+#tracking-protection-icon-container,
+.urlbar-input-container > #tracking-protection-icon-container {
+  display: none !important;
+}
+*/
+/* Show the tracking protection icon when the URL bar is hovered */
+/* Hide the tracking protection icon without taking up space */
+#tracking-protection-icon-container,
+.urlbar-input-container > #tracking-protection-icon-container {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Show the icon on hover */
+#urlbar:hover #tracking-protection-icon-container,
+#tracking-protection-icon-container:hover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Show the containers icon when the URL bar is hovered */
+/* Hide the containers icon without taking up space */
+#pageAction-urlbar-_testpilot-containers {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Show the icon on hover */
+#urlbar:hover #pageAction-urlbar-_testpilot-containers,
+#pageAction-urlbar-_testpilot-containers:hover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Show the translations button when the URL bar is hovered */
+/* Hide the translations button without taking up space */
+#translations-button {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Show the translations button on hover */
+#urlbar:hover #translations-button,
+#translations-button:hover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Remove the bookmark star button from the URL bar */
+/*
+#star-button-box {
+  display: none !important;
+}
+*/
+
+/* Show the bookmark star button when the URL bar is hovered */
+/* Hide the bookmark star button without taking up space */
+#star-button-box {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Show the star button on hover */
+#urlbar:hover #star-button-box,
+#star-button-box:hover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Remove the reader mode button from the URL bar */
+/*
+#reader-mode-button {
+  display: none !important;
+}
+*/
+/* Show the reader mode button when the URL bar is hovered */
+/* Hide the reader mode button without taking up space */
+#reader-mode-button {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Show the reader mode button on hover */
+#urlbar:hover #reader-mode-button,
+#reader-mode-button:hover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Remove the picture-in-picture button from the URL bar */
+/*
+#picture-in-picture-button {
+  display: none !important;
+}
+*/
+/* Show the picture-in-picture button when the URL bar is hovered */
+/* Hide the picture-in-picture button without taking up space */
+#picture-in-picture-button {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Show the picture-in-picture button on hover */
+#urlbar:hover #picture-in-picture-button,
+#picture-in-picture-button:hover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Remove the identity permission box from the URL bar */
+/*
+#identity-permission-box {
+  display: none !important;
+}
+*/
+/* Show the identity permission box when the URL bar is hovered */
+/* Hide the identity permission box without taking up space */
+#identity-permission-box {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Show the identity permission box on hover */
+#urlbar:hover #identity-permission-box,
+#identity-permission-box:hover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Show the EME notification icon when the URL bar is hovered */
+/* Hide the EME notification icon without taking up space */
+#eme-notification-icon {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Show the EME notification icon on hover */
+#urlbar:hover #eme-notification-icon,
+#eme-notification-icon:hover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Remove the permissions granted icon from the URL bar */
+/*
+#permissions-granted-icon {
+  display: none !important;
+}
+*/
+
+/* Hide the identity box from the URL bar */
+/*
+#identity-box {
+  display: none !important;
+}
+*/
+
+/* Hide the identity icon by default */
+/*
+#identity-icon {
+  display: none !important;
+}
+*/
+/* Show the identity icon when the URL bar is hovered */
+/* Hide the identity icon without taking up space */
+#identity-icon {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Show the identity icon on hover */
+#urlbar:hover #identity-icon,
+#identity-icon:hover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Show the identity icon when the site is insecure */
+#identity-box[pageproxystate="valid"].notSecure #identity-icon {
+  display: inline !important;
+}
+
+/* Remove search engines from the search bar and the search button */
+#urlbar .search-one-offs:not([hidden]),
+#urlbar .urlbar-search-button {
+  display: none !important;
+}
+
+/* Remove the identity icon of extension pages from the URL bar */
+/* AKA: Remove "loaded from an extension" message/button from the URL bar */
+#urlbar #identity-box.extensionPage #identity-icon-label {
+  display: none !important;
+}
+
+/* Remove the placeholder text from the URL bar */
+/* AKA: Remove "Search or enter address" message from the URL bar */
+#urlbar-input::placeholder,
+.urlbar-input::placeholder {
+  opacity: 0 !important;
+}
+
+/* Slide-up animation of the urls when the URL bar is focused */
+#urlbar[focused] #urlbar-results {
+  animation: slideUp 0.2s ease-out forwards;
+}
+
+/* Darkens the background when url bar is focused with animation */
+#urlbar:is([breakout][breakout-extend], [breakout][usertyping][focused]):after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+
+  width: 100vw;
+  height: 100vh;
+
+  top: 0px;
+  left: 0px;
+
+  background-color: rgba(0, 0, 0, 0.6);
+  animation: darkenBackground 0.5s forwards;
+
+  z-index: -1;
+}
+
+/* Lightens the background when url bar loses focus with animation */
+#urlbar:not(
+    :is([breakout][breakout-extend], [breakout][usertyping][focused])
+  ):after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+
+  width: 100vw;
+  height: 100vh;
+
+  top: 0px;
+  left: 0px;
+
+  background-color: rgba(0, 0, 0, 0);
+  animation: lightenBackground 0.5s forwards;
+
+  z-index: -1;
+}
+
+/* Center text and url suggestions in the URL bar */
+.urlbarView-row {
+  justify-content: center !important;
+}
+
+.urlbarView-row-inner {
+  max-width: max-content !important;
+}
+
+.urlbarView-no-wrap {
+  max-width: 100% !important;
+}
+
+/* Center text on urlbar */
+/* Ensure text remains centered in the URL bar, even when focused */
+#urlbar[focused] #urlbar-input,
+#urlbar[focused] .urlbar-input,
+#urlbar:not([focused]) #urlbar-input,
+#urlbar:not([focused]) .urlbar-input {
+  text-align: center !important;
+}
+
+.urlbar-input-container,
+#urlbar .urlbar-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center !important;
+}
+
+/* Change text highlight color when clicking on the URL bar */
+#urlbar-input::selection,
+.urlbar-input::selection {
+  background-color: #c38f8f !important;
+  color: #ffffff !important;
+}
+
+/* Change domain color in URL dropdown */
+#urlbar-results .urlbarView-row .urlbarView-url {
+  color: #c8d0d4 !important;
+}
+
+/* Change the title color */
+#urlbar-results .urlbarView-row .urlbarView-title {
+  color: #c38f8f !important;
+}
+
+/* Add color to urlbar border when urlbar is focused */
+#urlbar-container {
+  --toolbar-field-focus-border-color: #c38f8f !important;
+}
+
+/* Background color of the URL selection menu */
+#urlbar-results .urlbarView-row[selected] {
+  background-color: #c38f8f !important;
+}
+
+/* Text color of the full URL besides title in the URL selection menu */
+#urlbar-results :is(.urlbarView-tags, .urlbarView-action, .urlbarView-url) {
+  /* color: #161616 !important; */
+  animation: colorCycle 20s linear infinite !important;
+}
+
+/* Text color of the URL selection menu */
+#urlbar-results .urlbarView-row[selected] .urlbarView-title {
+  color: #ffffff !important;
+}
+
+/* Modify the urlbar text color based on connection type */
+/* Based on: <https://github.com/MrOtherGuy/firefox-csshacks/blob/master/chrome/urlbar_connection_type_text_colors.css> */
+/* For normal pages (HTTPS with valid certificate) - Animated */
+/* RGB text animation in the URL bar */
+.urlbar-input-container[pageproxystate="valid"]:not(
+    [securitylevel="broken"],
+    [securitylevel="none"]
+  )
+  .urlbar-input-box {
+  animation: colorCycle 20s linear infinite;
+}
+
+/* Insecure connections (HTTP) */
+.urlbar-input-container[securitylevel="none"] .urlbar-input-box {
+  color: orangered;
+}
+
+/* Mixed content/errors */
+.urlbar-input-container[securitylevel="broken"] .urlbar-input-box {
+  color: orange;
+}
+
+/* Extension pages */
+#urlbar[actiontype="extension"] .urlbar-input-box {
+  color: violet;
+}
+
+/* Local resources (about:, chrome:) */
+.urlbar-input-container[pageproxystate="localResource"] .urlbar-input-box, /* pageproxystate on container */
+.urlbar-input-container[pageproxystate="chromeUI"] .urlbar-input-box {
+  color: dodgerblue;
+}
+
+/* Adds a colored overlay to urlbar based on the type of the connection */
+/* Based on: <https://github.com/MrOtherGuy/firefox-csshacks/blob/master/chrome/urlbar_connection_type_background_colors.css> */
+#identity-box::before {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 100%;
+  height: var(--urlbar-height);
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
+:root[customizing] #identity-box::before,
+#urlbar[focused] #identity-box::before {
+  display: none;
+}
+
+/* For normal pages (HTTPS with valid certificate) */
+/*
+#identity-box.verifiedDomain::before {
+  background-color: rgba(50, 255, 50, 0.1);
+}
+*/
+
+/* Insecure connections (HTTP) */
+#identity-box.certErrorPage::before,
+#identity-box.notSecure::before {
+  background-color: rgba(226, 0, 12, 0.2);
+}
+
+/* Mixed content/errors */
+#identity-box.unknownIdentity::before {
+  background-color: rgba(226, 120, 12, 0.2);
+}
+
+/* Extension pages */
+#identity-box.extensionPage::before {
+  background-color: rgba(195, 143, 143, 0.2);
+}
+
+/* Local resources (about:, chrome:) */
+#identity-box.chromeUI::before {
+  background-color: rgba(141, 184, 205, 0.2);
+}

@@ -1,0 +1,13 @@
+/* Remove the "Install app" icon, text/button */
+@-moz-document domain("open.spotify.com") {
+  .encore-over-media-set.gDlqhe.ButtonInner-sc-14ud5tc-0 {
+    display: none !important;
+  }
+}
+
+/* Remove "Explore Premium" text/button */
+@-moz-document domain("open.spotify.com") {
+  .Upqw01TOXETOmR5Td7Dj.encore-inverted-light-set.fcsOIN.ButtonInner-sc-14ud5tc-0 {
+    display: none !important;
+  }
+}

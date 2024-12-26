@@ -1,0 +1,7 @@
+/* Downloads indicator progress bar */
+#downloads-indicator-progress-inner {
+  --toolbarbutton-icon-fill-attention: #c38f8f;
+}
+.downloadProgress::-moz-progress-bar {
+  --download-progress-fill-color: #c38f8f;
+}

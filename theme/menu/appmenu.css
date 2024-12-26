@@ -1,0 +1,57 @@
+/* <Based on: <https://raw.githubusercontent.com/datguypiko/Firefox-Mod-Blur/master/EXTRA%20MODS/Icon%20and%20Button%20Mods/Icons%20in%20main%20menu/icons_in_main_menu.css> */
+
+/* Adds icons to main menu items which were removed in Proton */
+#appMenu-zoom-controls::before,
+#appMenu-fxa-status2[fxastatus] > toolbarbutton::before,
+#appMenu-protonMainView > .panel-subview-body > toolbarbutton > image,
+#appMenu-mainView > .panel-subview-body > .subviewbutton > .toolbarbutton-icon {
+  fill: currentColor;
+  -moz-context-properties: fill;
+  margin-inline: 0 8px !important;
+}
+
+#appMenu-zoom-controls::before,
+#appMenu-fxa-status2[fxastatus] > toolbarbutton::before {
+  display: flex;
+  content: "";
+  width: 14px;
+  height: 14px;
+}
+
+/* Use account-button icon for signed in sync item */
+#appMenu-fxa-status2[fxastatus] > toolbarbutton::before {
+  background-image: var(--avatar-image-url);
+}
+
+/* Add somewhat hacky separator to zoom controls so it looks consistent */
+#appMenu-protonMainView > .panel-subview-body::after,
+#appMenu-mainView > .panel-subview-body::after {
+  content: "";
+  display: flex;
+  border-bottom: 1px solid var(--panel-separator-color);
+  margin: var(--panel-separator-margin);
+}
+
+#appMenu-translate-button ~ * {
+  order: 2;
+}
+
+/* Firefox profile avatar in menu */
+#appMenu-fxa-label2::before {
+  content: "";
+  display: flex;
+  height: 15px;
+  width: 15px;
+  background: var(--avatar-image-url) 0/15px;
+  scale: 1.2;
+  border-radius: 100px;
+}
+
+#appMenu-popup {
+  --panel-shortcut-color: #c38f8f;
+}
+
+.subviewbutton-nav::after,
+.subviewbutton-iconic > .toolbarbutton-icon {
+  fill: var(--panel-shortcut-color) !important;
+}

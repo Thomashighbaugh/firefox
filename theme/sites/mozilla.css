@@ -1,0 +1,84 @@
+/* Dark mode for addons.mozilla.org */
+/* Based on: <https://github.com/SpitFire-666/Firefox-Stuff/blob/main/customisation.md#dark-mode-for-addonsmozillaorg> */
+@-moz-document domain("addons.mozilla.org") {
+  :root {
+    --uc-card-background: #2b2929;
+    --uc-page-background: #202020;
+    --uc-attention-background: #302e2e;
+    --uc-attention-color: #363434;
+    --uc-link-color: #d45d5d;
+    --uc-text-color: #ccc0c0;
+    --uc-item-hover-background: #573939;
+  }
+  .LandingPage-header {
+    background-color: var(--uc-attention-background) !important;
+    color: var(--uc-attention-color) !important;
+  }
+  .DropdownMenuItem-link a,
+  .DropdownMenuItem-section,
+  .Button--neutral,
+  .SearchResult-summary,
+  body {
+    color: var(--uc-text-color) !important;
+  }
+  .Page-content {
+    background-color: var(--uc-page-background) !important;
+  }
+  .AutoSearchInput-query,
+  h1,
+  h2,
+  .Home-SubjectShelf-link,
+  .SecondaryHero {
+    color: inherit !important;
+  }
+  .MetadataCard,
+  .AutoSearchInput-query,
+  .SecondaryHero-module,
+  .Card-header,
+  .Card-contents,
+  .Card-footer {
+    background-color: var(--uc-card-background) !important;
+  }
+  .AddonsCard-list,
+  .CardList ul > li {
+    background: none !important;
+  }
+  .DropdownMenuItem-link a:hover,
+  .DropdownMenuItem-link a:active,
+  .PromotedBadge-label,
+  .Home-SubjectShelf-link:active,
+  .Home-SubjectShelf-link:hover,
+  .SearchResult-link,
+  .Card-footer-text a,
+  .Card-shelf-footer-in-header a {
+    color: var(--uc-link-color) !important;
+  }
+  .AddonsCard--horizontal ul.AddonsCard-list .SearchResult-wrapper:focus,
+  .AddonsCard--horizontal ul.AddonsCard-list .SearchResult-wrapper:hover {
+    background-color: var(--uc-item-hover-color) !important;
+  }
+  .LanguageTools-header-row {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+  }
+  .responsiveTable tbody tr:nth-child(2n) {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+  }
+  .DropdownMenu-items,
+  .Select {
+    background-color: var(--uc-item-hover-background) !important;
+    color: var(--uc-text-color) !important;
+  }
+
+  .HeroRecommendation {
+    background-image: linear-gradient(
+      #52859e,
+      var(--uc-page-background)
+    ) !important;
+  }
+  .ShowMoreCard-contents::after {
+    background-image: linear-gradient(
+      hsla(0, 0%, 100%, 0),
+      var(--uc-page-background)
+    ) !important;
+  }
+}

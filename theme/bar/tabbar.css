@@ -1,0 +1,4 @@
+/* Hide horizontal tab bar */
+#TabsToolbar {
+  display: none !important;
+}

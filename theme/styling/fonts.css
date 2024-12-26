@@ -1,0 +1,49 @@
+/* Global font and font size, excluding common icon elements */
+/* Note: Exclusions added to prevent overriding icon fonts */
+body,
+p,
+div,
+code,
+pre,
+input,
+textarea,
+span:not([class*="icon"]):not([class*="glyph"]):not([class*="fa"]):not(
+    [class*="material-icons"]
+  ):not([class*="mdi"]):not([class*="iconify"]):not([class*="ion"]):not(
+    [class*="ti"]
+  ):not([class*="fi"]):not([class*="oi"]):not([class*="icofont"]):not(
+    [class*="material-symbols-outlined"]
+  ):not([class^="icon-"]):not([class*=" icon-"]):not([class*="msi-"]):not(
+    [class*="zsci-"]
+  ):not([class*="zmci-"]),
+i:not([class*="icon"]):not([class*="glyph"]):not([class*="fa"]):not(
+    [class*="material-icons"]
+  ):not([class*="mdi"]):not([class*="iconify"]):not([class*="ion"]):not(
+    [class*="ti"]
+  ):not([class*="fi"]):not([class*="oi"]):not([class*="icofont"]):not(
+    [class*="material-symbols-outlined"]
+  ):not([class^="icon-"]):not([class*=" icon-"]):not([class*="msi-"]):not(
+    [class*="zsci-"]
+  ):not([class*="zmci-"]):not([class*="fui-Icon-font"]):not(
+    [class*="ms-Checkbox-checkmark"]
+  ):not([class*="flaticon"]),
+[class^="icon-"]:not([class*="icon"]),
+[class*=" icon-"]:not([class*="icon"]),
+[class*="msi-"]:not([class*="icon"]),
+[class*="zsci-"]:not([class*="icon"]),
+[class*="zmsi-"]:not([class*="icon"]) {
+  font-family: "Fira Code" !important;
+  /* font-size: 10pt !important; */
+}
+
+/* about:* pages */
+@-moz-document url-prefix("about:") {
+  :root {
+    font-family: "Fira Code" !important;
+  }
+}
+
+/* App menu */
+#appMenu-popup {
+  font-family: "Fira Code" !important;
+}

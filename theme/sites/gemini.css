@@ -1,0 +1,16 @@
+/* Remove "Try Gemini Advanced" option from top right side */
+@-moz-document domain("gemini.google.com") {
+  .mat-mdc-button-base.mat-unthemed.ogb-upsell-button.mat-mdc-unelevated-button.mdc-button--unelevated.mdc-button.ng-tns-c874728986-8
+    > .mat-mdc-button-touch-target,
+  .ng-star-inserted.adv-upsell.buttons-container {
+    display: none !important;
+  }
+}
+
+/* Remove google products icon from top right corner */
+/* Remove google products icon from top right corner */
+@-moz-document domain("gemini.google.com") {
+  #gbwa > .gb_C > .gb_A {
+    display: none !important;
+  }
+}

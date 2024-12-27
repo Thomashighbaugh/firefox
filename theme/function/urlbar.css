@@ -1,15 +1,6 @@
-/*///////////////////////////////////////////////////////////////////////////////////////\
 
-FF Ultima:         https://github.com/soulhotel/FF-ULTIMA
-File Desc:         Alternative Styles for the URL Bar
 
-\////////////////////////////////////////////////////////////////////////////////////////*/
 
-@media (-moz-bool-pref: "higgs-boson.urlbar.suggestions") {
-  #urlbar .search-one-offs:not([hidden]) {
-    display: none !important;
-  }
-}
 @media (-moz-bool-pref: "higgs-boson.urlbar.centered") {
   #urlbar .urlbar-input-box {
     text-align: center;

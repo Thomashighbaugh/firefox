@@ -14,22 +14,22 @@ UC.statusBar = {
   PREF_STATUSTEXT: 'higgs-boson.statusbar.appendStatusText',
 
   get enabled() {
-    return xPref.get(this.PREF_ENABLED);
+    return UC_API.Prefs.get(this.PREF_ENABLED);
   },
 
   get textInBar() {
-    return this.enabled && xPref.get(this.PREF_STATUSTEXT);
+    return this.enabled && UC_API.Prefs.get(this.PREF_STATUSTEXT);
   },
 
   init: function () {
-    xPref.set(this.PREF_ENABLED, true, true);
-    xPref.set(this.PREF_STATUSTEXT, true, true);
-    this.enabledListener = xPref.addListener(this.PREF_ENABLED, (isEnabled) => {
+    UC_API.Prefs.set(this.PREF_ENABLED, true, true);
+    UC_API.Prefs.set(this.PREF_STATUSTEXT, true, true);
+    this.enabledListener = UC_API.Prefs.addListener(this.PREF_ENABLED, (isEnabled) => {
       CustomizableUI.getWidget('status-dummybar').instances.forEach(dummyBar => {
         dummyBar.node.setAttribute('collapsed', !isEnabled);
       });
     });
-    this.textListener = xPref.addListener(this.PREF_STATUSTEXT, (isEnabled) => {
+    this.textListener = UC.Prefs.addListener(this.PREF_STATUSTEXT, (isEnabled) => {
       if (!UC.statusBar.enabled)
         return;
 
@@ -67,12 +67,12 @@ UC.statusBar = {
       if (att == 'collapsed') {
         let StatusPanel = win.StatusPanel;
         if (value === true) {
-          xPref.set(UC.statusBar.PREF_ENABLED, false);
+          UC.Prefs.set(UC.statusBar.PREF_ENABLED, false);
           win.statusbar.node.setAttribute('collapsed', true);
           StatusPanel.panel.appendChild(StatusPanel._labelElement);
           win.statusbar.node.parentNode.collapsed = true;;
         } else {
-          xPref.set(UC.statusBar.PREF_ENABLED, true);
+          UC.Pref.set(UC.statusBar.PREF_ENABLED, true);
           win.statusbar.node.setAttribute('collapsed', false);
           if (UC.statusBar.textInBar)
             win.statusbar.textNode.appendChild(StatusPanel._labelElement);
@@ -173,8 +173,8 @@ UC.statusBar = {
   destroy: function () {
     const { CustomizableUI } = Services.wm.getMostRecentBrowserWindow();
 
-    xPref.removeListener(this.enabledListener);
-    xPref.removeListener(this.textListener);
+    UC.Prefs.removeListener(this.enabledListener);
+    UC.Prefs.removeListener(this.textListener);
     CustomizableUI.unregisterArea('status-bar');
     _uc.sss.unregisterSheet(this.STYLE.url, this.STYLE.type);
     _uc.windows((doc, win) => {

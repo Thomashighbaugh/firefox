@@ -723,7 +723,7 @@ of moz-document in stylesheets with file:// urls */
     margin-inline-end: 6px;
   }
 
-  .tab-sharing-icon-overlay {
+  .tab-sharing-icon-overlay {tabs
     fill: var(--warning-color);
   }
 

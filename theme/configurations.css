@@ -3,6 +3,8 @@
 
 
 /* Vertical Tab Adjustments */
+
+
      :root {
       --uc-vertical-collapsed-width: 101px;
     }
@@ -10,6 +12,7 @@
     #sidebar-main * {
       --uc-vertical-collapsed-width: 56px !important;
     }
+
     /* the tabbrowsertabbox (browser content) needs to overlay the extra unused verttab container space, when not hovered */
     #sidebar-main:has(#tabbrowser-tabs[expanded]):not(:hover)
       ~ #tabbrowser-tabbox {
@@ -18,11 +21,8 @@
     /* the verttab container should not overlay browser content when it is in firefox's built-in collapsed-state */
     #sidebar-main:not(:has(#tabbrowser-tabs[expanded])) {
       z-index: 0 !important;
-    }
-    @media (-moz-bool-pref: "higgs-boson.disable.verticaltab.bar.withindicator") {
-      #sidebar-main:not(:has(#tabbrowser-tabs[expanded])) {
-        z-index: 1001 !important;
-      }
+      visibility: collapse;
+    transition: transform 90ms linear !important;
     }
 
     /* Animations */

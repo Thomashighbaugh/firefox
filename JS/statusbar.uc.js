@@ -1,38 +1,37 @@
-Components.utils.import("resource:///modules/CustomizableUI.sys.mjs");
-var { Services } = Components.utils.import(
-  "resource://gre/modules/Services.jsm",
-  {},
-);
-var appversion = parseInt(Services.appinfo.version);
+"use strict";
+// ==UserScript==
+// @name            Statusbar
+// @author          Thomas Leon Highbaugh
+// @version         0.1
+// @description     Patches the sidebar to allow you to auto-hide it once more!
+// @onlyonce
+// ==/UserScript==
+(function() {
+  if (appversion >= 76 && location != "chrome://browser/content/browser.xhtml")
+    return;
 
-var compact_buttons = false; // reduced toolbar height and smaller buttons
+  var compact_buttons = false; // reduced toolbar height and smaller buttons
 
-var AddStatusbar = {
-  init: function () {
-    if (
-      appversion >= 76 &&
-      location != "chrome://browser/content/browser.xhtml"
-    )
-      return;
+  var AddStatusbar = {
+    init: function () {
+      /* blank tab workaround */ xxxxx;
+      try {
+        if (gBrowser.selectedBrowser.getAttribute("blank"))
+          gBrowser.selectedBrowser.removeAttribute("blank");
+      } catch (e) {}
 
-    /* blank tab workaround */ xxxxx;
-    try {
-      if (gBrowser.selectedBrowser.getAttribute("blank"))
-        gBrowser.selectedBrowser.removeAttribute("blank");
-    } catch (e) {}
+      try {
+        Services.prefs
+          .getDefaultBranch("browser.statusbar.")
+          .setBoolPref("enabled", true);
+      } catch (e) {}
 
-    try {
-      Services.prefs
-        .getDefaultBranch("browser.statusbar.")
-        .setBoolPref("enabled", true);
-    } catch (e) {}
+      var statusbar_label = "Statusbar";
+      var compact_buttons_code = "";
 
-    var statusbar_label = "Statusbar";
-    var compact_buttons_code = "";
-
-    if (compact_buttons)
-      compact_buttons_code =
-        "\
+      if (compact_buttons)
+        compact_buttons_code =
+          "\
 		#statusbar toolbarbutton .toolbarbutton-icon { \
 		  padding: 0 !important; \
 		  width: 16px !important; \
@@ -52,14 +51,14 @@ var AddStatusbar = {
 		} \
 	  ";
 
-    // style sheet
-    Components.classes["@mozilla.org/content/style-sheet-service;1"]
-      .getService(Components.interfaces.nsIStyleSheetService)
-      .loadAndRegisterSheet(
-        Services.io.newURI(
-          "data:text/css;charset=utf-8," +
-            encodeURIComponent(
-              '\
+      // style sheet
+      Components.classes["@mozilla.org/content/style-sheet-service;1"]
+        .getService(Components.interfaces.nsIStyleSheetService)
+        .loadAndRegisterSheet(
+          Services.io.newURI(
+            "data:text/css;charset=utf-8," +
+              encodeURIComponent(
+                '\
 		  \
 		  #statusbar toolbarpaletteitem[place=toolbar][id^=wrapper-customizableui-special-spring],\
 		  #statusbar toolbarspring {\
@@ -103,72 +102,70 @@ var AddStatusbar = {
                 compact_buttons_code +
                 "\
 	  ",
-            ),
-          null,
-          null,
-        ),
-        Components.classes[
-          "@mozilla.org/content/style-sheet-service;1"
-        ].getService(Components.interfaces.nsIStyleSheetService).AGENT_SHEET,
-      );
-
-    // toolbar
-    try {
-      if (document.getElementById("statusbar") == null) {
-        var tb_statusbar = document.createXULElement("toolbar");
-        if (appversion <= 62) tb_statusbar = document.createElement("toolbar");
-        tb_statusbar.setAttribute("id", "statusbar");
-        tb_statusbar.setAttribute("collapsed", "false");
-        tb_statusbar.setAttribute("toolbarname", statusbar_label);
-        tb_statusbar.setAttribute("defaultset", "spring,spring");
-        tb_statusbar.setAttribute("customizable", "true");
-        tb_statusbar.setAttribute("mode", "icons");
-        tb_statusbar.setAttribute("iconsize", "small");
-        tb_statusbar.setAttribute("context", "toolbar-context-menu");
-        tb_statusbar.setAttribute("lockiconsize", "true");
-        tb_statusbar.setAttribute(
-          "class",
-          "toolbar-primary chromeclass-toolbar browser-toolbar customization-target",
+              ),
+            null,
+            null,
+          ),
+          Components.classes[
+            "@mozilla.org/content/style-sheet-service;1"
+          ].getService(Components.interfaces.nsIStyleSheetService).AGENT_SHEET,
         );
 
-        document.getElementById("browser-bottombox").appendChild(tb_statusbar);
-
-        CustomizableUI.registerArea("statusbar", { legacy: true });
-
-        if (appversion >= 65) {
-          CustomizableUI.registerToolbarNode(tb_statusbar);
-        }
-
-        // 'Ctr + /' on Windows/Linux or 'Cmd + /' on macOS to toggle add-on bar
-        var key = document.createXULElement("key");
-        if (appversion < 69) key = document.createElement("key");
-        key.id = "key_toggleStatusBar";
-        key.setAttribute("key", "/");
-        key.setAttribute("modifiers", "accel");
-        key.setAttribute(
-          "oncommand",
-          'var newStatusbar = document.getElementById("statusbar"); setToolbarVisibility(newStatusbar, newStatusbar.collapsed);Services.prefs.getBranch("browser.statusbar.").setBoolPref("enabled",!newStatusbar.collapsed)',
-        );
-        document.getElementById("mainKeyset").appendChild(key);
-
-        try {
-          setToolbarVisibility(
-            document.getElementById("statusbar"),
-            Services.prefs
-              .getBranch("browser.statusbar.")
-              .getBoolPref("enabled"),
+      // toolbar
+      try {
+        if (document.getElementById("statusbar") == null) {
+          var tb_statusbar = document.createXULElement("toolbar");
+          if (appversion <= 62) tb_statusbar = document.createElement("toolbar");
+          tb_statusbar.setAttribute("id", "statusbar");
+          tb_statusbar.setAttribute("collapsed", "false");
+          tb_statusbar.setAttribute("toolbarname", statusbar_label);
+          tb_statusbar.setAttribute("defaultset", "spring,spring");
+          tb_statusbar.setAttribute("customizable", "true");
+          tb_statusbar.setAttribute("mode", "icons");
+          tb_statusbar.setAttribute("iconsize", "small");
+          tb_statusbar.setAttribute("context", "toolbar-context-menu");
+          tb_statusbar.setAttribute("lockiconsize", "true");
+          tb_statusbar.setAttribute(
+            "class",
+            "toolbar-primary chromeclass-toolbar browser-toolbar customization-target",
           );
-        } catch (e) {}
-      }
-    } catch (e) {}
-  },
-};
 
-/* initialization delay workaround */
-document.addEventListener("DOMContentLoaded", AddStatusbar.init(), false);
-/* Use the below code instead of the one above this line, if issues occur */
-/*
-setTimeout(function(){
+          document.getElementById("browser-bottombox").appendChild(tb_statusbar);
+
+          CustomizableUI.registerArea("statusbar", { legacy: true });
+
+          if (appversion >= 65) {
+            CustomizableUI.registerToolbarNode(tb_statusbar);
+          }
+
+          // 'Ctr + /' on Windows/Linux or 'Cmd + /' on macOS to toggle add-on bar
+          var key = document.createXULElement("key");
+          if (appversion < 69) key = document.createElement("key");
+          key.id = "key_toggleStatusBar";
+          key.setAttribute("key", "/");
+          key.setAttribute("modifiers", "accel");
+          key.setAttribute(
+            "oncommand",
+            'var newStatusbar = document.getElementById("statusbar"); setToolbarVisibility(newStatusbar, newStatusbar.collapsed);Services.prefs.getBranch("browser.statusbar.").setBoolPref("enabled",!newStatusbar.collapsed)',
+          );
+          document.getElementById("mainKeyset").appendChild(key);
+
+          try {
+            setToolbarVisibility(
+              document.getElementById("statusbar"),
+              Services.prefs
+                .getBranch("browser.statusbar.")
+                .getBoolPref("enabled"),
+            );
+          } catch (e) {}
+        }
+      } catch (e) {}
+    },
+  };
+
   AddStatusbar.init();
-},2000);
-*/
+
+  setTimeout(function(){
+    AddStatusbar.init();
+  },2000);
+})();

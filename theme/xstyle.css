@@ -284,7 +284,7 @@
 /* ------------------------------------------------------------------------------------------------------------ */
 
 /*alternative styling for container tabs*/
-/* by Kaedriz */
+
 
 /* Needs to be added to avoid overflowing, needs testing if this doesn't break anything */
 .tabbrowser-tab .tab-background {
@@ -365,7 +365,3 @@
     transition: opacity 0.2s ease-in; /* Fast ease-in when hovered */
   }
 }
-
-/* ---------------------------------------------------------------------------------------------- */
-
-/* ---------------------------------------------------------------------------------------------- */

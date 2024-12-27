@@ -18,11 +18,11 @@ UC.sidebarAutoHide = {
         console.log('starting up...');
         window.SidebarController._initDeferred.promise.then(() => window.SidebarController._state.__defineSetter__('launcherWidth', function(val) {
             // Doesn't seem like we need anything here to make this work.
-        })); 
+        }));
     },
 
     shutdown: function (window) {
         console.log('shutting down...');
-        window.SidebarController._state.__defineSetter__('launcherWidth', window.SidebarController.SidebarState.prototype.__lookupSetter__('launcherWidth')); 
+        window.SidebarController._state.__defineSetter__('launcherWidth', window.SidebarController.SidebarState.prototype.__lookupSetter__('launcherWidth'));
     }
 }

@@ -3,7 +3,10 @@
 // @version        2.6
 // @author         aminomancer
 // @homepage       https://github.com/aminomancer
-// @description    Load *.ag.css files as agent sheets and *.au.css files as author sheets. Will also load *.us.css files as user sheets, in case you ever need that for some reason. This loader is capable of loading stylesheets into browser toolbox windows, but it will not try to load userChrome.css or userContent.css in the browser toolbox. For that you will need userChromeDevtoolsSheetLoader.uc.js instead.
+// @description    Load *.ag.css as agent, *.au.css as author, and *.us.css as
+// user sheets. Capable of loading stylesheets into browser toolbox windows,
+// excluding userChrome.css/userContent.css. Use
+// userChromeDevtoolsSheetLoader.uc.js for those.
 // @backgroundmodule
 // ==/UserScript==
 

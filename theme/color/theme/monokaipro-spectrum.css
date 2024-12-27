@@ -1,13 +1,3 @@
-/*---------------------------- Dark Mode Global Variables -----------------------------
-- Global variables used for ease of modification, and future customization
-
-[Index] ctrl+f a line to find the specified section:
-Establishing custom variables
-Overwriting existing variables
-Applying variables to create the Dark Mode theme
-Custom Icons
--------------------------------------------------------------------------------------*/
-
 @media (prefers-color-scheme: dark) {
   /* Establishing custom variables - allowing most(/all) customization to be done in one place. */
 
@@ -15,9 +5,9 @@ Custom Icons
   body,
   * {
     color-scheme: dark !important; /*--<--dont touch--*/
-    --uc-higgs-boson-window: #19191a; /* bg */
+    --uc-higgs-boson-window: #19171e; /* bg */
     --uc-text: #f7f1ff; /* fg */
-    --uc-dark-color: #19191a; /* bg */
+    --uc-dark-color: #19171e; /* bg */
     --uc-light-color: #f7f1ff; /* fg */
     --uc-accent-i: #7bd88f; /* ok - green */
     --uc-accent-ii: #5ad4e6; /* pri - blue */
@@ -27,12 +17,12 @@ Custom Icons
     --uc-accent-vi: #fc618d; /* err - red */
     --uc-accent-vii: #28282a; /* bg3 - darker grey */
     --uc-background-main: #232325; /* mbg */
-    --uc-background-layered: #19191a; /* bg */
+    --uc-background-layered: #19171e; /* bg */
     --uc-transparent: rgba(0, 0, 0, 0);
     --uc-button-selected: #353538; /* bg4 */
-    --uc-tab-selected-bg: #19191a; /* bg */
+    --uc-tab-selected-bg: #19171e; /* bg */
     --uc-urlbar-background: #232325; /* mbg */
-    --uc-panel-background: #19191a; /* bg */
+    --uc-panel-background: #19171e; /* bg */
     --uc-panel-border: rgba(53, 53, 56, 1); /* darkened bg4 */
     --uc-panel-border-ii: rgba(70, 70, 80, 0.2);
     --uc-context-menu: #28282a; /* bg3 */

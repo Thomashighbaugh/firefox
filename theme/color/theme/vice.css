@@ -36,8 +36,8 @@
         --urlbar-icon-border-radius: var(--uc-all-border-radius);
         --button-border-radius: 10px;
         --uc-button-border-radius: 10px;
-        --uc-box-shadow: 0.1rem 0.4rem 0.4rem -0.1rem rgba(24,24,24,0.8); /* base00 alpha */
-        --uc-box-shadow-panel: 0.1rem 0.3rem 0.4rem -0.1rem rgba(24,24,24,0.8);/* base00 alpha */
+        --uc-box-shadow: inset 2px 2px 5px rgba(24, 24, 24, 0.6), inset 0.1rem 0.4rem 0.4rem -0.1rem rgba(24,24,24,0.8) !important; /* base00 alpha */
+        --uc-box-shadow-panel:inset 2px 2px 5px rgba(24, 24, 24, 0.6), inset 0.1rem 0.4rem 0.4rem -0.1rem rgba(24,24,24,0.8) !important; 
         --inactive-titlebar-opacity: 1 !important;
         --toolbox-non-lwt-bgcolor-inactive: ActiveCaption !important;
         --toolbox-non-lwt-textcolor-inactive: CaptionText !important;

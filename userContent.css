@@ -7,6 +7,8 @@
 
 @import url(theme/context/extension/bitwarden.css); /*styling for multiple websites*/
 
+@import url(theme/context/addons.css); /*styling for multiple websites*/
+
 @import url(theme/context/extension/darkreader.css); /*styling for multiple websites*/
 
 @import url(theme/context/extension/mdm.css); /*styling for multiple websites*/

@@ -354,7 +354,6 @@
 
 /* bookmarks fade out -------------------------------------------------------------------------------------- */
 
-@media (-moz-bool-pref: "higgs-boson.xstyle.bookmarks.fading") {
   #PlacesToolbar {
     opacity: 0.2 !important;
     transition: opacity 4s ease-out; /* Slow ease-out when not hovered */
@@ -364,4 +363,3 @@
     opacity: 1 !important;
     transition: opacity 0.2s ease-in; /* Fast ease-in when hovered */
   }
-}

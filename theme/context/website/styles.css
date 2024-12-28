@@ -28,9 +28,35 @@
       background: #353538 !important;
     }
   }
+  @-moz-document url("about:config") {
+    .button-delete,
+    .button-edit,
+    .button-reset,
+    .button-save,
+    .button-toggle {
+      margin-block: 1px !important;
+      padding-block: 11px 0 !important;
+      padding-inline: 0 !important;
+      min-height: 22px !important;
+      width: 22px !important;
+      outline-offset: 0 !important;
+      box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2); /* Example for a toolbar */
+    }
+    .cell-edit {
+      width: 28px !important;
+    }
+    form > input,
+    tr:not(.add) > th,
+    tr:not(.add) > .cell-value {
+      padding-block: 0 !important;
+    }
+    tr:not(:hover) .semi-transparent:not(.primary, .button-add) {
+      background-color: transparent !important;
+    }
+  }
   /* ff higgs-boson guide - style 1 */
   #toolbar::after {
-    content: "⚛ Type 'higgs-boson' or 'user.theme' for FF higgs-boson theme settings";
+    content: "⚛ If that's proton or lepton, welcome to Higgs-Boson, the God Particle!";
     display: flex;
     padding: 10px 1px 0px 5px;
     border-radius: var(--uc-all-border-radius);
@@ -38,19 +64,6 @@
     color: #f7f1ff;
     font-size: 16px;
   }
-  /* ff higgs-boson guide - style 2 */
-  /*
-    body::before {
-        content: "↓ type 'higgs-boson' to configure the FF higgs-boson theme ⤝⥄⤞ type 'user.theme' to switch between color schemes ↓";
-        display: flex;
-        padding: 8px 8px 8px 3%;
-        border-radius: var(--uc-all-border-radius);
-        background: #2c2c2c;
-        color: #f7f1ff;
-        font-weight: bolder;
-        font-size: 16px;
-    }
-    */
 }
 
 /*--------------------------------------------------------------------------------*/

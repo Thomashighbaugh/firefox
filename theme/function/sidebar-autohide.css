@@ -1,28 +1,6 @@
-/*///////////////////////////////////////////////////////////////////////////////////////\
-
-FF Ultima:         https://github.com/soulhotel/FF-ULTIMA
-File Desc:         Autohide the Sidebar
-
-\////////////////////////////////////////////////////////////////////////////////////////*/
-
-@media (-moz-bool-pref: "higgs-boson.sidebar.hidden") {
-  @media (-moz-bool-pref: "higgs-boson.sidebar.autohide") {
-    #sidebar-box {
-      --uc-sidebar-width: 0.4px !important;
-      margin-inline: 0px !important;
-    }
-  }
-}
-@media (-moz-bool-pref: "higgs-boson.sidebar.autohide") {
-  @media (-moz-bool-pref: "higgs-boson.sidebar.longer") {
     #sidebar-box {
       --uc-sidebar-hover-width: 350px !important;
     }
-  }
-}
-
-@media (-moz-bool-pref: "higgs-boson.sidebar.autohide") {
-  /* remove splitter (responsible for adjusting sidebar width) */
 
   #sidebar-splitter {
     display: none !important;
@@ -123,4 +101,3 @@ File Desc:         Autohide the Sidebar
     border-radius: 7px !important;
     margin-right: 7px !important;
   }
-} /* fin */

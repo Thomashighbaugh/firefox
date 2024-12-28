@@ -10,7 +10,9 @@ Use the template below to enter your theme into the list:
 @import url("theme/lwtheme.css");
 @import url("theme/adaptive.css")
 (-moz-bool-pref: "user.theme.adaptive");
-@import url("theme/fullmoon.css");
+@import url("theme/vice-alt.css")
+(-moz-bool-pref: "user.theme.dark.vice-alt");
+
 @import url("theme/vice.css")
 (-moz-bool-pref: "user.theme.dark.vice");
 @import url("theme/monokaipro-spectrum.css")

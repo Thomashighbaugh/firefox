@@ -38,14 +38,14 @@
   grid-template-columns: repeat(
     var(--firefoxcss-number-of-extensions-in-a-row),
     auto
-  );
+  ) !important;
   justify-items: left !important;
   align-items: left !important;
 }
 
 #unified-extensions-view .unified-extensions-list .unified-extensions-item,
 #unified-extensions-view .unified-extensions-list {
-  max-width: max-content;
+  max-width: max-content !important;
 }
 
 #unified-extensions-view #unified-extensions-area {

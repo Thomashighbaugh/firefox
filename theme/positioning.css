@@ -199,10 +199,12 @@
 
 /* titlebar corrections */
 .titlebar-spacer[type="pre-tabs"] {
-  width: 4px !important;
+  width: 0 !important;
+  display: none !important;
 }
 .titlebar-spacer[type="post-tabs"] {
-  width: 1px !important;
+  width: 0 !important;
+    display: none !important;
 }
 #tabbrowser-tabs {
   border-inline-start: 0px !important;

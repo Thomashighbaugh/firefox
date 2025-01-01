@@ -13,11 +13,11 @@ See the above repository for updates as well as full license text. */
     #main{ max-width: unset !important; padding-right: 28px; }
     addon-list > section,
     recommended-addon-list{
-      padding: 1em;
-      display: grid;
-      grid-template-areas: "hd hd" "cd cd";
-      grid-auto-columns: 1fr;
-      column-gap: 1em;
+      padding: 1em !important; 
+      display: grid !important;
+      grid-template-areas: "hd hd" "cd cd" !important;
+      grid-auto-columns: 1fr !important;
+      column-gap: 1em !important;
      
     }
   
@@ -28,7 +28,7 @@ See the above repository for updates as well as full license text. */
     addon-card{
       padding-bottom: 0px !important;
       padding-top: 0px !important;
-      grid-area: auto;
+      grid-area: auto !important;
     }
     addon-card .addon-description{ max-height: 3em; scrollbar-width: thin; }
   }
@@ -36,14 +36,14 @@ See the above repository for updates as well as full license text. */
   @media (min-width:1220px){
     addon-list > section,
     recommended-addon-list{
-      grid-template-areas: "hd hd hd" "cd cd cd";
+      grid-template-areas: "hd hd hd" "cd cd cd" !important;
     }
   }
   
   @media (min-width:1720px){
     addon-list > section,
     recommended-addon-list{
-      grid-template-areas: "hd hd hd hd" "cd cd cd cd";
+      grid-template-areas: "hd hd hd hd" "cd cd cd cd" !important;
     }
   }
 }

@@ -33,11 +33,9 @@ UC.statusBar = {
       if (!UC.statusBar.enabled)
         return;
 
-      _uc.windows((doc, win) => {
+      _uc.windows((win) => {
         let StatusPanel = win.StatusPanel;
-        if (isEnabled)
           win.statusbar.textNode.appendChild(StatusPanel._labelElement);
-        else
           StatusPanel.panel.appendChild(StatusPanel._labelElement);
       });
     });
@@ -137,12 +135,12 @@ UC.statusBar = {
         @-moz-document url('${_uc.BROWSERCHROME}') {
           #status-bar {
             color: initial !important;
-            background-color: var(--toolbar-non-lwt-bgcolor) !important;
+            background-color: var( --uc-panel-background) !important;
           }
           #status-text > #statuspanel-label {
             border-top: 0 !important;
             background-color: unset !important;
-            color: #444;
+            color: var(--uc-text); 
           }
           #status-bar > #status-text {
             display: flex !important;
@@ -152,14 +150,14 @@ UC.statusBar = {
             -moz-window-dragging: drag;
           }
           toolbarpaletteitem #status-text:before {
-            content: "Status text";
-            color: red;
+            content: "Status:";
+            color: var(--uc-text);
             border: 1px #aaa solid;
             border-radius: 3px;
             font-weight: bold;
           }
           #browser-bottombox:not([collapsed]) {
-            border-top: 1px solid #BCBEBF !important;
+            border-top: 1px solid var(--uc-border-color) !important;
           }
           :root[inFullscreen]:not([macOSNativeFullscreen]) #browser-bottombox {
             visibility: collapse !important;

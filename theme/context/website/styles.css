@@ -54,9 +54,9 @@
       background-color: transparent !important;
     }
   }
-  /* ff higgs-boson guide - style 1 */
+  /* ff higgs-boson guide -  */
   #toolbar::after {
-    content: "⚛ If that's proton or lepton, welcome to Higgs-Boson, the God Particle!";
+    content: "⚛ If that's proton or lepton, welcome to Higgs-Boson, the God Particle!" !important;
     display: flex;
     padding: 10px 1px 0px 5px;
     border-radius: var(--uc-all-border-radius);

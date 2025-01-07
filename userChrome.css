@@ -18,3 +18,20 @@
 @import url(theme/tab-audio-indicator.css);
 @import url(theme/configurations.css);
 @import url(theme/icons.css);
+
+/* Reduce left spacer on non-maximized windows */
+.titlebar-spacer[type="pre-tabs"] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Reduce left spacer on non-maximized windows */
+.titlebar-spacer[type="post-tabs"] {
+  visibility: hidden !important;
+  display: none !important;
+}
+/* Reduce left spacer on non-maximized windows */
+.titlebar-spacer {
+  visibility: hidden !important;
+  display: none !important;
+}

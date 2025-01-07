@@ -207,6 +207,17 @@
   display: none !important;
   visibility: collapse !important;
 }
+.titlebar-spacer {
+  width: 0 !important;
+  display: none !important;
+  visibility: collapse !important;
+}
+.titlebar-spacer #vertical-spacer {
+  width: 0 !important;
+  display: none !important;
+  visibility: collapse !important;
+}
+
 #vertical-spacer {
   width: 0 !important;
   display: none !important;

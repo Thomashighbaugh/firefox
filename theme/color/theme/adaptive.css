@@ -1,4 +1,3 @@
-
 /* Establishing custom variables - allowing most(/all) customization to be done in one place. */
 
 :root,
@@ -205,6 +204,8 @@ body,
   }
   & .titlebar-spacer[type="post-tabs"] {
     opacity: 0 !important;
+    display: none !important;
+    visibility: hidden !important;
   }
 }
 

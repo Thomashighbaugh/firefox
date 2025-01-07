@@ -206,6 +206,8 @@
     }
     & .titlebar-spacer[type="post-tabs"] {
       opacity: 0 !important;
+      display: none !important;
+      visibility: hidden !important;
     }
   }
 

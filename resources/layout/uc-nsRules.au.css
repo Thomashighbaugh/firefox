@@ -1119,7 +1119,7 @@ of moz-document in stylesheets with file:// urls */
   }
 
   #customization-uidensity-touch-spacer {
-    margin-inline: calc(-1 * var(--arrowpanel-padding) / 2) !important;
+    visibility: collapse;
   }
 
   #customization-footer {

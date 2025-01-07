@@ -1,4 +1,3 @@
-
 /* Global variables for quick modifications ---------------------------------------------*/
 
 :root {
@@ -9,8 +8,8 @@
   --uc-tabbar-height: 40px;
   --uc-bookbar-height: 28px;
   --uc-topbars-combined-height: calc(
-    var(--uc-menubar-height) + var(--uc-navbar-height) + var(--uc-tabbar-height) +
-      var(--uc-bookbar-height)
+    var(--uc-menubar-height) + var(--uc-navbar-height) +
+      var(--uc-tabbar-height) + var(--uc-bookbar-height)
   );
   /*rounded corners*/
   --uc-all-border-radius: 10px;
@@ -201,10 +200,17 @@
 .titlebar-spacer[type="pre-tabs"] {
   width: 0 !important;
   display: none !important;
+  visibility: collapse !important;
 }
 .titlebar-spacer[type="post-tabs"] {
   width: 0 !important;
-    display: none !important;
+  display: none !important;
+  visibility: collapse !important;
+}
+#vertical-spacer {
+  width: 0 !important;
+  display: none !important;
+  visibility: collapse !important;
 }
 #tabbrowser-tabs {
   border-inline-start: 0px !important;
@@ -212,7 +218,6 @@
 #TabsToolbar {
   margin: 0 !important;
 }
-
 
 /* titlebar corrections */
 #main-window:not([lwtheme]) .titlebar-button {
@@ -396,8 +401,6 @@ menubar > menu[open] {
     }
   }
 }
-
-
 
 /* Side bar *** --------------------------------------------------------------------------*/
 
@@ -669,108 +672,104 @@ span.button-background.labelled label {
 
 /* Autohide Vertical Tabs - setting -------------------------------------------------------*/
 
-      /* fixed positioning */
-      #sidebar-main {
-        position: fixed !important;
-        top: calc(var(--uc-topbars-combined-height) - 4px) !important;
-        left: 0px !important;
-        height: calc(
-          100vh - var(--uc-topbars-combined-height) + 3px
-        ) !important;
-        z-index: 999 !important;
-      }
+/* fixed positioning */
+#sidebar-main {
+  position: fixed !important;
+  top: calc(var(--uc-topbars-combined-height) - 4px) !important;
+  left: 0px !important;
+  height: calc(100vh - var(--uc-topbars-combined-height) + 3px) !important;
+  z-index: 999 !important;
+}
 
-      /* autohide */
-      #sidebar-main:has([expanded]) {
-        transition: width 80ms linear 70ms !important;
-        will-change: width !important;
-        width: var(--uc-vertical-expanded-width) !important;
-        &:not(:hover) {
-          width: var(--uc-vertical-collapsed-width) !important;
-        }
-      }
+/* autohide */
+#sidebar-main:has([expanded]) {
+  transition: width 80ms linear 70ms !important;
+  will-change: width !important;
+  width: var(--uc-vertical-expanded-width) !important;
+  &:not(:hover) {
+    width: var(--uc-vertical-collapsed-width) !important;
+  }
+}
 
-      /* adjustments for elements within */
-      #sidebar-main:has([expanded=""]):not(:hover) {
-        & .tabbrowser-tab {
-          width: var(--uc-vertical-collapsed-width) !important;
-          min-width: 0px !important;
-        }
-        & .tabbrowser-tab[pinned] {
-          width: 41px !important;
-          min-width: 0px !important;
-        }
-        & .tabbrowser-tab[pinned] {
-          width: 41px !important;
-          min-width: 0px !important;
-        }
-        & .tab-label-container,
-        & .tab-close-button {
-          display: none !important;
-        }
-        & #tabs-newtab-button .toolbarbutton-text {
-          opacity: 0 !important;
-        }
-        & #vertical-tabs-newtab-button .toolbarbutton-text {
-          opacity: 0 !important;
-        }
-      }
+/* adjustments for elements within */
+#sidebar-main:has([expanded=""]):not(:hover) {
+  & .tabbrowser-tab {
+    width: var(--uc-vertical-collapsed-width) !important;
+    min-width: 0px !important;
+  }
+  & .tabbrowser-tab[pinned] {
+    width: 41px !important;
+    min-width: 0px !important;
+  }
+  & .tabbrowser-tab[pinned] {
+    width: 41px !important;
+    min-width: 0px !important;
+  }
+  & .tab-label-container,
+  & .tab-close-button {
+    display: none !important;
+  }
+  & #tabs-newtab-button .toolbarbutton-text {
+    opacity: 0 !important;
+  }
+  & #vertical-tabs-newtab-button .toolbarbutton-text {
+    opacity: 0 !important;
+  }
+}
 
-      /* forcing visibility when context menu is active */
-      @media (-moz-bool-pref: "higgs-boson.disable.contextmenu.collapsing") {
-        #main-window:has(#toolbar-context-menu[hasbeenopened="true"]:hover)
-          #sidebar-main:has([expanded]):not(:hover),
-        #main-window:has(#tabContextMenu[hasbeenopened="true"]:hover)
-          #sidebar-main:has([expanded]):not(:hover) {
-          width: var(--uc-vertical-expanded-width) !important;
-          & .tabbrowser-tab {
-            width: var(--uc-vertical-expanded-width) !important;
-            min-width: initial !important;
-          }
-          & .tabbrowser-tab[pinned] {
-            width: initial !important;
-            min-width: initial !important;
-          }
-          & .tabbrowser-tab[pinned] {
-            width: initial !important;
-            min-width: initial !important;
-          }
-          & .tab-label-container {
-            display: initial !important;
-          }
-          & #tabs-newtab-button .toolbarbutton-text {
-            opacity: initial !important;
-          }
-          & #vertical-tabs-newtab-button .toolbarbutton-text {
-            opacity: initial !important;
-          }
-        }
-      }
+/* forcing visibility when context menu is active */
+@media (-moz-bool-pref: "higgs-boson.disable.contextmenu.collapsing") {
+  #main-window:has(#toolbar-context-menu[hasbeenopened="true"]:hover)
+    #sidebar-main:has([expanded]):not(:hover),
+  #main-window:has(#tabContextMenu[hasbeenopened="true"]:hover)
+    #sidebar-main:has([expanded]):not(:hover) {
+    width: var(--uc-vertical-expanded-width) !important;
+    & .tabbrowser-tab {
+      width: var(--uc-vertical-expanded-width) !important;
+      min-width: initial !important;
+    }
+    & .tabbrowser-tab[pinned] {
+      width: initial !important;
+      min-width: initial !important;
+    }
+    & .tabbrowser-tab[pinned] {
+      width: initial !important;
+      min-width: initial !important;
+    }
+    & .tab-label-container {
+      display: initial !important;
+    }
+    & #tabs-newtab-button .toolbarbutton-text {
+      opacity: initial !important;
+    }
+    & #vertical-tabs-newtab-button .toolbarbutton-text {
+      opacity: initial !important;
+    }
+  }
+}
 
-      /* browser space adjustments */
-      @media (-moz-bool-pref: "sidebar.revamp") {
-        #main-window:not([inDOMFullscreen="true"])
-          #browser:not(:has(#sidebar-main[hidden="true"])) {
-          margin-left: 50px !important;
-        }
-        #main-window:not([inDOMFullscreen="true"])
-          #browser:not(
-            :has(#sidebar-main[hidden="true"], #sidebar-splitter[hidden="true"])
-          ) {
-          margin-left: 55px !important;
-        }
-        #main-window[inFullscreen="true"] {
-          #sidebar-main {
-            top: -3px !important;
-            height: 100vh !important;
-          }
-          #navigator-toolbox:has(
-              + #browser > #sidebar-main:not([hidden="true"])
-            ) {
-            padding-left: var(--uc-vertical-collapsed-width);
-          }
-        }
-      }
+/* browser space adjustments */
+@media (-moz-bool-pref: "sidebar.revamp") {
+  #main-window:not([inDOMFullscreen="true"])
+    #browser:not(:has(#sidebar-main[hidden="true"])) {
+    margin-left: 50px !important;
+  }
+  #main-window:not([inDOMFullscreen="true"])
+    #browser:not(
+      :has(#sidebar-main[hidden="true"], #sidebar-splitter[hidden="true"])
+    ) {
+    margin-left: 55px !important;
+  }
+  #main-window[inFullscreen="true"] {
+    #sidebar-main {
+      top: -3px !important;
+      height: 100vh !important;
+    }
+    #navigator-toolbox:has(+ #browser > #sidebar-main:not([hidden="true"])) {
+      padding-left: var(--uc-vertical-collapsed-width);
+    }
+  }
+}
 
 /*-----------------------------------------------------------------------------------------------*/
 /* ---------------------------------------------------------------------*/
@@ -863,4 +862,3 @@ menupopup menuseparator {
 .tabbrowser-tab[pending] .tab-content {
   opacity: 0.2 !important;
 }
-

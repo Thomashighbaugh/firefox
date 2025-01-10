@@ -200,28 +200,28 @@
 .titlebar-spacer[type="pre-tabs"] {
   width: 0 !important;
   display: none !important;
-  visibility: collapse !important;
+  visibility: hidden !important;
 }
 .titlebar-spacer[type="post-tabs"] {
   width: 0 !important;
   display: none !important;
-  visibility: collapse !important;
+  visibility: hidden !important;
 }
 .titlebar-spacer {
   width: 0 !important;
   display: none !important;
-  visibility: collapse !important;
+  visibility: hidden !important;
 }
 .titlebar-spacer #vertical-spacer {
   width: 0 !important;
   display: none !important;
-  visibility: collapse !important;
+  visibility: hidden !important;
 }
 
 #vertical-spacer {
   width: 0 !important;
   display: none !important;
-  visibility: collapse !important;
+  visibility: hidden !important;
 }
 #tabbrowser-tabs {
   border-inline-start: 0px !important;

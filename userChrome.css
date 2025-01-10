@@ -23,15 +23,18 @@
 .titlebar-spacer[type="pre-tabs"] {
   display: none !important;
   visibility: hidden !important;
+  width: 0 !important;
 }
 
 /* Reduce left spacer on non-maximized windows */
 .titlebar-spacer[type="post-tabs"] {
   visibility: hidden !important;
   display: none !important;
+  width: 0 !important;
 }
 /* Reduce left spacer on non-maximized windows */
 .titlebar-spacer {
   visibility: hidden !important;
   display: none !important;
+  width: 0 !important;
 }

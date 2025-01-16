@@ -55,6 +55,17 @@
   addonBar.setAttribute("persist", "collapsed");
   addonBar.collapsed = false;
 
+  // NEW: Get the current set of items on the addon bar
+  let currentSet = addonBar.getAttribute("currentset").split(",");
+
+  // Add the new toolbar's ID to the current set if it's not already there
+  if (!currentSet.includes("ESB_toolbar")) {
+    currentSet.push("ESB_toolbar");
+    addonBar.setAttribute("currentset", currentSet.join(","));
+    // Persist changes to the addon bar
+    Services.xulStore.persist(addonBar, "currentset");
+  }
+
   // Function to update the displayed URL
   function showLinkLocation(event) {
     const link = event.target.closest("a[href]");

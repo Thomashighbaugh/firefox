@@ -2,20 +2,20 @@
 // @name           Extended Statusbar
 // @description    A customizable Statusbar with link location preview
 // @include        main
-// @author         Thomas Leon Highbaugh
-// @version        0.0.1
-// @homepageURL   https://github.com/Thomashighbaugh/firefox
+// @author         py (modified by)
+// @version        2.1.2 (modified for userchrome.js)
+// @homepageURL    https://addons.mozilla.org/en-US/firefox/addon/extended-statusbar/
 // ==/UserScript==
 
 (function () {
   // Create the status bar - now a customizable toolbar
   const toolbar = UC_API.Utils.createElement(document, "toolbar", {
     id: "ESB_toolbar",
+    toolbarname: "Extended Statusbar",
+    customizable: "true",
     mode: "icons",
     iconsize: "small",
     defaulticonsize: "small",
-    toolbarname: "Extended Statusbar",
-    customizable: "true",
     context: "toolbar-context-menu",
     fullscreentoolbar: "true",
   });
@@ -27,25 +27,35 @@
   toolbar.setAttribute("defaulticonsize", "small");
   toolbar.setAttribute("toolboxid", "navigator-toolbox");
   toolbar.setAttribute("data-widget-type", "toolbar");
-
-  // Add the status bar to the main window
-  document.getElementById("browser-bottombox").appendChild(toolbar);
+  toolbar.setAttribute("label", "Extended Status Bar");
 
   // Create an element for displaying the hovered link URL
   const urlBox = UC_API.Utils.createElement(document, "toolbaritem", {
     id: "esb-url-box",
     flex: "1",
+    width: "100%",
   });
 
   const urlLabel = UC_API.Utils.createElement(document, "label", {
     id: "esb-url-label",
     value: "",
+    flex: "1",
   });
   urlBox.appendChild(urlLabel);
   toolbar.appendChild(urlBox);
 
-  // Move the toolbar to the addon bar
-  document.getElementById("addon-bar").appendChild(toolbar);
+  // Get references to the addon bar and the browser bottom box
+  const addonBar = document.getElementById("addon-bar");
+  const browserBottomBox = document.getElementById("browser-bottombox");
+
+  // Insert the toolbar into the addon bar
+  addonBar.appendChild(toolbar);
+
+  // Ensure the addon bar is visible
+  UC_API.Windows.getAll().forEach((window) => {
+    window.setToolbarVisibility(addonBar, true);
+    browserBottomBox.appendChild(addonBar);
+  });
 
   // Function to update the displayed URL
   function showLinkLocation(event) {

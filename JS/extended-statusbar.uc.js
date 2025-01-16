@@ -44,18 +44,16 @@
   urlBox.appendChild(urlLabel);
   toolbar.appendChild(urlBox);
 
-  // Get references to the addon bar and the browser bottom box
+  // Get references to the addon bar
   const addonBar = document.getElementById("addon-bar");
-  const browserBottomBox = document.getElementById("browser-bottombox");
 
   // Insert the toolbar into the addon bar
   addonBar.appendChild(toolbar);
 
-  // Ensure the addon bar is visible
-  UC_API.Windows.getAll().forEach((window) => {
-    window.setToolbarVisibility(addonBar, true);
-    browserBottomBox.appendChild(addonBar);
-  });
+  // Ensure the addon bar is visible and its visibility persists
+  addonBar.setAttribute("toolboxid", "navigator-toolbox");
+  addonBar.setAttribute("persist", "collapsed");
+  addonBar.collapsed = false;
 
   // Function to update the displayed URL
   function showLinkLocation(event) {

@@ -7,78 +7,214 @@
 // @homepageURL    https://addons.mozilla.org/en-US/firefox/addon/extended-statusbar/
 // ==/UserScript==
 
-(function () {
-  // Create the status bar - now a customizable toolbar
-  const toolbar = UC_API.Utils.createElement("toolbar");
-  toolbar.setAttribute("id", "ESB_toolbar");
-  toolbar.setAttribute("toolbarname", "Extended Statusbar");
-  toolbar.setAttribute("customizable", "true");
-  toolbar.setAttribute("mode", "icons");
-  toolbar.setAttribute("iconsize", "small");
-  toolbar.setAttribute("defaulticonsize", "small");
-  toolbar.setAttribute("context", "toolbar-context-menu");
-  toolbar.setAttribute("fullscreentoolbar", "true");
-  toolbar.setAttribute("toolboxid", "navigator-toolbox"); // Add toolboxid attribute
-  toolbar.setAttribute("data-widget-type", "toolbar");
-  toolbar.setAttribute("label", "Extended Status Bar");
+var appversion = parseInt(Services.appinfo.version);
 
-  // Create an element for displaying the hovered link URL
-  const urlBox = document.createElement("toolbaritem");
-  urlBox.setAttribute("id", "esb-url-box");
-  urlBox.setAttribute("flex", "1");
-  urlBox.setAttribute("width", "50%");
+var compact_buttons = false; // reduced toolbar height and smaller buttons
 
-  const urlLabel = document.createElement("label");
-  urlLabel.setAttribute("id", "esb-url-label");
-  urlLabel.setAttribute("value", "");
-  urlLabel.setAttribute("flex", "1");
-  urlBox.appendChild(urlLabel);
-  toolbar.appendChild(urlBox);
+var AddAddonbar = {
+  init: function () {
+    if (location != "chrome://browser/content/browser.xhtml") return;
 
-  // Get references to the status bar
-  const statusBar = document.getElementById("status-bar");
+    /* blank tab workaround */
+    try {
+      if (gBrowser.selectedBrowser.getAttribute("blank"))
+        gBrowser.selectedBrowser.removeAttribute("blank");
+    } catch (e) {}
 
-  // Insert the toolbar into the status bar
-  statusBar.appendChild(toolbar);
+    try {
+      Services.prefs
+        .getDefaultBranch("browser.addonbar.")
+        .setBoolPref("enabled", true);
+    } catch (e) {}
 
-  // Ensure the status bar is visible and its visibility persists (status-bar is usually visible by default)
-  // No need to set toolboxid on status-bar, it's fixed.
-  // No need to persist collapsed on status-bar, it's usually not collapsible by default.
+    var addonbar_label = "Add-on Bar";
+    var compact_buttons_code = "";
 
-  // NEW: Get the current set of items on the status bar (status-bar might not use currentset directly, toolbars within might)
-  // However, for toolbars inside status-bar, currentset might still be relevant for customization.
-  let currentSet = statusBar.getAttribute("currentset");
-  if (!currentSet) {
-    currentSet = ""; // Initialize if null
-  }
-  currentSet = currentSet.split(",");
+    if (compact_buttons)
+      compact_buttons_code = `
+		#addonbar toolbarbutton .toolbarbutton-icon {
+		  padding: 0 !important;
+		  width: 16px !important;
+		  height: 16px !important;
+		}
+		#addonbar .toolbarbutton-badge-stack {
+		  padding: 0 !important;
+		  margin: 0 !important;
+		  width: 16px !important;
+		  min-width: 16px !important;
+		  height: 16px !important;
+		  min-height: 16px !important;
+		}
+		#addonbar toolbarbutton .toolbarbutton-badge {
+		  margin-top: 0px !important;
+		  font-size: 5pt !important;
+		  min-width: unset !important;
+		  min-height: unset !important;
+		  margin-inline-start: 0px !important;
+		  margin-inline-end: 0px !important;
+		}
+		#addonbar .toolbaritem-combined-buttons {
+		  margin-inline: 0px !important;
+		}
+		#addonbar toolbarbutton {
+		  padding: 0 !important;
+		}
+	  `;
 
-  // Add the new toolbar's ID to the current set if it's not already there
-  if (!currentSet.includes("ESB_toolbar")) {
-    currentSet.push("ESB_toolbar");
-    statusBar.setAttribute("currentset", currentSet.join(","));
-    // Persist changes to the status bar or its children if needed.
-    // Services.xulStore.persist(statusBar, "currentset"); // Persisting on status-bar might not be directly effective.
-    // Persisting on the toolbar itself might be more relevant for its position within status-bar if status-bar manages children like toolbars via currentset.
-    Services.xulStore.persist(toolbar, "currentset"); // Try persisting on the toolbar itself.
-  }
+    // style sheet
+    Components.classes["@mozilla.org/content/style-sheet-service;1"]
+      .getService(Components.interfaces.nsIStyleSheetService)
+      .loadAndRegisterSheet(
+        Services.io.newURI(
+          "data:text/css;charset=utf-8," +
+            encodeURIComponent(
+              `
+		  #addonbar toolbarpaletteitem[place=toolbar][id^=wrapper-customizableui-special-spring],
+		  #addonbar toolbarspring {
+			-moz-box-flex: 1 !important;
+			min-width: unset !important;
+			width: unset !important;
+			max-width: unset !important;
+		  }
+		  #main-window[customizing] #addonbar {
+			outline: 1px dashed !important;
+			outline-offset: -2px !important;
+		  }
+		  #addonbar {
+			border-top: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.1)) !important;
+			background-color: var(--toolbar-bgcolor);
+			background-image: var(--toolbar-bgimage);
+			-moz-window-dragging: no-drag !important;
+		  }
+		  :root[lwtheme] #addonbar {
+			background: var(--lwt-accent-color) !important;
+		  }
+		  :root[lwtheme][lwtheme-image='true'] #addonbar {
+			background: var(--lwt-header-image) !important;
+			background-position: 0vw 50vh !important;
+		  }
+		  /* autohide add-on bar in fullscreen mode */
+		  /*#main-window[sizemode='fullscreen']:not([inDOMFullscreen='true']) #addonbar {
+			visibility: visible !important;
+			display: block !important;
+			min-height: 1px !important;
+			height: 1px !important;
+			max-height: 1px !important;
+		  }
+		  #main-window[sizemode='fullscreen']:not([inDOMFullscreen='true']) #addonbar:hover {
+			min-height: 24px !important;
+			height: 24px !important;
+			max-height: 24px !important;
+		  }*/
+		  #unified-extensions-button[hidden]{
+			visibility: visible !important;
+			display: flex !important;
+		  }
+		  ` +
+                compact_buttons_code +
+                `
+	  `,
+            ),
+          null,
+          null,
+        ),
+        Components.classes[
+          "@mozilla.org/content/style-sheet-service;1"
+        ].getService(Components.interfaces.nsIStyleSheetService).AGENT_SHEET,
+      );
 
-  // Function to update the displayed URL
-  function showLinkLocation(event) {
-    let link = event.target.closest("a[href]");
-    if (!link) {
-      link = event.target.closest("area[href]"); // Also check for area elements in image maps
+    // toolbar
+    try {
+      if (document.getElementById("addonbar") == null) {
+        var tb_addonbar = document.createXULElement("toolbar");
+        tb_addonbar.setAttribute("id", "addonbar");
+        tb_addonbar.setAttribute("collapsed", "false");
+        tb_addonbar.setAttribute("toolbarname", addonbar_label);
+        tb_addonbar.setAttribute("defaultset", "spring,spring");
+        tb_addonbar.setAttribute("customizable", "true");
+        tb_addonbar.setAttribute("mode", "icons");
+        tb_addonbar.setAttribute("iconsize", "small");
+        tb_addonbar.setAttribute("context", "toolbar-context-menu");
+        tb_addonbar.setAttribute("lockiconsize", "true");
+        tb_addonbar.setAttribute(
+          "class",
+          "toolbar-primary chromeclass-toolbar browser-toolbar customization-target",
+        );
+
+        document.getElementById("browser").parentNode.appendChild(tb_addonbar);
+        tb_addonbar.insertBefore(
+          document.querySelector("#statuspanel"),
+          tb_addonbar.firstChild,
+        );
+
+        CustomizableUI.registerArea("addonbar", { legacy: true });
+
+        setTimeout(function () {
+          CustomizableUI.registerArea("addonbar", { legacy: true });
+        }, 2000);
+
+        CustomizableUI.registerToolbarNode(tb_addonbar);
+
+        // 'Ctr + /' on Windows/Linux or 'Cmd + /' on macOS to toggle add-on bar
+        var key = document.createXULElement("key");
+        key.id = "key_toggleAddonBar";
+        key.setAttribute("key", "/");
+        key.setAttribute("modifiers", "accel");
+        /*key.setAttribute('oncommand',`
+			var newAddonBar = document.getElementById('addonbar');
+			setToolbarVisibility(newAddonBar, newAddonBar.collapsed);
+			Services.prefs.getBranch('browser.addonbar.').setBoolPref('enabled',!newAddonBar.collapsed);
+		  `);*/
+        key.addEventListener("command", () => {
+          var newAddonBar = document.getElementById("addonbar");
+          setToolbarVisibility(newAddonBar, newAddonBar.collapsed);
+          Services.prefs
+            .getBranch("browser.addonbar.")
+            .setBoolPref("enabled", !newAddonBar.collapsed);
+        });
+        document.getElementById("mainKeyset").appendChild(key);
+
+        try {
+          setToolbarVisibility(
+            document.getElementById("addonbar"),
+            Services.prefs
+              .getBranch("browser.addonbar.")
+              .getBoolPref("enabled"),
+          );
+        } catch (e) {}
+      }
+    } catch (e) {}
+  },
+};
+
+/* initialization delay workaround */
+document.addEventListener("DOMContentLoaded", AddAddonbar.init(), false);
+/* Use the below code instead of the one above this line, if issues occur */
+/*
+setTimeout(function(){
+  AddAddonbar.init();
+},2000);
+*/
+
+/* fix for downloads button on add-on bar - thanks to dimdamin */
+/* https://github.com/Aris-t2/CustomJSforFx/issues/125#issuecomment-2506613776 */
+(async (url) =>
+  !location.href.startsWith(url) ||
+  (await delayedStartupPromise) ||
+  (async (scrNT, nTjs) => {
+    if (scrNT.length >= 1) {
+      nTjs.uri = "data:application/x-javascript;charset=UTF-8,";
+      nTjs.res = await fetch(scrNT[0].src);
+      nTjs.src = (await nTjs.res.text())
+        .replace(/navigator-toolbox/, "addonbar")
+        .replace(/widget-overflow/, "addonbar");
+      (
+        await ChromeUtils.compileScript(nTjs.uri + encodeURIComponent(nTjs.src))
+      ).executeInGlobal(this);
     }
-    if (link) {
-      urlLabel.value = link.href;
-      urlLabel.style.visibility = "visible";
-    } else {
-      urlLabel.value = "";
-      urlLabel.style.visibility = "hidden";
-    }
-  }
-
-  // Add event listeners to show/hide the URL on hover. Attach to document for wider coverage.
-  document.addEventListener("mouseover", showLinkLocation);
-  document.addEventListener("mouseout", showLinkLocation);
-})();
+  })(
+    document
+      .getElementById("navigator-toolbox")
+      .querySelectorAll(":scope > script"),
+    {},
+  ))("chrome://browser/content/browser.x");

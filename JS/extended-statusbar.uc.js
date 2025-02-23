@@ -190,11 +190,9 @@ var AddAddonbar = {
 /* initialization delay workaround */
 document.addEventListener("DOMContentLoaded", AddAddonbar.init(), false);
 /* Use the below code instead of the one above this line, if issues occur */
-/*
-setTimeout(function(){
+setTimeout(function () {
   AddAddonbar.init();
-},2000);
-*/
+}, 2000);
 
 /* fix for downloads button on add-on bar - thanks to dimdamin */
 /* https://github.com/Aris-t2/CustomJSforFx/issues/125#issuecomment-2506613776 */

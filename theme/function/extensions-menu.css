@@ -16,7 +16,6 @@
 
 #unified-extensions-view {
   --uei-icon-size: 22px;
-  --firefoxcss-number-of-extensions-in-a-row: 4;
 }
 
 #unified-extensions-view .unified-extensions-item-menu-button.subviewbutton,
@@ -39,10 +38,7 @@
 #unified-extensions-view #unified-extensions-area,
 #unified-extensions-view .unified-extensions-list {
   display: grid !important;
-  grid-template-columns: repeat(
-    var(--firefoxcss-number-of-extensions-in-a-row),
-    auto
-  );
+  grid-template-columns: repeat(4, auto);
   justify-items: left !important;
   align-items: left !important;
 }

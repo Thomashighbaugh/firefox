@@ -82,6 +82,7 @@ var AddAddonbar = {
 		  }
 		  #addonbar {
 			border-top: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.1)) !important;
+              border-radius: 6px 6px 0 0;
 			background-color: var(--toolbar-bgcolor);
 			background-image: var(--toolbar-bgimage);
 			-moz-window-dragging: no-drag !important;
@@ -97,14 +98,19 @@ var AddAddonbar = {
 		  /*#main-window[sizemode='fullscreen']:not([inDOMFullscreen='true']) #addonbar {
 			visibility: visible !important;
 			display: block !important;
-			min-height: 1px !important;
 			height: 1px !important;
 			max-height: 1px !important;
-		  }
+			background-color: var(--toolbar-bgcolor);
+        	background-image: var(--toolbar-bgimage);
+
+          }
 		  #main-window[sizemode='fullscreen']:not([inDOMFullscreen='true']) #addonbar:hover {
-			min-height: 24px !important;
-			height: 24px !important;
-			max-height: 24px !important;
+			min-height: 26px !important;
+			height: 26px !important;
+			max-height: 26px !important;
+          	bbbackground-color: var(--toolbar-bgcolor);
+        	background-image: var(--toolbar-bgimage);
+
 		  }*/
 		  #unified-extensions-button[hidden]{
 			visibility: visible !important;

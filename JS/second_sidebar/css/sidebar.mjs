@@ -1,7 +1,8 @@
 export const SIDEBAR_CSS = `
   #sidebar-2 {
     box-shadow: var(--content-area-shadow);
-    border-radius: var(--border-radius-medium);
+    border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
     overflow: hidden;
     height: 100%;
     pointer-events: auto;

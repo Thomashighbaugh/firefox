@@ -3,7 +3,7 @@
   #main-window:not([lwtheme]) {
     & #urlbar-background,
     & #searchbar {
-      background-color: transparent !important;
+      /* background-color: transparent !important; */
       box-shadow: 0.1rem 0.4rem 0.4rem -0.1rem rgba(0, 0, 0, 0);
     }
   }
@@ -25,22 +25,20 @@
   cursor: pointer !important;
 }
 
-  @media (prefers-color-scheme: dark) {
-    .tabbrowser-tab[pinned=""] .tab-background,
-    .tabbrowser-tab[pinned="true"] .tab-background {
-      background-color: var(--tab-selected-bgcolor) !important;
-      box-shadow: inset 0 !important;
-    }
+@media (prefers-color-scheme: dark) {
+  .tabbrowser-tab[pinned=""] .tab-background,
+  .tabbrowser-tab[pinned="true"] .tab-background {
+    background-color: var(--tab-selected-bgcolor) !important;
+    box-shadow: inset 0 !important;
   }
-  @media (prefers-color-scheme: light) {
-    .tabbrowser-tab[pinned=""] .tab-background,
-    .tabbrowser-tab[pinned="true"] .tab-background {
-      background-color: var(--tab-selected-bgcolor) !important;
-      box-shadow: inset 0 !important;
-    }
+}
+@media (prefers-color-scheme: light) {
+  .tabbrowser-tab[pinned=""] .tab-background,
+  .tabbrowser-tab[pinned="true"] .tab-background {
+    background-color: var(--tab-selected-bgcolor) !important;
+    box-shadow: inset 0 !important;
   }
-
-
+}
 
 @media (-moz-bool-pref: "higgs-boson.xstyle.tabgroups.ii") {
   /*safeguard - shrink the group container label when tabs are not expanded*/
@@ -285,7 +283,6 @@
 
 /*alternative styling for container tabs*/
 
-
 /* Needs to be added to avoid overflowing, needs testing if this doesn't break anything */
 .tabbrowser-tab .tab-background {
   overflow: clip;
@@ -354,12 +351,12 @@
 
 /* bookmarks fade out -------------------------------------------------------------------------------------- */
 
-  #PlacesToolbar {
-    opacity: 0.2 !important;
-    transition: opacity 4s ease-out; /* Slow ease-out when not hovered */
-  }
+#PlacesToolbar {
+  opacity: 0.2 !important;
+  transition: opacity 4s ease-out; /* Slow ease-out when not hovered */
+}
 
-  #PlacesToolbar:hover {
-    opacity: 1 !important;
-    transition: opacity 0.2s ease-in; /* Fast ease-in when hovered */
-  }
+#PlacesToolbar:hover {
+  opacity: 1 !important;
+  transition: opacity 0.2s ease-in; /* Fast ease-in when hovered */
+}

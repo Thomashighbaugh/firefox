@@ -1,621 +1,505 @@
-/*
-Note: this new tab theme is the creation of @Hachiko
-https://github.com/hachikoharuno/Beautiful-newtab-Firefox
-check them out if you like this theme!
-*/
+/* Edge-Frfox - content/newtab.css */
 
-@import url("../../color/schemes-newtab.css");
+@-moz-document url-prefix("about:newtab"),
+url-prefix("about:home"),
+url-prefix("about:firefoxview") {
+  :root:not([lwt-newtab], [lwt-newtab-brighttext]) {
+    --newtab-background-color: #f7f7f7 !important;
+    --newtab-background-color-secondary: #fff !important;
+    --newtab-text-primary-color: #252525 !important;
+    --newtab-primary-action-background: #0078d4 !important;
+    --newtab-text-secondary-color: color-mix(
+      in srgb,
+      var(--newtab-text-primary-color) 80%,
+      transparent
+    ) !important;
+    --newtab-element-hover-color: color-mix(
+      in srgb,
+      var(--newtab-background-color) 95%,
+      #000
+    ) !important;
+    --newtab-element-active-color: color-mix(
+      in srgb,
+      var(--newtab-background-color) 90%,
+      #000
+    ) !important;
+    --newtab-element-secondary-color: color-mix(
+      in srgb,
+      currentColor 5%,
+      transparent
+    ) !important;
+    --newtab-element-secondary-hover-color: color-mix(
+      in srgb,
+      currentColor 12%,
+      transparent
+    ) !important;
+    --newtab-element-secondary-active-color: color-mix(
+      in srgb,
+      currentColor 25%,
+      transparent
+    ) !important;
+    --newtab-primary-element-hover-color: color-mix(
+      in srgb,
+      var(--newtab-primary-action-background) 90%,
+      #000
+    ) !important;
+    --newtab-primary-element-active-color: color-mix(
+      in srgb,
+      var(--newtab-primary-action-background) 80%,
+      #000
+    ) !important;
+    --newtab-primary-element-text-color: #fff !important;
+    --newtab-primary-action-background-dimmed: color-mix(
+      in srgb,
+      var(--newtab-primary-action-background) 25%,
+      transparent
+    ) !important;
+    --newtab-border-color: color-mix(
+      in srgb,
+      var(--newtab-background-color) 75%,
+      #000
+    ) !important;
+    --newtab-wordmark-color: #737373 !important;
+    --newtab-status-success: #50b080 !important;
+    --newtab-status-error: #ff848a !important;
+    --newtab-inner-box-shadow-color: rgb(0 0 0 / 0.1) !important;
+    --newtab-overlay-color: color-mix(
+      in srgb,
+      var(--newtab-background-color) 85%,
+      transparent
+    ) !important;
+    --newtab-text-emphasis-background: #ffed32 !important;
+    --newtab-text-emphasis-text-color: #000 !important;
+    --newtab-textbox-focus-color: var(
+      --newtab-primary-action-background
+    ) !important;
+    --newtab-textbox-focus-boxshadow: 0 0 0 1px
+        var(--newtab-primary-action-background),
+      0 0 0 4px rgba(var(--newtab-primary-action-background), 0.3) !important;
+    --newtab-button-secondary-color: inherit !important;
+  }
 
-/*----------------------NEW TAB HOME-----------------------*/
+  :root:not([style*="color"])[lwt-newtab-brighttext] {
+    --newtab-background-color: #252525 !important;
+    --newtab-background-color-secondary: #4a4a4a !important;
+    --newtab-text-primary-color: #fff !important;
+    --newtab-primary-action-background: #75b6e8 !important;
+    --newtab-element-hover-color: color-mix(
+      in srgb,
+      var(--newtab-background-color) 95%,
+      #fff
+    ) !important;
+    --newtab-element-active-color: color-mix(
+      in srgb,
+      var(--newtab-background-color) 90%,
+      #fff
+    ) !important;
+    --newtab-element-secondary-color: color-mix(
+      in srgb,
+      currentColor 10%,
+      transparent
+    ) !important;
+    --newtab-element-secondary-hover-color: color-mix(
+      in srgb,
+      currentColor 17%,
+      transparent
+    ) !important;
+    --newtab-element-secondary-active-color: color-mix(
+      in srgb,
+      currentColor 30%,
+      transparent
+    ) !important;
+    --newtab-border-color: color-mix(
+      in srgb,
+      var(--newtab-background-color) 75%,
+      #fff
+    ) !important;
+    --newtab-primary-element-text-color: #252525 !important;
+    --newtab-wordmark-color: #fff !important;
+    --newtab-status-success: #50b080 !important;
+  }
 
-@-moz-document url(chrome://browser/content/browser.xul), url(about:newtab), url(about:home)
-{
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --uc-active: rgba(50, 50, 50, 0.8);
-      --uc-selected: rgba(50, 50, 50, 0.3);
-      --uc-text: #fbfbfe;
-      --uc-background: rgba(14, 14, 14, 0.6);
-      --uc-background-ii: rgba(20, 25, 30, 0.4);
-      --uc-background-iii: rgba(190, 190, 215, 0.1);
-      --newtab-element-active-color: var(--uc-active) !important;
+  /* Custom GTK colours. */
+  @media (-moz-gtk-csd-available) {
+    :root:not([lwt-newtab]):not([style*="color"]) {
+      /* Colour adjusted for readability. */
+      --uc-accent-adjusted: light-dark(
+        color-mix(in oklch, AccentColor 92%, black),
+        color-mix(in oklch, AccentColor 60%, white)
+      );
+      --newtab-background-color: light-dark(
+        -moz-dialog,
+        color-mix(in srgb, -moz-dialog 82%, black)
+      ) !important;
+      --newtab-background-color-secondary: light-dark(
+        Field,
+        color-mix(in srgb, -moz-dialog 86%, white)
+      ) !important;
+      --newtab-text-primary-color: -moz-dialogtext !important;
+      --newtab-wordmark-color: light-dark(
+        color-mix(in srgb, -moz-dialogtext 65%, transparent),
+        -moz-dialogtext
+      ) !important;
+      --newtab-primary-action-background: var(--uc-accent-adjusted) !important;
     }
+  }
 
-    body {
-      --newtab-background-color-secondary: transparent !important;
-      --newtab-element-hover-color: var(--uc-selected) !important;
-      --newtab-element-secondary-hover-color: var(--uc-selected) !important;
-      --newtab-element-secondary-active-color: var(--uc-active) !important;
-      --newtab-border-color: color-mix(
+  /* Adjustments for themes. */
+  :root[style*="--newtab-background-color"] {
+    /* Make the Firefox logo workmark follow text colour. */
+    --newtab-wordmark-color: color-mix(
+      in srgb,
+      var(--newtab-text-primary-color) 60%,
+      var(--newtab-background-color)
+    ) !important;
+
+    /* If there is no secondary background, create one from other colours. */
+    &:not([style*="--newtab-background-color-secondary"]) {
+      --newtab-background-color-secondary: color-mix(
         in srgb,
-        var(--newtab-background-color) 88%,
-        var(--newtab-wordmark-color)
+        var(--newtab-background-color) 15%,
+        white
       ) !important;
-      --newtab-primary-element-text-color: var(
-        --newtab-text-primary-color
-      ) !important;
-      --newtab-search-icon: url("chrome://global/skin/icons/search-glass.svg") !important;
-      background-repeat: no-repeat !important;
-      background-position: center !important;
-      background-size: cover !important;
-      background-attachment: fixed !important;
     }
 
-    .section-title-container {
-      visibility: hidden !important;
-    }
+    /* Dark adjustments for themes. */
+    &[lwt-newtab-brighttext] {
+      /* Make the Firefox logo workmark follow text colour. */
+      --newtab-wordmark-color: var(--newtab-text-primary-color) !important;
 
-    .section-title span {
-      opacity: 80% !important;
-      font-size: 20px !important;
-      font-weight: bold !important;
-      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5) !important;
+      /* If there is no secondary background, create one from other colours. */
+      &:not([style*="--newtab-background-color-secondary"]) {
+        --newtab-background-color-secondary: color-mix(
+          in srgb,
+          var(--newtab-text-primary-color) 15%,
+          var(--newtab-background-color)
+        ) !important;
+      }
     }
+  }
+}
 
-    .top-site-outer .tile {
-      border-radius: 18px !important;
-      background: transparent !important;
-      filter: saturate(140%) !important;
-      backdrop-filter: blur(33px);
-    }
+@-moz-document url-prefix("about:newtab"),
+url-prefix("about:home") {
+  /* Enforce system font selection. */
+  :where(body) {
+    font-family: system-ui !important;
+  }
 
-    .top-site-outer .default-icon {
-      width: 101% !important;
-      height: 101% !important;
-      background-size: 100% !important;
-      /*background: transparent !important;*/
-    }
-    /*---------------------------BIGGER ICONS HERE v-------------------------------------*/
-    .top-site-outer .tile .icon-wrapper {
-      /*width: 100% !important;height: 100% !important;*/
-      border-radius: 18px !important;
-    }
+  /* Hide pin icons. */
+  .icon.icon-pin-small {
+    display: none !important;
+  }
 
-    .top-site-outer .tile .icon-wrapper::before {
-      translate: 0px 10px;
-      font-size: 100px !important;
-      opacity: 0.75 !important;
-    }
+  /* Unpinned sites have lower opacity titles. */
+  .top-site-button .title:not(.pinned) {
+    opacity: 0.7 !important;
+  }
 
-    .search-wrapper .logo-and-wordmark .wordmark {
-      width: 66vw !important;
-      opacity: 85% !important;
-      fill: var(--uc-text) !important;
-    }
+  /* Search bar. */
+  .search-wrapper {
+    & .search-handoff-button {
+      border-radius: 99px !important;
+      background-position: 12px !important;
+      padding-inline-start: 48px !important;
+      white-space: nowrap !important;
+      text-overflow: ellipsis !important;
+      --elevation: 4;
+      box-shadow:
+        0 0 calc((var(--elevation) * 0.225px) + 2px) rgb(0 0 0 / 0.11),
+        0 calc(var(--elevation) * 0.4px) calc((var(--elevation) * 0.9px))
+          rgb(0 0 0 / 0.13) !important;
 
-    .search-inner-wrapper {
-      display: flex !important;
-      margin-top: 16px !important;
-      outline: none !important;
-      filter: saturate(140%) !important;
-      background-color: rgba(50, 50, 50, 0.1) !important;
-      border-radius: 18px !important;
-      padding: 0;
-      position: relative;
-      box-shadow: 0 10px 15px rgb(0 0 0 / 20%) !important;
-      backdrop-filter: blur(33px);
-      background-blend-mode: overlay;
-      height: auto !important;
-    }
-
-    @supports -moz-bool-pref(
-      "browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar"
-    ) {
-      .search-inner-wrapper:not(:focus) {
-        background: var(--newtab-pinnedsites-background) !important;
-        backdrop-filter: blur(33px) !important;
-        filter: saturate(140%) !important;
+      &:hover {
+        --elevation: 6;
       }
     }
 
-    .search-inner-wrapper:not(:focus) input,
-    .search-wrapper:not(:active) input:focus {
-      background-color: var(--newtab-pinnedsites-background) !important;
-      backdrop-filter: blur(33px) !important;
-      filter: saturate(140%) !important;
-      border-radius: 34px !important;
+    & .search-inner-wrapper {
+      min-height: 44px !important;
     }
 
-    .search-handoff-button {
+    &.fake-focus:not(.search.disabled) .search-handoff-button {
       border-color: transparent !important;
-      border-radius: 34px !important;
-      box-shadow: none !important;
-    }
-
-    .search-wrapper .search-inner-wrapper:active input,
-    .search-wrapper input:focus {
-      outline: 1px solid var(--button-active-bgcolor) !important;
+      outline: 2px solid var(--newtab-primary-action-background) !important;
       outline-offset: -1px !important;
-      border: transparent !important;
-      margin-left: 1px !important;
-      z-index: 1 !important;
     }
 
-    .search-wrapper .search-handoff-button,
-    .search-wrapper input {
-      padding-inline-start: 0px !important;
-      padding-inline-end: 0px !important;
+    &.search-disabled .search-handoff-button {
+      opacity: 0 !important;
     }
 
-    .search-wrapper .logo-and-wordmark .wordmark {
-      margin-inline-start: 0 !important;
-    }
-
-    .search-wrapper .search-button:focus,
-    .search-wrapper .search-button:hover {
-      fill: white !important;
-    }
-
-    .search-wrapper .search-inner-wrapper:active input,
-    .search-wrapper input:focus {
-      box-shadow: none !important;
-    }
-
-    /*--search bar oneliners for aesthetic ;)--*/
-    .search-handoff-button .fake-textbox {
-      text-align: center !important;
-    }
-    .search-wrapper .search-handoff-button {
-      filter: grayscale(100%);
-    }
-
-    browser[primary="true"][tabDialogShowing="true"],
-    #main-window[window-modal-open="true"] > body > #browser {
-      filter: blur(10px);
-      animation: dialogfadeIn 0.5s forwards;
+    .search-handoff-button .fake-caret {
+      inset-inline-start: 48px !important;
+      top: 13px !important;
     }
 
     @media (height > 700px) {
-      body:not(.inline-onboarding) .fixed-search .search-wrapper {
-        background-color: rgba(50, 50, 50, 0.1) !important;
-        box-shadow: 0 10px 15px rgb(0 0 0 / 20%) !important;
-        backdrop-filter: blur(33px);
-        border-color: transparent !important;
+      .fixed-search & {
+        padding: 15px 0 !important;
+        min-height: auto !important;
+        border-bottom: none !important;
       }
     }
-    /*--other panel, popup--*/
+  }
 
-    .section-top-bar {
-      display: block !important;
-    }
-    .personalize-button {
-      padding: 10px !important;
-    }
-    .logo {
-      display: none !important;
-    }
+  .fake-textbox {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
 
-    .icon.icon-settings {
-      opacity: 85% !important;
-    }
+  .outer-wrapper.only-search {
+    display: flex !important;
+    padding: 30px !important;
+  }
 
-    .context-menu {
-      background-color: var(--uc-background-ii) !important;
-      border-radius: 18px !important;
-      padding: 0.4rem;
-      position: relative;
-      box-shadow: 0 10px 15px rgb(0 0 0 / 20%) !important;
-      backdrop-filter: blur(33px);
-      background-blend-mode: overlay;
-      display: flex;
-      line-height: 25px;
-    }
+  /* Sticky search bar header when scrolling. */
+  @media (height > 700px) {
+    body:not(.inline-onboarding) .fixed-search.visible-logo main {
+      padding-top: 246px !important;
 
-    .context-menu > ul > li > a,
-    .context-menu > ul > li > button {
-      line-height: unset !important;
-      font-weight: normal !important;
-      color: var(--uc-text) !important;
-    }
-
-    .context-menu > ul > li.separator {
-      display: flex !important;
-      border-bottom: none !important;
-      margin: 0px 0 !important;
-      font-size: flex !important;
-      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-    }
-
-    button,
-    input {
-      color: inherit !important;
-      font-size: unset !important;
-    }
-
-    @media (min-width: 1122px) and (max-width: 1506px) {
-      .top-sites-list :nth-child(8n) .context-menu {
-        font-size: unset !important;
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5) !important;
-        box-shadow: 0 10px 15px rgb(0 0 0 / 20%) !important;
+      @media (-moz-bool-pref: "uc.tweak.hide-newtab-logo") {
+        padding-top: 82px !important;
       }
     }
+  }
 
-    /*--customize menu--*/
+  .icon-settings {
+    background-image: url("../icons/settings.svg") !important;
+  }
 
-    .customize-menu.customize-animate-enter-done,
-    .customize-menu.customize-animate-enter-active,
-    .customize-menu.customize-animate-exit-active,
-    .customize-menu.customize-animate-exit-done {
-      box-shadow: 0 0px 15px rgb(0 0 0 / 35%) !important;
-    }
-
-    .context-menu > ul > li > button:is(:focus, :hover) {
-      border-radius: 10px;
-      background: var(--uc-background-ii) !important;
-    }
-
-    .customize-menu {
-      background-color: var(--uc-background-ii) !important;
+  /* Top sites tiles. */
+  .top-site-outer {
+    & .tile {
       border-radius: 12px !important;
-      padding: 0.4rem;
-      position: relative;
-      backdrop-filter: blur(33px);
-      background-blend-mode: overlay;
-      margin: 10px 10px 10px 0px !important;
-      height: auto !important;
-      font-weight: normal !important;
-      box-shadow: unset !important;
+      height: 44px !important;
+      width: 44px !important;
+      box-shadow: rgb(0 0 0 / 0.1) 0px 2px 4px !important;
+
+      & .icon-wrapper {
+        border-radius: 4px !important;
+        width: 24px !important;
+        height: 24px !important;
+
+        &.letter-fallback::before {
+          font-size: 32px !important;
+        }
+      }
     }
 
-    .top-site-outer .context-menu-button {
-      transform: scale(1.3);
+    & .default-icon,
+    & .search-topsite {
+      background-size: 16px !important;
+      height: 24px !important;
+      width: 24px !important;
+    }
+  }
+
+  /* Recent activity / Pocket cards */
+  .card-outer {
+    --uc-border-radius: 8px;
+
+    &,
+    & .card,
+    & .ds-card-grid.ds-card-grid-border .ds-card:not(.placeholder) {
+      border-radius: var(--uc-border-radius) !important;
     }
 
-    .home-section .divider {
-      border-top: unset !important;
+    & .card,
+    & .ds-card-grid.ds-card-grid-border .ds-card:not(.placeholder) {
+      box-shadow:
+        rgb(0 0 0 / 0.14) 0px 1px 2px,
+        rgb(0 0 0 / 0.12) 0px 0px 2px !important;
     }
 
-    .home-section .section .selector {
-      border: none !important;
-      box-shadow: 3px 10px 15px rgb(0 0 0 / 20%) !important;
-      background: url("icons/down.svg") right no-repeat !important;
-      background-origin: content-box !important;
-    }
-
-    .home-section .external-link {
-      text-decoration: none !important;
-    }
-
-    /*.toggle-button { transform: scale(1.4) !important; }*/
-
-    .toggle-button {
-      /*  --toggle-background-color-pressed: #2186fb !important;*/
-      --toggle-dot-background-color: #fefefe !important;
-      --toggle-dot-background-color-on-pressed: #fefefe !important;
-      /*  --toggle-background-color-pressed-hover: #449afc !important;
-  --toggle-background-color-pressed-active: #7fbbff !important;*/
-      --toggle-border-color: #fefefe !important;
-      --toggle-border-radius: var(--border-radius-circle);
-      --toggle-border-width: var(--border-width);
-      --toggle-height: var(--size-item-small);
-      --toggle-width: calc(var(--size-item-large) * 0.9) !important;
-      --toggle-dot-margin: -1px !important;
-      --toggle-dot-height: calc(var(--toggle-height)) !important;
-      --toggle-dot-width: var(--toggle-dot-height) !important;
-      --toggle-dot-transform-x: calc(
-        var(--toggle-width) - 1 * var(--toggle-dot-margin) -
-          var(--toggle-dot-width)
-      ) !important;
-    }
-
-    .customize-menu .close-button {
-      box-shadow: 3px 10px 15px rgb(0 0 0 / 20%) !important;
-      font-weight: unset !important;
-      border-radius: 10px !important;
-      background-color: var(--uc-background-iii) !important;
-    }
-
-    .home-section .section .sponsored-checkbox:checked {
-      background-color: #2186fb !important;
-    }
-
-    .home-section .section .selector {
-      background-color: var(--uc-background-iii) !important;
-      border-radius: 10px !important;
-    }
-
-    .customize-menu .close-button:hover {
-      background-color: var(--uc-selected) !important;
-    }
-  } /*--<--end media query--*/
-
-  /*------------------------------------------------------------------------------*/
-
-  @media (prefers-color-scheme: dark) {
-    .top-site-icon {
-      background-color: transparent !important;
-    }
-
-    .top-site-outer .title {
-      opacity: 80% !important;
-      font-weight: normal !important;
-      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-      text-transform: capitalize !important;
-    }
-
-    .collapsible-section {
-      margin-left: -12px !important;
-    }
-
-    .top-site-outer:hover .tile,
-    .card-outer:hover .card {
-      background-color: var(--uc-background-ii) !important;
-      transform: scale(1.15);
-    }
-
-    .top-site-outer:is(:focus-within) .tile,
-    .card-outer:is(.active, :focus-within) .card {
-      background-color: var(--uc-background-ii) !important;
-      box-shadow: none !important;
-    }
-
-    .top-site-outer:is(:focus-within) .title,
-    .card-outer:is(.active, :focus-within) .card {
-      text-decoration: underline !important;
-    }
-
-    .top-site-outer .context-menu-button {
-      background-color: transparent !important;
-      border-radius: 50% !important;
-      inset-inline-end: -10px !important;
-      top: 2px !important;
-      transition: opacity 200ms;
-      border-radius: 80px !important;
-      fill: var(--newtab-text-primary-color) !important;
-    }
-
-    .top-site-outer .context-menu-button:is(:hover, :focus) {
-      background-color: color-mix(
-        in srgb,
-        var(--contrast-color),
-        transparent
-      ) !important;
-      transition: opacity 200ms;
-      fill: var(--newtab-text-primary-color) !important;
-    }
-
-    .top-sites-list:not(.dnd-active)
-      .top-site-outer:is(.active, :focus, :hover) {
-      background: transparent !important;
-    }
-
-    /*--latest activity--*/
-
-    .card-outer .card {
-      filter: saturate(140%) !important;
-      border-radius: 18px !important;
-      background-color: rgba(20, 25, 40, 0.6) !important;
-      position: relative;
-      box-shadow: 0 10px 15px rgb(0 0 0 / 20%) !important;
-      backdrop-filter: blur(33px);
-      height: auto !important;
-    }
-
-    .card-outer > a {
-      color: auto !important;
-    }
-
-    .outer-wrapper a {
-      color: auto !important;
-    }
-
-    :root[lwt-newtab-brighttext] {
-      --newtab-wordmark-color: #dfdfdfcb !important;
-    }
-
-    .compact-cards .card-outer .card-context {
-      background-color: var(--newtab-background-color-secondary);
-      border-radius: 18px;
-      clip-path: inset(-1px -1px 4px);
-      height: 32px;
-      width: 32px;
-      padding: 8px;
-      top: 108px !important;
-      inset-inline-end: 3px !important;
-      inset-inline-start: auto;
-    }
-
-    .compact-cards .card-outer .card-preview-image-outer {
-      border-radius: 16px 16px 0 0 !important;
-    }
-
-    .ds-highlights .section .section-list .card-outer .card-host-name {
-      text-shadow: 1px -1px 2px color-mix(in srgb, var(--contrast-color) 60%, transparent) !important;
-      color: var(--newtab-text-primary-color) !important;
-    }
-
-    .card-outer:not(.placeholder) .card-title {
-      text-shadow: 1px -1px 2px color-mix(in srgb, var(--contrast-color) 60%, transparent) !important;
-    }
-
-    .card-outer:is(:hover, :focus, :active, :focus-within, .active):not(
-        .placeholder
-      )
-      .card-title,
-    .card-outer:is(:hover, :focus, .active):not(.placeholder) .card-title {
-      --newtab-primary-action-background: blue !important;
-      color: var(--newtab-text-primary-color) !important;
-      text-shadow: 1px -1px 2px color-mix(in srgb, var(--contrast-color) 60%, transparent) !important;
-      text-decoration: underline !important;
-    }
-
-    .compact-cards .card-outer .card-context > .card-context-icon {
-      fill: var(--newtab-text-primary-color) !important;
-      opacity: 0.7 !important;
-    }
-
-    .card-outer .context-menu-button,
-    .card-outer .context-menu-button:active,
-    .card-outer .context-menu-button:focus {
-      margin-top: -5px !important;
-      margin-right: -5px !important;
-      background-color: color-mix(
-        in srgb,
-        var(--contrast-color) 70%,
-        transparent
-      ) !important;
-      fill: var(--newtab-text-primary-color) !important;
-      border-color: transparent !important;
-      transition-delay: 0ms !important;
-      background-image: url("icons/more.svg") !important;
-    }
-
-    .card-outer .context-menu-button {
-      box-shadow: unset !important;
-    }
-
-    .ds-card .meta {
-      filter: saturate(140%) !important;
-      background-color: rgba(20, 25, 40, 0.6) !important;
-      position: relative;
-      backdrop-filter: blur(33px);
-      height: auto !important;
-      border-radius: 0 0 16px 16px !important;
-    }
-
-    .ds-onboarding-container:not(.placeholder),
-    .ds-card-grid .ds-card:not(.placeholder) {
-      border-radius: 18px !important;
-      box-shadow: 0 10px 15px rgb(0 0 0 / 20%) !important;
-      background-color: transparent !important;
-    }
-
-    .ds-onboarding-container:not(.placeholder) .img-wrapper .img img,
-    .ds-onboarding-container:not(.placeholder)
-      .img-wrapper
-      .img
-      .placeholder-image,
-    .ds-card-grid .ds-card:not(.placeholder) .img-wrapper .img img,
-    .ds-card-grid
+    & .card-preview-image-outer,
+    &
+      .ds-card-grid.ds-card-grid-border
       .ds-card:not(.placeholder)
       .img-wrapper
       .img
-      .placeholder-image {
-      border-radius: 16px 16px 0 0 !important;
+      img {
+      border-radius: var(--uc-border-radius) var(--uc-border-radius) 0 0 !important;
+    }
+  }
+
+  /* Add background & adjust padding for Recent activity & Pocket section. */
+  .collapsible-section:not(.top-sites) {
+    background-color: var(--newtab-background-color) !important;
+    border-radius: 12px !important;
+    padding: 10px 20px 20px !important;
+
+    & .section-list {
+      gap: 12px !important;
+    }
+  }
+
+  @media (-moz-bool-pref: "uc.tweak.hide-newtab-logo") {
+    .logo-and-wordmark {
+      display: none !important;
     }
 
-    .ds-card:is(:hover, :focus, .active) .context-menu-button,
-    .ds-signup:is(:hover, :focus, .active) .context-menu-button {
-      box-shadow: unset !important;
+    .outer-wrapper:not(.fixed-search) .search-wrapper {
+      padding-top: 0 !important;
     }
+  }
+}
 
-    @media (prefers-color-scheme: dark) {
-      .ds-card .context-menu-button,
-      .ds-signup .context-menu-button {
-        border: transparent !important;
-        margin-top: -5px !important;
-        margin-right: -5px !important;
-        background-color: color-mix(
-          in srgb,
-          var(--contrast-color) 70%,
-          transparent
-        ) !important;
-        fill: var(--newtab-text-primary-color) !important;
-        transition-delay: 0ms !important;
-        background-image: url("icons/more.svg") !important;
+/* private browsing newtab */
+@-moz-document url-prefix(about:privatebrowsing) {
+  :root {
+    --uc-wordmark-color: light-dark(#737373, #fff);
+    --uc-background-color-secondary: light-dark(#fff, #4a4a4a);
+
+    @media (-moz-bool-pref: "browser.theme.dark-private-windows") {
+      color-scheme: dark !important;
+    }
+  }
+
+  /* Custom GTK colours. */
+  @media (-moz-gtk-csd-available) {
+    :root:not([lwt-newtab]):not([style*="color"]) {
+      /* Colour adjusted for readability. */
+      --uc-accent-adjusted: light-dark(
+        color-mix(in oklch, AccentColor 92%, black),
+        color-mix(in oklch, AccentColor 60%, white)
+      );
+      --in-content-page-background: light-dark(
+        -moz-dialog,
+        color-mix(in srgb, -moz-dialog 82%, black)
+      ) !important;
+      --uc-background-color-secondary: light-dark(
+        Field,
+        color-mix(in srgb, -moz-dialog 86%, white)
+      ) !important;
+      --in-content-page-color: -moz-dialogtext !important;
+      --in-content-focus-outline-color: var(--uc-accent-adjusted) !important;
+    }
+  }
+
+  /* Private browsing search bar. */
+  .search-inner-wrapper {
+    height: 44px !important;
+
+    .search-handoff-button,
+    .search-handoff-button:active,
+    .search-handoff-button:enabled:hover:active {
+      background-color: var(--uc-background-color-secondary) !important;
+      border: 0 !important;
+      border-radius: 99px !important;
+      padding-inline-start: 48px !important;
+      --elevation: 4;
+      box-shadow:
+        0 0 calc((var(--elevation) * 0.225px) + 2px) rgb(0 0 0 / 0.11),
+        0 calc(var(--elevation) * 0.4px) calc((var(--elevation) * 0.9px))
+          rgb(0 0 0 / 0.13) !important;
+
+      &:hover {
+        --elevation: 6;
+      }
+
+      &.focused:not(.disabled) {
+        box-shadow: none !important;
+        outline: 2px solid var(--in-content-focus-outline-color) !important;
+        outline-offset: -1px !important;
+      }
+
+      &.disabled {
+        opacity: 0 !important;
+      }
+
+      & .fake-textbox {
+        color: var(--in-content-page-color) !important;
+      }
+    }
+  }
+
+  .wordmark {
+    fill: var(--uc-wordmark-color) !important;
+  }
+
+  /* Information box in private browsing. */
+  .info {
+    background-color: var(--uc-background-color-secondary) !important;
+    background-image: none !important;
+    position: relative !important;
+
+    /* Private browsing icon. */
+    &::before {
+      content: "";
+      position: absolute;
+      left: 32px;
+      top: 20px;
+      height: 32px;
+      aspect-ratio: 1 / 1;
+      background: center / contain url("../icons/account-private.svg");
+      border-radius: 99px;
+    }
+  }
+}
+
+@media (-moz-bool-pref: "uc.tweak.newtab-background") {
+  @-moz-document url(about:newtab),
+  url(about:home),
+  url(about:privatebrowsing) {
+    body {
+      /* Specify both jpg and png file extensions, but jpg images will always
+       * have a higher priority. */
+      --bg-0: url(../background-0.jpg), url(../background-0.png);
+      --bg-1: url(../background-1.jpg), url(../background-1.png);
+      --newtab-element-hover-color: rgb(239 239 239 / 0.3) !important;
+      --newtab-element-active-color: rgb(239 239 239 / 0.45) !important;
+      --text-shadow: 0 1px 2px #000;
+      --icon-shadow: drop-shadow(0 0.3px 0.6px #000);
+      background-color: #252525 !important;
+      background-image: var(--bg-0) !important;
+      background-position: center !important;
+      background-size: cover !important;
+      background-attachment: fixed !important;
+
+      :root[lwt-newtab-brighttext] &,
+      :root.private & {
+        background-image: var(--bg-1), var(--bg-0) !important;
+        --newtab-element-hover-color: rgb(66 66 66 / 0.4) !important;
+        --newtab-element-active-color: rgb(66 66 66 / 0.55) !important;
+      }
+
+      @media not (-moz-bool-pref: "browser.theme.dark-private-windows") {
+        :root.private & {
+          background-image: var(--bg-0) !important;
+
+          @media (prefers-color-scheme: dark) {
+            background-image: var(--bg-1), var(--bg-0) !important;
+          }
+        }
       }
     }
 
-    .ds-card .ds-card-link:hover header {
-      color: var(--newtab-text-primary-color) !important;
+    /* Change text colour & add backgrounds to text over the background. */
+    .top-site-outer .title {
+      text-shadow: var(--text-shadow) !important;
+      color: #fff !important;
+      -moz-osx-font-smoothing: auto !important;
     }
 
-    .outer-wrapper a {
-      color: var(--newtab-text-primary-color) !important;
+    .wordmark,
+    .icon-settings,
+    .top-site-outer .context-menu-button {
+      filter: var(--icon-shadow) !important;
+      color: #fff !important;
+      fill: currentColor !important;
     }
 
-    :root {
-      --newtab-primary-element-active-color: var(
-        --newtab-text-primary-color
-      ) !important;
-      --newtab-primary-action-background: transparent !important;
-      --newtab-background-color: unset !important;
+    .top-site-outer .title .sponsored-label {
+      color: #eee !important;
     }
 
-    /*--recommendations, customizing--*/
-
-    .personalize-button:hover {
-      background-color: transparent;
-      transform: scale(1.3);
-      cursor: pointer;
+    /* Add transparent sticky search header. */
+    @media (height > 700px) {
+      .fixed-search .search-wrapper {
+        border-bottom: 0 !important;
+        background: transparent linear-gradient(#0004, transparent) !important;
+      }
     }
-
-    .modalOverlayOuter {
-      background-color: rgba(20, 25, 40, 0.4) !important;
-      box-shadow: 0 10px 15px rgb(0 0 0 / 20%) !important;
-      backdrop-filter: blur(33px);
-      background-blend-mode: overlay;
-    }
-
-    .modal {
-      background-color: rgba(10, 15, 30, 0.7) !important;
-      font-size: unset !important;
-      border-radius: 16px !important;
-      box-shadow: 0 10px 15px rgb(0 0 0 / 20%) !important;
-      border-color: transparent !important;
-    }
-
-    .topsite-form .form-wrapper input[type="text"] {
-      background-color: #dfdfdf1e !important;
-      font-size: unset !important;
-      border-color: transparent !important;
-      box-shadow: 0 10px 15px rgb(0 0 0 / 20%) !important;
-      border-radius: 8px !important;
-    }
-
-    .actions {
-      border-top: 1px solid var(--newtab-border-color);
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      margin: 0;
-      padding: 15px 25px 0;
-      border-color: transparent !important;
-    }
-
-    .button,
-    .actions button {
-      background-color: #dfdfdf1e !important;
-      border-color: transparent !important;
-      border-radius: 10px !important;
-      box-shadow: 0 10px 15px rgb(0 0 0 / 20%) !important;
-    }
-
-    .modal-overlay {
-      background-color: rgba(10, 15, 30, 0.4) !important;
-      backdrop-filter: blur(33px) !important;
-    }
-
-    :root {
-      --newtab-pinnedsites-background: color-mix(
-        in srgb,
-        white 14%,
-        transparent
-      );
-      --newtab-pinnedsites-position-top: 0px;
-    }
-  } /*--<--end media query--*/
-
-  .outer-wrapper .top-site-inner .title,
-  .outer-wrapper .top-site-inner .icon-pin-small {
-    opacity: 0 !important;
   }
-
-  .outer-wrapper .top-site-inner:hover .title,
-  .outer-wrapper .top-site-inner:hover .icon-pin-small {
-    opacity: 1 !important;
-  }
-} /*--<--close out new tab document--*/
-
-/*----------------------FIREFOX VIEW PAGE-----------------------*/
-
-@-moz-document url(about:firefoxview) {
-  body {
-    background-color: rgba(28, 27, 34, 0.7) !important;
-  }
-
-  .sticky-container.bottom-fade {
-    background: rgba(28, 27, 34, 0.7) !important;
-  }
-} /* <-- close out document */
+}

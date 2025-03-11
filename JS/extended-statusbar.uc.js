@@ -83,8 +83,8 @@ var AddAddonbar = {
 		  #addonbar {
 			border-top: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.1)) !important;
               border-radius: 6px 6px 0 0;
-			background-color: var(--toolbar-bgcolor);
-			background-image: var(--toolbar-bgimage);
+			background-color: var(--toolbar-bgcolor) !important;
+			background-image: var(--toolbar-bgimage) !important;
 			-moz-window-dragging: no-drag !important;
 		  }
 		  :root[lwtheme] #addonbar {
@@ -95,23 +95,23 @@ var AddAddonbar = {
 			background-position: 0vw 50vh !important;
 		  }
 		  /* autohide add-on bar in fullscreen mode */
-		  /*#main-window[sizemode='fullscreen']:not([inDOMFullscreen='true']) #addonbar {
+		  #main-window[sizemode='fullscreen']:not([inDOMFullscreen='true']) #addonbar {
 			visibility: visible !important;
 			display: block !important;
 			height: 1px !important;
 			max-height: 1px !important;
-			background-color: var(--toolbar-bgcolor);
-        	background-image: var(--toolbar-bgimage);
+			background-color: var(--toolbar-bgcolor) !important;
+        	background-image: var(--toolbar-bgimage) !important;
 
           }
 		  #main-window[sizemode='fullscreen']:not([inDOMFullscreen='true']) #addonbar:hover {
 			min-height: 26px !important;
 			height: 26px !important;
 			max-height: 26px !important;
-          	bbbackground-color: var(--toolbar-bgcolor);
-        	background-image: var(--toolbar-bgimage);
+          	bbbackground-color: var(--toolbar-bgcolor) !important;
+        	background-image: var(--toolbar-bgimage) !important;
 
-		  }*/
+		  }
 		  #unified-extensions-button[hidden]{
 			visibility: visible !important;
 			display: flex !important;

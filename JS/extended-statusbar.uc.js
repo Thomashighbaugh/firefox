@@ -88,7 +88,9 @@ var AddAddonbar = {
 			-moz-window-dragging: no-drag !important;
 		  }
 		  :root[lwtheme] #addonbar {
-			background: var(--lwt-accent-color) !important;
+   			background-color: var(--toolbar-bgcolor) !important;
+        	background-image: var(--toolbar-bgimage) !important;
+
 		  }
 		  :root[lwtheme][lwtheme-image='true'] #addonbar {
 			background: var(--lwt-header-image) !important;

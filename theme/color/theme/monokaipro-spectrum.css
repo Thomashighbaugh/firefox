@@ -143,6 +143,7 @@
     & #browser,
     & #tabbrowser-tabbox,
     & #tabbrowser-tabpanels,
+    & #addonbar,
     & .browserSidebarContainer {
       background: var(--toolbar-bgcolor) !important;
     }
@@ -158,6 +159,10 @@
       background: var(--uc-higgs-boson-window) !important;
     }
     #sidebar {
+      background: var(--uc-sb-background) !important;
+    }
+
+    #addonbar {
       background: var(--uc-sb-background) !important;
     }
   }
@@ -313,9 +318,9 @@
     }
 
     /* extra styling - bookmark toolbar adjustment */
-    & #PersonalToolbar {
-      background: var(--uc-transparent) !important;
-    }
+    /* & #PersonalToolbar { */
+    /*   background: var(--uc-transparent) !important; */
+    /* } */
     /* extra styling - customize toolbar page */
     & #customization-container {
       background-color: var(--uc-higgs-boson-window) !important;

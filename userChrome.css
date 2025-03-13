@@ -85,3 +85,6 @@
   justify-items: left !important;
   align-items: left !important;
 }
+#allTabsMenu-allTabsView .subviewbutton-iconic > .toolbarbutton-icon {
+  fill: #f8f8f8 !important;
+}

@@ -17,3 +17,6 @@ Use the template below to enter your theme into the list:
 (-moz-bool-pref: "user.theme.dark.vice");
 @import url("theme/monokaipro-spectrum.css")
 (-moz-bool-pref: "user.theme.dark.monokaipro-spectrum");
+
+@import url('theme/embarcadero.css')
+(-moz-bool-pref: "user.theme.dark.embarcadero");

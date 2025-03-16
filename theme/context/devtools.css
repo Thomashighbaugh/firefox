@@ -547,7 +547,7 @@ and a few elements like checkboxes */
   @media (-moz-bool-pref: "userChrome.css.mac-ui-fonts") {
     menupopup {
       font-family:
-        SF Pro Text,
+        SF Pro Display,
         SF Arabic,
         Segoe UI,
         sans-serif !important;
@@ -562,7 +562,7 @@ and a few elements like checkboxes */
       :is(menu, menuitem, menucaption)
       > :is(label, .menu-iconic-text, .menu-text) {
       font-family:
-        SF Pro Text,
+        SF Pro Display,
         SF Arabic,
         Segoe UI,
         sans-serif !important;

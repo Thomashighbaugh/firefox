@@ -15,6 +15,7 @@
       ) !important; /* Closest approximation */
     }
 
+    /* TODO replace these with theme variables defined in the configuration for consistency */
     .highlight :is(.start-tag, .end-tag)::selection {
       color: #801f1f !important;
     }
@@ -1106,41 +1107,39 @@
       outline: 1px solid var(--uc-accent-ii) !important; /* Closest approximation */
     }
 
-    @media (-moz-bool-pref: "userChrome.css.mac-ui-fonts") {
-      body {
-        font-family:
-          SF Pro Text,
-          SF Arabic,
-          Segoe UI,
-          sans-serif !important;
-        font-kerning: normal !important;
-      }
+    body {
+      font-family:
+        SF Pro Display,
+        SF Arabic,
+        Segoe UI,
+        sans-serif !important;
+      font-kerning: normal !important;
+    }
 
-      h3,
-      :is(article, aside, nav, section) :is(article, aside, nav, section) h1 {
-        font-weight: var(--uc-font-weight-bold, 500);
-      }
+    h3,
+    :is(article, aside, nav, section) :is(article, aside, nav, section) h1 {
+      font-weight: var(--uc-font-weight-bold, 500);
+    }
 
-      .stp_button {
-        font-weight: var(--uc-font-weight-bold, 500) !important;
-        font-family:
-          SF Pro Display,
-          SF Arabic,
-          Segoe UI,
-          sans-serif !important;
-      }
+    .stp_button {
+      font-weight: var(--uc-font-weight-bold, 500) !important;
+      font-family:
+        SF Pro Display,
+        SF Arabic,
+        Segoe UI,
+        sans-serif !important;
+    }
 
-      .stp_article_list .stp_article_list_header {
-        font-weight: var(--uc-font-weight-bold, 500) !important;
-      }
+    .stp_article_list .stp_article_list_header {
+      font-weight: var(--uc-font-weight-bold, 500) !important;
+    }
 
-      .stp_popular_topics .stp_popular_topic .stp_popular_topic_link {
-        font-weight: var(--uc-font-weight-thin, 400) !important;
-      }
+    .stp_popular_topics .stp_popular_topic .stp_popular_topic_link {
+      font-weight: var(--uc-font-weight-thin, 400) !important;
+    }
 
-      .stp_tag_picker .stp_tag_picker_tag {
-        font-weight: var(--uc-font-weight-thin, 400) !important;
-      }
+    .stp_tag_picker .stp_tag_picker_tag {
+      font-weight: var(--uc-font-weight-thin, 400) !important;
     }
   }
 }

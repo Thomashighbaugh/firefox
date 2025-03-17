@@ -1,32 +1,27 @@
 @import url("animations.css");
 
-
-
 /* Vertical Tab Adjustments */
 
+:root {
+  --uc-vertical-collapsed-width: 101px;
+}
+/* but the content inside of the verttab container should remain how it was, 56px works */
+#sidebar-main * {
+  --uc-vertical-collapsed-width: 56px !important;
+}
 
-     :root {
-      --uc-vertical-collapsed-width: 101px;
-    }
-    /* but the content inside of the verttab container should remain how it was, 56px works */
-    #sidebar-main * {
-      --uc-vertical-collapsed-width: 56px !important;
-    }
+/* the tabbrowsertabbox (browser content) needs to overlay the extra unused verttab container space, when not hovered */
+#sidebar-main:has(#tabbrowser-tabs[expanded]):not(:hover) ~ #tabbrowser-tabbox {
+  z-index: 1000 !important;
+}
+/* the verttab container should not overlay browser content when it is in firefox's built-in collapsed-state */
+#sidebar-main:not(:has(#tabbrowser-tabs[expanded])) {
+  z-index: 0 !important;
+  visibility: collapse;
+  transition: transform 90ms linear !important;
+}
 
-    /* the tabbrowsertabbox (browser content) needs to overlay the extra unused verttab container space, when not hovered */
-    #sidebar-main:has(#tabbrowser-tabs[expanded]):not(:hover)
-      ~ #tabbrowser-tabbox {
-      z-index: 1000 !important;
-    }
-    /* the verttab container should not overlay browser content when it is in firefox's built-in collapsed-state */
-    #sidebar-main:not(:has(#tabbrowser-tabs[expanded])) {
-      z-index: 0 !important;
-      visibility: collapse;
-    transition: transform 90ms linear !important;
-    }
-
-    /* Animations */
-
+/* Animations */
 
 /* Glow and wobble-skew effects on hover */
 .close-icon:hover,
@@ -43,12 +38,9 @@ toolbarbutton.scrollbutton-up:not([disabled]):hover,
 toolbarbutton.scrollbutton-down:not([disabled]):hover,
 toolbarbutton#scrollbutton-up:not([disabled]):hover,
 toolbarbutton#scrollbutton-down:not([disabled]):hover {
-  filter: drop-shadow(0 0 2px #c0c0c0)
-    drop-shadow(0 0 1px #ffffff);
+  filter: drop-shadow(0 0 2px #c0c0c0) drop-shadow(0 0 1px #ffffff);
   animation: wobbleSkew 0.1s ease-in-out infinite;
 }
-
-
 
 /* Based on: <https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/button_effect_scale_onclick.css> */
 /* Button Effect - Scale on click */

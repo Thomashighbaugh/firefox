@@ -1,6 +1,0 @@
-@-moz-document url(chrome://browser/content/browser.xul), url(about:newtab), url(about:home)
-{
-  body{
-    background-image: url("pic/midnight.png") !important;
-  }
-}

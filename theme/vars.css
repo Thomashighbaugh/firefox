@@ -1,0 +1,77 @@
+/* SPDX-License-Identifier: MPL-2.0 */
+/* SPDX-FileCopyrightText: 2024 awwpotato */
+
+@import url("overrides.css");
+
+:root {
+  --uc-transition: 200ms ease-in-out;
+  --uc-mouseout-delay: 250ms;
+  /*
+ * ┣┫ radius ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+*/
+  --uc-radius: 5px;
+  --uc-button-radius: 5px;
+  --uc-content-radius: 5px;
+  --uc-panel-hint-size: clamp(
+    min(4px, var(--uc-content-margin)),
+    calc(var(--uc-content-margin) * 0.5),
+    5px
+  );
+  /*
+ * ┣┫ blur ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+*/
+  --uc-blur-radius: 9px;
+  /*
+ * ┣┫ margin ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+*/
+  --uc-content-margin: 6px;
+  --uc-sidebar-margin: 3px;
+  --uc-hover-target-size: 8px;
+  /*
+ * ┣┫ floating margin ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+*/
+  --uc-small-floating-margin: 4px;
+  --uc-floating-margin: 8px;
+
+  @media (-moz-bool-pref: "browser.tabs.allow_transparent_browser") {
+    --uc-content-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  /*
+ * ┣┫ sidebar vars ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+*/
+  --uc-sidebar-hover-width: 170px;
+  --uc-sidebar-hover-width: 240px;
+
+  --uc-sidebar-width: 34px;
+
+  --uc-content-margin-inline: calc(var(--uc-content-margin) * 2);
+  /*
+ * ╓
+ * ║                       color vars
+ * ╙                                                          
+*/
+  --uc-panel-hint: color-mix(
+    in oklab,
+    var(--toolbarbutton-icon-fill) 25%,
+    transparent
+  );
+
+  --uc-bg-opaque: ActiveCaption;
+  --uc-content-bg: transparent;
+  &[lwtheme="true"] {
+    --uc-bg-opaque: var(--lwt-accent-color);
+    @media not (-moz-bool-pref: "uc.tweak.translucency") {
+      --uc-content-bg: var(--newtab-background-color);
+    }
+  }
+
+  --uc-bg: var(--uc-bg-opaque);
+  --uc-bg-tran: var(--uc-bg-opaque);
+  --uc-bg-translucency: color-mix(
+    in oklab,
+    var(--uc-bg-opaque) 90%,
+    transparent
+  );
+  --uc-bg: var(--uc-bg-translucency);
+}

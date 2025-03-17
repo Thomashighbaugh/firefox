@@ -1,38 +1,7 @@
 @namespace html url("http://www.w3.org/1999/xhtml");
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-@import url(theme/context/devtools.css); /*styling for multiple websites*/
-
-@import url(theme/context/downloads.css); /*styling for multiple websites*/
-
-@import url(theme/context/extension/bitwarden.css); /*styling for multiple websites*/
-
-@import url(theme/context/extension/darkreader.css); /*styling for multiple websites*/
-
-@import url(theme/context/extension/mdm.css); /*styling for multiple websites*/
-
-@import url(theme/context/extension/sortbookmarks.css); /*styling for multiple websites*/
-
-@import url(theme/context/library.css); /*styling for multiple websites*/
-
-@import url(theme/context/menu.css); /*styling for multiple websites*/
-
-@import url(theme/context/root.css); /*styling for multiple websites*/
-
-@import url(theme/context/system.css); /*styling for multiple websites*/
-
-@import url(theme/context/website/mozilla.css); /*styling for multiple websites*/
-
-@import url(theme/context/website/newtab.css); /*new tab page*/
-
-@import url(theme/context/website/private.css); /*new tab page*/
-
-@import url(theme/context/website/reddit.css); /*reddit*/
-
-@import url(theme/context/website/yt.css); /*youtube*/
-
-@import url(theme/context/website/private.css); /*private new tab page */
-
-@import url(theme/context/addons.css); /*styling for multiple websites*/
-
-@import url(theme/context/pdf.css); /*styling for pdf reader*/
+@import url("theme/vars.css");
+@import url("theme/content/about.css");
+@import url("theme/content/pdf.css");
+@import url("theme/content/addons.css");

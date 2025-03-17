@@ -1,0 +1,61 @@
+/* SPDX-License-Identifier: MPL-2.0 */
+/* Copyright (c) 2024 awwpotato <awwpotato@voidq.com> */
+
+:root:has(.pdfViewer) {
+  #viewerContainer {
+    inset: 0 !important;
+
+    #viewer .page:first-of-type {
+      margin-top: 40px !important;
+    }
+  }
+
+  #toolbarContainer {
+    position: sticky !important;
+    width: auto !important;
+    margin-top: var(--uc-small-floating-margin) !important;
+    margin-inline: var(--uc-small-floating-margin) !important;
+    border-radius: var(--uc-radius);
+    box-shadow: none !important;
+    border: none !important;
+    background: color-mix(
+      in oklab,
+      var(--toolbar-bg-color),
+      transparent 10%
+    ) !important;
+    backdrop-filter: blur(var(--uc-blur-radius)) !important;
+
+    #loadingBar {
+      top: unset !important;
+      bottom: 0 !important;
+      border: none !important;
+    }
+
+    button {
+      border-radius: var(--uc-button-radius) !important;
+    }
+  }
+
+  #sidebarContainer {
+    margin: 5px;
+    margin-top: 10px;
+    border-radius: var(--uc-radius) !important;
+    background-color: color-mix(
+      in oklab,
+      var(--sidebar-narrow-bg-color),
+      transparent 10%
+    ) !important;
+    backdrop-filter: blur(var(--uc-blur-radius));
+    * {
+      box-shadow: none !important;
+    }
+    #toolbarSidebar {
+      background-color: transparent !important;
+    }
+
+    button,
+    .thumbnail.selected {
+      border-radius: var(--uc-button-radius) !important;
+    }
+  }
+}

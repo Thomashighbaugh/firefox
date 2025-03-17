@@ -34,3 +34,5 @@
 @import url(theme/context/website/private.css); /*private new tab page */
 
 @import url(theme/context/addons.css); /*styling for multiple websites*/
+
+@import url(theme/context/pdf.css); /*styling for pdf reader*/

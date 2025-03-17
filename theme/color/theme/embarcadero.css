@@ -34,6 +34,10 @@
     --uc-accent-vi: #ed5d86; /* Red accent for errors/destructive actions */
     --uc-button-selected: #42474e; /* Button selected background */
 
+    --uc-small-floating-margin: 4px;
+    --uc-radius: 4px;
+    --uc-blur-radius: 4px;
+
     /* Border and Shadow Colors */
     --uc-panel-border: rgba(70, 75, 78, 1); /* Panel border color */
     --uc-panel-border-ii: rgba(

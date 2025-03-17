@@ -6,7 +6,7 @@
 @-moz-document url-prefix("about:newtab"),
 url-prefix("about:privatebrowsing"),
 url-prefix("about:home") {
-  @media (-moz-bool-pref: "browser.tabs.allow_transparent_browser") and (-moz-bool-pref: "uc.tweak.translucency") {
+  @media (-moz-bool-pref: "browser.tabs.allow_transparent_browser") {
     body {
       background-color: transparent !important;
     }

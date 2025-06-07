@@ -1,29 +1,40 @@
 // ==UserScript==
 // @name            userChromeJS Manager
 // @include         main
+// @author          Thomas Leon Highbaugh
 // @author          xiaoxiaoflood
+// @description     This script provides a user interface for managing
+//                  userChromeJS scripts in Firefox. It has been optimized for use with fx-autoconfig, which loads userChromeJS scripts as the browser starts. The manager allows enabling/disabling scripts, editing,uninstalling, and restarting the browser.
+//
 // @onlyonce
 // ==/UserScript==
 
-// original: https://github.com/alice0775/userChrome.js/blob/master/rebuild_userChrome.uc.xul
-
+// This version is also documented with code comments that illuminate its functionality for ease of reading
 UC.rebuild = {
+  // Preference keys for UI options
   PREF_TOOLSBUTTON: "userChromeJS.showtoolbutton",
   PREF_OPENWITHSYSTEMDEFAULT: "userChromeJS.openWithSystemDefault",
 
+  // Stores custom menu elements to be injected
   menues: [],
 
+  /**
+   * Handler for the userChromeJS options popup menu.
+   * Dynamically populates the menu with script entries and toggles.
+   */
   onpopup: function (event) {
     let document = event.target.ownerDocument;
 
     if (event.target != document.getElementById("userChromejs_options")) return;
 
+    // Remove old script entries
     while (document.getElementById("uc-menuseparator").nextSibling) {
       document.getElementById("uc-menuseparator").nextSibling.remove();
     }
 
     let enabled = xPref.get(_uc.PREF_ENABLED);
 
+    // Add global enable/disable menu item
     let mi = event.target.appendChild(
       this.elBuilder(document, "menuitem", {
         label: enabled ? "Enabled" : "Disabled (click to Enable)",
@@ -33,9 +44,11 @@ UC.rebuild = {
       }),
     );
 
+    // Add separator if there are multiple scripts
     if (Object.keys(_uc.scripts).length > 1)
       event.target.appendChild(this.elBuilder(document, "menuseparator"));
 
+    // Add menu items for each user script
     Object.values(_uc.scripts)
       .sort((a, b) => a.name.localeCompare(b.name))
       .forEach((script) => {
@@ -78,6 +91,7 @@ UC.rebuild = {
         event.target.appendChild(mi);
       });
 
+    // Update label for switching display mode
     document
       .getElementById("showToolsMenu")
       .setAttribute(
@@ -89,13 +103,17 @@ UC.rebuild = {
       );
   },
 
+  /**
+   * Handler for the hamburger (app) menu popup.
+   * Populates the panel with script toggles and actions.
+   */
   onHamPopup: function (aEvent) {
     const enabledMenuItem = aEvent.target.querySelector(
       "#appMenu-userChromeJS-enabled",
     );
     enabledMenuItem.checked = xPref.get(_uc.PREF_ENABLED);
 
-    // Clear existing scripts menu entries
+    // Remove old script entries
     const scriptsSeparator = aEvent.target.querySelector(
       "#appMenu-userChromeJS-scriptsSeparator",
     );
@@ -103,7 +121,7 @@ UC.rebuild = {
       scriptsSeparator.nextSibling.remove();
     }
 
-    // Populate with new entries
+    // Add menu items for each user script
     let scriptMenuItems = [];
     Object.values(_uc.scripts)
       .sort((a, b) => a.name.localeCompare(b.name))
@@ -149,16 +167,20 @@ UC.rebuild = {
     scriptsSeparator.parentElement.append(...scriptMenuItems);
   },
 
+  /**
+   * Handles clicks on script menu items.
+   * Supports enabling/disabling, editing, uninstalling, and opening homepages.
+   */
   clickScriptMenu: function (event) {
     const { target } = event;
     const { gBrowser } = event.view;
     const script = _uc.scripts[target.filename];
     switch (event.button) {
-      case 0:
+      case 0: // Left click: toggle enable/disable
         this.toggleScript(script);
         if (event.ctrlKey) this.toggleScript(script);
         break;
-      case 1:
+      case 1: // Middle click: toggle and keep menu open, or open homepage
         if (event.ctrlKey) {
           let url = target.getAttribute("homeURL");
           if (url) {
@@ -173,12 +195,15 @@ UC.rebuild = {
             target.setAttribute("checked", script.isEnabled);
         }
         break;
-      case 2:
+      case 2: // Right click: edit or uninstall
         if (event.ctrlKey) this.uninstall(script);
         else this.launchEditor(script);
     }
   },
 
+  /**
+   * Prevents the menu from closing on middle click.
+   */
   shouldPreventHide: function (event) {
     if (event.button == 1 && !event.ctrlKey) {
       const menuitem = event.target;
@@ -193,6 +218,9 @@ UC.rebuild = {
     }
   },
 
+  /**
+   * Launches the script file in the user's preferred editor or system default.
+   */
   launchEditor: function (script) {
     let editor = xPref.get("view_source.editor.path");
     let useSystemDefault = xPref.get(this.PREF_OPENWITHSYSTEMDEFAULT);
@@ -219,9 +247,11 @@ UC.rebuild = {
       let editorArgs = [];
       let args = Services.prefs.getCharPref("view_source.editor.args");
       if (args) {
+        // Parse arguments, supporting quoted strings
         const argumentRE = /"([^"]+)"|(\S+)/g;
-        while (argumentRE.test(args)) {
-          editorArgs.push(RegExp.$1 || RegExp.$2);
+        let match;
+        while ((match = argumentRE.exec(args))) {
+          editorArgs.push(match[1] || match[2]);
         }
       }
       editorArgs.push(script.file.path);
@@ -243,6 +273,9 @@ UC.rebuild = {
     }
   },
 
+  /**
+   * Restarts Firefox, invalidating caches.
+   */
   restart: function () {
     Services.appinfo.invalidateCachesOnRestart();
 
@@ -265,6 +298,9 @@ UC.rebuild = {
       );
   },
 
+  /**
+   * Enables or disables a script and loads/unloads it as needed.
+   */
   toggleScript: function (script) {
     if (script.isEnabled) {
       xPref.set(
@@ -294,6 +330,9 @@ UC.rebuild = {
     }
   },
 
+  /**
+   * Switches between toolbar button and tools menu item for the manager UI.
+   */
   toggleUI: function (byaboutconfig = false, startup = false) {
     this.showToolButton = xPref.get(this.PREF_TOOLSBUTTON);
     if (!byaboutconfig && !startup) {
@@ -319,6 +358,9 @@ UC.rebuild = {
     });
   },
 
+  /**
+   * Creates a toolbarbutton menu item for the hamburger menu.
+   */
   createMenuItem: function (doc, id, icon, label, command) {
     const menuItem = doc.createXULElement("toolbarbutton");
     menuItem.className = "subviewbutton subviewbutton-iconic";
@@ -329,6 +371,9 @@ UC.rebuild = {
     return menuItem;
   },
 
+  /**
+   * Loads a script into all open windows where it matches.
+   */
   install: function (script) {
     script = _uc.getScriptData(script.file);
     Services.obs.notifyObservers(null, "startupcache-invalidate");
@@ -339,6 +384,9 @@ UC.rebuild = {
     }, false);
   },
 
+  /**
+   * Uninstalls a script, removing its file and disabling it.
+   */
   uninstall: function (script) {
     if (
       !Services.prompt.confirm(
@@ -362,6 +410,9 @@ UC.rebuild = {
     );
   },
 
+  /**
+   * Calls the shutdown handler for a script, if present.
+   */
   shutdown: function (script) {
     if (script.shutdown) {
       _uc.windows((doc, win, loc) => {
@@ -378,6 +429,9 @@ UC.rebuild = {
     }
   },
 
+  /**
+   * Utility for creating XUL elements with properties.
+   */
   elBuilder: function (doc, tag, props) {
     let el = doc.createXULElement(tag);
     for (let p in props) {
@@ -386,6 +440,9 @@ UC.rebuild = {
     return el;
   },
 
+  /**
+   * Injects custom CSS for the manager UI.
+   */
   setStyle: function () {
     _uc.sss.loadAndRegisterSheet(
       Services.io.newURI(
@@ -440,6 +497,10 @@ UC.rebuild = {
     );
   },
 
+  /**
+   * Initializes the manager UI and listeners.
+   * Should be called once at startup by fx-autoconfig.
+   */
   init: function () {
     this.setStyle();
     this.showToolButton = xPref.get(this.PREF_TOOLSBUTTON);
@@ -447,11 +508,13 @@ UC.rebuild = {
       this.showToolButton = xPref.set(this.PREF_TOOLSBUTTON, false, true);
     }
 
-    xPref.addListener(this.PREF_TOOLSBUTTON, function (value, prefPath) {
+    // Listen for UI toggle preference changes
+    xPref.addListener(this.PREF_TOOLSBUTTON, function () {
       UC.rebuild.toggleUI(true);
     });
 
-    xPref.addListener(_uc.PREF_ENABLED, function (value, prefPath) {
+    // Listen for global enable/disable changes
+    xPref.addListener(_uc.PREF_ENABLED, function (value) {
       Object.values(_uc.scripts).forEach((script) => {
         if (script.filename == _uc.ALWAYSEXECUTE) return;
         if (value && script.isEnabled && !_uc.everLoaded.includes(script.id)) {
@@ -462,6 +525,7 @@ UC.rebuild = {
       });
     });
 
+    // Add toolbar button or menu item depending on platform
     if (AppConstants.MOZ_APP_NAME !== "thunderbird") {
       const { CustomizableUI } = window;
       CustomizableUI.createWidget({
@@ -478,6 +542,9 @@ UC.rebuild = {
     }
   },
 
+  /**
+   * Creates the toolbar button and menu for the manager.
+   */
   createButton(aDocument) {
     let toolbaritem = UC.rebuild.elBuilder(aDocument, "toolbarbutton", {
       id: "userChromebtnMenu",
@@ -499,6 +566,7 @@ UC.rebuild = {
     let mg = mp.appendChild(aDocument.createXULElement("menugroup"));
     mg.setAttribute("id", "uc-menugroup");
 
+    // Open chrome directory menu item
     let mi1 = UC.rebuild.elBuilder(aDocument, "menuitem", {
       id: "userChromejs_openChromeFolder",
       label: "Open chrome directory",
@@ -510,6 +578,7 @@ UC.rebuild = {
     });
     mg.appendChild(mi1);
 
+    // Restart browser menu item
     let tb = UC.rebuild.elBuilder(aDocument, "menuitem", {
       id: "userChromejs_restartApp",
       class: "menuitem-iconic",
@@ -520,6 +589,7 @@ UC.rebuild = {
     });
     mg.appendChild(tb);
 
+    // Settings menu
     let mn = UC.rebuild.elBuilder(aDocument, "menu", {
       id: "uc-manageMenu",
       label: "Settings",
@@ -531,6 +601,7 @@ UC.rebuild = {
 
     let mp2 = mn.appendChild(aDocument.createXULElement("menupopup"));
 
+    // Switch display mode menu item
     let mi2 = UC.rebuild.elBuilder(aDocument, "menuitem", {
       id: "showToolsMenu",
       label: "Switch display mode",
@@ -541,9 +612,11 @@ UC.rebuild = {
     });
     mp2.appendChild(mi2);
 
+    // Separator for script entries
     let sep = mp.appendChild(aDocument.createXULElement("menuseparator"));
     sep.setAttribute("id", "uc-menuseparator");
 
+    // Tools menu entry for the manager
     let mi = UC.rebuild.elBuilder(aDocument, "menu", {
       id: "userChromejs_Tools_Menu",
       label: "userChromeJS Manager",
@@ -560,6 +633,7 @@ UC.rebuild = {
       )
       .insertAdjacentElement("afterend", mi); //taskPopup
 
+    // Insert custom menus if any
     let menupopup = aDocument.getElementById("userChromejs_options");
     UC.rebuild.menues.forEach((menu) => {
       menupopup.insertBefore(
@@ -568,6 +642,7 @@ UC.rebuild = {
       );
     });
 
+    // Ensure UI state is correct after startup
     aDocument.defaultView.setTimeout(
       () => UC.rebuild.toggleUI(false, true),
       1000,
@@ -576,6 +651,9 @@ UC.rebuild = {
     return toolbaritem;
   },
 
+  /**
+   * Creates the hamburger menu panel for the manager.
+   */
   createPanel(aDocument) {
     const viewCache =
       aDocument.getElementById("appMenu-viewCache")?.content ||
@@ -622,6 +700,7 @@ UC.rebuild = {
       userChromeJsPanel.appendChild(subviewBody);
       viewCache.appendChild(userChromeJsPanel);
 
+      // Add entry to open the panel from the hamburger menu
       const scriptsButton = aDocument.createXULElement("toolbarbutton");
       scriptsButton.id = "appMenu-userChromeJS-button";
       scriptsButton.className =
@@ -644,4 +723,5 @@ UC.rebuild = {
   },
 };
 
+// Initialize the manager at startup (called by fx-autoconfig)
 UC.rebuild.init();

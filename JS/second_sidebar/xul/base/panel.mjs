@@ -1,4 +1,7 @@
+/* eslint-disable no-unused-vars */
+import { Widget } from "./widget.mjs";
 import { XULElement } from "./xul_element.mjs";
+/* eslint-enable no-unused-vars */
 
 export class Panel extends XULElement {
   /**
@@ -8,7 +11,7 @@ export class Panel extends XULElement {
    * @param {Array<string>} params.classList
    */
   constructor({ id = null, classList = [] } = {}) {
-    super("panel", { id, classList: [...classList, "panel-no-padding"] });
+    super({ tag: "panel", id, classList: [...classList, "panel-no-padding"] });
   }
 
   /**
@@ -40,7 +43,7 @@ export class Panel extends XULElement {
 
   /**
    *
-   * @param {XULElement} target
+   * @param {XULElement | Widget} target
    * @param {string} position
    * @returns {Panel}
    */
@@ -62,9 +65,28 @@ export class Panel extends XULElement {
 
   /**
    *
+   * @param {XULElement} target
+   * @param {string} position
+   * @returns {Panel}
+   */
+  moveToAnchor(target, position = "start_before") {
+    this.element.moveToAnchor(target.getXUL(), position);
+    return this;
+  }
+
+  /**
+   *
    * @returns {boolean}
    */
   isPanelOpen() {
     return this.element.getAttribute("panelopen") === "true";
+  }
+
+  /**
+   *
+   * @returns {string}
+   */
+  getState() {
+    return this.element.state;
   }
 }

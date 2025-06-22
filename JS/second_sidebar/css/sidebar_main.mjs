@@ -1,56 +1,140 @@
 export const SIDEBAR_MAIN_CSS = `
-  #sidebar-2-main {
+  #sb2-main {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    overflow: scroll;
-    padding: 0 var(--space-small) 0 var(--space-small);
+    justify-content: var(--sb2-main-web-panel-buttons-position);
+    gap: var(--space-small);
+    padding: 0 var(--sb2-main-padding) var(--space-small) var(--sb2-main-padding);
+    overflow-y: scroll;
+    scrollbar-width: none;
+
+    toolbarpaletteitem[place="panel"][id^="wrapper-customizableui-special-spring"], toolbarspring {
+      flex: 1;
+      min-height: 10px;
+      max-height: 112px;
+      min-width: unset;
+      max-width: unset;
+    }
+
+    .toolbaritem-combined-buttons {
+      justify-content: center;
+      margin-inline: 0;
+    }
+
+    .toolbarbutton-1 {
+      padding: 0 !important;
+    }
   }
 
-  #browser:has(#sidebar-2[position="right"]) #sidebar-2-main {
-    order: 7 !important;
+  #sb2-main[fullscreenShouldAnimate] {
+    transition: 0.8s margin-right ease-out, 0.8s margin-left ease-out;
   }
 
-  #browser:has(#sidebar-2[position="left"]) #sidebar-2-main {
+  #sb2-main[shouldAnimate] {
+    transition: 0.2s margin-right ease-out, 0.2s margin-left ease-out;
+  }
+
+  #browser:has(#sb2-box:not([hidden])), 
+  #browser:has(#sb2-main toolbarbutton[open]),
+  #main-window:has(#sb2-main-popup-settings[panelopen]),
+  #main-window:has(#sb2-main-menupopup[panelopen]),
+  #main-window:has(#sb2-web-panel-button-menupopup[panelopen]) {
+    #sb2-main {
+      margin-left: 0px !important;
+      margin-right: 0px !important;
+    }
+  }
+
+  :root[customizing] {
+    #sb2-main {
+      min-width: unset !important;
+      margin-left: 0px !important;
+      margin-right: 0px !important;
+    }
+  }
+
+  #browser:has(#sb2[position="right"]) #sb2-main {
+    order: 17 !important;
+  }
+
+  #browser:has(#sb2[position="left"]) #sb2-main {
     order: -3 !important;
   }
 
-  #sidebar-2-main-web-panel-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  #sidebar-2-main-web-panel-buttons:empty {
-    display: none;
-  }
-
-  .sidebar-2-main-button {
+  .sb2-main-button {
     position: relative;
+    padding: 0;
 
-    .toolbarbutton-icon {
-      width: var(--sidebar-2-main-button-icon-size) !important;
-      height: var(--sidebar-2-main-button-icon-size) !important;
+    .sb2-sound-icon {
+      position: relative;
+      display: none;
+      height: 16px;
+      width: 16px;
+      top: calc(var(--toolbarbutton-inner-padding) + 2px);
+      right: calc(-1 * var(--toolbarbutton-inner-padding) - 2px);
+      padding: 2px;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: var(--border-radius-circle);
+      background-color: color-mix(in srgb, var(--toolbar-bgcolor) 50%, transparent);
+      fill: var(--toolbar-color);
+
+      &[soundplaying] {
+        display: flex;
+        background-image: url("chrome://browser/skin/tabbrowser/tab-audio-playing-small.svg");
+      }
+
+      &[muted] {
+        display: flex;
+        background-image: url("chrome://browser/skin/tabbrowser/tab-audio-muted-small.svg");
+      }
+
+      &[hidden] {
+        display: none;
+      }
     }
 
-    .tab-icon-overlay {
-      position: absolute !important;
-      width: var(--sidebar-2-main-button-icon-overlay-size) !important;
-      height: var(--sidebar-2-main-button-icon-overlay-size) !important;
-      padding: 0px !important;
-      margin: 0px !important;
-      top: 0 !important;
-      right: 0 !important;
-    }
+    .sb2-notification-badge {
+      display: none;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      width: 16px;
+      height: 16px;
+      top: calc(-1 * var(--toolbarbutton-inner-padding) - 2px);
+      right: calc(-1 * var(--toolbarbutton-inner-padding) - 2px);
+      border-radius: var(--border-radius-circle);
+      background-color: color-mix(in srgb, var(--toolbar-bgcolor) 50%, transparent);
 
-    .tab-icon-overlay[hidden="true"] {
-      display: none !important;
+      &[value] {
+        display: flex;
+      }
+
+      &[hidden] {
+        display: none;
+      }
+
+      span {
+        color: var(--toolbar-color);
+      }
     }
   }
 
-  .sidebar-2-main-button[unloaded="true"] {
+  .sb2-main-button[unloaded="true"] {
     .toolbarbutton-icon {
       opacity: var(--toolbarbutton-disabled-opacity);
     }
+  }
+
+  #widget-overflow-fixed-list .sb2-main-button {
+    padding: var(--arrowpanel-menuitem-padding);
+  }
+
+  #sb2-collapse-button[position="left"] {
+    list-style-image: url("chrome://userscripts/content/second_sidebar/icons/sidebar-left.svg");
+  }
+
+  #sb2-collapse-button[position="right"] {
+    list-style-image: url("chrome://userscripts/content/second_sidebar/icons/sidebar-right.svg");
   }
 `;

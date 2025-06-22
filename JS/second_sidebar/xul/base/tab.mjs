@@ -1,3 +1,4 @@
+import { Browser } from "./browser.mjs";
 import { XULElement } from "./xul_element.mjs";
 
 export class Tab extends XULElement {
@@ -9,14 +10,44 @@ export class Tab extends XULElement {
    * @param {HTMLElement?} params.element
    */
   constructor({ id = null, classList = [], element } = {}) {
-    super("tab", { id, classList, element });
+    super({ tag: "tab", id, classList, element });
+  }
+
+  /**
+   * @returns {Browser?}
+   */
+  get linkedBrowser() {
+    return new Browser({ element: this.element.linkedBrowser });
   }
 
   /**
    *
-   * @returns {HTMLElement}
+   * @returns {boolean}
    */
-  getBrowserXUL() {
-    return this.element.linkedBrowser;
+  get selected() {
+    return this.element.selected ?? false;
+  }
+
+  /**
+   * @returns {boolean}
+   */
+  get soundPlaying() {
+    return this.element.soundPlaying;
+  }
+
+  /**
+   * @returns {boolean}
+   */
+  get muted() {
+    return this.element.muted;
+  }
+
+  /**
+   *
+   * @returns {Tab}
+   */
+  toggleMuteAudio() {
+    this.element.toggleMuteAudio();
+    return this;
   }
 }

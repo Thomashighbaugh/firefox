@@ -1,75 +1,14 @@
 @namespace html url("http://www.w3.org/1999/xhtml");
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-@import url("theme/vars.css");
-@import url("theme/browser/main.css");
+@import "theme/_globals.css";
 
-/* Reduce left spacer on non-maximized windows */
-.titlebar-spacer[type="pre-tabs"] {
-  display: none !important;
-  visibility: hidden !important;
-  width: 0 !important;
-}
-
-/* Reduce left spacer on non-maximized windows */
-.titlebar-spacer[type="post-tabs"] {
-  visibility: hidden !important;
-  display: none !important;
-  width: 0 !important;
-}
-/* Reduce left spacer on non-maximized windows */
-.titlebar-spacer {
-  visibility: hidden !important;
-  display: none !important;
-  width: 0 !important;
-}
-
-#unified-extensions-view
-  #unified-extensions-manage-extensions
-  .toolbarbutton-text::before {
-  content: "• • •";
-  font-size: 15px;
-  visibility: visible !important;
-  display: block;
-  text-align: center;
-}
-
-#unified-extensions-panel #unified-extensions-view {
-  width: 100% !important;
-}
-
-#unified-extensions-view {
-  --uei-icon-size: 22px;
-  --firefoxcss-number-of-extensions-in-a-row: 4;
-}
-
-#unified-extensions-view .unified-extensions-item-menu-button.subviewbutton,
-#unified-extensions-view
-  .unified-extensions-item-action-button
-  .unified-extensions-item-contents {
-  display: none !important;
-}
-
-#unified-extensions-view .panel-subview-body {
-  padding: 10px !important;
-}
-
-#unified-extensions-view .unified-extensions-item .unified-extensions-item-icon,
-#unified-extensions-view .unified-extensions-item .toolbarbutton-badge-stack {
-  margin-inline-end: 0px !important;
-}
-
-#unified-extensions-view #overflowed-extensions-list,
-#unified-extensions-view #unified-extensions-area,
-#unified-extensions-view .unified-extensions-list {
-  display: grid !important;
-  grid-template-columns: repeat(
-    var(--firefoxcss-number-of-extensions-in-a-row),
-    auto
-  );
-  justify-items: left !important;
-  align-items: left !important;
-}
-#allTabsMenu-allTabsView .subviewbutton-iconic > .toolbarbutton-icon {
-  fill: #f8f8f8 !important;
-}
+@import "theme/browser/bookmarks.css";
+@import "theme/browser/menus.css";
+@import "theme/browser/navbar.css";
+@import "theme/browser/theming.css";
+@import "theme/browser/sidebar.css";
+@import "theme/browser/compact.css";
+@import "theme/browser/icons.css";
+@import "theme/browser/window-controls.css";
+@import "theme/browser/findbar.css";

@@ -8,6 +8,13 @@ export class MenuPopup extends XULElement {
    * @param {Array<string>} params.classList
    */
   constructor({ id = null, classList = [] } = {}) {
-    super("menupopup", { id, classList });
+    super({ tag: "menupopup", id, classList });
+
+    this.addEventListener("popupshowing", () =>
+      this.toggleAttribute("panelopen", true),
+    );
+    this.addEventListener("popuphiding", () =>
+      this.toggleAttribute("panelopen", false),
+    );
   }
 }

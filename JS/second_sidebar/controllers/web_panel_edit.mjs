@@ -1,72 +1,120 @@
-import { SidebarController } from "./sidebar.mjs";
+/* eslint-disable no-unused-vars */
+import { WebPanelEvents, sendEvents } from "./events.mjs";
+
+import { SidebarControllers } from "../sidebar_controllers.mjs";
+import { SidebarElements } from "../sidebar_elements.mjs";
 import { WebPanelController } from "./web_panel.mjs";
-import { WebPanelPopupEdit } from "../xul/web_panel_popup_edit.mjs";
-import { WebPanelsController } from "./web_panels.mjs";
+
+/* eslint-enable no-unused-vars */
 
 export class WebPanelEditController {
-  /**
-   *
-   * @param {WebPanelPopupEdit} webPanelPopupEdit
-   */
-  constructor(webPanelPopupEdit) {
-    this.webPanelPopupEdit = webPanelPopupEdit;
+  constructor() {
+    this.webPanelPopupEdit = SidebarElements.webPanelPopupEdit;
     this.#setupListeners();
   }
 
-  /**
-   *
-   * @param {WebPanelsController} webPanelsController
-   * @param {SidebarController} sidebarController
-   */
-  setupDependencies(webPanelsController, sidebarController) {
-    this.webPanelsController = webPanelsController;
-    this.sidebarController = sidebarController;
-  }
-
   #setupListeners() {
-    this.webPanelPopupEdit.listenMoveUpButtonClick((uuid) => {
-      const webPanelController = this.webPanelsController.get(uuid);
-      this.webPanelsController.moveUp(uuid);
-      this.hidePopup();
-      this.openPopup(webPanelController);
-      this.webPanelsController.savePref();
-    });
-
-    this.webPanelPopupEdit.listenMoveDownButtonClick((uuid) => {
-      const webPanelController = this.webPanelsController.get(uuid);
-      this.webPanelsController.moveDown(uuid);
-      this.hidePopup();
-      this.openPopup(webPanelController);
-      this.webPanelsController.savePref();
-    });
-
-    this.webPanelPopupEdit.listenSaveButtonClick(
-      (uuid, url, faviconURL, mobile, loadOnStartup, unloadOnClose) => {
-        const webPanelController = this.webPanelsController.get(uuid);
-        webPanelController.set(
+    this.webPanelPopupEdit.listenChanges({
+      url: (uuid, url, timeout = 0) => {
+        sendEvents(WebPanelEvents.EDIT_WEB_PANEL_URL, {
+          uuid,
           url,
-          faviconURL,
-          mobile,
-          loadOnStartup,
-          unloadOnClose,
-        );
-        this.hidePopup();
-        if (unloadOnClose && !webPanelController.isActive()) {
-          webPanelController.unload();
-        }
-        this.webPanelsController.savePref();
+          timeout,
+        });
       },
-    );
+      faviconURL: (uuid, faviconURL, timeout = 0) => {
+        sendEvents(WebPanelEvents.EDIT_WEB_PANEL_FAVICON_URL, {
+          uuid,
+          faviconURL,
+          timeout,
+        });
+      },
+      pinned: (uuid, pinned) => {
+        sendEvents(WebPanelEvents.EDIT_WEB_PANEL_PINNED, {
+          uuid,
+          pinned,
+        });
+      },
+      userContextId: (uuid, userContextId) => {
+        sendEvents(WebPanelEvents.EDIT_WEB_PANEL_USER_CONTEXT_ID, {
+          uuid,
+          userContextId,
+        });
+      },
+      mobile: (uuid, mobile) => {
+        sendEvents(WebPanelEvents.EDIT_WEB_PANEL_MOBILE, {
+          uuid,
+          mobile,
+        });
+      },
+      loadOnStartup: (uuid, loadOnStartup) => {
+        sendEvents(WebPanelEvents.EDIT_WEB_PANEL_LOAD_ON_STARTUP, {
+          uuid,
+          loadOnStartup,
+        });
+      },
+      unloadOnClose: (uuid, unloadOnClose) => {
+        sendEvents(WebPanelEvents.EDIT_WEB_PANEL_UNLOAD_ON_CLOSE, {
+          uuid,
+          unloadOnClose,
+        });
+      },
+      hideToolbar: (uuid, hideToolbar) => {
+        sendEvents(WebPanelEvents.EDIT_WEB_PANEL_HIDE_TOOLBAR, {
+          uuid,
+          hideToolbar,
+        });
+      },
+      hideSoundIcon: (uuid, hideSoundIcon) => {
+        sendEvents(WebPanelEvents.EDIT_WEB_PANEL_HIDE_SOUND_ICON, {
+          uuid,
+          hideSoundIcon,
+        });
+      },
+      hideNotificationBadge: (uuid, hideNotificationBadge) => {
+        sendEvents(WebPanelEvents.EDIT_WEB_PANEL_HIDE_NOTIFICATION_BADGE, {
+          uuid,
+          hideNotificationBadge,
+        });
+      },
+      periodicReload: (uuid, periodicReload) => {
+        sendEvents(WebPanelEvents.EDIT_WEB_PANEL_PERIODIC_RELOAD, {
+          uuid,
+          periodicReload: Number(periodicReload),
+        });
+      },
+      zoomOut: (uuid) => {
+        sendEvents(WebPanelEvents.EDIT_WEB_PANEL_ZOOM_OUT, {
+          uuid,
+        });
+        const webPanelController =
+          SidebarControllers.webPanelsController.get(uuid);
+        return webPanelController.getZoom();
+      },
+      zoomIn: (uuid) => {
+        sendEvents(WebPanelEvents.EDIT_WEB_PANEL_ZOOM_IN, {
+          uuid,
+        });
+        const webPanelController =
+          SidebarControllers.webPanelsController.get(uuid);
+        return webPanelController.getZoom();
+      },
+      zoom: (uuid, value) => {
+        sendEvents(WebPanelEvents.EDIT_WEB_PANEL_ZOOM, {
+          uuid,
+          value,
+        });
+        const webPanelController =
+          SidebarControllers.webPanelsController.get(uuid);
+        return webPanelController.getZoom();
+      },
+    });
 
-    this.webPanelPopupEdit.listenDeleteButtonClick((uuid) => {
-      const webPanelController = this.webPanelsController.get(uuid);
-      if (webPanelController.isActive()) {
-        this.sidebarController.close();
-      }
+    this.webPanelPopupEdit.listenCancelButtonClick(() => this.hidePopup());
+
+    this.webPanelPopupEdit.listenSaveButtonClick(() => {
+      sendEvents(WebPanelEvents.SAVE_WEB_PANELS);
       this.hidePopup();
-      webPanelController.remove();
-      this.webPanelsController.delete(uuid);
-      this.webPanelsController.savePref();
     });
   }
 
@@ -75,20 +123,7 @@ export class WebPanelEditController {
    * @param {WebPanelController} webPanelController
    */
   openPopup(webPanelController) {
-    const webPanel = webPanelController.webPanel;
-    const webPanelButton = webPanelController.webPanelButton;
-
-    this.webPanelPopupEdit.setDefaults(
-      webPanel.uuid,
-      webPanel.url,
-      webPanel.faviconURL,
-      webPanel.mobile,
-      webPanel.loadOnStartup,
-      webPanel.unloadOnClose,
-      webPanelController.isFirst(),
-      webPanelController.isLast(),
-    );
-    this.webPanelPopupEdit.openPopup(webPanelButton);
+    this.webPanelPopupEdit.openPopup(webPanelController);
   }
 
   hidePopup() {

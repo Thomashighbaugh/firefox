@@ -1,3 +1,6 @@
+import { FaviconsWrapper } from "../wrappers/favicons.mjs";
+import { NetUtilWrapper } from "../wrappers/net_utils.mjs";
+
 const PREDEFINED_ICONS = {
   "about:newtab": "chrome://browser/skin/tab.svg",
   "about:debugging": "chrome://global/skin/icons/developer.svg",
@@ -8,28 +11,32 @@ const PREDEFINED_ICONS = {
   "about:preferences": "chrome://global/skin/icons/settings.svg",
   "chrome://browser/content/preferences/preferences.xhtml":
     "chrome://global/skin/icons/settings.svg",
-
   "chrome://browser/content/places/bookmarksSidebar.xhtml":
     "chrome://browser/skin/bookmark.svg",
-
   "about:downloads": "chrome://browser/skin/downloads/downloads.svg",
   "chrome://browser/content/downloads/contentAreaDownloadsView.xhtml":
     "chrome://browser/skin/downloads/downloads.svg",
-
   "chrome://browser/content/places/places.xhtml":
     "chrome://browser/skin/library.svg",
 };
 
+export const FALLBACK_ICON = "chrome://global/skin/icons/info.svg";
+
+/**
+ *
+ * @param {string} url
+ * @returns {string}
+ */
 export function fetchIconURL(url) {
-  const uri = NetUtil.newURI(url);
+  const uri = NetUtilWrapper.newURI(url);
   if (uri.specIgnoringRef in PREDEFINED_ICONS) {
     return PREDEFINED_ICONS[uri.specIgnoringRef];
   }
 
-  Favicons.setDefaultIconURIPreferredSize(32);
+  FaviconsWrapper.setDefaultIconURIPreferredSize(32);
 
   return new Promise((resolve) => {
-    Favicons.getFaviconURLForPage(uri, async (faviconURI) => {
+    FaviconsWrapper.getFaviconURLForPage(uri, async (faviconURI) => {
       let provider = "browser";
       let faviconURL = faviconURI?.spec;
       try {
@@ -50,4 +57,29 @@ export function fetchIconURL(url) {
       resolve(faviconURL);
     });
   });
+}
+
+/**
+ *
+ * @param {string} url
+ * @returns {boolean}
+ */
+export async function isIconAvailable(url) {
+  try {
+    const response = await fetch(url);
+    return response.status === 200;
+  } catch (error) {
+    console.log(`Failed to fetch icon ${url}:`, error);
+    return false;
+  }
+}
+
+/**
+ *
+ * @param {string} url
+ * @param {string} urlAlt
+ * @returns {Promise<string>}
+ */
+export async function useAvailableIcon(url, urlAlt) {
+  return (await isIconAvailable(url)) ? url : urlAlt;
 }

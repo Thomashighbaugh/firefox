@@ -8,11 +8,7 @@ export class Button extends XULElement {
    * @param {Array<string>} params.classList
    */
   constructor({ id = null, classList = [] } = {}) {
-    super("button", {
-      id,
-      classList,
-      create: (tag) => document.createElement(tag),
-    });
+    super({ tag: "button", id, classList, isXUL: false });
   }
 
   /**
@@ -22,24 +18,6 @@ export class Button extends XULElement {
    */
   setText(text) {
     this.element.innerText = text;
-    return this;
-  }
-
-  /**
-   *
-   * @returns {boolean}
-   */
-  getPressed() {
-    return this.element.ariaPressed === "true";
-  }
-
-  /**
-   *
-   * @param {boolean} value
-   * @returns {Button}
-   */
-  setPressed(value) {
-    this.element.ariaPressed = value;
     return this;
   }
 }

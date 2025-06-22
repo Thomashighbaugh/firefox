@@ -1,21 +1,20 @@
-/* SPDX-License-Identifier: MPL-2.0 */
-/* Copyright (c) 2024 awwpotato <awwpotato@voidq.com> */
+/* PDF Viewer Styles */
 
 :root:has(.pdfViewer) {
   #viewerContainer {
     inset: 0 !important;
 
     #viewer .page:first-of-type {
-      margin-top: 40px !important;
+      margin-top: 20px !important;
     }
   }
 
   #toolbarContainer {
     position: sticky !important;
     width: auto !important;
-    margin-top: var(--uc-small-floating-margin) !important;
-    margin-inline: var(--uc-small-floating-margin) !important;
-    border-radius: var(--uc-radius);
+    margin-top: 3px !important;
+    margin-inline: 3px !important;
+    border-radius: var(--uc-theme-border-radius);
     box-shadow: none !important;
     border: none !important;
     background: color-mix(
@@ -23,7 +22,7 @@
       var(--toolbar-bg-color),
       transparent 10%
     ) !important;
-    backdrop-filter: blur(var(--uc-blur-radius)) !important;
+    backdrop-filter: blur(var(--uc-theme-border-radius)) !important;
 
     #loadingBar {
       top: unset !important;
@@ -32,20 +31,16 @@
     }
 
     button {
-      border-radius: var(--uc-button-radius) !important;
+      border-radius: var(--uc-theme-border-radius) !important;
     }
   }
 
   #sidebarContainer {
     margin: 5px;
     margin-top: 10px;
-    border-radius: var(--uc-radius) !important;
-    background-color: color-mix(
-      in oklab,
-      var(--sidebar-narrow-bg-color),
-      transparent 10%
-    ) !important;
-    backdrop-filter: blur(var(--uc-blur-radius));
+    border-radius: var(--uc-theme-border-radius) !important;
+    background-color: rgba(var(--uc-theme-secondary-color), var(--uc-theme-low-alpha)) !important;
+    backdrop-filter: blur(var(--uc-theme-border-radius));
     * {
       box-shadow: none !important;
     }
@@ -55,7 +50,7 @@
 
     button,
     .thumbnail.selected {
-      border-radius: var(--uc-button-radius) !important;
+      border-radius: var(--uc-theme-border-radius) !important;
     }
   }
 }

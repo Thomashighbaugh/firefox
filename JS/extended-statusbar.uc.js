@@ -2,25 +2,52 @@
 // @name           Extended Statusbar
 // @description    A customizable Statusbar with link location preview
 // @include        main
-// @author         py (modified by)
+// @author         Thomas Leon Highbaugh
+// @author         ARIS
+// @author         py
 // @version        2.1.2 (modified for userchrome.js)
 // @homepageURL    https://addons.mozilla.org/en-US/firefox/addon/extended-statusbar/
 // ==/UserScript==
 
-var appversion = parseInt(Services.appinfo.version);
+/**
+ * Extended Statusbar for Firefox (userChromeJS version)
+ *
+ * This script adds a customizable statusbar (addonbar) to Firefox, with link preview and support for toolbar buttons.
+ * Optimized for use with fx-autoconfig and userChromeJS.
+ *
+ * Features:
+ * - Adds a persistent addonbar at the bottom of the browser window.
+ * - Supports compact mode for smaller toolbar buttons.
+ * - Keyboard shortcut (Ctrl+/ or Cmd+/) to toggle the addonbar.
+ * - Remembers visibility state across sessions.
+ * - Fixes for downloads button and compatibility with modern Firefox.
+ *
+ * Usage:
+ * - Place this script in your userChrome.js or userChromeJS scripts folder.
+ * - Requires fx-autoconfig or userChromeJS loader.
+ *
+ * Tested with Firefox 91+ (may require adjustments for future versions).
+ */
 
-var compact_buttons = false; // reduced toolbar height and smaller buttons
+var appversion = parseInt(Services.appinfo.version, 10);
+
+// Set to true for compact toolbar buttons
+var compact_buttons = false;
 
 var AddAddonbar = {
+  /**
+   * Initializes the addonbar and injects required CSS and UI elements.
+   */
   init: function () {
     if (location != "chrome://browser/content/browser.xhtml") return;
 
-    /* blank tab workaround */
+    // Workaround for blank tab attribute
     try {
       if (gBrowser.selectedBrowser.getAttribute("blank"))
         gBrowser.selectedBrowser.removeAttribute("blank");
     } catch (e) {}
 
+    // Ensure addonbar is enabled in preferences
     try {
       Services.prefs
         .getDefaultBranch("browser.addonbar.")
@@ -61,7 +88,7 @@ var AddAddonbar = {
 		}
 	  `;
 
-    // style sheet
+    // Inject CSS for addonbar styling
     Components.classes["@mozilla.org/content/style-sheet-service;1"]
       .getService(Components.interfaces.nsIStyleSheetService)
       .loadAndRegisterSheet(
@@ -82,7 +109,7 @@ var AddAddonbar = {
 		  }
 		  #addonbar {
 			border-top: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.1)) !important;
-              border-radius: 6px 6px 0 0;
+            border-radius: 6px 6px 0 0;
 			background-color: var(--toolbar-bgcolor) !important;
 			background-image: var(--toolbar-bgimage) !important;
 			-moz-window-dragging: no-drag !important;
@@ -90,7 +117,6 @@ var AddAddonbar = {
 		  :root[lwtheme] #addonbar {
    			background-color: var(--toolbar-bgcolor) !important;
         	background-image: var(--toolbar-bgimage) !important;
-
 		  }
 		  :root[lwtheme][lwtheme-image='true'] #addonbar {
 			background: var(--lwt-header-image) !important;
@@ -104,15 +130,13 @@ var AddAddonbar = {
 			max-height: 1px !important;
 			background-color: var(--toolbar-bgcolor) !important;
         	background-image: var(--toolbar-bgimage) !important;
-
           }
 		  #main-window[sizemode='fullscreen']:not([inDOMFullscreen='true']) #addonbar:hover {
 			min-height: 26px !important;
 			height: 26px !important;
 			max-height: 26px !important;
-          	bbbackground-color: var(--toolbar-bgcolor) !important;
+            bbbackground-color: var(--toolbar-bgcolor) !important;
         	background-image: var(--toolbar-bgimage) !important;
-
 		  }
 		  #unified-extensions-button[hidden]{
 			visibility: visible !important;
@@ -131,7 +155,7 @@ var AddAddonbar = {
         ].getService(Components.interfaces.nsIStyleSheetService).AGENT_SHEET,
       );
 
-    // toolbar
+    // Create and insert the addonbar toolbar if it doesn't exist
     try {
       if (document.getElementById("addonbar") == null) {
         var tb_addonbar = document.createXULElement("toolbar");
@@ -155,24 +179,21 @@ var AddAddonbar = {
           tb_addonbar.firstChild,
         );
 
+        // Register the area for CustomizableUI
         CustomizableUI.registerArea("addonbar", { legacy: true });
 
+        // Register again after a delay (workaround for initialization timing)
         setTimeout(function () {
           CustomizableUI.registerArea("addonbar", { legacy: true });
         }, 2000);
 
         CustomizableUI.registerToolbarNode(tb_addonbar);
 
-        // 'Ctr + /' on Windows/Linux or 'Cmd + /' on macOS to toggle add-on bar
+        // Keyboard shortcut: Ctrl+/ (Win/Linux) or Cmd+/ (macOS) to toggle addonbar
         var key = document.createXULElement("key");
         key.id = "key_toggleAddonBar";
         key.setAttribute("key", "/");
         key.setAttribute("modifiers", "accel");
-        /*key.setAttribute('oncommand',`
-			var newAddonBar = document.getElementById('addonbar');
-			setToolbarVisibility(newAddonBar, newAddonBar.collapsed);
-			Services.prefs.getBranch('browser.addonbar.').setBoolPref('enabled',!newAddonBar.collapsed);
-		  `);*/
         key.addEventListener("command", () => {
           var newAddonBar = document.getElementById("addonbar");
           setToolbarVisibility(newAddonBar, newAddonBar.collapsed);
@@ -182,6 +203,7 @@ var AddAddonbar = {
         });
         document.getElementById("mainKeyset").appendChild(key);
 
+        // Set toolbar visibility based on preference
         try {
           setToolbarVisibility(
             document.getElementById("addonbar"),
@@ -195,15 +217,17 @@ var AddAddonbar = {
   },
 };
 
-/* initialization delay workaround */
-document.addEventListener("DOMContentLoaded", AddAddonbar.init(), false);
-/* Use the below code instead of the one above this line, if issues occur */
+// Initialization: run after DOMContentLoaded and after a delay for reliability
+document.addEventListener("DOMContentLoaded", () => AddAddonbar.init(), false);
 setTimeout(function () {
   AddAddonbar.init();
 }, 2000);
 
-/* fix for downloads button on add-on bar - thanks to dimdamin */
-/* https://github.com/Aris-t2/CustomJSforFx/issues/125#issuecomment-2506613776 */
+/**
+ * Fix for downloads button on addonbar.
+ * Ensures compatibility with scripts expecting 'navigator-toolbox' by patching them to use 'addonbar'.
+ * See: https://github.com/Aris-t2/CustomJSforFx/issues/125#issuecomment-2506613776
+ */
 (async (url) =>
   !location.href.startsWith(url) ||
   (await delayedStartupPromise) ||

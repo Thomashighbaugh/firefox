@@ -1,45 +1,32 @@
-import { SidebarController } from "./sidebar.mjs";
-import { SidebarSplitterPinned } from "../xul/sidebar_splitter_pinned.mjs";
-import { SidebarSplitterUnpinned } from "../xul/sidebar_splitter_unpinned.mjs";
-import { WebPanelsController } from "./web_panels.mjs";
+import { SidebarEvents, sendEvents } from "./events.mjs";
+
+import { SidebarControllers } from "../sidebar_controllers.mjs";
+import { SidebarElements } from "../sidebar_elements.mjs";
 
 export class SidebarSplittersController {
-  /**
-   *
-   * @param {SidebarSplitterUnpinned} sidebarSplitterUnpinned
-   * @param {SidebarSplitterPinned} sidebarSplitterPinned
-   */
-  constructor(sidebarSplitterUnpinned, sidebarSplitterPinned) {
-    this.sidebarSplitterUnpinned = sidebarSplitterUnpinned;
-    this.sidebarSplitterPinned = sidebarSplitterPinned;
+  constructor() {
+    this.sidebarSplitterUnpinned = SidebarElements.sidebarSplitterUnpinned;
+    this.sidebarSplitterPinned = SidebarElements.sidebarSplitterPinned;
 
     this.#setupListeners();
   }
 
-  /**
-   * @param {SidebarController} sidebarController
-   * @param {WebPanelsController} webPanelsController
-   */
-  setupDependencies(sidebarController, webPanelsController) {
-    this.sidebarController = sidebarController;
-    this.webPanelsController = webPanelsController;
-  }
-
   #setupListeners() {
-    this.sidebarSplitterUnpinned.listenWidthChange(() => {
-      const width = this.sidebarController.getSidebarWidth();
-      this.sidebarController.setWidth(width);
-      const webPanelController = this.webPanelsController.getActive();
-      webPanelController.setWidth(width);
-      this.webPanelsController.savePref();
-    });
-
-    this.sidebarSplitterPinned.listenWidthChange(() => {
-      const width = this.sidebarController.getSidebarBoxWidth();
-      this.sidebarController.setWidth(width);
-      const webPanelController = this.webPanelsController.getActive();
-      webPanelController.setWidth(width);
-      this.webPanelsController.savePref();
-    });
+    /**@param {number} width */
+    const changeWidth = (width) => {
+      const webPanelController =
+        SidebarControllers.webPanelsController.getActive();
+      sendEvents(SidebarEvents.EDIT_SIDEBAR_WIDTH, {
+        uuid: webPanelController.getUUID(),
+        width,
+      });
+      SidebarControllers.webPanelsController.saveSettings();
+    };
+    this.sidebarSplitterUnpinned.listenWidthChange(() =>
+      changeWidth(SidebarControllers.sidebarController.getSidebarWidth()),
+    );
+    this.sidebarSplitterPinned.listenWidthChange(() =>
+      changeWidth(SidebarControllers.sidebarController.getSidebarBoxWidth()),
+    );
   }
 }

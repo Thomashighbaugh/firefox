@@ -1,17 +1,50 @@
-import { Img } from "./base/img.mjs";
-import { ToolbarButton } from "./base/toolbar_button.mjs";
+/* eslint-disable no-unused-vars */
+import { FALLBACK_ICON, useAvailableIcon } from "../utils/icons.mjs";
 
-export class WebPanelButton extends ToolbarButton {
+import { NotificationBadge } from "./notification_badge.mjs";
+import { WebPanelSettings } from "../settings/web_panel_settings.mjs";
+import { WebPanelSoundIcon } from "./web_panel_sound_icon.mjs";
+import { Widget } from "./base/widget.mjs";
+import { applyContainerColor } from "../utils/containers.mjs";
+import { ellipsis } from "../utils/string.mjs";
+
+/* eslint-enable no-unused-vars */
+
+const URL_LABEL_LIMIT = 24;
+const URL_TOOLTIP_LIMIT = 64;
+
+export class WebPanelButton extends Widget {
   /**
    *
-   * @param {string} uuid
+   * @param {WebPanelSettings} webPanelSettings
+   * @param {string?} position
    */
-  constructor(uuid) {
-    super({ classList: ["sidebar-2-main-button"] });
-    this.uuid = uuid;
+  constructor(webPanelSettings, position = null) {
+    super({
+      id: webPanelSettings.uuid,
+      classList: ["sb2-main-button", "sb2-main-web-panel-button"],
+      context: "sb2-web-panel-button-menupopup",
+      position,
+    });
 
-    this.playingIcon = null;
-    this.setContext("");
+    this.soundIcon = new WebPanelSoundIcon();
+    this.notificationBadge = new NotificationBadge();
+    this.doWhenButtonReady(() => {
+      const badgeStackXUL = this.button.getBadgeStackXUL();
+      badgeStackXUL.appendChild(this.soundIcon.element);
+      badgeStackXUL.appendChild(this.notificationBadge.element);
+    });
+
+    this.setUserContextId(webPanelSettings.userContextId)
+      .setLabel(webPanelSettings.url)
+      .setTooltipText(webPanelSettings.url);
+
+    this.hideSoundIcon(webPanelSettings.hideSoundIcon);
+    this.hideNotificationBadge(webPanelSettings.hideNotificationBadge);
+
+    useAvailableIcon(webPanelSettings.faviconURL, FALLBACK_ICON).then(
+      (faviconURL) => this.setIcon(faviconURL),
+    );
   }
 
   /**
@@ -20,7 +53,7 @@ export class WebPanelButton extends ToolbarButton {
    * @returns {WebPanelButton}
    */
   listenClick(callback) {
-    this.addEventListener("mousedown", (event) => {
+    this.setOnClick((event) => {
       event.stopPropagation();
       callback(event);
     });
@@ -29,29 +62,29 @@ export class WebPanelButton extends ToolbarButton {
 
   /**
    *
+   * @param {boolean} value
    * @returns {WebPanelButton}
    */
-  showPlayingIcon() {
-    if (this.playingIcon === null) {
-      this.playingIcon = new Img({ classList: ["tab-icon-overlay"] })
-        .setAttribute("role", "presentation")
-        .setAttribute("soundplaying", "")
-        .setAttribute("pinned", "");
-      this.appendChild(this.playingIcon);
-    }
-    this.playingIcon.removeAttribute("hidden");
-    return this;
+  hideSoundIcon(value) {
+    return this.doWhenButtonReady(() => {
+      if (value) {
+        this.soundIcon.hide();
+      } else {
+        this.soundIcon.show();
+      }
+    });
   }
 
   /**
    *
+   * @param {boolean} isSoundPlaying
+   * @param {boolean} isMuted
    * @returns {WebPanelButton}
    */
-  hidePlayingIcon() {
-    if (this.playingIcon !== null) {
-      this.playingIcon.setAttribute("hidden", "true");
-    }
-    return this;
+  setSoundIcon(isSoundPlaying, isMuted) {
+    return this.doWhenButtonReady(() => {
+      this.soundIcon.setSoundPlaying(isSoundPlaying).setMuted(isMuted);
+    });
   }
 
   /**
@@ -59,30 +92,63 @@ export class WebPanelButton extends ToolbarButton {
    * @param {boolean} value
    * @returns {WebPanelButton}
    */
-  setPlaying(value) {
-    if (value) {
-      return this.showPlayingIcon();
-    }
-    return this.hidePlayingIcon();
+  hideNotificationBadge(value) {
+    return this.doWhenButtonReady(() => {
+      if (value) {
+        this.notificationBadge.hide();
+      } else {
+        this.notificationBadge.show();
+      }
+    });
   }
 
   /**
    *
-   * @param {boolean} value
+   * @param {number?} value
    * @returns {WebPanelButton}
    */
-  setOpen(value) {
-    this.element.open = value;
-    return this;
+  setNotificationBadge(value) {
+    return this.doWhenButtonReady(() => {
+      this.notificationBadge.setValue(value);
+    });
   }
 
   /**
    *
-   * @param {boolean} value
+   * @param {string} text
    * @returns {WebPanelButton}
    */
-  setUnloaded(value) {
-    this.setAttribute("unloaded", value);
-    return this;
+  setLabel(text) {
+    text = ellipsis(
+      text.replace(/http:\/\/|https:\/\/|\/$/g, ""),
+      URL_LABEL_LIMIT,
+    );
+    return Widget.prototype.setLabel.call(this, text);
+  }
+
+  /**
+   *
+   * @param {string} text
+   * @returns {WebPanelButton}
+   */
+  setTooltipText(text) {
+    text = ellipsis(
+      text.replace(/http:\/\/|https:\/\/|\/$/g, ""),
+      URL_TOOLTIP_LIMIT,
+    );
+    return Widget.prototype.setTooltipText.call(this, text);
+  }
+
+  /**
+   *
+   * @param {string} userContextId
+   * @returns {WebPanelButton}
+   */
+  setUserContextId(userContextId) {
+    return this.doWhenButtonReady(() =>
+      this.doWhenButtonImageReady(() =>
+        applyContainerColor(userContextId, this.button.getBadgeStackXUL()),
+      ),
+    );
   }
 }

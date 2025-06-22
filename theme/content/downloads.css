@@ -11,7 +11,7 @@
 
   #downloadsListBox {
     border: none !important;
-    padding: var(--uc-sidebar-margin) 0 !important;
+    padding: 3px 0 !important;
   }
 
   panel #downloadsListBox {
@@ -26,14 +26,14 @@
   }
 
   #downloadsFooter > stack {
-    margin: 0 var(--uc-sidebar-margin) !important;
-    padding-block: 0 var(--uc-sidebar-margin) !important;
+    margin: 0 3px !important;
+    padding-block: 0 3px !important;
   }
 
   #downloadsFooterButtons[uc-hbox]:not([hidden]) {
     display: flex !important;
     flex-flow: row nowrap;
-    column-gap: var(--uc-sidebar-margin) !important;
+    column-gap: 3px !important;
   }
 
   #downloadsFooter > toolbarseparator,
@@ -42,9 +42,7 @@
     min-height: 0 !important;
     border-top: 1px solid #000 !important; /* Replaced with a similar variable */
     border-bottom: none !important;
-    margin: var(
-      --uc-sidebar-margin
-    ) !important; /* Replaced with a similar variable */
+    margin: 0 3px !important; /* Replaced with a similar variable */
     margin-top: 0 !important;
     padding: 0 !important;
   }
@@ -97,9 +95,9 @@
     position: relative !important;
     border-radius: var(
       --uc-radius
-    ) !important; /* Replaced with a similar variable */
+    ) !important; 
     padding: 0 !important;
-    margin: 0 var(--uc-sidebar-margin) !important;
+    margin: 0 6px !important;
     border: 0 !important;
     outline: 0 !important;
     background: none !important;
@@ -111,11 +109,11 @@
     margin: 0 !important;
     padding: 8px 4px !important;
     padding-inline-end: calc(4px + 8px + 8px + 32px) !important;
-    gap: var(--uc-sidebar-margin) !important;
+    gap: 3px !important;
   }
 
   #downloadsPanel-blockedSubview > vbox {
-    margin: 0px var(--uc-sidebar-margin) !important;
+    margin: 0px 3px !important;
   }
 
   .downloadsPanel-blockedSubview-title-box {
@@ -198,7 +196,7 @@
     width: 32px !important;
     height: 32px !important;
     border-radius: var(
-      --uc-radius
+      --uc-theme-border-radius
     ) !important; /* Replaced with a similar variable */
     padding: 0 !important;
   }

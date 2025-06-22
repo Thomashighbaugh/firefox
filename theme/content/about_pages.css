@@ -1,0 +1,243 @@
+
+/* This rule block applies the theme to a wide range of internal Firefox pages ("about:" pages) and chrome UI pages. */
+@-moz-document
+url-prefix("about:about"),     url-prefix("about:addons"),     url-prefix("about:buildconfig"),
+url-prefix("about:cache"),     url-prefix("about:compat"),     url-prefix("about:certificate"),
+url-prefix("about:config"),    url-prefix("about:crashes"),    url-prefix("about:deleteprofile"),
+url-prefix("about:debugging"), url-prefix("about:downloads"),  url-prefix("about:editprofile"),
+url-prefix("about:home"),      url-prefix("about:license"),    url-prefix("about:loginsimportreport"),
+url-prefix("about:logins"),    url-prefix("about:logging"),    url-prefix("about:networking"),
+url-prefix("about:memory"),    url-prefix("about:newprofile"), url-prefix("about:preferences"),
+url-prefix("about:policies"),  url-prefix("about:newtab"),     url-prefix("about:privatebrowsing"),
+url-prefix("about:processes"), url-prefix("about:profiles"),   url-prefix("about:protections"),
+url-prefix("about:profiling"), url-prefix("about:rights"),     url-prefix("about:serviceworkers"),
+url-prefix("about:robots"),    url-prefix("about:studies"),    url-prefix("about:support"),
+url-prefix("about:sync-log"),  url-prefix("about:telemetry"),  url-prefix("about:url-classifier"),
+url-prefix("about:unloads"),   url-prefix("about:webauthn"),   url-prefix("about:webrtc"),
+url-prefix("about:welcome"),   url-prefix("chrome:") {{}
+  /* Universal selector to define CSS variables (custom properties) for the entire theme. */
+  * {
+    /* These variables are shared with userChrome.css for a consistent look between browser UI and content pages. */
+    /* Common with userChrome.css */
+    color-scheme: var(--uc-theme-color-scheme) !important;
+    --text-color: rgb(var(--uc-theme-text-color)) !important;
+    --focus-outline-color: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-low-alpha)) !important;
+    --focus-outline-width: var(--uc-theme-border-width) !important;
+    --newtab-background-color: rgb(var(--uc-theme-main-color)) !important;
+    --newtab-background-color-secondary: rgb(var(--uc-theme-secondary-color)) !important;;
+    --newtab-text-primary-color: rgb(var(--uc-theme-text-color)) !important;
+    --color-accent-primary: rgb(var(--uc-theme-accent-color)) !important;
+    --color-accent-primary-hover: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-mid-alpha)) !important;
+    --color-accent-primary-active: rgb(var(--uc-theme-accent-color)) !important;
+    --button-background-color: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-low-alpha)) !important;
+    --button-background-color-hover: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-mid-alpha)) !important;
+    --button-background-color-active: rgb(var(--uc-theme-accent-color)) !important;
+    --button-border-radius: var(--uc-theme-border-radius) !important;
+    --button-text-color-primary: rgb(var(--uc-theme-text-color)) !important;
+    --button-text-color: rgb(var(--uc-theme-text-color)) !important;
+    --border-color-deemphasized: var(--uc-theme-border-color) !important;
+    --border-color-interactive: rgba(var(--uc-theme-text-color), var(--uc-theme-text-mid-alpha)) !important;
+    --background-color-canvas: rgb(var(--uc-theme-text-color)) !important;
+    --background-color-box: rgb(var(--uc-theme-secondary-color)) !important;
+    --toolbar-field-background-color: rgb(var(--uc-theme-secondary-color)) !important;
+    --toolbar-field-color: rgb(var(--uc-theme-text-color)) !important;
+    --toolbar-field-border-color: rgba(0, 0, 0, 0) !important;
+    --toolbar-field-focus-background-color: rgb(var(--uc-theme-secondary-color)) !important;
+    --toolbar-field-focus-color: rgb(var(--uc-theme-text-color)) !important;
+    --toolbar-field-focus-border-color: var(--focus-outline-color) !important;
+    --in-content-page-background: rgb(var(--uc-theme-main-color)) !important;
+    --in-content-page-color: rgb(var(--uc-theme-text-color)) !important;
+    --in-content-button-text-color-hover: rgb(var(--uc-theme-text-color)) !important;
+    --in-content-button-text-color-active: rgb(var(--uc-theme-text-color)) !important;
+    --in-content-button-background: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-low-alpha)) !important;
+    --in-content-button-background-hover: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-mid-alpha)) !important;
+    --in-content-button-background-active: rgb(var(--uc-theme-accent-color)) !important;
+    --in-content-primary-button-background: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-low-alpha)) !important;
+    --in-content-primary-button-background-hover: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-mid-alpha)) !important;
+    --in-content-primary-button-background-active: rgb(var(--uc-theme-accent-color)) !important;
+    --in-content-primary-button-text-color: rgb(var(--uc-theme-text-color)) !important;
+    --in-content-table-background: rgb(var(--uc-theme-secondary-color)) !important;
+    --in-content-box-border-color: var(--uc-theme-border-color) !important;
+    --in-content-item-hover: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-low-alpha)) !important;
+    --in-content-item-selected: rgb(var(--uc-theme-accent-color)) !important;
+    --link-color: var(--uc-theme-accent-high-contrast) !important;
+    --link-color-hover: var(--uc-theme-accent-high-contrast) !important;
+    --link-color-active: var(--uc-theme-accent-high-contrast) !important;
+    --link-color-visited: var(--uc-theme-accent-high-contrast) !important;
+    /*--border-width: var(--uc-theme-border-width) !important;*/ /* This breaks #moz-toggle-button, so it's commented out. */
+    --input-border-color: var(--uc-theme-border-color) !important;
+    --attention-dot-color: var(--uc-theme-accent-high-contrast) !important;
+
+    /* These variables are specific to content pages, particularly for about:newtab. */
+    --newtab-text-secondary-color: rgba(var(--uc-theme-text-color), var(--uc-theme-text-mid-alpha)) !important;
+    --newtab-contextual-text-primary-color: rgb(var(--uc-theme-text-color)) !important;
+    --newtab-contextual-text-secondary-color: rgba(var(--uc-theme-text-color), var(--uc-theme-text-mid-alpha)) !important;
+    --newtab-element-secondary-color: rgb(var(--uc-theme-secondary-color)) !important;
+    --newtab-element-hover-color: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-low-alpha)) !important;
+    --newtab-element-active-color: rgb(var(--uc-theme-accent-color)) !important;
+    --newtab-element-secondary-hover-color: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-low-alpha)) !important;
+    --newtab-element-secondary-active-color: rgb(var(--uc-theme-accent-color)) !important;
+    --newtab-primary-element-hover-color: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-low-alpha)) !important;
+    --newtab-primary-element-active-color: rgb(var(--uc-theme-accent-color)) !important;
+    --newtab-primary-element-text-color: rgb(var(--uc-theme-text-color)) !important;
+    --newtab-primary-action-background: rgb(var(--uc-theme-accent-color)) !important;
+    --newtab-button-background: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-low-alpha)) !important;
+    --newtab-button-static-background: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-low-alpha)) !important;
+    --newtab-button-static-hover-background: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-mid-alpha)) !important;
+    --newtab-button-static-active-background: rgb(var(--uc-theme-accent-color)) !important;
+    --newtab-textbox-focus-color: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-low-alpha)) !important;
+    --newtab-textbox-focus-boxshadow: 0 0 0 0px var(--newtab-primary-action-background), 0 0 0 4px rgba(var(--newtab-primary-action-background), 0.0) !important;
+    --newtab-border-color: var(--uc-theme-border-color) !important;
+    --newtab-weather-background-coolr: rgb(var(--uc-theme-main-color)) !important;
+    --in-content-text-color: rgb(var(--uc-theme-text-color)) !important;
+    --in-content-box-background-odd: rgb(var(--uc-theme-main-color)) !important;
+    --in-content-box-info-background: rgb(var(--uc-theme-secondary-color)) !important;
+    --in-content-table-header-background: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-low-alpha)) !important;
+    --in-content-table-border-color: var(--uc-theme-border-color) !important;
+    --in-content-border-color: var(--uc-theme-separator-color) !important;
+    --table-row-background-color: rgb(var(--uc-theme-main-color)) !important;
+    --table-row-background-color-alternate: rgb(var(--uc-theme-secondary-color)) !important;
+    --card-outline-color: rgb(var(--uc-theme-secondary-color)) !important;
+    --card-shadow: none !important;
+    --card-shadow-hover: var(--uc-theme-shadow), 0 0 0 5px rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-low-alpha)) !important;
+  }
+
+  /* Applies a consistent shadow effect to various UI panels and containers. */
+  /* Shadows */
+  panel-list, div#categories, login-list.initialized, #sidebar, .sidebar, .navigation, .customize-menu,
+  #toolbar, .wallpaper-list, .topsite-form {
+    box-shadow: var(--uc-theme-shadow) !important;
+  }
+  /* Ensure sidebars appear above other content. */
+  #sidebar, .navigation { z-index: 99 !important; }
+  /* Remove shadows from specific dialog buttons. */
+  button.cancel, button.done { box-shadow: none !important; }
+
+  /* Standardizes border styles across various UI elements. */
+  /* Borders */
+  body[dir="ltr"], input, login-list.initialized, .close-button, .dialogTitleBar, .fieldpair,
+  .connect-section__extra, .debug-target-item__additional_actions, button.done {
+    border-color: var(--uc-theme-border-color) !important;
+  }
+  /* Defines a clear focus outline for text inputs. */
+  .default-input:focus, input[type="text"]:focus {
+    outline: var(--focus-outline-width) solid var(--focus-outline-color) !important;
+  }
+  /* Applies a uniform border-radius to create rounded corners on many elements. */
+  button, panel-list, richlistitem, menulist, menuitem, arrowscrollbox, input, search-textbox, select, a,
+  .default-input, .card, .sidebar * {
+    border-radius: var(--uc-theme-border-radius) !important;
+  }
+  /* Adds a colored top border to the selected tab button. */
+  .tab-button[selected] { border-top-color: rgb(var(--uc-theme-accent-color)) !important; }
+
+  /* Sets background and text colors for various common UI components. */
+  /* Specific elements styling */
+  body[dir="ltr"], login-list.initialized, .category-subsection, .meta.text-deemphasized, .app, .customize-menu,
+  .close-button-wrapper, #migrationWizardDialog, .topsite-form {
+    background-color: rgb(var(--uc-theme-main-color)) !important;
+  }
+  .default-input, .card, .privacy-detailedoption, .qr-code-box, .list-item.selected,
+  #moz-toggle-button[aria-pressed="false"] {
+    background-color: rgb(var(--uc-theme-secondary-color)) !important;
+  }
+  .category, button.category, button[role="tab"], .tab-button, .primary-button,
+  .qa-sidebar-item, .search-inner-wrapper * {
+    color: rgb(var(--uc-theme-text-color)) !important;
+  }
+  /* Styling for primary action buttons. */
+  .primary-button, .close-button, .selector, button.cancel, button.done {
+    background-color: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-low-alpha)) !important;
+  }
+  .default-button:hover, .primary-button:hover, .close-button:hover, button.cancel:hover, button.done:hover  {
+    background-color: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-mid-alpha)) !important;
+  }
+  .default-button:active, .primary-button:active, .close-button:active, button.cancel:active, button.done:active {
+    background-color: rgb(var(--uc-theme-accent-color)) !important;
+  }
+  /* Sets a high-contrast color for links. */
+  body[dir="ltr"] a, .enable-custom-image-input {
+    color: var(--uc-theme-accent-high-contrast) !important;
+  }
+
+  /* Styles for navigation sidebars, including hover and selection indicators. */
+  /* Sidebars */
+  .category:hover, button[role="tab"]:hover, .category-subsection:hover,
+  .qa-sidebar-item:hover:not(.qa-sidebar-item-selected):has(.sidebar-item__link) {
+    background-color: rgb(var(--uc-theme-main-color)) !important;
+    border-left: 5px solid rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-low-alpha)) !important;
+  }
+  /* Uses a solid left border to indicate the currently selected sidebar item. */
+  .category[selected], .category.selected, .category-subsection.selected, .qa-sidebar-item-selected,
+  button.category[selected], button[role="tab"][selected] {
+    background-color: rgb(var(--uc-theme-secondary-color)) !important;
+    border-left: 5px solid rgb(var(--uc-theme-accent-color)) !important;
+  }
+  div#categories { margin: 0 !important; }
+
+  /* Hides the context menu button on the new tab page's weather card unless hovered. */
+  .weatherCard:not(:hover) .weatherButtonContextMenuWrapper { opacity: 0 !important; }
+  /* Hides the Firefox logo on pages like about:home and about:newtab. */
+  .logo-and-wordmark { display: none !important; }
+
+  /* Custom styling for "danger" buttons that perform critical actions like deleting data. */
+  .danger-button {
+    background-color: var(--in-content-danger-button-background) !important;
+    color: rgb(var(--uc-theme-main-color)) !important;
+  }
+  .danger-button:hover { background-color: var(--in-content-danger-button-background-hover) !important; }
+  .danger-button:active { background-color: var(--in-content-danger-button-background-active) !important; }
+}
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/content/dark_settings_pages.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+ /* Recolors addons manager, preferences page and new about:config */ */
+@-moz-document url-prefix("about:addons"),
+  url-prefix("about:preferences"),
+  url-prefix("about:config"),
+  url-prefix("chrome://browser/content/"),
+  url-prefix("chrome://mozapps/content/"),
+  url-prefix("chrome://pippki/content/"),
+  url-prefix("chrome://mozapps/content/extensions/aboutaddons.html"){
+    :root,
+    html|html{
+      --in-content-page-color: rgb(var(--uc-theme-text-color)) !important;
+      --in-content-text-color: rgb(var(--uc-theme-text-color)) !important;
+      --in-content-page-background: rgb(var(--uc-theme-main-color)) !important;
+      --in-content-box-background: rgba(255,255,255,0.1) !important;
+      --in-content-deemphasized-text: var(--in-content-text-color) !important;
+      scrollbar-color: var(--in-content-text-color) var(--in-content-page-background) !important;
+      color:var(--in-content-text-color) !important;
+    }
+  
+  menulist > menupopup{ background-color: var(--in-content-page-background) !important; }
+  
+  .updateSettingCrossUserWarningContainer,
+  .info-panel,
+  .extension-controlled,
+  .message-bar,
+  html|message-bar,
+  .alert,
+  treecol{
+    background-color: var(--in-content-box-background) !important;
+    color: var(--in-content-text-color) !important;
+  }
+  .menulist-dropmarker,
+  .checkbox-icon{
+    -moz-context-properties: fill;
+    fill : CurrentColor !important;
+  }
+  /* make panel background blurry if the background is translucent. Requires pref layout.css.backdrop-filter.enabled  */
+  html|panel-list{ backdrop-filter: blur(28px) }
+}
+
+/* Get addons page */
+/* New addons manager doesn't use this anymore */
+@-moz-document url-prefix("https://discovery.addons.mozilla.org/"){
+  html|*{ color: inherit !important; }
+  html|html,html|body{
+    background-color: rgb(var(--uc-theme-main-color)) !important;
+    color: rgb(var(--uc-theme-text-color)) !important;
+  }
+  html|div.addon,html|div.Notice{ background-color: rgba(255,255,255,0.1) !important; }
+}

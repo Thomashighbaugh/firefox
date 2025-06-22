@@ -1,247 +1,125 @@
-/* navbar hidden */
-:root:not([titlepreface*="​"], [inDOMFullscreen="true"]) {
-  --uc-content-margin-top: 0px !important;
+
+
+/* Hide "Bookmark this page" button from URLbar */
+#star-button-box { display: none !important; }
+
+/* Private Mode indicator */
+:root[privatebrowsingmode="temporary"] {
+  .private-browsing-indicator-with-label { display: none; }
+  #PanelUI-menu-button { list-style-image: url("chrome://global/skin/icons/indicator-private-browsing.svg") !important; }
+  #urlbar-background { border: var(--uc-theme-border-width) solid rgba(136, 72, 255, 0.7) !important; }
 }
 
-@media not (-moz-platform: macos) {
-  :root[sizemode="fullscreen"]:not([inDOMFullscreen="true"])
-    #navigator-toolbox {
-    margin-top: 0px !important;
-  }
+/* URLbar extend animation */
+#urlbar[breakout-extend] {
+  transform-origin: top;
+  animation: urlbar-animation var(--uc-urlbar-animation-speed) ease-out;
 }
-@media (-moz-platform: macos) {
-  #navigator-toolbox[style*="transform: translateY"] {
-    background-color: var(--uc-bg) !important;
-  }
+@keyframes urlbar-animation {
+  0% { transform: scaleY(0.90); }
+  100% { transform: scaleY(1); }
 }
 
-#nav-bar,
-#navigator-toolbox {
-  border: none !important;
-  box-shadow: none !important;
+/* Button Styling */
+/* Intended to give the items more of a "button" like look. */
+
+/* size of buttons */
+
+findbar toolbarbutton,
+.toolbarbutton-1 > .toolbarbutton-icon,
+.toolbarbutton-1 > .toolbarbutton-badge-stack{
+  background-color: var(--toolbar-field-background-color, hsla(0,0%,100%,.8));
+  width: calc(2* var(--uc-toolbarbutton-horizontal-padding) + 16px) !important;
+  height: calc(2* var(--uc-toolbarbutton-vertical-padding) + 16px) !important;
+  fill-opacity: 0.8;
+  margin-inline: 2px;
 }
 
-#PersonalToolbar {
+.toolbarbutton-1.toolbarbutton-combined > :is(.toolbarbutton-icon,.toolbarbutton-badge-stack){
+  margin-inline: 0 !important;
+  border-radius: 0 !important;
+  border-inline-end-width: 0 !important;
+}
+.toolbarbutton-1.toolbarbutton-combined:first-child > :is(.toolbarbutton-icon,.toolbarbutton-badge-stack){
+  border-top-left-radius: var(--toolbarbutton-border-radius) !important;
+  border-bottom-left-radius: var(--toolbarbutton-border-radius) !important;
+}
+.toolbarbutton-1.toolbarbutton-combined:last-child > :is(.toolbarbutton-icon,.toolbarbutton-badge-stack){
+  border-top-right-radius: var(--toolbarbutton-border-radius) !important;
+  border-bottom-right-radius: var(--toolbarbutton-border-radius) !important;
+  border-inline-end-width: 1px !important;
+}
+
+.toolbarbutton-1.toolbarbutton-combined-buttons-dropmarker > .toolbarbutton-icon{
+  padding-inline: 3px !important;
+  margin-inline: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  width: revert !important;
+}
+
+/* borders */
+findbar toolbarbutton,
+.toolbarbutton-1 > .toolbarbutton-icon{
+  border: 1px solid var(--toolbar-field-border-color, hsla(240,5%,5%,.55));
+}
+
+/* stacks use box-shadow as a border to prevent size from changing */
+.toolbarbutton-1 > .toolbarbutton-badge-stack{
+  box-shadow: inset 0 0 0 1px var(--toolbar-field-border-color, hsla(240,5%,5%,.55));
+}
+
+/* modify paddings within buttons */
+.toolbarbutton-1 > .toolbarbutton-icon,
+.toolbarbutton-1 > .toolbarbutton-badge-stack{
+  padding: var(--uc-toolbarbutton-vertical-padding) var(--uc-toolbarbutton-horizontal-padding) !important;
+}
+
+/* Remove styles from buttons inside extensions and overflow menu */
+:is(#unified-extensions-panel,.widget-overflow-list) .toolbarbutton-1 > .toolbarbutton-icon,
+:is(#unified-extensions-panel,.widget-overflow-list) .toolbarbutton-1 > .toolbarbutton-badge-stack,
+.widget-overflow-list .toolbarbutton-text{
   background-color: transparent !important;
-  margin-inline: var(--uc-sidebar-margin) !important;
+  width: revert !important;
+  height: revert !important;
+  padding: 0 !important;
+  border: none !important;
 }
 
-#nav-bar {
-  margin-inline: var(--uc-sidebar-margin) !important;
-  --toolbarbutton-border-radius: var(--uc-button-radius) !important;
-  --urlbar-icon-border-radius: var(--uc-button-radius) !important;
+/* Special cases */
+
+#tabs-newtab-button > .toolbarbutton-icon{
+  background-color: transparent;
+}
+.webextension-browser-action{
+  background: transparent !important;
+}
+#zoom-reset-button > .toolbarbutton-text{
+  background-color: var(--toolbar-field-background-color, hsla(0,0%,100%,.8));
+  border: 1px solid var(--toolbar-field-border-color, hsla(240,5%,5%,.55));
+  border-right-width: 0;
+  border-radius: 0 !important;
+}
+findbar toolbarbutton{
+  background-color: var(--input-bgcolor,var(--toolbarbutton-bgcolor));
 }
 
-#main-window[lwtheme="true"] .urlbar-input-container image {
-  fill: var(--toolbarbutton-icon-fill) !important;
+#profiler-button-button:not(.profiler-active) > image{
+  border-radius: 0 var(--toolbarbutton-border-radius) var(--toolbarbutton-border-radius) 0 !important;
+  border-inline-width: 0 1px !important;
 }
-
-/* fix margin for buttons on the sides */
-#PanelUI-menu-button {
-  padding: 0 var(--toolbarbutton-outer-padding) !important;
+#tabs-newtab-button > .toolbarbutton-icon{
+  width: revert !important;
+  height: revert !important;
+  border: revert !important;
+  padding: var(--toolbarbutton-inner-padding) !important;
 }
-#nav-bar-customization-target > :is(toolbarbutton, toolbaritem):first-child,
-#nav-bar-customization-target
-  > toolbarpaletteitem:first-child
-  > :is(toolbarbutton, toolbaritem) {
-  padding-inline-start: 0px !important;
+findbar toolbarbutton{
+  padding-inline: var(--uc-toolbarbutton-horizontal-padding) !important;
+  height: revert !important;
+  margin-inline: 1px 0px !important;
+  border-width: 1px !important;
 }
-
-toolbarspring {
-  border-radius: var(--uc-button-radius);
-}
-
-#TabsToolbar {
-  display: none !important;
-}
-/* navbar hidden */
-#main-window[titlepreface*="​"]:not([inDOMFullscreen="true"]) {
-  &:not([sizemode="fullscreen"]) {
-    --uc-content-margin-top: var(--uc-content-margin) !important;
-  }
-  --nav-width: clamp(
-    min(
-      calc(
-        100vw - var(--uc-floating-margin) * 2 - var(--uc-content-margin-inline)
-      ),
-      700px
-    ),
-    75vw,
-    1000px
-  );
-  --nav-height: 38px;
-  --personal-height: 24.5px;
-  &[uidensity="compact"] {
-    --nav-height: 34.5px;
-  }
-
-  --uc-navbar-hover-margin-top: calc(
-    var(--uc-floating-margin) + var(--uc-content-margin-top)
-  );
-
-  #urlbar-container {
-    width: unset !important;
-  }
-
-  #navigator-toolbox {
-    position: absolute !important;
-    z-index: 50 !important;
-
-    width: var(--nav-width) !important;
-    height: var(--uc-hover-target-size) !important;
-    left: calc(50vw - var(--nav-width) * 0.5) !important;
-    right: auto !important;
-
-    border-radius: var(--uc-radius) !important;
-    background-color: transparent !important;
-  }
-
-  &:not([customizing]):not([sizemode="fullscreen"]) #navigator-toolbox {
-    &::before {
-      content: "";
-      position: absolute;
-      top: calc(
-        var(--uc-content-margin) * 0.5 - var(--uc-panel-hint-size) * 0.5
-      ) !important;
-      width: 100%;
-      height: var(--uc-panel-hint-size) !important;
-      background-color: var(--uc-panel-hint) !important;
-      border-radius: var(--uc-radius) !important;
-      transition: opacity var(--uc-transition) var(--uc-mouseout-delay) !important;
-    }
-    &::after {
-      content: "";
-      position: fixed;
-      top: 0;
-      width: 100vw;
-      height: var(--uc-content-margin-top);
-      left: 0;
-      -moz-window-dragging: drag;
-      pointer-events: none !important;
-    }
-  }
-
-  #nav-bar {
-    min-height: unset !important;
-    max-height: unset !important;
-    height: var(--nav-height) !important;
-    margin-top: calc(
-      -1 *
-        (
-          var(--nav-height) + var(--personal-height) +
-            var(--uc-floating-margin) + var(--uc-content-margin)
-        )
-    );
-
-    transition: margin-top var(--uc-transition) var(--uc-mouseout-delay) !important;
-    will-change: margin-top !important;
-    border-radius: var(--uc-radius) !important;
-  }
-
-  #PersonalToolbar {
-    min-height: var(--personal-height) !important;
-    max-height: var(--personal-height) !important;
-    margin-top: var(--uc-floating-margin) !important;
-    border-radius: var(--uc-radius) !important;
-  }
-
-  &[customizing] {
-    & #customization-content-container {
-      margin-top: var(--nav-height) !important;
-    }
-    & #nav-bar,
-    & #PersonalToolbar {
-      background-color: var(--uc-bg) !important;
-    }
-    & #nav-bar {
-      margin-top: var(--uc-sidebar-margin) !important;
-      top: var(--uc-content-margin-top) !important;
-    }
-  }
-
-  &:not([customizing]) {
-    #toolbar-menubar {
-      display: none !important;
-    }
-
-    #nav-bar,
-    #PersonalToolbar {
-      width: 100% !important;
-      background-color: transparent !important;
-      z-index: 100 !important;
-      background-color: var(--uc-bg-tran) !important;
-    }
-    #PersonalToolbar {
-      position: relative !important;
-      overflow: unset !important;
-    }
-
-    #nav-bar::before,
-    #PersonalToolbar::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: transparent !important;
-      backdrop-filter: blur(var(--uc-blur-radius)) !important;
-      border-radius: var(--uc-radius) !important;
-      z-index: -1 !important;
-    }
-    #PersonalToolbar::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: calc(var(--personal-height) + var(--uc-floating-margin));
-      background: transparent !important;
-      z-index: -1 !important;
-    }
-
-    toolbarspring {
-      flex-grow: 0 !important;
-    }
-
-    &:has(
-        #navigator-toolbox:hover,
-        #nav-bar-customization-target:hover,
-        #PanelUI-button:hover,
-        #urlbar:focus-within,
-        #urlbar[breakout][breakout-extend],
-        #nav-bar-overflow-button[open],
-        #nav-bar-overflow-button:hover,
-        #nav-bar-customization-target toolbarbutton[open="true"],
-        .urlbar-input-container > *[role="button"][open="true"],
-        #identity-box > *[role="button"][open="true"],
-        #PanelUI-menu-button[open="true"]
-      ) {
-      #nav-bar {
-        margin-top: var(--uc-navbar-hover-margin-top) !important;
-        transition: margin-top var(--uc-transition) !important;
-
-        #nav-bar-customization-target > *:not([disabled="true"]),
-        #nav-bar-overflow-button,
-        #PanelUI-button:not([disabled="true"]) {
-          opacity: 1 !important;
-        }
-        #nav-bar-customization-target > *[disabled="true"],
-        #PanelUI-button[disabled="true"] {
-          opacity: 0.5 !important;
-        }
-      }
-      #navigator-toolbox {
-        height: calc(
-          2 * var(--uc-content-margin) + var(--nav-height)
-        ) !important;
-        z-index: 99 !important;
-
-        &::before {
-          transition: opacity var(--uc-transition) !important;
-          opacity: 0 !important;
-        }
-      }
-    }
-  }
+.findbar-closebutton{
+  margin-inline-end: 8px !important;
 }

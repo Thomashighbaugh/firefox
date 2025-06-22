@@ -1,6 +1,10 @@
+import { NetUtilWrapper } from "../../wrappers/net_utils.mjs";
+import { ScriptSecurityManagerWrapper } from "../../wrappers/script_security_manager.mjs";
 import { XULElement } from "./xul_element.mjs";
+import { ZoomManagerWrapper } from "../../wrappers/zoom_manager.mjs";
 
 export class Browser extends XULElement {
+  static ZOOM_DELTA = 0.1;
   /**
    *
    * @param {object} params
@@ -9,34 +13,35 @@ export class Browser extends XULElement {
    * @param {HTMLElement?} params.element
    */
   constructor({ id = null, classList = [], element } = {}) {
-    super("browser", { id, classList, element });
+    super({ tag: "browser", id, classList, element });
+  }
+
+  /**
+   * @returns {Document?}
+   */
+  get contentDocument() {
+    return this.element.contentDocument;
   }
 
   /**
    *
-   * @param {string} value
-   * @returns {Browser}
+   * @returns {string}
    */
-  setDisableGlobalHistory(value) {
-    return this.setAttribute("disableglobalhistory", value);
+  getCurrentUrl() {
+    return this.element.currentURI.spec;
   }
 
   /**
    *
-   * @param {string} value
+   * @param {object} progressListener
    * @returns {Browser}
    */
-  setType(value) {
-    return this.setAttribute("type", value);
-  }
-
-  /**
-   *
-   * @param {string} value
-   * @returns {Browser}
-   */
-  setRemote(value) {
-    return this.setAttribute("remote", value);
+  addProgressListener(progressListener) {
+    this.element.addProgressListener(
+      progressListener,
+      Ci.nsIWebProgress.NOTIFY_ALL,
+    );
+    return this;
   }
 
   /**
@@ -98,10 +103,28 @@ export class Browser extends XULElement {
    * @returns {Browser}
    */
   go(url) {
-    this.element.loadURI(NetUtil.newURI(url), {
-      triggeringPrincipal: Services.scriptSecurityManager.getSystemPrincipal(),
+    this.element.loadURI(NetUtilWrapper.newURI(url), {
+      triggeringPrincipal: ScriptSecurityManagerWrapper.getSystemPrincipal(),
     });
 
+    return this;
+  }
+
+  /**
+   *
+   * @returns {number}
+   */
+  getZoom() {
+    return ZoomManagerWrapper.getZoomForBrowser(this);
+  }
+
+  /**
+   *
+   * @param {number} value
+   * @returns {Browser}
+   */
+  setZoom(value) {
+    ZoomManagerWrapper.setZoomForBrowser(this, value);
     return this;
   }
 
@@ -111,36 +134,6 @@ export class Browser extends XULElement {
    */
   getTitle() {
     return this.element.contentTitle;
-  }
-
-  /**
-   *
-   * @param {object} listener
-   * @returns {Browser}
-   */
-  addProgressListener(listener) {
-    this.element.addProgressListener(listener, null);
-    return this;
-  }
-
-  /**
-   *
-   * @param {boolean} value
-   * @returns {Browser}
-   */
-  setDocShellIsActive(value) {
-    this.element.docShellIsActive = value;
-    return this;
-  }
-
-  /**
-   *
-   * @param {boolean} value
-   * @returns {Browser}
-   */
-  preserveLayers(value) {
-    this.element.preserveLayers(value);
-    return this;
   }
 
   /**

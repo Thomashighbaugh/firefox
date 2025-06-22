@@ -1,8 +1,12 @@
 @namespace html url("http://www.w3.org/1999/xhtml");
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-@import url("theme/vars.css");
-@import url("theme/content/about.css");
-@import url("theme/content/pdf.css");
-@import url("theme/content/addons.css");
-@import url("theme/content/library.css");
+@import "theme/_globals.css";
+
+@import "theme/content/about_pages.css";
+@import "theme/content/addons.css";
+@import "theme/content/scrollbar.css";
+@import "theme/content/pdf.css";
+@import "theme/content/library.css";
+@import "theme/content/downloads.css";
+

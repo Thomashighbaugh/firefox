@@ -8,7 +8,7 @@ export class MenuList extends XULElement {
    * @param {Array<string>} params.classList
    */
   constructor({ id = null, classList = [] } = {}) {
-    super("menulist", { id, classList });
+    super({ tag: "menulist", id, classList });
   }
 
   /**
@@ -38,5 +38,22 @@ export class MenuList extends XULElement {
   appendItem(label, value) {
     this.element.appendItem(label, value);
     return this;
+  }
+
+  /**
+   *
+   * @returns {MenuList}
+   */
+  removeAllItems() {
+    this.element.removeAllItems();
+    return this;
+  }
+
+  /**
+   *
+   * @returns {HTMLElement}
+   */
+  getLastMenuItemXUL() {
+    return this.element.menupopup.lastChild;
   }
 }

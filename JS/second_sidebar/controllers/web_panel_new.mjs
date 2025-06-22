@@ -1,123 +1,82 @@
-import { SidebarController } from "./sidebar.mjs";
-import { WebPanelController } from "./web_panel.mjs";
-import { WebPanelEditController } from "./web_panel_edit.mjs";
-import { WebPanelNewButton } from "../xul/web_panel_new_button.mjs";
-import { WebPanelPopupNew } from "../xul/web_panel_popup_new.mjs";
-import { WebPanelsController } from "./web_panels.mjs";
-import { fetchIconURL } from "../utils/icons.mjs";
+import {
+  WebPanelEvents,
+  listenEvent,
+  sendEvent,
+  sendEvents,
+} from "./events.mjs";
+
+import { SidebarElements } from "../sidebar_elements.mjs";
+import { WindowWrapper } from "../wrappers/window.mjs";
+import { isLeftMouseButton } from "../utils/buttons.mjs";
 
 export class WebPanelNewController {
-  /**
-   *
-   * @param {WebPanelNewButton} webPanelNewButton
-   * @param {WebPanelPopupNew} webPanelPopupNew
-   */
-  constructor(webPanelNewButton, webPanelPopupNew) {
-    this.webPanelNewButton = webPanelNewButton;
-    this.webPanelPopupNew = webPanelPopupNew;
+  constructor() {
+    this.webPanelNewButton = SidebarElements.webPanelNewButton;
+    this.webPanelPopupNew = SidebarElements.webPanelPopupNew;
 
-    this.webPanelNewButton.listenClick(() => {
+    listenEvent(WebPanelEvents.OPEN_NEW_WEB_PANEL_POPUP, () => {
       this.openPopup();
     });
 
-    this.webPanelPopupNew.listenInputChange((url) => {
-      this.createWebPanelAndOpen(url);
+    this.webPanelNewButton.listenClick((event) => {
+      if (isLeftMouseButton(event)) {
+        sendEvent(WebPanelEvents.OPEN_NEW_WEB_PANEL_POPUP);
+      }
     });
 
-    this.webPanelPopupNew.listenSaveButtonClick((url) => {
-      this.createWebPanelAndOpen(url);
+    this.webPanelPopupNew.listenSaveButtonClick(async (url, userContextId) => {
+      this.createWebPanel(url, userContextId);
+      this.hidePopup();
     });
 
-    this.webPanelPopupNew.listenCancelButtonClick((url) => {
+    this.webPanelPopupNew.listenCancelButtonClick(() => {
       this.hidePopup();
     });
   }
 
   /**
    *
-   * @param {SidebarController} sidebarController
-   * @param {WebPanelsController} webPanelsController
-   * @param {WebPanelEditController} webPanelEditController
+   * @param {string} url
+   * @param {number} userContextId
    */
-  setupDependencies(
-    sidebarController,
-    webPanelsController,
-    webPanelEditController,
-  ) {
-    this.sidebarController = sidebarController;
-    this.webPanelsController = webPanelsController;
-    this.webPanelEditController = webPanelEditController;
+  createWebPanel(url, userContextId) {
+    const uuid = crypto.randomUUID();
+    sendEvents(WebPanelEvents.CREATE_WEB_PANEL, {
+      uuid,
+      url,
+      userContextId,
+      newWebPanelPosition: this.newWebPanelPosition,
+    });
   }
 
   openPopup() {
     let suggest = "https://";
-    const currentURI = gBrowser.currentURI;
+    const currentURI = new WindowWrapper().gBrowser.currentURI;
 
     if (["http", "https"].includes(currentURI.scheme)) {
       suggest = currentURI.spec;
     }
 
-    this.webPanelPopupNew
-      .setInputValue(suggest)
-      .openPopup(this.webPanelNewButton);
-  }
-
-  async createWebPanelAndOpen(url) {
-    try {
-      NetUtil.newURI(url);
-    } catch (error) {
-      console.log("Invalid url");
-      return;
-    }
-
-    this.hidePopup();
-
-    const faviconURL = await fetchIconURL(url);
-    const uuid = crypto.randomUUID();
-
-    const webPanelTab = this.webPanelsController.makeWebPanelTab(uuid);
-    const webPanel = this.webPanelsController.makeWebPanel(
-      webPanelTab,
-      uuid,
-      url,
-      faviconURL,
-    );
-    const webPanelButton =
-      this.webPanelsController.makeWebPanelButton(webPanel);
-
-    const webPanelController = new WebPanelController(
-      webPanel,
-      webPanelButton,
-      webPanelTab,
-    );
-    webPanelController.setupDependencies(
-      this.webPanelsController,
-      this.sidebarController,
-      this.webPanelEditController,
-    );
-
-    this.webPanelsController.injectWebPanelTab(webPanelTab);
-    this.webPanelsController.injectWebPanel(webPanel);
-    webPanelController.initWebPanel();
-
-    this.webPanelsController.injectWebPanelButton(webPanelButton);
-    webPanelController.initWebPanelButton();
-
-    this.sidebarController.close();
-    this.sidebarController.open(
-      webPanel.pinned,
-      webPanel.width,
-      webPanel.canGoBack(),
-      webPanel.canGoForward(),
-      webPanel.getTitle(),
-    );
-    webPanelController.show();
-
-    this.webPanelsController.add(webPanelController);
-    this.webPanelsController.savePref();
+    this.webPanelPopupNew.openPopup(this.webPanelNewButton.button, suggest);
   }
 
   hidePopup() {
     this.webPanelPopupNew.hidePopup();
+  }
+
+  /**
+   *
+   * @returns {string}
+   */
+  getNewWebPanelPosition() {
+    return this.newWebPanelPosition;
+  }
+
+  /**
+   *
+   * @param {string} value
+   */
+  setNewWebPanelPosition(value) {
+    this.newWebPanelPosition = value;
   }
 }

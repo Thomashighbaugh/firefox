@@ -8,7 +8,7 @@ export class MenuItem extends XULElement {
    * @param {Array<string>} params.classList
    */
   constructor({ id = null, classList = [] } = {}) {
-    super("menuitem", { id, classList });
+    super({ tag: "menuitem", id, classList });
   }
 
   /**
@@ -18,5 +18,19 @@ export class MenuItem extends XULElement {
    */
   setLabel(text) {
     return this.setAttribute("label", text);
+  }
+
+  /**
+   *
+   * @param {boolean} value
+   * @returns {MenuItem}
+   */
+  setDisabled(value) {
+    if (value) {
+      this.setAttribute("disabled", true);
+    } else {
+      this.removeAttribute("disabled");
+    }
+    return true;
   }
 }

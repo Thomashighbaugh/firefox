@@ -1,23 +1,22 @@
 export const SIDEBAR_CSS = `
-  #sidebar-2 {
+  #sb2 {
+    border-radius: var(--border-radius-medium);
     box-shadow: var(--content-area-shadow);
-    border-top-left-radius: 6px;
-      border-bottom-left-radius: 6px;
+    border: 0.5px solid var(--sidebar-border-color);
     overflow: hidden;
     height: 100%;
     pointer-events: auto;
     min-width: 200px;
-    outline: 0.01px solid var(--chrome-content-separator-color);
 
-    #sidebar-2-toolbar {
-      display: flex;
+    #sb2-toolbar {
       flex-direction: row;
       min-height: unset;
       gap: 4px;
       background-color: var(--toolbar-bgcolor);
       color: var(--toolbar-color);
+      padding: 1px;
 
-      #sidebar-2-toolbar-title-wrapper {
+      #sb2-toolbar-title-wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -25,25 +24,22 @@ export const SIDEBAR_CSS = `
         overflow: hidden;
       }
 
-      #sidebar-2-toolbar-title {
+      #sb2-toolbar-title {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         margin: 0;
       }
-
-      #sidebar-2-pin-button {
-        transform: scale(-1, 1);
-      }
     }
 
-    #sidebar-2-web-panels {
+    #sb2-web-panels {
       width: 100%;
       height: 100%;
+      order: 0;
     }
   }
   
-  #sidebar-2[pinned="true"] {
+  #sb2[pinned="true"] {
     width: 100% !important;
   }
 `;

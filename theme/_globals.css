@@ -1,0 +1,50 @@
+
+* {
+  --uc-theme-color-scheme: dark;
+  --uc-theme-main-color: 56, 56, 56;
+  --uc-theme-secondary-color: 32, 32, 32;
+  --uc-theme-accent-color: 130, 134, 143;
+  --uc-theme-text-color: 235, 235, 235;
+
+  --uc-theme-accent-low-alpha: 0.5;
+  --uc-theme-accent-mid-alpha: 0.75;
+  --uc-theme-accent-high-contrast: hsl(222, 5%, 54%);
+  --uc-theme-text-low-alpha: 0.5;
+  --uc-theme-text-mid-alpha: 0.75;
+
+  --uc-theme-separator-color: rgba(var(--uc-theme-text-color), 0.1);
+  --uc-theme-border-color: rgba(var(--uc-theme-text-color), 0);
+  --uc-theme-border-width: 1px;
+  --uc-theme-border-radius: 6px;
+
+  --uc-sidebar-hover-debounce: 180ms;
+  --uc-sidebar-animation-speed: 300ms;
+
+  --uc-theme-shadow-margin: 6px;
+  --uc-theme-shadow: 0px 0px var(--uc-theme-shadow-margin) hsla(0, 0%, 0%, 0.4);
+
+  --uc-sidebar-collapsed-width: 34px;
+  --uc-sidebar-no-extend-width: 34px; /* Set to the same value as "--uc-sidebar-collapsed-width" */
+  --uc-sidebar-extended-width: 270px;
+  --uc-bookmarks-hover-debounce: 200ms;
+  --uc-bookmarks-animation-speed: 200ms;
+  --uc-menu-animation-speed: 250ms;
+  --uc-window-animation-speed: 350ms;
+  --uc-urlbar-animation-speed: 300ms;
+
+  --uc-bookmarks-inner-height: 20px; /* NOTE: this is affected by font typeface/size */
+}
+
+:root{
+  --uc-toolbarbutton-vertical-padding: var(--toolbarbutton-inner-padding);
+  --uc-toolbarbutton-horizontal-padding: calc(var(--toolbarbutton-inner-padding) + 10px);
+  --toolbarbutton-border-radius: 3px !important;
+}
+:root[uidensity="compact"]{
+  --uc-toolbarbutton-vertical-padding: calc(var(--toolbarbutton-inner-padding) - 1px);
+  --uc-toolbarbutton-horizontal-padding: calc(var(--toolbarbutton-inner-padding) + 6px);
+}
+
+.browser-toolbar{
+  --toolbarbutton-icon-fill: var(--toolbar-field-color);
+}

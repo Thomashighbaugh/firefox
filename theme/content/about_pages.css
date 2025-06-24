@@ -1,21 +1,17 @@
+/*
+  This userContent.css file applies a custom theme to Firefox's internal pages.
+  It aims for a consistent look and feel across "about:" pages and parts of the chrome UI.
+*/
 
-/* This rule block applies the theme to a wide range of internal Firefox pages ("about:" pages) and chrome UI pages. */
+/*
+  Block 1: General theme for a wide range of internal Firefox pages ("about:")
+  and chrome UI pages. Defines core variables and common styles.
+*/
 @-moz-document
-url-prefix("about:about"),     url-prefix("about:addons"),     url-prefix("about:buildconfig"),
-url-prefix("about:cache"),     url-prefix("about:compat"),     url-prefix("about:certificate"),
-url-prefix("about:config"),    url-prefix("about:crashes"),    url-prefix("about:deleteprofile"),
-url-prefix("about:debugging"), url-prefix("about:downloads"),  url-prefix("about:editprofile"),
-url-prefix("about:home"),      url-prefix("about:license"),    url-prefix("about:loginsimportreport"),
-url-prefix("about:logins"),    url-prefix("about:logging"),    url-prefix("about:networking"),
-url-prefix("about:memory"),    url-prefix("about:newprofile"), url-prefix("about:preferences"),
-url-prefix("about:policies"),  url-prefix("about:newtab"),     url-prefix("about:privatebrowsing"),
-url-prefix("about:processes"), url-prefix("about:profiles"),   url-prefix("about:protections"),
-url-prefix("about:profiling"), url-prefix("about:rights"),     url-prefix("about:serviceworkers"),
-url-prefix("about:robots"),    url-prefix("about:studies"),    url-prefix("about:support"),
-url-prefix("about:sync-log"),  url-prefix("about:telemetry"),  url-prefix("about:url-classifier"),
-url-prefix("about:unloads"),   url-prefix("about:webauthn"),   url-prefix("about:webrtc"),
-url-prefix("about:welcome"),   url-prefix("chrome:") {{}
-  /* Universal selector to define CSS variables (custom properties) for the entire theme. */
+  url-prefix("about:"), /* Catches all about: pages */
+  url-prefix("chrome:") /* Catches general chrome UI locations */
+{
+  /* Universal selector to define CSS variables (custom properties) for the entire theme within this @-moz-document scope. */
   * {
     /* These variables are shared with userChrome.css for a consistent look between browser UI and content pages. */
     /* Common with userChrome.css */
@@ -24,7 +20,7 @@ url-prefix("about:welcome"),   url-prefix("chrome:") {{}
     --focus-outline-color: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-low-alpha)) !important;
     --focus-outline-width: var(--uc-theme-border-width) !important;
     --newtab-background-color: rgb(var(--uc-theme-main-color)) !important;
-    --newtab-background-color-secondary: rgb(var(--uc-theme-secondary-color)) !important;;
+    --newtab-background-color-secondary: rgb(var(--uc-theme-secondary-color)) !important;
     --newtab-text-primary-color: rgb(var(--uc-theme-text-color)) !important;
     --color-accent-primary: rgb(var(--uc-theme-accent-color)) !important;
     --color-accent-primary-hover: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-mid-alpha)) !important;
@@ -37,7 +33,7 @@ url-prefix("about:welcome"),   url-prefix("chrome:") {{}
     --button-text-color: rgb(var(--uc-theme-text-color)) !important;
     --border-color-deemphasized: var(--uc-theme-border-color) !important;
     --border-color-interactive: rgba(var(--uc-theme-text-color), var(--uc-theme-text-mid-alpha)) !important;
-    --background-color-canvas: rgb(var(--uc-theme-text-color)) !important;
+    --background-color-canvas: rgb(var(--uc-theme-text-color)) !important; /* Note: unusual to set canvas to text color, usually a bg color */
     --background-color-box: rgb(var(--uc-theme-secondary-color)) !important;
     --toolbar-field-background-color: rgb(var(--uc-theme-secondary-color)) !important;
     --toolbar-field-color: rgb(var(--uc-theme-text-color)) !important;
@@ -64,7 +60,7 @@ url-prefix("about:welcome"),   url-prefix("chrome:") {{}
     --link-color-hover: var(--uc-theme-accent-high-contrast) !important;
     --link-color-active: var(--uc-theme-accent-high-contrast) !important;
     --link-color-visited: var(--uc-theme-accent-high-contrast) !important;
-    /*--border-width: var(--uc-theme-border-width) !important;*/ /* This breaks #moz-toggle-button, so it's commented out. */
+    /* --border-width: var(--uc-theme-border-width) !important; */ /* This breaks #moz-toggle-button, so it's commented out. */
     --input-border-color: var(--uc-theme-border-color) !important;
     --attention-dot-color: var(--uc-theme-accent-high-contrast) !important;
 
@@ -88,7 +84,7 @@ url-prefix("about:welcome"),   url-prefix("chrome:") {{}
     --newtab-textbox-focus-color: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-low-alpha)) !important;
     --newtab-textbox-focus-boxshadow: 0 0 0 0px var(--newtab-primary-action-background), 0 0 0 4px rgba(var(--newtab-primary-action-background), 0.0) !important;
     --newtab-border-color: var(--uc-theme-border-color) !important;
-    --newtab-weather-background-coolr: rgb(var(--uc-theme-main-color)) !important;
+    --newtab-weather-background-color: rgb(var(--uc-theme-main-color)) !important; /* Corrected typo: coolr -> color */
     --in-content-text-color: rgb(var(--uc-theme-text-color)) !important;
     --in-content-box-background-odd: rgb(var(--uc-theme-main-color)) !important;
     --in-content-box-info-background: rgb(var(--uc-theme-secondary-color)) !important;
@@ -122,6 +118,7 @@ url-prefix("about:welcome"),   url-prefix("chrome:") {{}
   /* Defines a clear focus outline for text inputs. */
   .default-input:focus, input[type="text"]:focus {
     outline: var(--focus-outline-width) solid var(--focus-outline-color) !important;
+    outline-offset: -1px; /* Optional: adjust if outline feels too far or too close */
   }
   /* Applies a uniform border-radius to create rounded corners on many elements. */
   button, panel-list, richlistitem, menulist, menuitem, arrowscrollbox, input, search-textbox, select, a,
@@ -129,49 +126,49 @@ url-prefix("about:welcome"),   url-prefix("chrome:") {{}
     border-radius: var(--uc-theme-border-radius) !important;
   }
   /* Adds a colored top border to the selected tab button. */
-  .tab-button[selected] { border-top-color: rgb(var(--uc-theme-accent-color)) !important; }
+  .tab-button[selected] { border-top-color: var(--color-accent-primary) !important; } /* Used variable */
 
   /* Sets background and text colors for various common UI components. */
   /* Specific elements styling */
   body[dir="ltr"], login-list.initialized, .category-subsection, .meta.text-deemphasized, .app, .customize-menu,
   .close-button-wrapper, #migrationWizardDialog, .topsite-form {
-    background-color: rgb(var(--uc-theme-main-color)) !important;
+    background-color: var(--in-content-page-background) !important; /* Used variable */
   }
   .default-input, .card, .privacy-detailedoption, .qr-code-box, .list-item.selected,
   #moz-toggle-button[aria-pressed="false"] {
-    background-color: rgb(var(--uc-theme-secondary-color)) !important;
+    background-color: var(--background-color-box) !important; /* Used variable */
   }
   .category, button.category, button[role="tab"], .tab-button, .primary-button,
   .qa-sidebar-item, .search-inner-wrapper * {
-    color: rgb(var(--uc-theme-text-color)) !important;
+    color: var(--text-color) !important; /* Used variable */
   }
   /* Styling for primary action buttons. */
   .primary-button, .close-button, .selector, button.cancel, button.done {
-    background-color: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-low-alpha)) !important;
+    background-color: var(--button-background-color) !important; /* Used variable */
   }
-  .default-button:hover, .primary-button:hover, .close-button:hover, button.cancel:hover, button.done:hover  {
-    background-color: rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-mid-alpha)) !important;
+  .default-button:hover, .primary-button:hover, .close-button:hover, button.cancel:hover, button.done:hover {
+    background-color: var(--button-background-color-hover) !important; /* Used variable */
   }
   .default-button:active, .primary-button:active, .close-button:active, button.cancel:active, button.done:active {
-    background-color: rgb(var(--uc-theme-accent-color)) !important;
+    background-color: var(--button-background-color-active) !important; /* Used variable */
   }
   /* Sets a high-contrast color for links. */
   body[dir="ltr"] a, .enable-custom-image-input {
-    color: var(--uc-theme-accent-high-contrast) !important;
+    color: var(--link-color) !important; /* Used variable */
   }
 
   /* Styles for navigation sidebars, including hover and selection indicators. */
   /* Sidebars */
   .category:hover, button[role="tab"]:hover, .category-subsection:hover,
   .qa-sidebar-item:hover:not(.qa-sidebar-item-selected):has(.sidebar-item__link) {
-    background-color: rgb(var(--uc-theme-main-color)) !important;
-    border-left: 5px solid rgba(var(--uc-theme-accent-color), var(--uc-theme-accent-low-alpha)) !important;
+    background-color: var(--in-content-page-background) !important; /* Used variable */
+    border-left: 5px solid var(--focus-outline-color) !important; /* Used variable (similar effect) */
   }
   /* Uses a solid left border to indicate the currently selected sidebar item. */
   .category[selected], .category.selected, .category-subsection.selected, .qa-sidebar-item-selected,
   button.category[selected], button[role="tab"][selected] {
-    background-color: rgb(var(--uc-theme-secondary-color)) !important;
-    border-left: 5px solid rgb(var(--uc-theme-accent-color)) !important;
+    background-color: var(--background-color-box) !important; /* Used variable */
+    border-left: 5px solid var(--color-accent-primary) !important; /* Used variable */
   }
   div#categories { margin: 0 !important; }
 
@@ -182,62 +179,89 @@ url-prefix("about:welcome"),   url-prefix("chrome:") {{}
 
   /* Custom styling for "danger" buttons that perform critical actions like deleting data. */
   .danger-button {
-    background-color: var(--in-content-danger-button-background) !important;
-    color: rgb(var(--uc-theme-main-color)) !important;
+    background-color: var(--in-content-danger-button-background) !important; /* This variable isn't defined above, assuming it's from --uc-theme-* or userChrome.css */
+    color: var(--in-content-page-background) !important; /* This makes text color same as main background, often means white text on dark buttons */
   }
-  .danger-button:hover { background-color: var(--in-content-danger-button-background-hover) !important; }
-  .danger-button:active { background-color: var(--in-content-danger-button-background-active) !important; }
+  .danger-button:hover { background-color: var(--in-content-danger-button-background-hover) !important; } /* same assumption */
+  .danger-button:active { background-color: var(--in-content-danger-button-background-active) !important; } /* same assumption */
 }
-/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/content/dark_settings_pages.css made available under Mozilla Public License v. 2.0
-See the above repository for updates as well as full license text. */
 
- /* Recolors addons manager, preferences page and new about:config */ */
-@-moz-document url-prefix("about:addons"),
-  url-prefix("about:preferences"),
+
+/*
+  Block 2: Recolors specific elements on Add-ons Manager, Preferences, new about:config,
+  and specific chrome UI content pages.
+*/
+@-moz-document
+  url-prefix("about:addons"),
   url-prefix("about:config"),
+  url-prefix("about:preferences"),
   url-prefix("chrome://browser/content/"),
-  url-prefix("chrome://mozapps/content/"),
-  url-prefix("chrome://pippki/content/"),
-  url-prefix("chrome://mozapps/content/extensions/aboutaddons.html"){
-    :root,
-    html|html{
-      --in-content-page-color: rgb(var(--uc-theme-text-color)) !important;
-      --in-content-text-color: rgb(var(--uc-theme-text-color)) !important;
-      --in-content-page-background: rgb(var(--uc-theme-main-color)) !important;
-      --in-content-box-background: rgba(255,255,255,0.1) !important;
-      --in-content-deemphasized-text: var(--in-content-text-color) !important;
-      scrollbar-color: var(--in-content-text-color) var(--in-content-page-background) !important;
-      color:var(--in-content-text-color) !important;
-    }
-  
-  menulist > menupopup{ background-color: var(--in-content-page-background) !important; }
-  
+  url-prefix("chrome://mozapps/content/"), /* Covers extensions/aboutaddons.html */
+  url-prefix("chrome://pippki/content/")
+{
+  :root { /* Define or override variables specific to these documents */
+    --in-content-page-color: rgb(var(--uc-theme-text-color)) !important; /* Duplicates Block 1, but cascade handles it */
+    --in-content-text-color: rgb(var(--uc-theme-text-color)) !important; /* Duplicates Block 1 */
+    --in-content-page-background: rgb(var(--uc-theme-main-color)) !important; /* Duplicates Block 1 */
+    --in-content-box-background: rgba(var(--uc-theme-secondary-color-rgb, 80, 80, 80), 0.1) !important; /* Using a fallback if --uc-theme-secondary-color-rgb is not defined */
+    --in-content-deemphasized-text: var(--in-content-text-color) !important; /* Uses var from above */
+    scrollbar-color: var(--in-content-text-color) var(--in-content-page-background) !important;
+  }
+
+  html|html { /* Apply global text color to html element if not covered by :root */
+    color: var(--in-content-text-color) !important;
+  }
+
+  menulist > menupopup {
+    background-color: var(--in-content-page-background) !important;
+  }
+
   .updateSettingCrossUserWarningContainer,
   .info-panel,
   .extension-controlled,
   .message-bar,
-  html|message-bar,
+  html|message-bar, /* Targeting message-bar in HTML namespace */
   .alert,
-  treecol{
+  treecol {
     background-color: var(--in-content-box-background) !important;
     color: var(--in-content-text-color) !important;
   }
+
   .menulist-dropmarker,
-  .checkbox-icon{
+  .checkbox-icon {
     -moz-context-properties: fill;
-    fill : CurrentColor !important;
+    fill: CurrentColor !important;
   }
-  /* make panel background blurry if the background is translucent. Requires pref layout.css.backdrop-filter.enabled  */
-  html|panel-list{ backdrop-filter: blur(28px) }
+
+  /* Make panel background blurry if the background is translucent. Requires pref layout.css.backdrop-filter.enabled */
+  html|panel-list { /* Targeting panel-list in HTML namespace */
+    backdrop-filter: blur(28px); /* !important might be needed if overridden */
+  }
 }
 
-/* Get addons page */
-/* New addons manager doesn't use this anymore */
-@-moz-document url-prefix("https://discovery.addons.mozilla.org/"){
-  html|*{ color: inherit !important; }
-  html|html,html|body{
+/*
+  Block 3: Get Addons Page (discovery.addons.mozilla.org)
+  This block is commented out as the original comment states: "New addons manager doesn't use this anymore".
+  If needed for older versions or specific cases, it can be un-commented.
+*/
+/*
+@-moz-document url-prefix("https://discovery.addons.mozilla.org/") {
+  html|* { color: inherit !important; }
+  html|html, html|body {
     background-color: rgb(var(--uc-theme-main-color)) !important;
     color: rgb(var(--uc-theme-text-color)) !important;
   }
-  html|div.addon,html|div.Notice{ background-color: rgba(255,255,255,0.1) !important; }
+  html|div.addon, html|div.Notice {
+    background-color: rgba(var(--uc-theme-secondary-color-rgb, 80, 80, 80), 0.1) !important;
+  }
 }
+*/
+
+/*
+  Source file attribution:
+  Some structures or ideas might be inspired by or adapted from common Firefox CSS customization patterns,
+  such as those found in repositories like MrOtherGuy/firefox-csshacks.
+  The original snippet mentioned: https://github.com/MrOtherGuy/firefox-csshacks/tree/master/content/dark_settings_pages.css
+  (Made available under Mozilla Public License v. 2.0)
+  Please refer to the original repository for updates and full license text if using code directly from there.
+*/

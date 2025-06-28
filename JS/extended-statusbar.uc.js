@@ -115,7 +115,7 @@ var AddAddonbar = {
 			-moz-window-dragging: no-drag !important;
 		  }
 		  :root[lwtheme] #addonbar {
-   			background-color: var(--toolbar-bgcolor) !important;
+   			background-color: rgb(56,56,56) !important;
         	background-image: var(--toolbar-bgimage) !important;
 		  }
 		  :root[lwtheme][lwtheme-image='true'] #addonbar {
@@ -128,14 +128,14 @@ var AddAddonbar = {
 			display: block !important;
 			height: 1px !important;
 			max-height: 1px !important;
-			background-color: var(--toolbar-bgcolor) !important;
+			background-color:rgb(56,56,56)  !important;
         	background-image: var(--toolbar-bgimage) !important;
           }
 		  #main-window[sizemode='fullscreen']:not([inDOMFullscreen='true']) #addonbar:hover {
 			min-height: 26px !important;
 			height: 26px !important;
 			max-height: 26px !important;
-            background-color: var(--toolbar-bgcolor) !important;
+            background-color:rgb(56,56,56) !important;
         	background-image: var(--toolbar-bgimage) !important;
 		  }
 		  #unified-extensions-button[hidden]{

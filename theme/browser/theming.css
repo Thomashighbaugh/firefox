@@ -345,6 +345,7 @@ menu:where([_moz-menuactive]:not([disabled])) {
   color: rgb(var(--uc-theme-text-color)) !important;
 }
 .sidebar-panel,
+.addonbar,
 #password-notification,
 #report-broken-site-popup-mainView,
 fieldset #inputs,

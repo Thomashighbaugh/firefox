@@ -1,9 +1,7 @@
-/* A mixture of the icons from https://github.com/PapirusDevelopmentTeam/firefox-papirus-icon-theme and the CSS mastery of https://github.com/MrOtherGuy/firefox-csshack */s
-
-@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
-
-
-.subviewbutton:not(.subviewbutton-iconic, [image], .all-tabs-close-button) > image {
+/* A mixture of the icons from https://github.com/PapirusDevelopmentTeam/firefox-papirus-icon-theme and the CSS mastery of https://github.com/MrOtherGuy/firefox-csshack */
+s
+  .subviewbutton:not(.subviewbutton-iconic, [image], .all-tabs-close-button)
+  > image {
   width: 16px;
   height: 16px;
   margin-inline-end: 8px !important;
@@ -18,7 +16,9 @@
 #appMenu-zoom-controls,
 #fxa-manage-account-button,
 #PanelUI-remotetabs-view-managedevices {
-  padding-inline-start: calc(var(--arrowpanel-menuitem-padding-inline) + 16px + 8px) !important;
+  padding-inline-start: calc(
+    var(--arrowpanel-menuitem-padding-inline) + 16px + 8px
+  ) !important;
 }
 
 #appMenu-fxa-label2::before,
@@ -32,7 +32,7 @@
 }
 
 #appMenu-fxa-label2::before {
-   width: 16px;
+  width: 16px;
   height: 16px;
   margin-inline-end: 8px;
 }
@@ -190,7 +190,8 @@
 }
 
 menupopup > menu:not([icon], .menu-iconic),
-menupopup:not(.in-menulist) > menuitem:not([checked="true"], [icon], .menuitem-iconic) {
+menupopup:not(.in-menulist)
+  > menuitem:not([checked="true"], [icon], .menuitem-iconic) {
   padding-inline-start: calc(1em + 16px + 8px) !important;
   background-position: left 1em center;
   background-repeat: no-repeat;
@@ -200,7 +201,9 @@ menupopup:not(.in-menulist) > menuitem:not([checked="true"], [icon], .menuitem-i
 }
 
 menupopup.toolbar-menupopup menuitem:not(.menuitem-iconic) {
-  padding-inline-start: calc(var(--arrowpanel-menuitem-padding-inline) + 16px + 8px) !important;
+  padding-inline-start: calc(
+    var(--arrowpanel-menuitem-padding-inline) + 16px + 8px
+  ) !important;
   background-position: left var(--arrowpanel-menuitem-padding-inline) center;
 }
 
@@ -1872,7 +1875,13 @@ This component is made by u/qaz69wsx
 https://www.reddit.com/r/FirefoxCSS/comments/osles3/menu_icons
 */
 
-.subviewbutton:not(.subviewbutton-iconic, .subviewbutton-back, [checked="true"], [targetURI]) > .toolbarbutton-icon {
+.subviewbutton:not(
+    .subviewbutton-iconic,
+    .subviewbutton-back,
+    [checked="true"],
+    [targetURI]
+  )
+  > .toolbarbutton-icon {
   width: 16px;
   height: 16px;
   margin-inline-end: 8px !important;
@@ -1980,13 +1989,16 @@ https://www.reddit.com/r/FirefoxCSS/comments/osles3/menu_icons
 #overflowMenu-customize-button {
   list-style-image: url("chrome://browser/skin/customize.svg");
 }
-#appmenu-developer-tools-view > [oncommand="switchToTabHavingURI('about:performance', true)"] {
+#appmenu-developer-tools-view
+  > [oncommand="switchToTabHavingURI('about:performance', true)"] {
   list-style-image: url("chrome://global/skin/icons/performance.svg");
 }
 #appmenu-developer-tools-view > [key="key_browserToolbox"] {
   list-style-image: url("chrome://devtools/skin/images/fox-smiling.svg");
 }
-#appmenu-developer-tools-view > [key="key_responsiveDesignMode"] + .subviewbutton {
+#appmenu-developer-tools-view
+  > [key="key_responsiveDesignMode"]
+  + .subviewbutton {
   list-style-image: url("chrome://devtools/skin/images/command-eyedropper.svg");
 }
 #appmenu-developer-tools-view > [key="key_viewSource"] + .subviewbutton {
@@ -2027,7 +2039,11 @@ https://www.reddit.com/r/FirefoxCSS/comments/osles3/menu_icons
   list-style-image: url("chrome://global/skin/icons/close.svg");
 }
 
-menupopup > :is(menu:not(.menu-iconic), menuitem:not(.menuitem-iconic, [checked="true"])) {
+menupopup
+  > :is(
+    menu:not(.menu-iconic),
+    menuitem:not(.menuitem-iconic, [checked="true"])
+  ) {
   padding-inline-start: calc(1em + 24px) !important;
   background-position: left 1em center;
   background-repeat: no-repeat;
@@ -2199,19 +2215,44 @@ menuitem[id^="context_duplicateTab"] {
 #context-sendlinktodevice {
   background-image: url("chrome://browser/skin/send-to-device.svg");
 }
-:is(#context_sendTabToDevicePopupMenu, #context-sendpagetodevice-popup, #context-sendlinktodevice-popup) > [clientType="desktop"] {
+:is(
+    #context_sendTabToDevicePopupMenu,
+    #context-sendpagetodevice-popup,
+    #context-sendlinktodevice-popup
+  )
+  > [clientType="desktop"] {
   background-image: url("chrome://browser/skin/device-desktop.svg");
 }
-:is(#context_sendTabToDevicePopupMenu, #context-sendpagetodevice-popup, #context-sendlinktodevice-popup) > [clientType="phone"] {
+:is(
+    #context_sendTabToDevicePopupMenu,
+    #context-sendpagetodevice-popup,
+    #context-sendlinktodevice-popup
+  )
+  > [clientType="phone"] {
   background-image: url("chrome://browser/skin/device-phone.svg");
 }
-:is(#context_sendTabToDevicePopupMenu, #context-sendpagetodevice-popup, #context-sendlinktodevice-popup) > [clientType="tablet"] {
+:is(
+    #context_sendTabToDevicePopupMenu,
+    #context-sendpagetodevice-popup,
+    #context-sendlinktodevice-popup
+  )
+  > [clientType="tablet"] {
   background-image: url("chrome://browser/skin/device-tablet.svg");
 }
-:is(#context_sendTabToDevicePopupMenu, #context-sendpagetodevice-popup, #context-sendlinktodevice-popup) > [clientType="tv"] {
+:is(
+    #context_sendTabToDevicePopupMenu,
+    #context-sendpagetodevice-popup,
+    #context-sendlinktodevice-popup
+  )
+  > [clientType="tv"] {
   background-image: url("chrome://browser/skin/device-tv.svg");
 }
-:is(#context_sendTabToDevicePopupMenu, #context-sendpagetodevice-popup, #context-sendlinktodevice-popup) > [clientType="vr"] {
+:is(
+    #context_sendTabToDevicePopupMenu,
+    #context-sendpagetodevice-popup,
+    #context-sendlinktodevice-popup
+  )
+  > [clientType="vr"] {
   background-image: url("chrome://browser/skin/device-vr.svg");
 }
 #context_shareTabURL {

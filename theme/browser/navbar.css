@@ -1,13 +1,15 @@
 
-
-/* Hide "Bookmark this page" button from URLbar */
-#star-button-box { display: none !important; }
-
 /* Private Mode indicator */
 :root[privatebrowsingmode="temporary"] {
-  .private-browsing-indicator-with-label { display: none; }
-  #PanelUI-menu-button { list-style-image: url("chrome://global/skin/icons/indicator-private-browsing.svg") !important; }
-  #urlbar-background { border: var(--uc-theme-border-width) solid rgba(136, 72, 255, 0.7) !important; }
+  .private-browsing-indicator-with-label {
+    display: none;
+  }
+  #PanelUI-menu-button {
+    list-style-image: url("chrome://global/skin/icons/indicator-private-browsing.svg") !important;
+  }
+  #urlbar-background {
+    border: var(--uc-theme-border-width) solid rgba(136, 72, 255, 0.7) !important;
+  }
 }
 
 /* URLbar extend animation */
@@ -16,8 +18,12 @@
   animation: urlbar-animation var(--uc-urlbar-animation-speed) ease-out;
 }
 @keyframes urlbar-animation {
-  0% { transform: scaleY(0.90); }
-  100% { transform: scaleY(1); }
+  0% {
+    transform: scaleY(0.9);
+  }
+  100% {
+    transform: scaleY(1);
+  }
 }
 
 /* Button Styling */
@@ -27,30 +33,37 @@
 
 findbar toolbarbutton,
 .toolbarbutton-1 > .toolbarbutton-icon,
-.toolbarbutton-1 > .toolbarbutton-badge-stack{
-  background-color: var(--toolbar-field-background-color, hsla(0,0%,100%,.8));
-  width: calc(2* var(--uc-toolbarbutton-horizontal-padding) + 16px) !important;
-  height: calc(2* var(--uc-toolbarbutton-vertical-padding) + 16px) !important;
+.toolbarbutton-1 > .toolbarbutton-badge-stack {
+  background-color: var(
+    --toolbar-field-background-color,
+    hsla(0, 0%, 100%, 0.8)
+  );
+  width: calc(2 * var(--uc-toolbarbutton-horizontal-padding) + 16px) !important;
+  height: calc(2 * var(--uc-toolbarbutton-vertical-padding) + 16px) !important;
   fill-opacity: 0.8;
   margin-inline: 2px;
 }
 
-.toolbarbutton-1.toolbarbutton-combined > :is(.toolbarbutton-icon,.toolbarbutton-badge-stack){
+.toolbarbutton-1.toolbarbutton-combined
+  > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) {
   margin-inline: 0 !important;
   border-radius: 0 !important;
   border-inline-end-width: 0 !important;
 }
-.toolbarbutton-1.toolbarbutton-combined:first-child > :is(.toolbarbutton-icon,.toolbarbutton-badge-stack){
+.toolbarbutton-1.toolbarbutton-combined:first-child
+  > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) {
   border-top-left-radius: var(--toolbarbutton-border-radius) !important;
   border-bottom-left-radius: var(--toolbarbutton-border-radius) !important;
 }
-.toolbarbutton-1.toolbarbutton-combined:last-child > :is(.toolbarbutton-icon,.toolbarbutton-badge-stack){
+.toolbarbutton-1.toolbarbutton-combined:last-child
+  > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) {
   border-top-right-radius: var(--toolbarbutton-border-radius) !important;
   border-bottom-right-radius: var(--toolbarbutton-border-radius) !important;
   border-inline-end-width: 1px !important;
 }
 
-.toolbarbutton-1.toolbarbutton-combined-buttons-dropmarker > .toolbarbutton-icon{
+.toolbarbutton-1.toolbarbutton-combined-buttons-dropmarker
+  > .toolbarbutton-icon {
   padding-inline: 3px !important;
   margin-inline: 0 !important;
   border-top-left-radius: 0 !important;
@@ -60,25 +73,31 @@ findbar toolbarbutton,
 
 /* borders */
 findbar toolbarbutton,
-.toolbarbutton-1 > .toolbarbutton-icon{
-  border: 1px solid var(--toolbar-field-border-color, hsla(240,5%,5%,.55));
+.toolbarbutton-1 > .toolbarbutton-icon {
+  border: 1px solid var(--toolbar-field-border-color, hsla(240, 5%, 5%, 0.55));
 }
 
 /* stacks use box-shadow as a border to prevent size from changing */
-.toolbarbutton-1 > .toolbarbutton-badge-stack{
-  box-shadow: inset 0 0 0 1px var(--toolbar-field-border-color, hsla(240,5%,5%,.55));
+.toolbarbutton-1 > .toolbarbutton-badge-stack {
+  box-shadow: inset 0 0 0 1px
+    var(--toolbar-field-border-color, hsla(240, 5%, 5%, 0.55));
 }
 
 /* modify paddings within buttons */
 .toolbarbutton-1 > .toolbarbutton-icon,
-.toolbarbutton-1 > .toolbarbutton-badge-stack{
-  padding: var(--uc-toolbarbutton-vertical-padding) var(--uc-toolbarbutton-horizontal-padding) !important;
+.toolbarbutton-1 > .toolbarbutton-badge-stack {
+  padding: var(--uc-toolbarbutton-vertical-padding)
+    var(--uc-toolbarbutton-horizontal-padding) !important;
 }
 
 /* Remove styles from buttons inside extensions and overflow menu */
-:is(#unified-extensions-panel,.widget-overflow-list) .toolbarbutton-1 > .toolbarbutton-icon,
-:is(#unified-extensions-panel,.widget-overflow-list) .toolbarbutton-1 > .toolbarbutton-badge-stack,
-.widget-overflow-list .toolbarbutton-text{
+:is(#unified-extensions-panel, .widget-overflow-list)
+  .toolbarbutton-1
+  > .toolbarbutton-icon,
+:is(#unified-extensions-panel, .widget-overflow-list)
+  .toolbarbutton-1
+  > .toolbarbutton-badge-stack,
+.widget-overflow-list .toolbarbutton-text {
   background-color: transparent !important;
   width: revert !important;
   height: revert !important;
@@ -88,38 +107,50 @@ findbar toolbarbutton,
 
 /* Special cases */
 
-#tabs-newtab-button > .toolbarbutton-icon{
+#tabs-newtab-button > .toolbarbutton-icon {
   background-color: transparent;
 }
-.webextension-browser-action{
+.webextension-browser-action {
   background: transparent !important;
 }
-#zoom-reset-button > .toolbarbutton-text{
-  background-color: var(--toolbar-field-background-color, hsla(0,0%,100%,.8));
-  border: 1px solid var(--toolbar-field-border-color, hsla(240,5%,5%,.55));
+#zoom-reset-button > .toolbarbutton-text {
+  background-color: var(
+    --toolbar-field-background-color,
+    hsla(0, 0%, 100%, 0.8)
+  );
+  border: 1px solid var(--toolbar-field-border-color, hsla(240, 5%, 5%, 0.55));
   border-right-width: 0;
   border-radius: 0 !important;
 }
-findbar toolbarbutton{
-  background-color: var(--input-bgcolor,var(--toolbarbutton-bgcolor));
+findbar toolbarbutton {
+  background-color: var(--input-bgcolor, var(--toolbarbutton-bgcolor));
 }
 
-#profiler-button-button:not(.profiler-active) > image{
-  border-radius: 0 var(--toolbarbutton-border-radius) var(--toolbarbutton-border-radius) 0 !important;
+#profiler-button-button:not(.profiler-active) > image {
+  border-radius: 0 var(--toolbarbutton-border-radius)
+    var(--toolbarbutton-border-radius) 0 !important;
   border-inline-width: 0 1px !important;
 }
-#tabs-newtab-button > .toolbarbutton-icon{
+#tabs-newtab-button > .toolbarbutton-icon {
   width: revert !important;
   height: revert !important;
   border: revert !important;
   padding: var(--toolbarbutton-inner-padding) !important;
 }
-findbar toolbarbutton{
+findbar toolbarbutton {
   padding-inline: var(--uc-toolbarbutton-horizontal-padding) !important;
   height: revert !important;
   margin-inline: 1px 0px !important;
   border-width: 1px !important;
 }
-.findbar-closebutton{
+.findbar-closebutton {
   margin-inline-end: 8px !important;
 }
+#vertical-spacer .chromeclass-toolbar-additional .titlebar-spacer {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin-inline: 0 !important;
+  padding-inline: 0 !important;
+}
+

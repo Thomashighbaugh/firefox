@@ -3,10 +3,10 @@
 
 @import "theme/_globals.css";
 
+@import "theme/browser/theming.css";
 @import "theme/browser/bookmarks.css";
 @import "theme/browser/menus.css";
 @import "theme/browser/navbar.css";
-@import "theme/browser/theming.css";
 @import "theme/browser/sidebar.css";
 @import "theme/browser/compact.css";
 @import "theme/browser/icons.css";

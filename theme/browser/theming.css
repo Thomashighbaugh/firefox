@@ -346,6 +346,7 @@ menu:where([_moz-menuactive]:not([disabled])) {
 }
 .sidebar-panel,
 .addonbar,
+#statuspanel, 
 #password-notification,
 #report-broken-site-popup-mainView,
 fieldset #inputs,

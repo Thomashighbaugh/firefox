@@ -110,17 +110,17 @@ var AddAddonbar = {
 		  #addonbar {
 			border-top: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.1)) !important;
             border-radius: 6px 6px 0 0;
-			background-color: rgb(var(--uc-main-color)) !important;
+			background-color: rgb(32,32,32) !important;
 			background-image: var(--toolbar-bgimage) !important;
 			-moz-window-dragging: no-drag !important;
 		  }
 		  :root[lwtheme] #addonbar {
-   			background-color: rgb(var(--uc-main-color)) !important;
+   			background-color: rgb(32,32,32) !important;
         	background-image: var(--toolbar-bgimage) !important;
 		  }
 		  :root[lwtheme][lwtheme-image='true'] #addonbar {
 			background-image: var(--lwt-header-image) !important;
-            background-color: rgb(var(--uc-main-color)) !important;
+            background-color: rgb(32,32,32) !important;
 			background-position: 0vw 50vh !important;
 		  }
 		  /* autohide add-on bar in fullscreen mode */
@@ -129,14 +129,14 @@ var AddAddonbar = {
 			display: block !important;
 			height: 1px !important;
 			max-height: 1px !important;
-            background-color: rgb(var(--uc-main-color)) !important;
+            background-color: rgb(32,32,32) !important;
         	background-image: var(--toolbar-bgimage) !important;
           }
 		  #main-window[sizemode='fullscreen']:not([inDOMFullscreen='true']) #addonbar:hover {
 			min-height: 26px !important;
 			height: 26px !important;
 			max-height: 26px !important;
-            background-color: rgb(var(--uc-main-color)) !important;
+            background-color: rgb(32,32,32) !important;
         	background-image: var(--toolbar-bgimage) !important;
 		  }
 		  #unified-extensions-button[hidden]{

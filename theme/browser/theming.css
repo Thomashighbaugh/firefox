@@ -239,6 +239,11 @@ findbar,
   --content-area-shadow: none !important;
   --tab-selected-shadow: none !important;
   --tab-shadow-max-size: 0px !important;
+  --uc-menu-bkgnd: var(--toolbar-bgcolor);
+  --arrowpanel-background: var(--toolbar-bgcolor) !important;
+  --autocomplete-popup-background: var(--toolbar-bgcolor) !important;
+  --uc-menu-disabled: rgb(var(--uc-theme-secondary-color)) !important;
+  --lwt-toolbar-field-focus: rgb(var(--uc-theme-accent-color)) !important;
 }
 
 /* ----------------------------------------------------------------------------

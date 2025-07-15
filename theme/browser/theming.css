@@ -239,8 +239,6 @@ findbar,
   --content-area-shadow: none !important;
   --tab-selected-shadow: none !important;
   --tab-shadow-max-size: 0px !important;
-  --tabpanel-background-color: transparent;
-  background: transparent;
 }
 
 /* ----------------------------------------------------------------------------

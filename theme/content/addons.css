@@ -2,7 +2,7 @@
   This uses a responsive grid layout that automatically adjusts the number of columns
   based on the available width, removing the need for fixed media query breakpoints.
 */
-@-moz-document url-prefix("chrome://mozapps/content/extensions/aboutaddons.html"), url("about:addons")
+@-moz-document url-prefix("chrome://mozapps/content/extensions/aboutaddons.html"), @moz-document url("about:addons")
 {
   /* Prevent horizontal scrolling on the root element. Remove if it causes issues. */
   :root {
@@ -53,4 +53,3 @@
     max-width: calc(100% + 32px);
   }
 }
-

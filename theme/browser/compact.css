@@ -1,43 +1,74 @@
-
 /* Remove top & bottom margins from urlbar */
-* { --urlbar-container-height: var(--urlbar-min-height) !important; }
-#nav-bar { max-height: var(--urlbar-min-height) !important; }
+* {
+  --urlbar-container-height: var(--urlbar-min-height) !important;
+}
+#nav-bar {
+  max-height: var(--urlbar-min-height) !important;
+}
 
 /* Workaround for shifting URLbar on window popup */
-#window-modal-dialog[open] ~ #navigator-toolbox #urlbar-container { margin-top: -4px !important; }
+#window-modal-dialog[open] ~ #navigator-toolbox #urlbar-container {
+  margin-top: -4px !important;
+}
 
 /* Horizontal tabs */
 :root[uidensity="compact"] {
-  @media not (-moz-bool-pref:"sidebar.verticalTabs"), not -moz-pref("sidebar.verticalTabs") {
-    * { --tab-min-height: var(--urlbar-min-height) !important; }
-    #tabbrowser-tabs, #tabbrowser-tabs > #tabbrowser-arrowscrollbox, .tabbrowser-tabs .tabbrowser-tab {
+  @media not (-moz-bool-pref: "sidebar.verticalTabs"),
+    not -moz-pref("sidebar.verticalTabs") {
+    * {
+      --tab-min-height: var(--urlbar-min-height) !important;
+    }
+    #tabbrowser-tabs,
+    #tabbrowser-tabs > #tabbrowser-arrowscrollbox,
+    .tabbrowser-tabs .tabbrowser-tab {
       min-height: var(--tab-min-height) !important;
       max-height: var(--tab-min-height) !important;
     }
-    .tabbrowser-tab, #tabs-newtab-button { padding: 0px !important; }
-    .tab-background { margin: 0px !important; }
+    .tabbrowser-tab,
+    #tabs-newtab-button {
+      padding: 0px !important;
+    }
+    .tab-background {
+      margin: 0px !important;
+    }
   }
 }
 
 /* Remove spaces around navbar buttons */
-.toolbarbutton-1:not(#tabs-newtab-button), .chromeclass-toolbar-additional:not(#urlbar-searchmode-switcher) {
+.toolbarbutton-1:not(#tabs-newtab-button),
+.chromeclass-toolbar-additional:not(#urlbar-searchmode-switcher) {
   padding: 0px !important;
   margin: 0px !important;
 }
-.titlebar-spacer[type="pre-tabs"], .titlebar-spacer[type="post-tabs"], #vertical-spacer {
+.titlebar-spacer[type="pre-tabs"],
+.titlebar-spacer[type="post-tabs"],
+#vertical-spacer {
   display: none !important;
 }
 
 /* Decrease padding on status URL, tooltips */
-tooltip, #statuspanel-label { padding: 2px !important; }
+tooltip,
+#statuspanel-label {
+  padding: 2px !important;
+}
 
 /* Findbar */
-findbar { padding: 0px !important; }
-.findbar-closebutton { margin: 0px !important; }
+findbar {
+  padding: 0px !important;
+}
+.findbar-closebutton {
+  margin: 0px !important;
+}
 
 /* Window controls */
 @media (-moz-platform: windows) {
-  .titlebar-button { padding: 10px !important; }
-  :root[uidensity="compact"] .titlebar-button { padding: 8px !important; }
-  :root[uidensity="touch"] .titlebar-button { padding: 11px !important; }
+  .titlebar-button {
+    padding: 10px !important;
+  }
+  :root[uidensity="compact"] .titlebar-button {
+    padding: 8px !important;
+  }
+  :root[uidensity="touch"] .titlebar-button {
+    padding: 11px !important;
+  }
 }

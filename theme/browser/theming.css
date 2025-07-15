@@ -3,6 +3,12 @@
  * NOTE: For better consistency, set built-in theme to "Dark"
  * ========================================================================= */
 
+/* ----------------------------------------------------------------------------
+ * Global Theme Variables
+ * ----------------------------------------------------------------------------
+ * Defines CSS custom properties for colors, borders, backgrounds, and UI states.
+ * These variables are used throughout the UI for consistent theming.
+ * ---------------------------------------------------------------------------- */
 * {
   /* Common with userContent.css */
   color-scheme: var(--uc-theme-color-scheme) !important;
@@ -203,7 +209,11 @@
   ) !important;
 }
 
-/* Shadows */
+/* ----------------------------------------------------------------------------
+ * Shadows
+ * ----------------------------------------------------------------------------
+ * Applies shadow effects to panels, dialogs, and toolbars for depth.
+ * ---------------------------------------------------------------------------- */
 slot:not(.nested),
 findbar,
 .menupopup-arrowscrollbox,
@@ -219,14 +229,34 @@ findbar,
   --panel-shadow-margin: var(--uc-theme-shadow-margin) !important;
   box-shadow: var(--uc-theme-shadow) !important;
 }
+
+/* ----------------------------------------------------------------------------
+ * Root Element Overrides
+ * ----------------------------------------------------------------------------
+ * Removes default shadows and sets transparent backgrounds for root elements.
+ * ---------------------------------------------------------------------------- */
 :root {
   --content-area-shadow: none !important;
   --tab-selected-shadow: none !important;
   --tab-shadow-max-size: 0px !important;
+  --tabpanel-background-color: transparent;
+  background: transparent;
 }
+
+/* ----------------------------------------------------------------------------
+ * URL Bar Background
+ * ----------------------------------------------------------------------------
+ * Removes box-shadow from the URL bar background.
+ * ---------------------------------------------------------------------------- */
 #urlbar-background {
   box-shadow: none !important;
 }
+
+/* ----------------------------------------------------------------------------
+ * Toolbox and Sidebar Z-Index
+ * ----------------------------------------------------------------------------
+ * Sets stacking order for toolbox and sidebar elements.
+ * ---------------------------------------------------------------------------- */
 #navigator-toolbox {
   --browser-area-z-index-toolbox: 4 !important;
 }
@@ -242,7 +272,11 @@ findbar,
   z-index: 1 !important;
 }
 
-/* Borders */
+/* ----------------------------------------------------------------------------
+ * Borders
+ * ----------------------------------------------------------------------------
+ * Applies border styles and radii to various UI elements.
+ * ---------------------------------------------------------------------------- */
 #statuspanel-label,
 search-textbox#search-box,
 button#viewButton,
@@ -274,7 +308,11 @@ moz-card {
   border-radius: 0px !important;
 }
 
-/* Tab events */
+/* ----------------------------------------------------------------------------
+ * Tab Events
+ * ----------------------------------------------------------------------------
+ * Styles for tab states such as selected, hovered, and audio playing.
+ * ---------------------------------------------------------------------------- */
 .tabbrowser-tab:not([selected]) .tab-content {
   color: rgba(
     var(--uc-theme-text-color),
@@ -333,7 +371,11 @@ button[aria-label="Play tab"] {
   }
 }
 
-/* Specific elements styling */
+/* ----------------------------------------------------------------------------
+ * Specific Elements Styling
+ * ----------------------------------------------------------------------------
+ * Customizes appearance for menus, panels, buttons, and other UI components.
+ * ---------------------------------------------------------------------------- */
 menuitem:hover,
 menuitem:where([_moz-menuactive]:not([disabled])),
 menu:where([_moz-menuactive]:not([disabled])) {

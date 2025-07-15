@@ -1,4 +1,3 @@
-
 /* Private Mode indicator */
 :root[privatebrowsingmode="temporary"] {
   .private-browsing-indicator-with-label {
@@ -146,6 +145,7 @@ findbar toolbarbutton {
 .findbar-closebutton {
   margin-inline-end: 8px !important;
 }
+#vertical-spacer,
 #vertical-spacer .chromeclass-toolbar-additional .titlebar-spacer {
   display: none !important;
   width: 0 !important;
@@ -153,4 +153,3 @@ findbar toolbarbutton {
   margin-inline: 0 !important;
   padding-inline: 0 !important;
 }
-

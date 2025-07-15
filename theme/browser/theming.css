@@ -100,7 +100,6 @@
   --link-color-hover: var(--uc-theme-accent-high-contrast) !important;
   --link-color-active: var(--uc-theme-accent-high-contrast) !important;
   --link-color-visited: var(--uc-theme-accent-high-contrast) !important;
-  /*--border-width: var(--ucheme-border-width) !important;*/ /* This breaks #moz-toggle-button */
   --input-border-color: var(--uc-theme-border-color) !important;
   --attention-dot-color: var(--ucheme-accent-high-contrast) !important;
 
@@ -345,8 +344,7 @@ menu:where([_moz-menuactive]:not([disabled])) {
   color: rgb(var(--uc-theme-text-color)) !important;
 }
 .sidebar-panel,
-.addonbar,
-#statuspanel, 
+#statuspanel,
 #password-notification,
 #report-broken-site-popup-mainView,
 fieldset #inputs,
@@ -354,6 +352,12 @@ fieldset #inputs,
 .tabbrowser-tab:not(:hover):not([selected], [multiselected]) .tab-background {
   background-color: rgb(var(--uc-theme-main-color)) !important;
 }
+#addonbar,
+#sidebar-main #tabbrowser-tabs[expanded],
+#sidebar-main #tabbrowser-tabs:hover {
+  background-color: rgb(var(--uc-theme-main-color)) !important;
+}
+
 search-textbox#search-box,
 #moz-toggle-button[aria-pressed="false"],
 #statuspanel-label,

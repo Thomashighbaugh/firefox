@@ -108,7 +108,6 @@ var AddAddonbar = {
 			outline-offset: -2px !important;
 		  }
 		  #addonbar {
-			border-top: 1px solid var(--sidebar-border-color,rgba(0,0,0,0.1)) !important;
             border-radius: 6px 6px 0 0;
 			background-color: rgb(29,28,34) !important;
 			background-image: var(--toolbar-bgimage) !important;

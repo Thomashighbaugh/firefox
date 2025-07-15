@@ -4,6 +4,8 @@
 }
 #nav-bar {
   max-height: var(--urlbar-min-height) !important;
+  margin-left: 4px !important;
+  margin-right: 4px !important;
 }
 
 /* Workaround for shifting URLbar on window popup */
@@ -42,7 +44,8 @@
 }
 .titlebar-spacer[type="pre-tabs"],
 .titlebar-spacer[type="post-tabs"],
-#vertical-spacer {
+#vertical-spacer,
+#wrapper-vertical-spacer {
   display: none !important;
 }
 
@@ -58,17 +61,4 @@ findbar {
 }
 .findbar-closebutton {
   margin: 0px !important;
-}
-
-/* Window controls */
-@media (-moz-platform: windows) {
-  .titlebar-button {
-    padding: 10px !important;
-  }
-  :root[uidensity="compact"] .titlebar-button {
-    padding: 8px !important;
-  }
-  :root[uidensity="touch"] .titlebar-button {
-    padding: 11px !important;
-  }
 }

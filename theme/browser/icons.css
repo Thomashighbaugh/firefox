@@ -47,7 +47,7 @@ Adding icons to all sorts of places
 #downloadsHistory .button-icon,
 #PanelUI-fxa-menu-syncnow-button::before,
 .subviewbutton:not(#appMenu-proton-update-banner) > image {
-  fill: currentColor !important;
+  fill: var(--uc-theme-text-color) !important;
   fill-opacity: var(--toolbarbutton-icon-fill-opacity) !important;
   -moz-context-properties: fill, fill-opacity, stroke !important;
 }
@@ -304,7 +304,7 @@ Adding icons to all sorts of places
   )
   :is(menuitem, menu) {
   /* icons color and position */
-  fill: currentColor !important;
+  fill: var(--uc-theme-text-color) !important;
   fill-opacity: var(--toolbarbutton-icon-fill-opacity) !important;
   -moz-context-properties: fill, fill-opacity, stroke !important;
   background-repeat: no-repeat !important;

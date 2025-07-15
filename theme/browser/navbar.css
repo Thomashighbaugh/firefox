@@ -18,7 +18,7 @@
 }
 @keyframes urlbar-animation {
   0% {
-    transform: scaleY(0.9);
+    transform: scaleY(0.5);
   }
   100% {
     transform: scaleY(1);
@@ -146,6 +146,7 @@ findbar toolbarbutton {
   margin-inline-end: 8px !important;
 }
 #vertical-spacer,
+#wrapper-vertical-spacer,
 #vertical-spacer .chromeclass-toolbar-additional .titlebar-spacer {
   display: none !important;
   width: 0 !important;

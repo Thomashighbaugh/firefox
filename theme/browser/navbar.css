@@ -154,3 +154,23 @@ findbar toolbarbutton {
   margin-inline: 0 !important;
   padding-inline: 0 !important;
 }
+    #urlbar[breakout] {
+        max-height: var(--urlbar-min-height) !important;
+        transition: max-height 1s ease !important;
+        will-change: max-height;
+    }
+    #urlbar[breakout][breakout-extend] {
+        overflow: hidden !important;
+        max-height: 600px !important; /* Choose a value big enough to cover the tallest state */
+    }
+        .urlbarView-row-inner {
+        .urlbarView-favicon, .urlbarView-type-icon {
+            transition: margin-left 1s ease-in-out !important;
+        }
+    }
+    .urlbarView-row-inner:hover {
+        .urlbarView-favicon, .urlbarView-type-icon {
+            margin-left:-27px !important;
+            transition: margin-left 1.6s ease-in-out !important;
+        }
+    }  

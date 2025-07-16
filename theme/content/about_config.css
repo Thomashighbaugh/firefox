@@ -1,0 +1,58 @@
+@-moz-document url("about:config") {
+  /* style ------------------------------------------------------------------------------*/
+  :root {
+    --in-content-page-background: var(--uc-theme-main-color) !important;
+    --in-content-box-border-color: var(--uc-theme-seconday-color) !important;
+  }
+  input,
+  #prefs {
+    border-radius: 8px !important;
+  }
+
+  /* if you see this text --------------------------------------------------------------------------*/
+  body::before {
+    content: "\Higgs-Boson has loaded on to this page and all is right with the world. \n The Higgs-Boson userChrome.css/.js configuration can be found at: https://github.com/Thomashighbaugh/firefox  \A";
+    display: block;
+    z-index: -1 !important;
+    margin: 10px 10px 0px 10px;
+    padding: 12px 32px;
+    border: var(--prefs-table-border);
+    border-radius: 8px;
+    white-space: pre-line;
+    line-height: 1.5;
+    font-size: var(--font-size-root);
+    color: var(--in-content-text-color);
+    background: var(--background-color-box);
+  }
+  /* if you see this - setting is on */
+  #prefs
+    .has-user-value:has(span[data-l10n-args='{"value":"true"}'])
+    th[scope="row"]::before {
+    content: "🟢 ";
+    position: absolute;
+    left: 18px;
+  }
+
+  /* warning messages ------------------------------------------------------------------------------*/
+  /* conflicting setting warn */
+  body::after {
+    position: fixed;
+    display: none;
+    z-index: 100;
+    top: 180px;
+    right: 110px;
+    height: 115px;
+    max-height: 13vh;
+    width: 25vw;
+    min-width: 200px;
+    padding: 22px 32px;
+    border: 1px solid rgb(255, 150, 50);
+    border-radius: 8px;
+    white-space: pre-line;
+    line-height: 1.3;
+    font-size: 1.2em;
+    color: var(--in-content-text-color);
+    background: var(--backgroun-color-box);
+    box-shaow: 0px 6px 6px 6px rgba(15, 15, 15, 0.6);
+  }
+}

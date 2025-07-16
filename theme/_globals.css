@@ -11,11 +11,15 @@
   --uc-theme-text-low-alpha: 0.5;
   --uc-theme-text-mid-alpha: 0.75;
 
+  --uc-small-floating-margin: 4px;
+  --uc-floating-margin: 8px;
+
+  --uc-hover-target-size: 8px;
   --uc-theme-separator-color: rgba(var(--uc-theme-text-color), 0.1);
   --uc-theme-border-color: rgba(var(--uc-theme-text-color), 0);
   --uc-theme-border-width: 1px;
   --uc-theme-border-radius: 6px;
-
+  --uc-radius: var(--uc-theme-border-radius);
   --uc-sidebar-hover-debounce: 180ms;
   --uc-sidebar-animation-speed: 300ms;
 
@@ -30,6 +34,10 @@
   --uc-menu-animation-speed: 250ms;
   --uc-window-animation-speed: 350ms;
   --uc-urlbar-animation-speed: 300ms;
+  /* sidebar vars */
+  --uc-sidebar-hover-width: 170px;
+
+  --uc-sidebar-width: 34px;
 
   --uc-bookmarks-inner-height: 20px; /* NOTE: this is affected by font typeface/size */
 }
@@ -40,6 +48,8 @@
     var(--toolbarbutton-inner-padding) + 10px
   );
   --toolbarbutton-border-radius: 3px !important;
+  --uc-transition: 200ms ease-in-out;
+  --uc-mouseout-delay: 250ms;
 }
 :root[uidensity="compact"] {
   --uc-toolbarbutton-vertical-padding: calc(

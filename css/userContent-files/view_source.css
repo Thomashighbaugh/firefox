@@ -1,0 +1,72 @@
+/* 
+  Styles for Firefox's view-source mode.
+  Applies custom colors for syntax highlighting and background.
+  Uses CSS variables for theme consistency.
+*/
+@-moz-document url-prefix(view-source) {
+  /* Set background and text color for the root element */
+  :root {
+    background-color: var(--in-content-page-background) !important;
+    color: var(--in-content-page-color) !important;
+  }
+  /* Style for elements with id attribute before pseudo-element */
+  pre[id]:before,
+  span[id]:before {
+    color: var(--in-content-page-color) !important;
+  }
+  /* Highlight start and end tags in purple */
+  .highlight .end-tag,
+  .highlight .start-tag {
+    color: var(--theme-highlight-purple) !important;
+  }
+  /* Highlight comments in green */
+  .highlight .comment {
+    color: var(--theme-highlight-green) !important;
+  }
+  /* Highlight CDATA sections in magenta */
+  .highlight .cdata {
+    color: #c06 !important;
+  }
+  /* Highlight DOCTYPE declarations in blue */
+  .highlight .doctype {
+    color: #4682b4 !important;
+  }
+  /* Highlight processing instructions in red */
+  .highlight .pi {
+    color: var(--theme-highlight-red) !important;
+  }
+  /* Highlight entities in orange */
+  .highlight .entity {
+    color: #dea174 !important;
+  }
+  /* Highlight attribute names in green */
+  .highlight .attribute-name {
+    color: var(--theme-highlight-green) !important;
+  }
+  /* Highlight attribute values in blue */
+  .highlight .attribute-value {
+    color: var(--theme-highlight-blue) !important;
+  }
+  /* Highlight markup declarations in blue */
+  .highlight .markupdeclaration {
+    color: #4682b4 !important;
+  }
+  /* Highlight errors in red, including nested highlighted elements */
+  .highlight .error,
+  .highlight
+    .error
+    > :-moz-any(
+      .start-tag,
+      .end-tag,
+      .comment,
+      .cdata,
+      .doctype,
+      .pi,
+      .entity,
+      .attribute-name,
+      .attribute-value
+    ) {
+    color: #de7474 !important;
+  }
+}
+

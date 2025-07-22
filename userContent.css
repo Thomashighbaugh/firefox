@@ -1,10 +1,33 @@
 @namespace html url("http://www.w3.org/1999/xhtml");
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-@import "theme/_globals.css";
 
-@import "theme/content/about_pages.css";
-@import "theme/content/addons.css";
-@import "theme/content/scrollbar.css";
-@import "theme/content/pdf.css";
-@import "theme/content/downloads.css";
+/* Required for all users */
+@import "css/common-files/color_variables.css";
+@import "css/common-files/trees.css";
+@import "css/common-files/radios_checkboxes.css";
+@import "css/common-files/library.css";
+@import "css/common-files/context_menus.css";
+
+@import "css/userContent-files/about_pages.css";
+@import "css/userContent-files/amo_store.css";
+@import "css/userContent-files/directory_listings.css";
+@import "css/userContent-files/manifest.css";
+@import "css/userContent-files/pdf.css";
+@import "css/userContent-files/raw_githubusercontent.css";
+@import "css/userContent-files/view_source.css";
+@import "css/userContent-files/rss.css";
+
+/* Import Relevant webextension tweaks here
+ * IMPORTANT: If used, change the Internal UUID in the corresponding css file */
+@import "css/userContent-files/webextension-tweaks/generic_style.css";
+@import "css/userContent-files/webextension-tweaks/multi_account_containers.css";
+@import "css/userContent-files/webextension-tweaks/request_control.css";
+@import "css/userContent-files/webextension-tweaks/ublock_origin.css";
+@import "css/userContent-files/webextension-tweaks/umatrix.css";
+
+
+
+
+
+

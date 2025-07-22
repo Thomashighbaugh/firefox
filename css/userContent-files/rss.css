@@ -1,0 +1,86 @@
+/* 
+  Styles for RSS feed handler page.
+  Uses CSS variables for theme consistency and accessibility.
+  Applies custom colors and appearance for feed elements, buttons, and links.
+*/
+
+html#feedHandler,
+html#feedHandler body {
+  /* Set background and text color for the feed handler page */
+  background-color: var(--in-content-page-background)!important;
+  color: var(--in-content-page-color)!important
+}
+
+html#feedHandler h1 {
+  /* Style the main heading with border and selected text color */
+  border-color: var(--in-content-box-border-color)!important;
+  color: var(--in-content-selected-text)!important
+}
+
+html#feedHandler #feedBody,
+html#feedHandler #feedHeader {
+  /* Style feed body and header with background, border, and text color */
+  background-color: var(--in-content-box-background)!important;
+  border-color: var(--in-content-box-border-color)!important;
+  color: var(--in-content-page-color)!important
+}
+
+html#feedHandler *|:link {
+  /* Set link color inside feed handler */
+  color: var(--in-content-link-color)!important
+}
+
+html#feedHandler #subscribeButton {
+  /* Style the subscribe button for appearance and colors */
+  -moz-appearance: none!important; /* Firefox-specific appearance reset */
+  /* Also define standard property for compatibility */
+  appearance: none!important;
+  background: var(--in-content-page-background)!important;
+  color: var(--in-content-page-color)!important;
+  border: 1px solid;
+  border-color: var(--in-content-box-border-color)!important;
+  border-radius: 4px
+}
+
+html#feedHandler #subscribeButton:hover {
+  /* Change button background on hover */
+  background: var(--in-content-box-background)!important
+}
+
+html#feedHandler .enclosures {
+  /* Style enclosures section */
+  background: var(--in-content-page-background)!important;
+  border-color: var(--in-content-box-border-color)!important
+}
+
+#feedHeaderContainer {
+  /* Style header container */
+  background-color: var(--in-content-box-background)!important;
+  display: inline-block!important
+}
+
+#feedHeaderContainerSpacer {
+  /* Hide header spacer */
+  display: none!important
+}
+
+#feedBody div.entry a[href] {
+  /* Style entry links */
+  color: var(--in-content-link-color)!important
+}
+
+#feedBody div.entry a[href]:hover {
+  /* Style entry links on hover */
+  color: var(--in-content-link-color-hover)!important
+}
+
+#feedBody div.entry a[href]:active {
+  /* Style entry links when active */
+  color: var(--in-content-link-color-active)!important
+}
+
+#feedBody div.entry a[href]:visited {
+  /* Style entry links when visited */
+  color: var(--in-content-link-color-visited)!important
+}
+

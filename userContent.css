@@ -17,6 +17,7 @@
 @import "css/userContent-files/raw_githubusercontent.css";
 @import "css/userContent-files/view_source.css";
 @import "css/userContent-files/rss.css";
+@import "css/userContent-files/addonlists.css";
 
 /* Import Relevant webextension tweaks here
  * IMPORTANT: If used, change the Internal UUID in the corresponding css file */

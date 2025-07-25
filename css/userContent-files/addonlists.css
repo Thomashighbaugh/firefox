@@ -1,0 +1,229 @@
+@-moz-document url-prefix(about:addons),
+  url-prefix(chrome://mozapps/content/extensions/aboutaddons.html),
+  url-prefix(chrome://mozapps/content/extensions/aboutaddons.xhtml)
+{
+  :root {
+    --addon-icon-size: 16px !important;
+  }
+
+  html {
+    --addon-page-options-width: 340px;
+  }
+  html[lang="de"] {
+    --addon-page-options-width: 370px;
+  }
+  html:is([lang="ru"], [lang="it"], [lang="fr"], [lang="el"]) {
+    --addon-page-options-width: 440px;
+  }
+  html[lang*="es-"] {
+    --addon-page-options-width: 460px;
+  }
+
+  /* Addon card layout */
+  addon-card:not([expanded="true"]) .addon.card {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 3px !important;
+    padding-bottom: 0 !important;
+    padding-inline-start: 2px !important;
+    min-height: 19px !important;
+  }
+  addon-list[type="theme"] .addon.card {
+    min-height: 0 !important;
+  }
+
+  /* More options button */
+  addon-card:not([expanded="true"]) .addon.card .more-options-button {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  /* Card heading icon/image */
+  addon-card:not([expanded="true"]) .card-heading-icon {
+    margin-inline-end: 2px !important;
+  }
+  addon-card:not([expanded="true"]) .card-heading-image {
+    display: none !important;
+  }
+  addon-list[type="theme"].monochromatic-addon-list
+    addon-card:not([expanded="true"])
+    .card-heading-image {
+    display: flex !important;
+    min-height: 20px !important;
+    height: 20px !important;
+    max-height: 20px !important;
+  }
+
+  /* Remove advertising other add-ons */
+  recommended-themes-section,
+  recommended-extensions-section {
+    display: none !important;
+  }
+
+  /* Addon description */
+  .addon-description {
+    min-height: 20px !important;
+    display: none !important;
+  }
+
+  /* Hide 'Colorways' info */
+  section[section="2"] :is(h2, h3),
+  h2[data-l10n-id="theme-monochromatic-heading"],
+  h3[data-l10n-id="theme-monochromatic-subheading"] {
+    display: none !important;
+  }
+
+  .monochromatic-addon-list .addon-name-container {
+    grid-template-rows: unset !important;
+    row-gap: 0 !important;
+  }
+
+  /* Theme card collapsed image/content */
+  addon-list[type="theme"]
+    addon-card:not([expanded="true"])
+    .addon.card
+    .addon-card-collapsed
+    > img {
+    display: none !important;
+  }
+  addon-list[type="theme"]
+    addon-card:not([expanded="true"])
+    .addon.card
+    .card-contents {
+    min-height: 20px !important;
+    height: 20px !important;
+    max-height: 20px !important;
+  }
+  addon-list[type="theme"].monochromatic-addon-list
+    addon-card:not([expanded="true"])
+    .addon.card
+    .card-contents {
+    min-height: 20px !important;
+    height: 60px !important;
+    max-height: 60px !important;
+  }
+
+  /* More options menu */
+  .addon.card div.more-options-menu {
+    height: 20px !important;
+  }
+
+  /* Panel item/button styles */
+  link:is([href$="panel-item.css"], [href$="panel-list.css"]) ~ button {
+    width: 22px !important;
+    height: 22px !important;
+    padding: 0 !important;
+    padding-inline-end: 0 !important;
+    background-position: center !important;
+    background-color: unset !important;
+  }
+  link:is([href$="panel-item.css"], [href$="panel-list.css"])
+    ~ button
+    label:not([accesskey]) {
+    visibility: hidden !important;
+  }
+  link:is([href$="panel-item.css"], [href$="panel-list.css"])
+    ~ button
+    label[accesskey] {
+    padding-inline-start: 20px !important;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    min-width: calc(var(--addon-page-options-width) - 10px) !important;
+    width: calc(var(--addon-page-options-width) - 10px) !important;
+  }
+  link:is([href$="panel-item.css"], [href$="panel-list.css"])
+    ~ button
+    label[accesskey]:hover {
+    background: var(--grey-30);
+  }
+
+  /* Panel item icons */
+  panel-item[action="toggle-disabled"][data-l10n-id="disable-addon-button"] {
+    --icon: url("chrome://browser/skin/zoom-out.svg") !important;
+    background-image: url("chrome://browser/skin/zoom-out.svg") !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+  panel-item[action="toggle-disabled"][data-l10n-id="enable-addon-button"],
+  panel-item[data-l10n-id="ask-to-activate-button"],
+  panel-item[data-l10n-id="always-activate-button"] {
+    --icon: url("chrome://global/skin/icons/plus.svg") !important;
+    background-image: url("chrome://global/skin/icons/plus.svg") !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+  panel-item[data-l10n-id="remove-addon-button"] {
+    --icon: url("chrome://global/skin/icons/delete.svg") !important;
+    background-image: url("chrome://global/skin/icons/delete.svg") !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+  panel-item[data-l10n-id="install-update-button"] {
+    --icon: url("chrome://global/skin/icons/update-icon.svg") !important;
+    background-image: url("chrome://global/skin/icons/update-icon.svg") !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+  panel-item[data-l10n-id="preferences-addon-button"] {
+    --icon: url("chrome://global/skin/icons/settings.svg") !important;
+    background-image: url("chrome://global/skin/icons/settings.svg") !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+  panel-item[data-l10n-id="report-addon-button"] {
+    --icon: url("chrome://global/skin/icons/warning.svg") !important;
+    background-image: url("chrome://global/skin/icons/warning.svg") !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+  panel-item[data-l10n-id="expand-addon-button"],
+  panel-item[data-l10n-id="manage-addon-button"] {
+    --icon: url("chrome://global/skin/icons/chevron.svg") !important;
+    background-image: url("chrome://global/skin/icons/chevron.svg") !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+  panel-item[data-l10n-id="never-activate-button"] {
+    --icon: url("chrome://browser/skin/zoom-out.svg") !important;
+    background-image: url("chrome://global/skin/icons/minus.svg") !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+
+  /* Panel item hover */
+  panel-item[action="toggle-disabled"][data-l10n-id="disable-addon-button"]:hover,
+  panel-item[action="toggle-disabled"][data-l10n-id="enable-addon-button"]:hover,
+  panel-item[data-l10n-id="remove-addon-button"]:hover,
+  panel-item[data-l10n-id="install-update-button"]:hover,
+  panel-item[data-l10n-id="preferences-addon-button"]:hover,
+  panel-item[data-l10n-id="report-addon-button"]:hover,
+  panel-item[data-l10n-id="expand-addon-button"]:hover,
+  panel-item[data-l10n-id="manage-addon-button"]:hover,
+  panel-item[data-l10n-id="ask-to-activate-button"]:hover,
+  panel-item[data-l10n-id="always-activate-button"]:hover,
+  panel-item[data-l10n-id="never-activate-button"]:hover {
+    background-color: var(--grey-30) !important;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    panel-item {
+      -moz-context-properties: fill !important;
+      fill: white !important;
+    }
+  }
+
+  /* Panel list sizing */
+  addon-page-options panel-list {
+    min-width: unset !important;
+    width: auto !important;
+    max-width: var(--addon-page-options-width) !important;
+    z-index: 1000 !important;
+  }
+  addon-page-options panel-list panel-item {
+    min-width: calc(var(--addon-page-options-width) - 20px) !important;
+    width: 320px !important;
+  }
+  addon-page-options panel-list panel-item[accesskey][checked] {
+    background: url("chrome://global/skin/icons/check.svg") 5px no-repeat !important;
+  }
+}

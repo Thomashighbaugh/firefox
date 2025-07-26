@@ -1,4 +1,5 @@
-@namespace html url("http://www.w3.org/1999/xhtml");
+@namespace html url("http://www.w3.org/1999/html");
+@namespace xhtml url("http://www.w3.org/1999/xhtml");
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
 @import "css/common-files/color_variables.css";
@@ -24,3 +25,6 @@
 @import "css/userChrome-files/sidebar.css";
 @import "css/userChrome-files/status_panel.css";
 @import "css/userChrome-files/tab_line_colors.css";
+@import "css/userChrome-files/window-controls.css";
+@import "css/userChrome-files/compact.css";
+@import "css/userChrome-files/extensions.css";

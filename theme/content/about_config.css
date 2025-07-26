@@ -1,9 +1,5 @@
 @-moz-document url("about:config") {
   /* style ------------------------------------------------------------------------------*/
-  :root {
-    --in-content-page-background: var(--uc-theme-main-color) !important;
-    --in-content-box-border-color: var(--uc-theme-seconday-color) !important;
-  }
   input,
   #prefs {
     border-radius: 8px !important;

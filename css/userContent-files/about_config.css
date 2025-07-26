@@ -1,0 +1,136 @@
+@-moz-document url-prefix(about:config) {
+  * {
+    font-size: 9pt !important;
+  }
+
+  #prefs,
+  #prefs * {
+    min-height: unset !important;
+    padding-left: unset !important;
+    padding-right: unset !important;
+    margin: unset !important;
+  }
+
+  #prefs > tr,
+  #prefs > tr > td,
+  #prefs > tr > th {
+    min-height: unset !important;
+    height: unset !important;
+    padding-left: unset !important;
+    padding-right: unset !important;
+    margin: unset !important;
+  }
+
+  #prefs {
+    width: 100% !important;
+    border-radius: 0 !important;
+  }
+
+  #prefs button {
+    min-height: 16px !important;
+    height: unset !important;
+    min-width: 16px !important;
+    width: unset !important;
+    padding: unset !important;
+    margin: unset !important;
+  }
+
+  #prefs button {
+    margin-inline-start: 1px !important;
+  }
+
+  #prefs #form-edit > * {
+    margin-inline-end: 2px !important;
+  }
+
+  input[type="radio"] {
+    transform: scale(0.8) !important;
+  }
+
+  #search-container * {
+    min-height: unset !important;
+    padding-top: unset !important;
+    padding-bottom: unset !important;
+    margin-top: unset !important;
+    margin-bottom: unset !important;
+  }
+
+  #search-container {
+    padding: 0 !important;
+  }
+
+  #search-container,
+  #about-config-search:focus,
+  #search-container,
+  #about-config-search[focused] {
+    box-shadow: unset !important;
+  }
+
+  #search-container,
+  #about-config-search:-moz-ui-invalid:focus {
+    box-shadow: unset !important;
+  }
+
+  .cell-edit,
+  .cell-reset {
+    width: 20px !important;
+  }
+
+  #about-config-search {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* style ------------------------------------------------------------------------------*/
+  input,
+  #prefs {
+    border-radius: 8px !important;
+  }
+
+  /* if you see this text --------------------------------------------------------------------------*/
+  body::before {
+    content: "\Higgs-Boson has loaded on to this page and all is right with the world. \n The Higgs-Boson userChrome.css/.js configuration can be found at: https://github.com/Thomashighbaugh/firefox  \A";
+    display: block;
+    z-index: -1 !important;
+    margin: 10px 10px 0px 10px;
+    padding: 12px 32px;
+    border: var(--prefs-table-border);
+    border-radius: 8px;
+    white-space: pre-line;
+    line-height: 1.5;
+    font-size: var(--font-size-root);
+    color: var(--in-content-text-color);
+    background: var(--background-color-box);
+  }
+  /* if you see this - setting is on */
+  #prefs
+    .has-user-value:has(span[data-l10n-args='{"value":"true"}'])
+    th[scope="row"]::before {
+    content: "🟢 ";
+    position: absolute;
+    left: 18px;
+  }
+
+  /* warning messages ------------------------------------------------------------------------------*/
+  /* conflicting setting warn */
+  body::after {
+    position: fixed;
+    display: none;
+    z-index: 100;
+    top: 180px;
+    right: 110px;
+    height: 115px;
+    max-height: 13vh;
+    width: 25vw;
+    min-width: 200px;
+    padding: 22px 32px;
+    border: 1px solid rgb(255, 150, 50);
+    border-radius: 8px;
+    white-space: pre-line;
+    line-height: 1.3;
+    font-size: 1.2em;
+    color: var(--in-content-text-color);
+    background: var(--backgroun-color-box);
+    box-shadow: 0px 6px 6px 6px rgba(15, 15, 15, 0.6);
+  }
+}

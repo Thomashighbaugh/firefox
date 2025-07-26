@@ -1,5 +1,0 @@
-* {
-  scrollbar-color: rgba(var(--uc-theme-main-color), 0.7)
-    rgba(var(--uc-theme-secondary-color), 0) !important;
-  scrollbar-width: 0.2px !important;
-}

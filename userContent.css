@@ -18,6 +18,13 @@
 @import "css/userContent-files/view_source.css";
 @import "css/userContent-files/rss.css";
 @import "css/userContent-files/addonlists.css";
+@import "css/userContent-files/downloads.css";
+@import "css/userContent-files/private.css";
+@import "css/userContent-files/scrollbar.css";
+@import "css/userContent-files/about_config.css";
+@import "css/userContent-files/websites/reddit.css";
+@import "css/userContent-files/websites/bing.css";    
+@import "css/userContent-files/websites/youtube.css";
 
 /* Import Relevant webextension tweaks here
  * IMPORTANT: If used, change the Internal UUID in the corresponding css file */

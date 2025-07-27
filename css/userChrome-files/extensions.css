@@ -1,4 +1,5 @@
-#unified-extensions-panel #unified-extensions-view {
+#unified-extensions-panel,
+#unified-extensions-view {
   width: 100% !important;
 }
 
@@ -31,13 +32,13 @@
   grid-template-columns: repeat(
     var(--firefoxcss-number-of-extensions-in-a-row),
     auto
-  );
+  ) !important;
   justify-items: left !important;
   align-items: left !important;
 }
 #unified-extensions-view .unified-extensions-list,
 #unified-extensions-view .unified-extensions-list .unified-extensions-item {
-  max-width: max-content;
+  min-width: max-content;
 }
 #unified-extensions-view #unified-extensions-area {
   padding-bottom: 3px !important;
@@ -101,4 +102,3 @@
   display: none !important;
   width: 0 !important;
 }
-

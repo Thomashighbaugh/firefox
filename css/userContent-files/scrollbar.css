@@ -1,5 +1,4 @@
 * {
-  scrollbar-color: rgba(var(--gray-80), 0.7)
-    rgba(var(--gray-90), 0) !important;
+  scrollbar-color: rgba(var(--gray-60), 0.7) rgba(var(--gray-90), 0) !important;
   scrollbar-width: 0.2px !important;
 }

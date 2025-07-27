@@ -166,7 +166,7 @@ regexp(".*\\.(p|P)(d|D)(f|F).*") {
     --secure-connection-color: var(--accent-2) !important;
     --tab-background-color: var(--tone-9);
     --tab-color: var(--in-content-selected-text);
-    --theme-sidebar-background: #1c1c1e !important;
+    --theme-sidebar-background: var(--gray-90) !important;
     --card-outline-color: var(--in-content-box-border-color) !important;
     --cm-background: var(--tone-8) !important;
     --cm-selection: var(--accent-7) !important;

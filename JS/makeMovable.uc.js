@@ -12,7 +12,9 @@
       image: "chrome://mozapps/skin/extensions/extension.svg",
       type: "toolbaritem",
     });
-  } catch (e) {}
+  } catch (e) {
+    console.error("Error creating movable-extensions-button:", e);
+  }
 
   try {
     // menu button wrapper
@@ -22,13 +24,69 @@
       image: "chrome://browser/skin/menu.svg",
       type: "toolbaritem",
     });
-  } catch (e) {}
+  } catch (e) {
+    console.error("Error creating movable-menu-button:", e);
+  }
 
-  function main(window) {
-    if (window.document.documentElement.getAttribute("chromehidden") != "")
-      return; // return if window is not full
+  function main(win) {
+    if (win.document.documentElement.getAttribute("chromehidden") != "") return; // return if window is not full
 
-    window.UC_API.Windows.waitWindowLoading(window).then((window) => {
+    win.UC_API.Windows.waitWindowLoading(win).then((window) => {
+      const doc = window.document;
+      function $(id) {
+        return doc.getElementById(id);
+      }
+
+      function initButtons() {
+        const extBtn = $("movable-extensions-button");
+        const unifiedExtBtn = $("unified-extensions-button");
+        const menuBtn = $("movable-menu-button");
+        const panelMenuBtn = $("PanelUI-menu-button");
+        const panelUIButton = $("PanelUI-button");
+
+        if (extBtn && unifiedExtBtn) {
+          if (!isChild(extBtn, "unified-extensions-button")) {
+            extBtn.appendChild(unifiedExtBtn);
+          }
+        } else if (panelUIButton && unifiedExtBtn) {
+          panelUIButton.appendChild(unifiedExtBtn);
+        }
+
+        if (menuBtn && panelMenuBtn) {
+          if (!isChild(menuBtn, "PanelUI-menu-button")) {
+            menuBtn.appendChild(panelMenuBtn);
+          }
+        } else if (panelUIButton && panelMenuBtn) {
+          panelUIButton.appendChild(panelMenuBtn);
+        }
+      }
+
+      function prepareCustomize() {
+        const panelUIButton = $("PanelUI-button");
+        const panelMenuBtn = $("PanelUI-menu-button");
+        const unifiedExtBtn = $("unified-extensions-button");
+        if (panelUIButton && panelMenuBtn) {
+          panelUIButton.appendChild(panelMenuBtn);
+        }
+        if (panelUIButton && unifiedExtBtn) {
+          panelUIButton.appendChild(unifiedExtBtn);
+        }
+      }
+
+      function isInUI(id) {
+        for (let target of doc.querySelectorAll(".customization-target")) {
+          if (isChild(target, id)) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      function isChild(parent, id) {
+        if (!parent) return false;
+        return !!parent.querySelector(`#${id}`);
+      }
+
       initButtons();
       window.gNavToolbox.addEventListener(
         "customizationstarting",
@@ -36,47 +94,6 @@
       );
       window.gNavToolbox.addEventListener("aftercustomization", initButtons);
     });
-  }
-
-  const doc = window.document;
-  function $(id) {
-    return doc.getElementById(id);
-  }
-
-  function initButtons() {
-    if (isInUI("movable-extensions-button")) {
-      if (
-        !isChild($("movable-extensions-button"), "unified-extensions-button")
-      ) {
-        $("movable-extensions-button").appendChild(
-          $("unified-extensions-button"),
-        );
-      }
-    } else $("PanelUI-button").appendChild($("unified-extensions-button"));
-
-    if (isInUI("movable-menu-button")) {
-      if (!isChild($("movable-menu-button"), "PanelUI-menu-button")) {
-        $("movable-menu-button").appendChild($("PanelUI-menu-button"));
-      }
-    } else $("PanelUI-button").appendChild($("PanelUI-menu-button"));
-  }
-
-  function prepareCustomize() {
-    $("PanelUI-button").appendChild($("PanelUI-menu-button"));
-    $("PanelUI-button").appendChild($("unified-extensions-button"));
-  }
-
-  function isInUI(id) {
-    for (let target of doc.querySelectorAll(".customization-target")) {
-      if (isChild(target, id)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  function isChild(parent, id) {
-    return !!parent.querySelector(`#${id}`);
   }
 
   // run

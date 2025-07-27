@@ -1,4 +1,3 @@
-
 /*
   Custom styles for the Firefox Downloads panel, the Downloads view in the Library (places.xhtml),
   and the about:downloads page for a consistent look and feel.
@@ -10,8 +9,7 @@
 */
 @-moz-document url("chrome://browser/content/browser.xhtml"),
                  url-prefix("chrome://browser/content/places/places.xhtml"),
-                 url-prefix("about:downloads")
-{
+                 url-prefix("about:downloads") {
   /* Main view adjustments */
   #downloadsPanel-mainView,
   #downloadsPanel-blockedSubview {
@@ -51,7 +49,7 @@
   #downloadsFooterButtons > toolbarseparator {
     appearance: none !important;
     min-height: 0 !important;
-    border-top: 1px solid var(--uc-theme-border-color) !important; /* Use theme variable */
+    border-top: 1px solid var(--in-content-border-color) !important; /* Use theme variable */
     border-bottom: none !important;
     margin: 0 3px !important;
     padding: 0 !important;
@@ -63,7 +61,9 @@
 
   /* Hide separator under specific conditions */
   #downloadsFooter[showingsummary] > toolbarseparator,
-  #downloadsFooter:not([showingsummary]) #downloadsFooterButtons[uc-hbox] > toolbarseparator {
+  #downloadsFooter:not([showingsummary])
+    #downloadsFooterButtons[uc-hbox]
+    > toolbarseparator {
     display: none !important;
   }
 
@@ -71,7 +71,7 @@
     flex-grow: 1;
     margin: 0 !important;
     padding: 6px 8px !important;
-    border-radius: var(--uc-theme-border-radius) !important; /* Standardized variable */
+    border-radius: 3px !important; /* Standardized variable */
     -moz-context-properties: fill, fill-opacity;
     fill: currentColor;
   }
@@ -100,7 +100,7 @@
     border: 0 !important;
     outline: 0 !important;
     background: none !important;
-    border-radius:3px !important; /* Standardized variable */
+    border-radius: 3px !important; /* Standardized variable */
   }
 
   richlistitem.download-state > toolbarseparator {
@@ -134,7 +134,7 @@
     width: 32px !important;
     height: 32px !important;
     padding: 0 !important;
-    border-radius:3px !important;
+    border-radius: 3px !important;
   }
 
   richlistitem.download-state > .downloadButton .button-box .button-icon {
@@ -142,7 +142,10 @@
     height: auto !important;
   }
 
-  richlistitem.download-state > .downloadButton:is(.downloadIconCancel, .downloadIconSubviewArrow) .button-box .button-icon {
+  richlistitem.download-state
+    > .downloadButton:is(.downloadIconCancel, .downloadIconSubviewArrow)
+    .button-box
+    .button-icon {
     width: 21px !important;
   }
 
@@ -222,11 +225,25 @@
 @-moz-document url("chrome://browser/content/browser.xhtml")
 {
   /* Reduce padding and gaps for a more compact view in the panel */
-  richlistitem.download-state:is([state="-1"], [state="0"], [state="4"], [state="5"], [state="7"]) .downloadMainArea {
+  richlistitem.download-state:is(
+      [state="-1"],
+      [state="0"],
+      [state="4"],
+      [state="5"],
+      [state="7"]
+    )
+    .downloadMainArea {
     padding-block: 0 !important;
   }
 
-  richlistitem.download-state:is([state="-1"], [state="0"], [state="4"], [state="5"], [state="7"]) .downloadContainer {
+  richlistitem.download-state:is(
+      [state="-1"],
+      [state="0"],
+      [state="4"],
+      [state="5"],
+      [state="7"]
+    )
+    .downloadContainer {
     row-gap: 3px !important;
   }
 
@@ -240,8 +257,7 @@
   Block 3: Styles specific to the Library and about:downloads page
 */
 @-moz-document url-prefix("chrome://browser/content/places/places.xhtml"),
-                 url-prefix("about:downloads")
-{
+                 url-prefix("about:downloads") {
   #downloadsListBox {
     background: transparent !important;
     border: none !important;

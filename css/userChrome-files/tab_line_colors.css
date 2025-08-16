@@ -1,3 +1,12 @@
-.tab-line[selected=true] {
-  background-color: var(--in-content-border-focus)!important
+.tab-line[selected="true"] {
+  background-color: var(--in-content-border-focus) !important;
 }
+
+/* Original: https://github.com/soulhotel/Perfection-Firefox-CSS-Theme/blob/main/CSS/browser-rounded.css */
+
+/* Rounds the borders around the browser website content */
+#tabbrowser-tabpanels,
+#tabbrowser-tabpanels browser {
+  border-radius: none !important;
+}
+

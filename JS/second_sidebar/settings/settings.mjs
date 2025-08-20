@@ -7,11 +7,16 @@ export class Settings {
    * @returns {Object | Array<Object> | null}
    */
   static load(pref) {
-    const value = PreferencesWrapper.prefHasUserValue(pref)
-      ? JSON.parse(PreferencesWrapper.getStringPref(pref))
-      : null;
-    console.log(`Loaded pref "${pref}":`, value);
-    return value;
+    try {
+      const value = PreferencesWrapper.prefHasUserValue(pref)
+        ? JSON.parse(PreferencesWrapper.getStringPref(pref))
+        : null;
+      console.log(`Loaded pref "${pref}":`, value);
+      return value;
+    } catch (error) {
+      console.error(`Failed to load pref "${pref}":`, error);
+      return null;
+    }
   }
 
   /**
@@ -20,7 +25,12 @@ export class Settings {
    * @param {Object | Array<Object>} value
    */
   static save(pref, value) {
-    console.log(`Saving pref "${pref}":`, value);
-    PreferencesWrapper.setStringPref(pref, JSON.stringify(value));
+    try {
+      console.log(`Saving pref "${pref}":`, value);
+      PreferencesWrapper.setStringPref(pref, JSON.stringify(value));
+      console.log(`Successfully saved pref "${pref}"`);
+    } catch (error) {
+      console.error(`Failed to save pref "${pref}":`, error);
+    }
   }
 }

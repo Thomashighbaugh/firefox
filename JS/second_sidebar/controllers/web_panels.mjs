@@ -300,25 +300,32 @@ export class WebPanelsController {
     try {
       NetUtilWrapper.newURI(url);
     } catch (error) {
-      console.log("Invalid url:", error);
-      return;
+      console.error("Invalid url:", error);
+      return null;
     }
-    const faviconURL = await fetchIconURL(url);
+    
+    try {
+      const faviconURL = await fetchIconURL(url);
 
-    const webPanelSettings = new WebPanelSettings(uuid, url, faviconURL, {
-      userContextId,
-    });
-    const webPanelController = new WebPanelController(webPanelSettings, {
-      loaded: isActiveWindow,
-      position: newWebPanelPosition,
-    });
-    this.add(webPanelController);
+      const webPanelSettings = new WebPanelSettings(uuid, url, faviconURL, {
+        userContextId,
+      });
+      const webPanelController = new WebPanelController(webPanelSettings, {
+        loaded: isActiveWindow,
+        position: newWebPanelPosition,
+      });
+      this.add(webPanelController);
 
-    if (isActiveWindow) {
-      this.saveSettings();
+      if (isActiveWindow) {
+        this.saveSettings();
+      }
+
+      console.log(`Successfully created web panel: ${url}`);
+      return webPanelController;
+    } catch (error) {
+      console.error("Failed to create web panel controller:", error);
+      return null;
     }
-
-    return webPanelController;
   }
 
   /**
@@ -375,19 +382,31 @@ export class WebPanelsController {
     this.webPanelsBrowser.init();
 
     this.webPanelsBrowser.waitInitialization(() => {
-      // Relink docShell.treeOwner to the current window to fix status panel
-      new WindowWrapper().relinkTreeOwner();
-      // Setup web panels window listeners
-      this.#setupWebPanelsBrowserListeners();
-      // Load startup web panels
-      for (const webPanelSettings of webPanelsSettings.webPanels) {
-        const webPanelController = new WebPanelController(webPanelSettings, {
-          loaded: webPanelSettings.loadOnStartup,
-        });
-        this.add(webPanelController);
+      try {
+        // Relink docShell.treeOwner to the current window to fix status panel
+        new WindowWrapper().relinkTreeOwner();
+        // Setup web panels window listeners
+        this.#setupWebPanelsBrowserListeners();
+        // Load startup web panels
+        console.log(`Loading ${webPanelsSettings.webPanels.length} web panels`);
+        for (const webPanelSettings of webPanelsSettings.webPanels) {
+          try {
+            const webPanelController = new WebPanelController(webPanelSettings, {
+              loaded: webPanelSettings.loadOnStartup,
+            });
+            this.add(webPanelController);
+            console.log(`Loaded web panel: ${webPanelSettings.url}`);
+          } catch (error) {
+            console.error(`Failed to load web panel ${webPanelSettings.url}:`, error);
+          }
+        }
+        // Hide web panels window after initialization
+        this.sidebarBox.hide();
+        console.log("Web panels initialization completed");
+      } catch (error) {
+        console.error("Failed to initialize web panels:", error);
+        this.sidebarBox.hide();
       }
-      // Hide web panels window after initialization
-      this.sidebarBox.hide();
     });
   }
 
@@ -396,14 +415,25 @@ export class WebPanelsController {
    * @returns {WebPanelsSettings}
    */
   dumpSettings() {
-    return new WebPanelsSettings(
-      Array.from(this.webPanelControllers.values(), (webPanelController) =>
+    try {
+      const webPanelSettings = Array.from(this.webPanelControllers.values(), (webPanelController) =>
         webPanelController.dumpSettings(),
-      ),
-    );
+      );
+      console.log(`Dumping ${webPanelSettings.length} web panel settings`);
+      return new WebPanelsSettings(webPanelSettings);
+    } catch (error) {
+      console.error("Failed to dump web panel settings:", error);
+      return new WebPanelsSettings([]);
+    }
   }
 
   saveSettings() {
-    this.dumpSettings().save();
+    try {
+      console.log("Saving web panel settings...");
+      this.dumpSettings().save();
+      console.log("Web panel settings saved successfully");
+    } catch (error) {
+      console.error("Failed to save web panel settings:", error);
+    }
   }
 }

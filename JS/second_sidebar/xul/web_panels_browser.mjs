@@ -46,13 +46,9 @@ export class WebPanelsBrowser extends Browser {
       return;
     }
     console.log("Initializing web panels browser...");
-    try {
-      ObserversWrapper.addObserver(this, BEFORE_SHOW_EVENT);
-      ObserversWrapper.addObserver(this, INITIALIZED_EVENT);
-      this.setAttribute("src", AppConstantsWrapper.BROWSER_CHROME_URL);
-    } catch (error) {
-      console.error("Failed to initialize web panels browser:", error);
-    }
+    ObserversWrapper.addObserver(this, BEFORE_SHOW_EVENT);
+    ObserversWrapper.addObserver(this, INITIALIZED_EVENT);
+    this.setAttribute("src", AppConstantsWrapper.BROWSER_CHROME_URL);
   }
 
   /**
@@ -61,22 +57,18 @@ export class WebPanelsBrowser extends Browser {
    * @param {string} topic
    */
   observe(subj, topic) {
-    try {
-      if (this.window.name !== subj.name) {
-        return;
-      }
-      console.log(`${this.window.name}: got event ${topic}`);
-      if (topic === BEFORE_SHOW_EVENT) {
-        ObserversWrapper.removeObserver(this, BEFORE_SHOW_EVENT);
-        this.initWindow();
-      } else if (topic === INITIALIZED_EVENT) {
-        ObserversWrapper.removeObserver(this, INITIALIZED_EVENT);
-        SessionStoreWrapper.maybeDontRestoreTabs(this.window);
-        this.initialized = true;
-        console.log(`${this.window.name}: web panels browser initialized`);
-      }
-    } catch (error) {
-      console.error(`Error in web panels browser observer for ${topic}:`, error);
+    if (this.window.name !== subj.name) {
+      return;
+    }
+    console.log(`${this.window.name}: got event ${topic}`);
+    if (topic === BEFORE_SHOW_EVENT) {
+      ObserversWrapper.removeObserver(this, BEFORE_SHOW_EVENT);
+      this.initWindow();
+    } else if (topic === INITIALIZED_EVENT) {
+      ObserversWrapper.removeObserver(this, INITIALIZED_EVENT);
+      SessionStoreWrapper.maybeDontRestoreTabs(this.window);
+      this.initialized = true;
+      console.log(`${this.window.name}: web panels browser initialized`);
     }
   }
 
@@ -158,17 +150,7 @@ export class WebPanelsBrowser extends Browser {
    * @returns {WindowWrapper}
    */
   get window() {
-    try {
-      const window = WindowWatcherWrapper.getWindowByName(this.id);
-      if (!window) {
-        console.error(`Web panels browser window not found: ${this.id}`);
-        return null;
-      }
-      return window;
-    } catch (error) {
-      console.error("Failed to get web panels browser window:", error);
-      return null;
-    }
+    return WindowWatcherWrapper.getWindowByName(this.id);
   }
 
   /**
@@ -178,40 +160,26 @@ export class WebPanelsBrowser extends Browser {
    * @returns {WebPanelTab}
    */
   addWebPanelTab(webPanelSettings, progressListener) {
-    try {
-      if (!this.window) {
-        console.error("Cannot add web panel tab: window not available");
-        return null;
-      }
-      
-      const tab = WebPanelTab.fromTab(
-        this.window.gBrowser.addTab(webPanelSettings.url, {
-          triggeringPrincipal: ScriptSecurityManagerWrapper.getSystemPrincipal(),
-          userContextId: webPanelSettings.userContextId,
-        }),
-      );
-      tab.uuid = webPanelSettings.uuid;
+    const tab = WebPanelTab.fromTab(
+      this.window.gBrowser.addTab(webPanelSettings.url, {
+        triggeringPrincipal: ScriptSecurityManagerWrapper.getSystemPrincipal(),
+        userContextId: webPanelSettings.userContextId,
+      }),
+    );
+    tab.uuid = webPanelSettings.uuid;
+    tab.linkedBrowser.addProgressListener(progressListener);
+
+    // We need to add progress listener when loading unloaded tab
+    tab.addEventListener("TabBrowserInserted", () => {
       tab.linkedBrowser.addProgressListener(progressListener);
+    });
 
-      // We need to add progress listener when loading unloaded tab
-      tab.addEventListener("TabBrowserInserted", () => {
-        tab.linkedBrowser.addProgressListener(progressListener);
-      });
-
-      // Set user agent and reload
-      if (webPanelSettings.mobile) {
-        tab.linkedBrowser.setMobileUserAgent();
-      } else {
-        tab.linkedBrowser.unsetMobileUserAgent();
-      }
-
-      console.log(`Added web panel tab: ${webPanelSettings.url}`);
-      return tab;
-    } catch (error) {
-      console.error("Failed to add web panel tab:", error);
-      return null;
+    // Set user agent and reload
+    if (webPanelSettings.mobile) {
+      tab.linkedBrowser.setMobileUserAgent();
+    } else {
+      tab.linkedBrowser.unsetMobileUserAgent();
     }
-  }
     tab.linkedBrowser.go(webPanelSettings.url);
 
     // Set zoom

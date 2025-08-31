@@ -22,6 +22,8 @@ Testing: Manually restart Firefox to test changes.
 - Console.log for debugging (no formal logging framework)
 - JSDoc comments for public methods
 - Static methods for utilities and entry points
+- UserScript headers for main entry points (`.uc.mjs` files)
+- Namespace declarations: `@namespace` for XUL, HTML, XHTML
 
 ### CSS Files
 - Use CSS custom properties for theming (`var(--property-name)`)
@@ -30,3 +32,4 @@ Testing: Manually restart Firefox to test changes.
 - Organize imports: common-files → userChrome-files → userContent-files
 - Use descriptive file names matching component functionality
 - CSS selectors often target Firefox's internal XUL elements
+- Namespace declarations at top of main files

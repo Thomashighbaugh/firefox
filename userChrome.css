@@ -1,6 +1,6 @@
-@namespace html url("http://www.w3.org/1999/html");
-@namespace xhtml url("http://www.w3.org/1999/xhtml");
-@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+/* @namespace html url("http://www.w3.org/1999/html"); */
+/* @namespace xhtml url("http://www.w3.org/1999/xhtml"); */
+/* @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); */
 
 @import "css/common-files/color_variables.css";
 @import "css/common-files/trees.css";

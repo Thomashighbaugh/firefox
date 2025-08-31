@@ -1,6 +1,5 @@
-@namespace html url("http://www.w3.org/1999/xhtml");
-@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
-
+/* @namespace html url("http://www.w3.org/1999/xhtml"); */
+/* @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); */
 
 /* Required for all users */
 @import "css/common-files/color_variables.css";
@@ -23,7 +22,7 @@
 @import "css/userContent-files/scrollbar.css";
 @import "css/userContent-files/about_config.css";
 @import "css/userContent-files/websites/reddit.css";
-@import "css/userContent-files/websites/bing.css";    
+@import "css/userContent-files/websites/bing.css";
 @import "css/userContent-files/websites/youtube.css";
 
 /* Import Relevant webextension tweaks here
@@ -33,9 +32,3 @@
 @import "css/userContent-files/webextension-tweaks/request_control.css";
 @import "css/userContent-files/webextension-tweaks/ublock_origin.css";
 @import "css/userContent-files/webextension-tweaks/umatrix.css";
-
-
-
-
-
-

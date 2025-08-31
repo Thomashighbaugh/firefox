@@ -127,12 +127,12 @@ regexp(".*\\.(p|P)(d|D)(f|F).*") {
     --in-content-page-background: var(--grey-80) !important;
     --in-content-text-color: var(--tone-2) !important;
     --in-content-selected-text: var(--tone-1) !important;
-    --in-content-selected-text-background: var(--gray-40) !important;
-    --in-content-box-background: var(--tone-6) !important;
+    --in-content-selected-text-background: var(--gray-70) !important;
+    --in-content-box-background: var(--tone-8) !important;
     --in-content-box-background-odd: var(--tone-7) !important;
-    --in-content-box-background-hover: var(--grey-50) !important;
-    --in-content-box-background-active: var(--grey-50) !important;
-    --in-content-box-border-color: var(--tone-5) !important;
+    --in-content-box-background-hover: var(--grey-70) !important;
+    --in-content-box-background-active: var(--grey-90) !important;
+    --in-content-box-border-color: var(--tone-7) !important;
     --in-content-item-hover: rgba(0, 149, 221, 0.25);
     --in-content-item-selected: var(--tone-8) !important;
     --in-content-border-highlight: var(--accent-1) !important;

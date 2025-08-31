@@ -168,14 +168,14 @@ toolobar .toolbarbutton-1 > .toolbarbutton-icon,
 toolbar .toolbarbutton-1 > .toolbarbutton-badge-stack > .toolbarbutton-icon,
 .menuitem-iconic is(.menu-iconic-icon,.menu-icon),
 .urlbar-icon {
-  transform: scale(0.8) !important;
+  transform: scale(1.0) !important;
 }
 toolbarbutton#scrollbutton-down > .toolbarbutton-icon {
-  transform: scale(-0.8) !important;
+  transform: scale(-1.0) !important;
 }
 
 toolbar .toolbarbutton-1 > .toolbarbutton-icon {
-  padding: calc(var(--toolbarbutton-inner-padding) + 2px) !important;
+  padding: var(--toolbarbutton-inner-padding) !important;
 }
 .urlbar-input-container [role="button"]:not([disabled]):hover image,
 .tab-close-button:hover,

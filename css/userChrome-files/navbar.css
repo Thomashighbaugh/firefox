@@ -1,7 +1,7 @@
 @-moz-document url-prefix(chrome://)
 {
   #nav-bar {
-    padding: 5px !important;
+    padding: 0 6px !important;
   }
   
   .browser-toolbar.titlebar-color:-moz-lwtheme-brighttext,

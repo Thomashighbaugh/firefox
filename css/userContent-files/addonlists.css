@@ -10,6 +10,18 @@ See the above repository for updates as well as full license text. */
   :root {
     overflow-x: hidden;
   } /* Remove this if it causes horizontal scrolling problems */
+  
+  /* Grid background styling */
+  #main,
+  addon-list {
+    background: var(--tone-9) !important;
+  }
+  
+  /* Individual addon tile styling */
+  addon-card {
+    background: var(--tone-8) !important;
+    border: 1px solid var(--tone-7) !important;
+  }
   addon-card .addon-name-link {
     font-size: 0.9em;
   }
@@ -108,6 +120,18 @@ See the above repository for updates as well as full license text. */
   addon-card:not([expanded]) .addon-badge-recommended,
   addon-card:not([expanded]) .addon-description,
   addon-card:not([expanded]) .addon-card-message button[action] {
+    display: none !important;
+  }
+  
+  /* Hide recommended extensions sections */
+  #page-options .button-link[data-telemetry-name="manage"] ~ .button-link,
+  section[section-name="discopane"],
+  #discopane,
+  .discopane-notice,
+  [data-l10n-id*="recommendation"],
+  [data-l10n-id="addons-heading-search-input"],
+  .discovery-notice,
+  .recommended-extensions {
     display: none !important;
   }
 

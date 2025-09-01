@@ -97,7 +97,9 @@ screen and (-moz-os-version:windows-win10) {
   menupopup#tabContextMenu menupopup,
   menupopup#toolbar-context-menu,
   toolbaritem#menubar-items menupopup {
-    border: none!important;
+    border-color: var(--in-content-box-background)!important;
+    border-width: 1px!important;
+    border-style: solid!important
   }
   #bookmarksMenuPopup,
   #personal-bookmarks menupopup .bookmark-item,

@@ -1,0 +1,118 @@
+/*! Alters the webextension Violentmonkey
+  IMPORTANT: change the Internal UUID */
+@-moz-document url-prefix("moz-extension://{aecec67f-0d10-4fa7-b7c7-609a2db280cf}/") {
+  .edit-settings,
+  .tab,
+  section > h3 {
+    background: var(--in-content-page-background)!important;
+    border-color: var(--in-content-box-background)!important
+  }
+  .tab-installed > header {
+    background: var(--in-content-category-header-background)!important;
+    border-color: var(--in-content-box-background)!important
+  }
+  .aside-content {
+    background: var(--in-content-category-header-background)!important
+  }
+  .aside-menu > a.active,
+  .aside-menu > a:hover,
+  h1,
+  h2 {
+    color: var(--in-content-link-color)!important
+  }
+  body {
+    background: var(--in-content-page-background)!important;
+    color: var(--in-content-page-color)!important
+  }
+  .script {
+    background: var(--in-content-box-background)!important;
+    border-color: var(--in-content-box-border-color)!important
+  }
+  svg {
+    fill: var(--in-content-page-color)!important
+  }
+  .menu-item:hover svg {
+    fill: var(--in-content-selected-text)!important
+  }
+  .menu {
+    border-color: var(--in-content-box-border-color)!important
+  }
+  input[type=text],
+  textarea {
+    -moz-appearance: none!important;
+    background: var(--in-content-box-background)!important;
+    color: var(--in-content-page-color)!important;
+    border: 1px solid!important;
+    padding: 2px!important;
+    border-color: var(--in-content-box-border-color)!important
+  }
+  input[type=text] {
+    border-radius: 3px!important
+  }
+  .export-list > .ellipsis.active {
+    border-color: var(--in-content-primary-button-background)!important;
+    background: var(--in-content-primary-button-background)!important
+  }
+  .export-list > .ellipsis.active:hover {
+    border-color: var(--in-content-primary-button-background-hover)!important;
+    background: var(--in-content-primary-button-background-hover)!important
+  }
+  button {
+    -moz-appearance: none!important;
+    background: var(--in-content-page-background)!important;
+    border: 1px solid!important;
+    border-color: var(--in-content-box-border-color)!important;
+    color: var(--in-content-text-color)!important;
+    margin-top: 5px!important;
+    margin-right: 5px!important;
+    border-radius: 3px!important
+  }
+  button:not([disabled]):hover {
+    background-color: var(--in-content-box-background-hover)!important
+  }
+  button[disabled] {
+    opacity: .5!important
+  }
+  .btn-ghost:hover {
+    border-color: var(--in-content-box-background)!important;
+    background: var(--in-content-page-background)!important
+  }
+  .edit-nav > div.active {
+    background: var(--in-content-page-background)!important;
+    color: var(--in-content-page-color)!important
+  }
+  .flex.edit-header > .buttons > button:nth-child(2):not([disabled=disabled]):after {
+    content: '?'!important
+  }
+  .flex.edit-header > .buttons > button:nth-child(2)[disabled=disabled]:after {
+    content: 'd'!important
+  }
+  .menu-item:hover,
+  .submenu-button {
+    background: var(--theme-selection-background-hover)!important;
+    color: var(--in-content-selected-text)!important
+  }
+  .flex.edit-header,
+  .message.modal-content {
+    background: var(--in-content-category-header-background)!important
+  }
+  .menu.expand,
+  .page-popup,
+  .submenu,
+  html {
+    background: var(--in-content-box-background)!important
+  }
+  .vl-dropdown-menu {
+    border: 1px solid!important;
+    background: var(--in-content-page-background)!important
+  }
+  .dropdown-menu-item:hover {
+    background: var(--grey-80)!important
+  }
+  .dropdown-menu-item {
+    color: var(--in-content-page-color)!important
+  }
+  .frame-block {
+    background: var(--in-content-box-background)!important
+  }
+}

@@ -1,13 +1,6 @@
-/* 
-  Styles for raw GitHubusercontent pages.
-  Applies custom background and text color using CSS variables for consistency with in-content theme.
-  Targets only pages served from raw.githubusercontent.com.
-*/
-@-moz-document url-prefix(https://raw.githubusercontent.com)
-{
+@-moz-document url-prefix(https://raw.githubusercontent.com) {
   html {
-    background: var(--in-content-page-background) !important;
-    color: var(--in-content-page-color) !important;
+    background: var(--in-content-page-background)!important;
+    color: var(--in-content-page-color)!important
   }
 }
-

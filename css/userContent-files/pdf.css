@@ -1,27 +1,4 @@
-/* 
- * Custom PDF viewer styling for Mozilla Firefox.
- * Applies to any URL ending with .pdf (case-insensitive).
- * Uses Firefox's @-moz-document regexp selector for targeted theming.
- *
- * Theme variables:
- *   --in-content-box-background
- *   --in-content-category-header-background
- *   --in-content-page-color
- *   --in-content-box-border-color
- *   --theme-selection-background-hover
- *   --in-content-page-background
- *   --in-content-selected-text
- *
- * Main sections:
- *   - General background and color overrides
- *   - Toolbar and sidebar styling
- *   - Button and separator appearance
- *   - Focus, hover, and toggled states
- *   - PDF page border and viewer adjustments
- */
-
 @-moz-document regexp(".*\\.(p|P)(d|D)(f|F).*") {
-  /* Set background for main viewer elements */
   #loadingBar .progress,
   .dropdownToolbarButton > select,
   .dropdownToolbarButton > select > option,
@@ -30,131 +7,96 @@
   .toolbarField,
   body,
   div#viewer {
-    background-color: var(--in-content-box-background) !important;
+    background-color: var(--in-content-box-background)!important
   }
-
-  /* Remove default background image from body */
   body {
-    background-image: none !important;
+    background-image: none!important
   }
-
-  /* Remove shadows and set separator backgrounds */
   .splitToolbarButtonSeparator,
   .verticalToolbarSeparator {
-    box-shadow: none !important;
-    background-color: var(--in-content-box-background) !important;
+    box-shadow: none!important;
+    background-color: var(--in-content-box-background)!important
   }
-
-  /* Toolbar viewer header background */
   div#toolbarViewer {
-    background-color: var(--in-content-category-header-background) !important;
+    background-color: var(--in-content-category-header-background)!important
   }
-
-  /* Page number and scale select color */
   #numPages,
   #pageNumber,
   #scaleSelect {
-    color: var(--in-content-page-color) !important;
+    color: var(--in-content-page-color)!important
   }
-
-  /* Remove border image from PDF pages */
   .pdfViewer .page {
-    border-image: none !important;
+    border-image: none!important
   }
-
-  /* Border for page number and scale select container */
   #pageNumber,
   #scaleSelectContainer {
-    border: 1px solid !important;
-    border-color: var(--in-content-box-border-color) !important;
+    border: 1px solid!important;
+    border-color: var(--in-content-box-border-color)!important
   }
-
-  /* Loading bar styling */
   #loadingBar {
     position: relative;
     width: 100%;
     height: 4px;
-    background-color: var(--theme-selection-background-hover) !important;
-    border-bottom: 1px solid !important;
+    background-color: var(--theme-selection-background-hover)!important;
+    border-bottom: 1px solid!important
   }
-
-  /* Sidebar background */
   #sidebarContainer,
   #sidebarContent {
-    background-color: var(--in-content-page-background) !important;
+    background-color: var(--in-content-page-background)!important
   }
-
-  /* Sidebar toolbar styling */
   #toolbarSidebar {
-    background-color: var(--in-content-category-header-background) !important;
-    background-image: none !important;
-    border-color: var(--in-content-box-background) !important;
+    background-color: var(--in-content-category-header-background)!important;
+    background-image: none!important;
+    border-color: var(--in-content-box-background)!important
   }
-
-  /* Door hanger popups */
   .doorHanger,
   .doorHangerRight {
-    border: 1px solid !important;
-    border-color: var(--in-content-box-background) !important;
-    box-shadow: none !important;
+    border: 1px solid!important;
+    border-color: var(--in-content-box-background)!important;
+    box-shadow: none!important
   }
-
-  /* Toolbar, findbar, and secondary toolbar backgrounds */
   #toolbarContainer,
   .findbar,
   .secondaryToolbar {
-    background-color: var(--in-content-box-background) !important;
-    background-image: none !important;
+    background-color: var(--in-content-box-background)!important;
+    background-image: none!important
   }
-
-  /* Button styling */
   .dropdownToolbarButton,
   .overlayButton,
   .secondaryToolbarButton,
   .toolbarButton {
-    border: none !important;
-    color: var(--in-content-page-color) !important;
+    border: none!important;
+    color: var(--in-content-page-color)!important
   }
-
-  /* Button focus and hover states */
   .dropdownToolbarButton,
   .overlayButton,
   .toolbarButton:focus,
   .toolbarButton:hover {
-    background-color: var(--in-content-box-background) !important;
-    background-image: none !important;
-    border: none !important;
-    box-shadow: none !important;
+    background-color: var(--in-content-box-background)!important;
+    background-image: none!important;
+    border: none!important;
+    box-shadow: none!important
   }
-
-  /* Secondary toolbar button focus and hover states */
   .secondaryToolbarButton:focus,
   .secondaryToolbarButton:hover {
-    background-color: var(--in-content-page-background) !important;
-    background-image: none !important;
-    box-shadow: none !important;
+    background-color: var(--in-content-page-background)!important;
+    background-image: none!important;
+    box-shadow: none!important
   }
-
-  /* Icon filter for toolbar buttons */
   .secondaryToolbarButton::before,
   .toolbarButton::before {
-    filter: invert(20%) !important;
+    filter: invert(20%)!important
   }
-
-  /* Toggled button states */
   .secondaryToolbarButton.toggled,
   .splitToolbarButton.toggled > .toolbarButton.toggled,
   .toolbarButton.toggled {
-    background-color: var(--in-content-page-background) !important;
-    background-image: none !important;
-    box-shadow: none !important;
-    color: var(--in-content-selected-text) !important;
+    background-color: var(--in-content-page-background)!important;
+    background-image: none!important;
+    box-shadow: none!important;
+    color: var(--in-content-selected-text)!important
   }
-
-  /* Horizontal toolbar separator */
   .horizontalToolbarSeparator {
-    background-color: var(--in-content-box-border-color) !important;
-    box-shadow: none !important;
+    background-color: var(--in-content-box-border-color)!important;
+    box-shadow: none!important
   }
 }
-

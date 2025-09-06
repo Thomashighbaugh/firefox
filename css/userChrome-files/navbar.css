@@ -11,6 +11,13 @@
     padding-left: 5px !important;
     padding-right: 5px !important;
   }
+  
+  /* Match tabs toolbar background color */
+  .chromeclass-toolbar-additional,
+  #addonbar {
+    background-color: var(--tab-background-color) !important;
+  }
+  
   @media screen and (-moz-os-version: windows-win7) {
     window {
       background-color: var(--tone-9) !important;

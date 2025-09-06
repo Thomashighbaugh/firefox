@@ -109,17 +109,17 @@ var AddAddonbar = {
 		  }
 		  #addonbar {
             border-radius: 6px 6px 0 0;
-			// background-color: var(--tab-background-color) !important;
+			background-color: var(--theme-sidebar-background) !important;
 			background-image: none !important;
 			-moz-window-dragging: no-drag !important;
 		  }
 		  :root[lwtheme] #addonbar {
-   			// background-color: var(--tab-background-color) !important;
+   			background-color: var(--theme-sidebar-background) !important;
         	background-image: none !important;
 		  }
 		  :root[lwtheme][lwtheme-image='true'] #addonbar {
 			background-image: none !important;
-            // background-color: var(--tab-background-color) !important;
+            background-color: var(--theme-sidebar-background) !important;
 			background-position: 0vw 50vh !important;
 		  }
 		  /* autohide add-on bar in fullscreen mode */
@@ -128,15 +128,19 @@ var AddAddonbar = {
 			display: block !important;
 			height: 1px !important;
 			max-height: 1px !important;
-            // background-color: var(--tab-background-color) !important;
+            background-color: var(--theme-sidebar-background) !important;
         	background-image: none !important;
           }
 		  #main-window[sizemode='fullscreen']:not([inDOMFullscreen='true']) #addonbar:hover {
 			min-height: 26px !important;
 			height: 26px !important;
 			max-height: 26px !important;
-            // background-color: var(--tab-background-color) !important;
+            background-color: var(--theme-sidebar-background) !important;
         	background-image: none !important;
+		  }
+		  #addonbar toolbarbutton {
+			background-color: var(--theme-sidebar-background) !important;
+			border: none !important;
 		  }
 		  #unified-extensions-button[hidden]{
 			visibility: visible !important;

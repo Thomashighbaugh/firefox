@@ -140,7 +140,7 @@ regexp(".*\\.(p|P)(d|D)(f|F).*") {
     --secure-connection-color: var(--accent-1);
     --tab-background-color: var(--tone-9)!important;
     --tab-color: var(--in-content-selected-text);
-    --theme-sidebar-background: #1B1B1D!important;
+    --theme-sidebar-background: var(--tab-background-color)!important;
     --card-outline-color: var(--in-content-box-border-color)!important;
     --cm-background: var(--tone-8)!important;
     --cm-selection: #353b48!important;

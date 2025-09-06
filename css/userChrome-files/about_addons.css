@@ -1,0 +1,12 @@
+@-moz-document url-prefix(chrome://)
+{
+  /* Make addon panels use the same background as tabs toolbar */
+  #addons-page,
+  addon-list,
+  addon-card,
+  .addon,
+  .addon-list,
+  panel[type="autocomplete-richlistbox"] {
+    background-color: var(--tab-background-color) !important;
+  }
+}

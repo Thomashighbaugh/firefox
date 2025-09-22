@@ -20,4 +20,9 @@
   #main-window {
     background-color: var(--theme-sidebar-background) !important;
   }
+  #navigator-toolbox,
+  #browser-bottombox,
+  #browser-box {
+    background-color: var(--theme-sidebar-background) !important;
+  }
 }

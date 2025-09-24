@@ -24,8 +24,12 @@ hbox#sidebar-search-container textbox#search-box {
 #sidebar-box,
 #template-container,
 #webext-panels-browser,
-#webextpanels-window {
-  background: #3A3940 !important
+#webextpanels-window,
+#sidebar *,
+#sidebar-box *,
+browser[type="content"][remote="true"] {
+  background: #3A3940 !important;
+  background-color: #3A3940 !important
 }
 .sidebar-placesTree {
   -moz-appearance: none!important;

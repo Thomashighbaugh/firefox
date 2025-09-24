@@ -1,4 +1,14 @@
 export const SIDEBAR_CSS = `
+  #sb2,
+  #sb2 *,
+  #sb2-web-panels,
+  #sb2-web-panels *,
+  .web-panel,
+  .web-panel * {
+    background: #3A3940 !important;
+    background-color: #3A3940 !important;
+  }
+
   #sb2 {
     border-radius: var(--border-radius-medium);
     box-shadow: var(--content-area-shadow);
@@ -7,7 +17,6 @@ export const SIDEBAR_CSS = `
     height: 100%;
     pointer-events: auto;
     min-width: 200px;
-    background-color: #3A3940 !important;
 
       #sb2-toolbar {
         flex-direction: row;

@@ -8,13 +8,13 @@ export const SIDEBAR_CSS = `
     pointer-events: auto;
     min-width: 200px;
 
-    #sb2-toolbar {
-      flex-direction: row;
-      min-height: unset;
-      gap: 4px;
-      background-color: var(--toolbar-bgcolor);
-      color: var(--toolbar-color);
-      padding: 1px;
+      #sb2-toolbar {
+        flex-direction: row;
+        min-height: unset;
+        gap: 4px;
+        background-color: var(--in-content-page-background);
+        color: var(--toolbar-color);
+        padding: 1px;
 
       #sb2-toolbar-title-wrapper {
         display: flex;

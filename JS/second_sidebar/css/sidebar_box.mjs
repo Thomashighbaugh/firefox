@@ -9,7 +9,7 @@ export const SIDEBAR_BOX_CSS = `
   #browser:has(#sb2[pinned="false"]) {
     #sb2-box {
       position: absolute;
-      background-color: transparent;
+      background-color: var(--in-content-page-background);
       padding-block-start: var(--sb2-box-unpinned-top-padding);
       height: calc(100% - var(--sb2-box-unpinned-top-padding) - var(--sb2-box-unpinned-bottom-padding));
       width: 100% !important;

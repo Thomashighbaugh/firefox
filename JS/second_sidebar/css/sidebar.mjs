@@ -7,13 +7,13 @@ export const SIDEBAR_CSS = `
     height: 100%;
     pointer-events: auto;
     min-width: 200px;
-    background-color: var(--in-content-page-background);
+    background-color: #3A3940 !important;
 
       #sb2-toolbar {
         flex-direction: row;
         min-height: unset;
         gap: 4px;
-        background-color: var(--in-content-page-background);
+        background-color: #3A3940 !important;
         color: var(--toolbar-color);
         padding: 1px;
 

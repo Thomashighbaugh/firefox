@@ -1,34 +1,32 @@
 /* @namespace html url("http://www.w3.org/1999/xhtml"); */
 /* @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); */
 
-/* Required for all users */
-@import "css/common-files/color_variables.css";
-@import "css/common-files/trees.css";
-@import "css/common-files/radios_checkboxes.css";
-@import "css/common-files/library.css";
-@import "css/common-files/context_menus.css";
+@import url(./css/content/uc-newtab.css) not
+  (-moz-pref("uc.higgs.skip-loading-uc-newtab.css"));
+@import url(./css/content/uc-aboutconfig.css) not
+  (-moz-pref("uc.higgs.skip-loading-uc-aboutconfig.css"));
+@import url(./css/content/uc-pdf.js.css) not
+  (-moz-pref("uc.higgs.skip-loading-uc-pdf.js.css"));
+@import url(./css/content/uc-common.css) not
+  (-moz-pref("uc.higgs.skip-loading-uc-common.css"));
+@import url(./css/content/uc-custom-content.css);
 
-@import "css/userContent-files/about_pages.css";
-@import "css/userContent-files/amo_store.css";
-@import "css/userContent-files/directory_listings.css";
-@import "css/userContent-files/manifest.css";
-@import "css/userContent-files/pdf.css";
-@import "css/userContent-files/raw_githubusercontent.css";
-@import "css/userContent-files/view_source.css";
-@import "css/userContent-files/rss.css";
-@import "css/userContent-files/addonlists.css";
-@import "css/userContent-files/downloads.css";
-@import "css/userContent-files/private.css";
-@import "css/userContent-files/scrollbar.css";
-@import "css/userContent-files/about_config.css";
-@import "css/userContent-files/websites/reddit.css";
-@import "css/userContent-files/websites/bing.css";
-@import "css/userContent-files/websites/youtube.css";
+@import url(./css/content/websites/reddit.css) not
+  (-moz-pref("uc.higgs.skip-theming-sites.css"));
+@import url(./css/content/websites/bing.css) not
+  (-moz-pref("uc.higgs.skip-theming-sites.css"));
+@import url(css/content/websites/youtube.css) not
+  (-moz-pref("uc.higgs.skip-theming-sites.css"));
 
 /* Import Relevant webextension tweaks here
  * IMPORTANT: If used, change the Internal UUID in the corresponding css file */
-@import "css/userContent-files/webextension-tweaks/generic_style.css";
-@import "css/userContent-files/webextension-tweaks/multi_account_containers.css";
-@import "css/userContent-files/webextension-tweaks/request_control.css";
-@import "css/userContent-files/webextension-tweaks/ublock_origin.css";
-@import "css/userContent-files/webextension-tweaks/umatrix.css";
+@import url(./css/content/webextension-tweaks/generic_style.css) not
+  (-moz-pref("uc.higgs.skip-webextension-tweaks.css"));
+@import url(./css/content/webextension-tweaks/multi_account_containers.css) not
+  (-moz-pref("uc.higgs.skip-webextension-tweaks.css"));
+@import url(css/content/webextension-tweaks/request_control.css) not
+  (-moz-pref("uc.higgs.skip-webextension-tweaks.css"));
+@import url(css/content/webextension-tweaks/ublock_origin.css) not
+  (-moz-pref("uc.higgs.skip-webextension-tweaks.css"));
+@import url(css/content/webextension-tweaks/umatrix.css) not
+  (-moz-pref("uc.higgs.skip-webextension-tweaks.css"));

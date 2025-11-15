@@ -1,0 +1,152 @@
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/blob/master/chrome/autohide_bookmarks_toolbar.css */
+/* 2ea55cb */
+
+@media not (-moz-pref("uc.flex.disable-bookmarks-autohide") or -moz-pref("uc.flex.fully-hide-toolbox")) {
+    :root:not([inFullscreen], [titlepreface*="\200b "], [titlepreface*="\200d "]) {
+        #PersonalToolbar {
+            /* 0deg = "show" ; 90deg = "hide" ;  Set the following to control when bookmarks are shown */
+            --uc-autohide-toolbar-focus-rotation: 0deg; /* urlbar is focused */
+            --uc-autohide-toolbar-hover-rotation: 0deg; /* cursor is over the toolbar area */
+        }
+
+        #PersonalToolbar:not([customizing]) {
+            position: relative;
+            margin-bottom: calc(0px - var(--uc-bm-height) - 2 * var(--uc-bm-padding));
+            transform: rotateX(90deg);
+            transform-origin: top;
+            transition: var(--uc-autohide-personal-toolbar-transition) !important;
+            z-index: 1;
+            /* The following properties should allow the themes with trasparent toolbars to work */
+            background-color: transparent !important;
+            background-repeat: no-repeat, no-repeat, var(--lwt-background-tiling);
+            /* y position will be wrong if menubar is enabled... */
+            --uc-bg-y: calc(
+                -2 *
+                    (
+                        var(--tab-block-margin) + var(--toolbarbutton-inner-padding) +
+                            var(--toolbarbutton-outer-padding)
+                    ) -
+                    var(--tab-min-height) + var(--uc-theme-bg-y-clip) - var(--bookmark-block-padding)
+            );
+            background-position:
+                top left,
+                top left,
+                var(--lwt-background-alignment, top left);
+            background-position-y: top, top, var(--uc-bg-y), var(--uc-bg-y), var(--uc-bg-y);
+            @media not (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org") and -moz-pref("widget.windows.mica")) {
+                @media not -moz-pref("uc.flex.browser-wallpaper-enabled") {
+                    background-image:
+                        var(--toolbar-bgimage, linear-gradient(transparent, transparent)),
+                        linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)),
+                        var(--lwt-header-image, var(--lwt-additional-images)) !important;
+                }
+            }
+
+            /* Adjust the background image offset */
+            @media not -moz-pref("uc.flex.fully-hide-sidebery") {
+                :root:not([titlepreface*="\200c "], [titlepreface*="\200d "]) & {
+                    background-position-x:
+                        left,
+                        left,
+                        right var(--uc-theme-bg-x-right-end),
+                        left var(--uc-theme-bg-x-left-start),
+                        right;
+                }
+            }
+        }
+
+        @media -moz-pref("sidebar.verticalTabs") {
+            &:where([lwtheme-image], [style*="--lwt-additional-images"]) {
+                #PersonalToolbar {
+                    --toolbar-bgcolor: transparent;
+                }
+            }
+
+            #PersonalToolbar:not([customizing]) {
+                background-color: inherit !important;
+                margin-bottom: calc(0px - var(--uc-bm-height) - 2 * var(--uc-bm-padding));
+                --uc-bg-y: calc(
+                    0px - (2 * var(--toolbarbutton-inner-padding) + var(--toolbarbutton-outer-padding)) -
+                        var(--uc-theme-bg-y-clip) - var(--bookmark-block-padding)
+                );
+            }
+        }
+
+        &[uidensity="compact"] #PersonalToolbar {
+            --toolbarbutton-outer-padding: 1px !important;
+        }
+        #PlacesToolbarItems > .bookmark-item,
+        #OtherBookmarks,
+        #PersonalToolbar > #import-button {
+            padding-block: var(--uc-bm-padding) !important;
+        }
+
+        #nav-bar:focus-within + #PersonalToolbar {
+            /*
+            transition-delay: var(--uc-hover-toolbar-delay) !important;
+            */
+            transition: var(--uc-hover-personal-toolbar-transition) !important;
+            transform: rotateX(var(--uc-autohide-toolbar-focus-rotation, 0));
+        }
+        #navigator-toolbox:is(:hover, :focus-within) {
+            border-bottom-color: transparent !important;
+        }
+        #mainPopupSet:has(
+                > [panelopen]:not(
+                        #ask-chat-shortcuts,
+                        #selection-shortcut-action-panel,
+                        #chat-shortcuts-options-panel,
+                        #tab-preview-panel
+                    ),
+                > #tab-group-editor > [panelopen]
+            )
+            ~ #navigator-toolbox
+            > #PersonalToolbar,
+        #navigator-toolbox:hover > #PersonalToolbar {
+            /*
+            transition-delay: var(--uc-hover-toolbar-delay) !important;
+            */
+            transition: var(--uc-hover-personal-toolbar-transition) !important;
+            transform: rotateX(var(--uc-autohide-toolbar-hover-rotation, 0));
+        }
+        @media not -moz-pref("sidebar.verticalTabs") {
+            #mainPopupSet:has(> #tab-group-editor > [panelopen], > #tabgroup-preview-panel[panelopen])
+                ~ #navigator-toolbox
+                > #PersonalToolbar {
+                transform: rotateX(var(--uc-autohide-toolbar-focus-rotation, 0));
+            }
+        }
+
+        #navigator-toolbox:hover > #nav-bar:focus-within + #PersonalToolbar {
+            transform: rotateX(0);
+        }
+
+        /** 
+         * Raise the z-index of #navigator-toolbox on hover
+         * so its child bookmarks toolbar can appear above #tabbrowser-tabbox.
+         * When not hovering, keep the z-index low so the tab box shadow stays on top. 
+         */
+        #navigator-toolbox {
+            --browser-area-z-index-toolbox: var(--uc-navigator-z-index);
+            transition: var(--uc-autohide-navigator-transition) !important;
+        }
+        #navigator-toolbox:hover {
+            --browser-area-z-index-toolbox: 5;
+            transition: var(--uc-hover-navigator-transition) /* calc(var(--uc-hover-toolbar-delay) - 10ms) */ !important;
+        }
+
+        /* Since the tabs toolbar and navigator can lose hover state at the same time, 
+           and the tabs toolbar uses hover transition timing even when not hovered, 
+           the navigator in its non-hover state must also use hover transition timing to keep both animations synchronized. */
+        @media -moz-pref("uc.flex.auto-hide-horizontal-tabs-and-keep-navbar", 3) and (not -moz-pref("sidebar.verticalTabs")) {
+            &:not([taskbartab]) {
+                #PersonalToolbar:not([customizing]) {
+                    transition: var(--uc-hover-personal-toolbar-transition) !important;
+                }
+                #navigator-toolbox {
+                    transition: var(--uc-hover-navigator-transition) !important;
+                }
+            }
+        }
+    }
+}

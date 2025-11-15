@@ -1,6 +1,0 @@
-#statuspanel #statuspanel-label,
-statuspanel .statuspanel-label {
-  color: var(--in-content-page-color) !important;
-  border: none !important;
-}
-

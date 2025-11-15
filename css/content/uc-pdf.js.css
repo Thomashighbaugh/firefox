@@ -1,0 +1,65 @@
+/*
+@-moz-document regexp(".*\\.pdf$")
+*/
+html[mozdisallowselectionprint]:has(head link:nth-of-type(1)[href^="resource://pdf.js"])
+{
+    /* https://github.com/mozilla/pdf.js/issues/2784#issuecomment-366480669 */
+    .toolbar {
+        opacity: 0;
+        transition: opacity 48ms ease-out 200ms;
+    }
+    .toolbar:is(
+        :hover,
+        :has(.toolbarButtonWithContainer > .toggled, #secondaryToolbarToggleButton.toggled)
+    ) {
+        opacity: 1;
+    }
+
+    #viewerContainer {
+        top: 0 !important; /* move doc up into empty bar space */
+    }
+
+    #toolbarContainer {
+        height: 43px !important;
+    }
+
+    #sidebarContainer {
+        inset-block: 0 0 !important;
+        width: calc(var(--sidebar-width) + 8px) !important;
+        #toolbarSidebar {
+            height: 42.5px !important;
+            box-shadow: var(--toolbar-box-shadow) !important;
+        }
+        #sidebarContent {
+            inset-block: 43.5px 0 !important;
+        }
+    }
+
+    #outerContainer.sidebarOpen #mainContainer {
+        margin-inline-start: calc(var(--sidebar-width) + 8px) !important;
+        #viewerContainer {
+            left: 0 !important;
+        }
+    }
+
+    @media -moz-pref("extensions.activeThemeID", "default-theme@mozilla.org") and -moz-pref("widget.windows.mica"),
+        -moz-pref("uc.flex.browser-wallpaper-enabled") {
+        @media -moz-pref("browser.tabs.allow_transparent_browser") {
+            body {
+                background-color: transparent !important;
+            }
+            #toolbarSidebar {
+                background-color: color-mix(in srgb, var(--sidebar-toolbar-bg-color) 65%, transparent) !important;
+            }
+            #sidebarContent {
+                background-color: color-mix(in srgb, var(--body-bg-color) 65%, transparent);
+            }
+            #outerContainer #mainContainer div.toolbar {
+                backdrop-filter: blur(26px) saturate(140%);
+            }
+            #toolbarContainer {
+                background-color: color-mix(in srgb, var(--toolbar-bg-color) 80%, transparent) !important;
+            }
+        }
+    }
+}

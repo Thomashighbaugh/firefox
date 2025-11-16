@@ -1,0 +1,142 @@
+/*=====================================================================
+================= D A R K   T H E M E   C O L O R S ===================
+=====================================================================*/
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --firefoxcss-main-bg-color: hsl(220, 2%, 13%);
+    --firefoxcss-item-bg-color: hsl(220, 2%, 20%);
+    --firefoxcss-item-hover-bg-color: hsl(240, 2%, 25%);
+    --firefoxcss-text-color: hsl(0, 0%, 100%);
+    --firefoxcss-other-color: hsl(290, 21%, 20%);
+
+    /* ----- Private Page Colors ----- */
+    --firefoxcss-private-search-bg-color: hsla(275, 13%, 33%, 0.3);
+    --firefoxcss-private-search-top-border: hsla(275, 13%, 40%, 0.3);
+    --firefoxcss-private-search-fill: hsl(275, 13%, 53%);
+
+    --firefoxcss-private-search-hover: hsla(275, 13%, 43%, 0.3);
+    --firefoxcss-private-search-border-hover: hsla(275, 13%, 50%, 0.3);
+    --firefoxcss-private-search-hover-fill: hsl(275, 13%, 63%);
+
+    --firefoxcss-private-search-text: var(--firefoxcss-private-search-fill);
+    --firefoxcss-private-search-text-hover: var(--firefoxcss-private-search-hover-fill);
+    --firefoxcss-private-search-caret: hsl(290, 21%, 80%);
+
+    --firefoxcss-private-search-box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075), 0 2px 2px hsl(0deg 0% 0% / 0.075),
+      0 4px 4px hsl(0deg 0% 0% / 0.075), 0 6px 6px hsl(0deg 0% 0% / 0.075), 0 12px 12px hsl(0deg 0% 0% / 0.095);
+
+    /* ----- Normal Page Colors ----- */
+    --firefoxcss-search-box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075), 0 2px 2px hsl(0deg 0% 0% / 0.075),
+      0 4px 4px hsl(0deg 0% 0% / 0.075), 0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.095);
+
+    --firefoxcss-search-color: rgb(251, 251, 254, 1);
+    --firefoxcss-search-border-top-color: #ffffff26;
+    --firefoxcss-search-text-fill: #ffffff5e;
+    --firefoxcss-search-bar-text-color: rgba(251, 251, 254, 1);
+    --firefoxcss-search-bar-fill-icon-hover: rgba(251, 251, 254, 0.8);
+
+    --firefoxcss-shortcut-item-box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075), 0 2px 2px hsl(0deg 0% 0% / 0.075),
+      0 4px 4px hsl(0deg 0% 0% / 0.075), 0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+    --firefoxcss-shortcut-item-top-border: #ffffff26;
+    --firefoxcss-shortcut-item-top-border-hover: #97979791;
+
+    --firefoxcss-customize-menu: hsla(210, 10%, 20%, 0.3);
+    --firefoxcss-customize-menu-bg-image: url("ASSETS/other/noise-512x512.png");
+    --firefoxcss-customize-menu-dropdown: #1e1e1e80;
+    --firefoxcss-customize-menu-border: 1px solid rgba(255, 255, 255, 0.1);
+    --newtab-background-color-secondary: var(--firefoxcss-customize-menu) !important;
+    --firefoxcss-customize-menu-secondary-popup: hsla(210, 10%, 10%, 0.6);
+    --firefoxcss-input-focus: white;
+    /*  no changes */
+    --firefoxcss-shortcut-item-active: hsla(0, 0%, 10%, 0.7);
+    --firefoxcss-shortcut-item-context-menu: #13131380;
+    --firefoxcss-shortcut-item-context-menu-border: hsla(0, 0%, 70%, 0.145);
+    --firefoxcss-shortcut-item-context-menu-separator: #ffffff29;
+    --firefoxcss-extra-search-bar-when-scroll: #1e1e1e8c;
+    --firefoxcss-context-menu-three-dots: hsla(240, 2%, 60%, 0.6);
+    --firefoxcss-settings-wheel-color: hsla(240, 20%, 90%, 0.6);
+    --firefoxcss-settings-wheel-color-hover: hsla(240, 20%, 90%, 0.9);
+    --firefoxcss-settings-wheel-bg-color-hover: rgba(255, 255, 255, 0.2);
+    --firefoxcss-shortcut-search-icon-color: #7ae3f463;
+
+    /* ----- Firefox View color changes ----- */
+    --fxview-background-color: var(--firefoxcss-main-bg-color) !important;
+    --fxview-background-color-secondary: var(--firefoxcss-item-bg-color) !important;
+    --firefoxcss-firefoxview-sticky-color: hsla(240, 2%, 13%, 0.75) !important;
+    --firefoxcss-firefoxview-search-color: hsla(240, 2%, 35%, 0.5) !important;
+  }
+}
+
+/*=====================================================================
+================= L I G H T   T H E M E   C O L O R S =================
+=====================================================================*/
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --firefoxcss-main-bg-color: hsl(200, 5%, 90%);
+    --firefoxcss-item-bg-color: hsl(200, 5%, 96%);
+    --firefoxcss-item-hover-bg-color: hsl(200, 0%, 100%);
+    --firefoxcss-text-color: hsl(0, 0%, 0%);
+    --firefoxcss-other-color: hsl(290, 21%, 20%);
+
+    /* ----- Private Page Colors ----- */
+    --firefoxcss-private-search-bg-color: hsla(276, 20%, 88%, 0.55);
+    --firefoxcss-private-search-top-border: hsla(0, 0%, 100%, 0.45);
+    --firefoxcss-private-search-fill: hsl(275, 20%, 65%);
+
+    --firefoxcss-private-search-hover: hsla(276, 20%, 84%, 0.5);
+    --firefoxcss-private-search-border-hover: hsla(0, 0%, 100%, 0.55);
+    --firefoxcss-private-search-hover-fill: hsl(275, 20%, 55%);
+
+    --firefoxcss-private-search-text: var(--firefoxcss-private-search-fill);
+    --firefoxcss-private-search-text-hover: var(--firefoxcss-private-search-hover-fill);
+    --firefoxcss-private-search-caret: hsl(276, 20%, 40%);
+
+    --firefoxcss-private-search-box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.015), 0 2px 2px hsl(0deg 0% 0% / 0.015),
+      0 4px 4px hsl(0deg 0% 0% / 0.015), 0 6px 6px hsl(0deg 0% 0% / 0.015), 0 12px 12px hsl(0deg 0% 0% / 0.035);
+
+    /* ----- Normal Page Colors ----- */
+    --firefoxcss-search-box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.015), 0 2px 2px hsl(0deg 0% 0% / 0.015),
+      0 4px 4px hsl(0deg 0% 0% / 0.015), 0 8px 8px hsl(0deg 0% 0% / 0.015), 0 16px 16px hsl(0deg 0% 0% / 0.035);
+
+    --firefoxcss-search-color: rgb(87, 87, 87, 1);
+    --firefoxcss-search-border-top-color: hsla(0, 0%, 100%, 0.9);
+    --firefoxcss-search-text-fill: rgba(10, 10, 10, 0.25);
+    --firefoxcss-search-bar-text-color: rgba(10, 10, 10, 0.65);
+    --firefoxcss-search-bar-fill-icon-hover: rgba(0, 0, 0, 0.5);
+
+    --firefoxcss-shortcut-item-box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.025), 0 2px 2px hsl(0deg 0% 0% / 0.025),
+      0 4px 4px hsl(0deg 0% 0% / 0.025), 0 8px 8px hsl(0deg 0% 0% / 0.025), 0 16px 16px hsl(0deg 0% 0% / 0.025);
+    --firefoxcss-shortcut-item-top-border: hsla(0, 0%, 100%, 0.9);
+    --firefoxcss-shortcut-item-top-border-hover: hsla(0, 0%, 100%, 0.6);
+
+    --firefoxcss-customize-menu: hsla(200, 10%, 100%, 0.7);
+    --firefoxcss-customize-menu-bg-image: none;
+    --firefoxcss-customize-menu-dropdown: #fdfdfd80;
+    --firefoxcss-customize-menu-border: 1px solid rgba(255, 255, 255, 0.2);
+    --newtab-background-color-secondary: var(--firefoxcss-customize-menu) !important;
+    --firefoxcss-customize-menu-secondary-popup: hsla(200, 10%, 100%, 0.45);
+    --firefoxcss-input-focus: black; /*  no changes */
+    --firefoxcss-shortcut-item-active: hsla(200, 15%, 85%, 0.4);
+    --firefoxcss-shortcut-item-context-menu: hsla(0, 0%, 95%, 0.4);
+    --firefoxcss-shortcut-item-context-menu-border: hsla(0, 0%, 100%, 0.5);
+    --firefoxcss-shortcut-item-context-menu-separator: hsla(0, 0%, 50%, 0.2);
+    --firefoxcss-extra-search-bar-when-scroll: hsla(0, 0%, 10%, 0.3);
+    --firefoxcss-context-menu-three-dots: hsla(200, 10%, 50%, 0.6);
+    --firefoxcss-settings-wheel-color: hsla(200, 20%, 10%, 0.6);
+    --firefoxcss-settings-wheel-color-hover: hsla(200, 20%, 10%, 0.9);
+    --firefoxcss-settings-wheel-bg-color-hover: rgba(0, 0, 0, 0.1);
+    --firefoxcss-shortcut-search-icon-color: #2896a870;
+
+    /* ----- Firefox View color changes ----- */
+    --fxview-background-color: var(--firefoxcss-main-bg-color) !important;
+    --fxview-background-color-secondary: var(--firefoxcss-item-bg-color) !important;
+    --firefoxcss-firefoxview-sticky-color: hsla(200, 10%, 95%, 0.5) !important;
+    --firefoxcss-firefoxview-search-color: hsla(200, 5%, 100%, 0.95) !important;
+  }
+}
+
+body {
+  --newtab-search-icon: url("chrome://global/skin/icons/search-glass.svg") !important;
+}

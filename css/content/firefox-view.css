@@ -1,0 +1,23 @@
+@-moz-document url-prefix(about:firefoxview) {
+  .search-container {
+    border: none !important;
+  }
+
+  .search-container input {
+    background-color: var(--firefoxcss-firefoxview-search-color) !important;
+  }
+
+  div.sticky-container.bottom-fade {
+    background: none !important;
+    background-color: var(--firefoxcss-firefoxview-sticky-color) !important;
+    backdrop-filter: blur(7px) !important;
+    flex-direction: row !important;
+    padding-block: 30px 20px !important;
+  }
+
+  @media (max-width: 52rem) {
+    div.sticky-container.bottom-fade {
+      flex-direction: column !important;
+    }
+  }
+}

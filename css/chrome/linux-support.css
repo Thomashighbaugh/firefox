@@ -1,0 +1,20 @@
+/*=====================================================================
+==================== L I N U X   S U P P O R T ========================
+=======================================================================
+@media (-moz-gtk-csd-available)
+@media (-moz-gtk-csd-reversed-placement) */
+
+@media (-moz-platform: linux) {
+  /*   Smaller tab text and height. Broken on fedora? */
+  #tabbrowser-tabs:not([secondarytext-unsupported]) .tab-label-container {
+    height: 2.4em !important;
+    font-size: 0.85em;
+  }
+
+  @media -moz-pref("sidebar.verticalTabs") {
+    #nav-bar {
+      padding-bottom: 1px !important;
+      border-top: none !important;
+    }
+  }
+}

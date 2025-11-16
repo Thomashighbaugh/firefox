@@ -1,0 +1,581 @@
+@-moz-document url("about:home"),
+url("about:newtab") {
+  /*=====================================================================
+  ================= S P I L L   T H E M E   B G =======================
+  =====================================================================*/
+
+  @media (prefers-color-scheme: dark) {
+    html:not(#ublock0-epicker),
+    html:not(#ublock0-epicker) body,
+    #newtab-customize-overlay {
+      background-image: url("ASSETS/other/spill-main.svg") !important;
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    html:not(#ublock0-epicker),
+    html:not(#ublock0-epicker) body,
+    #newtab-customize-overlay {
+      background-image: url("ASSETS/other/spill-main-light.svg") !important;
+    }
+  }
+
+  .body-wrapper .tile {
+    backdrop-filter: blur(24px) !important;
+  }
+
+  /*=====================================================================
+  ======================= N E W   T A B   S T Y L E ===================
+  =====================================================================*/
+
+  body {
+    --newtab-background-color: var(--firefoxcss-main-bg-color) !important;
+    background-size: cover !important;
+  }
+
+  /*   Edit shortcut menu */
+  .edit-topsites-wrapper .modal {
+    backdrop-filter: blur(16px);
+    filter: saturate(0.8) brightness(1.1);
+  }
+
+  .search-wrapper .search-handoff-button {
+    appearance: none !important;
+    background-color: var(--firefoxcss-item-bg-color) !important;
+    color: var(--firefoxcss-search-color) !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-top: 1px solid var(--firefoxcss-search-border-top-color) !important;
+    border-radius: 10px !important;
+    backdrop-filter: blur(24px) !important;
+    box-shadow: var(--firefoxcss-search-box-shadow) !important;
+    fill: var(--firefoxcss-search-text-fill) !important;
+    transition: background-color 200ms ease, border-color 200ms ease, fill 200ms ease !important;
+    padding-inline-start: 48px !important;
+  }
+
+  .icon.icon-settings.personalize-button {
+    color: var(--firefoxcss-settings-wheel-color) !important;
+  }
+
+  .icon.icon-settings.personalize-button:hover {
+    color: var(--firefoxcss-settings-wheel-color-hover) !important;
+    background-color: var(--firefoxcss-settings-wheel-bg-color-hover) !important;
+    backdrop-filter: blur(10px);
+  }
+
+  .body-wrapper .tile {
+    background-color: var(--firefoxcss-item-bg-color) !important;
+    border-top: 1px solid var(--firefoxcss-shortcut-item-top-border) !important;
+    box-shadow: var(--firefoxcss-shortcut-item-box-shadow) !important;
+    transition: background-color 150ms ease, border-color 150ms ease !important;
+    border-radius: 10px !important;
+  }
+
+  .body-wrapper .top-site-button:hover .tile {
+    background-color: var(--firefoxcss-item-hover-bg-color) !important;
+    border-top: 1px solid var(--firefoxcss-shortcut-item-top-border-hover) !important;
+  }
+
+  .body-wrapper .top-site-button:focus-visible .tile {
+    background-color: var(--firefoxcss-item-hover-bg-color) !important;
+    border-top: 1px solid var(--firefoxcss-shortcut-item-top-border-hover) !important;
+    outline: 1px solid #e3b686a3 !important;
+  }
+
+  menu .customize-menu .arrow-button {
+    margin-top: 3px !important;
+    margin-left: 5px !important;
+    opacity: 0.7 !important;
+  }
+
+  menu .customize-menu {
+    backdrop-filter: blur(32px) !important;
+    border: var(--firefoxcss-customize-menu-border) !important;
+    border-radius: 1rem !important;
+    margin: 1rem !important;
+    height: unset !important;
+    filter: saturate(0.8) brightness(1.1);
+  }
+
+  .customize-menu .category.wallpaper-list {
+    overflow: hidden !important;
+    height: auto !important;
+    background-color: var(--firefoxcss-customize-menu-secondary-popup) !important;
+    backdrop-filter: blur(24px) !important;
+    border-radius: 8px;
+    margin-top: 16px !important;
+    filter: drop-shadow(0px 20px 10px rgba(0, 0, 0, 0.2)) !important;
+    border: var(--firefoxcss-customize-menu-border) !important;
+  }
+
+  .home-section .section .selector {
+    background-color: var(--firefoxcss-customize-menu-dropdown) !important;
+  }
+
+  .top-sites-list:not(.dnd-active) .top-site-outer:hover:not(.active),
+  .top-site-outer .top-site-icon {
+    background-color: transparent !important;
+  }
+  .top-site-outer .search-topsite {
+    backdrop-filter: blur(8px) !important;
+    background-color: var(--firefoxcss-shortcut-search-icon-color) !important;
+  }
+
+  .search-wrapper input:focus {
+    color: var(--firefoxcss-input-focus) !important;
+  }
+
+  .top-site-outer .top-site-button .title {
+    opacity: 0.6 !important;
+    transition: opacity 0.4s !important;
+  }
+
+  .top-site-outer .top-site-button:hover .title {
+    opacity: 1 !important;
+  }
+
+  .top-site-outer .context-menu-button.icon:is(:active, :focus, :hover) {
+    fill: #f79743 !important;
+    background-color: transparent !important;
+    border: 0 !important;
+  }
+
+  .top-site-outer .context-menu-button {
+    fill: var(--firefoxcss-context-menu-three-dots) !important;
+    inset-inline-end: 18px !important;
+    top: -2px !important;
+    background-color: transparent !important;
+  }
+
+  .card-outer .context-menu-button.icon:is(:active, :focus) {
+    fill: #f79743 !important;
+    background-color: var(--firefoxcss-item-bg-color) !important;
+    border: 0 !important;
+  }
+
+  .card-outer .context-menu-button.icon {
+    background-color: var(--firefoxcss-item-bg-color) !important;
+    border: 0 !important;
+  }
+
+  .top-site-button .title.has-icon.pinned span .icon {
+    opacity: 0.6 !important;
+    display: none !important;
+    transition: all 800ms ease;
+  }
+
+  .top-site-button .title.has-icon.pinned span:hover .icon {
+    display: inline-block !important;
+  }
+
+  @media -moz-pref("browser.newtabpage.activity-stream.newtabShortcuts.refresh") {
+    .top-site-button .icon.icon-pin-small {
+      opacity: 0 !important;
+      transition: opacity 200ms ease 0ms;
+    }
+
+    .top-site-button:has(.title.has-icon.pinned:hover) .icon.icon-pin-small {
+      opacity: 0.6 !important;
+      transition: opacity 200ms ease 300ms;
+    }
+  }
+
+  .top-sites-list:not(.dnd-active) .top-site-outer:is(.active, :focus) {
+    background-color: var(--firefoxcss-shortcut-item-active) !important;
+  }
+
+  .top-site-outer .context-menu,
+  .card-outer .context-menu {
+    background-image: var(--firefoxcss-customize-menu-bg-image) !important;
+    background-color: var(--firefoxcss-shortcut-item-context-menu) !important;
+    backdrop-filter: blur(32px) !important;
+    border: 1px solid var(--firefoxcss-shortcut-item-context-menu-border);
+    border-radius: 8px !important;
+  }
+
+  .top-site-outer .context-menu > ul > li.separator,
+  .card-outer .context-menu > ul > li.separator {
+    border-bottom: 1px solid var(--firefoxcss-shortcut-item-context-menu-separator) !important;
+  }
+
+  .search-wrapper .search-handoff-button input {
+    border-radius: 10px 10px 10px 10px !important;
+  }
+
+  .search-wrapper .search-handoff-button .fake-caret {
+    top: 13px !important;
+    /*18 default. calculate=18-((52px - min-height)/2) */
+    inset-inline-start: 48px !important;
+  }
+
+  .search-wrapper .logo-and-wordmark {
+    opacity: 0.9 !important;
+    order: 1 !important;
+    margin-bottom: 0 !important;
+    flex: 1 !important;
+    flex-basis: 20% !important;
+  }
+
+  .search-wrapper .logo-and-wordmark .logo {
+    background-size: 60px !important;
+    height: 60px !important;
+    width: 60px !important;
+  }
+
+  .search-wrapper .logo-and-wordmark .wordmark {
+    background-size: 132px !important;
+    height: 42px !important;
+    margin-inline-start: 12px !important;
+    width: 144px !important;
+  }
+
+  .outer-wrapper .search-wrapper {
+    padding: 0px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    align-content: space-around !important;
+    gap: 20px 10px !important;
+  }
+
+  .outer-wrapper .non-collapsible-section {
+    padding: 0 35px !important;
+  }
+
+  .body-wrapper .collapsible-section {
+    padding: 20px 0px !important;
+  }
+
+  .top-sites-list-wrapper .top-site-outer:not(.add-button) .tile .icon-wrapper {
+    height: 48px !important;
+    width: 48px !important;
+  }
+
+  .top-sites-list-wrapper .top-site-outer .tile {
+    height: 80px !important;
+    width: 80px !important;
+  }
+
+  .outer-wrapper .ds-top-sites .top-sites .top-sites-list {
+    width: auto !important;
+  }
+
+  .top-sites-list-wrapper .top-sites-list {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center;
+  }
+
+  .ds-outer-wrapper-breakpoint-override main .body-wrapper {
+    width: unset !important;
+  }
+
+  .top-sites-list-wrapper .top-sites-list {
+    row-gap: unset !important;
+  }
+
+  @media (min-width: 610px) {
+    .ds-outer-wrapper-breakpoint-override main {
+      width: unset !important;
+    }
+
+    .ds-outer-wrapper-breakpoint-override main .body-wrapper {
+      width: unset !important;
+    }
+  }
+  @media (min-width: 724px) {
+    .ds-outer-wrapper-breakpoint-override main {
+      width: unset !important;
+    }
+
+    .ds-outer-wrapper-breakpoint-override main .body-wrapper {
+      width: unset !important;
+    }
+  }
+  @media (min-width: 1122px) {
+    .ds-outer-wrapper-breakpoint-override main {
+      width: unset !important;
+    }
+
+    .ds-outer-wrapper-breakpoint-override main .body-wrapper {
+      width: unset !important;
+    }
+  }
+  @media (min-width: 1698px) {
+    .ds-outer-wrapper-breakpoint-override main {
+      width: unset !important;
+    }
+    .ds-outer-wrapper-breakpoint-override main .body-wrapper {
+      width: unset !important;
+    }
+  }
+
+  .search-wrapper .search-inner-wrapper {
+    width: 200px !important;
+  }
+
+  .ds-outer-wrapper-breakpoint-override main {
+    width: 266px !important;
+  }
+
+  @media (min-width: 610px) {
+    .ds-outer-wrapper-breakpoint-override main {
+      width: 510px !important;
+    }
+
+    .search-wrapper .search-inner-wrapper {
+      width: 360px !important;
+    }
+  }
+
+  @media (min-width: 866px) {
+    .ds-outer-wrapper-breakpoint-override main {
+      width: 746px !important;
+    }
+
+    .search-wrapper .search-inner-wrapper {
+      width: 600px !important;
+    }
+  }
+
+  @media (min-width: 1122px) {
+    .ds-outer-wrapper-breakpoint-override main {
+      width: 986px !important;
+    }
+
+    .search-wrapper .search-inner-wrapper {
+      width: 720px !important;
+    }
+  }
+
+  .search-wrapper .search-handoff-button,
+  .search-wrapper input {
+    background-size: 20px !important;
+  }
+
+  .search-wrapper .search-inner-wrapper {
+    min-height: 42px !important;
+    /* 52px default */
+    order: 2 !important;
+    flex: 3 !important;
+    flex-basis: 60% !important;
+    top: 4px !important;
+  }
+
+  /* When there is overflow because of the height, search bar gets fixed position */
+  .outer-wrapper.fixed-search .search-wrapper {
+    backdrop-filter: blur(18px) !important;
+    gap: 0px 0px !important;
+    min-height: 60px !important;
+  }
+
+  .outer-wrapper.fixed-search .search-wrapper .search-inner-wrapper {
+    top: 0 !important;
+  }
+
+  .outer-wrapper.fixed-search .search-wrapper .search-inner-wrapper button.search-handoff-button {
+    backdrop-filter: blur(22px) !important;
+    background-color: var(--firefoxcss-extra-search-bar-when-scroll) !important;
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0px 50px !important;
+  }
+
+  .search-wrapper .search-handoff-button .fake-textbox {
+    opacity: 0.5 !important;
+    color: var(--firefoxcss-search-bar-text-color) !important;
+    transition: opacity 0.4s !important;
+  }
+
+  .search-wrapper .search-handoff-button:active > .fake-textbox,
+  .search-wrapper .search-handoff-button:hover > .fake-textbox,
+  .search-wrapper .search-handoff-button:focus > .fake-textbox {
+    opacity: 0.8 !important;
+  }
+
+  .search-inner-wrapper:hover .search-handoff-button {
+    background-color: var(--firefoxcss-item-hover-bg-color) !important;
+    border-top: 1px solid var(--firefoxcss-shortcut-item-top-border-hover) !important;
+    fill: var(--firefoxcss-search-bar-fill-icon-hover) !important;
+  }
+
+  .collapsible-section .card-outer {
+    background-color: var(--firefoxcss-item-bg-color) !important;
+  }
+
+  .collapsible-section .card-outer .card-preview-image-outer {
+    background-color: var(--firefoxcss-item-hover-bg-color) !important;
+  }
+
+  .compact-cards .card-outer .card-context {
+    background-color: var(--firefoxcss-item-bg-color) !important;
+  }
+
+  @media only screen and (max-width: 609px) {
+    .ds-outer-wrapper-breakpoint-override main {
+      width: 386px !important;
+    }
+  }
+
+  @media only screen and (max-width: 385px) {
+    .search-wrapper .search-inner-wrapper .search-handoff-button {
+      padding-top: 4px !important;
+      padding-bottom: 6px !important;
+    }
+
+    .ds-outer-wrapper-breakpoint-override main {
+      width: 266px !important;
+    }
+  }
+
+  /* Remove static color from close button wrapper in customization menu */
+  .customize-menu .close-button-wrapper {
+    background-color: transparent !important;
+  }
+
+  /* Remove photo attribution when wallpaper for new tab is set */
+  .wallpaper-attribution {
+    display: none !important;
+  }
+
+  /* Customization menu close button changes */
+  .customize-menu .close-button {
+    backdrop-filter: blur(24px) !important;
+  }
+
+  .activity-stream.darkWallpaper {
+    @media (prefers-color-scheme: dark) {
+      --firefoxcss-item-bg-color: hsla(0, 0%, 12%, 0.6) !important;
+      --firefoxcss-item-hover-bg-color: hsla(0, 0%, 15%, 0.5) !important;
+    }
+
+    @media (prefers-color-scheme: light) {
+      --firefoxcss-item-bg-color: hsla(200, 10%, 98%, 0.25) !important;
+      --firefoxcss-item-hover-bg-color: hsla(200, 10%, 98%, 0.28) !important;
+      --firefoxcss-search-border-top-color: hsla(0, 0%, 100%, 0.1) !important;
+      --firefoxcss-search-text-fill: rgba(255, 255, 255, 0.6) !important;
+      --firefoxcss-search-bar-text-color: rgba(255, 255, 255, 0.9) !important;
+      --firefoxcss-search-bar-fill-icon-hover: rgba(255, 255, 255, 0.8) !important;
+      --firefoxcss-shortcut-item-top-border-hover: hsla(0, 0%, 100%, 0.15) !important;
+      --firefoxcss-settings-wheel-color: hsla(200, 20%, 90%, 0.6) !important;
+      --firefoxcss-settings-wheel-color-hover: hsla(200, 20%, 90%, 0.9) !important;
+      --firefoxcss-shortcut-item-active: hsla(200, 20%, 90%, 0.8) !important;
+
+      .top-site-outer:hover:not(.active) .title,
+      .top-site-outer:hover:not(.active) .title .icon.icon-pin-small {
+        color: #fbfbfe !important;
+      }
+
+      .top-site-outer .context-menu,
+      .card-outer .context-menu {
+        --firefoxcss-shortcut-item-context-menu: hsla(0, 0%, 95%, 0.8) !important;
+        --firefoxcss-shortcut-item-context-menu-border: hsla(0, 0%, 100%, 0.1) !important;
+        --firefoxcss-shortcut-item-context-menu-separator: hsla(0, 0%, 0%, 0.1) !important;
+      }
+    }
+
+    & .collapsible-section .card-outer {
+      backdrop-filter: blur(20px) !important;
+    }
+
+    & .body-wrapper .tile {
+      backdrop-filter: blur(20px) !important;
+      border-top: 1px solid hsla(0, 0%, 100%, 0.145) !important;
+    }
+
+    & .body-wrapper .top-site-button:hover .tile {
+      filter: brightness(115%);
+      border-top: 1px solid hsla(0, 0%, 58%, 0.3) !important;
+    }
+
+    /*  Pocket cards background blur - new tab */
+    & .ds-card-grid .ds-card:not(.placeholder) {
+      backdrop-filter: blur(20px);
+    }
+  }
+
+  .activity-stream.lightWallpaper {
+    @media (prefers-color-scheme: dark) {
+      --firefoxcss-item-bg-color: hsla(0, 0%, 12%, 0.8) !important;
+      --firefoxcss-item-hover-bg-color: hsla(0, 0%, 15%, 0.7) !important;
+      --firefoxcss-settings-wheel-color: hsla(0, 0%, 12%, 0.75) !important;
+      --firefoxcss-settings-wheel-color-hover: hsla(0, 0%, 12%, 0.55) !important;
+
+      .top-site-outer:hover:not(.active) .title,
+      .top-site-outer:hover:not(.active) .title .icon.icon-pin-small {
+        color: hsl(250, 13%, 9%) !important;
+      }
+    }
+
+    @media (prefers-color-scheme: light) {
+      --firefoxcss-item-bg-color: hsla(200, 10%, 98%, 0.75) !important;
+      --firefoxcss-item-hover-bg-color: hsla(200, 10%, 98%, 0.85) !important;
+    }
+
+    & .collapsible-section .card-outer {
+      backdrop-filter: blur(22px) !important;
+    }
+
+    & .body-wrapper .tile {
+      backdrop-filter: blur(22px) !important;
+    }
+
+    & .body-wrapper .top-site-button:hover .tile {
+      filter: brightness(115%);
+      border-top: 1px solid hsla(0, 0%, 58%, 0.1) !important;
+    }
+
+    /*  Pocket cards background blur - new tab */
+    & .ds-card-grid .ds-card:not(.placeholder) {
+      backdrop-filter: blur(20px);
+    }
+  }
+
+  /* Pocket extra modification by request */
+  @media -moz-pref("firefoxcss.pocket.oneline.enable") {
+    /* Pocket new tab - Learn More text disable  */
+    .collapsible-section .section-title-container .learn-more-link-wrapper {
+      display: none !important;
+    }
+
+    @media -moz-pref("firefoxcss.pocket.hide.populartopics.links") {
+      /* Pocket new tab - Popular Topics bottom links text disable  */
+      .discovery-stream.ds-layout .ds-navigation.ds-navigation-left-align {
+        display: none !important;
+      }
+    }
+
+    /* Pocket new tab - Privacy Notice text disable  */
+    .ds-navigation .ds-navigation-privacy {
+      display: none !important;
+    }
+
+    /* pocket new tab context menu  */
+    .context-menu {
+      background-image: var(--firefoxcss-customize-menu-bg-image) !important;
+      background-color: var(--firefoxcss-shortcut-item-context-menu) !important;
+      backdrop-filter: blur(32px) !important;
+      border: 1px solid var(--firefoxcss-shortcut-item-context-menu-border);
+      border-radius: 8px !important;
+    }
+
+    .discovery-stream.ds-layout .ds-card-grid {
+      grid-template-rows: 1fr !important;
+      grid-auto-rows: 0 !important;
+      padding-bottom: 0 !important;
+      row-gap: 0 !important;
+      overflow: hidden !important;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
+      @media -moz-pref("firefoxcss.pocket.4.cards.enable") {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
+        column-gap: 16px !important;
+      }
+      @media -moz-pref("firefoxcss.pocket.5.cards.enable") {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
+        column-gap: 12px !important;
+      }
+    }
+  }
+}

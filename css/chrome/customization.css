@@ -1,0 +1,45 @@
+/*=====================================================================
+=============== C U S T O M I Z A T I O N   M E N U ===================
+=====================================================================*/
+/* Customize toolbar background color */
+#customization-container {
+  background-image: none !important;
+  background-color: var(--firefoxcss-main-bg-color) !important;
+}
+
+#PersonalToolbar[customizing]
+  toolbarpaletteitem[place="toolbar"]
+  > toolbarspring,
+#nav-bar[customizing] toolbarpaletteitem[place="toolbar"] > toolbarspring,
+#customization-container toolbarpaletteitem[place="palette"] > toolbarspring {
+  outline: 1px solid var(--firefoxcss-customize-view-flex-space) !important;
+  outline-offset: -3px !important;
+  border-radius: 6px !important;
+}
+
+@media not (-moz-platform: macos) {
+  #customization-panelWrapper > .panel-arrowcontent {
+    border-radius: 10px !important;
+    background-color: var(--firefoxcss-customize-view-overflow-menu) !important;
+  }
+}
+
+#PersonalToolbar[customizing] {
+  outline: 1px dashed var(--firefoxcss-customize-view-dashed-outline) !important;
+}
+
+.browserContainer > findbar .findbar-textbox {
+  background-color: var(--firefoxcss-item-bg-color) !important;
+}
+
+#customization-container #customization-footer {
+  border-top: none !important;
+}
+
+@media (-moz-platform: macos),
+  (-moz-platform: windows),
+  not (prefers-contrast) {
+  #customization-container #customization-footer .customizationmode-button {
+    border-radius: 4px !important;
+  }
+}

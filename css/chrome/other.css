@@ -1,0 +1,91 @@
+/*=====================================================================
+============================= O T H E R ===============================
+=====================================================================*/
+
+/*=====================================================================
+===================== S P I L L   T H E M E =============================
+=====================================================================*/
+
+/* Main BAR - Remove border for Spill theme */
+#main-window #navigator-toolbox {
+    border-bottom: none !important;
+}
+
+/* Remove the white line around the content window */
+#browser #tabbrowser-tabbox {
+    outline: none !important;
+    box-shadow: -1px 4px 2px #0000002e !important;
+}
+
+/*=====================================================================
+============================ M I S C ===================================
+=====================================================================*/
+
+@media -moz-pref("firefoxcss.disable.tab.preview.panel.fully") {
+  #tab-preview-panel,
+  #tabbrowser-tab-tooltip {
+    display: none !important;
+  }
+}
+
+/* Status URL change (bottom left when hovering a link)  */
+#statuspanel-label {
+  background-color: var(--firefoxcss-statuspanel-bg-color) !important;
+  border-radius: 4px !important;
+  border-color: transparent !important;
+  color: currentColor !important;
+  margin: 0 0 3px 3px !important;
+  padding: 4px !important;
+}
+
+/* Container extension code */
+#TabsToolbar
+  #tabbrowser-tabs
+  .tabbrowser-tab[usercontextid]
+  .tab-background:not([selected]) {
+  background: var(--identity-tab-color) !important;
+  opacity: 0.3 !important;
+}
+
+/* Container extension code */
+#tabbrowser-tabs .tab-context-line {
+  display: none !important;
+}
+
+.urlbarView-button {
+  .urlbarView-row:is([row-selectable]:hover, [selected])
+    > &:not(:hover, [open]) {
+    background-color: transparent !important;
+    opacity: 0.8 !important;
+  }
+}
+
+@media not -moz-pref("svg.context-properties.content.enabled") {
+  #navigator-toolbox::before {
+    width: 100%;
+    content: ">>>> To fix buttons enable 'svg.context-properties.content.enabled' in about:config (type about:config in search) <<<<";
+    color: #ffc6a4;
+    text-align: center;
+    font-weight: bold;
+    padding: 5px;
+    background-color: #000;
+    font-size: 1.1rem;
+  }
+}
+
+/*===================== A L T  M E N U  BAR =========================*/
+#toolbar-menubar {
+  &[autohide="true"] {
+    :root[tabsintitlebar] #navigator-toolbox:not([tabs-hidden]) > & {
+      min-height: 0 !important;
+    }
+  }
+}
+
+#toolbar-menubar {
+  &[autohide="true"] {
+    :root[tabsintitlebar] #navigator-toolbox[tabs-hidden] > & {
+      min-height: 0 !important;
+    }
+  }
+}

@@ -1,0 +1,90 @@
+@-moz-document url("about:privatebrowsing") {
+  /*=====================================================================
+  ========= S P I L L   P R I V A T E   B R O W S I N G   B G =========
+  =====================================================================*/
+
+  @media (prefers-color-scheme: dark) {
+    html:not(#ublock0-epicker),
+    html:not(#ublock0-epicker) body,
+    #newtab-customize-overlay {
+      background-image: url("ASSETS/other/spill.svg") !important;
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    html:not(#ublock0-epicker),
+    html:not(#ublock0-epicker) body,
+    #newtab-customize-overlay {
+      background-image: url("ASSETS/other/spill-light.svg") !important;
+    }
+  }
+
+  /*=====================================================================
+  ============ P R I V A T E   B R O W S I N G   S T Y L E =============
+  =====================================================================*/
+
+  body {
+    background-color: var(--firefoxcss-main-bg-color) !important;
+    background-size: auto;
+    background-size: cover !important;
+  }
+
+  #search-handoff-button {
+    appearance: none !important;
+    background-color: hsla(290, 21%, 35%, 0.2) !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-top: 1px solid hsla(290, 21%, 50%, 0.2) !important;
+    border-radius: 10px 10px 10px 10px !important;
+    fill: hsl(290, 21%, 60%) !important;
+    box-shadow: var(--firefoxcss-private-search-box-shadow) !important;
+    transition: background-color 100ms ease-in, border-color 100ms ease-in, fill 100ms ease-in !important;
+    backdrop-filter: blur(24px) !important;
+  }
+
+  #search-handoff-button:hover,
+  #search-handoff-button:focus,
+  #search-handoff-button:active {
+    background-color: hsla(290, 21%, 45%, 0.2) !important;
+    border-top: 1px solid hsla(290, 21%, 55%, 0.2) !important;
+    fill: hsl(290, 21%, 70%) !important;
+  }
+
+  #search-handoff-button .fake-textbox {
+    color: hsl(290, 21%, 60%) !important;
+    opacity: 0.8 !important;
+    transition: color 100ms ease-in, opacity 100ms ease-in !important;
+  }
+
+  #search-handoff-button:active > .fake-textbox,
+  #search-handoff-button:hover > .fake-textbox,
+  #search-handoff-button:focus > .fake-textbox {
+    color: hsl(290, 21%, 70%) !important;
+  }
+
+  #search-handoff-button .fake-caret {
+    background: var(--firefoxcss-private-search-caret) !important;
+  }
+
+  .logo-and-wordmark .wordmark {
+    fill: #8f25d1 !important;
+    opacity: 0.9 !important;
+  }
+
+  .showPrivate.showSearch.container .info {
+    display: none !important;
+  }
+
+  .private .search-inner-wrapper {
+    height: 42px !important;
+    /* 48px default */
+  }
+
+  .private .search-inner-wrapper .fake-caret {
+    top: 13px !important;
+    /* 16px default */
+  }
+
+  .private .search-inner-wrapper #search-handoff-button {
+    background-size: 20px !important;
+  }
+}

@@ -1,0 +1,21 @@
+/*=====================================================================
+========================= H I D E   E L E M E N T S ===================
+=====================================================================*/
+
+/* Remove empty space from tabs bar */
+#TabsToolbar .titlebar-spacer[type="pre-tabs"],
+#TabsToolbar .titlebar-spacer[type="post-tabs"],
+#TabsToolbar .titlebar-spacer,
+#nav-bar .titlebar-spacer[type="pre-tabs"],
+#nav-bar .titlebar-spacer[type="post-tabs"],
+/* Remove Line above search engine selection in search bar */
+#urlbar .search-one-offs .search-panel-one-offs-header-label,
+/* Remove lefover window buttons from extra menu bar (when pressing alt)*/
+#toolbar-menubar .titlebar-buttonbox-container,
+/* Private browser icons remove and change main menu to purple */
+.private-browsing-indicator-with-label,
+.private-browsing-indicator,
+/* Hide permission icons, see it when pressing permission button */
+#blocked-permissions-container {
+  display: none !important;
+}

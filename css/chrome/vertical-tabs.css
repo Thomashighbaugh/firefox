@@ -1,0 +1,50 @@
+/*=====================================================================
+================== V E R T I C A L   T A B S =======================
+=====================================================================*/
+
+@media -moz-pref("sidebar.verticalTabs") and -moz-pref("sidebar.revamp") {
+  :root {
+    --firefoxcss-top-bar-border-bottom-size: 0px;
+  }
+
+  #nav-bar .titlebar-spacer[type="post-tabs"] {
+    width: 20px !important;
+    display: initial !important;
+  }
+
+  #tabbrowser-arrowscrollbox {
+    --toolbox-bgcolor: var(--firefoxcss-item-bg-color) !important;
+  }
+
+  @media -moz-pref("mod.disable.scrollbar.in.vertical.tabs") {
+    spacer[part="overflow-start-indicator"]
+      + scrollbox[orient="vertical"][part="scrollbox"] {
+      scrollbar-width: none !important;
+    }
+  }
+}
+
+@media -moz-pref("sidebar.revamp") {
+  #sidebar-main,
+  #sidebar-box {
+    background-color: var(--firefoxcss-item-bg-color) !important;
+    background-image: none !important;
+  }
+
+  @media -moz-pref("mod.custom.firefox.theme.color.fix") {
+    #sidebar-main,
+    #sidebar-box {
+      background-color: var(--lwt-accent-color) !important;
+    }
+
+    #tabbrowser-arrowscrollbox {
+      --toolbox-bgcolor: var(--lwt-accent-color) !important;
+    }
+  }
+
+  /* Remove the white line around the content window */
+  #tabbrowser-tabbox {
+    outline: none !important;
+    box-shadow: -0px 0px 2px 0 light-dark(rgba(0,0,0,.2), rgba(255,255,255,.06)) !important;
+  }
+}

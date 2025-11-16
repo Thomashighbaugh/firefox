@@ -1,0 +1,60 @@
+/*=====================================================================
+====================== T O O L B A R   O R D E R ======================
+=======================================================================
+Order of Toolbars
+  * 0 - top
+  * 1 - second from top
+  * 2 - bottom */
+
+/* SEARCH BAR TOOLBAR */
+#navigator-toolbox #nav-bar {
+  order: 1 !important;
+}
+
+/* TABS TOOLBAR */
+#TabsToolbar {
+  order: 2 !important;
+}
+
+/* BOOKMARKS TOOLBAR*/
+#PersonalToolbar {
+  order: 3 !important;
+}
+
+/* Extra titlebar menu (above or below tabs, opens with alt) */
+#toolbar-menubar {
+  order: 0 !important;
+}
+
+/*===================== TABS TOP =========================*/
+
+/* Tabs On Top */
+@media -moz-pref("firefoxcss.tabs.on.top.enable") {
+  @media not -moz-pref("sidebar.verticalTabs") {
+    /* SEARCH BAR TOOLBAR */
+    #nav-bar {
+      order: 2 !important;
+    }
+
+    /* TABS TOOLBAR */
+    #TabsToolbar {
+      order: 1 !important;
+    }
+
+    /* BOOKMARKS TOOLBAR*/
+    #PersonalToolbar {
+      order: 3 !important;
+    }
+
+    /* Extra titlebar menu (above or below tabs, opens with alt) */
+    #toolbar-menubar {
+      order: 0 !important;
+    }
+
+    /* Tab bar top and bottom padding */
+    #TabsToolbar {
+      padding-top: 2px !important;
+      padding-bottom: 0px !important;
+    }
+  }
+}

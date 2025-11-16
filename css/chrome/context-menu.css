@@ -1,0 +1,127 @@
+/*=====================================================================
+====================== C O N T E X T   M E N U ========================
+=====================================================================*/
+
+/*  affects normal stuff FIX IT */
+menupopup :-moz-any(menu, menuitem) {
+  /*   padding-top: 4px !important;
+  padding-bottom: 4px !important; */
+}
+
+/*  Context menu padding */
+:not(#ContentSelectDropdown) > menupopup {
+  @media (-moz-platform: windows) {
+    & > menu,
+    & > menuitem {
+      padding-block: 0.3em !important;
+      margin-inline: 4px !important;
+      margin-block: 2px !important;
+    }
+  }
+}
+
+/* Some website and menu dropdown colors  */
+#ContentSelectDropdownPopup {
+  --content-select-background-image: none !important;
+}
+
+/* ----- Menu Separator #context-sep-selectall ----- */
+menuseparator {
+  border-color: var(--arrowpanel-border-color) !important;
+  /* border-top: 1px solid ThreeDShadow; */
+  padding-block: 1px !important;
+}
+
+menuseparator#context-sep-navigation {
+  border-color: var(--arrowpanel-border-color) !important;
+}
+
+/* ----- Menu Colors ----- */
+menupopup,
+panel {
+/*   #ContentSelectDropdown used to remove websites native dropdown modifications */
+/*   #ctrlTab-panel used to fix Ctr+Tab */
+  :not(#ContentSelectDropdown) > &:not(#ctrlTab-panel, #autoscroller) {
+/*     --panel-border-color: var(--arrowpanel-border-color) !important; */
+    --panel-padding: 1px 0px !important;
+    --panel-border-radius: 8px !important;
+/*     --panel-padding-block: 4px !important; */
+    --panel-background: var(--firefoxcss-main-bg-color) !important;
+  }
+}
+
+/* Right click */
+#context-navigation:not([hidden]) {
+  background-color: var(--firefoxcss-context-menu-top-color) !important;
+  padding: 4px !important;
+  border-top-left-radius: var(--panel-border-radius) !important;
+  border-top-right-radius: var(--panel-border-radius) !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+/* Top of context menu  */
+menupopup#contentAreaContextMenu {
+  --panel-padding: unset !important;
+  --panel-padding: 0 0 2px !important;
+}
+
+/* Menu when right clicking links  */
+menupopup
+  menuitem:is(#context-openlinkintab, #context-undo, #context-viewimage) {
+  margin-top: 3px !important;
+}
+
+#context-sep-navigation {
+  padding-block: 0px !important;
+}
+
+#context-navigation
+  #context-back[disabled="true"]
+  .menu-iconic-left
+  .menu-iconic-icon {
+  opacity: 0.5 !important;
+}
+
+#context-navigation
+  #context-forward[disabled="true"]
+  .menu-iconic-left
+  .menu-iconic-icon {
+  opacity: 0.5 !important;
+}
+
+menu,
+menuitem {
+  &:where([disabled="true"]) {
+  }
+
+  &:where([_moz-menuactive]:not([disabled="true"])) {
+    color: -moz-menuhovertext;
+    background-color: var(--firefoxcss-context-menu-item-bg-color) !important;
+  }
+
+  &:where([_moz-menuactive="true"][disabled="true"]) {
+    background-color: var(
+      --firefoxcss-context-menu-item-bg-color-inactive
+    ) !important;
+  }
+}
+
+@media (-moz-platform: linux) {
+  :not(#ContentSelectDropdown) > menupopup {
+    & > menu,
+    & > menuitem {
+      padding: 4px 4px !important;
+      margin-inline: 2px !important;
+      margin-block: 2px !important;
+    }
+  }
+
+  #context-navigation > .menuitem-iconic .menu-iconic-icon {
+    padding: 4px !important;
+  }
+
+  #context-navigation:not([hidden]) {
+    padding: 3px 3px !important;
+  }
+}

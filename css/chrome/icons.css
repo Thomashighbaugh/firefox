@@ -1,0 +1,64 @@
+/*=====================================================================
+=============================== I C O N S =============================
+=====================================================================*/
+
+/* Set icon colors with context-fill without forcing them in svg files
+about:config -> svg.context-properties.content.enabled -> true*/
+@media (prefers-color-scheme: dark) {
+  #PanelUI-menu-button {
+    list-style-image: url(ASSETS/icons/menu.svg) !important;
+  }
+  :root[privatebrowsingmode="temporary"] #PanelUI-menu-button {
+    list-style-image: url(ASSETS/icons/menu-private.svg) !important;
+  }
+
+  #find-button {
+    list-style-image: url(ASSETS/icons/search.svg) !important;
+  }
+
+  #privatebrowsing-button {
+    list-style-image: url(ASSETS/icons/private.svg) !important;
+  }
+
+  #forward-button,
+  menugroup > #context-forward,
+  #search-container #searchbar .search-go-button,
+  #urlbar-go-button {
+    list-style-image: url(ASSETS/icons/right-arrowContext.svg) !important;
+  }
+
+  #back-button,
+  menugroup > #context-back {
+    list-style-image: url(ASSETS/icons/left-arrowContext.svg) !important;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  #PanelUI-menu-button {
+    list-style-image: url(ASSETS/icons/menu-light.svg) !important;
+  }
+
+  :root[privatebrowsingmode="temporary"] #PanelUI-menu-button {
+    list-style-image: url(ASSETS/icons/menu-private-light.svg) !important;
+  }
+
+  #find-button {
+    list-style-image: url(ASSETS/icons/search-light.svg) !important;
+  }
+
+  #privatebrowsing-button {
+    list-style-image: url(ASSETS/icons/private-light.svg) !important;
+  }
+
+  #forward-button,
+  menugroup > #context-forward,
+  #search-container #searchbar .search-go-button,
+  #urlbar-go-button {
+    list-style-image: url(ASSETS/icons/right-arrow-lightContext.svg) !important;
+  }
+
+  #back-button,
+  menugroup > #context-back {
+    list-style-image: url(ASSETS/icons/left-arrow-lightContext.svg) !important;
+  }
+}

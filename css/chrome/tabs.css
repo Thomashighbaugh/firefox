@@ -1,0 +1,368 @@
+/*=====================================================================
+============================= T A B S =================================
+=====================================================================*/
+
+/* Non active tabs have darker text */
+.tabbrowser-tab:not([selected]):not([multiselected]):not(:hover)
+  .tab-label-container
+  .tab-label {
+  color: var(--firefoxcss-non-active-tabs) !important;
+}
+
+/* Remove empty space after pinned tabs */
+#pinned-tabs-container[orient="horizontal"] {
+  margin-inline-end: 0px !important;
+}
+
+.tabbrowser-tab .tab-label-container .tab-label {
+  transition: color 100ms ease !important;
+}
+
+/* Main BAR */
+#navigator-toolbox {
+  --tabs-border-color: none !important;
+  --tabs-navbar-shadow-size: 0px !important;
+}
+
+#tabbrowser-tabs {
+  --tab-loading-fill: transparent !important;
+}
+
+.tabbrowser-tab:not([selected]):not([multiselected]):not(:hover)
+  .tab-icon-image {
+  opacity: 0.8 !important;
+  transition: opacity 100ms ease !important;
+}
+
+/* Normal tabs design */
+.tabbrowser-tab .tab-background:not([selected]) {
+  border: 0 !important;
+  border-radius: var(--firefoxcss-border-radius) !important;
+  background-image: none !important;
+  background-color: var(--firefoxcss-tab-bg-color) !important;
+  transition: background-color 100ms ease !important;
+  box-shadow: var(--firefoxcss-normal-tabs-box-shadow) !important;
+}
+
+@media -moz-pref("sidebar.verticalTabs") {
+  .tabbrowser-tab:not([pinned]) .tab-background:not([selected]) {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  #vertical-pinned-tabs-container-separator {
+    margin-inline: calc(5 * var(--space-xsmall)) !important;
+    border-bottom: 1px solid light-dark(#00000030, #ffffff2e) !important;
+  }
+}
+
+/* Normal tabs design on hover */
+#tabbrowser-tabs
+  .tabbrowser-tab:hover
+  > .tab-stack
+  > .tab-background:not([selected]) {
+  border: 0 !important;
+  border-radius: var(--firefoxcss-border-radius) !important;
+  background-image: none !important;
+  background-color: var(--firefoxcss-tab-hover-bg-color) !important;
+  box-shadow: var(--firefoxcss-normal-tabs-box-shadow) !important;
+}
+
+/* Selected tabs design */
+#tabbrowser-tabs .tabbrowser-tab .tab-background[selected] {
+  border: 0 !important;
+  border-radius: var(--firefoxcss-border-radius) !important;
+  background-image: none !important;
+  background-color: var(--firefoxcss-tab-active-bg-color) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Multiselect tabs */
+#tabbrowser-tabs .tabbrowser-tab .tab-background[multiselected] {
+  border: 0 !important;
+  border-radius: var(--firefoxcss-border-radius) !important;
+  background-image: none !important;
+  outline: none !important;
+  background-color: var(--firefoxcss-tab-active-bg-color) !important;
+  box-shadow: none !important;
+}
+
+#tabbrowser-tabs
+  .tabbrowser-tab
+  .tab-background:is([selected]):is([multiselected]) {
+  outline: 1px solid var(--firefoxcss-tab-multiselect-outline) !important;
+  outline-offset: 0px !important;
+  outline-width: 1px !important;
+}
+
+@media not -moz-pref("sidebar.verticalTabs") {
+  /* Show Tab close button on hover */
+  .tabbrowser-tab:not([pinned]) .tab-close-button {
+    display: flex !important;
+    opacity: 0;
+    visibility: collapse !important;
+  }
+}
+
+#navigator-toolbox .tabbrowser-tab:not([pinned]):hover .tab-close-button {
+  opacity: 1;
+  visibility: visible !important;
+  border-radius: 100% !important;
+  transition: opacity 0.15s ease, visibility 0.15s ease,
+    background-color 0.15s ease !important;
+}
+
+/* Show Tab close button on hover */
+#navigator-toolbox .tabbrowser-tab:not([pinned]) .tab-close-button {
+  display: flex !important;
+  opacity: 0;
+  visibility: collapse !important;
+}
+
+#navigator-toolbox .tabbrowser-tab:not([pinned]):hover .tab-close-button {
+  opacity: 1;
+  visibility: visible !important;
+  border-radius: 100% !important;
+  transition: opacity 0.15s ease, visibility 0.15s ease,
+    background-color 0.15s ease !important;
+}
+
+#tabbrowser-tabs[expanded][orient="vertical"] {
+  & .tabbrowser-tab:not([pinned]):hover .tab-close-button {
+    opacity: 1;
+    visibility: visible !important;
+    border-radius: 100% !important;
+    transition: opacity 0.15s ease, visibility 0.15s ease,
+      background-color 0.15s ease !important;
+  }
+
+  & .tabbrowser-tab:not([pinned]) .tab-close-button {
+    display: flex !important;
+    opacity: 0;
+    visibility: collapse !important;
+  }
+
+  & .tabbrowser-tab:not([pinned]):hover .tab-close-button {
+    opacity: 1;
+    visibility: visible !important;
+    border-radius: 100% !important;
+    transition: opacity 0.15s ease, visibility 0.15s ease,
+      background-color 0.15s ease !important;
+  }
+}
+
+#tabbrowser-tabs[movingtab]
+  > #tabbrowser-arrowscrollbox
+  > .tabbrowser-tab:is([selected], [multiselected])
+  .tab-background {
+  background-color: color-mix(
+    in srgb,
+    var(--firefoxcss-tab-active-bg-color) 50%,
+    transparent
+  ) !important;
+  backdrop-filter: blur(12px);
+}
+
+/* Tab audio controls styling */
+.tab-audio-button {
+  #tabbrowser-tabs:is([orient="vertical"][expanded], [orient="horizontal"])
+    &:not([pinned]):not([crashed]) {
+    &:is([soundplaying], [muted], [activemedia-blocked]) {
+      color: var(--firefoxcss-tab-speaker-icon-color) !important;
+      --button-text-color-ghost: var(
+        --firefoxcss-tab-speaker-icon-color
+      ) !important;
+      border-radius: 20px !important;
+      transform: scale(1);
+      filter: drop-shadow(-1px 1px 1px light-dark(#0000002e, #00000052));
+      border: none !important;
+      background-color: transparent !important;
+      transition: transform 150ms ease-in-out, fill 100ms ease-in-out,
+        background-color 100ms ease-in-out !important;
+      --button-border-radius: 20px !important;
+
+      &:hover {
+        background-color: var(--firefoxcss-tab-speaker-color) !important;
+        color: var(--firefoxcss-tab-speaker-icon-hover-color) !important;
+        --button-text-color-ghost-hover: var(
+          --firefoxcss-tab-speaker-icon-hover-color
+        ) !important;
+        transform: scale(0.8);
+        border: none !important;
+        transition: transform 150ms ease-in-out, fill 100ms ease-in-out,
+          background-color 100ms ease-in-out, filter 100ms ease-in-out !important;
+      }
+      &:hover:active {
+        color: var(--firefoxcss-tab-speaker-icon-hover-color) !important;
+        --button-text-color-ghost-active: var(
+          --firefoxcss-tab-speaker-icon-hover-color
+        ) !important;
+      }
+    }
+  }
+}
+
+@media -moz-pref("sidebar.verticalTabs") {
+  /* More compact vertical tabs */
+  #tabbrowser-tabs[orient="vertical"] .tab-background {
+    margin-block: 0px !important;
+  }
+
+  .tabbrowser-tab .tab-icon-overlay:not([crashed]) {
+    &:is([soundplaying], [muted], [activemedia-blocked]) {
+      background-image: none !important;
+      background-color: var(--firefoxcss-tab-speaker-color) !important;
+      background-color: #0000002e !important;
+      backdrop-filter: blur(6px);
+      fill: var(--firefoxcss-tab-speaker-icon-color) !important;
+
+      transition: transform 100ms ease-in-out, fill 100ms ease-in-out,
+        background-color 100ms ease-in-out;
+
+      &:hover {
+        fill: var(--firefoxcss-tab-speaker-icon-color) !important;
+        background-color: transparent !important;
+        border: 1px solid #ffffff29 !important;
+        background-color: #ffffff14 !important;
+        transition: transform 100ms ease-in-out, fill 100ms ease-in-out,
+          background-color 100ms ease-in-out !important;
+        transform: scale(1.2) translate(-8%, 14%);
+        transform-origin: center !important;
+      }
+    }
+  }
+
+  .tabbrowser-tab[pinned] .tab-icon-overlay:not([crashed]) {
+    &:is([soundplaying], [muted], [activemedia-blocked]) {
+      background-image: none !important;
+      background-color: var(--firefoxcss-tab-speaker-color) !important;
+      background-color: #0000002e !important;
+      backdrop-filter: blur(6px);
+      fill: var(--firefoxcss-tab-speaker-icon-color) !important;
+      transition: transform 100ms ease-in-out, fill 100ms ease-in-out,
+        background-color 100ms ease-in-out;
+
+      &:hover {
+        fill: var(--firefoxcss-tab-speaker-icon-color) !important;
+        background-color: transparent !important;
+        border: 1px solid #ffffff29 !important;
+        background-color: #ffffff14 !important;
+        transition: transform 100ms ease-in-out, fill 100ms ease-in-out,
+          background-color 100ms ease-in-out !important;
+        transform: scale(1.2) translate(-8%, 14%);
+        transform-origin: center !important;
+      }
+    }
+  }
+}
+
+@media not -moz-pref("sidebar.verticalTabs") {
+  .tabbrowser-tab[pinned] .tab-icon-overlay:not([crashed]) {
+    &:is([soundplaying], [muted], [activemedia-blocked]) {
+      background-image: none !important;
+      background-color: var(--firefoxcss-tab-speaker-color) !important;
+      background-color: #0000002e !important;
+      backdrop-filter: blur(6px);
+      border: 1px solid #ffffff29 !important;
+      fill: var(--firefoxcss-tab-speaker-icon-color) !important;
+      transition: transform 100ms ease-in-out, fill 100ms ease-in-out,
+        background-color 100ms ease-in-out;
+
+      &:hover {
+        fill: var(--firefoxcss-tab-speaker-icon-color) !important;
+        background-color: transparent !important;
+        border: 1px solid #ffffff29 !important;
+        background-color: #ffffff14 !important;
+        transition: transform 100ms ease-in-out, fill 100ms ease-in-out,
+          background-color 100ms ease-in-out !important;
+        transform: scale(1.2) translate(-8%, 14%);
+        transform-origin: center !important;
+      }
+    }
+  }
+
+  /* Pinned tabs padding  */
+  :root:not([uidensity="compact"]) .tab-content[pinned] {
+    padding: 0 8px !important;
+  }
+
+  #tabbrowser-tabs {
+    margin-left: 2px !important;
+  }
+
+  /* Width of the tabs. Important to have Fadein or it breaks fonctionality */
+  #tabbrowser-tabs .tabbrowser-tab[fadein]:not([pinned]) {
+    max-width: var(--firefoxcss-tab-max-width) !important;
+    min-width: var(--firefoxcss-tab-min-width) !important;
+  }
+
+  /* Selected tabs width increase */
+  #tabbrowser-tabs:not([overflow])
+    .tabbrowser-tab[selected][fadein]:not([pinned]) {
+    max-width: 175px !important;
+  }
+
+  /* Selected tabs width when overflowing */
+  #tabbrowser-tabs[overflow] .tabbrowser-tab[selected][fadein]:not([pinned]) {
+    min-width: 150px !important;
+  }
+
+  /* 
+ * Fix the height of the tab because if you
+ * change --tab-min-height it doesnt work for fullcreen
+ */
+  #TabsToolbar {
+    padding-top: 0px !important;
+    padding-bottom: 2px !important;
+  }
+
+  /* Remove the line between the tabs / seperators */
+  #tabbrowser-tabs .tabbrowser-tab::before,
+  #tabbrowser-tabs .tabbrowser-tab::after {
+    border: 0 !important;
+  }
+
+  /* Remove right and left side tab overflow border line */
+  #scrollbutton-up ~ spacer {
+    border-color: transparent !important;
+  }
+}
+
+/* Make tab group works correctly */
+tab-group[collapsed] > .tabbrowser-tab {
+  visibility: collapse !important;
+}
+
+/*=====================================================================
+==================== P R I V A C Y   B L U R =========================
+=====================================================================*/
+
+/* Blur tab content for privacy - show on hover */
+#tabbrowser-tabs .tabbrowser-tab .tab-stack .tab-content {
+    filter: blur(4px) !important;
+    transition: filter 200ms linear !important;
+}
+
+#tabbrowser-tabs .tabbrowser-tab:hover .tab-stack .tab-content {
+    filter: blur(0px) !important;
+}
+
+/*=====================================================================
+================== S T A T I C   T A B   W I D T H ====================
+=====================================================================*/
+
+/* Selected tabs have static width */
+:root {
+  --firefoxcss-tab-min-width: 110px !important;
+  --firefoxcss-tab-max-width: 180px !important;
+}
+
+#TabsToolbar #tabbrowser-tabs .tabbrowser-tab[fadein]:not([pinned]) {
+   max-width: var(--firefoxcss-tab-max-width) !important;
+    min-width: var(--firefoxcss-tab-min-width) !important;
+}
+
+#TabsToolbar #tabbrowser-tabs .tabbrowser-tab[selected][fadein]:not([pinned]) {
+   max-width: var(--firefoxcss-tab-max-width) !important;
+}

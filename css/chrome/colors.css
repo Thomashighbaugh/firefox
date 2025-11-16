@@ -1,0 +1,64 @@
+/*=====================================================================
+========================= S E T   C O L O R S =========================
+=====================================================================*/
+
+/* Sidebar background color change */
+#browser #sidebar-box {
+  --sidebar-background-color: var(--firefoxcss-main-bg-color) !important;
+}
+
+/* Bookmarks bar background color */
+#PersonalToolbar {
+  background-color: var(--firefoxcss-item-bg-color) !important;
+}
+
+@media not -moz-pref("sidebar.revamp") {
+  /* Remove line between website content and top bar */
+  #navigator-toolbox {
+    border-bottom: var(--firefoxcss-top-bar-border-bottom-size) solid
+      var(--firefoxcss-top-bar-border-bottom-color) !important;
+  }
+}
+
+@media -moz-pref("sidebar.revamp") {
+  @media not -moz-pref("sidebar.verticaltabs") {
+    #navigator-toolbox {
+      border-bottom: none !important;
+    }
+  }
+}
+
+/* Set navigation toolbar to transparent */
+#navigator-toolbox #nav-bar {
+  background-color: transparent !important;
+}
+
+/* Whole Main Toolbar */
+#navigator-toolbox {
+  background-color: var(--firefoxcss-item-bg-color) !important;
+}
+
+/* Fix some custom firefox themes that break */
+#navigator-toolbox {
+  :root[lwtheme-image] & {
+    background-image: var(--lwt-additional-images) !important;
+  }
+}
+
+/* Avoids bright flash */
+#tabbrowser-tabpanels {
+  background-color: var(
+    --uc-light-bkgnd-color,
+    var(--firefoxcss-bright-flash-color)
+  ) !important;
+}
+
+/* CTRL+F Search Bar color changes  */
+.browserContainer > findbar {
+  background-image: none !important;
+  background-color: var(--firefoxcss-main-bg-color) !important;
+}
+
+.browserContainer > findbar .findbar-textbox {
+  background-color: var(--firefoxcss-item-bg-color) !important;
+}

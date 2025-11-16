@@ -1,32 +1,10 @@
-/* @namespace html url("http://www.w3.org/1999/xhtml"); */
-/* @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); */
+/*===============================================================
+==================== C O R E   C O N T E N T ==================
+===============================================================*/
 
-@import url(./css/content/uc-newtab.css) not
-  (-moz-pref("uc.higgs.skip-loading-uc-newtab.css"));
-@import url(./css/content/uc-aboutconfig.css) not
-  (-moz-pref("uc.higgs.skip-loading-uc-aboutconfig.css"));
-@import url(./css/content/uc-pdf.js.css) not
-  (-moz-pref("uc.higgs.skip-loading-uc-pdf.js.css"));
-@import url(./css/content/uc-common.css) not
-  (-moz-pref("uc.higgs.skip-loading-uc-common.css"));
-@import url(./css/content/uc-custom-content.css);
-
-@import url(./css/content/websites/reddit.css) not
-  (-moz-pref("uc.higgs.skip-theming-sites.css"));
-@import url(./css/content/websites/bing.css) not
-  (-moz-pref("uc.higgs.skip-theming-sites.css"));
-@import url(css/content/websites/youtube.css) not
-  (-moz-pref("uc.higgs.skip-theming-sites.css"));
-
-/* Import Relevant webextension tweaks here
- * IMPORTANT: If used, change the Internal UUID in the corresponding css file */
-@import url(./css/content/webextension-tweaks/generic_style.css) not
-  (-moz-pref("uc.higgs.skip-webextension-tweaks.css"));
-@import url(./css/content/webextension-tweaks/multi_account_containers.css) not
-  (-moz-pref("uc.higgs.skip-webextension-tweaks.css"));
-@import url(css/content/webextension-tweaks/request_control.css) not
-  (-moz-pref("uc.higgs.skip-webextension-tweaks.css"));
-@import url(css/content/webextension-tweaks/ublock_origin.css) not
-  (-moz-pref("uc.higgs.skip-webextension-tweaks.css"));
-@import url(css/content/webextension-tweaks/umatrix.css) not
-  (-moz-pref("uc.higgs.skip-webextension-tweaks.css"));
+/* Import content-specific colors and styles */
+@import url("css/content/colors.css");
+@import url("css/content/private-browsing.css");
+@import url("css/content/new-tab.css");
+@import url("css/content/firefox-view.css");
+@import url("css/content/about-pages.css");

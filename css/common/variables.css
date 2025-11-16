@@ -1,0 +1,34 @@
+/*=====================================================================
+=================== G L O B A L   V A R I A B L E S ===================
+=====================================================================*/
+
+:root {
+  --firefoxcss-top-bar-border-bottom-size: 1px;
+  --firefoxcss-border-radius: 10px;
+  --firefoxcss-control-buttons-margin: 100px;
+  --firefoxcss-tab-min-width: 110px;
+  --firefoxcss-tab-max-width: 150px;
+
+  --firefoxcss-searchbar-height: 30px;
+  --firefoxcss-searchbar-container-height: 36px;
+  --urlbar-icon-border-radius: calc(
+    var(--firefoxcss-border-radius) - 2px
+  ) !important;
+  @media not -moz-pref("sidebar.verticalTabs") {
+    --tab-block-margin: 2px !important;
+    /* Default: 4px */
+
+    --tab-min-height: 28px !important;
+    /* Default: 36px */
+
+    --tabstrip-min-height: 28px !important;
+  }
+
+  /* Toolbar Buttons */
+  --toolbarbutton-outer-padding: 2px !important; /* Default: 2px */
+  --toolbarbutton-inner-padding: 6px !important; /* Default: 8px */
+
+  /* Menu items */
+  --arrowpanel-menuitem-padding-block: 4px !important; /* Default: 8px */
+  --arrowpanel-menuitem-padding-inline: 4px !important; /* Default: 8px */
+}

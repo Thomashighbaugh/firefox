@@ -1,0 +1,109 @@
+/*=====================================================================
+------------------- S E A R C H   B A R -------------------------------
+=====================================================================*/
+/* Default Searchbox font size */
+#urlbar,
+#searchbar {
+  font-size: 1.1rem !important;
+}
+
+/* Styling Search Containers 
+    .urlbar-background - main search container
+    #searchbar - secondary/extra search container */
+.urlbar-background,
+#searchbar {
+  border: 0 !important;
+  border-radius: var(--firefoxcss-border-radius) !important;
+  background-color: var(--firefoxcss-url-bar-bg-color) !important;
+  box-shadow: var(--firefoxcss-url-box-shadow-color) !important;
+}
+
+/* Search box border radius  */
+.urlbar-background,
+#urlbar .urlbar-input-container,
+#searchbar {
+  border-radius: var(--firefoxcss-border-radius) !important;
+}
+
+/* Center search box text  */
+#urlbar .urlbar-input-box {
+  text-align: center;
+}
+
+/* Search outline disabled by default  */
+@media not -moz-pref("mod.searchBox.focus.outline.enable") {
+  /* Disable Focus outline */
+  #urlbar[focused]:not([suppress-focus-border]) > .urlbar-background,
+  #searchbar:focus-within {
+    outline: none !important;
+  }
+}
+
+/* When searchbar focused text opacity changed */
+#urlbar[focused] .urlbar-input::placeholder {
+  opacity: 0.4 !important;
+}
+
+/* Placeholder text - add shadow and spacing  */
+#urlbar .urlbar-input::placeholder,
+#urlbar .searchbar-textbox::placeholder {
+  color: color-mix(in srgb, currentColor 80%, transparent) !important;
+  opacity: 0.8 !important;
+}
+
+/* Remove border line between searche results and input  */
+/* Remove line over search engines in popout search  */
+#urlbar .urlbarView-body-inner,
+#urlbar .urlbarView:not([noresults]) > .search-one-offs:not([hidden]) {
+  border-top: none !important;
+}
+
+/* Dropdown search box colors */
+#urlbar[breakout][breakout-extend][open] .urlbar-background {
+  border-bottom: var(--firefoxcss-url-breakout-border-bottom-color) !important;
+  border-top: var(--firefoxcss-url-breakout-border-top-color) !important;
+  box-shadow: var(--firefoxcss-url-breakout-box-shadow) !important;
+}
+
+/* Secondary search box drowndow colors */
+#PopupSearchAutoComplete {
+  --panel-background: var(--firefoxcss-url-breakout-bar-bg-color) !important;
+}
+
+/* Disable weird animation */
+#urlbar[breakout][breakout-extend][breakout-extend-animate]
+  > .urlbar-background {
+  animation: none !important;
+}
+
+/* HEIGHT FIXES */
+:root {
+  --urlbar-min-height: var(--firefoxcss-searchbar-height) !important;
+}
+
+#urlbar[breakout] {
+  --urlbar-height: var(--firefoxcss-searchbar-height) !important;
+}
+
+#urlbar-container {
+  --urlbar-container-height: var(
+    --firefoxcss-searchbar-container-height
+  ) !important;
+}
+
+#urlbar[breakout][breakout-extend] {
+  & > .urlbar-input-container {
+    height: var(--urlbar-height) !important;
+    padding-block: 1px !important;
+    padding-inline: 1px !important;
+    transition: none !important;
+  }
+}
+
+#urlbar[breakout][breakout-extend] {
+  width: var(--urlbar-width) !important;
+  margin-inline-start: 0px !important;
+  margin-block-start: calc(
+    (var(--urlbar-container-height) - var(--urlbar-height)) / 2
+  ) !important;
+}

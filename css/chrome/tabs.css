@@ -2,6 +2,11 @@
 ============================= T A B S =================================
 =====================================================================*/
 
+/* Tabs toolbar background color to match bookmark bar */
+#TabsToolbar {
+  background-color: var(--firefoxcss-bookmarks-bg-color) !important;
+}
+
 /* Non active tabs have darker text */
 .tabbrowser-tab:not([selected]):not([multiselected]):not(:hover)
   .tab-label-container

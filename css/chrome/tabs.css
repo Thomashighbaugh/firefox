@@ -44,7 +44,7 @@
   border: 0 !important;
   border-radius: var(--firefoxcss-border-radius) !important;
   background-image: none !important;
-  background-color: var(--firefoxcss-tab-bg-color) !important;
+  background-color: color-mix(in srgb, var(--firefoxcss-tab-bg-color) 4%, transparent) !important;
   transition: background-color 100ms ease !important;
   box-shadow: var(--firefoxcss-normal-tabs-box-shadow) !important;
 }
@@ -69,7 +69,7 @@
   border: 0 !important;
   border-radius: var(--firefoxcss-border-radius) !important;
   background-image: none !important;
-  background-color: var(--firefoxcss-tab-hover-bg-color) !important;
+  background-color: color-mix(in srgb, var(--firefoxcss-tab-hover-bg-color) 4%, transparent) !important;
   box-shadow: var(--firefoxcss-normal-tabs-box-shadow) !important;
 }
 
@@ -78,7 +78,7 @@
   border: 0 !important;
   border-radius: var(--firefoxcss-border-radius) !important;
   background-image: none !important;
-  background-color: var(--firefoxcss-tab-active-bg-color) !important;
+  background-color: color-mix(in srgb, var(--firefoxcss-tab-active-bg-color) 4%, transparent) !important;
   box-shadow: none !important;
   outline: none !important;
 }
@@ -89,7 +89,7 @@
   border-radius: var(--firefoxcss-border-radius) !important;
   background-image: none !important;
   outline: none !important;
-  background-color: var(--firefoxcss-tab-active-bg-color) !important;
+  background-color: color-mix(in srgb, var(--firefoxcss-tab-active-bg-color) 4%, transparent) !important;
   box-shadow: none !important;
 }
 

@@ -4,7 +4,7 @@
 
 /* Sidebar background color change */
 #browser #sidebar-box {
-  --sidebar-background-color: var(--firefoxcss-bookmarks-bg-color) !important;
+  --sidebar-background-color: var(--firefoxcss-item-bg-color) !important;
 }
 
 /* Bookmarks bar background color */

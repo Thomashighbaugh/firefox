@@ -160,3 +160,19 @@ toolbar
 #forward-button .toolbarbutton-icon {
   padding: calc(var(--toolbarbutton-inner-padding) + 1px) !important;
 }
+
+.toolbarbutton-icon {
+  box-sizing: border-box !important;
+background-color: hsla(240, 2%, 45%, 0.3) !important;
+}
+
+.toolbarbutton-icon:hover {
+  box-sizing: border-box !important;
+background-color: hsla(240, 2%, 45%, 0.45) !important;
+}
+.toolbarbutton-icon:hover {
+  box-sizing: border-box !important;
+background-color: hsla(240, 2%, 45%, 0.65) !important;
+}
+
+

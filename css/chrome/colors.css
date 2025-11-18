@@ -75,19 +75,20 @@
   background-color: var(--firefoxcss-main-bg-color) !important;
 }
 
-/* Toolbar buttons background */
-.toolbarbutton-1 {
-  background-color: var(--firefoxcss-item-bg-color) !important;
-}
-
-/* Toolbar buttons hover with 50% opacity */
-.toolbarbutton-1:hover {
-  background-color: color-mix(
-    in srgb,
-    var(--firefoxcss-item-bg-color) 50%,
-    transparent
-  ) !important;
-}
+/* /* Toolbar buttons background */
+*/
+/* .toolbarbutton-1 { */
+/*   background-color: var(--firefoxcss-item-bg-color) !important; */
+/* } */
+/**/
+/* /* Toolbar buttons hover with 50% opacity */ */
+/* .toolbarbutton-1:hover { */
+/*   background-color: color-mix( */
+/*     in srgb, */
+/*     var(--firefoxcss-item-bg-color) 50%, */
+/*     transparent */
+/*   ) !important; */
+/* } */
 
 /* Tab favicons background removed */
 
@@ -120,4 +121,3 @@
 .browserContainer > findbar .findbar-textbox {
   background-color: var(--firefoxcss-item-bg-color) !important;
 }
-

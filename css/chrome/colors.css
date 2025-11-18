@@ -38,6 +38,11 @@
   --sidebar-background-color: var(--firefoxcss-main-bg-color) !important;
 }
 
+/* Second sidebar background color */
+#sb2-box {
+  --sidebar-background-color: hsl(240, 3%, 13%) !important;
+}
+
 /* Bookmarks bar background color */
 #PersonalToolbar {
   background-color: var(--firefoxcss-main-bg-color) !important;

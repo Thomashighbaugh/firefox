@@ -2,6 +2,17 @@
 ========================= S E T   C O L O R S =========================
 =====================================================================*/
 
+/* Vertical tabs background color with transparency preserved */
+#vertical-tabs {
+  background-color: hsla(240, 2%, 13%, 0.9) !important;
+}
+
+@media (prefers-color-scheme: light) {
+  #vertical-tabs {
+    background-color: hsla(200, 5%, 96%, 0.9) !important;
+  }
+}
+
 /* All hbox elements background color */
 hbox {
   background-color: var(--firefoxcss-bookmarks-bg-color) !important;

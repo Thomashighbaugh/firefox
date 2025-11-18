@@ -161,18 +161,22 @@ toolbar
   padding: calc(var(--toolbarbutton-inner-padding) + 1px) !important;
 }
 
-.toolbarbutton-icon {
+.unified-extensions-item-action-button .toolbarbutton-icon,
+.toolbarbutton-1 .toolbarbutton-icon,
+.webextension-browser-action .toolbarbutton-icon {
   box-sizing: border-box !important;
-background-color: hsla(240, 2%, 45%, 0.3) !important;
+  background-color: hsla(240, 2%, 45%, 0.3) !important;
 }
 
-.toolbarbutton-icon:hover {
+.unified-extensions-item-action-button .toolbarbutton-icon:hover,
+.toolbarbutton-1 .toolbarbutton-icon:hover,
+.webextension-browser-action .toolbarbutton-icon:hover {
   box-sizing: border-box !important;
-background-color: hsla(240, 2%, 45%, 0.45) !important;
+  background-color: hsla(240, 2%, 45%, 0.45) !important;
 }
-.toolbarbutton-icon:hover {
+.unified-extensions-item-action-button .toolbarbutton-icon:active,
+.toolbarbutton-1 .toolbarbutton-icon:active,
+.webextension-browser-action .toolbarbutton-icon:active {
   box-sizing: border-box !important;
-background-color: hsla(240, 2%, 45%, 0.65) !important;
+  background-color: hsla(240, 2%, 45%, 0.65) !important;
 }
-
-

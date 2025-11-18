@@ -5,8 +5,8 @@ export const SIDEBAR_CSS = `
   #sb2-web-panels *,
   .web-panel,
   .web-panel * {
-    background: var(--firefoxcss-bookmarks-bg-color) !important;
-    background-color: var(--firefoxcss-bookmarks-bg-color) !important;
+    background: hsl(240, 2%, 13%) !important;
+    background-color: hsl(240, 2%, 13%) !important;
   }
 
   #sb2 {
@@ -22,7 +22,7 @@ export const SIDEBAR_CSS = `
         flex-direction: row;
         min-height: unset;
         gap: 4px;
-        background-color: var(--firefoxcss-bookmarks-bg-color) !important;
+        background-color: hsl(240, 2%, 13%) !important;
         color: var(--toolbar-color);
         padding: 1px;
 

@@ -47,6 +47,7 @@ hbox {
 /* Set navigation toolbar to match bookmark bar */
 #navigator-toolbox #nav-bar {
   background-color: var(--firefoxcss-bookmarks-bg-color) !important;
+  border-bottom: none !important;
 }
 
 /* Whole Main Toolbar */

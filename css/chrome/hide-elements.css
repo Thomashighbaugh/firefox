@@ -7,7 +7,9 @@
 #TabsToolbar .titlebar-spacer[type="post-tabs"],
 #TabsToolbar .titlebar-spacer,
 #nav-bar .titlebar-spacer[type="pre-tabs"],
-#nav-bar .titlebar-spacer[type="post-tabs"],
+#nav-bar .titlebar-spacer[type="post-tabs"] {
+  width: 0 !important;
+}
 /* Remove Line above search engine selection in search bar */
 #urlbar .search-one-offs .search-panel-one-offs-header-label,
 /* Remove lefover window buttons from extra menu bar (when pressing alt)*/

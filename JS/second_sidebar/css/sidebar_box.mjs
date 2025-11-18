@@ -1,6 +1,6 @@
 export const SIDEBAR_BOX_CSS = `
   #sb2-box {
-    background-color: var(--firefoxcss-item-bg-color) !important;
+    background-color: var(--firefoxcss-bookmarks-bg-color) !important;
     min-width: 200px;
     pointer-events: none;
     box-sizing: content-box;
@@ -9,7 +9,7 @@ export const SIDEBAR_BOX_CSS = `
   #browser:has(#sb2[pinned="false"]) {
     #sb2-box {
       position: absolute;
-      background-color: var(--firefoxcss-item-bg-color) !important;
+      background-color: var(--firefoxcss-bookmarks-bg-color) !important;
       padding-block-start: var(--sb2-box-unpinned-top-padding);
       height: calc(100% - var(--sb2-box-unpinned-top-padding) - var(--sb2-box-unpinned-bottom-padding));
       width: 100% !important;

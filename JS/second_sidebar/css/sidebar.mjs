@@ -5,8 +5,8 @@ export const SIDEBAR_CSS = `
   #sb2-web-panels *,
   .web-panel,
   .web-panel * {
-    background: hsl(240, 2%, 13%) !important;
-    background-color: hsl(240, 2%, 13%) !important;
+    background: var(--firefoxcss-main-bg-color) !important;
+    background-color: var(--firefoxcss-main-bg-color) !important;
   }
 
   #sb2 {
@@ -22,7 +22,7 @@ export const SIDEBAR_CSS = `
         flex-direction: row;
         min-height: unset;
         gap: 4px;
-        background-color: hsl(240, 2%, 13%) !important;
+        background-color: var(--firefoxcss-main-bg-color) !important;
         color: var(--toolbar-color);
         padding: 1px;
 

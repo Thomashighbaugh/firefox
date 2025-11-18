@@ -1,13 +1,5 @@
-/* ______ _           __             __  __           _   ____  _     _    _ _____  
-  |  ____(_)         / _|           |  \/  |         | | |  _ \| |   | |  | |  __ \ 
-  | |__   _ _ __ ___| |_ _____  __  | \  / | ___   __| | | |_) | |   | |  | | |__) |
-  |  __| | | '__/ _ \  _/ _ \ \/ /  | |\/| |/ _ \ / _` | |  _ <| |   | |  | |  _  / 
-  | |    | | | |  __/ || (_) >  <   | |  | | (_) | (_| | | |_) | |___| |__| | | \ \ 
-  |_|    |_|_|  \___|_| \___/_/\_\  |_|  |_|\___/ \__,_| |____/|______\____/|_|  \_\
-  
-                                                                                    
-  Github:         github.com/datguypiko/Firefox-Mod-Blur     */
-
+/* Current Design Derived from Firefox Mod-Blur
+*/
 /*===============================================================
 ==================== C O R E   S T Y L E S ====================
 ===============================================================*/
@@ -21,7 +13,6 @@
 @import url("css/chrome/colors.css");
 @import url("css/chrome/hide-elements.css");
 @import url("css/chrome/height-fixes.css");
-@import url("css/chrome/icons.css");
 @import url("css/chrome/search-bar.css");
 @import url("css/chrome/tabs.css");
 @import url("css/chrome/window-controls.css");
@@ -33,3 +24,4 @@
 @import url("css/chrome/customization.css");
 @import url("css/chrome/vertical-tabs.css");
 @import url("css/chrome/other.css");
+

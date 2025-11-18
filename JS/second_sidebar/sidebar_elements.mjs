@@ -1,22 +1,26 @@
+import { AfterSplitter } from "./xul/after_splitter.mjs";
 import { CustomizableUIWrapper } from "./wrappers/customizable_ui.mjs";
-import { OpenLinkInSidebarMenuItem } from "./xul/open_link_in_sidebar_menuitem.mjs";
-import { Sidebar } from "./xul/sidebar.mjs";
+import { GeometryHint } from "./xul/geometry_hint.mjs";
+import { OpenLinkAsTempWebPanelMenuItem } from "./xul/open_link_as_temp_web_panel.mjs";
+import { OpenLinkAsWebPanelMenuItem } from "./xul/open_link_as_web_panel.mjs";
+import { SearchInWebPanelMenuItem } from "./xul/search_in_web_panel.mjs";
 import { SidebarBox } from "./xul/sidebar_box.mjs";
-import { SidebarBoxFiller } from "./xul/sidebar_box_filler.mjs";
+import { SidebarBoxArea } from "./xul/sidebar_box_area.mjs";
 import { SidebarCollapseButton } from "./xul/sidebar_collapse_button.mjs";
 import { SidebarMain } from "./xul/sidebar_main.mjs";
 import { SidebarMainMenuPopup } from "./xul/sidebar_main_menupopup.mjs";
 import { SidebarMainPopupSettings } from "./xul/sidebar_main_popup_settings.mjs";
-import { SidebarSplitterPinned } from "./xul/sidebar_splitter_pinned.mjs";
-import { SidebarSplitterUnpinned } from "./xul/sidebar_splitter_unpinned.mjs";
+import { SidebarResizer } from "./xul/sidebar_resizer.mjs";
+import { SidebarSplitter } from "./xul/sidebar_splitter.mjs";
 import { SidebarToolbar } from "./xul/sidebar_toolbar.mjs";
+import { SidebarWrapper } from "./xul/sidebar_wrapper.mjs";
 import { WebPanelMenuPopup } from "./xul/web_panel_menupopup.mjs";
 import { WebPanelNewButton } from "./xul/web_panel_new_button.mjs";
 import { WebPanelPopupDelete } from "./xul/web_panel_popup_delete.mjs";
 import { WebPanelPopupEdit } from "./xul/web_panel_popup_edit.mjs";
 import { WebPanelPopupMore } from "./xul/web_panel_popup_more.mjs";
 import { WebPanelPopupNew } from "./xul/web_panel_popup_new.mjs";
-import { WebPanels } from "./xul/web_panels.mjs";
+import { WebPanelTooltip } from "./xul/web_panel_tooltip.mjs";
 import { WebPanelsBrowser } from "./xul/web_panels_browser.mjs";
 import { XULElement } from "./xul/base/xul_element.mjs";
 
@@ -39,29 +43,49 @@ export class SidebarElements {
   }
 
   static #createSidebar() {
+    this.sidebarWrapper = new SidebarWrapper();
     this.sidebarMain = new SidebarMain();
+    this.sidebarBoxArea = new SidebarBoxArea();
     this.sidebarBox = new SidebarBox();
-    this.sidebarBoxFiller = new SidebarBoxFiller();
-    this.sidebarSplitterPinned = new SidebarSplitterPinned();
-    this.sidebarSplitterUnpinned = new SidebarSplitterUnpinned();
-    this.sidebar = new Sidebar();
     this.sidebarToolbar = new SidebarToolbar();
-    this.webPanels = new WebPanels();
     this.webPanelsBrowser = new WebPanelsBrowser();
+    this.sidebarResizerTop = new SidebarResizer("top");
+    this.sidebarResizerLeft = new SidebarResizer("left");
+    this.sidebarResizerRight = new SidebarResizer("right");
+    this.sidebarResizerBottom = new SidebarResizer("bottom");
+    this.sidebarResizerTopLeft = new SidebarResizer("topleft");
+    this.sidebarResizerTopRight = new SidebarResizer("topright");
+    this.sidebarResizerBottomLeft = new SidebarResizer("bottomleft");
+    this.sidebarResizerBottomRight = new SidebarResizer("bottomright");
+    this.sidebarSplitter = new SidebarSplitter();
+    this.afterSplitter = new AfterSplitter();
+    this.geometryHint = new GeometryHint();
 
     const browser = new XULElement({
       element: document.getElementById("browser"),
     });
     browser.appendChildren(
-      this.sidebarSplitterPinned,
-      this.sidebarBox.appendChildren(
-        this.sidebarBoxFiller,
-        this.sidebarSplitterUnpinned,
-        this.sidebar.appendChildren(this.sidebarToolbar, this.webPanels),
+      this.sidebarWrapper.appendChildren(
+        this.sidebarMain,
+        this.sidebarBoxArea.appendChildren(
+          this.sidebarBox.appendChildren(
+            this.sidebarToolbar,
+            this.webPanelsBrowser,
+            this.geometryHint,
+            this.sidebarResizerTop,
+            this.sidebarResizerLeft,
+            this.sidebarResizerRight,
+            this.sidebarResizerBottom,
+            this.sidebarResizerTopLeft,
+            this.sidebarResizerTopRight,
+            this.sidebarResizerBottomLeft,
+            this.sidebarResizerBottomRight,
+          ),
+          this.sidebarSplitter,
+          this.afterSplitter,
+        ),
       ),
-      this.sidebarMain,
     );
-    this.webPanels.appendChild(this.webPanelsBrowser);
   }
 
   static #registerSidebar() {
@@ -77,6 +101,7 @@ export class SidebarElements {
   }
 
   static #createPopups() {
+    this.webPanelTooltip = new WebPanelTooltip();
     this.webPanelMenuPopup = new WebPanelMenuPopup();
     this.webPanelPopupNew = new WebPanelPopupNew();
     this.webPanelPopupEdit = new WebPanelPopupEdit();
@@ -89,6 +114,7 @@ export class SidebarElements {
       element: document.getElementById("mainPopupSet"),
     });
     mainPopupSet.appendChildren(
+      this.webPanelTooltip,
       this.webPanelMenuPopup,
       this.webPanelPopupNew,
       this.webPanelPopupEdit,
@@ -100,7 +126,9 @@ export class SidebarElements {
   }
 
   static #createContextMenuItems() {
-    this.openLinkInSidebarMenuItem = new OpenLinkInSidebarMenuItem();
+    this.openLinkAsWebPanelMenuItem = new OpenLinkAsWebPanelMenuItem();
+    this.openLinkAsTempWebPanelMenuItem = new OpenLinkAsTempWebPanelMenuItem();
+    this.searchInWebPanelMenuItem = new SearchInWebPanelMenuItem();
 
     const contentAreaContextMenu = new XULElement({
       element: document.getElementById("contentAreaContextMenu"),
@@ -108,9 +136,21 @@ export class SidebarElements {
     const separator = new XULElement({
       element: document.getElementById("context-sep-open"),
     });
+    const contextSearchSelect = new XULElement({
+      element: document.getElementById("context-searchselect"),
+    });
+
     contentAreaContextMenu.insertBefore(
-      this.openLinkInSidebarMenuItem,
+      this.openLinkAsWebPanelMenuItem,
       separator,
+    );
+    contentAreaContextMenu.insertBefore(
+      this.openLinkAsTempWebPanelMenuItem,
+      separator,
+    );
+    contentAreaContextMenu.insertAfter(
+      this.searchInWebPanelMenuItem,
+      contextSearchSelect,
     );
   }
 }

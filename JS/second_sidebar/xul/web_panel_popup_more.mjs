@@ -1,19 +1,17 @@
 import {
+  createPopupSet,
   createSubviewButton,
   createSubviewIconicButton,
   createZoomButtons,
   updateZoomButtons,
 } from "../utils/xul.mjs";
 
-/* eslint-disable no-unused-vars */
 import { MenuSeparator } from "./base/menuseparator.mjs";
 import { Panel } from "./base/panel.mjs";
 import { PanelMultiView } from "./base/panel_multi_view.mjs";
 import { PopupBody } from "./popup_body.mjs";
-import { WebPanelSettings } from "../settings/web_panel_settings.mjs";
+import { WebPanelSettings } from "../settings/web_panel_settings.mjs"; // eslint-disable-line no-unused-vars
 import { isLeftMouseButton } from "../utils/buttons.mjs";
-
-/* eslint-enable no-unused-vars */
 
 const ICONS = {
   MINUS: "chrome://global/skin/icons/minus.svg",
@@ -30,7 +28,13 @@ export class WebPanelPopupMore extends Panel {
 
     this.openInNewTabButton = createSubviewButton("Open in New Tab");
     this.copyPageUrlButton = createSubviewButton("Copy Page URL");
+    this.temporaryButton = createSubviewButton("Temporary", {
+      type: "checkbox",
+    });
     this.mobileButton = createSubviewButton("Mobile View", {
+      type: "checkbox",
+    });
+    this.alwaysOnTopButton = createSubviewButton("Always On Top", {
       type: "checkbox",
     });
     this.zoomOutButton = createSubviewIconicButton(ICONS.MINUS, "Zoom Out");
@@ -46,15 +50,21 @@ export class WebPanelPopupMore extends Panel {
     this.appendChild(
       new PanelMultiView().appendChildren(
         new PopupBody({ compact: true }).appendChildren(
-          this.openInNewTabButton,
-          this.copyPageUrlButton,
-          this.mobileButton,
-          new MenuSeparator(),
-          createZoomButtons(
-            this.zoomOutButton,
-            this.resetZoomButton,
-            this.zoomInButton,
-          ),
+          createPopupSet("", [
+            this.openInNewTabButton,
+            this.copyPageUrlButton,
+            this.mobileButton,
+            new MenuSeparator(),
+            this.alwaysOnTopButton,
+            new MenuSeparator(),
+            this.temporaryButton,
+            new MenuSeparator(),
+            createZoomButtons(
+              this.zoomOutButton,
+              this.resetZoomButton,
+              this.zoomInButton,
+            ),
+          ]),
         ),
       ),
     );
@@ -102,6 +112,30 @@ export class WebPanelPopupMore extends Panel {
     this.mobileButton.addEventListener("click", (event) => {
       if (isLeftMouseButton(event)) {
         callback(this.settings.uuid, this.mobileButton.isChecked());
+      }
+    });
+  }
+
+  /**
+   *
+   * @param {function(string, boolean):void} callback
+   */
+  listenTemporaryButtonClick(callback) {
+    this.temporaryButton.addEventListener("click", (event) => {
+      if (isLeftMouseButton(event)) {
+        callback(this.settings.uuid, this.temporaryButton.isChecked());
+      }
+    });
+  }
+
+  /**
+   *
+   * @param {function(string, boolean):void} callback
+   */
+  listenAlwaysOnTopButtonClick(callback) {
+    this.alwaysOnTopButton.addEventListener("click", (event) => {
+      if (isLeftMouseButton(event)) {
+        callback(this.settings.uuid, this.alwaysOnTopButton.isChecked());
       }
     });
   }
@@ -164,6 +198,8 @@ export class WebPanelPopupMore extends Panel {
    */
   setDefaults(settings) {
     this.mobileButton.setChecked(settings.mobile);
+    this.temporaryButton.setChecked(settings.temporary);
+    this.alwaysOnTopButton.setChecked(settings.alwaysOnTop);
     this.#updateZoomButtons(settings.zoom);
 
     this.settings = settings;

@@ -1,9 +1,4 @@
-import {
-  WebPanelEvents,
-  listenEvent,
-  sendEvent,
-  sendEvents,
-} from "./events.mjs";
+import { WebPanelEvents, sendEvents } from "./events.mjs";
 
 import { SidebarElements } from "../sidebar_elements.mjs";
 import { WindowWrapper } from "../wrappers/window.mjs";
@@ -11,25 +6,21 @@ import { isLeftMouseButton } from "../utils/buttons.mjs";
 
 export class WebPanelNewController {
   constructor() {
-    this.webPanelNewButton = SidebarElements.webPanelNewButton;
-    this.webPanelPopupNew = SidebarElements.webPanelPopupNew;
-
-    listenEvent(WebPanelEvents.OPEN_NEW_WEB_PANEL_POPUP, () => {
-      this.openPopup();
-    });
-
-    this.webPanelNewButton.listenClick((event) => {
+    SidebarElements.webPanelNewButton.addEventListener("click", (event) => {
+      event.stopPropagation();
       if (isLeftMouseButton(event)) {
-        sendEvent(WebPanelEvents.OPEN_NEW_WEB_PANEL_POPUP);
+        this.openPopup();
       }
     });
 
-    this.webPanelPopupNew.listenSaveButtonClick(async (url, userContextId) => {
-      this.createWebPanel(url, userContextId);
-      this.hidePopup();
-    });
+    SidebarElements.webPanelPopupNew.listenSaveButtonClick(
+      async (url, userContextId, temporary) => {
+        this.createWebPanel(url, userContextId, temporary);
+        this.hidePopup();
+      },
+    );
 
-    this.webPanelPopupNew.listenCancelButtonClick(() => {
+    SidebarElements.webPanelPopupNew.listenCancelButtonClick(() => {
       this.hidePopup();
     });
   }
@@ -38,13 +29,15 @@ export class WebPanelNewController {
    *
    * @param {string} url
    * @param {number} userContextId
+   * @param {boolean} temporary
    */
-  createWebPanel(url, userContextId) {
+  createWebPanel(url, userContextId, temporary) {
     const uuid = crypto.randomUUID();
     sendEvents(WebPanelEvents.CREATE_WEB_PANEL, {
       uuid,
       url,
       userContextId,
+      temporary,
       newWebPanelPosition: this.newWebPanelPosition,
     });
   }
@@ -57,11 +50,14 @@ export class WebPanelNewController {
       suggest = currentURI.spec;
     }
 
-    this.webPanelPopupNew.openPopup(this.webPanelNewButton.button, suggest);
+    SidebarElements.webPanelPopupNew.openPopup(
+      SidebarElements.webPanelNewButton.button,
+      suggest,
+    );
   }
 
   hidePopup() {
-    this.webPanelPopupNew.hidePopup();
+    SidebarElements.webPanelPopupNew.hidePopup();
   }
 
   /**

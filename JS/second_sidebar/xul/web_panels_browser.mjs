@@ -1,21 +1,23 @@
-/* eslint-disable no-unused-vars */
-
 import { AppConstantsWrapper } from "../wrappers/app_constants.mjs";
 import { Browser } from "./base/browser.mjs";
+import { BrowserCommandsWrapper } from "../wrappers/browser_commands.mjs";
 import { ObserversWrapper } from "../wrappers/observers.mjs";
+import { PopupNotificationsPatcher } from "../patchers/popup_notifications_patcher.mjs";
 import { ScriptSecurityManagerWrapper } from "../wrappers/script_security_manager.mjs";
 import { SessionStoreWrapper } from "../wrappers/session_store.mjs";
 import { Style } from "./base/style.mjs";
-import { WebPanelSettings } from "../settings/web_panel_settings.mjs";
+import { UrlbarInputPatcher } from "../patchers/urlbar_input_patcher.mjs";
+import { WebPanelSettings } from "../settings/web_panel_settings.mjs"; // eslint-disable-line no-unused-vars
+import { WebPanelState } from "../settings/web_panel_state.mjs"; // eslint-disable-line no-unused-vars
 import { WebPanelTab } from "./web_panel_tab.mjs";
 import { WindowWatcherWrapper } from "../wrappers/window_watcher.mjs";
-import { WindowWrapper } from "../wrappers/window.mjs";
+import { WindowWrapper } from "../wrappers/window.mjs"; // eslint-disable-line no-unused-vars
 import { XULElement } from "./base/xul_element.mjs";
-
-/* eslint-enable no-unused-vars */
 
 const BEFORE_SHOW_EVENT = "browser-window-before-show";
 const INITIALIZED_EVENT = "browser-delayed-startup-finished";
+const DOM_WINDOW_CLOSED_EVENT = "domwindowclosed";
+const DIALOG_OPEN_EVENT = "dialogopen";
 
 const FIRST_TAB_INDEX = 0;
 
@@ -35,6 +37,7 @@ export class WebPanelsBrowser extends Browser {
       autoscroll: "false",
       tooltip: "aHTMLTooltip",
       autocompletepopup: "PopupAutoComplete",
+      chromehidden: "",
     });
 
     this.initialized = false;
@@ -66,9 +69,34 @@ export class WebPanelsBrowser extends Browser {
       this.initWindow();
     } else if (topic === INITIALIZED_EVENT) {
       ObserversWrapper.removeObserver(this, INITIALIZED_EVENT);
-      SessionStoreWrapper.maybeDontRestoreTabs(this.window);
+      this.#hackSessionStore();
+      this.#hackCloseWindowCommand();
       this.initialized = true;
       console.log(`${this.window.name}: web panels browser initialized`);
+    }
+  }
+
+  /**
+   *
+   * @param {boolean} dontRestoreTabs
+   */
+  #hackSessionStore(dontRestoreTabs = true) {
+    // Hack SessionStore to prevent restoring hidden window
+    if (dontRestoreTabs) SessionStoreWrapper.maybeDontRestoreTabs(this.window);
+    ObserversWrapper.notifyObservers(this.window.raw, DOM_WINDOW_CLOSED_EVENT);
+  }
+
+  #hackCloseWindowCommand() {
+    // Hack browser commands to hack SessionStore
+    // and remove sb2-web-panels-browser before closing window
+    const elements = document.querySelectorAll('[command="cmd_closeWindow"]');
+    for (const element of elements) {
+      element.removeAttribute("command");
+      element.addEventListener("click", (e) => {
+        this.#hackSessionStore(false);
+        this.remove();
+        BrowserCommandsWrapper.tryToCloseWindow(e);
+      });
     }
   }
 
@@ -76,10 +104,13 @@ export class WebPanelsBrowser extends Browser {
     const windowRoot = new XULElement({
       element: this.window.document.documentElement,
     });
+    windowRoot.setAttribute("chromehidden", "");
+
     const selectors = [
       "#PersonalToolbar",
       "#navigator-toolbox",
       "#sidebar-main",
+      "#sidebar-launcher-splitter",
       "#sidebar-wrapper",
       "#sidebar-box",
       "#context-bookmarkpage",
@@ -110,20 +141,34 @@ export class WebPanelsBrowser extends Browser {
       .querySelector("#tabbrowser-tabbox")
       .setProperty("height", "100%");
 
+    // Position popups
+    windowRoot.querySelector("#mainPopupSet").setProperty("margin-left", "8px");
+    windowRoot
+      .querySelector("#notification-popup")
+      .setProperty("margin-top", "8px");
+
     // Add class for userChrome.css
     windowRoot.addClass("sb2-webpanels-window");
+
+    // Close first dialog window within first 5 seconds
+    this.#listenToFirstDialogAndClose();
+
+    // Patch PopupNotifications
+    PopupNotificationsPatcher.patch();
+
+    // Patch #urlbar-input
+    UrlbarInputPatcher.patch();
   }
 
-  /**
-   *
-   * @param {function(WebPanelTab):void} callback
-   */
-  addPageTitleChangeListener(callback) {
-    this.window.gBrowser.addEventListener("pagetitlechanged", (event) => {
-      const browser = new Browser({ element: event.target });
-      const tab = this.window.gBrowser.getTabForBrowser(browser);
-      callback(WebPanelTab.fromTab(tab));
-    });
+  #listenToFirstDialogAndClose() {
+    const closeDialog = () => {
+      this.window.gDialogBox.closeDialog();
+      this.window.removeEventListener(DIALOG_OPEN_EVENT, closeDialog);
+    };
+    this.window.addEventListener(DIALOG_OPEN_EVENT, closeDialog);
+    setTimeout(() => {
+      this.window.removeEventListener(DIALOG_OPEN_EVENT, closeDialog);
+    }, 5000);
   }
 
   /**
@@ -161,7 +206,7 @@ export class WebPanelsBrowser extends Browser {
    */
   addWebPanelTab(webPanelSettings, progressListener) {
     const tab = WebPanelTab.fromTab(
-      this.window.gBrowser.addTab(webPanelSettings.url, {
+      this.window.gBrowser.addTab("about:blank", {
         triggeringPrincipal: ScriptSecurityManagerWrapper.getSystemPrincipal(),
         userContextId: webPanelSettings.userContextId,
       }),
@@ -170,17 +215,16 @@ export class WebPanelsBrowser extends Browser {
     tab.linkedBrowser.addProgressListener(progressListener);
 
     // We need to add progress listener when loading unloaded tab
-    tab.addEventListener("TabBrowserInserted", () => {
+    tab.addTabBrowserInsertedListener(() => {
       tab.linkedBrowser.addProgressListener(progressListener);
     });
 
-    // Set user agent and reload
+    // Set user agent
     if (webPanelSettings.mobile) {
       tab.linkedBrowser.setMobileUserAgent();
     } else {
       tab.linkedBrowser.unsetMobileUserAgent();
     }
-    tab.linkedBrowser.go(webPanelSettings.url);
 
     // Set zoom
     tab.linkedBrowser.setZoom(webPanelSettings.zoom);
@@ -190,7 +234,7 @@ export class WebPanelsBrowser extends Browser {
 
   /**
    *
-   * @returns {WebPanelTab}
+   * @returns {WebPanelTab?}
    */
   getActiveWebPanelTab() {
     return WebPanelTab.fromTab(this.window.gBrowser.selectedTab);
@@ -214,11 +258,6 @@ export class WebPanelsBrowser extends Browser {
    */
   removeWebPanelTab(tab) {
     this.window.gBrowser.removeTab(tab);
-  }
-
-  notifyWindowClosedAndRemove() {
-    ObserversWrapper.notifyObservers(this.window.raw, "domwindowclosed");
-    this.remove();
   }
 
   /**

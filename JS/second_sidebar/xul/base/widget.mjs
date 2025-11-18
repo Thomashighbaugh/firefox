@@ -1,5 +1,6 @@
 import { CustomizableUIWrapper } from "../../wrappers/customizable_ui.mjs";
 import { ToolbarButton } from "./toolbar_button.mjs";
+import { XULElement } from "./xul_element.mjs"; // eslint-disable-line no-unused-vars
 
 export class Widget {
   /**
@@ -36,7 +37,7 @@ export class Widget {
     this.context = context;
     this.onClick = null;
     try {
-      this.widget = CustomizableUIWrapper.createWidget({
+      this.wrapper = CustomizableUIWrapper.createWidget({
         id,
         onCreated: async (element) => {
           console.log(`Widget ${id} was created`);
@@ -83,6 +84,25 @@ export class Widget {
 
   /**
    *
+   * @returns {boolean}
+   */
+  get isWrapped() {
+    return (
+      this.button.parentElement &&
+      this.button.parentElement.tagName === "toolbarpaletteitem"
+    );
+  }
+
+  /**
+   *
+   * @returns {XULElement?}
+   */
+  get parentElement() {
+    return this.button.parentElement;
+  }
+
+  /**
+   *
    * @param {ToolbarButton} button
    */
   #setup(button) {
@@ -105,12 +125,14 @@ export class Widget {
 
   /**
    *
+   * @param {string} event
    * @param {function(MouseEvent):void} callback
    * @returns {Widget}
    */
-  setOnClick(callback) {
-    this.onClick = callback;
-    return this;
+  addEventListener(event, callback) {
+    return this.doWhenButtonReady(() => {
+      this.button.addEventListener(event, callback);
+    });
   }
 
   /**
@@ -119,12 +141,10 @@ export class Widget {
    * @returns {Widget}
    */
   setIcon(iconURL) {
-    this.iconURL = iconURL;
-    const button = this.button;
-    if (button) {
-      button.setIcon(this.iconURL);
-    }
-    return this;
+    return this.doWhenButtonReady(() => {
+      this.iconURL = iconURL;
+      this.button.setIcon(iconURL);
+    });
   }
 
   /**
@@ -133,11 +153,10 @@ export class Widget {
    * @returns {Widget}
    */
   setLabel(text) {
-    this.label = text;
-    const button = this.button;
-    if (button) {
-      button.setLabel(this.label);
-    }
+    this.doWhenButtonReady(() => {
+      this.label = text;
+      this.button.setLabel(text);
+    });
     return this;
   }
 
@@ -147,11 +166,10 @@ export class Widget {
    * @returns {Widget}
    */
   setTooltipText(text) {
-    this.tooltipText = text;
-    const button = this.button;
-    if (button) {
-      button.setTooltipText(this.tooltipText);
-    }
+    this.doWhenButtonReady(() => {
+      this.tooltipText = text;
+      this.button.setTooltipText(text);
+    });
     return this;
   }
 
@@ -169,11 +187,10 @@ export class Widget {
    * @returns {Widget}
    */
   setUnloaded(value) {
-    this.unloaded = value;
-    const button = this.button;
-    if (button) {
-      button.setUnloaded(value);
-    }
+    this.doWhenButtonReady(() => {
+      this.unloaded = value;
+      this.button.setUnloaded(value);
+    });
     return this;
   }
 
@@ -191,11 +208,10 @@ export class Widget {
    * @returns {Widget}
    */
   setOpen(value) {
-    this.open = value;
-    const button = this.button;
-    if (button) {
-      button.setOpen(value);
-    }
+    this.doWhenButtonReady(() => {
+      this.open = value;
+      this.button.setOpen(value);
+    });
     return this;
   }
 
@@ -205,11 +221,10 @@ export class Widget {
    * @returns {Widget}
    */
   setDisabled(value) {
-    this.open = value;
-    const button = this.button;
-    if (button) {
-      button.setDisabled(value);
-    }
+    this.doWhenButtonReady(() => {
+      this.open = value;
+      this.button.setDisabled(value);
+    });
     return this;
   }
 
@@ -220,10 +235,21 @@ export class Widget {
    * @returns {Widget}
    */
   setAttribute(name, value) {
-    const button = this.button;
-    if (button) {
-      button.setAttribute(name, value);
-    }
+    this.doWhenButtonReady(() => {
+      this.button.setAttribute(name, value);
+    });
+    return this;
+  }
+
+  /**
+   *
+   * @param {string} name
+   * @returns {Widget}
+   */
+  removeAttribute(name) {
+    this.doWhenButtonReady(() => {
+      this.button.removeAttribute(name);
+    });
     return this;
   }
 
@@ -251,9 +277,7 @@ export class Widget {
    */
   doWhenButtonReady(callback) {
     const interval = setInterval(() => {
-      if (!this.button) {
-        return;
-      }
+      if (!this.button) return;
       clearInterval(interval);
       callback();
     }, 100);
@@ -267,9 +291,7 @@ export class Widget {
    */
   doWhenButtonImageReady(callback) {
     const interval = setInterval(() => {
-      if (!this.button.getImageXUL()) {
-        return;
-      }
+      if (!this.button.getImageXUL()) return;
       clearInterval(interval);
       callback();
     }, 100);

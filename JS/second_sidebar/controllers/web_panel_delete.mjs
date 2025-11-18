@@ -1,22 +1,22 @@
-/* eslint-disable no-unused-vars */
 import { WebPanelEvents, sendEvents } from "./events.mjs";
 
+import { SidebarControllers } from "../sidebar_controllers.mjs";
 import { SidebarElements } from "../sidebar_elements.mjs";
-import { WebPanelController } from "./web_panel.mjs";
-
-/* eslint-enable no-unused-vars */
+import { WebPanelController } from "./web_panel.mjs"; // eslint-disable-line no-unused-vars
 
 export class WebPanelDeleteController {
   constructor() {
-    this.webPanelPopupDelete = SidebarElements.webPanelPopupDelete;
     this.#setupListeners();
   }
 
   #setupListeners() {
-    this.webPanelPopupDelete.listenCancelButtonClick(() => this.hidePopup());
+    SidebarElements.webPanelPopupDelete.listenCancelButtonClick(() =>
+      this.hidePopup(),
+    );
 
-    this.webPanelPopupDelete.listenDeleteButtonClick((uuid) => {
+    SidebarElements.webPanelPopupDelete.listenDeleteButtonClick((uuid) => {
       sendEvents(WebPanelEvents.DELETE_WEB_PANEL, { uuid });
+      SidebarControllers.webPanelsController.saveSettings();
       this.hidePopup();
     });
   }
@@ -26,10 +26,10 @@ export class WebPanelDeleteController {
    * @param {WebPanelController} webPanelController
    */
   openPopup(webPanelController) {
-    this.webPanelPopupDelete.openPopup(webPanelController);
+    SidebarElements.webPanelPopupDelete.openPopup(webPanelController);
   }
 
   hidePopup() {
-    this.webPanelPopupDelete.hidePopup();
+    SidebarElements.webPanelPopupDelete.hidePopup();
   }
 }

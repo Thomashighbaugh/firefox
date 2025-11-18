@@ -1,9 +1,12 @@
+import { DialogBoxWrapper } from "./dialog_box.mjs";
 import { TabBrowserWrapper } from "./tab_browser.mjs";
 import { XULElement } from "../xul/base/xul_element.mjs";
 
 export class WindowWrapper {
   #window;
   #gBrowser;
+  #gDialogBox;
+
   /**
    *
    * @param {Window} chromeWindow
@@ -11,6 +14,7 @@ export class WindowWrapper {
   constructor(chromeWindow = null) {
     this.#window = chromeWindow ?? window;
     this.#gBrowser = new TabBrowserWrapper(this.raw.gBrowser);
+    this.#gDialogBox = new DialogBoxWrapper(this.raw.gDialogBox);
   }
 
   /**
@@ -39,6 +43,13 @@ export class WindowWrapper {
    */
   get gBrowser() {
     return this.#gBrowser;
+  }
+
+  /**
+   * @returns {DialogBoxWrapper}
+   */
+  get gDialogBox() {
+    return this.#gDialogBox;
   }
 
   /**
@@ -98,11 +109,29 @@ export class WindowWrapper {
     this.raw.addEventListener(type, listener);
   }
 
+  /**
+   *
+   * @param {string} type
+   * @param {function(Event):any} listener
+   */
+  removeEventListener(type, listener) {
+    this.raw.removeEventListener(type, listener);
+  }
+
   relinkTreeOwner() {
     this.raw.docShell.treeOwner
       .QueryInterface(Ci.nsIInterfaceRequestor)
       .getInterface(Ci.nsIAppWindow).XULBrowserWindow =
       this.raw.XULBrowserWindow;
+  }
+
+  /**
+   *
+   * @param {XULElement} element
+   * @returns {CSSStyleDeclaration}
+   */
+  getComputedStyle(element) {
+    return this.#window.getComputedStyle(element.getXUL());
   }
 
   /**

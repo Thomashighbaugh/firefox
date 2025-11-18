@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
-import { Widget } from "./widget.mjs";
+import { Widget } from "./widget.mjs"; // eslint-disable-line no-unused-vars
 import { XULElement } from "./xul_element.mjs";
-/* eslint-enable no-unused-vars */
 
 export class Panel extends XULElement {
   /**
@@ -12,6 +10,7 @@ export class Panel extends XULElement {
    */
   constructor({ id = null, classList = [] } = {}) {
     super({ tag: "panel", id, classList: [...classList, "panel-no-padding"] });
+    this.setAttribute("level", "top");
   }
 
   /**
@@ -79,7 +78,7 @@ export class Panel extends XULElement {
    * @returns {boolean}
    */
   isPanelOpen() {
-    return this.element.getAttribute("panelopen") === "true";
+    return this.getAttributeBool("panelopen");
   }
 
   /**

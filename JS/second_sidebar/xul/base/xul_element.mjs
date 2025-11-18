@@ -51,6 +51,15 @@ export class XULElement {
 
   /**
    *
+   * @param {string} className
+   * @returns {boolean}
+   */
+  hasClass(className) {
+    return this.element.classList.contains(className);
+  }
+
+  /**
+   *
    * @returns {HTMLelement}
    */
   getXUL() {
@@ -70,7 +79,7 @@ export class XULElement {
    * @returns {XULElement}
    */
   hide() {
-    return this.setAttribute("hidden", "true");
+    return this.setAttribute("hidden", true);
   }
 
   /**
@@ -78,7 +87,7 @@ export class XULElement {
    * @returns {boolean}
    */
   hidden() {
-    return this.getAttribute("hidden") === "true";
+    return this.getAttributeBool("hidden");
   }
 
   /**
@@ -92,6 +101,20 @@ export class XULElement {
       return new XULElement({ element });
     }
     return null;
+  }
+
+  /**
+   *
+   * @param {string} selector
+   * @returns {XULElement[]}
+   */
+  querySelectorAll(selector) {
+    const elements = this.element.querySelectorAll(selector);
+    let xulElements = [];
+    for (const element of elements) {
+      xulElements.push(new XULElement({ element }));
+    }
+    return xulElements;
   }
 
   /**
@@ -132,6 +155,17 @@ export class XULElement {
    */
   insertBefore(node, child) {
     this.element.insertBefore(node.getXUL(), child.getXUL());
+    return this;
+  }
+
+  /**
+   *
+   * @param {XULElement} node
+   * @param {XULElement} child
+   * @returns {XULElement}
+   */
+  insertAfter(node, child) {
+    this.element.insertBefore(node.getXUL(), child.getXUL().nextSibling);
     return this;
   }
 
@@ -179,6 +213,16 @@ export class XULElement {
   /**
    *
    * @param {string} name
+   * @returns {boolean}
+   */
+  getAttributeBool(name) {
+    const value = this.element.getAttribute(name);
+    return value === "true" || value === "";
+  }
+
+  /**
+   *
+   * @param {string} name
    * @returns {XULElement}
    */
   removeAttribute(name) {
@@ -204,25 +248,6 @@ export class XULElement {
    */
   toggleAttribute(name, force) {
     this.element.toggleAttribute(name, force);
-    return this;
-  }
-
-  /**
-   *
-   * @returns {string}
-   */
-  getWidth() {
-    return this.getAttribute("width");
-  }
-
-  /**
-   *
-   * @param {string} width
-   * @returns {XULElement}
-   */
-  setWidth(width) {
-    this.setAttribute("width", width);
-    this.element.style.width = width + "px";
     return this;
   }
 
@@ -294,6 +319,16 @@ export class XULElement {
 
   /**
    *
+   * @param {string} html
+   * @returns {XULElement}
+   */
+  setInnerHtml(html) {
+    this.element.innerHTML = html;
+    return this;
+  }
+
+  /**
+   *
    * @param {string} event
    * @param {function(MouseEvent):void} callback
    * @returns {XULElement}
@@ -344,10 +379,64 @@ export class XULElement {
 
   /**
    *
+   * @param {number} pointerId
+   * @returns {XULElement}
+   */
+  setPointerCapture(pointerId) {
+    this.element.setPointerCapture(pointerId);
+    return this;
+  }
+
+  /**
+   *
+   * @param {number} pointerId
+   * @returns {XULElement}
+   */
+  releasePointerCapture(pointerId) {
+    this.element.releasePointerCapture(pointerId);
+    return this;
+  }
+
+  /**
+   *
    * @returns {Document}
    */
   get ownerDocument() {
     return this.element.ownerDocument;
+  }
+
+  /**
+   *
+   * @returns {string}
+   */
+  get tagName() {
+    return this.element.tagName;
+  }
+
+  /**
+   *
+   * @returns {XULElement?}
+   */
+  get parentElement() {
+    return this.element.parentElement
+      ? new XULElement({ element: this.element.parentElement })
+      : null;
+  }
+
+  /**
+   *
+   * @returns {number}
+   */
+  get screenX() {
+    return this.element.screenX;
+  }
+
+  /**
+   *
+   * @returns {number}
+   */
+  get screenY() {
+    return this.element.screenY;
   }
 
   /**

@@ -7,14 +7,14 @@
     html:not(#ublock0-epicker),
     html:not(#ublock0-epicker) body,
     #newtab-customize-overlay {
-      background-image: url("ASSETS/other/spill.svg") !important;
+      background-image: url("../common/assets/other/spill.svg") !important;
     }
   }
   @media (prefers-color-scheme: light) {
     html:not(#ublock0-epicker),
     html:not(#ublock0-epicker) body,
     #newtab-customize-overlay {
-      background-image: url("ASSETS/other/spill-light.svg") !important;
+      background-image: url("../common/assets/other/spill-light.svg") !important;
     }
   }
 

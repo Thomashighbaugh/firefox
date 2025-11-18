@@ -6,25 +6,25 @@
 
 /* ----- My Custom Colors ----- */
 @media (prefers-color-scheme: dark) {
-    :root {
-        --firefoxcss-bookmarks-bg-color: hsl(240, 2%, 20%) !important;
-    }
+  :root {
+    --firefoxcss-bookmarks-bg-color: hsl(240, 2%, 13%) !important;
+  }
 }
 
 /* Main BAR */
 #main-window #navigator-toolbox {
-    border-bottom: none !important;
+  border-bottom: none !important;
 }
 
 /* Remove the white line around the content window */
 #browser #tabbrowser-tabbox {
-    outline: none !important;
-    box-shadow: -1px 4px 2px #0000002e !important;
+  outline: none !important;
+  box-shadow: -1px 4px 2px #0000002e !important;
 }
 
 /* Vertical tabs background color with transparency preserved */
 #vertical-tabs {
-  background-color: hsla(240, 2%, 13%, 0.9) !important;
+  background-color: hsla(240, 2%, 13%, 0.85) !important;
 }
 
 @media (prefers-color-scheme: light) {
@@ -33,19 +33,14 @@
   }
 }
 
-/* All hbox elements background color */
-hbox {
-  background-color: var(--firefoxcss-bookmarks-bg-color) !important;
-}
-
 /* Sidebar background color change */
 #browser #sidebar-box {
-  --sidebar-background-color: var(--firefoxcss-bookmarks-bg-color) !important;
+  --sidebar-background-color: var(--firefoxcss-main-bg-color) !important;
 }
 
 /* Bookmarks bar background color */
 #PersonalToolbar {
-  background-color: var(--firefoxcss-item-bg-color) !important;
+  background-color: var(--firefoxcss-main-bg-color) !important;
 }
 
 @media not -moz-pref("sidebar.revamp") {
@@ -66,38 +61,39 @@ hbox {
 
 /* Set navigation toolbar to match bookmark bar */
 #navigator-toolbox #nav-bar {
-  background-color: var(--firefoxcss-bookmarks-bg-color) !important;
+  background-color: var(--firefoxcss-main-bg-color) !important;
   border-bottom: none !important;
 }
 
 /* Set menubar to match bookmark bar */
 #toolbar-menubar {
-  background-color: var(--firefoxcss-bookmarks-bg-color) !important;
+  background-color: var(--firefoxcss-main-bg-color) !important;
 }
 
 /* More tools button background */
 .more-tools-button {
-  background-color: var(--firefoxcss-bookmarks-bg-color) !important;
+  background-color: var(--firefoxcss-main-bg-color) !important;
 }
 
 /* Toolbar buttons background */
 .toolbarbutton-1 {
-  background-color: var(--firefoxcss-bookmarks-bg-color) !important;
+  background-color: var(--firefoxcss-item-bg-color) !important;
 }
 
 /* Toolbar buttons hover with 50% opacity */
 .toolbarbutton-1:hover {
-  background-color: color-mix(in srgb, var(--firefoxcss-bookmarks-bg-color) 50%, transparent) !important;
+  background-color: color-mix(
+    in srgb,
+    var(--firefoxcss-item-bg-color) 50%,
+    transparent
+  ) !important;
 }
 
-/* Tab favicons background */
-.tab-icon-image {
-  background-color: var(--firefoxcss-bookmarks-bg-color) !important;
-}
+/* Tab favicons background removed */
 
 /* Whole Main Toolbar */
 #navigator-toolbox {
-  background-color: var(--firefoxcss-item-bg-color) !important;
+  background-color: var(--firefoxcss-main-bg-color) !important;
 }
 
 /* Fix some custom firefox themes that break */
@@ -124,3 +120,4 @@ hbox {
 .browserContainer > findbar .findbar-textbox {
   background-color: var(--firefoxcss-item-bg-color) !important;
 }
+

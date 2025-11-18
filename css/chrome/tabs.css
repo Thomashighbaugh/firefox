@@ -4,7 +4,7 @@
 
 /* Tabs toolbar background color to match bookmark bar */
 #TabsToolbar {
-  background-color: var(--firefoxcss-bookmarks-bg-color) !important;
+  background-color: var(--firefoxcss-main-bg-color) !important;
 }
 
 /* Non active tabs have darker text */
@@ -44,7 +44,11 @@
   border: 0 !important;
   border-radius: var(--firefoxcss-border-radius) !important;
   background-image: none !important;
-  background-color: color-mix(in srgb, var(--firefoxcss-tab-bg-color) 4%, transparent) !important;
+  background-color: color-mix(
+    in srgb,
+    var(--firefoxcss-tab-bg-color) 4%,
+    transparent
+  ) !important;
   transition: background-color 100ms ease !important;
   box-shadow: var(--firefoxcss-normal-tabs-box-shadow) !important;
 }
@@ -69,7 +73,11 @@
   border: 0 !important;
   border-radius: var(--firefoxcss-border-radius) !important;
   background-image: none !important;
-  background-color: color-mix(in srgb, var(--firefoxcss-tab-hover-bg-color) 4%, transparent) !important;
+  background-color: color-mix(
+    in srgb,
+    var(--firefoxcss-tab-hover-bg-color) 4%,
+    transparent
+  ) !important;
   box-shadow: var(--firefoxcss-normal-tabs-box-shadow) !important;
 }
 
@@ -78,7 +86,11 @@
   border: 0 !important;
   border-radius: var(--firefoxcss-border-radius) !important;
   background-image: none !important;
-  background-color: color-mix(in srgb, var(--firefoxcss-tab-active-bg-color) 4%, transparent) !important;
+  background-color: color-mix(
+    in srgb,
+    var(--firefoxcss-tab-active-bg-color) 4%,
+    transparent
+  ) !important;
   box-shadow: none !important;
   outline: none !important;
 }
@@ -89,7 +101,11 @@
   border-radius: var(--firefoxcss-border-radius) !important;
   background-image: none !important;
   outline: none !important;
-  background-color: color-mix(in srgb, var(--firefoxcss-tab-active-bg-color) 4%, transparent) !important;
+  background-color: color-mix(
+    in srgb,
+    var(--firefoxcss-tab-active-bg-color) 4%,
+    transparent
+  ) !important;
   box-shadow: none !important;
 }
 
@@ -114,7 +130,9 @@
   opacity: 1;
   visibility: visible !important;
   border-radius: 100% !important;
-  transition: opacity 0.15s ease, visibility 0.15s ease,
+  transition:
+    opacity 0.15s ease,
+    visibility 0.15s ease,
     background-color 0.15s ease !important;
 }
 
@@ -129,7 +147,9 @@
   opacity: 1;
   visibility: visible !important;
   border-radius: 100% !important;
-  transition: opacity 0.15s ease, visibility 0.15s ease,
+  transition:
+    opacity 0.15s ease,
+    visibility 0.15s ease,
     background-color 0.15s ease !important;
 }
 
@@ -138,7 +158,9 @@
     opacity: 1;
     visibility: visible !important;
     border-radius: 100% !important;
-    transition: opacity 0.15s ease, visibility 0.15s ease,
+    transition:
+      opacity 0.15s ease,
+      visibility 0.15s ease,
       background-color 0.15s ease !important;
   }
 
@@ -152,7 +174,9 @@
     opacity: 1;
     visibility: visible !important;
     border-radius: 100% !important;
-    transition: opacity 0.15s ease, visibility 0.15s ease,
+    transition:
+      opacity 0.15s ease,
+      visibility 0.15s ease,
       background-color 0.15s ease !important;
   }
 }
@@ -183,7 +207,9 @@
       filter: drop-shadow(-1px 1px 1px light-dark(#0000002e, #00000052));
       border: none !important;
       background-color: transparent !important;
-      transition: transform 150ms ease-in-out, fill 100ms ease-in-out,
+      transition:
+        transform 150ms ease-in-out,
+        fill 100ms ease-in-out,
         background-color 100ms ease-in-out !important;
       --button-border-radius: 20px !important;
 
@@ -195,8 +221,11 @@
         ) !important;
         transform: scale(0.8);
         border: none !important;
-        transition: transform 150ms ease-in-out, fill 100ms ease-in-out,
-          background-color 100ms ease-in-out, filter 100ms ease-in-out !important;
+        transition:
+          transform 150ms ease-in-out,
+          fill 100ms ease-in-out,
+          background-color 100ms ease-in-out,
+          filter 100ms ease-in-out !important;
       }
       &:hover:active {
         color: var(--firefoxcss-tab-speaker-icon-hover-color) !important;
@@ -222,7 +251,9 @@
       backdrop-filter: blur(6px);
       fill: var(--firefoxcss-tab-speaker-icon-color) !important;
 
-      transition: transform 100ms ease-in-out, fill 100ms ease-in-out,
+      transition:
+        transform 100ms ease-in-out,
+        fill 100ms ease-in-out,
         background-color 100ms ease-in-out;
 
       &:hover {
@@ -230,7 +261,9 @@
         background-color: transparent !important;
         border: 1px solid #ffffff29 !important;
         background-color: #ffffff14 !important;
-        transition: transform 100ms ease-in-out, fill 100ms ease-in-out,
+        transition:
+          transform 100ms ease-in-out,
+          fill 100ms ease-in-out,
           background-color 100ms ease-in-out !important;
         transform: scale(1.2) translate(-8%, 14%);
         transform-origin: center !important;
@@ -245,7 +278,9 @@
       background-color: #0000002e !important;
       backdrop-filter: blur(6px);
       fill: var(--firefoxcss-tab-speaker-icon-color) !important;
-      transition: transform 100ms ease-in-out, fill 100ms ease-in-out,
+      transition:
+        transform 100ms ease-in-out,
+        fill 100ms ease-in-out,
         background-color 100ms ease-in-out;
 
       &:hover {
@@ -253,7 +288,9 @@
         background-color: transparent !important;
         border: 1px solid #ffffff29 !important;
         background-color: #ffffff14 !important;
-        transition: transform 100ms ease-in-out, fill 100ms ease-in-out,
+        transition:
+          transform 100ms ease-in-out,
+          fill 100ms ease-in-out,
           background-color 100ms ease-in-out !important;
         transform: scale(1.2) translate(-8%, 14%);
         transform-origin: center !important;
@@ -271,7 +308,9 @@
       backdrop-filter: blur(6px);
       border: 1px solid #ffffff29 !important;
       fill: var(--firefoxcss-tab-speaker-icon-color) !important;
-      transition: transform 100ms ease-in-out, fill 100ms ease-in-out,
+      transition:
+        transform 100ms ease-in-out,
+        fill 100ms ease-in-out,
         background-color 100ms ease-in-out;
 
       &:hover {
@@ -279,7 +318,9 @@
         background-color: transparent !important;
         border: 1px solid #ffffff29 !important;
         background-color: #ffffff14 !important;
-        transition: transform 100ms ease-in-out, fill 100ms ease-in-out,
+        transition:
+          transform 100ms ease-in-out,
+          fill 100ms ease-in-out,
           background-color 100ms ease-in-out !important;
         transform: scale(1.2) translate(-8%, 14%);
         transform-origin: center !important;
@@ -339,23 +380,22 @@ tab-group[collapsed] > .tabbrowser-tab {
   visibility: collapse !important;
 }
 
-
-
 /*=====================================================================
 ================== S T A T I C   T A B   W I D T H ====================
 =====================================================================*/
 
 /* Selected tabs have static width */
 :root {
-  --firefoxcss-tab-min-width: 110px !important;
+  --firefoxcss-tab-min-width: 108px !important;
   --firefoxcss-tab-max-width: 180px !important;
 }
 
 #TabsToolbar #tabbrowser-tabs .tabbrowser-tab[fadein]:not([pinned]) {
-   max-width: var(--firefoxcss-tab-max-width) !important;
-    min-width: var(--firefoxcss-tab-min-width) !important;
+  max-width: var(--firefoxcss-tab-max-width) !important;
+  min-width: var(--firefoxcss-tab-min-width) !important;
 }
 
 #TabsToolbar #tabbrowser-tabs .tabbrowser-tab[selected][fadein]:not([pinned]) {
-   max-width: var(--firefoxcss-tab-max-width) !important;
+  max-width: var(--firefoxcss-tab-max-width) !important;
 }
+

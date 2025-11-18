@@ -3,10 +3,10 @@
 =====================================================================*/
 
 :root {
-  --firefoxcss-top-bar-border-bottom-size: 1px;
+  --firefoxcss-top-bar-border-bottom-size: 0;
   --firefoxcss-border-radius: 10px;
-  --firefoxcss-control-buttons-margin: 100px;
-  --firefoxcss-tab-min-width: 110px;
+  --firefoxcss-control-buttons-margin: 0px;
+  --firefoxcss-tab-min-width: 108px;
   --firefoxcss-tab-max-width: 150px;
 
   --firefoxcss-searchbar-height: 30px;
@@ -26,9 +26,10 @@
 
   /* Toolbar Buttons */
   --toolbarbutton-outer-padding: 2px !important; /* Default: 2px */
-  --toolbarbutton-inner-padding: 6px !important; /* Default: 8px */
+  --toolbarbutton-inner-padding: 4px !important; /* Default: 8px */
 
   /* Menu items */
   --arrowpanel-menuitem-padding-block: 4px !important; /* Default: 8px */
   --arrowpanel-menuitem-padding-inline: 4px !important; /* Default: 8px */
 }
+

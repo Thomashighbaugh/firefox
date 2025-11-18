@@ -42,10 +42,10 @@
     --firefoxcss-toolbar-button-box-shadow: rgba(0, 0, 0, 0.3);
     --firefoxcss-toolbar-button-active-box-shadow: rgba(0, 0, 0, 0.3);
 
-    --firefoxcss-new-tab-button-active: hsl(240, 2%, 18%);
+    --firefoxcss-new-tab-button-active: hsla(240, 2%, 45%, 0.4);
     --firefoxcss-new-tab-button-box-shadow-active: rgba(0, 0, 0, 0.6);
 
-    --firefoxcss-new-tab-button-hover: hsla(0, 0%, 30%, 0.85);
+    --firefoxcss-new-tab-button-hover: hsla(240, 2%, 45%, 0.6);
     --firefoxcss-new-tab-button-box-shadow-hover: rgba(0, 0, 0, 0.5);
 
     /* Search Bar and breakout (when in focus) colors */
@@ -94,15 +94,15 @@
     --panel-item-hover-bgcolor: hsla(0, 0%, 60%, 0.25) !important;
     --toolbar-bgcolor: var(--firefoxcss-item-bg-color) !important;
     --arrowpanel-background: var(--firefoxcss-main-bg-color) !important;
-    --toolbarbutton-hover-background: hsla(0, 0%, 60%, 0.35) !important;
-    --toolbarbutton-active-background: hsla(0, 0%, 80%, 0.35) !important;
-    --button-hover-bgcolor: hsla(0, 0%, 60%, 0.35) !important;
-    --button-active-bgcolor: hsla(0, 0%, 45%, 0.35) !important;
-    --button-bgcolor: hsla(0, 0%, 45%, 0.9) !important;
+    --toolbarbutton-hover-background: hsla(240, 2%, 45%, 0.6) !important;
+    --toolbarbutton-active-background: hsla(240, 2%, 45%, 0.4) !important;
+    --button-hover-bgcolor: hsla(240, 2%, 45%, 0.65) !important;
+    --button-active-bgcolor: hsla(240, 2%, 45%, 0.45) !important;
+    --button-bgcolor: hsla(240, 2%, 45%, 0.3) !important;
     --arrowpanel-border-color: hsla(0, 0%, 50%, 0.25) !important;
-    --dark-menu-background-color: #222121 !important;
+    --dark-menu-background-color: hsl(240, 2%, 11%) !important;
     --dark-menu-border-color: rgb(55, 55, 55) !important;
-    --dark-menu-background-color: #222121 !important;
+    --dark-menu-background-color: hsl(240, 2%, 11%) !important;
     --dark-menu-border-color: rgb(55, 55, 55) !important;
     --dark-menuitem-hover-background-color: rgba(
       159,
@@ -229,4 +229,3 @@
     --firefoxcss-context-menu-item-bg-color-inactive: hsla(240, 2%, 70%, 0.15);
   }
 }
-

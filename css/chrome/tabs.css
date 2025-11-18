@@ -334,19 +334,7 @@ tab-group[collapsed] > .tabbrowser-tab {
   visibility: collapse !important;
 }
 
-/*=====================================================================
-==================== P R I V A C Y   B L U R =========================
-=====================================================================*/
 
-/* Blur tab content for privacy - show on hover */
-#tabbrowser-tabs .tabbrowser-tab .tab-stack .tab-content {
-    filter: blur(4px) !important;
-    transition: filter 200ms linear !important;
-}
-
-#tabbrowser-tabs .tabbrowser-tab:hover .tab-stack .tab-content {
-    filter: blur(0px) !important;
-}
 
 /*=====================================================================
 ================== S T A T I C   T A B   W I D T H ====================

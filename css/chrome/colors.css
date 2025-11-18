@@ -2,6 +2,11 @@
 ========================= S E T   C O L O R S =========================
 =====================================================================*/
 
+/* All hbox elements background color */
+hbox {
+  background-color: var(--firefoxcss-bookmarks-bg-color) !important;
+}
+
 /* Sidebar background color change */
 #browser #sidebar-box {
   --sidebar-background-color: var(--firefoxcss-bookmarks-bg-color) !important;

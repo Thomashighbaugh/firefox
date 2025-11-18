@@ -45,6 +45,8 @@
   /* Remove the white line around the content window */
   #tabbrowser-tabbox {
     outline: none !important;
-    box-shadow: -0px 0px 2px 0 light-dark(rgba(0,0,0,.2), rgba(255,255,255,.06)) !important;
+    box-shadow: -0px 0px 2px 0
+      light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.06)) !important;
   }
 }
+

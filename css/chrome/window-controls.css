@@ -4,9 +4,9 @@
 
 /* Fix for web apps */
 :root[taskbartab] #navigator-toolbox:not([tabs-hidden]) {
-	#nav-bar .titlebar-buttonbox-container {
-      display: none !important;
-	}
+  #nav-bar .titlebar-buttonbox-container {
+    display: none !important;
+  }
 }
 
 @media (-moz-platform: windows) {
@@ -76,7 +76,7 @@
         #TabsToolbar
         .titlebar-buttonbox-container {
         visibility: visible !important;
-        display: flex !important;
+        display: none !important;
         position: absolute !important;
         top: 1px;
         right: 0;
@@ -100,7 +100,7 @@
           #TabsToolbar
           .titlebar-buttonbox-container {
           visibility: visible !important;
-          display: flex !important;
+          display: none !important;
           position: relative !important;
           order: 1 !important;
           padding-top: 1px !important;
@@ -120,18 +120,19 @@
 
   /* Thicker Windows control buttons using HighContrast buttons */
   .titlebar-buttonbox-container .titlebar-button.titlebar-min {
-      content: "\ef2d" !important;
+    content: "\ef2d" !important;
   }
 
   .titlebar-buttonbox-container .titlebar-button.titlebar-max {
-      content: "\ef2e" !important;
+    content: "\ef2e" !important;
   }
 
   .titlebar-buttonbox-container .titlebar-button.titlebar-restore {
-      content: "\ef2f" !important;
+    content: "\ef2f" !important;
   }
 
   .titlebar-buttonbox-container .titlebar-button.titlebar-close {
-      content: "\ef2c" !important;
+    content: "\ef2c" !important;
   }
 }
+

@@ -8,25 +8,18 @@
 
 /* Main BAR - Remove border for Spill theme */
 #main-window #navigator-toolbox {
-    border-bottom: none !important;
+  border-bottom: none !important;
 }
 
 /* Remove the white line around the content window */
 #browser #tabbrowser-tabbox {
-    outline: none !important;
-    box-shadow: -1px 4px 2px #0000002e !important;
+  outline: none !important;
+  box-shadow: -1px 4px 2px #0000002e !important;
 }
 
 /*=====================================================================
 ============================ M I S C ===================================
 =====================================================================*/
-
-@media -moz-pref("firefoxcss.disable.tab.preview.panel.fully") {
-  #tab-preview-panel,
-  #tabbrowser-tab-tooltip {
-    display: none !important;
-  }
-}
 
 /* Status URL change (bottom left when hovering a link)  */
 #statuspanel-label {
@@ -89,3 +82,4 @@
     }
   }
 }
+

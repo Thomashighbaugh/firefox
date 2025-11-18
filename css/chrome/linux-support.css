@@ -13,8 +13,9 @@
 
   @media -moz-pref("sidebar.verticalTabs") {
     #nav-bar {
-      padding-bottom: 1px !important;
+      padding-bottom: 0 !important;
       border-top: none !important;
     }
   }
 }
+

@@ -2,6 +2,26 @@
 ========================= S E T   C O L O R S =========================
 =====================================================================*/
 
+/* Spill style. Modifications for userChrome file */
+
+/* ----- My Custom Colors ----- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --firefoxcss-bookmarks-bg-color: hsl(240, 2%, 20%) !important;
+    }
+}
+
+/* Main BAR */
+#main-window #navigator-toolbox {
+    border-bottom: none !important;
+}
+
+/* Remove the white line around the content window */
+#browser #tabbrowser-tabbox {
+    outline: none !important;
+    box-shadow: -1px 4px 2px #0000002e !important;
+}
+
 /* Vertical tabs background color with transparency preserved */
 #vertical-tabs {
   background-color: hsla(240, 2%, 13%, 0.9) !important;

@@ -4,7 +4,7 @@
 
 /* Sidebar background color change */
 #browser #sidebar-box {
-  --sidebar-background-color: var(--firefoxcss-main-bg-color) !important;
+  --sidebar-background-color: var(--firefoxcss-bookmarks-bg-color) !important;
 }
 
 /* Bookmarks bar background color */
@@ -28,9 +28,9 @@
   }
 }
 
-/* Set navigation toolbar to transparent */
+/* Set navigation toolbar to match bookmark bar */
 #navigator-toolbox #nav-bar {
-  background-color: transparent !important;
+  background-color: var(--firefoxcss-bookmarks-bg-color) !important;
 }
 
 /* Whole Main Toolbar */

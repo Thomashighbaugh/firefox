@@ -111,7 +111,7 @@
     ) !important;
     --panel-separator-color: var(--arrowpanel-border-color) !important;
     --panel-separator-zap-gradient: var(--panel-separator-color) !important;
-    --lwt-sidebar-background-color: var(--firefoxcss-main-bg-color) !important;
+    --lwt-sidebar-background-color: var(--firefoxcss-bookmarks-bg-color) !important;
     --urlbarView-highlight-background: hsl(240, 2%, 20%) !important;
     --urlbarView-hover-background: color-mix(
       in srgb,
@@ -212,7 +212,7 @@
     --arrowpanel-border-color: hsla(0, 0%, 100%, 0.5) !important;
     --panel-separator-color: hsla(0, 0%, 20%, 0.15) !important;
     --panel-separator-zap-gradient: var(--panel-separator-color) !important;
-    --lwt-sidebar-background-color: var(--firefoxcss-main-bg-color) !important;
+    --lwt-sidebar-background-color: var(--firefoxcss-bookmarks-bg-color) !important;
     --urlbarView-hover-background: color-mix(
       in srgb,
       currentColor 8%,

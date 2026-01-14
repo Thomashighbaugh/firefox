@@ -49,7 +49,10 @@ url("about:newtab") {
     backdrop-filter: blur(24px) !important;
     box-shadow: var(--firefoxcss-search-box-shadow) !important;
     fill: var(--firefoxcss-search-text-fill) !important;
-    transition: background-color 200ms ease, border-color 200ms ease, fill 200ms ease !important;
+    transition:
+      background-color 200ms ease,
+      border-color 200ms ease,
+      fill 200ms ease !important;
     padding-inline-start: 48px !important;
   }
 
@@ -59,7 +62,9 @@ url("about:newtab") {
 
   .icon.icon-settings.personalize-button:hover {
     color: var(--firefoxcss-settings-wheel-color-hover) !important;
-    background-color: var(--firefoxcss-settings-wheel-bg-color-hover) !important;
+    background-color: var(
+      --firefoxcss-settings-wheel-bg-color-hover
+    ) !important;
     backdrop-filter: blur(10px);
   }
 
@@ -67,7 +72,9 @@ url("about:newtab") {
     background-color: var(--firefoxcss-item-bg-color) !important;
     border-top: 1px solid var(--firefoxcss-shortcut-item-top-border) !important;
     box-shadow: var(--firefoxcss-shortcut-item-box-shadow) !important;
-    transition: background-color 150ms ease, border-color 150ms ease !important;
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease !important;
     border-radius: 10px !important;
   }
 
@@ -100,7 +107,9 @@ url("about:newtab") {
   .customize-menu .category.wallpaper-list {
     overflow: hidden !important;
     height: auto !important;
-    background-color: var(--firefoxcss-customize-menu-secondary-popup) !important;
+    background-color: var(
+      --firefoxcss-customize-menu-secondary-popup
+    ) !important;
     backdrop-filter: blur(24px) !important;
     border-radius: 8px;
     margin-top: 16px !important;
@@ -195,7 +204,8 @@ url("about:newtab") {
 
   .top-site-outer .context-menu > ul > li.separator,
   .card-outer .context-menu > ul > li.separator {
-    border-bottom: 1px solid var(--firefoxcss-shortcut-item-context-menu-separator) !important;
+    border-bottom: 1px solid
+      var(--firefoxcss-shortcut-item-context-menu-separator) !important;
   }
 
   .search-wrapper .search-handoff-button input {
@@ -375,7 +385,10 @@ url("about:newtab") {
     top: 0 !important;
   }
 
-  .outer-wrapper.fixed-search .search-wrapper .search-inner-wrapper button.search-handoff-button {
+  .outer-wrapper.fixed-search
+    .search-wrapper
+    .search-inner-wrapper
+    button.search-handoff-button {
     backdrop-filter: blur(22px) !important;
     background-color: var(--firefoxcss-extra-search-bar-when-scroll) !important;
     box-shadow: none !important;
@@ -457,10 +470,25 @@ url("about:newtab") {
       --firefoxcss-search-border-top-color: hsla(0, 0%, 100%, 0.1) !important;
       --firefoxcss-search-text-fill: rgba(255, 255, 255, 0.6) !important;
       --firefoxcss-search-bar-text-color: rgba(255, 255, 255, 0.9) !important;
-      --firefoxcss-search-bar-fill-icon-hover: rgba(255, 255, 255, 0.8) !important;
-      --firefoxcss-shortcut-item-top-border-hover: hsla(0, 0%, 100%, 0.15) !important;
+      --firefoxcss-search-bar-fill-icon-hover: rgba(
+        255,
+        255,
+        255,
+        0.8
+      ) !important;
+      --firefoxcss-shortcut-item-top-border-hover: hsla(
+        0,
+        0%,
+        100%,
+        0.15
+      ) !important;
       --firefoxcss-settings-wheel-color: hsla(200, 20%, 90%, 0.6) !important;
-      --firefoxcss-settings-wheel-color-hover: hsla(200, 20%, 90%, 0.9) !important;
+      --firefoxcss-settings-wheel-color-hover: hsla(
+        200,
+        20%,
+        90%,
+        0.9
+      ) !important;
       --firefoxcss-shortcut-item-active: hsla(200, 20%, 90%, 0.8) !important;
 
       .top-site-outer:hover:not(.active) .title,
@@ -470,9 +498,24 @@ url("about:newtab") {
 
       .top-site-outer .context-menu,
       .card-outer .context-menu {
-        --firefoxcss-shortcut-item-context-menu: hsla(0, 0%, 95%, 0.8) !important;
-        --firefoxcss-shortcut-item-context-menu-border: hsla(0, 0%, 100%, 0.1) !important;
-        --firefoxcss-shortcut-item-context-menu-separator: hsla(0, 0%, 0%, 0.1) !important;
+        --firefoxcss-shortcut-item-context-menu: hsla(
+          0,
+          0%,
+          95%,
+          0.8
+        ) !important;
+        --firefoxcss-shortcut-item-context-menu-border: hsla(
+          0,
+          0%,
+          100%,
+          0.1
+        ) !important;
+        --firefoxcss-shortcut-item-context-menu-separator: hsla(
+          0,
+          0%,
+          0%,
+          0.1
+        ) !important;
       }
     }
 
@@ -501,7 +544,12 @@ url("about:newtab") {
       --firefoxcss-item-bg-color: hsla(0, 0%, 12%, 0.8) !important;
       --firefoxcss-item-hover-bg-color: hsla(0, 0%, 15%, 0.7) !important;
       --firefoxcss-settings-wheel-color: hsla(0, 0%, 12%, 0.75) !important;
-      --firefoxcss-settings-wheel-color-hover: hsla(0, 0%, 12%, 0.55) !important;
+      --firefoxcss-settings-wheel-color-hover: hsla(
+        0,
+        0%,
+        12%,
+        0.55
+      ) !important;
 
       .top-site-outer:hover:not(.active) .title,
       .top-site-outer:hover:not(.active) .title .icon.icon-pin-small {
@@ -579,3 +627,83 @@ url("about:newtab") {
     }
   }
 }
+/* Spill style. Modifications for userContent file */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --firefoxcss-item-bg-color: hsla(240, 2%, 45%, 0.4) !important;
+    --firefoxcss-item-hover-bg-color: hsl(240, 2%, 55%, 0.4) !important;
+    --firefoxcss-settings-wheel-color: hsla(240, 20%, 80%, 0.6) !important;
+    --firefoxcss-settings-wheel-color-hover: hsla(
+      240,
+      20%,
+      80%,
+      0.9
+    ) !important;
+  }
+}
+
+@-moz-document url("about:privatebrowsing") {
+  @media (prefers-color-scheme: dark) {
+    html:not(#ublock0-epicker),
+    html:not(#ublock0-epicker) body,
+    #newtab-customize-overlay {
+      background-image: url("../common/assets/other/spill.svg") !important;
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    html:not(#ublock0-epicker),
+    html:not(#ublock0-epicker) body,
+    #newtab-customize-overlay {
+      background-image: url("../common/assets/other/spill-light.svg") !important;
+    }
+  }
+
+  #search-handoff-button {
+    background-color: hsla(290, 21%, 35%, 0.2) !important;
+    border-top: 1px solid hsla(290, 21%, 50%, 0.2) !important;
+    fill: hsl(290, 21%, 60%) !important;
+    backdrop-filter: blur(24px) !important;
+  }
+
+  #search-handoff-button:hover,
+  #search-handoff-button:focus,
+  #search-handoff-button:active {
+    background-color: hsla(290, 21%, 45%, 0.2) !important;
+    border-top: 1px solid hsla(290, 21%, 55%, 0.2) !important;
+    fill: hsl(290, 21%, 70%) !important;
+  }
+
+  #search-handoff-button .fake-textbox {
+    color: hsl(290, 21%, 60%) !important;
+  }
+
+  #search-handoff-button:active > .fake-textbox,
+  #search-handoff-button:hover > .fake-textbox,
+  #search-handoff-button:focus > .fake-textbox {
+    color: hsl(290, 21%, 70%) !important;
+  }
+}
+
+@-moz-document url("about:home"),
+url("about:newtab") {
+  @media (prefers-color-scheme: dark) {
+    html:not(#ublock0-epicker),
+    html:not(#ublock0-epicker) body,
+    #newtab-customize-overlay {
+      background-image: url("../common/assets/other/spill-main.svg") !important;
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    html:not(#ublock0-epicker),
+    html:not(#ublock0-epicker) body,
+    #newtab-customize-overlay {
+      background-image: url("../common/assets/icons/icons/menu-light.svg") !important;
+    }
+  }
+
+  .body-wrapper .tile {
+    backdrop-filter: blur(24px) !important;
+  }
+}
+

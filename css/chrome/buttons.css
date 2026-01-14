@@ -32,7 +32,7 @@ toolbar
 toolbar
   .toolbarbutton-1:not([disabled="true"], [checked], [open], :active):hover
   > .toolbarbutton-badge-stack {
-  box-shadow: 0 0 4px var(--firefoxcss-toolbar-button-box-shadow) !important;
+  box-shadow: 1px 1px 4px var(--firefoxcss-toolbar-button-box-shadow) !important;
 }
 
 toolbar
@@ -165,18 +165,18 @@ toolbar
 .toolbarbutton-1 .toolbarbutton-icon,
 .webextension-browser-action .toolbarbutton-icon {
   box-sizing: border-box !important;
-  background-color: hsla(240, 2%, 45%, 0.3) !important;
+  background-color: hsla(255, 2%, 65%, 0.3) !important;
 }
 
 .unified-extensions-item-action-button .toolbarbutton-icon:hover,
 .toolbarbutton-1 .toolbarbutton-icon:hover,
 .webextension-browser-action .toolbarbutton-icon:hover {
   box-sizing: border-box !important;
-  background-color: hsla(240, 2%, 45%, 0.45) !important;
+  background-color: hsla(240, 2%, 65%, 0.45) !important;
 }
 .unified-extensions-item-action-button .toolbarbutton-icon:active,
 .toolbarbutton-1 .toolbarbutton-icon:active,
 .webextension-browser-action .toolbarbutton-icon:active {
   box-sizing: border-box !important;
-  background-color: hsla(240, 2%, 45%, 0.65) !important;
+  background-color: hsla(240, 2%, 65%, 0.65) !important;
 }

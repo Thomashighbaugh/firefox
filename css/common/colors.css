@@ -48,6 +48,8 @@
     --firefoxcss-new-tab-button-hover: hsla(240, 2%, 45%, 0.6);
     --firefoxcss-new-tab-button-box-shadow-hover: rgba(0, 0, 0, 0.5);
 
+    --firefoxcss-button-background: #2c2c2c;
+
     /* Search Bar and breakout (when in focus) colors */
     --firefoxcss-url-dark-border: color-mix(
       in srgb,

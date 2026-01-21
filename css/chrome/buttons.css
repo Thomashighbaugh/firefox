@@ -9,7 +9,6 @@
 
 #back-button > .toolbarbutton-icon {
   border: none !important;
-  background: none !important;
   width: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
   height: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
   padding: var(--toolbarbutton-inner-padding) !important;
@@ -19,8 +18,6 @@
 #PanelUI-button {
   margin-inline-start: 0 !important;
   padding-inline-start: 0 !important;
-  border: none !important;
-  border-inline-start: none !important;
 }
 
 toolbar
@@ -165,18 +162,18 @@ toolbar
 .toolbarbutton-1 .toolbarbutton-icon,
 .webextension-browser-action .toolbarbutton-icon {
   box-sizing: border-box !important;
-  background-color: hsla(255, 2%, 65%, 0.3) !important;
+  background-color: var(--firefoxcss-button-background) !important;
+  box-shadow: 1px 1px 4px -1px var(--firefoxcss-toolbar-button-box-shadow) !important;
 }
 
 .unified-extensions-item-action-button .toolbarbutton-icon:hover,
 .toolbarbutton-1 .toolbarbutton-icon:hover,
 .webextension-browser-action .toolbarbutton-icon:hover {
   box-sizing: border-box !important;
-  background-color: hsla(240, 2%, 65%, 0.45) !important;
+  fill: #0c0c0c !important;
 }
 .unified-extensions-item-action-button .toolbarbutton-icon:active,
 .toolbarbutton-1 .toolbarbutton-icon:active,
 .webextension-browser-action .toolbarbutton-icon:active {
   box-sizing: border-box !important;
-  background-color: hsla(240, 2%, 65%, 0.65) !important;
 }

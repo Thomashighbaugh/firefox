@@ -4,17 +4,17 @@ See the above repository for updates as well as full license text. */
 /* This style hides some information from the extensions-button panel, but makes it appear more compact. Might be useful for someone having lot of extensions */
 
 #unified-extensions-view {
-  --uei-icon-size: var(--firefoxcss-spacing-4xl);
+  --uei-icon-size: 16px;
 }
 .unified-extensions-item-menu-button.subviewbutton {
-  padding: 0 !important;
+  padding: 0px !important;
   margin-inline-end: 0 !important;
 }
 .unified-extensions-item-action-button.subviewbutton {
-  padding-block: var(--firefoxcss-spacing-md) !important;
+  padding-block: 6px !important;
 }
 .unified-extensions-item-menu-button.subviewbutton > .toolbarbutton-icon {
-  padding: var(--firefoxcss-spacing-sm) !important;
+  padding: 4px !important;
 }
 .unified-extensions-item-message-deck {
   display: none;

@@ -1,6 +1,6 @@
 /*=====================================================================
- =================== G L O B A L   V A R I A B L E S ===================
- =====================================================================*/
+=================== G L O B A L   V A R I A B L E S ===================
+=====================================================================*/
 
 :root {
   --firefoxcss-top-bar-border-bottom-size: 0;
@@ -31,62 +31,5 @@
   /* Menu items */
   --arrowpanel-menuitem-padding-block: 4px !important; /* Default: 8px */
   --arrowpanel-menuitem-padding-inline: 4px !important; /* Default: 8px */
-
-  /* ========== COMMON BORDER RADIUS VALUES ========== */
-  --firefoxcss-border-radius-sm: 4px;
-  --firefoxcss-border-radius-md: 6px;
-  --firefoxcss-border-radius-lg: 8px;
-  --firefoxcss-border-radius-xl: 10px;
-  --firefoxcss-border-radius-2xl: 20px;
-
-  /* ========== COMMON SPACING VALUES ========== */
-  --firefoxcss-spacing-xs: 2px;
-  --firefoxcss-spacing-sm: 4px;
-  --firefoxcss-spacing-md: 6px;
-  --firefoxcss-spacing-lg: 8px;
-  --firefoxcss-spacing-xl: 12px;
-  --firefoxcss-spacing-2xl: 16px;
-  --firefoxcss-spacing-3xl: 20px;
-  --firefoxcss-spacing-4xl: 24px;
-  --firefoxcss-spacing-5xl: 32px;
-
-  /* ========== COMMON TRANSITION DURATIONS ========== */
-  --firefoxcss-transition-fast: 100ms;
-  --firefoxcss-transition-medium: 150ms;
-  --firefoxcss-transition-slow: 200ms;
-  --firefoxcss-transition-easing: ease;
-  --firefoxcss-transition-easing-in-out: ease-in-out;
-  --firefoxcss-transition-easing-linear: linear;
-
-  /* ========== COMMON BLUR VALUES ========== */
-  --firefoxcss-blur-sm: 6px;
-  --firefoxcss-blur-md: 10px;
-  --firefoxcss-blur-lg: 18px;
-  --firefoxcss-blur-xl: 24px;
-  --firefoxcss-blur-2xl: 28px;
-  --firefoxcss-blur-3xl: 32px;
-
-  /* ========== COMMON OPACITY VALUES ========== */
-  --firefoxcss-opacity-none: 0;
-  --firefoxcss-opacity-xs: 0.2;
-  --firefoxcss-opacity-sm: 0.3;
-  --firefoxcss-opacity-md: 0.4;
-  --firefoxcss-opacity-lg: 0.5;
-  --firefoxcss-opacity-xl: 0.6;
-  --firefoxcss-opacity-2xl: 0.8;
-  --firefoxcss-opacity-full: 1;
-
-  /* ========== COMMON SHADOW OPACITY VALUES ========== */
-  --firefoxcss-shadow-opacity-sm: 0.2;
-  --firefoxcss-shadow-opacity-md: 0.3;
-  --firefoxcss-shadow-opacity-lg: 0.4;
-  --firefoxcss-shadow-opacity-xl: 0.5;
-  --firefoxcss-shadow-opacity-2xl: 0.6;
-
-  /* ========== COMMON Z-INDEX VALUES ========== */
-  --firefoxcss-z-base: 1;
-  --firefoxcss-z-above: 2;
-  --firefoxcss-z-high: 4;
 }
-
 

@@ -4,14 +4,14 @@
 
 /* Bookmarks bar popout animation and settings */
 #PersonalToolbar {
-    --uc-bm-height: var(--firefoxcss-spacing-4xl);
-    --uc-bm-padding: var(--firefoxcss-spacing-md);
-    padding: var(--firefoxcss-spacing-xs) var(--firefoxcss-spacing-md) !important;
+    --uc-bm-height: 24px;
+    --uc-bm-padding: 6px;
+    padding: 1px 6px !important;
     position: relative;
 }
 
 :root[uidensity="touch"] #PersonalToolbar {
-    --uc-bm-padding: var(--firefoxcss-spacing-md);
+    --uc-bm-padding: 6px;
 }
 
 /* Firefox v133 fix  */
@@ -49,28 +49,28 @@
 /* Set bookmarks bar items padding */
 #PlacesToolbarItems > .bookmark-item {
     padding-block: var(--uc-bm-padding) !important;
-    padding-left: var(--firefoxcss-spacing-md) !important;
-    padding-right: var(--firefoxcss-spacing-md) !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
 }
 
 #PlacesToolbarItems > .bookmark-item .toolbarbutton-icon {
-    transition: opacity var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-linear) 400ms !important;
+    transition: opacity 100ms linear 400ms !important;
     opacity: 0 !important;
 }
 
 #PlacesToolbarItems > .bookmark-item .toolbarbutton-text {
-    transition: opacity var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-linear) 400ms !important;
+    transition: opacity 100ms linear 400ms !important;
     opacity: 0 !important;
 }
 
 #navigator-toolbox:hover #PlacesToolbarItems > .bookmark-item .toolbarbutton-icon,
 #navigator-toolbox #PlacesToolbarItems:has(.toolbar-menupopup[dragstart]) > .bookmark-item .toolbarbutton-icon {
-    transition-delay: var(--firefoxcss-transition-fast) !important;
+    transition-delay: 100ms !important;
     opacity: 1 !important;
 }
 
 #navigator-toolbox:hover #PlacesToolbarItems > .bookmark-item .toolbarbutton-text,
 #navigator-toolbox #PlacesToolbarItems:has(.toolbar-menupopup[dragstart]) > .bookmark-item .toolbarbutton-text {
-    transition-delay: var(--firefoxcss-transition-fast) !important;
+    transition-delay: 100ms !important;
     opacity: 1 !important;
 }

@@ -8,7 +8,7 @@
   }
 
   #nav-bar .titlebar-spacer[type="post-tabs"] {
-    width: var(--firefoxcss-spacing-3xl) !important;
+    width: 20px !important;
     display: initial !important;
   }
 
@@ -21,11 +21,6 @@
       + scrollbox[orient="vertical"][part="scrollbox"] {
       scrollbar-width: none !important;
     }
-  }
-
-  #vertical-pinned-tabs-container-separator {
-    margin-inline: calc(var(--firefoxcss-spacing-5xl) * var(--space-xsmall)) !important;
-    border-bottom: var(--firefoxcss-spacing-xs) solid light-dark(#00000030, #ffffff2e) !important;
   }
 }
 

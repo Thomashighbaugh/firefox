@@ -10,9 +10,9 @@
   div.sticky-container.bottom-fade {
     background: none !important;
     background-color: var(--firefoxcss-firefoxview-sticky-color) !important;
-    backdrop-filter: blur(var(--firefoxcss-spacing-xl) - var(--firefoxcss-spacing-lg)) !important;
+    backdrop-filter: blur(7px) !important;
     flex-direction: row !important;
-    padding-block: calc(var(--firefoxcss-spacing-4xl) + var(--firefoxcss-spacing-xl)) calc(var(--firefoxcss-spacing-4xl) - var(--firefoxcss-spacing-lg)) !important;
+    padding-block: 30px 20px !important;
   }
 
   @media (max-width: 52rem) {

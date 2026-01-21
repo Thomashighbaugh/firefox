@@ -18,8 +18,6 @@
 .private-browsing-indicator-with-label,
 .private-browsing-indicator,
 /* Hide permission icons, see it when pressing permission button */
-#blocked-permissions-container,
-/* Hide vertical spacer from toolbar */
-#vertical-spacer {
+#blocked-permissions-container {
   display: none !important;
 }

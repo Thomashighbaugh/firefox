@@ -20,7 +20,7 @@ url("about:newtab") {
   }
 
   .body-wrapper .tile {
-    backdrop-filter: blur(var(--firefoxcss-blur-xl)) !important;
+    backdrop-filter: blur(24px) !important;
   }
 
   /*=====================================================================
@@ -28,22 +28,8 @@ url("about:newtab") {
   =====================================================================*/
 
   body {
-    background-color: var(--firefoxcss-main-bg-color) !important;
-    background-size: auto;
+    --newtab-background-color: var(--firefoxcss-main-bg-color) !important;
     background-size: cover !important;
-  }
-
-  #search-handoff-button {
-    appearance: none !important;
-    background-color: hsla(290, 21%, 35%, 0.2) !important;
-    border: none !important;
-    box-shadow: none !important;
-    border-top: var(--firefoxcss-spacing-xs) solid hsla(290, 21%, 50%, 0.2) !important;
-    border-radius: var(--firefoxcss-border-radius-xl) var(--firefoxcss-border-radius-xl) var(--firefoxcss-border-radius-xl) var(--firefoxcss-border-radius-xl) !important;
-    fill: hsl(290, 21%, 60%) !important;
-    box-shadow: var(--firefoxcss-private-search-box-shadow) !important;
-    transition: background-color var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-in), border-color var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-in), fill var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-in) !important;
-    backdrop-filter: blur(var(--firefoxcss-blur-xl)) !important;
   }
 
   /*   Edit shortcut menu */
@@ -58,16 +44,16 @@ url("about:newtab") {
     color: var(--firefoxcss-search-color) !important;
     border: none !important;
     box-shadow: none !important;
-    border-top: var(--firefoxcss-spacing-xs) solid var(--firefoxcss-search-border-top-color) !important;
-    border-radius: var(--firefoxcss-border-radius-xl) !important;
-    backdrop-filter: blur(var(--firefoxcss-blur-xl)) !important;
+    border-top: 1px solid var(--firefoxcss-search-border-top-color) !important;
+    border-radius: 10px !important;
+    backdrop-filter: blur(24px) !important;
     box-shadow: var(--firefoxcss-search-box-shadow) !important;
     fill: var(--firefoxcss-search-text-fill) !important;
     transition:
-      background-color var(--firefoxcss-transition-slow) var(--firefoxcss-transition-easing),
-      border-color var(--firefoxcss-transition-slow) var(--firefoxcss-transition-easing),
-      fill var(--firefoxcss-transition-slow) var(--firefoxcss-transition-easing) !important;
-    padding-inline-start: calc(var(--firefoxcss-spacing-4xl) * 2) !important;
+      background-color 200ms ease,
+      border-color 200ms ease,
+      fill 200ms ease !important;
+    padding-inline-start: 48px !important;
   }
 
   .icon.icon-settings.personalize-button {
@@ -84,12 +70,12 @@ url("about:newtab") {
 
   .body-wrapper .tile {
     background-color: var(--firefoxcss-item-bg-color) !important;
-    border-top: var(--firefoxcss-spacing-xs) solid var(--firefoxcss-shortcut-item-top-border) !important;
+    border-top: 1px solid var(--firefoxcss-shortcut-item-top-border) !important;
     box-shadow: var(--firefoxcss-shortcut-item-box-shadow) !important;
     transition:
-      background-color var(--firefoxcss-transition-medium) var(--firefoxcss-transition-easing),
-      border-color var(--firefoxcss-transition-medium) var(--firefoxcss-transition-easing) !important;
-    border-radius: var(--firefoxcss-border-radius-xl) !important;
+      background-color 150ms ease,
+      border-color 150ms ease !important;
+    border-radius: 10px !important;
   }
 
   .body-wrapper .top-site-button:hover .tile {
@@ -110,7 +96,7 @@ url("about:newtab") {
   }
 
   menu .customize-menu {
-    backdrop-filter: blur(var(--firefoxcss-blur-3xl)) !important;
+    backdrop-filter: blur(32px) !important;
     border: var(--firefoxcss-customize-menu-border) !important;
     border-radius: 1rem !important;
     margin: 1rem !important;
@@ -124,9 +110,9 @@ url("about:newtab") {
     background-color: var(
       --firefoxcss-customize-menu-secondary-popup
     ) !important;
-    backdrop-filter: blur(var(--firefoxcss-blur-xl)) !important;
-    border-radius: var(--firefoxcss-border-radius-lg);
-    margin-top: calc(var(--firefoxcss-spacing-4xl) - var(--firefoxcss-spacing-md)) !important;
+    backdrop-filter: blur(24px) !important;
+    border-radius: 8px;
+    margin-top: 16px !important;
     filter: drop-shadow(0px 20px 10px rgba(0, 0, 0, 0.2)) !important;
     border: var(--firefoxcss-customize-menu-border) !important;
   }
@@ -149,12 +135,12 @@ url("about:newtab") {
   }
 
   .top-site-outer .top-site-button .title {
-    opacity: var(--firefoxcss-opacity-xl) !important;
+    opacity: 0.6 !important;
     transition: opacity 0.4s !important;
   }
 
   .top-site-outer .top-site-button:hover .title {
-    opacity: var(--firefoxcss-opacity-full) !important;
+    opacity: 1 !important;
   }
 
   .top-site-outer .context-menu-button.icon:is(:active, :focus, :hover) {
@@ -211,9 +197,9 @@ url("about:newtab") {
   .card-outer .context-menu {
     background-image: var(--firefoxcss-customize-menu-bg-image) !important;
     background-color: var(--firefoxcss-shortcut-item-context-menu) !important;
-    backdrop-filter: blur(var(--firefoxcss-blur-3xl)) !important;
-    border: var(--firefoxcss-spacing-xs) solid var(--firefoxcss-shortcut-item-context-menu-border);
-    border-radius: var(--firefoxcss-border-radius-lg) !important;
+    backdrop-filter: blur(32px) !important;
+    border: 1px solid var(--firefoxcss-shortcut-item-context-menu-border);
+    border-radius: 8px !important;
   }
 
   .top-site-outer .context-menu > ul > li.separator,
@@ -227,9 +213,9 @@ url("about:newtab") {
   }
 
   .search-wrapper .search-handoff-button .fake-caret {
-    top: var(--firefoxcss-spacing-xl) + var(--firefoxcss-spacing-sm) !important;
+    top: 13px !important;
     /*18 default. calculate=18-((52px - min-height)/2) */
-    inset-inline-start: calc(var(--firefoxcss-spacing-4xl) * 2) !important;
+    inset-inline-start: 48px !important;
   }
 
   .search-wrapper .logo-and-wordmark {
@@ -273,13 +259,13 @@ url("about:newtab") {
   }
 
   .top-sites-list-wrapper .top-site-outer:not(.add-button) .tile .icon-wrapper {
-    height: calc(var(--firefoxcss-spacing-4xl) * 2) !important;
-    width: calc(var(--firefoxcss-spacing-4xl) * 2) !important;
+    height: 48px !important;
+    width: 48px !important;
   }
 
   .top-sites-list-wrapper .top-site-outer .tile {
-    height: calc(var(--firefoxcss-spacing-4xl) * 3 + var(--firefoxcss-spacing-xl)) !important;
-    width: calc(var(--firefoxcss-spacing-4xl) * 3 + var(--firefoxcss-spacing-xl)) !important;
+    height: 80px !important;
+    width: 80px !important;
   }
 
   .outer-wrapper .ds-top-sites .top-sites .top-sites-list {
@@ -301,29 +287,9 @@ url("about:newtab") {
   }
 
   @media (min-width: 610px) {
-    .ds-outer-wrapper-breakpoint-override main,
-    .ds-outer-wrapper-breakpoint-override main .body-wrapper {
+    .ds-outer-wrapper-breakpoint-override main {
       width: unset !important;
     }
-  }
-  @media (min-width: 724px) {
-    .ds-outer-wrapper-breakpoint-override main,
-    .ds-outer-wrapper-breakpoint-override main .body-wrapper {
-      width: unset !important;
-    }
-  }
-  @media (min-width: 1122px) {
-    .ds-outer-wrapper-breakpoint-override main,
-    .ds-outer-wrapper-breakpoint-override main .body-wrapper {
-      width: unset !important;
-    }
-  }
-  @media (min-width: 1698px) {
-    .ds-outer-wrapper-breakpoint-override main,
-    .ds-outer-wrapper-breakpoint-override main .body-wrapper {
-      width: unset !important;
-    }
-  }
 
     .ds-outer-wrapper-breakpoint-override main .body-wrapper {
       width: unset !important;
@@ -334,6 +300,23 @@ url("about:newtab") {
       width: unset !important;
     }
 
+    .ds-outer-wrapper-breakpoint-override main .body-wrapper {
+      width: unset !important;
+    }
+  }
+  @media (min-width: 1122px) {
+    .ds-outer-wrapper-breakpoint-override main {
+      width: unset !important;
+    }
+
+    .ds-outer-wrapper-breakpoint-override main .body-wrapper {
+      width: unset !important;
+    }
+  }
+  @media (min-width: 1698px) {
+    .ds-outer-wrapper-breakpoint-override main {
+      width: unset !important;
+    }
     .ds-outer-wrapper-breakpoint-override main .body-wrapper {
       width: unset !important;
     }
@@ -343,76 +326,59 @@ url("about:newtab") {
     width: 200px !important;
   }
 
-    .ds-outer-wrapper-breakpoint-override main .body-wrapper {
-      width: unset !important;
-    }
-  }
-  @media (min-width: 1698px) {
-    .ds-outer-wrapper-breakpoint-override main {
-      width: unset !important;
-    }
-    .ds-outer-wrapper-breakpoint-override main .body-wrapper {
-      width: unset !important;
-    }
-  }
-
-  .search-wrapper .search-inner-wrapper {
-    width: calc(var(--firefoxcss-spacing-4xl) * 8 + var(--firefoxcss-spacing-xl)) !important;
-  }
-
   .ds-outer-wrapper-breakpoint-override main {
-    width: calc(var(--firefoxcss-spacing-4xl) * 11 + var(--firefoxcss-spacing-xl) + var(--firefoxcss-spacing-lg)) !important;
+    width: 266px !important;
   }
 
   @media (min-width: 610px) {
     .ds-outer-wrapper-breakpoint-override main {
-      width: calc(var(--firefoxcss-spacing-4xl) * 21 + var(--firefoxcss-spacing-xl)) !important;
+      width: 510px !important;
     }
 
     .search-wrapper .search-inner-wrapper {
-      width: calc(var(--firefoxcss-spacing-4xl) * 15) !important;
+      width: 360px !important;
     }
   }
 
   @media (min-width: 866px) {
     .ds-outer-wrapper-breakpoint-override main {
-      width: calc(var(--firefoxcss-spacing-4xl) * 31 - var(--firefoxcss-spacing-lg)) !important;
+      width: 746px !important;
     }
 
     .search-wrapper .search-inner-wrapper {
-      width: calc(var(--firefoxcss-spacing-4xl) * 25) !important;
+      width: 600px !important;
     }
   }
 
   @media (min-width: 1122px) {
     .ds-outer-wrapper-breakpoint-override main {
-      width: calc(var(--firefoxcss-spacing-4xl) * 41 - var(--firefoxcss-spacing-lg)) !important;
+      width: 986px !important;
     }
 
     .search-wrapper .search-inner-wrapper {
-      width: calc(var(--firefoxcss-spacing-4xl) * 30) !important;
+      width: 720px !important;
     }
   }
 
   .search-wrapper .search-handoff-button,
   .search-wrapper input {
-    background-size: var(--firefoxcss-spacing-3xl) !important;
+    background-size: 20px !important;
   }
 
   .search-wrapper .search-inner-wrapper {
-    min-height: calc(var(--firefoxcss-spacing-4xl) * 2 - var(--firefoxcss-spacing-md)) !important;
+    min-height: 42px !important;
     /* 52px default */
     order: 2 !important;
     flex: 3 !important;
     flex-basis: 60% !important;
-    top: var(--firefoxcss-spacing-sm) !important;
+    top: 4px !important;
   }
 
   /* When there is overflow because of the height, search bar gets fixed position */
   .outer-wrapper.fixed-search .search-wrapper {
-    backdrop-filter: blur(var(--firefoxcss-blur-lg)) !important;
-    gap: 0 0 !important;
-    min-height: calc(var(--firefoxcss-spacing-4xl) * 2 + var(--firefoxcss-spacing-xl)) !important;
+    backdrop-filter: blur(18px) !important;
+    gap: 0px 0px !important;
+    min-height: 60px !important;
   }
 
   .outer-wrapper.fixed-search .search-wrapper .search-inner-wrapper {
@@ -423,15 +389,15 @@ url("about:newtab") {
     .search-wrapper
     .search-inner-wrapper
     button.search-handoff-button {
-    backdrop-filter: blur(calc(var(--firefoxcss-blur-xl) - var(--firefoxcss-spacing-sm))) !important;
+    backdrop-filter: blur(22px) !important;
     background-color: var(--firefoxcss-extra-search-bar-when-scroll) !important;
     box-shadow: none !important;
     border: none !important;
-    margin: 0 calc(var(--firefoxcss-spacing-4xl) * 2 + var(--firefoxcss-spacing-xl)) !important;
+    margin: 0px 50px !important;
   }
 
   .search-wrapper .search-handoff-button .fake-textbox {
-    opacity: var(--firefoxcss-opacity-lg) !important;
+    opacity: 0.5 !important;
     color: var(--firefoxcss-search-bar-text-color) !important;
     transition: opacity 0.4s !important;
   }
@@ -439,7 +405,7 @@ url("about:newtab") {
   .search-wrapper .search-handoff-button:active > .fake-textbox,
   .search-wrapper .search-handoff-button:hover > .fake-textbox,
   .search-wrapper .search-handoff-button:focus > .fake-textbox {
-    opacity: var(--firefoxcss-opacity-2xl) !important;
+    opacity: 0.8 !important;
   }
 
   .search-inner-wrapper:hover .search-handoff-button {
@@ -554,12 +520,12 @@ url("about:newtab") {
     }
 
     & .collapsible-section .card-outer {
-      backdrop-filter: blur(var(--firefoxcss-blur-xl)) !important;
+      backdrop-filter: blur(20px) !important;
     }
 
     & .body-wrapper .tile {
-      backdrop-filter: blur(var(--firefoxcss-blur-xl)) !important;
-      border-top: var(--firefoxcss-spacing-xs) solid hsla(0, 0%, 100%, 0.145) !important;
+      backdrop-filter: blur(20px) !important;
+      border-top: 1px solid hsla(0, 0%, 100%, 0.145) !important;
     }
 
     & .body-wrapper .top-site-button:hover .tile {
@@ -597,12 +563,7 @@ url("about:newtab") {
     }
 
     & .collapsible-section .card-outer {
-      backdrop-filter: blur(calc(var(--firefoxcss-blur-xl) - var(--firefoxcss-spacing-sm))) !important;
-    }
-
-    & .body-wrapper .tile {
-      backdrop-filter: blur(calc(var(--firefoxcss-blur-xl) - var(--firefoxcss-spacing-sm))) !important;
-      border-top: var(--firefoxcss-spacing-xs) solid hsla(0, 0%, 58%, 0.1) !important;
+      backdrop-filter: blur(22px) !important;
     }
 
     & .body-wrapper .tile {
@@ -643,9 +604,9 @@ url("about:newtab") {
     .context-menu {
       background-image: var(--firefoxcss-customize-menu-bg-image) !important;
       background-color: var(--firefoxcss-shortcut-item-context-menu) !important;
-      backdrop-filter: blur(var(--firefoxcss-blur-3xl)) !important;
-      border: var(--firefoxcss-spacing-xs) solid var(--firefoxcss-shortcut-item-context-menu-border);
-      border-radius: var(--firefoxcss-border-radius-lg) !important;
+      backdrop-filter: blur(32px) !important;
+      border: 1px solid var(--firefoxcss-shortcut-item-context-menu-border);
+      border-radius: 8px !important;
     }
 
     .discovery-stream.ds-layout .ds-card-grid {
@@ -657,14 +618,92 @@ url("about:newtab") {
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
       @media -moz-pref("firefoxcss.pocket.4.cards.enable") {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
-      column-gap: var(--firefoxcss-spacing-4xl) !important;
-    }
-    @media -moz-pref("firefoxcss.pocket.5.cards.enable") {
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
-      column-gap: var(--firefoxcss-spacing-xl) !important;
-    }
+        column-gap: 16px !important;
+      }
+      @media -moz-pref("firefoxcss.pocket.5.cards.enable") {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
+        column-gap: 12px !important;
+      }
     }
   }
 }
+/* Spill style. Modifications for userContent file */
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --firefoxcss-item-bg-color: hsla(240, 2%, 45%, 0.4) !important;
+    --firefoxcss-item-hover-bg-color: hsl(240, 2%, 55%, 0.4) !important;
+    --firefoxcss-settings-wheel-color: hsla(240, 20%, 80%, 0.6) !important;
+    --firefoxcss-settings-wheel-color-hover: hsla(
+      240,
+      20%,
+      80%,
+      0.9
+    ) !important;
+  }
+}
+
+@-moz-document url("about:privatebrowsing") {
+  @media (prefers-color-scheme: dark) {
+    html:not(#ublock0-epicker),
+    html:not(#ublock0-epicker) body,
+    #newtab-customize-overlay {
+      background-image: url("../common/assets/other/spill.svg") !important;
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    html:not(#ublock0-epicker),
+    html:not(#ublock0-epicker) body,
+    #newtab-customize-overlay {
+      background-image: url("../common/assets/other/spill-light.svg") !important;
+    }
+  }
+
+  #search-handoff-button {
+    background-color: hsla(290, 21%, 35%, 0.2) !important;
+    border-top: 1px solid hsla(290, 21%, 50%, 0.2) !important;
+    fill: hsl(290, 21%, 60%) !important;
+    backdrop-filter: blur(24px) !important;
+  }
+
+  #search-handoff-button:hover,
+  #search-handoff-button:focus,
+  #search-handoff-button:active {
+    background-color: hsla(290, 21%, 45%, 0.2) !important;
+    border-top: 1px solid hsla(290, 21%, 55%, 0.2) !important;
+    fill: hsl(290, 21%, 70%) !important;
+  }
+
+  #search-handoff-button .fake-textbox {
+    color: hsl(290, 21%, 60%) !important;
+  }
+
+  #search-handoff-button:active > .fake-textbox,
+  #search-handoff-button:hover > .fake-textbox,
+  #search-handoff-button:focus > .fake-textbox {
+    color: hsl(290, 21%, 70%) !important;
+  }
+}
+
+@-moz-document url("about:home"),
+url("about:newtab") {
+  @media (prefers-color-scheme: dark) {
+    html:not(#ublock0-epicker),
+    html:not(#ublock0-epicker) body,
+    #newtab-customize-overlay {
+      background-image: url("../common/assets/other/spill-main.svg") !important;
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    html:not(#ublock0-epicker),
+    html:not(#ublock0-epicker) body,
+    #newtab-customize-overlay {
+      background-image: url("../common/assets/icons/icons/menu-light.svg") !important;
+    }
+  }
+
+  .body-wrapper .tile {
+    backdrop-filter: blur(24px) !important;
+  }
+}
 

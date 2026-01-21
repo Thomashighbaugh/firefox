@@ -20,7 +20,7 @@
 }
 
 .tabbrowser-tab .tab-label-container .tab-label {
-  transition: color 100ms ease !important;
+  transition: color var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing) !important;
 }
 
 /* Main BAR */
@@ -35,8 +35,8 @@
 
 .tabbrowser-tab:not([selected]):not([multiselected]):not(:hover)
   .tab-icon-image {
-  opacity: 0.8 !important;
-  transition: opacity 100ms ease !important;
+  opacity: var(--firefoxcss-opacity-2xl) !important;
+  transition: opacity var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing) !important;
 }
 
 /* Normal tabs design */
@@ -49,7 +49,7 @@
     var(--firefoxcss-tab-bg-color) 4%,
     transparent
   ) !important;
-  transition: background-color 100ms ease !important;
+  transition: background-color var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing) !important;
   box-shadow: var(--firefoxcss-normal-tabs-box-shadow) !important;
 }
 
@@ -60,8 +60,8 @@
   }
 
   #vertical-pinned-tabs-container-separator {
-    margin-inline: calc(5 * var(--space-xsmall)) !important;
-    border-bottom: 1px solid light-dark(#00000030, #ffffff2e) !important;
+    margin-inline: calc(var(--firefoxcss-spacing-5xl) * var(--space-xsmall)) !important;
+    border-bottom: var(--firefoxcss-spacing-xs) solid light-dark(#00000030, #ffffff2e) !important;
   }
 }
 
@@ -126,59 +126,22 @@
   }
 }
 
-#navigator-toolbox .tabbrowser-tab:not([pinned]):hover .tab-close-button {
-  opacity: 1;
+#navigator-toolbox .tabbrowser-tab:not([pinned]):hover .tab-close-button,
+#tabbrowser-tabs[expanded][orient="vertical"] .tabbrowser-tab:not([pinned]):hover .tab-close-button {
+  opacity: var(--firefoxcss-opacity-full);
   visibility: visible !important;
-  border-radius: 100% !important;
+  border-radius: var(--firefoxcss-border-radius-2xl) !important;
   transition:
-    opacity 0.15s ease,
-    visibility 0.15s ease,
-    background-color 0.15s ease !important;
+    opacity var(--firefoxcss-transition-medium) var(--firefoxcss-transition-easing),
+    visibility var(--firefoxcss-transition-medium) var(--firefoxcss-transition-easing),
+    background-color var(--firefoxcss-transition-medium) var(--firefoxcss-transition-easing) !important;
 }
 
-/* Show Tab close button on hover */
-#navigator-toolbox .tabbrowser-tab:not([pinned]) .tab-close-button {
+#navigator-toolbox .tabbrowser-tab:not([pinned]) .tab-close-button,
+#tabbrowser-tabs[expanded][orient="vertical"] .tabbrowser-tab:not([pinned]) .tab-close-button {
   display: flex !important;
   opacity: 0;
   visibility: collapse !important;
-}
-
-#navigator-toolbox .tabbrowser-tab:not([pinned]):hover .tab-close-button {
-  opacity: 1;
-  visibility: visible !important;
-  border-radius: 100% !important;
-  transition:
-    opacity 0.15s ease,
-    visibility 0.15s ease,
-    background-color 0.15s ease !important;
-}
-
-#tabbrowser-tabs[expanded][orient="vertical"] {
-  & .tabbrowser-tab:not([pinned]):hover .tab-close-button {
-    opacity: 1;
-    visibility: visible !important;
-    border-radius: 100% !important;
-    transition:
-      opacity 0.15s ease,
-      visibility 0.15s ease,
-      background-color 0.15s ease !important;
-  }
-
-  & .tabbrowser-tab:not([pinned]) .tab-close-button {
-    display: flex !important;
-    opacity: 0;
-    visibility: collapse !important;
-  }
-
-  & .tabbrowser-tab:not([pinned]):hover .tab-close-button {
-    opacity: 1;
-    visibility: visible !important;
-    border-radius: 100% !important;
-    transition:
-      opacity 0.15s ease,
-      visibility 0.15s ease,
-      background-color 0.15s ease !important;
-  }
 }
 
 #tabbrowser-tabs[movingtab]
@@ -190,7 +153,7 @@
     var(--firefoxcss-tab-active-bg-color) 50%,
     transparent
   ) !important;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(var(--firefoxcss-blur-md));
 }
 
 /* Tab audio controls styling */
@@ -208,9 +171,9 @@
       border: none !important;
       background-color: transparent !important;
       transition:
-        transform 150ms ease-in-out,
-        fill 100ms ease-in-out,
-        background-color 100ms ease-in-out !important;
+        transform var(--firefoxcss-transition-medium) var(--firefoxcss-transition-easing-in-out),
+        fill var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-in-out),
+        background-color var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-in-out) !important;
       --button-border-radius: 20px !important;
 
       &:hover {
@@ -222,10 +185,10 @@
         transform: scale(0.8);
         border: none !important;
         transition:
-          transform 150ms ease-in-out,
-          fill 100ms ease-in-out,
-          background-color 100ms ease-in-out,
-          filter 100ms ease-in-out !important;
+          transform var(--firefoxcss-transition-medium) var(--firefoxcss-transition-easing-in-out),
+          fill var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-in-out),
+          background-color var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-in-out),
+          filter var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-in-out) !important;
       }
       &:hover:active {
         color: var(--firefoxcss-tab-speaker-icon-hover-color) !important;
@@ -243,45 +206,18 @@
     margin-block: 0px !important;
   }
 
-  .tabbrowser-tab .tab-icon-overlay:not([crashed]) {
-    &:is([soundplaying], [muted], [activemedia-blocked]) {
-      background-image: none !important;
-      background-color: var(--firefoxcss-tab-speaker-color) !important;
-      background-color: #0000002e !important;
-      backdrop-filter: blur(6px);
-      fill: var(--firefoxcss-tab-speaker-icon-color) !important;
-
-      transition:
-        transform 100ms ease-in-out,
-        fill 100ms ease-in-out,
-        background-color 100ms ease-in-out;
-
-      &:hover {
-        fill: var(--firefoxcss-tab-speaker-icon-color) !important;
-        background-color: transparent !important;
-        border: 1px solid #ffffff29 !important;
-        background-color: #ffffff14 !important;
-        transition:
-          transform 100ms ease-in-out,
-          fill 100ms ease-in-out,
-          background-color 100ms ease-in-out !important;
-        transform: scale(1.2) translate(-8%, 14%);
-        transform-origin: center !important;
-      }
-    }
-  }
-
+  .tabbrowser-tab .tab-icon-overlay:not([crashed]),
   .tabbrowser-tab[pinned] .tab-icon-overlay:not([crashed]) {
     &:is([soundplaying], [muted], [activemedia-blocked]) {
       background-image: none !important;
       background-color: var(--firefoxcss-tab-speaker-color) !important;
       background-color: #0000002e !important;
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(var(--firefoxcss-blur-sm));
       fill: var(--firefoxcss-tab-speaker-icon-color) !important;
       transition:
-        transform 100ms ease-in-out,
-        fill 100ms ease-in-out,
-        background-color 100ms ease-in-out;
+        transform var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-in-out),
+        fill var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-in-out),
+        background-color var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-in-out);
 
       &:hover {
         fill: var(--firefoxcss-tab-speaker-icon-color) !important;
@@ -289,9 +225,9 @@
         border: 1px solid #ffffff29 !important;
         background-color: #ffffff14 !important;
         transition:
-          transform 100ms ease-in-out,
-          fill 100ms ease-in-out,
-          background-color 100ms ease-in-out !important;
+          transform var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-in-out),
+          fill var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-in-out),
+          background-color var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-in-out) !important;
         transform: scale(1.2) translate(-8%, 14%);
         transform-origin: center !important;
       }
@@ -373,6 +309,11 @@
   #scrollbutton-up ~ spacer {
     border-color: transparent !important;
   }
+}
+
+#vertical-pinned-tabs-container-separator {
+  margin-inline: calc(var(--firefoxcss-spacing-5xl) * var(--space-xsmall)) !important;
+  border-bottom: var(--firefoxcss-spacing-xs) solid light-dark(#00000030, #ffffff2e) !important;
 }
 
 /* Make tab group works correctly */

@@ -12,24 +12,20 @@
   > toolbarspring,
 #nav-bar[customizing] toolbarpaletteitem[place="toolbar"] > toolbarspring,
 #customization-container toolbarpaletteitem[place="palette"] > toolbarspring {
-  outline: 1px solid var(--firefoxcss-customize-view-flex-space) !important;
-  outline-offset: -3px !important;
-  border-radius: 6px !important;
+  outline: var(--firefoxcss-spacing-xs) solid var(--firefoxcss-customize-view-flex-space) !important;
+  outline-offset: calc(var(--firefoxcss-spacing-md) * -1) !important;
+  border-radius: var(--firefoxcss-border-radius-md) !important;
 }
 
 @media not (-moz-platform: macos) {
   #customization-panelWrapper > .panel-arrowcontent {
-    border-radius: 10px !important;
+    border-radius: var(--firefoxcss-border-radius-xl) !important;
     background-color: var(--firefoxcss-customize-view-overflow-menu) !important;
   }
 }
 
 #PersonalToolbar[customizing] {
   outline: 1px dashed var(--firefoxcss-customize-view-dashed-outline) !important;
-}
-
-.browserContainer > findbar .findbar-textbox {
-  background-color: var(--firefoxcss-item-bg-color) !important;
 }
 
 #customization-container #customization-footer {
@@ -40,6 +36,6 @@
   (-moz-platform: windows),
   not (prefers-contrast) {
   #customization-container #customization-footer .customizationmode-button {
-    border-radius: 4px !important;
+    border-radius: var(--firefoxcss-border-radius-sm) !important;
   }
 }

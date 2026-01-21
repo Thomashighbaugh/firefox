@@ -7,7 +7,7 @@
   font-size: 1.1rem !important;
 }
 
-/* Styling Search Containers 
+/* Styling Search Containers
     .urlbar-background - main search container
     #searchbar - secondary/extra search container */
 .urlbar-background,
@@ -48,7 +48,7 @@
 #urlbar .urlbar-input::placeholder,
 #urlbar .searchbar-textbox::placeholder {
   color: color-mix(in srgb, currentColor 80%, transparent) !important;
-  opacity: 0.8 !important;
+  opacity: var(--firefoxcss-opacity-2xl) !important;
 }
 
 /* Remove border line between searche results and input  */
@@ -94,8 +94,8 @@
 #urlbar[breakout][breakout-extend] {
   & > .urlbar-input-container {
     height: var(--urlbar-height) !important;
-    padding-block: 1px !important;
-    padding-inline: 1px !important;
+    padding-block: var(--firefoxcss-spacing-xs) !important;
+    padding-inline: var(--firefoxcss-spacing-xs) !important;
     transition: none !important;
   }
 }

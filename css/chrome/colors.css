@@ -11,17 +11,6 @@
   }
 }
 
-/* Main BAR */
-#main-window #navigator-toolbox {
-  border-bottom: none !important;
-}
-
-/* Remove the white line around the content window */
-#browser #tabbrowser-tabbox {
-  outline: none !important;
-  box-shadow: -1px 4px 2px #0000002e !important;
-}
-
 /* Vertical tabs background color with transparency preserved */
 #vertical-tabs {
   background-color: hsla(240, 2%, 13%, 0.85) !important;

@@ -4,12 +4,9 @@
 
 /* Go Back button */
 #back-button > .toolbarbutton-icon {
-  border-radius: var(--toolbarbutton-border-radius) !important;
-}
-
-#back-button > .toolbarbutton-icon {
   border: none !important;
   background: none !important;
+  border-radius: var(--toolbarbutton-border-radius) !important;
   width: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
   height: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
   padding: var(--toolbarbutton-inner-padding) !important;
@@ -21,6 +18,34 @@
   padding-inline-start: 0 !important;
   border: none !important;
   border-inline-start: none !important;
+}
+
+/* Add padding to all toolbar buttons and extension buttons */
+toolbar .toolbarbutton-1,
+.unified-extensions-item-action-button,
+.webextension-browser-action {
+  padding: 0.25rem !important;
+  background-color: hsla(255, 2%, 65%, 0.3) !important;
+  border: 1px solid currentColor !important;
+  border-radius: var(--firefoxcss-border-radius-sm) !important;
+}
+
+toolbar .toolbarbutton-1:hover,
+toolbar .toolbarbutton-1:active,
+.unified-extensions-item-action-button:hover,
+.unified-extensions-item-action-button:active,
+.webextension-browser-action:hover,
+.webextension-browser-action:active {
+  background-color: var(--firefoxcss-item-bg-color) !important;
+}
+
+toolbar .toolbarbutton-1:hover .toolbarbutton-icon,
+toolbar .toolbarbutton-1:active .toolbarbutton-icon,
+.unified-extensions-item-action-button:hover .toolbarbutton-icon,
+.unified-extensions-item-action-button:active .toolbarbutton-icon,
+.webextension-browser-action:hover .toolbarbutton-icon,
+.webextension-browser-action:active .toolbarbutton-icon {
+  fill: #555555 !important;
 }
 
 toolbar
@@ -44,7 +69,7 @@ toolbar
 toolbar
   .toolbarbutton-1:not([disabled="true"]):is([open], [checked], :hover:active)
   > .toolbarbutton-badge-stack {
-  box-shadow: 0 0 4px var(--firefoxcss-toolbar-button-active-box-shadow) !important;
+  box-shadow: 2px 2px 4px var(--firefoxcss-toolbar-button-active-box-shadow) !important;
 }
 
 /* ----- New tab icon size (16-default). Not change the rest of calc --- */
@@ -98,12 +123,12 @@ toolbar
 }
 
 /* Back button hover/active color */
-#back-button:not([disabled]):not([open]):hover > .toolbarbutton-icon {
+#back-button:not([disabled]):not([open]):hover > .toolbarbutton-icon,
+#back-button:not([disabled="true"]):is([open], [checked], :hover:active) > .toolbarbutton-icon {
   background-color: var(--toolbarbutton-hover-background) !important;
 }
 
-#back-button:not([disabled="true"]):is([open], [checked], :hover:active)
-  > .toolbarbutton-icon {
+#back-button:not([disabled="true"]):is([open], [checked], :hover:active) > .toolbarbutton-icon {
   background-color: var(--toolbarbutton-active-background) !important;
 }
 
@@ -161,22 +186,4 @@ toolbar
   padding: calc(var(--toolbarbutton-inner-padding) + 1px) !important;
 }
 
-.unified-extensions-item-action-button .toolbarbutton-icon,
-.toolbarbutton-1 .toolbarbutton-icon,
-.webextension-browser-action .toolbarbutton-icon {
-  box-sizing: border-box !important;
-  background-color: hsla(255, 2%, 65%, 0.3) !important;
-}
 
-.unified-extensions-item-action-button .toolbarbutton-icon:hover,
-.toolbarbutton-1 .toolbarbutton-icon:hover,
-.webextension-browser-action .toolbarbutton-icon:hover {
-  box-sizing: border-box !important;
-  background-color: hsla(240, 2%, 65%, 0.45) !important;
-}
-.unified-extensions-item-action-button .toolbarbutton-icon:active,
-.toolbarbutton-1 .toolbarbutton-icon:active,
-.webextension-browser-action .toolbarbutton-icon:active {
-  box-sizing: border-box !important;
-  background-color: hsla(240, 2%, 65%, 0.65) !important;
-}

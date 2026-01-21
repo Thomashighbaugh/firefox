@@ -11,12 +11,12 @@ menupopup :-moz-any(menu, menuitem) {
 /*  Context menu padding */
 :not(#ContentSelectDropdown) > menupopup {
   @media (-moz-platform: windows) {
-    & > menu,
-    & > menuitem {
-      padding-block: 0.3em !important;
-      margin-inline: 4px !important;
-      margin-block: 2px !important;
-    }
+  & > menu,
+  & > menuitem {
+    padding-block: 0.3em !important;
+    margin-inline: var(--firefoxcss-spacing-sm) !important;
+    margin-block: var(--firefoxcss-spacing-xs) !important;
+  }
   }
 }
 
@@ -26,14 +26,11 @@ menupopup :-moz-any(menu, menuitem) {
 }
 
 /* ----- Menu Separator #context-sep-selectall ----- */
-menuseparator {
-  border-color: var(--arrowpanel-border-color) !important;
-  /* border-top: 1px solid ThreeDShadow; */
-  padding-block: 1px !important;
-}
-
+menuseparator,
 menuseparator#context-sep-navigation {
   border-color: var(--arrowpanel-border-color) !important;
+  /* border-top: 1px solid ThreeDShadow; */
+  padding-block: var(--firefoxcss-spacing-xs) !important;
 }
 
 /* ----- Menu Colors ----- */
@@ -72,17 +69,10 @@ menupopup
   margin-top: 3px !important;
 }
 
-#context-sep-navigation {
-  padding-block: 0px !important;
-}
-
 #context-navigation
   #context-back[disabled="true"]
   .menu-iconic-left
-  .menu-iconic-icon {
-  opacity: 0.5 !important;
-}
-
+  .menu-iconic-icon,
 #context-navigation
   #context-forward[disabled="true"]
   .menu-iconic-left
@@ -118,10 +108,10 @@ menuitem {
   }
 
   #context-navigation > .menuitem-iconic .menu-iconic-icon {
-    padding: 4px !important;
+    padding: var(--firefoxcss-spacing-sm) !important;
   }
 
   #context-navigation:not([hidden]) {
-    padding: 3px 3px !important;
+    padding: var(--firefoxcss-spacing-md) var(--firefoxcss-spacing-md) !important;
   }
 }

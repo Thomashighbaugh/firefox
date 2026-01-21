@@ -30,7 +30,7 @@ See the above repository for updates as well as full license text. */
   @media (min-width: 420px) {
     #main {
       max-width: unset !important;
-      padding-right: 28px;
+      padding-right: calc(var(--firefoxcss-spacing-4xl) - var(--firefoxcss-spacing-lg));
     }
     addon-list > section {
       padding: 1em;
@@ -45,11 +45,11 @@ See the above repository for updates as well as full license text. */
       white-space: initial !important;
     }
 
-    addon-list[type="extension"] .addon-name-container {
+    addon-list[type="extension"]     .addon-name-container {
       display: grid !important;
       grid-template-areas: "name badge opt" "name toggle toggle";
-      grid-row-gap: 6px;
-      grid-auto-columns: 1fr 24px auto;
+      grid-row-gap: var(--firefoxcss-spacing-md);
+      grid-auto-columns: 1fr calc(var(--firefoxcss-spacing-4xl) - var(--firefoxcss-spacing-md)) auto;
     }
     .addon-icon {
       align-self: center;
@@ -126,23 +126,23 @@ See the above repository for updates as well as full license text. */
   }
 
   addon-list[type="extension"] {
-    --card-padding: 8px;
+    --card-padding: var(--firefoxcss-spacing-sm);
   }
 }
 
 @-moz-document url-prefix("about:addons") {
   :root {
-    --sidebar-width: 60px !important;
+    --sidebar-width: var(--firefoxcss-spacing-4xl) !important;
   }
   #categories {
     width: var(--sidebar-width) !important;
   }
   #categories > .category {
-    margin-left: 10px !important;
+    margin-left: var(--firefoxcss-spacing-xl) !important;
     -moz-box-pack: center;
   }
   .sidebar-footer-list {
-    margin-left: 18px !important;
+    margin-left: calc(var(--firefoxcss-spacing-4xl) - var(--firefoxcss-spacing-md)) !important;
   }
   .sidebar-footer-label,
   .category > .category-name {
@@ -199,7 +199,7 @@ See the above repository for updates as well as full license text. */
   }
   /* make panel background blurry if the background is translucent. Requires pref layout.css.backdrop-filter.enabled  */
   html|panel-list {
-    backdrop-filter: blur(28px);
+    backdrop-filter: blur(var(--firefoxcss-blur-2xl));
   }
 }
 

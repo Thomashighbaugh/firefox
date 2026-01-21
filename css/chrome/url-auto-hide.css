@@ -38,15 +38,15 @@
     #identity-permission-box box image.sharing-icon {
       opacity: 0 !important;
       visibility: collapse !important;
-      transition: opacity 100ms ease-in-out, visibility 100ms ease-in-out;
-      transition-delay: 100ms;
+      transition: opacity var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-in-out), visibility var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-in-out);
+      transition-delay: var(--firefoxcss-transition-fast);
     }
 
     #identity-permission-box[open="true"] box image.sharing-icon {
       opacity: 1 !important;
       visibility: visible !important;
-      transition: opacity 100ms ease, visibility 100ms ease;
-      transition-delay: 100ms;
+      transition: opacity var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing), visibility var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing);
+      transition-delay: var(--firefoxcss-transition-fast);
     }
   }
 
@@ -58,7 +58,7 @@
   }
 
   #identity-box.extensionPage #identity-icon-box #identity-icon-label {
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s var(--firefoxcss-transition-easing);
   }
 
   @media -moz-pref("mod.hide.extension.url.icon") {
@@ -74,10 +74,10 @@
     /* persistsearchterms - is when you see globe in search */
     #urlbar & {
       opacity: 0 !important;
-      margin-inline-start: calc(-16px - 2 * var(--urlbar-icon-padding));
-      transition: margin-inline-start 150ms ease-in-out,
-        opacity 100ms ease-in-out;
-      transition-delay: 100ms;
+      margin-inline-start: calc(calc(var(--firefoxcss-spacing-4xl) - var(--firefoxcss-spacing-md)) - 2 * var(--urlbar-icon-padding));
+      transition: margin-inline-start var(--firefoxcss-transition-medium) var(--firefoxcss-transition-easing-in-out),
+        opacity var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-in-out);
+      transition-delay: var(--firefoxcss-transition-fast);
     }
 
     /* Specific rules to keep the elements shown when hovering */
@@ -85,8 +85,8 @@
     #urlbar:has(#tracking-protection-icon-container:hover) & {
       opacity: 1 !important;
       margin-inline-start: initial !important;
-      transition: margin-inline-start 100ms ease, opacity 100ms ease;
-      transition-delay: 100ms;
+      transition: margin-inline-start var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing), opacity var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing);
+      transition-delay: var(--firefoxcss-transition-fast);
     }
 
     #urlbar &:hover:active,
@@ -101,8 +101,8 @@
     #urlbar #identity-permission-box:has(image.sharing-icon[sharing]) {
       opacity: 1 !important;
       margin-inline-start: initial !important;
-      transition: margin-inline-start 100ms ease, opacity 100ms ease;
-      transition-delay: 100ms;
+      transition: margin-inline-start var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing), opacity var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing);
+      transition-delay: var(--firefoxcss-transition-fast);
     }
   }
 
@@ -159,12 +159,7 @@
     padding-inline-start: 3px !important;
   }
 
-  #identity-box:hover ~ .urlbar-input-box > #urlbar-input {
-    mask-image: linear-gradient(to right, transparent, black 3ch),
-      linear-gradient(to left, transparent, black 3ch) !important;
-    mask-composite: intersect;
-  }
-
+  #identity-box:hover ~ .urlbar-input-box > #urlbar-input,
   #tracking-protection-icon-container:hover
     ~ .urlbar-input-box
     > #urlbar-input {
@@ -186,9 +181,9 @@
   }
 
   #page-action-buttons .urlbar-page-action {
-    margin-inline-end: calc(-16px - 2 * var(--urlbar-icon-padding)) !important;
+    margin-inline-end: calc(calc(var(--firefoxcss-spacing-4xl) - var(--firefoxcss-spacing-md)) - 2 * var(--urlbar-icon-padding)) !important;
     opacity: 0 !important;
-    transition: margin-inline-end 150ms ease-in-out, opacity 100ms ease-in-out;
+    transition: margin-inline-end var(--firefoxcss-transition-medium) var(--firefoxcss-transition-easing-in-out), opacity var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing-in-out);
   }
 
   #page-action-buttons:not(:hover)
@@ -215,7 +210,7 @@
   #page-action-buttons .urlbar-page-action[open] ~ .urlbar-page-action {
     opacity: 1 !important;
     margin-inline-end: initial !important;
-    transition: margin-inline-end 100ms ease, opacity 100ms ease;
+    transition: margin-inline-end var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing), opacity var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing);
   }
 
   /* Create visual dots on both sides */
@@ -230,28 +225,28 @@
     pointer-events: none;
     -moz-context-properties: fill, fill-opacity;
     fill: var(--toolbarbutton-icon-fill) !important;
-    transition: opacity 100ms ease;
+    transition: opacity var(--firefoxcss-transition-fast) var(--firefoxcss-transition-easing);
     align-self: center;
     font-size: 1.25rem;
   }
 
   #identity-box::after,
   #page-action-buttons::before {
-    opacity: 0.2;
+    opacity: var(--firefoxcss-opacity-xs);
   }
 
   #identity-box::after {
-    left: 2px;
+    left: var(--firefoxcss-spacing-sm);
   }
 
   #page-action-buttons::before {
-    right: 2px;
+    right: var(--firefoxcss-spacing-sm);
   }
 
   #identity-box:hover::after,
   #page-action-buttons:hover::before {
-    opacity: 0.2 !important;
-    transition: opacity 50ms ease;
+    opacity: var(--firefoxcss-opacity-xs) !important;
+    transition: opacity 50ms var(--firefoxcss-transition-easing);
     pointer-events: none;
   }
 
@@ -259,7 +254,7 @@
   .urlbar-input-container[pageproxystate="invalid"]
     > #page-action-buttons::before {
     opacity: 0 !important;
-    transition: opacity 50ms ease;
+    transition: opacity 50ms var(--firefoxcss-transition-easing);
   }
 
   /* Linux changes for visual dots */

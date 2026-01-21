@@ -24,11 +24,11 @@
 /* Status URL change (bottom left when hovering a link)  */
 #statuspanel-label {
   background-color: var(--firefoxcss-statuspanel-bg-color) !important;
-  border-radius: 4px !important;
+  border-radius: var(--firefoxcss-border-radius-sm) !important;
   border-color: transparent !important;
   color: currentColor !important;
-  margin: 0 0 3px 3px !important;
-  padding: 4px !important;
+  margin: 0 0 var(--firefoxcss-spacing-md) var(--firefoxcss-spacing-md) !important;
+  padding: var(--firefoxcss-spacing-sm) !important;
 }
 
 /* Container extension code */
@@ -69,14 +69,7 @@
 /*===================== A L T  M E N U  BAR =========================*/
 #toolbar-menubar {
   &[autohide="true"] {
-    :root[tabsintitlebar] #navigator-toolbox:not([tabs-hidden]) > & {
-      min-height: 0 !important;
-    }
-  }
-}
-
-#toolbar-menubar {
-  &[autohide="true"] {
+    :root[tabsintitlebar] #navigator-toolbox:not([tabs-hidden]) > &,
     :root[tabsintitlebar] #navigator-toolbox[tabs-hidden] > & {
       min-height: 0 !important;
     }

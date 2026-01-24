@@ -1,0 +1,704 @@
+/**
+ * Command Palette CSS
+ * Styling for urlbar integration and settings modal UI
+ */
+
+/* ============================================
+   URLBAR INTEGRATION
+   ============================================ */
+
+/* Urlbar result styling for command palette entries */
+.urlbarView-row[dynamicType="CommandPalette"] {
+  --urlbarView-item-inline-padding: 8px;
+}
+
+.urlbarView-row[dynamicType="CommandPalette"] .urlbarView-favicon {
+  width: 16px;
+  height: 16px;
+}
+
+.urlbarView-row[dynamicType="CommandPalette"] .urlbarView-title {
+  font-weight: 500;
+}
+
+.urlbarView-row[dynamicType="CommandPalette"][selected] {
+  background-color: var(--autocomplete-popup-highlight-background);
+  color: var(--autocomplete-popup-highlight-color);
+}
+
+/* Command palette prefix indicator in urlbar */
+.urlbarView-row[dynamicType="CommandPalette"]::before {
+  content: ">";
+  margin-right: 8px;
+  opacity: 0.6;
+  font-weight: bold;
+}
+
+/* ============================================
+   SETTINGS MODAL
+   ============================================ */
+
+/* Panel container */
+#command-palette-settings-panel {
+  --panel-width: 700px;
+  --panel-height: 600px;
+  --panel-padding: 0;
+  --panel-background: var(--arrowpanel-background);
+  --panel-border-color: var(--arrowpanel-border-color);
+  --panel-border-radius: 8px;
+  
+  padding: 0 !important;
+  background: var(--panel-background) !important;
+  border: 1px solid var(--panel-border-color) !important;
+  border-radius: var(--panel-border-radius) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+  min-width: var(--panel-width);
+  min-height: var(--panel-height);
+}
+
+.command-palette-settings-panel .panel-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+/* Header */
+.command-palette-settings-panel .panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--panel-separator-color, rgba(0, 0, 0, 0.1));
+  background: var(--arrowpanel-dimmed);
+}
+
+.command-palette-settings-panel .header-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--panel-description-color);
+  margin: 0;
+}
+
+.command-palette-settings-panel .panel-close {
+  min-width: 24px;
+  min-height: 24px;
+  padding: 4px;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  list-style-image: url("chrome://global/skin/icons/close.svg");
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+.command-palette-settings-panel .panel-close:hover {
+  background-color: var(--arrowpanel-dimmed-further);
+}
+
+/* Tab bar */
+.command-palette-settings-panel .tab-bar {
+  display: flex;
+  padding: 0;
+  background: var(--arrowpanel-dimmed);
+  border-bottom: 1px solid var(--panel-separator-color, rgba(0, 0, 0, 0.1));
+}
+
+.command-palette-settings-panel .tab-button {
+  flex: 1;
+  padding: 10px 16px;
+  margin: 0;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--panel-description-color);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.command-palette-settings-panel .tab-button:hover {
+  background: var(--arrowpanel-dimmed-further);
+}
+
+.command-palette-settings-panel .tab-button.active {
+  color: var(--focus-outline-color);
+  border-bottom-color: var(--focus-outline-color);
+  background: var(--panel-background);
+}
+
+/* Tab content */
+.command-palette-settings-panel .tab-content {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.command-palette-settings-panel .tab-panel {
+  display: none;
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+}
+
+.command-palette-settings-panel .tab-panel.active {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Search box */
+.command-palette-settings-panel .search-box {
+  margin-bottom: 8px;
+}
+
+.command-palette-settings-panel .search-box input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--panel-separator-color);
+  border-radius: 4px;
+  background: var(--panel-background);
+  color: var(--panel-description-color);
+  font-size: 13px;
+}
+
+.command-palette-settings-panel .search-box input:focus {
+  outline: 2px solid var(--focus-outline-color);
+  outline-offset: -1px;
+}
+
+.command-palette-settings-panel .category-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 8px;
+  background: var(--arrowpanel-dimmed);
+  border-radius: 4px;
+}
+
+.command-palette-settings-panel .filter-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--panel-description-color);
+  margin: 0;
+}
+
+.command-palette-settings-panel .category-select {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid var(--panel-separator-color);
+  border-radius: 4px;
+  background: var(--panel-background);
+  color: var(--panel-description-color);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.command-palette-settings-panel .category-select:focus {
+  outline: 2px solid var(--focus-outline-color);
+  outline-offset: -1px;
+}
+
+/* Commands list */
+.command-palette-settings-panel .commands-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.command-palette-settings-panel .command-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--arrowpanel-dimmed);
+  border: 1px solid var(--panel-separator-color);
+  border-radius: 4px;
+  gap: 12px;
+}
+
+.command-palette-settings-panel .command-item:hover {
+  background: var(--arrowpanel-dimmed-further);
+}
+
+.command-palette-settings-panel .command-checkbox {
+  flex-shrink: 0;
+}
+
+.command-palette-settings-panel .command-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+.command-palette-settings-panel .command-label {
+  flex: 1;
+  font-size: 13px;
+  color: var(--panel-description-color);
+}
+
+.command-palette-settings-panel .command-shortcut-box {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.command-palette-settings-panel .command-shortcut {
+  font-size: 12px;
+  color: var(--text-color-deemphasized);
+  background: var(--arrowpanel-dimmed);
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--panel-separator-color);
+  min-width: 60px;
+  text-align: center;
+}
+
+.command-palette-settings-panel .command-shortcut.recording {
+  background: var(--focus-outline-color);
+  color: white;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.command-palette-settings-panel .edit-shortcut-btn {
+  min-width: 20px;
+  min-height: 20px;
+  padding: 2px;
+  border: none;
+  background: transparent;
+  border-radius: 3px;
+  -moz-context-properties: fill;
+  fill: currentColor;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.command-palette-settings-panel .command-item:hover .edit-shortcut-btn {
+  opacity: 1;
+}
+
+.command-palette-settings-panel .edit-shortcut-btn:hover {
+  background: var(--arrowpanel-dimmed);
+}
+
+/* Preferences tab */
+.command-palette-settings-panel .preferences-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.command-palette-settings-panel .pref-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.command-palette-settings-panel .pref-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.command-palette-settings-panel .pref-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--panel-description-color);
+  margin: 0;
+}
+
+.command-palette-settings-panel .pref-input {
+  padding: 6px 10px;
+  border: 1px solid var(--panel-separator-color);
+  border-radius: 4px;
+  background: var(--panel-background);
+  color: var(--panel-description-color);
+  font-size: 13px;
+  min-width: 200px;
+}
+
+.command-palette-settings-panel .pref-input:focus {
+  outline: 2px solid var(--focus-outline-color);
+  outline-offset: -1px;
+}
+
+.command-palette-settings-panel .pref-description {
+  font-size: 12px;
+  color: var(--text-color-deemphasized);
+  margin: 0;
+  padding-left: 0;
+}
+
+.command-palette-settings-panel .pref-separator {
+  margin: 8px 0;
+  border-top: 1px solid var(--panel-separator-color);
+}
+
+.command-palette-settings-panel .section-header {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--panel-description-color);
+  margin: 8px 0;
+}
+
+/* Custom commands tab */
+.command-palette-settings-panel .custom-toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--panel-separator-color);
+}
+
+.command-palette-settings-panel .custom-commands-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.command-palette-settings-panel .custom-command-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background: var(--arrowpanel-dimmed);
+  border: 1px solid var(--panel-separator-color);
+  border-radius: 4px;
+  gap: 12px;
+}
+
+.command-palette-settings-panel .custom-command-item:hover {
+  background: var(--arrowpanel-dimmed-further);
+}
+
+.command-palette-settings-panel .command-key {
+  font-size: 11px;
+  font-family: monospace;
+  color: var(--text-color-deemphasized);
+}
+
+.command-palette-settings-panel .command-edit-btn,
+.command-palette-settings-panel .command-delete-btn {
+  min-width: 24px;
+  min-height: 24px;
+  padding: 4px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+.command-palette-settings-panel .command-edit-btn:hover,
+.command-palette-settings-panel .command-delete-btn:hover {
+  background: var(--arrowpanel-dimmed-further);
+}
+
+.command-palette-settings-panel .empty-message {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-color-deemphasized);
+  font-size: 13px;
+}
+
+.command-palette-settings-panel .custom-command-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background: var(--arrowpanel-dimmed);
+  border-radius: 4px;
+}
+
+.command-palette-settings-panel .editor-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--panel-description-color);
+  margin: 0;
+}
+
+.command-palette-settings-panel .editor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.command-palette-settings-panel .editor-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.command-palette-settings-panel .editor-row-full {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.command-palette-settings-panel .editor-label {
+  min-width: 120px;
+  font-size: 13px;
+  color: var(--panel-description-color);
+  margin: 0;
+}
+
+.command-palette-settings-panel .editor-input,
+.command-palette-settings-panel .editor-textarea {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid var(--panel-separator-color);
+  border-radius: 4px;
+  background: var(--panel-background);
+  color: var(--panel-description-color);
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.command-palette-settings-panel .editor-textarea {
+  font-family: monospace;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.command-palette-settings-panel .editor-input:focus,
+.command-palette-settings-panel .editor-textarea:focus {
+  outline: 2px solid var(--focus-outline-color);
+  outline-offset: -1px;
+}
+
+.command-palette-settings-panel .shortcut-input {
+  cursor: pointer;
+  font-family: monospace;
+}
+
+.command-palette-settings-panel .shortcut-input.shortcut-conflict {
+  border-color: var(--red-50);
+  background: rgba(255, 0, 0, 0.05);
+}
+
+
+.command-palette-settings-panel .editor-error {
+  color: var(--red-50);
+  font-size: 12px;
+  padding: 8px;
+  background: rgba(255, 0, 0, 0.1);
+  border-radius: 4px;
+  border: 1px solid var(--red-50);
+}
+
+.command-palette-settings-panel .editor-test-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.command-palette-settings-panel .test-code-btn {
+  padding: 6px 12px;
+  border: 1px solid var(--panel-separator-color);
+  border-radius: 4px;
+  background: var(--panel-background);
+  color: var(--panel-description-color);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.command-palette-settings-panel .test-code-btn:hover {
+  background: var(--arrowpanel-dimmed);
+}
+
+.command-palette-settings-panel .test-result {
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  flex: 1;
+}
+
+.command-palette-settings-panel .test-result.success {
+  color: var(--green-60);
+  background: rgba(0, 221, 0, 0.1);
+  border: 1px solid var(--green-60);
+}
+
+.command-palette-settings-panel .test-result.error {
+  color: var(--red-50);
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid var(--red-50);
+}
+
+.command-palette-settings-panel .test-result.warning {
+  color: var(--yellow-60);
+  background: rgba(255, 200, 0, 0.1);
+  border: 1px solid var(--yellow-60);
+}
+
+.command-palette-settings-panel .editor-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+
+/* Help tab */
+.command-palette-settings-panel .help-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.command-palette-settings-panel .help-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--panel-description-color);
+  margin: 12px 0 4px 0;
+}
+
+.command-palette-settings-panel .help-section-title:first-child {
+  margin-top: 0;
+}
+
+.command-palette-settings-panel .help-example {
+  font-family: monospace;
+  font-size: 12px;
+  color: var(--text-color-deemphasized);
+  background: var(--arrowpanel-dimmed);
+  padding: 6px 10px;
+  border-radius: 4px;
+  margin: 2px 0;
+}
+
+.command-palette-settings-panel description {
+  font-size: 13px;
+  color: var(--panel-description-color);
+  line-height: 1.5;
+}
+
+/* Footer */
+.command-palette-settings-panel .panel-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--panel-separator-color);
+  background: var(--arrowpanel-dimmed);
+}
+
+.command-palette-settings-panel .footer-button {
+  padding: 6px 16px;
+  border: 1px solid var(--panel-separator-color);
+  border-radius: 4px;
+  background: var(--panel-background);
+  color: var(--panel-description-color);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.command-palette-settings-panel .footer-button:hover {
+  background: var(--arrowpanel-dimmed-further);
+}
+
+.command-palette-settings-panel .footer-button.primary {
+  background: var(--button-primary-bgcolor);
+  color: var(--button-primary-color);
+  border-color: var(--button-primary-bgcolor);
+}
+
+.command-palette-settings-panel .footer-button.primary:hover {
+  background: var(--button-primary-hover-bgcolor);
+  border-color: var(--button-primary-hover-bgcolor);
+}
+
+/* Scrollbox styling */
+.command-palette-settings-panel scrollbox {
+  overflow: auto;
+  max-height: 100%;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  #command-palette-settings-panel {
+    --panel-separator-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ============================================
+   ICON PICKER PANEL
+   ============================================ */
+
+#command-palette-icon-picker-panel {
+  --panel-width: 280px;
+  padding: 12px;
+}
+
+.icon-picker-panel .icon-picker-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.icon-picker-panel .picker-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--panel-description-color);
+}
+
+.icon-picker-panel .icons-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-width: 280px;
+}
+
+.icon-picker-panel .icon-option {
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  border: 1px solid var(--panel-separator-color);
+  border-radius: 4px;
+  background: var(--panel-background);
+  cursor: pointer;
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+.icon-picker-panel .icon-option:hover {
+  background: var(--arrowpanel-dimmed);
+  border-color: var(--focus-outline-color);
+}
+
+.command-palette-settings-panel .icon-picker-btn {
+  min-width: 28px;
+  height: 28px;
+  padding: 4px;
+  margin-left: 4px;
+  border: 1px solid var(--panel-separator-color);
+  border-radius: 4px;
+  background: var(--panel-background);
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+.command-palette-settings-panel .icon-picker-btn:hover {
+  background: var(--arrowpanel-dimmed);
+}
+
+.command-palette-settings-panel .icon-input-box {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+

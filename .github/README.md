@@ -29,6 +29,7 @@ A comprehensive Firefox customization project providing a highly customized brow
 - **[Architecture Overview](.github/documentation/architecture.md)** - Project structure and design patterns
 - **[CSS Components](.github/documentation/css-components.md)** - Detailed CSS system documentation
 - **[JavaScript Modules](.github/documentation/javascript-modules.md)** - UserChrome.js and ES module system
+- **[Preferences Reference](.github/documentation/preferences.md)** - All about:config preferences and their descriptions
 
 ### Development
 - **[Development Guide](.github/documentation/development.md)** - Contributing and development setup

@@ -11,14 +11,14 @@ url("about:newtab") {
     html:not(#ublock0-epicker),
     html:not(#ublock0-epicker) body,
     #newtab-customize-overlay {
-      background-image: url("../common/assets/other/spill-main.svg") !important;
+      background-image: url("chrome://userchrome/content/icons/other/spill-main.svg") !important;
     }
   }
   @media (prefers-color-scheme: light) {
     html:not(#ublock0-epicker),
     html:not(#ublock0-epicker) body,
     #newtab-customize-overlay {
-      background-image: url("../common/assets/other/spill-main-light.svg") !important;
+      background-image: url("chrome://userchrome/content/icons/other/spill-main-light.svg") !important;
     }
   }
 
@@ -646,19 +646,18 @@ url("about:newtab") {
   }
 }
 
-@-moz-document url("about:privatebrowsing") {
   @media (prefers-color-scheme: dark) {
     html:not(#ublock0-epicker),
     html:not(#ublock0-epicker) body,
     #newtab-customize-overlay {
-      background-image: url("../common/assets/other/spill.svg") !important;
+      background-image: url("chrome://userchrome/content/icons/other/spill.svg") !important;
     }
   }
   @media (prefers-color-scheme: light) {
     html:not(#ublock0-epicker),
     html:not(#ublock0-epicker) body,
     #newtab-customize-overlay {
-      background-image: url("../common/assets/other/spill-light.svg") !important;
+      background-image: url("chrome://userchrome/content/icons/other/spill-light.svg") !important;
     }
   }
 
@@ -694,14 +693,14 @@ url("about:newtab") {
     html:not(#ublock0-epicker),
     html:not(#ublock0-epicker) body,
     #newtab-customize-overlay {
-      background-image: url("../common/assets/other/spill-main.svg") !important;
+      background-image: url("chrome://userchrome/content/icons/other/spill-main.svg") !important;
     }
   }
   @media (prefers-color-scheme: light) {
     html:not(#ublock0-epicker),
     html:not(#ublock0-epicker) body,
     #newtab-customize-overlay {
-      background-image: url("../common/assets/icons/icons/menu-light.svg") !important;
+      background-image: url("chrome://userchrome/content/icons/menu-light.svg") !important;
     }
   }
 

@@ -5,23 +5,23 @@
 ===============================================================*/
 
 /* Import common variables and colors */
-@import url("css/common/variables.css");
-@import url("css/common/colors.css");
+@import url("CSS/common/variables.css");
+@import url("CSS/common/colors.css");
 
 /* Import chrome components */
-@import url("css/chrome/toolbar-order.css");
-@import url("css/chrome/colors.css");
-@import url("css/chrome/hide-elements.css");
-@import url("css/chrome/height-fixes.css");
-@import url("css/chrome/search-bar.css");
-@import url("css/chrome/tabs.css");
-@import url("css/chrome/window-controls.css");
-@import url("css/chrome/context-menu.css");
-@import url("css/chrome/bookmarks.css");
-@import url("css/chrome/buttons.css");
-@import url("css/chrome/url-auto-hide.css");
-@import url("css/chrome/linux-support.css");
-@import url("css/chrome/customization.css");
-@import url("css/chrome/vertical-tabs.css");
-@import url("css/chrome/other.css");
+@import url("CSS/chrome/toolbar-order.css");
+@import url("CSS/chrome/colors.css");
+@import url("CSS/chrome/hide-elements.css");
+@import url("CSS/chrome/height-fixes.css");
+@import url("CSS/chrome/search-bar.css");
+@import url("CSS/chrome/tabs.css");
+@import url("CSS/chrome/window-controls.css");
+@import url("CSS/chrome/context-menu.css");
+@import url("CSS/chrome/bookmarks.css");
+@import url("CSS/chrome/buttons.css");
+@import url("CSS/chrome/url-auto-hide.css");
+@import url("CSS/chrome/linux-support.css");
+@import url("CSS/chrome/customization.css");
+@import url("CSS/chrome/vertical-tabs.css");
+@import url("CSS/chrome/other.css");
 

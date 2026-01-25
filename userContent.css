@@ -3,8 +3,13 @@
 ===============================================================*/
 
 /* Import content-specific colors and styles */
-@import url("css/content/colors.css");
-@import url("css/content/private-browsing.css");
-@import url("css/content/new-tab.css");
-@import url("css/content/firefox-view.css");
-@import url("css/content/about-pages.css");
+@import url("CSS/content/colors.css");
+@import url("CSS/content/private-browsing.css");
+@import url("CSS/content/new-tab.css");
+@import url("CSS/content/firefox-view.css");
+@import url("CSS/content/about-blank.css");
+@import url("CSS/content/about-addons.css");
+@import url("CSS/content/about-config.css");
+@import url("CSS/content/about-settings.css");
+@import url("CSS/content/about-image.css");
+@import url("CSS/content/about-discovery.css");

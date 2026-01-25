@@ -1,0 +1,345 @@
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/buttonlike_toolbarbuttons.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/*=====================================================================
+=========================== B U T T O N S =============================
+=====================================================================*/
+
+:root{
+  --firefoxcss-toolbarbutton-vertical-padding: var(--toolbarbutton-inner-padding);
+  --firefoxcss-toolbarbutton-horizontal-padding: calc(var(--toolbarbutton-inner-padding) + 10px);
+  --toolbarbutton-border-radius: 3px !important;
+}
+:root[uidensity="compact"]{
+  --firefoxcss-toolbarbutton-vertical-padding: calc(var(--toolbarbutton-inner-padding) - 1px);
+  --firefoxcss-toolbarbutton-horizontal-padding: calc(var(--toolbarbutton-inner-padding) + 6px);
+}
+
+.browser-toolbar{
+  --toolbarbutton-icon-fill: var(--toolbar-field-color);
+}
+
+findbar toolbarbutton,
+#PanelUI-menu-button,
+#PanelUI-menu-button > .toolbarbutton-badge-stack,
+.toolbarbutton-1,
+.toolbarbutton-1 > .toolbarbutton-icon,
+.toolbarbutton-1 > .toolbarbutton-badge-stack,
+.chromeclass-toolbar-additional,
+.chromeclass-toolbar-additional .toolbarbutton-icon,
+.chromeclass-toolbar-additional .toolbarbutton-badge-stack,
+.sb2-main-button,
+.sb2-main-web-panel-button,
+#alltabs-button,
+#alltabs-button > .toolbarbutton-badge-stack,
+.tab-background,
+#new-web-panel{
+  background-color: var(--toolbar-field-background-color, hsla(0,0%,100%,.8));
+  width: calc(2* var(--firefoxcss-toolbarbutton-horizontal-padding) + 16px) !important;
+  height: calc(2* var(--firefoxcss-toolbarbutton-vertical-padding) + 16px) !important;
+  fill-opacity: 0.8;
+  margin-inline: 2px;
+}
+
+.toolbarbutton-1.toolbarbutton-combined > :is(.toolbarbutton-icon,.toolbarbutton-badge-stack){
+  margin-inline: 0 !important;
+  border-radius: 0 !important;
+  border-inline-end-width: 0 !important;
+}
+.toolbarbutton-1.toolbarbutton-combined:first-child > :is(.toolbarbutton-icon,.toolbarbutton-badge-stack){
+  border-top-left-radius: var(--toolbarbutton-border-radius) !important;
+  border-bottom-left-radius: var(--toolbarbutton-border-radius) !important;
+}
+.toolbarbutton-1.toolbarbutton-combined:last-child > :is(.toolbarbutton-icon,.toolbarbutton-badge-stack){
+  border-top-right-radius: var(--toolbarbutton-border-radius) !important;
+  border-bottom-right-radius: var(--toolbarbutton-border-radius) !important;
+  border-inline-end-width: 1px !important;
+}
+
+.toolbarbutton-1.toolbarbutton-combined-buttons-dropmarker > .toolbarbutton-icon{
+  padding-inline: 3px !important;
+  margin-inline: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  width: revert !important;
+}
+
+findbar toolbarbutton,
+#PanelUI-menu-button,
+#PanelUI-menu-button > .toolbarbutton-badge-stack,
+.toolbarbutton-1,
+.toolbarbutton-1 > .toolbarbutton-icon,
+.chromeclass-toolbar-additional,
+.chromeclass-toolbar-additional .toolbarbutton-icon,
+#alltabs-button,
+#alltabs-button > .toolbarbutton-badge-stack{
+  border: 1px solid var(--toolbar-field-border-color, hsla(240,5%,5%,.55));
+}
+
+#PanelUI-menu-button,
+.toolbarbutton-1,
+.toolbarbutton-1 > .toolbarbutton-badge-stack,
+.chromeclass-toolbar-additional,
+.chromeclass-toolbar-additional .toolbarbutton-badge-stack,
+.sb2-main-button,
+.sb2-main-web-panel-button,
+#alltabs-button,
+.tab-background,
+#new-web-panel{
+  box-shadow: inset 0 0 0 1px var(--toolbar-field-border-color, hsla(240,5%,5%,.55));
+}
+
+#PanelUI-menu-button,
+.toolbarbutton-1,
+.toolbarbutton-1 > .toolbarbutton-icon,
+.toolbarbutton-1 > .toolbarbutton-badge-stack,
+.chromeclass-toolbar-additional,
+.chromeclass-toolbar-additional .toolbarbutton-icon,
+.chromeclass-toolbar-additional .toolbarbutton-badge-stack,
+.sb2-main-button,
+.sb2-main-web-panel-button,
+#alltabs-button,
+.tab-background,
+#new-web-panel{
+  padding: var(--firefoxcss-toolbarbutton-vertical-padding) var(--firefoxcss-toolbarbutton-horizontal-padding) !important;
+}
+
+:is(#unified-extensions-panel,.widget-overflow-list) .toolbarbutton-1 > .toolbarbutton-icon,
+:is(#unified-extensions-panel,.widget-overflow-list) .toolbarbutton-1 > .toolbarbutton-badge-stack,
+.widget-overflow-list .toolbarbutton-text{
+  background-color: transparent !important;
+  width: revert !important;
+  height: revert !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+toolbar
+  #PanelUI-menu-button:not([disabled="true"], [checked], [open], :active):hover,
+toolbar
+  #PanelUI-menu-button:not([disabled="true"], [checked], [open], :active):hover
+  > .toolbarbutton-badge-stack,
+toolbar
+  .toolbarbutton-1:not([disabled="true"], [checked], [open], :active):hover,
+toolbar
+  .toolbarbutton-1:not([disabled="true"], [checked], [open], :active):hover
+  > .toolbarbutton-icon,
+toolbar
+  .toolbarbutton-1:not([disabled="true"], [checked], [open], :active):hover
+  > .toolbarbutton-text,
+toolbar
+  .toolbarbutton-1:not([disabled="true"], [checked], [open], :active):hover
+  > .toolbarbutton-badge-stack,
+toolbar
+  .chromeclass-toolbar-additional:not([disabled="true"], [checked], [open], :active):hover,
+toolbar
+  .chromeclass-toolbar-additional:not([disabled="true"], [checked], [open], :active):hover
+  .toolbarbutton-icon,
+toolbar
+  .chromeclass-toolbar-additional:not([disabled="true"], [checked], [open], :active):hover
+  .toolbarbutton-badge-stack,
+toolbar
+  .sb2-main-button:not([disabled="true"], [checked], [open], :active):hover,
+toolbar
+  .sb2-main-web-panel-button:not([disabled="true"], [checked], [open], :active):hover,
+toolbar
+  #alltabs-button:not([disabled="true"], [checked], [open], :active):hover,
+toolbar
+  #alltabs-button:not([disabled="true"], [checked], [open], :active):hover
+  > .toolbarbutton-badge-stack,
+toolbar
+  .tab-background:not([selected]):hover,
+toolbar
+  #new-web-panel:not([disabled="true"], [checked], [open], :active):hover {
+  box-shadow: 1px 1px 4px var(--firefoxcss-toolbar-button-box-shadow) !important;
+}
+
+toolbar
+  #PanelUI-menu-button:not([disabled="true"]):is([open], [checked], :hover:active),
+toolbar
+  #PanelUI-menu-button:not([disabled="true"]):is([open], [checked], :hover:active)
+  > .toolbarbutton-badge-stack,
+toolbar
+  .toolbarbutton-1:not([disabled="true"]):is([open], [checked], :hover:active),
+toolbar
+  .toolbarbutton-1:not([disabled="true"]):is([open], [checked], :hover:active)
+  > .toolbarbutton-icon,
+toolbar
+  .toolbarbutton-1:not([disabled="true"]):is([open], [checked], :hover:active)
+  > .toolbarbutton-text,
+toolbar
+  .toolbarbutton-1:not([disabled="true"]):is([open], [checked], :hover:active)
+  > .toolbarbutton-badge-stack,
+toolbar
+  .chromeclass-toolbar-additional:not([disabled="true"]):is([open], [checked], :hover:active),
+toolbar
+  .chromeclass-toolbar-additional:not([disabled="true"]):is([open], [checked], :hover:active)
+  .toolbarbutton-icon,
+toolbar
+  .chromeclass-toolbar-additional:not([disabled="true"]):is([open], [checked], :hover:active)
+  .toolbarbutton-badge-stack,
+toolbar
+  .sb2-main-button:not([disabled="true"]):is([open], [checked], :hover:active),
+toolbar
+  .sb2-main-web-panel-button:not([disabled="true"]):is([open], [checked], :hover:active),
+toolbar
+  #alltabs-button:not([disabled="true"]):is([open], [checked], :hover:active),
+toolbar
+  #alltabs-button:not([disabled="true"]):is([open], [checked], :hover:active)
+  > .toolbarbutton-badge-stack,
+toolbar
+  .tab-background[selected],
+toolbar
+  #new-web-panel:not([disabled="true"]):is([open], [checked], :hover:active) {
+  box-shadow: 0 0 4px var(--firefoxcss-toolbar-button-active-box-shadow) !important;
+}
+
+#tabs-newtab-button > .toolbarbutton-icon{
+  background-color: transparent;
+  width: revert !important;
+  height: revert !important;
+  border: revert !important;
+  padding: var(--toolbarbutton-inner-padding) !important;
+}
+.webextension-browser-action{
+  background: transparent !important;
+}
+#zoom-reset-button > .toolbarbutton-text{
+  background-color: var(--toolbar-field-background-color, hsla(0,0%,100%,.8));
+  border: 1px solid var(--toolbar-field-border-color, hsla(240,5%,5%,.55));
+  border-right-width: 0;
+  border-radius: 0 !important;
+}
+findbar toolbarbutton{
+  background-color: var(--input-bgcolor,var(--toolbarbutton-bgcolor));
+  padding-inline: var(--firefoxcss-toolbarbutton-horizontal-padding) !important;
+  height: revert !important;
+  margin-inline: 1px 0px !important;
+  border-width: 1px !important;
+}
+
+#profiler-button-button:not(.profiler-active) > image{
+  border-radius: 0 var(--toolbarbutton-border-radius) var(--toolbarbutton-border-radius) 0 !important;
+  border-inline-width: 0 1px !important;
+}
+
+.findbar-closebutton{
+  margin-inline-end: 8px !important;
+}
+
+/* Main Menu Button */
+#PanelUI-button {
+  margin-inline-start: 0 !important;
+  padding-inline-start: 0 !important;
+}
+
+@media not -moz-pref("sidebar.verticalTabs") {
+  #tabs-newtab-button .toolbarbutton-icon,
+  #new-tab-button .toolbarbutton-icon {
+    width: calc(2 * var(--toolbarbutton-inner-padding) + 12px) !important;
+    height: calc(2 * var(--toolbarbutton-inner-padding) + 12px) !important;
+  }
+}
+
+toolbar
+  #tabs-newtab-button:not([disabled="true"]):-moz-any(
+    [open],
+    [checked],
+    :hover:active
+  )
+  > .toolbarbutton-icon,
+toolbar
+  #new-tab-button:not([disabled="true"]):-moz-any(
+    [open],
+    [checked],
+    :hover:active
+  )
+  > .toolbarbutton-icon {
+  border: 0 !important;
+  border-radius: 100% !important;
+  background-image: none !important;
+  background-color: var(--firefoxcss-new-tab-button-active) !important;
+  box-shadow: inset 2px 2px 2px 0px
+    var(--firefoxcss-new-tab-button-box-shadow-active) !important;
+}
+
+toolbar
+  #tabs-newtab-button:not([disabled="true"]):not([checked]):not([open]):not(
+    :active
+  ):hover
+  > .toolbarbutton-icon,
+toolbar
+  #new-tab-button:not([disabled="true"]):not([checked]):not([open]):not(
+    :active
+  ):hover
+  > .toolbarbutton-icon {
+  border: 0 !important;
+  border-radius: 100% !important;
+  background-image: none !important;
+  background-color: var(--firefoxcss-new-tab-button-hover) !important;
+  box-shadow: 1px 1px 4px -1px var(--firefoxcss-new-tab-button-box-shadow-hover) !important;
+}
+
+#back-button > .toolbarbutton-icon {
+  border-radius: var(--toolbarbutton-border-radius) !important;
+}
+
+#back-button:not([disabled]):not([open]):hover > .toolbarbutton-icon {
+  background-color: var(--toolbarbutton-hover-background) !important;
+}
+
+#back-button:not([disabled="true"]):is([open], [checked], :hover:active)
+  > .toolbarbutton-icon {
+  background-color: var(--toolbarbutton-active-background) !important;
+}
+
+#back-button .toolbarbutton-icon,
+#forward-button .toolbarbutton-icon {
+  padding: calc(var(--toolbarbutton-inner-padding) + 1px) !important;
+}
+
+#TabsToolbar #firefox-view-button {
+  margin-left: 2px !important;
+}
+
+#TabsToolbar #firefox-view-button:hover:not([open]) > .toolbarbutton-icon {
+  background-image: none !important;
+  box-shadow: none !important;
+  border-radius: var(--firefoxcss-border-radius) !important;
+  background-color: var(--firefoxcss-tab-hover-bg-color) !important;
+}
+
+#TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon {
+  background-image: none !important;
+  background-color: var(--firefoxcss-main-bg-color) !important;
+  border-radius: var(--firefoxcss-border-radius) !important;
+  box-shadow: none !important;
+}
+
+:root:not([privatebrowsingmode], [firefoxviewhidden])
+  :is(toolbarbutton, toolbarpaletteitem)
+  + #tabbrowser-tabs,
+:root[privatebrowsingmode]:not([firefoxviewhidden])
+  :is(
+    toolbarbutton:not(#firefox-view-button),
+    toolbarpaletteitem:not(#wrapper-firefox-view-button)
+  )
+  + #tabbrowser-tabs {
+  border-inline-start: 0 !important;
+  margin-inline-start: 0px !important;
+}
+
+#firefox-view-button {
+  padding-right: 0px !important;
+}
+
+:root[privatebrowsingmode="temporary"] #PanelUI-menu-button {
+  fill: var(--firefoxcss-private-browsing-menu-color) !important;
+}
+
+:root[privatebrowsingmode="temporary"]
+  #PanelUI-menu-button
+  .toolbarbutton-badge-stack
+  .toolbarbutton-icon {
+  filter: var(--firefoxcss-private-browsing-drop-shadow) !important;
+}

@@ -33,13 +33,18 @@ export class PaletteInjector {
   }
 
   static #loadCSS() {
-    const cssPath = "chrome/JS/command_palette/css/palette.css";
+    const cssPath = "JS/command_palette/css/palette.css";
     const sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(
       Ci.nsIStyleSheetService
     );
-    const uri = Services.io.newURI(
-      `${Services.io.newFileURI(Services.dirsvc.get("UChrm", Ci.nsIFile)).spec}${cssPath}`
-    );
+    const chromeDir = Services.dirsvc.get("UChrm", Ci.nsIFile);
+    const cssFile = chromeDir.clone();
+    cssFile.append("JS");
+    cssFile.append("command_palette");
+    cssFile.append("css");
+    cssFile.append("palette.css");
+    
+    const uri = Services.io.newFileURI(cssFile);
 
     if (!sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) {
       sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);

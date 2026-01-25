@@ -1,0 +1,24 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/content/standalone_image_page_mods.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+@-moz-document media-document(image) {
+  @media not print {
+    :root {
+      background-color: var(--firefoxcss-main-bg-color) !important;
+      background-image: none !important;
+    }
+
+    img.transparent {
+      background: conic-gradient(
+          #eef 0.25turn,
+          #bbc 0.25turn 0.5turn,
+          #eef 0.5turn 0.75turn,
+          #bbc 0.75turn
+        )
+        top left / 24px 24px repeat !important;
+    }
+  }
+}

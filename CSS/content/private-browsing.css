@@ -1,3 +1,6 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
 @-moz-document url("about:privatebrowsing") {
   /*=====================================================================
   ========= S P I L L   P R I V A T E   B R O W S I N G   B G =========

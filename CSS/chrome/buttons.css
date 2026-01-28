@@ -134,10 +134,12 @@ toolbar
   fill: var(--firefoxcss-private-browsing-menu-color) !important;
 }
 
-.toolbarbutton-icon {
+.toolbarbutton-animatable-box, .toolbarbutton-icon {
   box-sizing: border-box !important;
   background-color: hsla(240, 2%, 35%, 0.95) !important;
   border: 1px solid hsla(240, 2%, 05%, 0.75) !important;
+  border-radius:var(--firefoxcss-border-radius) !important;
+
   width: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
   height: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
   padding: calc(var(--toolbarbutton-inner-padding) + 1px) !important;
@@ -147,12 +149,12 @@ toolbar
   padding: calc(var(--toolbarbutton-inner-padding) + 1px) !important;
 }
 
-.toolbarbutton-icon:hover {
+.tab-icon-stack:hover, .toolbarbutton-animatable-box:hover, .toolbarbutton-icon:hover {
   box-sizing: border-box !important;
   background-color: hsla(240, 2%, 55%, 0.75) !important;
   border: 1px solid hsla(240, 2%, 95%, 0.75) !important;
 }
-.toolbarbutton-icon:active {
+.tab-icon-stack:active, .toolbarbutton-animatable-box:active, .toolbarbutton-icon:active {
   box-sizing: border-box !important;
   background-color: hsla(240, 2%, 85%, 0.95) !important;
   color: #1c1c1c !important;

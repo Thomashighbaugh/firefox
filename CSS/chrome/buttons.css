@@ -128,23 +128,23 @@ toolbar
 
 #firefox-view-button {
   padding-right: 0px !important;
+  margin-left: 22px !important;
 }
 
 :root[privatebrowsingmode="temporary"] #PanelUI-menu-button {
   fill: var(--firefoxcss-private-browsing-menu-color) !important;
 }
 
-.toolbarbutton-animatable-box, .toolbarbutton-icon {
+.tab-icon-stack, .toolbarbutton-animatable-box, .toolbarbutton-icon {
   box-sizing: border-box !important;
   background-color: hsla(240, 2%, 35%, 0.95) !important;
   border: 1px solid hsla(240, 2%, 05%, 0.75) !important;
-  border-radius:var(--firefoxcss-border-radius) !important;
-
+  border-radius:calc(var(--firefoxcss-border-radius)/2) !important;
+  box-shadow: inset 2px 2px 4px var(--firefoxcss-toolbar-button-box-shadow) !important;
   width: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
   height: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
-  padding: calc(var(--toolbarbutton-inner-padding) + 1px) !important;
   color: hsla(240, 2%, 95%, 0.75);
-  fill: hsla(240, 2%, 95%, 0.75);
+  fill: hsla(240, 2%, 95%, 0.75) !important;
   filter: var(--firefoxcss-private-browsing-drop-shadow) !important;
   padding: calc(var(--toolbarbutton-inner-padding) + 1px) !important;
 }

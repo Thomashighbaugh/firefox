@@ -1,27 +1,159 @@
-/* Current Design Derived from Firefox Mod-Blur
-*/
-/*===============================================================
-==================== C O R E   S T Y L E S ====================
-===============================================================*/
+/*=====================================================================================================
+========================================== F I R E F O X   T H E M E   E N T R Y   P O I N T ==========================================
+=====================================================================================================*
 
-/* Import common variables and colors */
+DESCRIPTION: This is the main userChrome.css file that serves as the entry point for the entire Firefox theme customization.
+This file imports all modular CSS components and orchestrates the overall browser UI styling.
+
+ORIGIN: Current design derived from Firefox Mod-Blur theme with extensive modifications and enhancements.
+
+ARCHITECTURE: This file follows a modular import pattern where each CSS file handles a specific component or functionality.
+The imports are organized in a logical order to ensure proper cascading and dependency resolution.
+
+IMPORTANT: This file only contains @import statements - all actual styling is done in the imported modules.
+This separation allows for better maintainability and selective enabling/disabling of features.
+
+=====================================================================================================
+========================================== C O R E   S T Y L E S   I M P O R T S ==========================================
+=====================================================================================================*/
+
+/*=====================================================================================================
+IMPORT: Global Variables and Constants
+PURPOSE: Defines CSS custom properties (variables) used throughout the theme
+DESCRIPTION: Contains all theme-wide variables like colors, dimensions, border radii, etc.
+DEPENDENCIES: None (this is the foundation for all other imports)
+=====================================================================================================*/
 @import url("CSS/common/variables.css");
+
+/*=====================================================================================================
+IMPORT: Color Scheme Definitions
+PURPOSE: Defines light and dark theme color palettes
+DESCRIPTION: Contains comprehensive color definitions for both dark and light modes
+DEPENDENCIES: variables.css (uses CSS custom properties defined there)
+=====================================================================================================*/
 @import url("CSS/common/colors.css");
 
-/* Import chrome components */
+/*=====================================================================================================
+========================================== C H R O M E   C O M P O N E N T S   I M P O R T S ==========================================
+=====================================================================================================*/
+
+/*=====================================================================================================
+IMPORT: Toolbar Order and Layout
+PURPOSE: Controls the positioning and ordering of toolbar elements
+DESCRIPTION: Manages the visual arrangement of navigation buttons, URL bar, and other toolbar components
+DEPENDENCIES: variables.css, colors.css
+=====================================================================================================*/
 @import url("CSS/chrome/toolbar-order.css");
+
+/*=====================================================================================================
+IMPORT: Chrome Element Colors
+PURPOSE: Applies color schemes to browser chrome elements
+DESCRIPTION: Handles coloring of various UI components like buttons, menus, and panels
+DEPENDENCIES: variables.css, colors.css
+=====================================================================================================*/
 @import url("CSS/chrome/colors.css");
+
+/*=====================================================================================================
+IMPORT: Element Hiding and Visibility
+PURPOSE: Controls which UI elements are visible or hidden
+DESCRIPTION: Manages the display of specific Firefox UI elements based on user preferences
+DEPENDENCIES: variables.css
+=====================================================================================================*/
 @import url("CSS/chrome/hide-elements.css");
+
+/*=====================================================================================================
+IMPORT: Height Fixes and Adjustments
+PURPOSE: Corrects height-related layout issues
+DESCRIPTION: Addresses various height inconsistencies in Firefox's UI components
+DEPENDENCIES: variables.css
+=====================================================================================================*/
 @import url("CSS/chrome/height-fixes.css");
+
+/*=====================================================================================================
+IMPORT: Search Bar Styling
+PURPOSE: Customizes the appearance and behavior of the search/URL bar
+DESCRIPTION: Handles search bar theming, focus states, and visual effects
+DEPENDENCIES: variables.css, colors.css
+=====================================================================================================*/
 @import url("CSS/chrome/search-bar.css");
+
+/*=====================================================================================================
+IMPORT: Tab Styling and Behavior
+PURPOSE: Customizes the appearance and interaction of browser tabs
+DESCRIPTION: Manages tab shapes, colors, hover effects, and visual hierarchy
+DEPENDENCIES: variables.css, colors.css
+=====================================================================================================*/
 @import url("CSS/chrome/tabs.css");
+
+/*=====================================================================================================
+IMPORT: Window Controls Styling
+PURPOSE: Customizes minimize, maximize, and close buttons
+DESCRIPTION: Handles window control button theming and positioning
+DEPENDENCIES: variables.css, colors.css
+=====================================================================================================*/
 @import url("CSS/chrome/window-controls.css");
+
+/*=====================================================================================================
+IMPORT: Context Menu Styling
+PURPOSE: Customizes right-click context menus
+DESCRIPTION: Manages context menu appearance, colors, and hover effects
+DEPENDENCIES: variables.css, colors.css
+=====================================================================================================*/
 @import url("CSS/chrome/context-menu.css");
+
+/*=====================================================================================================
+IMPORT: Bookmarks Bar Styling
+PURPOSE: Customizes the bookmarks toolbar
+DESCRIPTION: Handles bookmarks bar appearance, folder styling, and hover effects
+DEPENDENCIES: variables.css, colors.css
+=====================================================================================================*/
 @import url("CSS/chrome/bookmarks.css");
+
+/*=====================================================================================================
+IMPORT: Button Styling
+PURPOSE: Customizes various button elements throughout the UI
+DESCRIPTION: Manages button shapes, colors, hover states, and visual effects
+DEPENDENCIES: variables.css, colors.css
+=====================================================================================================*/
 @import url("CSS/chrome/buttons.css");
+
+/*=====================================================================================================
+IMPORT: URL Auto-Hide Behavior
+PURPOSE: Controls URL bar visibility and auto-hide functionality
+DESCRIPTION: Implements smart URL bar hiding/showing based on user interaction
+DEPENDENCIES: variables.css, colors.css
+=====================================================================================================*/
 @import url("CSS/chrome/url-auto-hide.css");
+
+/*=====================================================================================================
+IMPORT: Linux-Specific Support
+PURPOSE: Addresses Linux-specific UI issues and optimizations
+DESCRIPTION: Contains fixes and adjustments specific to Linux environments
+DEPENDENCIES: variables.css
+=====================================================================================================*/
 @import url("CSS/chrome/linux-support.css");
+
+/*=====================================================================================================
+IMPORT: Customization Mode Styling
+PURPOSE: Customizes Firefox's customization/drag-and-drop interface
+DESCRIPTION: Manages the appearance of the customization palette and drag states
+DEPENDENCIES: variables.css, colors.css
+=====================================================================================================*/
 @import url("CSS/chrome/customization.css");
+
+/*=====================================================================================================
+IMPORT: Vertical Tabs Support
+PURPOSE: Implements vertical tabs functionality
+DESCRIPTION: Handles vertical tab layout, positioning, and interaction
+DEPENDENCIES: variables.css, colors.css
+=====================================================================================================*/
 @import url("CSS/chrome/vertical-tabs.css");
+
+/*=====================================================================================================
+IMPORT: Miscellaneous Other Styles
+PURPOSE: Contains various miscellaneous UI customizations
+DESCRIPTION: Handles edge cases and additional styling not covered by other modules
+DEPENDENCIES: variables.css, colors.css
+=====================================================================================================*/
 @import url("CSS/chrome/other.css");
 

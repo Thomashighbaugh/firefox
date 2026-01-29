@@ -1,15 +1,99 @@
-/*===============================================================
-==================== C O R E   C O N T E N T ==================
-===============================================================*/
+/*=====================================================================================================
+========================================== F I R E F O X   C O N T E N T   E N T R Y   P O I N T ==========================================
+=====================================================================================================*
 
-/* Import content-specific colors and styles */
+DESCRIPTION: This is the userContent.css file that serves as the entry point for styling Firefox's internal pages and web content.
+Unlike userChrome.css which styles the browser UI, this file styles the actual content pages displayed within Firefox.
+
+SCOPE: This file applies styling to Firefox's internal pages such as about:config, about:addons, new tab page, private browsing pages,
+and other built-in interface elements that are considered "content" rather than "chrome."
+
+ARCHITECTURE: This file follows a modular import pattern where each CSS file handles styling for specific internal pages.
+The imports are organized to ensure consistent theming across all Firefox internal interfaces.
+
+IMPORTANT: This file only contains @import statements - all actual styling is done in the imported modules.
+This separation allows for better maintainability and selective theming of different internal pages.
+
+=====================================================================================================
+========================================== C O N T E N T   S T Y L E S   I M P O R T S ==========================================
+=====================================================================================================*/
+
+/*=====================================================================================================
+IMPORT: Content-Specific Colors
+PURPOSE: Defines color schemes specifically for Firefox internal pages
+DESCRIPTION: Contains color definitions optimized for content pages (different from chrome colors)
+DEPENDENCIES: None (this is the foundation for content styling)
+=====================================================================================================*/
 @import url("CSS/content/colors.css");
+
+/*=====================================================================================================
+IMPORT: Private Browsing Styling
+PURPOSE: Customizes the appearance of private browsing mode interfaces
+DESCRIPTION: Handles styling for private browsing windows, indicators, and related UI elements
+DEPENDENCIES: colors.css
+=====================================================================================================*/
 @import url("CSS/content/private-browsing.css");
+
+/*=====================================================================================================
+IMPORT: New Tab Page Styling
+PURPOSE: Customizes Firefox's new tab page appearance
+DESCRIPTION: Manages the theming of the new tab page including background, search bar, and content areas
+DEPENDENCIES: colors.css
+=====================================================================================================*/
 @import url("CSS/content/new-tab.css");
+
+/*=====================================================================================================
+IMPORT: Firefox View Styling
+PURPOSE: Customizes the Firefox View/Synced Tabs interface
+DESCRIPTION: Handles styling for the Firefox View panel that shows recent tabs and synced content
+DEPENDENCIES: colors.css
+=====================================================================================================*/
 @import url("CSS/content/firefox-view.css");
+
+/*=====================================================================================================
+IMPORT: About:Blank Page Styling
+PURPOSE: Customizes the appearance of blank/new tabs
+DESCRIPTION: Manages the theming of about:blank pages and empty tab states
+DEPENDENCIES: colors.css
+=====================================================================================================*/
 @import url("CSS/content/about-blank.css");
+
+/*=====================================================================================================
+IMPORT: Add-ons Manager Styling
+PURPOSE: Customizes the about:addons page appearance
+DESCRIPTION: Handles theming for the add-ons/extensions management interface
+DEPENDENCIES: colors.css
+=====================================================================================================*/
 @import url("CSS/content/about-addons.css");
+
+/*=====================================================================================================
+IMPORT: Advanced Configuration Styling
+PURPOSE: Customizes the about:config page appearance
+DESCRIPTION: Manages styling for the advanced configuration/preferences interface
+DEPENDENCIES: colors.css
+=====================================================================================================*/
 @import url("CSS/content/about-config.css");
+
+/*=====================================================================================================
+IMPORT: Settings Page Styling
+PURPOSE: Customizes the about:preferences/settings page appearance
+DESCRIPTION: Handles theming for the main settings/preferences interface
+DEPENDENCIES: colors.css
+=====================================================================================================*/
 @import url("CSS/content/about-settings.css");
+
+/*=====================================================================================================
+IMPORT: Image Viewer Styling
+PURPOSE: Customizes the about:image page appearance
+DESCRIPTION: Manages styling for Firefox's built-in image viewer interface
+DEPENDENCIES: colors.css
+=====================================================================================================*/
 @import url("CSS/content/about-image.css");
+
+/*=====================================================================================================
+IMPORT: Discovery Page Styling
+PURPOSE: Customizes the about:discovery page appearance
+DESCRIPTION: Handles theming for Firefox's content discovery/recommendation interface
+DEPENDENCIES: colors.css
+=====================================================================================================*/
 @import url("CSS/content/about-discovery.css");

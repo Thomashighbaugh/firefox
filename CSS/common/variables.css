@@ -1,28 +1,185 @@
-/*=====================================================================
-=================== G L O B A L   V A R I A B L E S ===================
-=====================================================================*/
+/*====================================================================================================================================================================
+========================================== G L O B A L   C S S   V A R I A B L E S   D E F I N I T I O N S ==========================================
+====================================================================================================================================================================*
+
+DESCRIPTION: This file defines global CSS custom properties (variables) used throughout the Firefox theme.
+These variables serve as the foundation for consistent theming across all UI components.
+
+PURPOSE: To centralize all theme-wide constants, dimensions, and reusable values in one location.
+This ensures consistency and makes global theme changes much easier.
+
+USAGE: These variables are referenced throughout the theme using the var() function.
+Example: border-radius: var(--firefoxcss-border-radius);
+
+IMPORTANT: All variables are defined on the :root selector, making them globally available.
+The !important flag is used to ensure these variables override Firefox's defaults.
+
+====================================================================================================================================================================
+========================================== T H E M E   D I M E N S I O N S   A N D   S P A C I N G ==========================================
+====================================================================================================================================================================*/
 
 :root {
+  /*=====================================================================================================
+  VARIABLE: --firefoxcss-top-bar-border-bottom-size
+  PURPOSE: Controls the thickness of the border at the bottom of the top browser toolbar
+  DEFAULT VALUE: 0 (no border)
+  USAGE: Used in toolbar styling to create visual separation
+  NOTES: Setting to 0 creates a seamless appearance between toolbar and content area
+  =====================================================================================================*/
   --firefoxcss-top-bar-border-bottom-size: 0;
+  
+  /*=====================================================================================================
+  VARIABLE: --firefoxcss-border-radius
+  PURPOSE: Defines the standard border radius used throughout the theme
+  DEFAULT VALUE: 10px
+  USAGE: Applied to buttons, tabs, panels, and other UI elements
+  NOTES: Creates consistent rounded corners across the entire interface
+  =====================================================================================================*/
   --firefoxcss-border-radius: 10px;
+  
+  /*=====================================================================================================
+  VARIABLE: --firefoxcss-control-buttons-margin
+  PURPOSE: Controls the margin spacing around window control buttons (minimize, maximize, close)
+  DEFAULT VALUE: 0px
+  USAGE: Applied to window control buttons in the titlebar
+  NOTES: Helps position window controls relative to browser window edges
+  =====================================================================================================*/
   --firefoxcss-control-buttons-margin: 0px;
+  
+  /*=====================================================================================================
+  VARIABLE: --firefoxcss-tab-min-width
+  PURPOSE: Defines the minimum width that browser tabs can shrink to
+  DEFAULT VALUE: 108px
+  USAGE: Applied to tab elements to prevent them from becoming too narrow
+  NOTES: Ensures tabs remain readable even when many tabs are open
+  =====================================================================================================*/
   --firefoxcss-tab-min-width: 108px;
+  
+  /*=====================================================================================================
+  VARIABLE: --firefoxcss-tab-max-width
+  PURPOSE: Defines the maximum width that browser tabs can expand to
+  DEFAULT VALUE: 150px
+  USAGE: Applied to tab elements to prevent them from becoming excessively wide
+  NOTES: Creates consistent tab sizing regardless of window width
+  =====================================================================================================*/
   --firefoxcss-tab-max-width: 150px;
 
+  /*=====================================================================================================
+  VARIABLE: --firefoxcss-searchbar-height
+  PURPOSE: Defines the height of the search/URL bar input field
+  DEFAULT VALUE: 30px
+  USAGE: Applied to the URL bar element
+  NOTES: Controls the vertical size of the main navigation/search interface
+  =====================================================================================================*/
   --firefoxcss-searchbar-height: 30px;
+  
+  /*=====================================================================================================
+  VARIABLE: --firefoxcss-searchbar-container-height
+  PURPOSE: Defines the total height of the search/URL bar container including padding
+  DEFAULT VALUE: 36px
+  USAGE: Applied to the URL bar wrapper element
+  NOTES: This includes the input field height plus additional padding
+  =====================================================================================================*/
   --firefoxcss-searchbar-container-height: 36px;
+  
+  /*=====================================================================================================
+  VARIABLE: --urlbar-icon-border-radius
+  PURPOSE: Defines the border radius specifically for URL bar icons
+  DEFAULT VALUE: calc(var(--firefoxcss-border-radius) - 2px)
+  USAGE: Applied to icons within the URL bar (search, security, etc.)
+  NOTES: Slightly smaller than the main border radius for visual hierarchy
+  IMPORTANT: Uses !important to override Firefox defaults
+  =====================================================================================================*/
   --urlbar-icon-border-radius: calc(
     var(--firefoxcss-border-radius) - 2px
   ) !important;
+  
+  /*====================================================================================================================================================================
+  MEDIA QUERY: Vertical Tabs Compatibility
+  PURPOSE: Applies different tab dimensions when vertical tabs are NOT enabled
+  DESCRIPTION: This media query ensures proper tab sizing when using traditional horizontal tabs
+  CONDITION: Applies only when sidebar.verticalTabs preference is NOT set
+  ====================================================================================================================================================================*/
   @media not -moz-pref("sidebar.verticalTabs") {
+    /*=====================================================================================================
+    VARIABLE: --tab-block-margin
+    PURPOSE: Controls the vertical margin between tabs in horizontal tab layout
+    DEFAULT VALUE: 2px (reduced from Firefox default of 4px)
+    USAGE: Applied to tab elements to control spacing
+    NOTES: Smaller margin creates more compact tab strip appearance
+    IMPORTANT: Uses !important to override Firefox defaults
+    =====================================================================================================*/
     --tab-block-margin: 2px !important;
-    /* Default: 4px */
-
+    
+    /*=====================================================================================================
+    VARIABLE: --tab-min-height
+    PURPOSE: Defines the minimum height of browser tabs
+    DEFAULT VALUE: 28px (reduced from Firefox default of 36px)
+    USAGE: Applied to tab elements to control vertical sizing
+    NOTES: Smaller height creates more compact tab strip
+    IMPORTANT: Uses !important to override Firefox defaults
+    =====================================================================================================*/
     --tab-min-height: 28px !important;
-    /* Default: 36px */
-
+    
+    /*=====================================================================================================
+    VARIABLE: --tabstrip-min-height
+    PURPOSE: Defines the minimum height of the entire tab strip container
+    DEFAULT VALUE: 28px
+    USAGE: Applied to the tabstrip element
+    NOTES: Ensures consistent container sizing with reduced tab height
+    IMPORTANT: Uses !important to override Firefox defaults
+    =====================================================================================================*/
     --tabstrip-min-height: 28px !important;
   }
+
+  /*====================================================================================================================================================================
+  ========================================== T O O L B A R   B U T T O N   S P A C I N G ==========================================
+  ====================================================================================================================================================================*/
+
+  /*=====================================================================================================
+  VARIABLE: --toolbarbutton-outer-padding
+  PURPOSE: Controls the padding around toolbar buttons (outside the button content)
+  DEFAULT VALUE: 2px (same as Firefox default)
+  USAGE: Applied to toolbar button containers
+  NOTES: Controls spacing between buttons and other toolbar elements
+  IMPORTANT: Uses !important to ensure override of Firefox defaults
+  =====================================================================================================*/
+  --toolbarbutton-outer-padding: 2px !important;
+  
+  /*=====================================================================================================
+  VARIABLE: --toolbarbutton-inner-padding
+  PURPOSE: Controls the padding inside toolbar buttons (around button content)
+  DEFAULT VALUE: 4px (reduced from Firefox default of 8px)
+  USAGE: Applied to toolbar button content areas
+  NOTES: Smaller padding creates more compact buttons
+  IMPORTANT: Uses !important to ensure override of Firefox defaults
+  =====================================================================================================*/
+  --toolbarbutton-inner-padding: 4px !important;
+
+  /*====================================================================================================================================================================
+  ========================================== M E N U   I T E M   S P A C I N G ==========================================
+  ====================================================================================================================================================================*/
+
+  /*=====================================================================================================
+  VARIABLE: --arrowpanel-menuitem-padding-block
+  PURPOSE: Controls the vertical padding of menu items in dropdown/context menus
+  DEFAULT VALUE: 4px (reduced from Firefox default of 8px)
+  USAGE: Applied to menu item elements in various panels
+  NOTES: Creates more compact menu items
+  IMPORTANT: Uses !important to ensure override of Firefox defaults
+  =====================================================================================================*/
+  --arrowpanel-menuitem-padding-block: 4px !important;
+  
+  /*=====================================================================================================
+  VARIABLE: --arrowpanel-menuitem-padding-inline
+  PURPOSE: Controls the horizontal padding of menu items in dropdown/context menus
+  DEFAULT VALUE: 4px (reduced from Firefox default of 8px)
+  USAGE: Applied to menu item elements in various panels
+  NOTES: Creates more compact menu items
+  IMPORTANT: Uses !important to ensure override of Firefox defaults
+  =====================================================================================================*/
+  --arrowpanel-menuitem-padding-inline: 4px !important;
+}
 
   /* Toolbar Buttons */
   --toolbarbutton-outer-padding: 2px !important; /* Default: 2px */

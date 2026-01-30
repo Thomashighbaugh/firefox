@@ -5,10 +5,10 @@
 @media (prefers-color-scheme: dark) {
   :root {
     /* Main dark color, url bar, active tab etc. */
-    --firefoxcss-main-bg-color: hsl(240, 2%, 13%);
+    --firefoxcss-main-bg-color: hsla(240, 2%, 13%, 0.85);
 
     /* Main lighter color, toolbar background */
-    --firefoxcss-item-bg-color: hsla(240, 2%, 45%, 0.6);
+    --firefoxcss-item-bg-color: hsla(240, 2%, 25%, 0.6);
 
     /* Spill theme colors */
     --firefoxcss-item-hover-bg-color: hsl(240, 2%, 55%, 0.4);
@@ -21,7 +21,7 @@
     --firefoxcss-tab-active-bg-color: hsla(240, 2%, 45%, 0.6);
     --firefoxcss-non-active-tabs: hsla(0, 0%, 100%, 0.65);
 
-    --firefoxcss-normal-tabs-box-shadow: 1px 1px 1px -1px rgba(0, 0, 0, 0.4);
+    --firefoxcss-normal-tabs-box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.4);
     --firefoxcss-tab-multiselect-outline: rgba(255, 255, 255, 0.1);
 
     /* Tab playing audio speaker icon colors */
@@ -31,9 +31,9 @@
     --firefoxcss-tab-speaker-icon-small-background: hsla(0, 0%, 80%);
 
     /* Context menu colors */
-    --firefoxcss-context-menu-top-color: hsl(240, 2%, 13%);
+    --firefoxcss-context-menu-top-color: hsla(240, 2%, 13%, 0.85);
     /* Bookmarks bar colors */
-    --firefoxcss-bookmarks-bg-color: hsl(240, 2%, 13%);
+    --firefoxcss-bookmarks-bg-color: hsla(240, 2%, 13%, 0.85);
 
     /* Change background color when loading a page */
     --firefoxcss-bright-flash-color: var(--firefoxcss-main-bg-color);

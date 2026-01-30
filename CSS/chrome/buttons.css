@@ -3,11 +3,11 @@
 =====================================================================*/
 
 /* Main Menu Button */
-#PanelUI-button {
-  margin-inline-start: 0 !important;
-  padding-inline-start: 0 !important;
-  border-inline-start: none !important;
-}
+/* #PanelUI-button { */
+/*   margin-inline-start: 0 !important;  */
+/*   padding-inline-start: 0 !important; */
+/*   border-inline-start: none !important; */
+/* } */
 
 toolbar
   .toolbarbutton-1:not([disabled="true"], [checked], [open], :active):hover
@@ -85,31 +85,16 @@ toolbar
 }
 
 /* Back button hover/active color */
+#forward-button:not([disabled]):not([open]):hover > .toolbarbutton-icon,
 #back-button:not([disabled]):not([open]):hover > .toolbarbutton-icon {
   background-color: var(--toolbarbutton-hover-background) !important;
 }
 
+#forward-button:not([disabled="true"]):is([open], [checked], :hover:active)
+  > .toolbarbutton-icon,
 #back-button:not([disabled="true"]):is([open], [checked], :hover:active)
   > .toolbarbutton-icon {
   background-color: var(--toolbarbutton-active-background) !important;
-}
-
-/* Firefox view button */
-#TabsToolbar #firefox-view-button {
-  margin-left: 12px !important;
-}
-
-#TabsToolbar #firefox-view-button:hover:not([open]) > .toolbarbutton-icon {
-  background-image: none !important;
-  box-shadow: none !important;
-  border-radius: var(--firefoxcss-border-radius) !important;
-  background-color: var(--firefoxcss-tab-hover-bg-color) !important;
-}
-
-#TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon {
-  background-image: none !important;
-  background-color: var(--firefoxcss-main-bg-color) !important;
-  border-radius: var(--firefoxcss-border-radius) !important;
 }
 
 /* Remove line on the right side of the Firefox view button and fix margins */
@@ -134,12 +119,14 @@ toolbar
 :root[privatebrowsingmode="temporary"] #PanelUI-menu-button {
   fill: var(--firefoxcss-private-browsing-menu-color) !important;
 }
-
-.tab-icon-stack, .toolbarbutton-animatable-box, .toolbarbutton-icon {
+.button-background > img,
+.tab-icon-image,
+#downloads-indicator-progress-inner,
+.toolbarbutton-icon {
   box-sizing: border-box !important;
   background-color: hsla(240, 2%, 35%, 0.95) !important;
   border: 1px solid hsla(240, 2%, 05%, 0.75) !important;
-  border-radius:calc(var(--firefoxcss-border-radius)/2) !important;
+  border-radius: calc(var(--firefoxcss-border-radius) / 2) !important;
   box-shadow: inset 2px 2px 4px var(--firefoxcss-toolbar-button-box-shadow) !important;
   width: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
   height: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
@@ -148,13 +135,21 @@ toolbar
   filter: var(--firefoxcss-private-browsing-drop-shadow) !important;
   padding: calc(var(--toolbarbutton-inner-padding) + 1px) !important;
 }
-
-.tab-icon-stack:hover, .toolbarbutton-animatable-box:hover, .toolbarbutton-icon:hover {
+.button-background > img:hover,
+#TabsToolbar #firefox-view-button:hover:not([open]) > .toolbarbutton-icon,
+.tab-icon-image:hover,
+#downloads-indicator-progress-inner:hover,
+.toolbarbutton-icon:hover {
   box-sizing: border-box !important;
   background-color: hsla(240, 2%, 55%, 0.75) !important;
   border: 1px solid hsla(240, 2%, 95%, 0.75) !important;
 }
-.tab-icon-stack:active, .toolbarbutton-animatable-box:active, .toolbarbutton-icon:active {
+.button-background > img:active,
+#TabsToolbar #firefox-view-button:hover > .toolbarbutton-icon,
+#TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon,
+.tab-icon-image:active,
+#downloads-indicator-progress-inner:active,
+.toolbarbutton-icon:active {
   box-sizing: border-box !important;
   background-color: hsla(240, 2%, 85%, 0.95) !important;
   color: #1c1c1c !important;

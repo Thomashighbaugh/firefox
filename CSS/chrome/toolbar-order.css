@@ -46,16 +46,15 @@ Order of Toolbars
       order: 3 !important;
     }
 
-    /* Extra titlebar menu (above or below tabs, opens with alt) */
+    /* Extra titlebar menu (above or below tabs, opens with alt or F10) */
     #toolbar-menubar {
       order: 0 !important;
     }
 
     /* Tab bar top and bottom padding */
     #TabsToolbar {
-      padding-top: 2px !important;
-      padding-bottom: 0px !important;
+      padding-top: 4px !important;
+      padding-bottom: 4px !important;
     }
   }
 }
-

@@ -7,7 +7,7 @@
 /* ----- My Custom Colors ----- */
 @media (prefers-color-scheme: dark) {
   :root {
-    --firefoxcss-bookmarks-bg-color: hsl(240, 2%, 13%) !important;
+    --firefoxcss-bookmarks-bg-color: hsla(240, 2%, 13%, 0.85) !important;
   }
 }
 
@@ -23,11 +23,13 @@
 }
 
 /* Vertical tabs background color with transparency preserved */
+#sb2-main,
 #vertical-tabs {
   background-color: hsla(240, 2%, 13%, 0.85) !important;
 }
 
 @media (prefers-color-scheme: light) {
+  #sb2-main,
   #vertical-tabs {
     background-color: hsla(200, 5%, 96%, 0.9) !important;
   }
@@ -40,7 +42,7 @@
 
 /* Second sidebar background color */
 #sb2-box {
-  --sidebar-background-color: hsl(240, 3%, 13%) !important;
+  --sidebar-background-color: hsla(240, 2%, 13%, 0.85) !important;
 }
 
 /* Bookmarks bar background color */
@@ -79,21 +81,6 @@
 .more-tools-button {
   background-color: var(--firefoxcss-main-bg-color) !important;
 }
-
-/* /* Toolbar buttons background */
-*/
-/* .toolbarbutton-1 { */
-/*   background-color: var(--firefoxcss-item-bg-color) !important; */
-/* } */
-/**/
-/* /* Toolbar buttons hover with 50% opacity */ */
-/* .toolbarbutton-1:hover { */
-/*   background-color: color-mix( */
-/*     in srgb, */
-/*     var(--firefoxcss-item-bg-color) 50%, */
-/*     transparent */
-/*   ) !important; */
-/* } */
 
 /* Tab favicons background removed */
 

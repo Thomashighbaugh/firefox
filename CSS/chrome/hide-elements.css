@@ -12,12 +12,13 @@
 }
 /* Remove Line above search engine selection in search bar */
 #urlbar .search-one-offs .search-panel-one-offs-header-label,
-/* Remove lefover window buttons from extra menu bar (when pressing alt)*/
+/* Remove leftover window buttons from extra menu bar (when pressing alt)*/
 #toolbar-menubar .titlebar-buttonbox-container,
-/* Private browser icons remove and change main menu to purple */
+/* Private browser icons remove */
 .private-browsing-indicator-with-label,
 .private-browsing-indicator,
 /* Hide permission icons, see it when pressing permission button */
 #blocked-permissions-container {
   display: none !important;
 }
+

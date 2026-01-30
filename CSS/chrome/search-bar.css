@@ -7,6 +7,11 @@
   font-size: 1.1rem !important;
 }
 
+#urlbar-searchmode-switcher {
+  background-color: transparent !important;
+  border: none !important;
+}
+
 /* Styling Search Containers 
     .urlbar-background - main search container
     #searchbar - secondary/extra search container */
@@ -107,3 +112,4 @@
     (var(--urlbar-container-height) - var(--urlbar-height)) / 2
   ) !important;
 }
+

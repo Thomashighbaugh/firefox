@@ -15,13 +15,6 @@
   #tabbrowser-arrowscrollbox {
     --toolbox-bgcolor: var(--firefoxcss-item-bg-color) !important;
   }
-
-  @media -moz-pref("mod.disable.scrollbar.in.vertical.tabs") {
-    spacer[part="overflow-start-indicator"]
-      + scrollbox[orient="vertical"][part="scrollbox"] {
-      scrollbar-width: none !important;
-    }
-  }
 }
 
 @media -moz-pref("sidebar.revamp") {
@@ -29,17 +22,6 @@
   #sidebar-box {
     background-color: var(--firefoxcss-main-bg-color) !important;
     background-image: none !important;
-  }
-
-  @media -moz-pref("mod.custom.firefox.theme.color.fix") {
-    #sidebar-main,
-    #sidebar-box {
-      background-color: var(--lwt-accent-color) !important;
-    }
-
-    #tabbrowser-arrowscrollbox {
-      --toolbox-bgcolor: var(--lwt-accent-color) !important;
-    }
   }
 
   /* Remove the white line around the content window */

@@ -7,6 +7,13 @@ See the above repository for updates as well as full license text. */
 /* Makes about:config list more compact */
 
 @-moz-document url("about:config") {
+  body {
+    background-color: linear-gradient(
+      32deg,
+      var(--firefoxcss-main-bg-color),
+      #3c3c3c
+    ) !important;
+  }
   .button-delete,
   .button-edit,
   .button-reset,

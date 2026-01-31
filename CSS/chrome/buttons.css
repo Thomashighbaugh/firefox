@@ -126,7 +126,7 @@ toolbar
   box-sizing: border-box !important;
   background-color: hsla(240, 2%, 35%, 0.95) !important;
   border: 1px solid hsla(240, 2%, 05%, 0.75) !important;
-  border-radius: calc(var(--firefoxcss-border-radius) / 2) !important;
+  border-radius: var(--firefoxcss-border-radius) !important;
   box-shadow: inset 2px 2px 4px var(--firefoxcss-toolbar-button-box-shadow) !important;
   width: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
   height: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;

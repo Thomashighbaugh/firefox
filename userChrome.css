@@ -150,10 +150,18 @@ DEPENDENCIES: variables.css, colors.css
 @import url("CSS/chrome/vertical-tabs.css");
 
 /*=====================================================================================================
-IMPORT: Miscellaneous Other Styles
-PURPOSE: Contains various miscellaneous UI customizations
-DESCRIPTION: Handles edge cases and additional styling not covered by other modules
-DEPENDENCIES: variables.css, colors.css
-=====================================================================================================*/
+ IMPORT: Miscellaneous Other Styles
+ PURPOSE: Contains various miscellaneous UI customizations
+ DESCRIPTION: Handles edge cases and additional styling not covered by other modules
+ DEPENDENCIES: variables.css, colors.css
+ =====================================================================================================*/
 @import url("CSS/chrome/other.css");
+
+/*=====================================================================================================
+ IMPORT: Command Palette Styling
+ PURPOSE: Styles for the command palette system
+ DESCRIPTION: Command palette mode switcher, inline command list, and overlay styling
+ DEPENDENCIES: variables.css, colors.css
+ =====================================================================================================*/
+@import url("JS/command_palette/css/palette.css");
 

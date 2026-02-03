@@ -174,14 +174,21 @@ export class PaletteOverlay {
     if (this.#modeSwitcher.isCommandsMode) {
       this.#modeSwitcher.setMode(ModeSwitcher.MODES.SEARCH, false);
     }
-    
+
     // Hide inline container
     this.#inlineContainer?.setAttribute("hidden", "true");
-    
-    // Clear active state
+
+    // Clear active state and CSS attributes
     if (this.#isActive) {
       this.#isActive = false;
       document.documentElement.removeAttribute("command-palette-open");
+      document.documentElement.removeAttribute("command-palette-mode");
+    }
+
+    // Restore native urlbar results display
+    const urlbarResults = document.getElementById("urlbar-results");
+    if (urlbarResults) {
+      urlbarResults.style.display = "";
     }
   }
 
@@ -198,33 +205,42 @@ export class PaletteOverlay {
   #activateCommandsMode() {
     this.#isActive = true;
     document.documentElement.setAttribute("command-palette-open", "true");
-    
+    document.documentElement.setAttribute("command-palette-mode", "commands");
+
     // Hide native urlbar results
     const urlbarResults = document.getElementById("urlbar-results");
     if (urlbarResults) {
       urlbarResults.style.display = "none";
     }
-    
+
     // Show inline command list
     this.#showInlineCommands();
-    
-    // Focus urlbar input to capture typing
+
+    // Ensure urlbar stays expanded and focused
+    const urlbar = window.gURLBar;
     const urlbarInput = document.getElementById("urlbar-input");
-    if (urlbarInput) {
-      urlbarInput.focus();
+    if (urlbar && urlbarInput) {
+      // Keep urlbar expanded
+      urlbar.setAttribute("breakout-extend", "true");
+      urlbar.setAttribute("open", "true");
+      // Focus after a short delay to ensure the click on the tab has finished processing
+      setTimeout(() => {
+        urlbarInput.focus();
+      }, 0);
     }
   }
 
   #deactivateCommandsMode() {
     this.#isActive = false;
     document.documentElement.removeAttribute("command-palette-open");
-    
+    document.documentElement.removeAttribute("command-palette-mode");
+
     // Show native urlbar results
     const urlbarResults = document.getElementById("urlbar-results");
     if (urlbarResults) {
       urlbarResults.style.display = "";
     }
-    
+
     // Hide inline command list
     this.#inlineContainer?.setAttribute("hidden", "true");
   }

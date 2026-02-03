@@ -20,8 +20,8 @@ export class PaletteInjector {
 
       console.log("Loading user configuration...");
       CommandStorage.loadSettings().then((userConfig) => {
-        PaletteControllers.searchController.loadUserConfig(userConfig);
-        PaletteControllers.shortcutsController.registerShortcuts(userConfig);
+        PaletteElements.loadUserConfig(userConfig);
+        PaletteControllers.shortcutsController?.registerShortcuts(userConfig);
       });
 
       console.log("Command Palette loaded successfully");
@@ -33,7 +33,6 @@ export class PaletteInjector {
   }
 
   static #loadCSS() {
-    const cssPath = "JS/command_palette/css/palette.css";
     const sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(
       Ci.nsIStyleSheetService
     );

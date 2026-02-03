@@ -702,3 +702,215 @@
   flex: 1;
 }
 
+/* ============================================
+   COMMAND PALETTE OVERLAY
+   Prefix-activated command panel (type ':' or Ctrl+Shift+P)
+   ============================================ */
+
+/* Hide default urlbar results only when command palette is active */
+:root[command-palette-open="true"] #urlbar-results {
+  display: none !important;
+}
+
+:root[command-palette-open="true"] .urlbarView {
+  display: none !important;
+}
+
+/* Overlay panel */
+#command-palette-overlay {
+  --palette-background: var(--arrowpanel-background, #2b2a33);
+  --palette-border: var(--arrowpanel-border-color, rgba(255, 255, 255, 0.1));
+  --palette-item-hover: var(--arrowpanel-dimmed, rgba(249, 249, 250, 0.1));
+  --palette-item-selected: var(--toolbar-field-focus-background-color, #42414d);
+  --palette-text: var(--arrowpanel-color, #fbfbfe);
+  --palette-text-secondary: var(--text-color-deemphasized, #b1b1b3);
+  --palette-accent: var(--focus-outline-color, #0060df);
+
+  appearance: none !important;
+  background: var(--palette-background) !important;
+  border: 1px solid var(--palette-border) !important;
+  border-radius: 0 0 8px 8px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  padding: 0 !important;
+  margin-top: -1px !important;
+  min-width: 400px;
+  max-height: 450px;
+  overflow: hidden;
+}
+
+#command-palette-overlay::part(content) {
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+#command-palette-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 450px;
+  overflow: hidden;
+}
+
+#command-palette-list {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 430px;
+}
+
+/* Empty state */
+#command-palette-empty {
+  padding: 24px 16px;
+  text-align: center;
+  color: var(--palette-text-secondary);
+  font-size: 13px;
+}
+
+/* Command item */
+.command-palette-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  margin: 0 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  gap: 10px;
+  min-height: 36px;
+  transition: background-color 0.1s ease;
+}
+
+.command-palette-item:hover {
+  background: var(--palette-item-hover);
+}
+
+.command-palette-item[selected="true"] {
+  background: var(--palette-item-selected);
+}
+
+.command-palette-item[selected="true"]::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  width: 3px;
+  height: 20px;
+  background: var(--palette-accent);
+  border-radius: 2px;
+}
+
+/* Icon */
+.command-palette-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  -moz-context-properties: fill;
+  fill: currentColor;
+  opacity: 0.8;
+}
+
+/* Label */
+.command-palette-label {
+  flex: 1;
+  font-size: 13px;
+  color: var(--palette-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Category badge */
+.command-palette-category {
+  font-size: 11px;
+  color: var(--palette-text-secondary);
+  background: var(--palette-item-hover);
+  padding: 2px 8px;
+  border-radius: 10px;
+  text-transform: capitalize;
+  flex-shrink: 0;
+}
+
+/* Command prefix indicator */
+.command-palette-item::before {
+  content: "›";
+  margin-right: 4px;
+  opacity: 0.5;
+  font-weight: bold;
+  font-size: 14px;
+  color: var(--palette-accent);
+}
+
+/* Keyboard hint at bottom */
+#command-palette-overlay::after {
+  content: "↑↓ navigate  ↵ select  esc close";
+  display: block;
+  padding: 6px 12px;
+  font-size: 11px;
+  color: var(--palette-text-secondary);
+  background: var(--palette-item-hover);
+  border-top: 1px solid var(--palette-border);
+  text-align: center;
+}
+
+/* Scrollbar styling */
+#command-palette-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+#command-palette-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#command-palette-list::-webkit-scrollbar-thumb {
+  background: var(--palette-text-secondary);
+  border-radius: 3px;
+  opacity: 0.5;
+}
+
+#command-palette-list::-webkit-scrollbar-thumb:hover {
+  opacity: 0.8;
+}
+
+/* Firefox scrollbar */
+#command-palette-list {
+  scrollbar-width: thin;
+  scrollbar-color: var(--palette-text-secondary) transparent;
+}
+
+/* Animation for panel appearance */
+#command-palette-overlay[animate="open"] {
+  animation: palette-slide-in 0.15s ease-out;
+}
+
+@keyframes palette-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark mode specific tweaks */
+@media (prefers-color-scheme: dark) {
+  #command-palette-overlay {
+    --palette-background: #1c1b22;
+    --palette-border: rgba(255, 255, 255, 0.08);
+    --palette-item-hover: rgba(255, 255, 255, 0.06);
+    --palette-item-selected: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Light mode specific tweaks */
+@media (prefers-color-scheme: light) {
+  #command-palette-overlay {
+    --palette-background: #ffffff;
+    --palette-border: rgba(0, 0, 0, 0.1);
+    --palette-text: #15141a;
+    --palette-text-secondary: #5b5b66;
+    --palette-item-hover: rgba(0, 0, 0, 0.04);
+    --palette-item-selected: rgba(0, 0, 0, 0.08);
+  }
+}
+

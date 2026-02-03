@@ -703,8 +703,136 @@
 }
 
 /* ============================================
+   MODE SWITCHER (Tab bar for Search/Commands)
+   ============================================ */
+
+/* Mode switcher container */
+#command-palette-mode-switcher,
+.command-palette-mode-switcher {
+  display: flex;
+  align-items: center;
+  background: var(--firefoxcss-url-breakout-bar-bg-color, var(--arrowpanel-background, #2b2a33));
+  border-bottom: 1px solid var(--panel-separator-color, rgba(255, 255, 255, 0.1));
+  padding: 6px 8px;
+  gap: 6px;
+  min-height: 36px;
+}
+
+/* Hide mode switcher when urlbar is collapsed */
+#command-palette-mode-switcher[hidden="true"] {
+  display: none !important;
+}
+
+/* Tab buttons */
+.mode-switcher-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 12px;
+  margin: 0;
+  min-height: 28px;
+  border-radius: var(--firefoxcss-border-radius, 6px);
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--arrowpanel-color, #fbfbfe);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  appearance: none !important;
+  -moz-appearance: none !important;
+}
+
+.mode-switcher-tab:hover {
+  background: var(--urlbarView-hover-background, rgba(249, 249, 250, 0.08));
+  border-color: var(--panel-separator-color, rgba(255, 255, 255, 0.1));
+}
+
+.mode-switcher-tab:active {
+  background: var(--urlbarView-highlight-background, rgba(249, 249, 250, 0.12));
+}
+
+.mode-switcher-tab.active {
+  background: var(--toolbar-field-focus-background-color, #42414d);
+  border-color: var(--focus-outline-color, #0060df);
+  color: var(--toolbar-field-focus-color, #fbfbfe);
+}
+
+/* Shortcut hint in tab */
+.mode-switcher-shortcut {
+  font-size: 10px;
+  opacity: 0.6;
+  padding: 2px 4px;
+  background: var(--arrowpanel-dimmed, rgba(249, 249, 250, 0.1));
+  border-radius: 3px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.mode-switcher-tab.active .mode-switcher-shortcut {
+  opacity: 0.8;
+}
+
+/* ============================================
+   INLINE COMMAND LIST (inside expanded urlbar)
+   ============================================ */
+
+/* Container for inline commands */
+#command-palette-inline-container,
+.command-palette-inline-container {
+  display: flex;
+  flex-direction: column;
+  background: var(--firefoxcss-url-breakout-bar-bg-color, var(--arrowpanel-background, #2b2a33));
+  border-radius: 0 0 var(--firefoxcss-border-radius, 8px) var(--firefoxcss-border-radius, 8px);
+  overflow: hidden;
+  max-height: 400px;
+}
+
+#command-palette-inline-container[hidden="true"] {
+  display: none !important;
+}
+
+/* Inline list */
+#command-palette-inline-list {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 380px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-color-deemphasized, #b1b1b3) transparent;
+}
+
+/* Empty state for inline list */
+#command-palette-inline-empty {
+  padding: 20px 16px;
+  text-align: center;
+  color: var(--text-color-deemphasized, #b1b1b3);
+  font-size: 13px;
+}
+
+/* Inline command items use same styling as panel items */
+#command-palette-inline-list .command-palette-item {
+  margin: 0 4px;
+}
+
+/* Hide native urlbar results when in commands mode */
+:root[command-palette-mode="commands"] .urlbarView-body-inner,
+:root[command-palette-mode="commands"] #urlbar-results,
+:root[command-palette-mode="commands"] .urlbarView-results {
+  display: none !important;
+}
+
+/* Ensure mode switcher shows in commands mode */
+:root[command-palette-mode="commands"] #command-palette-mode-switcher {
+  display: flex !important;
+}
+
+/* ============================================
    COMMAND PALETTE OVERLAY
-   Prefix-activated command panel (type ':' or Ctrl+Shift+P)
+   Prefix-activated command panel (type ':' or Alt+Shift+P)
    ============================================ */
 
 /* Hide default urlbar results only when command palette is active */
@@ -718,8 +846,11 @@
 
 /* Overlay panel */
 #command-palette-overlay {
-  --palette-background: var(--arrowpanel-background, #2b2a33);
-  --palette-border: var(--arrowpanel-border-color, rgba(255, 255, 255, 0.1));
+  --palette-background: var(--firefoxcss-url-breakout-bar-bg-color, var(--arrowpanel-background, #2b2a33));
+  --palette-border-top: var(--firefoxcss-url-breakout-border-top-color, transparent);
+  --palette-border-bottom: var(--firefoxcss-url-breakout-border-bottom-color, transparent);
+  --palette-box-shadow: var(--firefoxcss-url-breakout-box-shadow, 0 4px 16px rgba(0, 0, 0, 0.3));
+  
   --palette-item-hover: var(--arrowpanel-dimmed, rgba(249, 249, 250, 0.1));
   --palette-item-selected: var(--toolbar-field-focus-background-color, #42414d);
   --palette-text: var(--arrowpanel-color, #fbfbfe);
@@ -728,9 +859,11 @@
 
   appearance: none !important;
   background: var(--palette-background) !important;
-  border: 1px solid var(--palette-border) !important;
-  border-radius: 0 0 8px 8px !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  border: none !important;
+  border-top: var(--palette-border-top) !important;
+  border-bottom: var(--palette-border-bottom) !important;
+  border-radius: 0 0 var(--firefoxcss-border-radius, 8px) var(--firefoxcss-border-radius, 8px) !important;
+  box-shadow: var(--palette-box-shadow) !important;
   padding: 0 !important;
   margin-top: -1px !important;
   min-width: 400px;
@@ -889,28 +1022,6 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* Dark mode specific tweaks */
-@media (prefers-color-scheme: dark) {
-  #command-palette-overlay {
-    --palette-background: #1c1b22;
-    --palette-border: rgba(255, 255, 255, 0.08);
-    --palette-item-hover: rgba(255, 255, 255, 0.06);
-    --palette-item-selected: rgba(255, 255, 255, 0.1);
-  }
-}
-
-/* Light mode specific tweaks */
-@media (prefers-color-scheme: light) {
-  #command-palette-overlay {
-    --palette-background: #ffffff;
-    --palette-border: rgba(0, 0, 0, 0.1);
-    --palette-text: #15141a;
-    --palette-text-secondary: #5b5b66;
-    --palette-item-hover: rgba(0, 0, 0, 0.04);
-    --palette-item-selected: rgba(0, 0, 0, 0.08);
   }
 }
 

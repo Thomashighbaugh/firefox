@@ -23,7 +23,7 @@ export class PrefsWrapper {
     [PrefsWrapper.MIN_SCORE_THRESHOLD]: 150,
     [PrefsWrapper.DYNAMIC_ABOUT_PAGES]: false,
     [PrefsWrapper.DYNAMIC_SEARCH_ENGINES]: true,
-    [PrefsWrapper.DYNAMIC_EXTENSIONS]: false,
+    [PrefsWrapper.DYNAMIC_EXTENSIONS]: true,
     [PrefsWrapper.DYNAMIC_CONTAINER_TABS]: false,
     [PrefsWrapper.COMMAND_SETTINGS_FILE]: "chrome/command-palette-settings.json",
   };

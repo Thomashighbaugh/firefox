@@ -1,5 +1,235 @@
 /*=====================================================================
-------------------- S E A R C H   B A R -------------------------------
+------------------- S E A R C H B A R -------------------------------
+=====================================================================*/
+
+/*=====================================================================
+COMMAND PALETTE MODE SWITCHER - Tab bar at top of expanded urlbar
+=====================================================================*/
+#command-palette-mode-switcher {
+  background: var(--firefoxcss-url-breakout-bar-bg-color, var(--arrowpanel-background, #2b2a33));
+  border-bottom: 1px solid var(--panel-separator-color, rgba(255, 255, 255, 0.1));
+  padding: 6px 8px;
+  gap: 6px;
+  min-height: 36px;
+}
+
+.mode-switcher-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 12px;
+  margin: 0;
+  min-height: 28px;
+  border-radius: var(--firefoxcss-border-radius, 6px);
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--arrowpanel-color, #fbfbfe);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.mode-switcher-tab:hover {
+  background: var(--urlbarView-hover-background, rgba(249, 249, 250, 0.08));
+  border-color: var(--panel-separator-color, rgba(255, 255, 255, 0.1));
+}
+
+.mode-switcher-tab.active {
+  background: var(--toolbar-field-focus-background-color, #42414d);
+  border-color: var(--focus-outline-color, #0060df);
+  color: var(--toolbar-field-focus-color, #fbfbfe);
+}
+
+.mode-switcher-shortcut {
+  font-size: 10px;
+  opacity: 0.6;
+  padding: 2px 4px;
+  background: var(--arrowpanel-dimmed, rgba(249, 249, 250, 0.1));
+  border-radius: 3px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.mode-switcher-tab.active .mode-switcher-shortcut {
+  opacity: 0.8;
+}
+
+/*=====================================================================
+COMMAND PALETTE INLINE CONTAINER - Inside expanded urlbar
+=====================================================================*/
+#command-palette-inline-container {
+  background: var(--firefoxcss-url-breakout-bar-bg-color, var(--arrowpanel-background, #2b2a33));
+  border-radius: 0 0 var(--firefoxcss-border-radius, 8px) var(--firefoxcss-border-radius, 8px);
+  overflow: hidden;
+  max-height: 400px;
+}
+
+#command-palette-inline-list {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 380px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-color-deemphasized, #b1b1b3) transparent;
+}
+
+#command-palette-inline-empty {
+  padding: 20px 16px;
+  text-align: center;
+  color: var(--text-color-deemphasized, #b1b1b3);
+  font-size: 13px;
+}
+
+/*=====================================================================
+COMMAND PALETTE ITEMS
+=====================================================================*/
+.command-palette-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  margin: 0 4px;
+  border-radius: calc(var(--firefoxcss-border-radius) - 2px);
+  cursor: pointer;
+  gap: 10px;
+  min-height: 36px;
+  transition: background-color 0.1s ease;
+}
+
+.command-palette-item:hover {
+  background: var(--urlbarView-hover-background, rgba(249, 249, 250, 0.08));
+}
+
+.command-palette-item[selected="true"] {
+  background: var(--urlbarView-highlight-background, hsl(240, 2%, 20%));
+}
+
+.command-palette-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  -moz-context-properties: fill;
+  fill: currentColor;
+  opacity: 0.8;
+}
+
+.command-palette-label {
+  flex: 1;
+  font-size: 13px;
+  color: var(--arrowpanel-color, #fbfbfe);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.command-palette-category {
+  font-size: 11px;
+  color: var(--text-color-deemphasized, #b1b1b3);
+  background: var(--arrowpanel-dimmed, rgba(249, 249, 250, 0.1));
+  padding: 2px 8px;
+  border-radius: 10px;
+  text-transform: capitalize;
+  flex-shrink: 0;
+}
+
+.command-palette-shortcut {
+  font-size: 11px;
+  color: var(--text-color-deemphasized, #b1b1b3);
+  background: var(--arrowpanel-dimmed, rgba(249, 249, 250, 0.1));
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--panel-separator-color, rgba(255, 255, 255, 0.1));
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/*=====================================================================
+COMMAND PALETTE OVERLAY (Standalone mode)
+=====================================================================*/
+#command-palette-overlay {
+  --palette-background: var(--firefoxcss-url-breakout-bar-bg-color, var(--arrowpanel-background, #2b2a33));
+  --palette-box-shadow: var(--firefoxcss-url-breakout-box-shadow, 0 4px 16px rgba(0, 0, 0, 0.3));
+  --palette-item-hover: var(--urlbarView-hover-background, rgba(249, 249, 250, 0.08));
+  --palette-item-selected: var(--urlbarView-highlight-background, hsl(240, 2%, 20%));
+  --palette-text: var(--arrowpanel-color, #fbfbfe);
+  --palette-text-secondary: var(--text-color-deemphasized, #b1b1b3);
+  --palette-accent: var(--focus-outline-color, #0060df);
+
+  appearance: none;
+  background: var(--palette-background);
+  border: none;
+  border-top: var(--firefoxcss-url-breakout-border-top-color, transparent);
+  border-bottom: var(--firefoxcss-url-breakout-border-bottom-color, transparent);
+  border-radius: 0 0 var(--firefoxcss-border-radius, 8px) var(--firefoxcss-border-radius, 8px);
+  box-shadow: var(--palette-box-shadow);
+  padding: 0;
+  margin-top: -1px;
+  min-width: 400px;
+  max-height: 450px;
+  overflow: hidden;
+}
+
+#command-palette-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 450px;
+  overflow: hidden;
+}
+
+#command-palette-list {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 430px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--palette-text-secondary) transparent;
+}
+
+#command-palette-empty {
+  padding: 24px 16px;
+  text-align: center;
+  color: var(--palette-text-secondary);
+  font-size: 13px;
+}
+
+#command-palette-overlay::after {
+  content: "↑↓ navigate • ↵ select • esc close";
+  display: block;
+  padding: 6px 12px;
+  font-size: 11px;
+  color: var(--palette-text-secondary);
+  background: var(--palette-item-hover);
+  border-top: 1px solid var(--panel-separator-color, rgba(255, 255, 255, 0.1));
+  text-align: center;
+}
+
+/*=====================================================================
+COMMAND PALETTE STATE MANAGEMENT
+=====================================================================*/
+:root[command-palette-mode="commands"] .urlbarView-body-inner,
+:root[command-palette-mode="commands"] #urlbar-results,
+:root[command-palette-mode="commands"] .urlbarView-results {
+  display: none;
+}
+
+:root[command-palette-mode="commands"] #command-palette-mode-switcher {
+  display: flex;
+}
+
+:root[command-palette-open="true"] #urlbar-results {
+  display: none;
+}
+
+:root[command-palette-open="true"] .urlbarView {
+  display: none;
+}
+
+/*=====================================================================
+------------------- S E A R C H B A R -------------------------------
 =====================================================================*/
 /* Default Searchbox font size */
 #urlbar,

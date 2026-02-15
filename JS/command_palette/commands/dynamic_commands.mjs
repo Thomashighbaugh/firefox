@@ -97,9 +97,10 @@ export async function generateExtensionCommands() {
     
   commands.push(...optionCommands);
 
-  // Extension keyboard commands - use WebExtensionPolicy global
+  // Extension keyboard commands - use Firefox's managed shortcuts API
   try {
-    // WebExtensionPolicy is available globally in chrome context
+    // Get all registered extension shortcuts from Firefox's ShortcutsManager
+    // This is the same source used by about:addons → Manage Extension Shortcuts
     const policies = WebExtensionPolicy.getActiveExtensions();
     
     for (const policy of policies) {
@@ -115,22 +116,33 @@ export async function generateExtensionCommands() {
         const isInternalCommand = cmdName.startsWith("_execute_");
         const description = cmdDef.description || (isInternalCommand ? cmdName.replace(/_/g, " ").replace(/^execute /, "") : cmdName);
         
-        // Get current shortcut (may differ from suggested_key if user changed it)
+        // Get actual configured shortcut from Firefox's shortcuts manager
+        // This reflects user customizations in about:addons
         let currentShortcut = null;
         try {
-          if (policy.extension.shortcuts) {
-            const shortcutInfo = policy.extension.shortcuts.get(cmdName);
-            currentShortcut = shortcutInfo?.shortcut;
+          // Access the extension's shortcuts manager (same data as about:addons)
+          const ext = policy.extension;
+          if (ext.shortcuts) {
+            // Get all shortcuts registered for this extension
+            const shortcuts = ext.shortcuts.allShortcuts();
+            if (shortcuts && shortcuts[cmdName]) {
+              currentShortcut = shortcuts[cmdName];
+            } else {
+              // Fallback: try getting individual shortcut
+              const shortcutData = ext.shortcuts.get(cmdName);
+              if (shortcutData && shortcutData.shortcut) {
+                currentShortcut = shortcutData.shortcut;
+              }
+            }
           }
         } catch (e) {
-          // Fallback to suggested_key from manifest
-        }
-        
-        if (!currentShortcut && cmdDef.suggested_key) {
-          currentShortcut = cmdDef.suggested_key.default || 
-                           cmdDef.suggested_key.linux ||
-                           cmdDef.suggested_key.mac ||
-                           cmdDef.suggested_key.windows;
+          // If shortcuts manager unavailable, fallback to manifest suggested_key
+          if (cmdDef.suggested_key) {
+            currentShortcut = cmdDef.suggested_key.default || 
+                             cmdDef.suggested_key.linux ||
+                             cmdDef.suggested_key.mac ||
+                             cmdDef.suggested_key.windows;
+          }
         }
         
         const extensionName = policy.name || policy.id;

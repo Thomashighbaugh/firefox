@@ -711,7 +711,9 @@
 .command-palette-mode-switcher {
   display: flex;
   align-items: center;
-  background: var(--firefoxcss-url-breakout-bar-bg-color, var(--arrowpanel-background, #2b2a33));
+  background: rgba(43, 42, 51, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--panel-separator-color, rgba(255, 255, 255, 0.1));
   padding: 6px 8px;
   gap: 6px;
@@ -783,7 +785,9 @@
 .command-palette-inline-container {
   display: flex;
   flex-direction: column;
-  background: var(--firefoxcss-url-breakout-bar-bg-color, var(--arrowpanel-background, #2b2a33));
+  background: rgba(43, 42, 51, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: 0 0 var(--firefoxcss-border-radius, 8px) var(--firefoxcss-border-radius, 8px);
   overflow: hidden;
   max-height: 400px;
@@ -846,7 +850,7 @@
 
 /* Overlay panel */
 #command-palette-overlay {
-  --palette-background: var(--firefoxcss-url-breakout-bar-bg-color, var(--arrowpanel-background, #2b2a33));
+  --palette-background: rgba(43, 42, 51, 0.85);
   --palette-border-top: var(--firefoxcss-url-breakout-border-top-color, transparent);
   --palette-border-bottom: var(--firefoxcss-url-breakout-border-bottom-color, transparent);
   --palette-box-shadow: var(--firefoxcss-url-breakout-box-shadow, 0 4px 16px rgba(0, 0, 0, 0.3));
@@ -859,6 +863,8 @@
 
   appearance: none !important;
   background: var(--palette-background) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   border: none !important;
   border-top: var(--palette-border-top) !important;
   border-bottom: var(--palette-border-bottom) !important;

@@ -407,10 +407,30 @@ export class PaletteOverlay {
           // Tab toggles between search and commands modes
           event.preventDefault();
           event.stopPropagation();
+          event.stopImmediatePropagation(); // Prevent urlbar from closing
+          this.#modeSwitcher.toggle();
+          break;
+
+        case "ArrowLeft":
+        case "ArrowRight":
+          // Arrow Left/Right also navigate between mode tabs
+          event.preventDefault();
+          event.stopPropagation();
           this.#modeSwitcher.toggle();
           break;
       }
       return;
+    }
+
+    // Handle Tab/Arrow navigation in search mode (when mode switcher exists)
+    if (this.#modeSwitcher && !this.#modeSwitcher.isCommandsMode) {
+      if (event.key === "Tab" || event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation(); // Prevent urlbar from closing
+        this.#modeSwitcher.toggle();
+        return;
+      }
     }
 
     // Legacy panel mode handling

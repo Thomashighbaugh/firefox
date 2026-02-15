@@ -123,15 +123,23 @@ export async function generateExtensionCommands() {
           // Access the extension's shortcuts manager (same data as about:addons)
           const ext = policy.extension;
           if (ext.shortcuts) {
-            // Get all shortcuts registered for this extension
+            // Try method 1: Get all shortcuts registered for this extension
             const shortcuts = ext.shortcuts.allShortcuts();
             if (shortcuts && shortcuts[cmdName]) {
-              currentShortcut = shortcuts[cmdName];
-            } else {
-              // Fallback: try getting individual shortcut
+              // Extract shortcut string - can be a string or object with 'shortcut' property
+              const shortcutData = shortcuts[cmdName];
+              currentShortcut = typeof shortcutData === 'string' 
+                ? shortcutData 
+                : shortcutData.shortcut || null;
+            }
+            
+            // Try method 2: Get individual shortcut if allShortcuts didn't work
+            if (!currentShortcut) {
               const shortcutData = ext.shortcuts.get(cmdName);
-              if (shortcutData && shortcutData.shortcut) {
-                currentShortcut = shortcutData.shortcut;
+              if (shortcutData) {
+                currentShortcut = typeof shortcutData === 'string'
+                  ? shortcutData
+                  : shortcutData.shortcut || null;
               }
             }
           }

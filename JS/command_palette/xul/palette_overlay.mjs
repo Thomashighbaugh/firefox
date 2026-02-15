@@ -412,11 +412,19 @@ export class PaletteOverlay {
           break;
 
         case "ArrowLeft":
-        case "ArrowRight":
-          // Arrow Left/Right also navigate between mode tabs
+          // Arrow Left switches to search mode
           event.preventDefault();
           event.stopPropagation();
-          this.#modeSwitcher.toggle();
+          event.stopImmediatePropagation(); // Prevent urlbar from closing
+          this.#modeSwitcher.setMode(ModeSwitcher.MODES.SEARCH);
+          break;
+
+        case "ArrowRight":
+          // Arrow Right switches to commands mode
+          event.preventDefault();
+          event.stopPropagation();
+          event.stopImmediatePropagation(); // Prevent urlbar from closing
+          this.#modeSwitcher.setMode(ModeSwitcher.MODES.COMMANDS);
           break;
       }
       return;
@@ -424,11 +432,27 @@ export class PaletteOverlay {
 
     // Handle Tab/Arrow navigation in search mode (when mode switcher exists)
     if (this.#modeSwitcher && !this.#modeSwitcher.isCommandsMode) {
-      if (event.key === "Tab" || event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      if (event.key === "Tab") {
         event.preventDefault();
         event.stopPropagation();
         event.stopImmediatePropagation(); // Prevent urlbar from closing
         this.#modeSwitcher.toggle();
+        return;
+      }
+      if (event.key === "ArrowLeft") {
+        // Already in search mode, stay here
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation(); // Prevent urlbar from closing
+        this.#modeSwitcher.setMode(ModeSwitcher.MODES.SEARCH);
+        return;
+      }
+      if (event.key === "ArrowRight") {
+        // Switch to commands mode
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation(); // Prevent urlbar from closing
+        this.#modeSwitcher.setMode(ModeSwitcher.MODES.COMMANDS);
         return;
       }
     }

@@ -99,6 +99,21 @@ export async function generateExtensionCommands() {
 
   // Extension keyboard commands - use Firefox's managed shortcuts API
   try {
+    // Try to import ExtensionShortcuts to get the official list of shortcuts
+    let ExtensionShortcuts;
+    try {
+      const module = ChromeUtils.importESModule("resource://gre/modules/ExtensionShortcuts.sys.mjs");
+      ExtensionShortcuts = module.ExtensionShortcuts;
+    } catch (e) {
+      try {
+        // Fallback for older Firefox versions
+        const module = ChromeUtils.import("resource://gre/modules/ExtensionShortcuts.jsm");
+        ExtensionShortcuts = module.ExtensionShortcuts;
+      } catch (e2) {
+        console.warn("[command-palette] ExtensionShortcuts module not available");
+      }
+    }
+
     // Get all registered extension shortcuts from Firefox's ShortcutsManager
     // This is the same source used by about:addons → Manage Extension Shortcuts
     const policies = WebExtensionPolicy.getActiveExtensions();
@@ -107,49 +122,90 @@ export async function generateExtensionCommands() {
       // Skip system extensions and those without extension object
       if (!policy.extension) continue;
       
-      // Get commands from manifest
-      const manifestCommands = policy.extension.manifest?.commands;
-      if (!manifestCommands) continue;
+      const manifest = policy.extension.manifest;
+      if (!manifest) continue;
+
+      // Start with explicit commands from manifest
+      const commandsMap = new Map(Object.entries(manifest.commands || {}));
+
+      // Add implicit commands if not already present
+      // Browser Action / Action (MV3)
+      if ((manifest.browser_action || manifest.action) && 
+          !commandsMap.has("_execute_browser_action") && 
+          !commandsMap.has("_execute_action")) {
+        commandsMap.set(manifest.action ? "_execute_action" : "_execute_browser_action", {
+          description: "Activate the extension"
+        });
+      }
+
+      // Page Action
+      if (manifest.page_action && !commandsMap.has("_execute_page_action")) {
+        commandsMap.set("_execute_page_action", {
+          description: "Activate the page action"
+        });
+      }
+
+      // Sidebar Action
+      if (manifest.sidebar_action && !commandsMap.has("_execute_sidebar_action")) {
+        commandsMap.set("_execute_sidebar_action", {
+          description: "Toggle the sidebar"
+        });
+      }
       
-      for (const [cmdName, cmdDef] of Object.entries(manifestCommands)) {
+      if (commandsMap.size === 0) continue;
+      
+      for (const [cmdName, cmdDef] of commandsMap) {
         // Skip _execute_browser_action and similar internal commands unless they have descriptions
         const isInternalCommand = cmdName.startsWith("_execute_");
-        const description = cmdDef.description || (isInternalCommand ? cmdName.replace(/_/g, " ").replace(/^execute /, "") : cmdName);
+        const description = cmdDef.description || (isInternalCommand ? "Activate the extension" : cmdName);
         
         // Get actual configured shortcut from Firefox's shortcuts manager
         // This reflects user customizations in about:addons
         let currentShortcut = null;
-        try {
-          // Access the extension's shortcuts manager (same data as about:addons)
-          const ext = policy.extension;
-          if (ext.shortcuts) {
-            // Try method 1: Get all shortcuts registered for this extension
-            const shortcuts = ext.shortcuts.allShortcuts();
-            if (shortcuts && shortcuts[cmdName]) {
-              // Extract shortcut string - can be a string or object with 'shortcut' property
-              const shortcutData = shortcuts[cmdName];
-              currentShortcut = typeof shortcutData === 'string' 
-                ? shortcutData 
-                : shortcutData.shortcut || null;
+        
+        // Method 1: Use ExtensionShortcuts system module (Official API)
+        if (ExtensionShortcuts) {
+          try {
+            // Get shortcut from official manager
+            const key = ExtensionShortcuts.get(policy.id, cmdName);
+            if (key) {
+               currentShortcut = key;
             }
-            
-            // Try method 2: Get individual shortcut if allShortcuts didn't work
-            if (!currentShortcut) {
-              const shortcutData = ext.shortcuts.get(cmdName);
-              if (shortcutData) {
-                currentShortcut = typeof shortcutData === 'string'
-                  ? shortcutData
+          } catch (e) {
+            // Ignore errors if specific command not found
+          }
+        }
+
+        // Method 2: Fallback to extension's internal shortcuts manager
+        if (!currentShortcut) {
+          try {
+            const ext = policy.extension;
+            if (ext.shortcuts) {
+              const shortcuts = ext.shortcuts.allShortcuts();
+              if (shortcuts && shortcuts[cmdName]) {
+                const shortcutData = shortcuts[cmdName];
+                currentShortcut = typeof shortcutData === 'string' 
+                  ? shortcutData 
                   : shortcutData.shortcut || null;
               }
+              
+              if (!currentShortcut) {
+                const shortcutData = ext.shortcuts.get(cmdName);
+                if (shortcutData) {
+                  currentShortcut = typeof shortcutData === 'string'
+                    ? shortcutData
+                    : shortcutData.shortcut || null;
+                }
+              }
             }
-          }
-        } catch (e) {
-          // If shortcuts manager unavailable, fallback to manifest suggested_key
-          if (cmdDef.suggested_key) {
-            currentShortcut = cmdDef.suggested_key.default || 
-                             cmdDef.suggested_key.linux ||
-                             cmdDef.suggested_key.mac ||
-                             cmdDef.suggested_key.windows;
+          } catch (e) {
+            // Fallback to manifest suggested_key
+            if (cmdDef.suggested_key) {
+              currentShortcut = cmdDef.suggested_key.default || 
+                               cmdDef.suggested_key.linux ||
+                               cmdDef.suggested_key.mac ||
+                               cmdDef.suggested_key.windows;
+            }
           }
         }
         

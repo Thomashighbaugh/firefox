@@ -50,7 +50,17 @@ export class ModeSwitcher {
     this.#searchTab.className = "mode-switcher-tab";
     this.#searchTab.setAttribute("data-mode", ModeSwitcher.MODES.SEARCH);
     this.#searchTab.textContent = "Search";
-    this.#searchTab.addEventListener("click", () => this.setMode(ModeSwitcher.MODES.SEARCH));
+    this.#searchTab.addEventListener("mousedown", (e) => {
+      // Prevent focus loss from urlbar when clicking
+      e.preventDefault();
+      e.stopPropagation();
+    });
+    this.#searchTab.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      this.setMode(ModeSwitcher.MODES.SEARCH);
+    });
 
     // Create commands tab
     this.#commandsTab = doc.createXULElement("button");
@@ -58,7 +68,17 @@ export class ModeSwitcher {
     this.#commandsTab.className = "mode-switcher-tab";
     this.#commandsTab.setAttribute("data-mode", ModeSwitcher.MODES.COMMANDS);
     this.#commandsTab.textContent = "Commands";
-    this.#commandsTab.addEventListener("click", () => this.setMode(ModeSwitcher.MODES.COMMANDS));
+    this.#commandsTab.addEventListener("mousedown", (e) => {
+      // Prevent focus loss from urlbar when clicking
+      e.preventDefault();
+      e.stopPropagation();
+    });
+    this.#commandsTab.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      this.setMode(ModeSwitcher.MODES.COMMANDS);
+    });
 
     // Add keyboard shortcut hint to commands tab
     const shortcutHint = doc.createXULElement("span");

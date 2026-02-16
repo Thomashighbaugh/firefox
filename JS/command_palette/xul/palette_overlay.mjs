@@ -379,12 +379,14 @@ export class PaletteOverlay {
         case "ArrowDown":
           event.preventDefault();
           event.stopPropagation();
+          event.stopImmediatePropagation();
           this.#selectNextInline();
           break;
 
         case "ArrowUp":
           event.preventDefault();
           event.stopPropagation();
+          event.stopImmediatePropagation();
           this.#selectPreviousInline();
           break;
 

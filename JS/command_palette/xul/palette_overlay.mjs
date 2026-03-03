@@ -413,48 +413,23 @@ export class PaletteOverlay {
           this.#modeSwitcher.toggle();
           break;
 
-        case "ArrowLeft":
-          // Arrow Left switches to search mode
-          event.preventDefault();
-          event.stopPropagation();
-          event.stopImmediatePropagation(); // Prevent urlbar from closing
-          this.#modeSwitcher.setMode(ModeSwitcher.MODES.SEARCH);
-          break;
-
-        case "ArrowRight":
-          // Arrow Right switches to commands mode
-          event.preventDefault();
-          event.stopPropagation();
-          event.stopImmediatePropagation(); // Prevent urlbar from closing
-          this.#modeSwitcher.setMode(ModeSwitcher.MODES.COMMANDS);
-          break;
+        // ArrowLeft/ArrowRight are intentionally NOT intercepted here —
+        // they must pass through so the user can move the text cursor
+        // while filtering commands. Use Tab to switch modes instead.
       }
       return;
     }
 
-    // Handle Tab/Arrow navigation in search mode (when mode switcher exists)
+    // Handle Tab navigation in search mode (when mode switcher exists)
+    // NOTE: Arrow keys are NOT intercepted here — they must pass through
+    // to the urlbar so the user can move the text cursor during URL editing.
+    // Mode switching is available via Tab key or clicking the mode switcher tabs.
     if (this.#modeSwitcher && !this.#modeSwitcher.isCommandsMode) {
-      if (event.key === "Tab") {
+      if (event.key === "Tab" && !event.shiftKey) {
         event.preventDefault();
         event.stopPropagation();
         event.stopImmediatePropagation(); // Prevent urlbar from closing
         this.#modeSwitcher.toggle();
-        return;
-      }
-      if (event.key === "ArrowLeft") {
-        // Already in search mode, stay here
-        event.preventDefault();
-        event.stopPropagation();
-        event.stopImmediatePropagation(); // Prevent urlbar from closing
-        this.#modeSwitcher.setMode(ModeSwitcher.MODES.SEARCH);
-        return;
-      }
-      if (event.key === "ArrowRight") {
-        // Switch to commands mode
-        event.preventDefault();
-        event.stopPropagation();
-        event.stopImmediatePropagation(); // Prevent urlbar from closing
-        this.#modeSwitcher.setMode(ModeSwitcher.MODES.COMMANDS);
         return;
       }
     }

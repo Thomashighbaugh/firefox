@@ -1,0 +1,57 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+@-moz-document url("about:about"),
+  url("about:addons"),
+  url("about:blank"),
+  url("about:buildconfig"),
+  url("about:cache"),
+  url("about:checkerboard"),
+  url("about:compat"),
+  url("about:config"),
+  url("about:crashes"),
+  url("about:debugging"),
+  url("about:devtools"),
+  url("about:downloads"),
+  url("about:home"),
+  url("about:license"),
+  url("about:logo"),
+  url("about:memory"),
+  url("about:mozilla"),
+  url("about:networking"),
+  url("about:newtab"),
+  url("about:performance"),
+  url("about:plugins"),
+  url("about:policies"),
+  url("about:preferences"),
+  url("about:privatebrowsing"),
+  url("about:profiles"),
+  url("about:protections"),
+  url("about:reader"),
+  url("about:rights"),
+  url("about:robots"),
+  url("about:serviceworkers"),
+  url("about:studies"),
+  url("about:support"),
+  url("about:sync-log"),
+  url("about:telemetry"),
+  url("about:third-party"),
+  url("about:unloads"),
+  url("about:url-classifier"),
+  url("about:webrtc"),
+  url("about:welcome") {
+  :root {
+    --in-content-box-background: var(--firefoxcss-item-bg-color) !important;
+    --in-content-table-background: var(--firefoxcss-item-bg-color) !important;
+    --in-content-page-background: var(--firefoxcss-main-bg-color) !important;
+  }
+
+  html,
+  body {
+    background-color: var(--firefoxcss-main-bg-color) !important;
+  }
+
+  #newtab-customize-overlay {
+    background-color: var(--firefoxcss-main-bg-color) !important;
+  }
+}

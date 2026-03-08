@@ -38,6 +38,12 @@ firefox-theme/
 
 ## CONVENTIONS
 
+### Documentation & Changelog
+- **After any feature changes:** Add a single unordered list item summarizing the change to `.documentation/CHANGELOG.md`
+- Keep changelog entries concise and user-facing
+- Format: `- **YYYY-MM-DD HH:MM** [Component] Brief description of change`
+- Date and time should be surrounded by double asterisks to make them bold
+
 ### File Extensions
 - `.uc.js` - Standalone UserChrome.js scripts (15 files in JS/)
 - `.uc.mjs` - ES6 module entry point (`second_sidebar.uc.mjs`)

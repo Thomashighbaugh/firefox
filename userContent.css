@@ -51,12 +51,12 @@ DEPENDENCIES: colors.css
 @import url("CSS/content/firefox-view.css");
 
 /*=====================================================================================================
-IMPORT: About:Blank Page Styling
-PURPOSE: Customizes the appearance of blank/new tabs
-DESCRIPTION: Manages the theming of about:blank pages and empty tab states
+IMPORT: About Pages General Styling
+PURPOSE: Customizes the appearance of all Firefox about:* internal pages
+DESCRIPTION: Manages the theming and background colors for all about:* pages (about:blank, about:config, about:support, etc.)
 DEPENDENCIES: colors.css
 =====================================================================================================*/
-@import url("CSS/content/about-blank.css");
+@import url("CSS/content/about-pages.css");
 
 /*=====================================================================================================
 IMPORT: Add-ons Manager Styling
@@ -75,25 +75,25 @@ DEPENDENCIES: colors.css
 @import url("CSS/content/about-config.css");
 
 /*=====================================================================================================
-IMPORT: Settings Page Styling
-PURPOSE: Customizes the about:preferences/settings page appearance
-DESCRIPTION: Handles theming for the main settings/preferences interface
+IMPORT: Settings Pages General Styling
+PURPOSE: Customizes the appearance of settings-related pages
+DESCRIPTION: Handles theming for settings/preferences pages across multiple Firefox interfaces (about:addons, about:preferences, about:config, chrome settings)
 DEPENDENCIES: colors.css
 =====================================================================================================*/
-@import url("CSS/content/about-settings.css");
+@import url("CSS/content/settings-pages.css");
 
 /*=====================================================================================================
 IMPORT: Image Viewer Styling
-PURPOSE: Customizes the about:image page appearance
-DESCRIPTION: Manages styling for Firefox's built-in image viewer interface
+PURPOSE: Customizes the standalone image viewer appearance
+DESCRIPTION: Manages styling for Firefox's built-in image viewer when opening images directly (not an about:* page)
 DEPENDENCIES: colors.css
 =====================================================================================================*/
-@import url("CSS/content/about-image.css");
+@import url("CSS/content/image-viewer.css");
 
 /*=====================================================================================================
-IMPORT: Discovery Page Styling
-PURPOSE: Customizes the about:discovery page appearance
-DESCRIPTION: Handles theming for Firefox's content discovery/recommendation interface
+IMPORT: Addon Discovery Page Styling
+PURPOSE: Customizes Mozilla's addon discovery website appearance
+DESCRIPTION: Handles theming for the external addon discovery page (https://discovery.addons.mozilla.org/)
 DEPENDENCIES: colors.css
 =====================================================================================================*/
-@import url("CSS/content/about-discovery.css");
+@import url("CSS/content/addon-discovery.css");

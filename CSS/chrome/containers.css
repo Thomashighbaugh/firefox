@@ -1,0 +1,17 @@
+/*=====================================================================
+================ C O N T A I N E R   T A B S ==========================
+=====================================================================*/
+
+/* Container extension - Apply container color to unselected tabs */
+#TabsToolbar
+  #tabbrowser-tabs
+  .tabbrowser-tab[usercontextid]
+  .tab-background:not([selected]) {
+  background: var(--identity-tab-color) !important;
+  opacity: 0.3 !important;
+}
+
+/* Container extension - Hide tab context line */
+#tabbrowser-tabs .tab-context-line {
+  display: none !important;
+}

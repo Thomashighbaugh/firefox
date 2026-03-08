@@ -70,12 +70,12 @@ DEPENDENCIES: variables.css
 @import url("CSS/chrome/height-fixes.css");
 
 /*=====================================================================================================
-IMPORT: Search Bar Styling
-PURPOSE: Customizes the appearance and behavior of the search/URL bar
-DESCRIPTION: Handles search bar theming, focus states, and visual effects
+IMPORT: URL Bar Styling
+PURPOSE: Customizes the appearance and behavior of the URL/search bar
+DESCRIPTION: Handles URL bar theming, focus states, visual effects, dropdown behavior, and height fixes
 DEPENDENCIES: variables.css, colors.css
 =====================================================================================================*/
-@import url("CSS/chrome/search-bar.css");
+@import url("CSS/chrome/urlbar.css");
 
 /*=====================================================================================================
 IMPORT: Tab Styling and Behavior
@@ -150,18 +150,34 @@ DEPENDENCIES: variables.css, colors.css
 @import url("CSS/chrome/vertical-tabs.css");
 
 /*=====================================================================================================
- IMPORT: Miscellaneous Other Styles
- PURPOSE: Contains various miscellaneous UI customizations
- DESCRIPTION: Handles edge cases and additional styling not covered by other modules
- DEPENDENCIES: variables.css, colors.css
- =====================================================================================================*/
-@import url("CSS/chrome/other.css");
+IMPORT: Spill Theme Styling
+PURPOSE: Applies the Spill visual theme
+DESCRIPTION: Removes navigator-toolbox borders and tabbox outlines for clean Spill aesthetic
+DEPENDENCIES: variables.css, colors.css
+=====================================================================================================*/
+@import url("CSS/chrome/theme.css");
 
 /*=====================================================================================================
- IMPORT: Command Palette Styling
- PURPOSE: Styles for the command palette system
- DESCRIPTION: Command palette mode switcher, inline command list, and overlay styling
- DEPENDENCIES: variables.css, colors.css
- =====================================================================================================*/
-@import url("JS/command_palette/css/palette.css");
+IMPORT: Status Panel Styling
+PURPOSE: Customizes the hover link preview panel
+DESCRIPTION: Styles the status panel that appears in bottom-left when hovering over links
+DEPENDENCIES: variables.css, colors.css
+=====================================================================================================*/
+@import url("CSS/chrome/statuspanel.css");
+
+/*=====================================================================================================
+IMPORT: Container Tabs Styling
+PURPOSE: Customizes container-specific tab appearance
+DESCRIPTION: Applies container colors to unselected tabs and manages tab context line visibility
+DEPENDENCIES: variables.css, colors.css
+=====================================================================================================*/
+@import url("CSS/chrome/containers.css");
+
+/*=====================================================================================================
+IMPORT: Miscellaneous UI Fixes
+PURPOSE: Various UI adjustments and fixes
+DESCRIPTION: URLbar button opacity, SVG warning message, alt menu bar height adjustments
+DEPENDENCIES: variables.css, colors.css
+=====================================================================================================*/
+@import url("CSS/chrome/misc.css");
 

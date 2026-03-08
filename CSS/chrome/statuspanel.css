@@ -1,0 +1,13 @@
+/*=====================================================================
+===================== S T A T U S   P A N E L =========================
+=====================================================================*/
+
+/* Status URL display (bottom left when hovering a link) */
+#statuspanel-label {
+  background-color: var(--firefoxcss-statuspanel-bg-color) !important;
+  border-radius: 4px !important;
+  border-color: transparent !important;
+  color: currentColor !important;
+  margin: 0 0 3px 3px !important;
+  padding: 4px !important;
+}

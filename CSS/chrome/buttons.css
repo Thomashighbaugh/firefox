@@ -33,12 +33,12 @@ toolbar
   box-shadow: inset 2px 2px 4px var(--firefoxcss-toolbar-button-box-shadow) !important;
 }
 
-/* ----- New tab icon size (16-default). Not change the rest of calc --- */
+/* ----- New tab icon size (36px). Not change the rest of calc --- */
 @media not -moz-pref("sidebar.verticalTabs") {
   #tabs-newtab-button .toolbarbutton-icon,
   #new-tab-button .toolbarbutton-icon {
-    width: calc(2 * var(--toolbarbutton-inner-padding) + 12px) !important;
-    height: calc(2 * var(--toolbarbutton-inner-padding) + 12px) !important;
+    width: calc(2 * var(--toolbarbutton-inner-padding) + 36px) !important;
+    height: calc(2 * var(--toolbarbutton-inner-padding) + 36px) !important;
   }
 }
 
@@ -128,8 +128,8 @@ toolbar
   border: 1px solid hsla(240, 2%, 05%, 0.75) !important;
   border-radius: var(--firefoxcss-border-radius) !important;
   box-shadow: inset 2px 2px 4px var(--firefoxcss-toolbar-button-box-shadow) !important;
-  width: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
-  height: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
+  width: calc(2 * var(--toolbarbutton-inner-padding) + 36px) !important;
+  height: calc(2 * var(--toolbarbutton-inner-padding) + 36px) !important;
   color: hsla(240, 2%, 95%, 0.75);
   fill: hsla(240, 2%, 95%, 0.75) !important;
   filter: var(--firefoxcss-private-browsing-drop-shadow) !important;

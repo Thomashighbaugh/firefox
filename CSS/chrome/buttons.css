@@ -158,6 +158,6 @@ toolbar
 
 /* Remove margin/padding from all tabs button */
 #alltabs-button {
-  margin-inline: 0 !important;
+  margin-inline: 12px 0 !important;
   padding-inline: 0 !important;
 }

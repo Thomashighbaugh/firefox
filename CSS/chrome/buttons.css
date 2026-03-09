@@ -113,7 +113,8 @@ toolbar
 
 #firefox-view-button {
   padding-right: 0px !important;
-  margin-left: 22px !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
 }
 
 :root[privatebrowsingmode="temporary"] #PanelUI-menu-button {

@@ -155,3 +155,9 @@ toolbar
   color: #1c1c1c !important;
   fill: #1c1c1c !important;
 }
+
+/* Remove margin/padding from all tabs button */
+#alltabs-button {
+  margin-inline: 0 !important;
+  padding-inline: 0 !important;
+}

@@ -56,7 +56,6 @@ export const SIDEBAR_BOX_CSS = `
       background-color: inherit;
       color: inherit;
       flex-direction: row;
-      flex: 1;
       min-height: calc(2 * var(--toolbarbutton-inner-padding) + 16px);
       gap: 4px;
       padding: 1px;
@@ -67,11 +66,16 @@ export const SIDEBAR_BOX_CSS = `
         transition: 0.2s margin-top ease-out;
       }
 
+      #sb2-toolbar-nav-buttons,
+      #sb2-toolbar-sidebar-buttons {
+        flex: 0 0 auto;
+      }
+
       #sb2-toolbar-title-wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
-        flex: 1;
+        flex: 1 1 0;
         overflow: hidden;
         padding: 0 var(--space-medium);
         min-width: 64px;

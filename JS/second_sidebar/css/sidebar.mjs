@@ -5,8 +5,8 @@ export const SIDEBAR_CSS = `
   #sb2-web-panels *,
   .web-panel,
   .web-panel * {
-    background: var(--firefoxcss-main-bg-color) !important;
-    background-color: var(--firefoxcss-main-bg-color) !important;
+    background: var(--firefoxcss-panel-bg-color) !important;
+    background-color: var(--firefoxcss-panel-bg-color) !important;
   }
 
   #sb2 {
@@ -22,15 +22,20 @@ export const SIDEBAR_CSS = `
         flex-direction: row;
         min-height: unset;
         gap: 4px;
-        background-color: var(--firefoxcss-main-bg-color) !important;
+        background-color: var(--firefoxcss-panel-bg-color) !important;
         color: var(--toolbar-color);
         padding: 1px;
+
+      #sb2-toolbar-nav-buttons,
+      #sb2-toolbar-sidebar-buttons {
+        flex: 0 0 auto;
+      }
 
       #sb2-toolbar-title-wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
-        flex: 1;
+        flex: 1 1 0;
         overflow: hidden;
       }
 

@@ -399,3 +399,133 @@ tab-group[collapsed] > .tabbrowser-tab {
   max-width: var(--firefoxcss-tab-max-width) !important;
 }
 
+/*=====================================================================
+================== T A B   C O U N T E R ============================
+======================================================================*/
+
+#TabsToolbar-customization-target {
+  counter-reset: tab-counter;
+}
+
+.tabbrowser-tab:not([hidden]) {
+  counter-increment: tab-counter;
+}
+
+#alltabs-button > .toolbarbutton-badge-stack::after {
+  content: counter(tab-counter);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  font-size: 0.65em;
+  font-weight: bold;
+  color: var(--toolbarbutton-icon-fill);
+  pointer-events: none;
+}
+
+/*=====================================================================
+================== A L L   T A B S   M E N U ==========================
+======================================================================*/
+
+/* All tabs menu search */
+.all-tabs-item[action="search"] {
+  list-style-image: url("chrome://global/skin/icons/search-glass.svg");
+}
+
+/* Tabs from other devices */
+.all-tabs-item[tab-type="syncedTab"] {
+  list-style-image: url("chrome://browser/skin/synced-tabs.svg");
+}
+
+/* Close duplicate tabs */
+.all-tabs-item[action="close-duplicate-tabs"] {
+  list-style-image: url("chrome://global/skin/icons/delete.svg");
+}
+
+/* Container tabs */
+.all-tabs-item[usercontextid] {
+  list-style-image: url("chrome://browser/skin/container.svg");
+}
+
+/* Hidden tabs */
+.all-tabs-item[hidden="true"] {
+  list-style-image: url("chrome://global/skin/icons/eye.svg");
+}
+
+.all-tabs-item[tab-type="tre tabs"] {
+  list-style-image: url("chrome://browser/skin/synced-tabs.svg");
+}
+
+#allTabsMenu-closeDuplicateTabs {
+  list-style-image: url("chrome://global/skin/icons/delete.svg");
+}
+
+#allTabsMenu-containerTabItem {
+  list-style-image: url("chrome://browser/skin/container.svg");
+}
+
+#allTabsMenu-hiddenTabsButton {
+  list-style-image: url("chrome://global/skin/icons/eye.svg");
+}
+
+/*=====================================================================
+================== T A B   R A I N B O W   B O R D E R ================
+======================================================================*/
+
+@keyframes filter {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.tabbrowser-tab[selected] .tab-icon-stack {
+  position: relative;
+  padding: 3px;
+  border-radius: var(--firefoxcss-border-radius);
+  background-image: conic-gradient(
+    #948ae3,
+    #5ad4e6,
+    #948ae3
+  );
+  background-size: cover;
+  background-position: center;
+  animation: filter steps(30) 2s infinite;
+}
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.tabbrowser-tab[selected] > .tab-stack::before {
+  grid-area: 1/1;
+  content: "";
+  display: inherit;
+  margin-block: var(--tab-block-margin);
+  border-radius: var(--tab-border-radius);
+  z-index: 0;
+  background-image: conic-gradient(
+    hsl(0 100% 70%),
+    hsl(60 100% 45%) 70deg,
+    hsl(120 100% 55%) 105deg,
+    hsl(160 100% 60%) 160deg,
+    hsl(200 100% 60%) 200deg,
+    hsl(240 100% 65%) 255deg,
+    hsl(300 100% 60%) 290deg,
+    hsl(360 100% 70%) 360deg
+  );
+  mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0KICA8cmVjdCB4PSIwIiB5PSIwIiByeD0iNCIgc3Ryb2tlPSJyZWQiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIgdmVjdG9yLWVmZmVjdD0ibm9uLXNjYWxpbmctc3Ryb2tlIi8+DQo8L3N2Zz4=");
+  background-size: cover;
+  background-position: center;
+  animation: filter steps(30) 2s infinite;
+}
+
+.tab-background[selected] {
+  border: 1px solid transparent !important;
+  outline: none !important;
+  background-clip: padding-box !important;
+}
+

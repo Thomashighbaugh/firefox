@@ -1,12 +1,47 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 @namespace html url("http://www.w3.org/1999/xhtml");
 
-/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/content/dark_settings_pages.css made available under Mozilla Public License v. 2.0
-See the above repository for updates as well as full license text. */
+/* Combined about: pages and settings pages styling */
 
-/* Recolors addons manager, preferences page and new about:config */
-
-@-moz-document url-prefix("about:addons"),
+@-moz-document url("about:about"),
+  url("about:addons"),
+  url("about:buildconfig"),
+  url("about:cache"),
+  url("about:checkerboard"),
+  url("about:compat"),
+  url("about:config"),
+  url("about:crashes"),
+  url("about:debugging"),
+  url("about:devtools"),
+  url("about:downloads"),
+  url("about:home"),
+  url("about:license"),
+  url("about:logo"),
+  url("about:memory"),
+  url("about:mozilla"),
+  url("about:networking"),
+  url("about:newtab"),
+  url("about:performance"),
+  url("about:plugins"),
+  url("about:policies"),
+  url("about:preferences"),
+  url("about:privatebrowsing"),
+  url("about:profiles"),
+  url("about:protections"),
+  url("about:reader"),
+  url("about:rights"),
+  url("about:robots"),
+  url("about:serviceworkers"),
+  url("about:studies"),
+  url("about:support"),
+  url("about:sync-log"),
+  url("about:telemetry"),
+  url("about:third-party"),
+  url("about:unloads"),
+  url("about:url-classifier"),
+  url("about:webrtc"),
+  url("about:welcome"),
+  url-prefix("about:addons"),
   url-prefix("about:preferences"),
   url-prefix("about:config"),
   url-prefix("chrome://browser/content/"),
@@ -16,14 +51,42 @@ See the above repository for updates as well as full license text. */
 {
   :root,
   html|html {
-    --in-content-page-color: var(--firefoxcss-text-color) !important;
-    --in-content-text-color: var(--firefoxcss-text-color) !important;
-    --in-content-page-background: var(--firefoxcss-main-bg-color) !important;
-    --in-content-box-background: var(--firefoxcss-item-bg-color) !important;
+    --in-content-page-color: rgb(210, 210, 210) !important;
+    --in-content-text-color: rgb(210, 210, 210) !important;
+    --in-content-page-background: #191919 !important;
+    --in-content-box-background: #222222 !important;
+    --in-content-table-background: #222222 !important;
     --in-content-deemphasized-text: var(--in-content-text-color) !important;
-    scrollbar-color: var(--in-content-text-color)
-      var(--in-content-page-background) !important;
+    scrollbar-color: var(--in-content-text-color) var(--in-content-page-background) !important;
     color: var(--in-content-text-color) !important;
+  }
+
+  html,
+  html|html,
+  body {
+    background-color: #191919 !important;
+  }
+
+  .sticky-header {
+    background-color: #191919 !important;
+  }
+
+  .card,
+  addon-card,
+  .card-section,
+  section[aria-labelledby] {
+    background-color: #222222 !important;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  .heading,
+  .header,
+  [role="heading"] {
+    background-color: #191919 !important;
+  }
+
+  #newtab-customize-overlay {
+    background-color: #191919 !important;
   }
 
   menulist > menupopup {
@@ -45,7 +108,25 @@ See the above repository for updates as well as full license text. */
     -moz-context-properties: fill;
     fill: CurrentColor !important;
   }
+  /* make panel background blurry if the background is translucent. Requires pref layout.css.backdrop-filter.enabled  */
   html|panel-list {
     backdrop-filter: blur(28px);
+  }
+}
+
+/* Get addons page */
+/* New addons manager doesn't use this anymore */
+@-moz-document url-prefix("https://discovery.addons.mozilla.org/") {
+  html|* {
+    color: inherit !important;
+  }
+  html|html,
+  html|body {
+    background-color: rgb(46, 54, 69) !important;
+    color: rgb(210, 210, 210) !important;
+  }
+  html|div.addon,
+  html|div.Notice {
+    background-color: rgba(255, 255, 255, 0.1) !important;
   }
 }

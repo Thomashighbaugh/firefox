@@ -1,0 +1,173 @@
+/*=====================================================================
+=========================== L A Y O U T ================================
+======================================================================*/
+
+/*=====================================================================
+======================== T O O L B A R   O R D E R ====================
+=======================================================================
+Order of Toolbars
+  * 0 - top
+  * 1 - second from top
+  * 2 - bottom */
+
+/* SEARCH BAR TOOLBAR */
+#navigator-toolbox #nav-bar {
+  order: 1 !important;
+}
+
+/* TABS TOOLBAR */
+#TabsToolbar {
+  order: 2 !important;
+}
+
+/* BOOKMARKS TOOLBAR*/
+#PersonalToolbar {
+  order: 3 !important;
+}
+
+/* Extra titlebar menu (above or below tabs, opens with alt) */
+#toolbar-menubar {
+  order: 0 !important;
+}
+
+/*===================== TABS TOP =========================*/
+
+/* Tabs On Top */
+@media -moz-pref("firefoxcss.tabs.on.top.enable") {
+  @media not -moz-pref("sidebar.verticalTabs") {
+    /* SEARCH BAR TOOLBAR */
+    #nav-bar {
+      order: 2 !important;
+    }
+
+    /* TABS TOOLBAR */
+    #TabsToolbar {
+      order: 1 !important;
+    }
+
+    /* BOOKMARKS TOOLBAR*/
+    #PersonalToolbar {
+      order: 3 !important;
+    }
+
+    /* Extra titlebar menu (above or below tabs, opens with alt or F10) */
+    #toolbar-menubar {
+      order: 0 !important;
+    }
+
+    /* Tab bar top and bottom padding */
+    #TabsToolbar {
+      padding-top: 4px !important;
+      padding-bottom: 4px !important;
+    }
+  }
+}
+
+/*=====================================================================
+========================= H E I G H T   F I X E S ======================
+======================================================================*/
+
+/* Menu Bar height */
+#toolbar-menubar {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  line-height: 22px !important;
+  max-height: 22px !important;
+}
+
+/*=====================================================================
+=================== H I D E   E L E M E N T S ========================
+======================================================================*/
+
+/* Hide bookmarks toolbar */
+#PersonalToolbar {
+  visibility: collapse !important;
+  max-height: 0 !important;
+  min-height: 0 !important;
+}
+
+/* Remove empty space from tabs bar */
+#TabsToolbar .titlebar-spacer[type="pre-tabs"],
+#TabsToolbar .titlebar-spacer[type="post-tabs"],
+#TabsToolbar .titlebar-spacer,
+#nav-bar .titlebar-spacer[type="pre-tabs"],
+#nav-bar .titlebar-spacer[type="post-tabs"] {
+  width: 0 !important;
+}
+
+/* Remove Line above search engine selection in search bar */
+#urlbar .search-one-offs .search-panel-one-offs-header-label,
+/* Remove leftover window buttons from extra menu bar (when pressing alt)*/
+#toolbar-menubar .titlebar-buttonbox-container,
+/* Private browser icons remove */
+.private-browsing-indicator-with-label,
+.private-browsing-indicator,
+/* Hide permission icons, see it when pressing permission button */
+#blocked-permissions-container {
+  display: none !important;
+}
+
+/*=====================================================================
+=========================== M I S C ====================================
+======================================================================*/
+
+/* Alt menu bar height fixes */
+#toolbar-menubar {
+  &[autohide="true"] {
+    :root[tabsintitlebar] #navigator-toolbox:not([tabs-hidden]) > & {
+      min-height: 0 !important;
+    }
+  }
+}
+
+#toolbar-menubar {
+  &[autohide="true"] {
+    :root[tabsintitlebar] #navigator-toolbox[tabs-hidden] > & {
+      min-height: 0 !important;
+    }
+  }
+}
+
+/*=====================================================================
+======================= C H R O M E   H I D D E N =====================
+======================================================================*/
+
+:root[chromehidden~="toolbar"] :is(.browser-toolbar, .chromeclass-toolbar-additional) {
+  display: flex;
+}
+
+:root[chromehidden~="toolbar"] .browser-toolbar {
+  visibility: visible;
+}
+
+/*=====================================================================
+=================== O V E R F L O W   M E N U ========================
+======================================================================*/
+
+#widget-overflow-mainView {
+  min-width: 80px !important;
+}
+
+#widget-overflow-fixed-list {
+  display: grid;
+  grid-template-areas: "s s s" "a a a";
+  grid-auto-columns: auto;
+}
+
+#widget-overflow-mainView[visible] #widget-overflow-fixed-list {
+  max-width: 110px;
+}
+
+#widget-overflow-mainView ~ panelview[visible] {
+  max-width: unset !important;
+}
+
+#widget-overflow-fixed-list > * {
+  padding-block: 8px !important;
+}
+
+#widget-overflow-fixed-list > #search-container {
+  grid-area: s;
+}

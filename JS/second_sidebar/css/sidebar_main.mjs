@@ -13,7 +13,7 @@ export const SIDEBAR_MAIN_CSS = `
     &[overlay="true"] {
       position: absolute;
       z-index: 9999;
-      background-color: var(--toolbox-bgcolor);
+      background-color: var(--firefoxcss-panel-bg-color);
       box-shadow: var(--content-area-shadow);
 
       @media (-moz-windows-mica) {
@@ -22,12 +22,14 @@ export const SIDEBAR_MAIN_CSS = `
       }
     }
 
-    toolbarpaletteitem[place="panel"][id^="wrapper-customizableui-special-spring"], toolbarspring {
-      flex: 1;
-      min-height: 10px;
-      max-height: 112px;
-      min-width: unset;
-      max-width: unset;
+    toolbarpaletteitem[place="panel"][id^="wrapper-customizableui-special-spring"],
+    toolbarspring {
+      flex: 10000 1 0 !important;
+      min-height: 10px !important;
+      max-height: none !important;
+      height: 0 !important;
+      min-width: 0 !important;
+      max-width: none !important;
     }
 
     .toolbaritem-combined-buttons {

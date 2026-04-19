@@ -34,6 +34,7 @@
     background-color: hsla(200, 5%, 96%, 0.9) !important;
   }
 }
+}
 
 /* Sidebar background color change */
 #browser #sidebar-box {
@@ -42,7 +43,7 @@
 
 /* Second sidebar background color */
 #sb2-box {
-  --sidebar-background-color: hsla(240, 2%, 13%, 0.85) !important;
+  --sidebar-background-color: var(--firefoxcss-panel-bg-color) !important;
 }
 
 /* Bookmarks bar background color */
@@ -112,4 +113,25 @@
 
 .browserContainer > findbar .findbar-textbox {
   background-color: var(--firefoxcss-item-bg-color) !important;
+}
+
+window,
+#main-window,
+#toolbar-menubar,
+#TabsToolbar,
+#PersonalToolbar,
+#navigator-toolbox,
+#sidebar-box,
+#sb2-main,
+#sb2-box, 
+#menubar,
+#nav-bar, 
+#browser, 
+#browserContainer
+{
+  background-color: var(--firefoxcss-main-bg-color) !important;
+
+  -moz-appearance: none !important;
+
+  background-image: none !important;
 }

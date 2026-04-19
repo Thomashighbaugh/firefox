@@ -38,36 +38,20 @@ DEPENDENCIES: variables.css (uses CSS custom properties defined there)
 =====================================================================================================*/
 
 /*=====================================================================================================
-IMPORT: Toolbar Order and Layout
-PURPOSE: Controls the positioning and ordering of toolbar elements
-DESCRIPTION: Manages the visual arrangement of navigation buttons, URL bar, and other toolbar components
+IMPORT: Layout and Positioning
+PURPOSE: Controls toolbar ordering, element visibility, height fixes, and misc layout
+DESCRIPTION: Manages toolbar order, hides elements, fixes heights, and alt menu bar
 DEPENDENCIES: variables.css, colors.css
-=====================================================================================================*/
-@import url("CSS/chrome/toolbar-order.css");
+====================================================================================================*/
+@import url("CSS/chrome/layout.css");
 
 /*=====================================================================================================
 IMPORT: Chrome Element Colors
 PURPOSE: Applies color schemes to browser chrome elements
 DESCRIPTION: Handles coloring of various UI components like buttons, menus, and panels
 DEPENDENCIES: variables.css, colors.css
-=====================================================================================================*/
+====================================================================================================*/
 @import url("CSS/chrome/colors.css");
-
-/*=====================================================================================================
-IMPORT: Element Hiding and Visibility
-PURPOSE: Controls which UI elements are visible or hidden
-DESCRIPTION: Manages the display of specific Firefox UI elements based on user preferences
-DEPENDENCIES: variables.css
-=====================================================================================================*/
-@import url("CSS/chrome/hide-elements.css");
-
-/*=====================================================================================================
-IMPORT: Height Fixes and Adjustments
-PURPOSE: Corrects height-related layout issues
-DESCRIPTION: Addresses various height inconsistencies in Firefox's UI components
-DEPENDENCIES: variables.css
-=====================================================================================================*/
-@import url("CSS/chrome/height-fixes.css");
 
 /*=====================================================================================================
 IMPORT: URL Bar Styling
@@ -146,7 +130,7 @@ IMPORT: Vertical Tabs Support
 PURPOSE: Implements vertical tabs functionality
 DESCRIPTION: Handles vertical tab layout, positioning, and interaction
 DEPENDENCIES: variables.css, colors.css
-=====================================================================================================*/
+====================================================================================================*/
 @import url("CSS/chrome/vertical-tabs.css");
 
 /*=====================================================================================================
@@ -170,14 +154,14 @@ IMPORT: Container Tabs Styling
 PURPOSE: Customizes container-specific tab appearance
 DESCRIPTION: Applies container colors to unselected tabs and manages tab context line visibility
 DEPENDENCIES: variables.css, colors.css
-=====================================================================================================*/
+====================================================================================================*/
 @import url("CSS/chrome/containers.css");
 
 /*=====================================================================================================
-IMPORT: Miscellaneous UI Fixes
-PURPOSE: Various UI adjustments and fixes
-DESCRIPTION: URLbar button opacity, SVG warning message, alt menu bar height adjustments
-DEPENDENCIES: variables.css, colors.css
-=====================================================================================================*/
-@import url("CSS/chrome/misc.css");
+IMPORT: Icon Styling
+PURPOSE: Adds icons to browser UI elements
+DESCRIPTION: Provides icons for context menus, app menu, menubar, places context, and textbox context
+DEPENDENCIES: None
+====================================================================================================*/
+@import url("CSS/chrome/icons.css");
 

@@ -18,10 +18,10 @@
     --tab-block-margin: 2px !important;
     /* Default: 4px */
 
-    --tab-min-height: 28px !important;
+    --tab-min-height: 36px !important;
     /* Default: 36px */
 
-    --tabstrip-min-height: 28px !important;
+    --tabstrip-min-height: 36px !important;
   }
 
   /* Toolbar Buttons */

@@ -16,22 +16,23 @@ This separation allows for better maintainability and selective theming of diffe
 
 =====================================================================================================
 ========================================== C O N T E N T   S T Y L E S   I M P O R T S ==========================================
-=====================================================================================================*/
+====================================================================================================*/
 
 /*=====================================================================================================
-IMPORT: Content-Specific Colors
-PURPOSE: Defines color schemes specifically for Firefox internal pages
-DESCRIPTION: Contains color definitions optimized for content pages (different from chrome colors)
-DEPENDENCIES: None (this is the foundation for content styling)
-=====================================================================================================*/
-@import url("CSS/content/colors.css");
+IMPORT: Shared Color Definitions
+PURPOSE: Defines color schemes shared between chrome and content styling
+DESCRIPTION: Contains all color variables for consistent theming across browser UI and internal pages
+DEPENDENCIES: None (this is the foundation for all styling)
+====================================================================================================*/
+@import url("CSS/common/colors.css");
+@import url("CSS/common/variables.css");
 
 /*=====================================================================================================
 IMPORT: Private Browsing Styling
 PURPOSE: Customizes the appearance of private browsing mode interfaces
 DESCRIPTION: Handles styling for private browsing windows, indicators, and related UI elements
 DEPENDENCIES: colors.css
-=====================================================================================================*/
+====================================================================================================*/
 @import url("CSS/content/private-browsing.css");
 
 /*=====================================================================================================
@@ -47,23 +48,15 @@ IMPORT: Firefox View Styling
 PURPOSE: Customizes the Firefox View/Synced Tabs interface
 DESCRIPTION: Handles styling for the Firefox View panel that shows recent tabs and synced content
 DEPENDENCIES: colors.css
-=====================================================================================================*/
+====================================================================================================*/
 @import url("CSS/content/firefox-view.css");
-
-/*=====================================================================================================
-IMPORT: About Pages General Styling
-PURPOSE: Customizes the appearance of all Firefox about:* internal pages
-DESCRIPTION: Manages the theming and background colors for all about:* pages (about:blank, about:config, about:support, etc.)
-DEPENDENCIES: colors.css
-=====================================================================================================*/
-@import url("CSS/content/about-pages.css");
 
 /*=====================================================================================================
 IMPORT: Add-ons Manager Styling
 PURPOSE: Customizes the about:addons page appearance
 DESCRIPTION: Handles theming for the add-ons/extensions management interface
 DEPENDENCIES: colors.css
-=====================================================================================================*/
+====================================================================================================*/
 @import url("CSS/content/about-addons.css");
 
 /*=====================================================================================================
@@ -71,15 +64,15 @@ IMPORT: Advanced Configuration Styling
 PURPOSE: Customizes the about:config page appearance
 DESCRIPTION: Manages styling for the advanced configuration/preferences interface
 DEPENDENCIES: colors.css
-=====================================================================================================*/
+====================================================================================================*/
 @import url("CSS/content/about-config.css");
 
 /*=====================================================================================================
 IMPORT: Settings Pages General Styling
 PURPOSE: Customizes the appearance of settings-related pages
-DESCRIPTION: Handles theming for settings/preferences pages across multiple Firefox interfaces (about:addons, about:preferences, about:config, chrome settings)
+DESCRIPTION: Handles theming for all about:* pages and settings/preferences pages
 DEPENDENCIES: colors.css
-=====================================================================================================*/
+====================================================================================================*/
 @import url("CSS/content/settings-pages.css");
 
 /*=====================================================================================================
@@ -87,13 +80,5 @@ IMPORT: Image Viewer Styling
 PURPOSE: Customizes the standalone image viewer appearance
 DESCRIPTION: Manages styling for Firefox's built-in image viewer when opening images directly (not an about:* page)
 DEPENDENCIES: colors.css
-=====================================================================================================*/
+====================================================================================================*/
 @import url("CSS/content/image-viewer.css");
-
-/*=====================================================================================================
-IMPORT: Addon Discovery Page Styling
-PURPOSE: Customizes Mozilla's addon discovery website appearance
-DESCRIPTION: Handles theming for the external addon discovery page (https://discovery.addons.mozilla.org/)
-DEPENDENCIES: colors.css
-=====================================================================================================*/
-@import url("CSS/content/addon-discovery.css");

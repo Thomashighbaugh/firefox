@@ -4,22 +4,16 @@
 @-moz-document url("about:home"),
 url("about:newtab") {
   /*=====================================================================
-  ================= S P I L L   T H E M E   B G =======================
+  ========================== W A L L P A P E R =========================
   =====================================================================*/
 
-  @media (prefers-color-scheme: dark) {
-    html:not(#ublock0-epicker),
-    html:not(#ublock0-epicker) body,
-    #newtab-customize-overlay {
-      background-image: url("chrome://userchrome/content/icons/other/spill-main.svg") !important;
-    }
-  }
-  @media (prefers-color-scheme: light) {
-    html:not(#ublock0-epicker),
-    html:not(#ublock0-epicker) body,
-    #newtab-customize-overlay {
-      background-image: url("chrome://userchrome/content/icons/other/spill-main-light.svg") !important;
-    }
+  body {
+    background-image: url("chrome://userchrome/content/icons/wallpaper/wallpaper.png") !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    background-position-x: center !important;
+    background-position-y: bottom !important;
   }
 
   .body-wrapper .tile {
@@ -32,7 +26,6 @@ url("about:newtab") {
 
   body {
     --newtab-background-color: var(--firefoxcss-main-bg-color) !important;
-    background-size: cover !important;
   }
 
   /*   Edit shortcut menu */

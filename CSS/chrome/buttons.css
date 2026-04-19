@@ -1,13 +1,110 @@
 /*=====================================================================
 =========================== B U T T O N S =============================
-=====================================================================*/
+======================================================================*/
 
-/* Main Menu Button */
-/* #PanelUI-button { */
-/*   margin-inline-start: 0 !important;  */
-/*   padding-inline-start: 0 !important; */
-/*   border-inline-start: none !important; */
-/* } */
+/*=====================================================================
+======================= B U T T O N   E F F E C T S ===================
+======================================================================*/
+
+/* Transition for transform and padding */
+.urlbar-icon,
+.toolbarbutton-icon,
+.tab-icon-image,
+.tab-icon-stack,
+.tab-close-button,
+.downloadIconShow > .button-box > .button-icon,
+.menuitem-iconic :is(.menu-iconic-icon, .menu-icon),
+#downloads-indicator-icon,
+.urlbar-input-container [role="button"] image {
+  transition: transform 83ms linear !important;
+}
+
+toolbar .toolbarbutton-1 > .toolbarbutton-icon {
+  transition: padding 83ms linear !important;
+}
+
+/* Default scale (80% size) */
+.urlbar-input-container [role="button"] image,
+.tab-close-button,
+.tab-icon-image,
+.downloadIconShow > .button-box > .button-icon,
+.unified-extensions-item-menu-button > .toolbarbutton-icon,
+#downloads-button #downloads-indicator-icon,
+toolbarbutton#scrollbutton-up > .toolbarbutton-icon,
+toolbar .toolbarbutton-1 > .toolbarbutton-icon,
+toolbar .toolbarbutton-1 > .toolbarbutton-badge-stack > .toolbarbutton-icon,
+.menuitem-iconic :is(.menu-iconic-icon, .menu-icon),
+.urlbar-icon {
+  transform: scale(0.8) !important;
+}
+
+/* Scroll button down is mirrored */
+toolbarbutton#scrollbutton-down > .toolbarbutton-icon {
+  transform: scale(-0.8) !important;
+}
+
+toolbar .toolbarbutton-1 > .toolbarbutton-icon {
+  padding: calc(var(--toolbarbutton-inner-padding) + 2px) !important;
+}
+
+/* Hover state - full size */
+.urlbar-input-container [role="button"]:not([disabled]):hover image,
+.tab-close-button:hover,
+.tab-icon-image:hover,
+.tab-icon-stack:hover,
+.downloadIconShow:hover > .button-box > .button-icon,
+#downloads-button:not([disabled]):hover #downloads-indicator-icon,
+toolbarbutton#scrollbutton-up:not([disabled]):hover > .toolbarbutton-icon,
+toolbarbutton:not(.toolbarbutton-1):not([disabled]):hover > .toolbarbutton-icon,
+toolbar .toolbarbutton-1:not([disabled]):hover > .toolbarbutton-badge-stack > .toolbarbutton-icon,
+.menuitem-iconic:not([disabled]):hover :is(.menu-iconic-icon, .menu-icon),
+.urlbar-page-action:hover > .urlbar-icon {
+  transform: none !important;
+}
+
+toolbarbutton#scrollbutton-down:not([disabled]):hover > .toolbarbutton-icon {
+  transform: scale(-1) !important;
+}
+
+toolbar .toolbarbutton-1:not([disabled]):hover > .toolbarbutton-icon {
+  padding: var(--toolbarbutton-inner-padding) !important;
+}
+
+/* Active/pressed state - 60% size */
+.urlbar-input-container [role="button"]:active image,
+.tab-close-button:active,
+.tab-icon-image:active,
+.downloadIconShow:active > .button-box > .button-icon,
+#downloads-button:active #downloads-indicator-icon,
+toolbarbutton#scrollbutton-up:active > .toolbarbutton-icon,
+toolbarbutton:not(.toolbarbutton-1):active > .toolbarbutton-icon,
+toolbar .toolbarbutton-1:not([disabled]):active > .toolbarbutton-badge-stack > .toolbarbutton-icon,
+.menuitem-iconic:active :is(.menu-iconic-icon, .menu-icon),
+.urlbar-page-action:active > .urlbar-icon {
+  transform: scale(0.6) !important;
+}
+
+toolbarbutton#scrollbutton-down:active > .toolbarbutton-icon {
+  transform: scale(-0.6) !important;
+}
+
+toolbar .toolbarbutton-1:not([disabled]):active > .toolbarbutton-icon {
+  padding: calc(var(--toolbarbutton-inner-padding) + 3px) !important;
+}
+
+/* Tab close button hover transition */
+.tab-close-button:hover {
+  transition: padding-block 83ms linear;
+}
+
+/* Tab close button active state */
+.tab-close-button:active {
+  padding: calc(var(--tab-close-button-padding) + 2px) !important;
+}
+
+/*=====================================================================
+=================== T O O L B A R   B U T T O N S ======================
+======================================================================*/
 
 toolbar
   .toolbarbutton-1:not([disabled="true"], [checked], [open], :active):hover
@@ -159,6 +256,93 @@ toolbar
 
 /* Remove margin/padding from all tabs button */
 #alltabs-button {
-  margin-inline: 12px 0 !important;
+  margin-inline: 0 !important;
   padding-inline: 0 !important;
+}
+#customizableui-special-spring12,
+hbox .titlebar-spacer,
+.titlebar-spacer {
+  display: none !important;
+}
+
+.tools-and-extensions .actions-list {
+  background: none !important;
+}
+
+/*=====================================================================
+=============== U N I F I E D   E X T E N S I O N S ===================
+======================================================================*/
+
+#unified-extensions-view {
+  --uei-icon-size: 16px;
+}
+
+.unified-extensions-item-menu-button.subviewbutton {
+  padding: 0px !important;
+  margin-inline-end: 0 !important;
+}
+
+.unified-extensions-item-action-button.subviewbutton {
+  padding-block: 6px !important;
+}
+
+.unified-extensions-item-menu-button.subviewbutton > .toolbarbutton-icon {
+  padding: 4px !important;
+}
+
+.unified-extensions-item-message-deck {
+  display: none;
+}
+
+#unified-extensions-view > vbox > vbox > .unified-extensions-item {
+  padding-block: 0px !important;
+}
+
+#unified-extensions-panel .unified-extensions-item {
+  margin-block: 0 !important;
+}
+
+/* Extensions panel 3x3 icon grid */
+#unified-extensions-panel .unified-extensions-area,
+#unified-extensions-view > vbox > vbox {
+  display: grid !important;
+  grid-template-columns: repeat(3, auto) !important;
+  gap: 4px !important;
+  padding: 8px !important;
+}
+
+#unified-extensions-panel .unified-extensions-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 8px !important;
+  margin: 0 !important;
+  min-width: 48px !important;
+}
+
+#unified-extensions-panel .unified-extensions-item .unified-extensions-item-action-button {
+  flex-direction: column !important;
+  align-items: center !important;
+  padding: 0 !important;
+}
+
+#unified-extensions-panel .unified-extensions-item .toolbarbutton-icon {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+#unified-extensions-panel .unified-extensions-item .unified-extensions-item-name {
+  display: none !important;
+}
+
+#unified-extensions-panel .unified-extensions-item-menu-button {
+  position: absolute !important;
+  right: 2px !important;
+  top: 2px !important;
+  opacity: 0 !important;
+}
+
+#unified-extensions-panel .unified-extensions-item:hover .unified-extensions-item-menu-button {
+  opacity: 1 !important;
 }

@@ -9,5 +9,7 @@
   border-color: transparent !important;
   color: currentColor !important;
   margin: 0 0 3px 3px !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
   padding: 4px !important;
 }

@@ -7,16 +7,17 @@ See the above repository for updates as well as full license text. */
 @-moz-document media-document(image) {
   @media not print {
     :root {
-      background-color: var(--firefoxcss-main-bg-color) !important;
+      background-color: #1c1c1c !important;
       background-image: none !important;
     }
 
+    /* Checkerboard pattern for transparent images, slight blue hue */
     img.transparent {
       background: conic-gradient(
-          #eef 0.25turn,
-          #bbc 0.25turn 0.5turn,
-          #eef 0.5turn 0.75turn,
-          #bbc 0.75turn
+          #eee 0.25turn,
+          #bbb 0.25turn 0.5turn,
+          #eee 0.5turn 0.75turn,
+          #bbb 0.75turn
         )
         top left / 24px 24px repeat !important;
     }

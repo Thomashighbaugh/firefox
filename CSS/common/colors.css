@@ -17,11 +17,11 @@
     --grey-90-a60: rgba(34, 34, 34, 0.6);
 
     /* Firefox red variables */
-    --red-50: #C43D65;
+    --red-50: #c43d65;
     --red-50-a30: rgba(196, 61, 101, 0.3);
-    --red-60: #A03152;
-    --red-70: #8E2B48;
-    --red-80: #7B253F;
+    --red-60: #a03152;
+    --red-70: #8e2b48;
+    --red-80: #7b253f;
     --red-90: #692035;
 
     /* Main dark color, url bar, active tab etc. */
@@ -291,11 +291,11 @@
     --grey-90-a60: rgba(247, 241, 255, 0.6);
 
     /* Firefox red variables */
-    --red-50: #C43D65;
+    --red-50: #c43d65;
     --red-50-a30: rgba(196, 61, 101, 0.3);
-    --red-60: #A03152;
-    --red-70: #8E2B48;
-    --red-80: #7B253F;
+    --red-60: #a03152;
+    --red-70: #8e2b48;
+    --red-80: #7b253f;
     --red-90: #692035;
 
     /* Main dark color, url bar, active tab etc. */

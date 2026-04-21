@@ -102,13 +102,18 @@ toolbar .toolbarbutton-1:not([disabled]):active > .toolbarbutton-icon {
   padding: calc(var(--tab-close-button-padding) + 2px) !important;
 }
 
+
+.more-options-button{
+    fill: 
+}
+
 /*=====================================================================
 =================== T O O L B A R   B U T T O N S ======================
 ======================================================================*/
 
 toolbar
   .toolbarbutton-1:not([disabled="true"], [checked], [open], :active):hover
-  > .toolbarbutton-icon,
+  > .toolb-arbutton-icon,
 toolbar
   .toolbarbutton-1:not([disabled="true"], [checked], [open], :active):hover
   > .toolbarbutton-text,

@@ -2,16 +2,12 @@
 ========================================== F I R E F O X   T H E M E   E N T R Y   P O I N T ==========================================
 =====================================================================================================*
 
-DESCRIPTION: This is the main userChrome.css file that serves as the entry point for the entire Firefox theme customization.
-This file imports all modular CSS components and orchestrates the overall browser UI styling.
+DESCRIPTION: This file is loaded by the userChrome.js engine and is a 1-to 1 replica of the main userChrome.css file that is loaded with higher 
+priority than the loading of the userChrome.css file would be, which helps to insure the styles are not overridden and reflected in the browser's 
+appearance at runtime. I have no aversion to redundancy here, so I have kept the user style sheets that Firefox expects of its userCHrome.css files 
+nonetheless.  
 
-ORIGIN: Current design derived from Firefox Mod-Blur theme with extensive modifications and enhancements.
-
-ARCHITECTURE: This file follows a modular import pattern where each CSS file handles a specific component or functionality.
-The imports are organized in a logical order to ensure proper cascading and dependency resolution.
-
-IMPORTANT: This file only contains @import statements - all actual styling is done in the imported modules.
-This separation allows for better maintainability and selective enabling/disabling of features.
+ORIGIN: ../userChrome.css but adjusted for its present location
 
 =====================================================================================================
 ========================================== C O R E   S T Y L E S   I M P O R T S ==========================================
@@ -23,7 +19,7 @@ PURPOSE: Defines CSS custom properties (variables) used throughout the theme
 DESCRIPTION: Contains all theme-wide variables like colors, dimensions, border radii, etc.
 DEPENDENCIES: None (this is the foundation for all other imports)
 =====================================================================================================*/
-@import url("CSS/common/variables.css");
+@import url("common/variables.css");
 
 /*=====================================================================================================
 IMPORT: Color Scheme Definitions
@@ -31,7 +27,7 @@ PURPOSE: Defines light and dark theme color palettes
 DESCRIPTION: Contains comprehensive color definitions for both dark and light modes
 DEPENDENCIES: variables.css (uses CSS custom properties defined there)
 =====================================================================================================*/
-@import url("CSS/common/colors.css");
+@import url("common/colors.css");
 
 /*=====================================================================================================
 ========================================== C H R O M E   C O M P O N E N T S   I M P O R T S ==========================================
@@ -43,7 +39,7 @@ PURPOSE: Controls toolbar ordering, element visibility, height fixes, and misc l
 DESCRIPTION: Manages toolbar order, hides elements, fixes heights, and alt menu bar
 DEPENDENCIES: variables.css, colors.css
 ====================================================================================================*/
-@import url("CSS/chrome/layout.css");
+@import url("chrome/layout.css");
 
 /*=====================================================================================================
 IMPORT: Chrome Element Colors
@@ -51,7 +47,7 @@ PURPOSE: Applies color schemes to browser chrome elements
 DESCRIPTION: Handles coloring of various UI components like buttons, menus, and panels
 DEPENDENCIES: variables.css, colors.css
 ====================================================================================================*/
-@import url("CSS/chrome/colors.css");
+@import url("chrome/colors.css");
 
 /*=====================================================================================================
 IMPORT: URL Bar Styling
@@ -59,7 +55,7 @@ PURPOSE: Customizes the appearance and behavior of the URL/search bar
 DESCRIPTION: Handles URL bar theming, focus states, visual effects, dropdown behavior, and height fixes
 DEPENDENCIES: variables.css, colors.css
 =====================================================================================================*/
-@import url("CSS/chrome/urlbar.css");
+@import url("chrome/urlbar.css");
 
 /*=====================================================================================================
 IMPORT: Tab Styling and Behavior
@@ -67,7 +63,7 @@ PURPOSE: Customizes the appearance and interaction of browser tabs
 DESCRIPTION: Manages tab shapes, colors, hover effects, and visual hierarchy
 DEPENDENCIES: variables.css, colors.css
 =====================================================================================================*/
-@import url("CSS/chrome/tabs.css");
+@import url("chrome/tabs.css");
 
 /*=====================================================================================================
 IMPORT: Window Controls Styling
@@ -75,7 +71,7 @@ PURPOSE: Customizes minimize, maximize, and close buttons
 DESCRIPTION: Handles window control button theming and positioning
 DEPENDENCIES: variables.css, colors.css
 =====================================================================================================*/
-@import url("CSS/chrome/window-controls.css");
+@import url("chrome/window-controls.css");
 
 /*=====================================================================================================
 IMPORT: Context Menu Styling
@@ -83,7 +79,7 @@ PURPOSE: Customizes right-click context menus
 DESCRIPTION: Manages context menu appearance, colors, and hover effects
 DEPENDENCIES: variables.css, colors.css
 =====================================================================================================*/
-@import url("CSS/chrome/context-menu.css");
+@import url("chrome/context-menu.css");
 
 /*=====================================================================================================
 IMPORT: Bookmarks Bar Styling
@@ -91,7 +87,7 @@ PURPOSE: Customizes the bookmarks toolbar
 DESCRIPTION: Handles bookmarks bar appearance, folder styling, and hover effects
 DEPENDENCIES: variables.css, colors.css
 =====================================================================================================*/
-@import url("CSS/chrome/bookmarks.css");
+@import url("chrome/bookmarks.css");
 
 /*=====================================================================================================
 IMPORT: Button Styling
@@ -99,7 +95,7 @@ PURPOSE: Customizes various button elements throughout the UI
 DESCRIPTION: Manages button shapes, colors, hover states, and visual effects
 DEPENDENCIES: variables.css, colors.css
 =====================================================================================================*/
-@import url("CSS/chrome/buttons.css");
+@import url("chrome/buttons.css");
 
 /*=====================================================================================================
 IMPORT: URL Auto-Hide Behavior
@@ -107,7 +103,7 @@ PURPOSE: Controls URL bar visibility and auto-hide functionality
 DESCRIPTION: Implements smart URL bar hiding/showing based on user interaction
 DEPENDENCIES: variables.css, colors.css
 =====================================================================================================*/
-@import url("CSS/chrome/url-auto-hide.css");
+@import url("chrome/url-auto-hide.css");
 
 /*=====================================================================================================
 IMPORT: Linux-Specific Support
@@ -115,7 +111,7 @@ PURPOSE: Addresses Linux-specific UI issues and optimizations
 DESCRIPTION: Contains fixes and adjustments specific to Linux environments
 DEPENDENCIES: variables.css
 =====================================================================================================*/
-@import url("CSS/chrome/linux-support.css");
+@import url("chrome/linux-support.css");
 
 /*=====================================================================================================
 IMPORT: Customization Mode Styling
@@ -123,7 +119,7 @@ PURPOSE: Customizes Firefox's customization/drag-and-drop interface
 DESCRIPTION: Manages the appearance of the customization palette and drag states
 DEPENDENCIES: variables.css, colors.css
 =====================================================================================================*/
-@import url("CSS/chrome/customization.css");
+@import url("chrome/customization.css");
 
 /*=====================================================================================================
 IMPORT: Vertical Tabs Support
@@ -131,15 +127,15 @@ PURPOSE: Implements vertical tabs functionality
 DESCRIPTION: Handles vertical tab layout, positioning, and interaction
 DEPENDENCIES: variables.css, colors.css
 ====================================================================================================*/
-@import url("CSS/chrome/vertical-tabs.css");
+@import url("chrome/vertical-tabs.css");
 
 /*=====================================================================================================
-IMPORT: Spill Theme Styling
+IMPORT: Custom Theme Styling
 PURPOSE: Applies the Spill visual theme
 DESCRIPTION: Removes navigator-toolbox borders and tabbox outlines for clean Spill aesthetic
 DEPENDENCIES: variables.css, colors.css
 =====================================================================================================*/
-@import url("CSS/chrome/theme.css");
+@import url("chrome/theme.css");
 
 /*=====================================================================================================
 IMPORT: Status Panel Styling
@@ -147,7 +143,7 @@ PURPOSE: Customizes the hover link preview panel
 DESCRIPTION: Styles the status panel that appears in bottom-left when hovering over links
 DEPENDENCIES: variables.css, colors.css
 =====================================================================================================*/
-@import url("CSS/chrome/statuspanel.css");
+@import url("chrome/statuspanel.css");
 
 /*=====================================================================================================
 IMPORT: Container Tabs Styling
@@ -155,7 +151,7 @@ PURPOSE: Customizes container-specific tab appearance
 DESCRIPTION: Applies container colors to unselected tabs and manages tab context line visibility
 DEPENDENCIES: variables.css, colors.css
 ====================================================================================================*/
-@import url("CSS/chrome/containers.css");
+@import url("chrome/containers.css");
 
 /*=====================================================================================================
 IMPORT: Icon Styling
@@ -163,5 +159,4 @@ PURPOSE: Adds icons to browser UI elements
 DESCRIPTION: Provides icons for context menus, app menu, menubar, places context, and textbox context
 DEPENDENCIES: None
 ====================================================================================================*/
-@import url("CSS/chrome/icons.css");
-
+@import url("chrome/icons.css");

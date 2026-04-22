@@ -20,7 +20,11 @@ firefox-theme/
 │   ├── chrome/            # Browser UI (15 files: tabs, toolbar, bookmarks, etc.)
 │   ├── content/           # Web content pages (about:*, new tab, etc.)
 │   └── common/            # Variables, colors, shared assets
-├── resources/             # Static assets (icons, textures, notifications)
+├── resources/             # Static assets
+│   ├── icons/             # Branding logos (firefox.svg, firefox-light.svg, firefox-private*.svg, firefox.png)
+│   ├── wallpaper/         # Background wallpaper (wallpaper.png)
+│   ├── texture/           # Noise textures (lightnoise.png)
+│   └── notifications/     # Status bar notification icons
 └── utils/                 # Build/development utilities
 ```
 
@@ -34,7 +38,7 @@ firefox-theme/
 | **Add browser functionality** | `JS/*.uc.js` | Standalone scripts (statusbar, restart button, etc.) |
 | **Modify second sidebar** | `JS/second_sidebar/` | Web panels system (see subsystem AGENTS.md) |
 | **Create XUL UI elements** | `JS/second_sidebar/xul/` | Component framework for browser UI |
-| **Adjust icons/assets** | `css/common/assets/icons/`, `resources/` | Theme assets |
+| **Adjust icons/assets** | `resources/icons/`, `resources/wallpaper/`, `resources/texture/` | Branding logos, wallpaper, noise texture |
 
 ## CONVENTIONS
 

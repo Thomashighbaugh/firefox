@@ -8,7 +8,7 @@ url("about:newtab") {
   =====================================================================*/
 
   body {
-    background-image: url("chrome://userchrome/content/icons/wallpaper/wallpaper.png") !important;
+    background-image: url("chrome://userchrome/content/wallpaper/wallpaper.png") !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
@@ -220,6 +220,18 @@ url("about:newtab") {
     margin-bottom: 0 !important;
     flex: 1 !important;
     flex-basis: 20% !important;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .search-wrapper .logo-and-wordmark .logo {
+      background-image: url("chrome://userchrome/content/icons/firefox.svg") !important;
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    .search-wrapper .logo-and-wordmark .logo {
+      background-image: url("chrome://userchrome/content/icons/firefox-light.svg") !important;
+    }
   }
 
   .search-wrapper .logo-and-wordmark .logo {

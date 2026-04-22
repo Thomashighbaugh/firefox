@@ -3,22 +3,18 @@
 
 @-moz-document url("about:privatebrowsing") {
   /*=====================================================================
-  ========= S P I L L   P R I V A T E   B R O W S I N G   B G =========
+  ========= P R I V A T E   B R O W S I N G   B A C K G R O U N D ====
   =====================================================================*/
 
-  @media (prefers-color-scheme: dark) {
-    html:not(#ublock0-epicker),
-    html:not(#ublock0-epicker) body,
-    #newtab-customize-overlay {
-      background-image: url("chrome://userchrome/content/icons/other/spill.svg") !important;
-    }
-  }
-  @media (prefers-color-scheme: light) {
-    html:not(#ublock0-epicker),
-    html:not(#ublock0-epicker) body,
-    #newtab-customize-overlay {
-      background-image: url("chrome://userchrome/content/icons/other/spill-light.svg") !important;
-    }
+  html:not(#ublock0-epicker),
+  html:not(#ublock0-epicker) body,
+  #newtab-customize-overlay {
+    background-image: url("chrome://userchrome/content/wallpaper/wallpaper.png") !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    background-position-x: center !important;
+    background-position-y: bottom !important;
   }
 
   /*=====================================================================
@@ -66,6 +62,18 @@
 
   #search-handoff-button .fake-caret {
     background: var(--firefoxcss-private-search-caret) !important;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .logo-and-wordmark .logo {
+      background-image: url("chrome://userchrome/content/icons/firefox-private.svg") !important;
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    .logo-and-wordmark .logo {
+      background-image: url("chrome://userchrome/content/icons/firefox-private-light.svg") !important;
+    }
   }
 
   .logo-and-wordmark .wordmark {

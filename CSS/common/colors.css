@@ -245,7 +245,7 @@
     --firefoxcss-shortcut-item-top-border: #ffffff26;
     --firefoxcss-shortcut-item-top-border-hover: #97979791;
     --firefoxcss-customize-menu: hsla(210, 10%, 20%, 0.3);
-    --firefoxcss-customize-menu-bg-image: url("chrome://userchrome/content/icons/other/noise-512x512.png");
+    --firefoxcss-customize-menu-bg-image: url("chrome://userchrome/content/texture/lightnoise.png");
     --firefoxcss-customize-menu-dropdown: #1e1e1e80;
     --firefoxcss-customize-menu-border: 1px solid rgba(255, 255, 255, 0.1);
     --newtab-background-color-secondary: var(

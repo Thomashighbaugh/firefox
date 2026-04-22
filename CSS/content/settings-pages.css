@@ -65,6 +65,8 @@
   html|html,
   body {
     background-color: #191919 !important;
+    background-image: var(--firefoxcss-customize-menu-bg-image) !important;
+    background-repeat: repeat !important;
   }
 
   .sticky-header {

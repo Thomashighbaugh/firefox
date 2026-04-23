@@ -307,6 +307,17 @@ hbox .titlebar-spacer,
   margin-block: 0 !important;
 }
 
+#unified-extensions-panel .panel-header,
+#unified-extensions-panel toolbarseparator,
+#unified-extensions-panel .unified-extensions-enable-message-deck,
+#unified-extensions-panel .panel-footer,
+#unified-extensions-panel #unified-extensions-empty-state,
+#unified-extensions-panel .unified-extensions-list,
+#unified-extensions-panel #unified-extensions-manage-extensions,
+#unified-extensions-panel #overflowed-extensions-list {
+  display: none !important;
+}
+
 /* Extensions panel 3x3 icon grid */
 #unified-extensions-panel .unified-extensions-area,
 #unified-extensions-view > vbox > vbox {

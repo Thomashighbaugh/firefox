@@ -25,13 +25,13 @@
 /* Vertical tabs background color with transparency preserved */
 #sb2-main,
 #vertical-tabs {
-  background-color: hsla(240, 2%, 13%, 0.85) !important;
+  background-color: var(--firefoxcss-main-bg-color) !important;
 }
 
 @media (prefers-color-scheme: light) {
   #sb2-main,
   #vertical-tabs {
-    background-color: hsla(200, 5%, 96%, 0.9) !important;
+    background-color: var(--firefoxcss-main-bg-color) !important;
   }
 }
 }

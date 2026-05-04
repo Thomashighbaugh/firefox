@@ -13,7 +13,7 @@
   }
 
   #tabbrowser-arrowscrollbox {
-    --toolbox-bgcolor: var(--firefoxcss-item-bg-color) !important;
+    --toolbox-bgcolor: var(--firesidebar-panelfoxcss-item-bg-color) !important;
   }
 }
 
@@ -22,6 +22,11 @@
   #sidebar-box {
     background-color: var(--firefoxcss-main-bg-color) !important;
     background-image: none !important;
+  }
+
+  .sidebar-panel {
+    background-color: var(--firefoxcss-main-bg-color) !important;
+    backdrop-filter: blur(12px) !important;
   }
 
   /* Remove the white line around the content window */

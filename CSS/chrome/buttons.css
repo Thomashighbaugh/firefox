@@ -23,7 +23,7 @@ toolbar .toolbarbutton-1 > .toolbarbutton-icon {
   transition: padding 83ms linear !important;
 }
 
-/* Default scale (80% size) */
+/* Default scale (full size) */
 .urlbar-input-container [role="button"] image,
 .tab-close-button,
 .tab-icon-image,
@@ -35,12 +35,12 @@ toolbar .toolbarbutton-1 > .toolbarbutton-icon,
 toolbar .toolbarbutton-1 > .toolbarbutton-badge-stack > .toolbarbutton-icon,
 .menuitem-iconic :is(.menu-iconic-icon, .menu-icon),
 .urlbar-icon {
-  transform: scale(0.8) !important;
+  transform: scale(1) !important;
 }
 
 /* Scroll button down is mirrored */
 toolbarbutton#scrollbutton-down > .toolbarbutton-icon {
-  transform: scale(-0.8) !important;
+  transform: scale(-1) !important;
 }
 
 toolbar .toolbarbutton-1 > .toolbarbutton-icon {
@@ -56,7 +56,10 @@ toolbar .toolbarbutton-1 > .toolbarbutton-icon {
 #downloads-button:not([disabled]):hover #downloads-indicator-icon,
 toolbarbutton#scrollbutton-up:not([disabled]):hover > .toolbarbutton-icon,
 toolbarbutton:not(.toolbarbutton-1):not([disabled]):hover > .toolbarbutton-icon,
-toolbar .toolbarbutton-1:not([disabled]):hover > .toolbarbutton-badge-stack > .toolbarbutton-icon,
+toolbar
+  .toolbarbutton-1:not([disabled]):hover
+  > .toolbarbutton-badge-stack
+  > .toolbarbutton-icon,
 .menuitem-iconic:not([disabled]):hover :is(.menu-iconic-icon, .menu-icon),
 .urlbar-page-action:hover > .urlbar-icon {
   transform: none !important;
@@ -70,7 +73,7 @@ toolbar .toolbarbutton-1:not([disabled]):hover > .toolbarbutton-icon {
   padding: var(--toolbarbutton-inner-padding) !important;
 }
 
-/* Active/pressed state - 60% size */
+/* Active/pressed state - 70% size */
 .urlbar-input-container [role="button"]:active image,
 .tab-close-button:active,
 .tab-icon-image:active,
@@ -78,14 +81,17 @@ toolbar .toolbarbutton-1:not([disabled]):hover > .toolbarbutton-icon {
 #downloads-button:active #downloads-indicator-icon,
 toolbarbutton#scrollbutton-up:active > .toolbarbutton-icon,
 toolbarbutton:not(.toolbarbutton-1):active > .toolbarbutton-icon,
-toolbar .toolbarbutton-1:not([disabled]):active > .toolbarbutton-badge-stack > .toolbarbutton-icon,
+toolbar
+  .toolbarbutton-1:not([disabled]):active
+  > .toolbarbutton-badge-stack
+  > .toolbarbutton-icon,
 .menuitem-iconic:active :is(.menu-iconic-icon, .menu-icon),
 .urlbar-page-action:active > .urlbar-icon {
-  transform: scale(0.6) !important;
+  transform: scale(0.7) !important;
 }
 
 toolbarbutton#scrollbutton-down:active > .toolbarbutton-icon {
-  transform: scale(-0.6) !important;
+  transform: scale(-0.7) !important;
 }
 
 toolbar .toolbarbutton-1:not([disabled]):active > .toolbarbutton-icon {
@@ -102,9 +108,8 @@ toolbar .toolbarbutton-1:not([disabled]):active > .toolbarbutton-icon {
   padding: calc(var(--tab-close-button-padding) + 2px) !important;
 }
 
-
-.more-options-button{
-    fill: 
+.more-options-button {
+  fill: hsla(240, 2%, 95%, 0.75) !important;
 }
 
 /*=====================================================================
@@ -135,12 +140,16 @@ toolbar
   box-shadow: inset 2px 2px 4px var(--firefoxcss-toolbar-button-box-shadow) !important;
 }
 
-/* ----- New tab icon size (36px). Not change the rest of calc --- */
+/* ----- New tab icon size. Not change the rest of calc --- */
 @media not -moz-pref("sidebar.verticalTabs") {
   #tabs-newtab-button .toolbarbutton-icon,
   #new-tab-button .toolbarbutton-icon {
-    width: calc(2 * var(--toolbarbutton-inner-padding) + 20px) !important;
-    height: calc(2 * var(--toolbarbutton-inner-padding) + 20px) !important;
+    width: calc(
+      2 * var(--toolbarbutton-inner-padding) + var(--toolbarbutton-icon-size)
+    ) !important;
+    height: calc(
+      2 * var(--toolbarbutton-inner-padding) + var(--toolbarbutton-icon-size)
+    ) !important;
   }
 }
 
@@ -231,8 +240,12 @@ toolbar
   border: 1px solid hsla(240, 2%, 05%, 0.75) !important;
   border-radius: var(--firefoxcss-border-radius) !important;
   box-shadow: inset 2px 2px 4px var(--firefoxcss-toolbar-button-box-shadow) !important;
-  width: calc(2 * var(--toolbarbutton-inner-padding) + 20px) !important;
-  height: calc(2 * var(--toolbarbutton-inner-padding) + 20px) !important;
+  width: calc(
+    2 * var(--toolbarbutton-inner-padding) + var(--toolbarbutton-icon-size)
+  ) !important;
+  height: calc(
+    2 * var(--toolbarbutton-inner-padding) + var(--toolbarbutton-icon-size)
+  ) !important;
   color: hsla(240, 2%, 95%, 0.75);
   fill: hsla(240, 2%, 95%, 0.75) !important;
   filter: var(--firefoxcss-private-browsing-drop-shadow) !important;
@@ -279,7 +292,7 @@ hbox .titlebar-spacer,
 ======================================================================*/
 
 #unified-extensions-view {
-  --uei-icon-size: 16px;
+  --uei-icon-size: 24px;
 }
 
 .unified-extensions-item-menu-button.subviewbutton {
@@ -337,7 +350,9 @@ hbox .titlebar-spacer,
   min-width: 48px !important;
 }
 
-#unified-extensions-panel .unified-extensions-item .unified-extensions-item-action-button {
+#unified-extensions-panel
+  .unified-extensions-item
+  .unified-extensions-item-action-button {
   flex-direction: column !important;
   align-items: center !important;
   padding: 0 !important;
@@ -348,7 +363,9 @@ hbox .titlebar-spacer,
   height: 24px !important;
 }
 
-#unified-extensions-panel .unified-extensions-item .unified-extensions-item-name {
+#unified-extensions-panel
+  .unified-extensions-item
+  .unified-extensions-item-name {
   display: none !important;
 }
 
@@ -359,6 +376,8 @@ hbox .titlebar-spacer,
   opacity: 0 !important;
 }
 
-#unified-extensions-panel .unified-extensions-item:hover .unified-extensions-item-menu-button {
+#unified-extensions-panel
+  .unified-extensions-item:hover
+  .unified-extensions-item-menu-button {
   opacity: 1 !important;
 }

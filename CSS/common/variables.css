@@ -27,6 +27,8 @@
   /* Toolbar Buttons */
   --toolbarbutton-outer-padding: 2px !important; /* Default: 2px */
   --toolbarbutton-inner-padding: 2px !important; /* Default: 8px */
+  --toolbarbutton-icon-size: 24px !important; /* Default: 16px */
+  --tab-icon-size: 24px !important; /* Default: 16px */
 
   /* Menu items */
   --arrowpanel-menuitem-padding-block: 2px !important; /* Default: 8px */

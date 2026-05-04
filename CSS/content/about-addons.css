@@ -18,6 +18,9 @@
   #main {
     max-width: unset !important;
   }
+  .list-section-heading {
+    width: 100% !important;
+  }
 
   addon-list,
   recommended-addon-list {
@@ -32,6 +35,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1em;
+    margin-right: var(--sidebar-width) !important;
   }
 
   addon-card {
@@ -39,14 +43,14 @@
     contain: none;
   }
   addon-list addon-card > .addon.card {
-    background-color: #222222 !important;
+    background-color: var(--firefoxcss-about-page-item-bg) !important;
   }
 
   addon-card .card-contents {
     width: unset;
     white-space: initial;
     padding: unset;
-    background-color: #222222 !important;
+    background-color: var(--firefoxcss-about-page-item-bg) !important;
   }
 
   addon-card .addon-name-link {
@@ -78,6 +82,16 @@
     grid-area: badge;
   }
 
+  .more-options-button {
+    fill: currentColor !important;
+    -moz-context-properties: fill !important;
+  }
+
+  .more-options-button image {
+    fill: currentColor !important;
+    -moz-context-properties: fill !important;
+  }
+
   addon-list[type="extension"] .more-options-button {
     margin-inline: 0;
     border-radius: var(--firefoxcss-border-radius) !important;
@@ -99,7 +113,7 @@
 
   addon-list[type="theme"] addon-card {
     margin-right: auto;
-    background-color: #222222 !important;
+    background-color: var(--firefoxcss-about-page-item-bg) !important;
   }
 
   addon-card:not([expanded]) .addon-badge-verified,
@@ -117,13 +131,15 @@
   .main-search,
   .sticky-container,
   .sticky-header {
-    background-color: #191919 !important;
+    background-color: var(--firefoxcss-about-page-bg) !important;
   }
   #page-header {
-    background-color: #191919 !important;
+    background-color: var(--firefoxcss-about-page-bg) !important;
   }
-  .card .addon {
-    background-color: #222222 !important;
+  .card .addon,
+  addon-details,
+  addon-details * {
+    background-color: var(--firefoxcss-about-page-item-bg) !important;
   }
 }
 

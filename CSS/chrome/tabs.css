@@ -254,7 +254,7 @@
       transition:
         transform 100ms ease-in-out,
         fill 100ms ease-in-out,
-        background-color 100ms ease-in-out;
+        background-color 800ms ease-in-out;
 
       &:hover {
         fill: var(--firefoxcss-tab-speaker-icon-color) !important;
@@ -520,7 +520,7 @@ tab-group[collapsed] > .tabbrowser-tab {
   mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0KICA8cmVjdCB4PSIwIiB5PSIwIiByeD0iNCIgc3Ryb2tlPSJyZWQiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIgdmVjdG9yLWVmZmVjdD0ibm9uLXNjYWxpbmctc3Ryb2tlIi8+DQo8L3N2Zz4=");
   background-size: cover;
   background-position: center;
-  animation: filter steps(30) 2s infinite;
+  animation: filter steps(90) 3s infinite;
 }
 
 .tab-background[selected] {

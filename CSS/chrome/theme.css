@@ -12,3 +12,46 @@
   outline: none !important;
   box-shadow: -1px 4px 2px #0000002e !important;
 }
+
+/*=====================================================================
+======================== A N I M A T I O N S ===========================
+=====================================================================*/
+
+:is(
+  .tab-background,
+  .toolbarbutton-icon,
+  .toolbarbutton-badge-stack,
+
+  .toolbarbutton-1,
+  .bookmark-item,
+
+  .download-state,
+
+  .urlbarView-row,
+  .urlbarView-action,
+  .searchbar-engine-one-off-item,
+  #urlbar-search-mode-indicator,
+
+  #tracking-protection-icon-container,
+  #page-action-buttons > *,
+  #identity-box > *,
+
+  toolbarbutton,
+  toolbaritem,
+  button,
+  menu, 
+  menuitem, 
+  tab
+
+):not(
+  #urlbar-container,
+  #personal-bookmarks
+
+) {
+  transition: all .15s ease !important;
+  &:is(tab){transition: scale .15s ease !important;}
+  &:is(
+    :active,
+    :not(tab)[open]
+  ) {scale: 0.95 !important;}
+}

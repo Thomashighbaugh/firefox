@@ -1,8 +1,8 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 @namespace html url("http://www.w3.org/1999/xhtml");
-
-/* Combined about: pages and settings pages styling */
-
+/* ╞══════════════════════════════════════════════════════════╡ */
+/*      Combined about: pages and settings pages styling        */
+/* ╞══════════════════════════════════════════════════════════╡ */
 @-moz-document url("about:about"),
   url("about:addons"),
   url("about:buildconfig"),
@@ -53,42 +53,53 @@
   html|html {
     --in-content-page-color: rgb(210, 210, 210) !important;
     --in-content-text-color: rgb(210, 210, 210) !important;
-    --in-content-page-background: #191919 !important;
-    --in-content-box-background: #222222 !important;
-    --in-content-table-background: #222222 !important;
+    --in-content-page-background: var(--firefoxcss-about-page-bg) !important;
+    --in-content-box-background: var(
+      --firefoxcss-about-page-item-bg
+    ) !important;
+    --background-color-box: var(--firefoxcss-about-page-item-bg) !important;
+    --in-content-table-background: var(
+      --firefoxcss-about-page-item-bg
+    ) !important;
     --in-content-deemphasized-text: var(--in-content-text-color) !important;
-    scrollbar-color: var(--in-content-text-color) var(--in-content-page-background) !important;
+    scrollbar-color: var(--in-content-text-color)
+      var(--in-content-page-background) !important;
     color: var(--in-content-text-color) !important;
   }
 
   html,
   html|html,
   body {
-    background-color: #191919 !important;
+    background-color: var(--firefoxcss-about-page-bg) !important;
     background-image: var(--firefoxcss-customize-menu-bg-image) !important;
     background-repeat: repeat !important;
   }
 
   .sticky-header {
-    background-color: #191919 !important;
+    background-color: var(--firefoxcss-about-page-bg) !important;
   }
 
   .card,
   addon-card,
   .card-section,
   section[aria-labelledby] {
-    background-color: #222222 !important;
+    background-color: var(--firefoxcss-about-page-item-bg) !important;
   }
 
-  h1, h2, h3, h4, h5, h6,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
   .heading,
   .header,
   [role="heading"] {
-    background-color: #191919 !important;
+    background-color: var(--firefoxcss-about-page-bg) !important;
   }
 
   #newtab-customize-overlay {
-    background-color: #191919 !important;
+    background-color: var(--firefoxcss-about-page-bg) !important;
   }
 
   menulist > menupopup {
@@ -118,7 +129,8 @@
 
 /* Get addons page */
 /* New addons manager doesn't use this anymore */
-@-moz-document url-prefix("https://discovery.addons.mozilla.org/") {
+@-moz-document url-prefix("https://discovery.addons.mozilla.org/")
+{
   html|* {
     color: inherit !important;
   }
@@ -132,3 +144,4 @@
     background-color: rgba(255, 255, 255, 0.1) !important;
   }
 }
+

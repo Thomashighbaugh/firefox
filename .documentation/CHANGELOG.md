@@ -10,7 +10,7 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
-- **2026-05-01 15:00** [CSS/Chrome] Added cross-cutting UI animations (0.15s ease transitions and 0.95 active scale) for tabs, toolbar buttons, bookmarks, urlbar, downloads, menus, and other interactive elements; removed Zen Browser-specific selectors
+- **2026-05-13 12:00** [CSS/Chrome] Vertical tabs alignment: set titlebar-spacer to width:0/display:none in layout.css and vertical-tabs.css; stripped all nav-bar padding-inline, margin-inline, --toolbarbutton-outer-padding, --toolbarbutton-inner-padding, and button margins; set --tab-block-margin:0; removed vertical tab container top gap; zeroed new-tab-button margins/padding for perfect flush alignment with sidebar
 - **2026-04-22 10:00** [CSS/Chrome] Hide mascot graphic, footer, separators and all non-extension content from unified extensions panel; keep only enabled extensions icon grid
 - **2026-04-21 18:15** [Resources/CSS] Replaced private browsing spill SVGs with wallpaper.png; consolidated wallpaper to resources/wallpaper/, noise texture to resources/texture/; applied noise texture to about: pages backgrounds; overrode Firefox branding logos with white-filled SVGs (dark/light variants); removed unused icon files with Firefox default equivalents
 - **2026-04-19 15:00** [CSS/Content] about:addons, about:preferences, about:config: applied base16 monokai pro spectrum colors (#191919 bg, #222222 cards), fixed addon-card backgrounds, heading backgrounds

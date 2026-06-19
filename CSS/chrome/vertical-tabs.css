@@ -8,12 +8,36 @@
   }
 
   #nav-bar .titlebar-spacer[type="post-tabs"] {
-    width: 20px !important;
-    display: initial !important;
+    width: 0 !important;
+    display: none !important;
   }
 
   #tabbrowser-arrowscrollbox {
     --toolbox-bgcolor: var(--firesidebar-panelfoxcss-item-bg-color) !important;
+  }
+
+  /* Give first nav-bar item 18px side margin for visual balance */
+  #nav-bar .toolbarbutton-1:first-child {
+    margin-inline-start: 10px !important;
+  }
+
+  #PanelUI-button,
+  #PanelUI-menu-button {
+    margin-left: 0 !important;
+    padding-inline-start: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  /* Collapsed vertical tabs: center favicons horizontally */
+  #tabbrowser-tabs[orient="vertical"]:not([expanded]) .tab-content {
+    justify-content: center !important;
+    padding-inline: 0 !important;
+  }
+  #tabbrowser-tabs[orient="vertical"]:not([expanded]) .tab-stack {
+    align-items: center !important;
+  }
+  #TabsToolbar:has(#tabbrowser-tabs[orient="vertical"]:not([expanded])) #tabs-newtab-button {
+    margin-inline: auto !important;
   }
 }
 

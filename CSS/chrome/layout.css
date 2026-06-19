@@ -95,6 +95,7 @@ Order of Toolbars
 #nav-bar .titlebar-spacer[type="pre-tabs"],
 #nav-bar .titlebar-spacer[type="post-tabs"] {
   width: 0 !important;
+  display: none !important;
 }
 
 /* Remove Line above search engine selection in search bar */

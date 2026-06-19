@@ -43,7 +43,11 @@ toolbarbutton#scrollbutton-down > .toolbarbutton-icon {
   transform: scale(-1) !important;
 }
 
-toolbar .toolbarbutton-1 > .toolbarbutton-icon {
+toolbar .toolbarbutton-1 > .toolbarbutton-icon,
+#downloads-button #downloads-indicator-icon,
+#tabbrowser-tabs[orient="vertical"] .tab-icon-image,
+#unified-extensions-area .toolbarbutton-1 > .toolbarbutton-icon,
+.unified-extensions-item-action-button > .toolbarbutton-icon {
   padding: calc(var(--toolbarbutton-inner-padding) + 2px) !important;
 }
 
@@ -69,7 +73,11 @@ toolbarbutton#scrollbutton-down:not([disabled]):hover > .toolbarbutton-icon {
   transform: scale(-1) !important;
 }
 
-toolbar .toolbarbutton-1:not([disabled]):hover > .toolbarbutton-icon {
+toolbar .toolbarbutton-1:not([disabled]):hover > .toolbarbutton-icon,
+#downloads-button:not([disabled]):hover #downloads-indicator-icon,
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab:hover .tab-icon-image,
+#unified-extensions-area .toolbarbutton-1:hover > .toolbarbutton-icon,
+.unified-extensions-item-action-button:hover > .toolbarbutton-icon {
   padding: var(--toolbarbutton-inner-padding) !important;
 }
 
@@ -233,6 +241,7 @@ toolbar
 }
 .button-background > img,
 .tab-icon-image,
+#downloads-button #downloads-indicator-icon,
 #downloads-indicator-progress-inner,
 .toolbarbutton-icon {
   box-sizing: border-box !important;
@@ -254,6 +263,7 @@ toolbar
 .button-background > img:hover,
 #TabsToolbar #firefox-view-button:hover:not([open]) > .toolbarbutton-icon,
 .tab-icon-image:hover,
+#downloads-button:hover #downloads-indicator-icon,
 #downloads-indicator-progress-inner:hover,
 .toolbarbutton-icon:hover {
   box-sizing: border-box !important;
@@ -264,6 +274,7 @@ toolbar
 #TabsToolbar #firefox-view-button:hover > .toolbarbutton-icon,
 #TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon,
 .tab-icon-image:active,
+#downloads-button:active #downloads-indicator-icon,
 #downloads-indicator-progress-inner:active,
 .toolbarbutton-icon:active {
   box-sizing: border-box !important;

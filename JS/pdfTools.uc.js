@@ -10,6 +10,8 @@
   if (!location.href.match(/\.pdf([?#].*)?$/)) return;
 
   // Wait for PDF.js to load
+  let pdfRetries = 0;
+  const pdfMaxRetries = 20;
   function runWhenReady() {
     const mainContainer = document.getElementById("mainContainer");
     const toolbar = document.getElementById("toolbarViewerRight");
@@ -19,7 +21,10 @@
       !window.PDFViewerApplication ||
       !window.PDFViewerApplication.pdfViewer
     ) {
-      setTimeout(runWhenReady, 500);
+      pdfRetries++;
+      if (pdfRetries < pdfMaxRetries) {
+        setTimeout(runWhenReady, 500);
+      }
       return;
     }
 

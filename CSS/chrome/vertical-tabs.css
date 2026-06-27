@@ -39,6 +39,27 @@
   #TabsToolbar:has(#tabbrowser-tabs[orient="vertical"]:not([expanded])) #tabs-newtab-button {
     margin-inline: auto !important;
   }
+
+  /* Vertical tabs hover: remove default border, use shadow to "pop out" instead */
+  #tabbrowser-tabs[orient="vertical"] .tabbrowser-tab:hover > .tab-stack > .tab-background {
+    border: none !important;
+    outline: none !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+  }
+
+  /* Selected tab hover: keep the pop-out shadow but no border */
+  #tabbrowser-tabs[orient="vertical"] .tabbrowser-tab:hover > .tab-stack > .tab-background[selected] {
+    border: none !important;
+    outline: none !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  /* Prevent the rainbow conic-gradient on .tab-icon-stack from stretching when sidebar expands */
+  #tabbrowser-tabs[orient="vertical"] .tabbrowser-tab[selected] .tab-icon-stack {
+    width: min-content !important;
+    flex-shrink: 0 !important;
+    animation: filter steps(30) 2s infinite;
+  }
 }
 
 @media -moz-pref("sidebar.revamp") {

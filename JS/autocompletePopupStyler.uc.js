@@ -36,12 +36,14 @@
     }
   }
 
-  if (gBrowserInit.delayedStartupFinished) new AutocompletePopupStyler();
-  else {
+  let styler;
+  if (gBrowserInit.delayedStartupFinished) {
+    styler = new AutocompletePopupStyler();
+  } else {
     let delayedListener = (subject, topic) => {
       if (topic == "browser-delayed-startup-finished" && subject == window) {
         Services.obs.removeObserver(delayedListener, topic);
-        new AutocompletePopupStyler();
+        styler = new AutocompletePopupStyler();
       }
     };
     Services.obs.addObserver(
@@ -49,4 +51,11 @@
       "browser-delayed-startup-finished",
     );
   }
+
+  window.addEventListener("unload", () => {
+    if (styler) {
+      const popup = document.getElementById("PopupAutoComplete");
+      if (popup) popup.removeEventListener("popupshowing", styler);
+    }
+  }, { once: true });
 })();

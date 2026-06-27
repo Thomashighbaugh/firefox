@@ -10,6 +10,7 @@ import { SidebarElements } from "../sidebar_elements.mjs";
 
 export class SidebarMover {
   constructor() {
+    this.ro = null;
     this.#setupListeners();
     setTimeout(() => this.#setupResizeObserver(), 1000);
   }
@@ -19,6 +20,13 @@ export class SidebarMover {
       SidebarElements.sidebarBoxArea.updatePosition();
     });
     this.ro.observe(BrowserElements.tabbrowserTabbox.element);
+  }
+
+  destroy() {
+    if (this.ro) {
+      this.ro.disconnect();
+      this.ro = null;
+    }
   }
 
   #setupListeners() {

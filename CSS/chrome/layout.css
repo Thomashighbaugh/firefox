@@ -106,7 +106,12 @@ Order of Toolbars
 .private-browsing-indicator-with-label,
 .private-browsing-indicator,
 /* Hide permission icons, see it when pressing permission button */
-#blocked-permissions-container {
+#blocked-permissions-container,
+/* Hide all titlebar elements — window manager handles titlebar and buttons */
+#titlebar,
+.titlebar-buttonbox-container,
+.titlebar-buttonbox,
+.titlebar-button {
   display: none !important;
 }
 

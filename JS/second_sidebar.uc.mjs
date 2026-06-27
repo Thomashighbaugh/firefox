@@ -20,8 +20,14 @@ const run = () => {
   }
 };
 
+const cleanup = () => {
+  SidebarControllers.destroy();
+};
+
 if (typeof UC_API !== "undefined") {
   UC_API.Runtime.startupFinished().then(run);
 } else {
   delayedStartupPromise.then(run);
 }
+
+window.addEventListener("unload", cleanup, { once: true });

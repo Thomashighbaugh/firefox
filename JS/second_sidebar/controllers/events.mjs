@@ -98,9 +98,9 @@ export const sendEvents = (type, detail = {}) => {
  * @param {string} type
  * @param {function(Event):void} callback
  */
+const _eventWindow = new WindowWrapper();
 export const listenEvent = (type, callback) => {
-  new WindowWrapper().addEventListener(type, (event) => {
-    console.log(`Got event ${event.type}:`, event.detail);
+  _eventWindow.addEventListener(type, (event) => {
     callback(event);
   });
 };

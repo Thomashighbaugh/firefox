@@ -17,7 +17,10 @@ export class SidebarMainCollapser {
     this.lastOpenedWebPanel = null;
     this.showSidebarTimer = null;
     this.hideSidebarTimer = null;
+    this._hasOpenButtons = false;
+    this._openButtonObserver = null;
     this.#setupListeners();
+    this.#setupOpenButtonObserver();
   }
 
   #setupListeners() {
@@ -42,6 +45,19 @@ export class SidebarMainCollapser {
       if (autoHideSidebar && autoHideSidebarBehavior === "overlay") {
         SidebarElements.sidebarMain.setAttribute("overlay", true);
       }
+    });
+  }
+
+  #setupOpenButtonObserver() {
+    this._openButtonObserver = new MutationObserver(() => {
+      this._hasOpenButtons = SidebarElements.sidebarMain.querySelectorAll(
+        "toolbarbutton:not(.sb2-main-web-panel-button)[open]",
+      ).length > 0;
+    });
+    this._openButtonObserver.observe(SidebarElements.sidebarMain.element, {
+      attributes: true,
+      attributeFilter: ["open"],
+      subtree: true,
     });
   }
 
@@ -114,7 +130,7 @@ export class SidebarMainCollapser {
    * @param {MouseEvent} event
    */
   handleEvent(event) {
-    const window = new WindowWrapper();
+    const window = this.window;
     if (
       (!window.fullScreen &&
         !SidebarControllers.sidebarController.autoHideSidebar) ||
@@ -123,10 +139,7 @@ export class SidebarMainCollapser {
       return;
     }
 
-    const openedButtons = SidebarElements.sidebarMain.querySelectorAll(
-      "toolbarbutton:not(.sb2-main-web-panel-button)[open]",
-    );
-    if (openedButtons.length > 0) {
+    if (this._hasOpenButtons) {
       return;
     }
 
@@ -150,8 +163,7 @@ export class SidebarMainCollapser {
     const isLeft = position === "left";
     const isRight = position === "right";
     const collapsed = this.collapsed();
-    const root = new XULElement({ element: window.document.documentElement });
-    const rootRect = root.getBoundingClientRect();
+    const rootRect = window.document.documentElement.getBoundingClientRect();
     const sidebarRect = SidebarElements.sidebarMain.getBoundingClientRect();
     const leftEdge = window.mozInnerScreenX;
     const rightEdge = leftEdge + rootRect.width;
@@ -191,14 +203,14 @@ export class SidebarMainCollapser {
    * @param {MouseEvent} event
    */
   isEventInsidePanel(event) {
-    const target = new XULElement({ element: event.target });
+    const el = event.target;
     return (
-      SidebarElements.sidebarMainMenuPopup.contains(target) ||
-      SidebarElements.sidebarMainPopupSettings.contains(target) ||
-      SidebarElements.webPanelMenuPopup.contains(target) ||
-      SidebarElements.webPanelPopupNew.contains(target) ||
-      SidebarElements.webPanelPopupEdit.contains(target) ||
-      SidebarElements.webPanelPopupDelete.contains(target)
+      SidebarElements.sidebarMainMenuPopup.element.contains(el) ||
+      SidebarElements.sidebarMainPopupSettings.element.contains(el) ||
+      SidebarElements.webPanelMenuPopup.element.contains(el) ||
+      SidebarElements.webPanelPopupNew.element.contains(el) ||
+      SidebarElements.webPanelPopupEdit.element.contains(el) ||
+      SidebarElements.webPanelPopupDelete.element.contains(el)
     );
   }
 
@@ -207,8 +219,7 @@ export class SidebarMainCollapser {
    * @param {MouseEvent} event
    */
   isEventInsideSidebarMain(event) {
-    const target = new XULElement({ element: event.target });
-    return SidebarElements.sidebarMain.contains(target);
+    return SidebarElements.sidebarMain.element.contains(event.target);
   }
 
   /**
@@ -284,5 +295,22 @@ export class SidebarMainCollapser {
         this.showSidebarTimer = null;
       }, delay);
     }
+  }
+
+  destroy() {
+    BrowserElements.root.removeEventListener("click", this);
+    BrowserElements.root.removeEventListener("mousemove", this);
+    BrowserElements.root.removeEventListener("dragover", this);
+    BrowserElements.root.removeEventListener("dragleave", this);
+    BrowserElements.root.removeEventListener("drop", this);
+    BrowserElements.root.removeEventListener("mouseleave", this);
+    if (this._openButtonObserver) {
+      this._openButtonObserver.disconnect();
+      this._openButtonObserver = null;
+    }
+    clearTimeout(this.showSidebarTimer);
+    clearTimeout(this.hideSidebarTimer);
+    this.showSidebarTimer = null;
+    this.hideSidebarTimer = null;
   }
 }

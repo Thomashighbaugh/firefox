@@ -17,13 +17,14 @@ export class CollapseController {
     // controllers
     this.sidebarMainController = SidebarControllers.sidebarMainController;
     this.sidebarController = SidebarControllers.sidebarController;
+    this.window = new WindowWrapper();
 
     this.#setupListeners();
   }
 
   #setupListeners() {
-    const window = new WindowWrapper();
-    const root = new XULElement({ element: window.document.documentElement });
+    const window = this.window;
+    const root = window.document.documentElement;
 
     root.addEventListener("mousemove", this);
 
@@ -92,13 +93,12 @@ export class CollapseController {
    * @param {MouseEvent} event
    */
   handleEvent(event) {
-    const window = new WindowWrapper();
+    const window = this.window;
     if (!window.fullScreen && !this.sidebarController.autoHideSidebar) {
       return;
     }
     const position = this.sidebarController.getPosition();
-    const root = new XULElement({ element: window.document.documentElement });
-    const rootRect = root.getBoundingClientRect();
+    const rootRect = window.document.documentElement.getBoundingClientRect();
     const sidebarRect = this.sidebarMain.getBoundingClientRect();
     const leftEdge = window.mozInnerScreenX;
     const rightEdge = leftEdge + rootRect.width;
@@ -148,5 +148,10 @@ export class CollapseController {
     this.shouldAnimate(animate);
     this.fullScreenShouldAnimate(fullScreenAnimate);
     this.sidebarMainController.uncollapse();
+  }
+
+  destroy() {
+    const root = this.window.document.documentElement;
+    root.removeEventListener("mousemove", this);
   }
 }

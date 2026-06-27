@@ -511,3 +511,17 @@ if (
   };
   Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
 }
+
+window.addEventListener("unload", () => {
+  const menu = window.unloadedTabMenu;
+  if (!menu) return;
+  const placesCtx = document.getElementById("placesContext");
+  const contentCtx = document.getElementById("contentAreaContextMenu");
+  const syncedCtx = document.getElementById("SyncedTabsSidebarContext");
+  if (placesCtx) placesCtx.removeEventListener("popupshowing", menu);
+  if (contentCtx) {
+    contentCtx.removeEventListener("popupshowing", menu);
+    contentCtx.removeEventListener("popuphidden", menu);
+  }
+  if (syncedCtx) syncedCtx.removeEventListener("popupshowing", menu);
+}, { once: true });

@@ -59,7 +59,14 @@ var RestartMenuFileAppItems = {
 
 	AMObserver.observe(document.querySelector("#PanelUI-menu-button"), { attributes: true, attributeFilter: ['open'] });
 
-	  
+	window.addEventListener("unload", () => {
+	  AMObserver.disconnect();
+	  const fileItem = document.getElementById("fileMenu-restart-item");
+	  if (fileItem) fileItem.remove();
+	  const appItem = document.getElementById("appMenu-restart-button");
+	  if (appItem) appItem.remove();
+	}, { once: true });
+
 	} catch(e) {}
 
 	var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"].getService(Components.interfaces.nsIStyleSheetService);

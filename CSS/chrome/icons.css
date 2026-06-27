@@ -261,6 +261,61 @@
 }
 
 /*=====================================================================
+============= T A B   C O N T E X T   N A V I G A T I O N ==============
+======================================================================*/
+
+/* Tab context menu navigation icons (back, forward, reload, bookmark).
+   We hide the native .menu-iconic-icon (which can't display chrome://
+   SVGs reliably) and use ::before pseudo-elements styled to match the
+   content context menu's .menu-iconic-icon exactly:
+     width/height: auto  — SVG intrinsic size (16×16)
+     padding: 7px        — matches Firefox's #context-navigation > ... > .menu-iconic-icon
+     margin: 0
+   Items use flex: 1 and center their ::before children (from the JS
+   script's inline CSS), replicating the content nav layout. */
+
+#tab-context-navigation > menuitem::before {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: auto;
+  height: auto;
+  padding: 7px;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  background: transparent;
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+#tab-context-back::before {
+  content: url("chrome://browser/skin/back.svg");
+}
+#tab-context-forward::before {
+  content: url("chrome://browser/skin/forward.svg");
+}
+#tab-context-reload::before {
+  content: url("chrome://global/skin/icons/reload.svg");
+}
+#tab-context-bookmark::before {
+  content: url("chrome://browser/skin/bookmark-hollow.svg");
+}
+
+#tab-context-back:-moz-locale-dir(rtl),
+#tab-context-forward:-moz-locale-dir(rtl),
+#tab-context-reload:-moz-locale-dir(rtl) {
+  transform: scaleX(-1);
+}
+
+#tab-context-back[disabled="true"]::before,
+#tab-context-forward[disabled="true"]::before,
+#tab-context-reload[disabled="true"]::before {
+  opacity: 0.5 !important;
+}
+
+/*=====================================================================
 ===================== A P P   M E N U   I C O N S ======================
 ======================================================================*/
 

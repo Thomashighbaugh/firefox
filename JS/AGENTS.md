@@ -1,6 +1,6 @@
 # AGENTS.md - Root-Level UserChrome.js Scripts
 
-**Context:** 15 standalone .uc.js scripts, each adding specific Firefox enhancements.
+**Context:** 16 standalone .uc.js scripts, each adding specific Firefox enhancements.
 
 ## OVERVIEW
 Standalone UserChrome.js scripts loaded by fx-autoconfig. Each script is self-contained and adds one feature (statusbar, restart button, PDF tools, etc.).
@@ -24,6 +24,7 @@ Standalone UserChrome.js scripts loaded by fx-autoconfig. Each script is self-co
 | **Styling** | `autocompletePopupStyler.uc.js` | Style autocomplete popup |
 | | `tooltipShadowSupport.uc.js` | Tooltip shadow effects |
 | | `sidebarWidth.uc.js` | Sidebar width management |
+| **Developer Tools** | `AboutConfigMultipleSelection.uc.js` | Multi-select + copy as user_pref() on about:config |
 
 ## CONVENTIONS
 
@@ -35,8 +36,10 @@ Two header formats used:
 
 ### Script Structure
 - IIFE pattern: Most scripts wrap in `(function() { ... })()` for isolation
+- Namespace pattern: Scripts expose a single namespace on `window` (e.g. `window.sidebarWidth`, `window.AboutConfigMultiSelect`)
+- Unload cleanup: All scripts include `window.addEventListener("unload", ...)` to remove listeners, timers, and DOM nodes
 - CustomizableUI widgets: Toolbar buttons via `CustomizableUI.createWidget()`
-- Event listeners: Attached to browser windows or specific elements
+- Event listeners: Attached to browser windows or specific elements; stored references for later removal
 - Firefox APIs: Direct access to Components, Services, ChromeUtils
 
 ### Loading

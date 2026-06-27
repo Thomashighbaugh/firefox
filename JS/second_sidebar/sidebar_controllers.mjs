@@ -36,4 +36,13 @@ export class SidebarControllers {
     this.webPanelDeleteController = new WebPanelDeleteController();
     this.contextMenuItemsController = new ContextMenuItemsController();
   }
+
+  static destroy() {
+    for (const key of Object.getOwnPropertyNames(this)) {
+      const ctrl = this[key];
+      if (ctrl && typeof ctrl.destroy === "function") {
+        ctrl.destroy();
+      }
+    }
+  }
 }

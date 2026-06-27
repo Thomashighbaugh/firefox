@@ -48,7 +48,7 @@
   #personal-bookmarks
 
 ) {
-  transition: all .15s ease !important;
+  transition: background-color .15s ease, opacity .15s ease, box-shadow .15s ease, scale .15s ease !important;
   &:is(tab){transition: scale .15s ease !important;}
   &:is(
     :active,

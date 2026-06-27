@@ -68,7 +68,6 @@ class TabContextMenuNavigation {
     this.contextBack = this.contextNavigation.appendChild(
       this.create(document, "menuitem", {
         id: "tab-context-back",
-        class: "menuitem-iconic",
         tooltiptext: l10n["Go Back (Single Tab)"],
         accesskey: l10n["Go Back Access Key"],
         oncommand: `tabContextMenuNavigation.goBack()`,
@@ -77,7 +76,6 @@ class TabContextMenuNavigation {
     this.contextForward = this.contextNavigation.appendChild(
       this.create(document, "menuitem", {
         id: "tab-context-forward",
-        class: "menuitem-iconic",
         tooltiptext: l10n["Go Forward (Single Tab)"],
         accesskey: l10n["Go Forward Access Key"],
         oncommand: `tabContextMenuNavigation.goForward()`,
@@ -86,7 +84,6 @@ class TabContextMenuNavigation {
     this.contextReload = this.contextNavigation.appendChild(
       this.create(document, "menuitem", {
         id: "tab-context-reload",
-        class: "menuitem-iconic",
         tooltiptext: l10n["Reload (Single Tab)"],
         accesskey: l10n["Reload Access Key"],
         oncommand: `tabContextMenuNavigation.reload()`,
@@ -95,7 +92,6 @@ class TabContextMenuNavigation {
     this.contextBookmark = this.contextNavigation.appendChild(
       this.create(document, "menuitem", {
         id: "tab-context-bookmark",
-        class: "menuitem-iconic",
         tooltiptext: l10n["Bookmark (Single Tab)"],
         accesskey: l10n["Bookmark Access Key"],
         oncommand: `tabContextMenuNavigation.bookmark()`,
@@ -207,7 +203,7 @@ class TabContextMenuNavigation {
     // loading it from a chrome:// url. this restricts us in some ways but it
     // doesn't matter since these elements only appear in one place.
     let style = document.createElement("style");
-    style.textContent = `#tab-context-navigation>.menuitem-iconic>.menu-iconic-text,#tab-context-navigation>.menuitem-iconic>.menu-accel-container{display:none;}#tab-context-navigation>.menuitem-iconic{-moz-box-flex:1;-moz-box-pack:center;-moz-box-align:center;}#tab-context-navigation>.menuitem-iconic>.menu-iconic-left{appearance:none;}#tab-context-navigation>.menuitem-iconic>.menu-iconic-left>.menu-iconic-icon{width:1.25em;height:auto;margin:7px;-moz-context-properties:fill;fill:currentColor;}#tab-context-back{list-style-image:url("chrome://browser/skin/back.svg");}#tab-context-forward{list-style-image:url("chrome://browser/skin/forward.svg");}#tab-context-reload{list-style-image:url("chrome://global/skin/icons/reload.svg");}#tab-context-bookmark{list-style-image:url("chrome://browser/skin/bookmark-hollow.svg");}#tab-context-back:-moz-locale-dir(rtl),#tab-context-forward:-moz-locale-dir(rtl),#tab-context-reload:-moz-locale-dir(rtl){transform:scaleX(-1);}#contentAreaContextMenu[touchmode]>#tab-context-navigation>menuitem{padding-block:7px;}#tab-context-navigation{background-color:menu;padding-bottom:4px;}#tab-context-sep-navigation{margin-inline-start:-28px;margin-top:-4px;}@media (-moz-windows-non-native-menus){#tab-context-navigation:not([hidden]){background-color:inherit;padding:0 0 4px;display:flex;flex-direction:row;--menuitem-min-width:calc(2em + 16px);min-width:calc(4 * var(--menuitem-min-width))}#tab-context-navigation>.menuitem-iconic{flex:1 0 auto}#tab-context-navigation>.menuitem-iconic[_moz-menuactive="true"]{background-color:transparent}#tab-context-navigation>.menuitem-iconic>.menu-iconic-left{margin:0;padding:0}#tab-context-navigation>.menuitem-iconic>.menu-iconic-left>.menu-iconic-icon{width:var(--menuitem-min-width);height:32px;padding:8px 1em;margin:0}#tab-context-navigation>.menuitem-iconic[_moz-menuactive="true"]:not([disabled="true"])>.menu-iconic-left>.menu-iconic-icon{background-color:var(--menuitem-hover-background-color)}#tab-context-navigation>.menuitem-iconic[_moz-menuactive="true"][disabled="true"]>.menu-iconic-left>.menu-iconic-icon{background-color:var(--menuitem-disabled-hover-background-color)}#tab-context-navigation>.menuitem-iconic:first-child{-moz-box-pack:start}#tab-context-navigation>.menuitem-iconic:last-child{-moz-box-pack:end}#tab-context-navigation>.menuitem-iconic:last-child,#tab-context-navigation>.menuitem-iconic:first-child{flex-grow:0;width:calc(var(--menuitem-min-width) + calc(100% - 4 * var(--menuitem-min-width)) / 6)}#tab-context-sep-navigation{margin-top:0;margin-inline:0}}:root[operatingsystem="linux"] #tab-context-navigation>.menuitem-iconic>.menu-iconic-left{padding-inline-end:0!important;margin-inline-end:0!important;}#context_reloadTab,#context_reloadSelectedTabs,#context_bookmarkTab,#context_bookmarkSelectedTabs{display:none!important;}`;
+    style.textContent = `#tab-context-navigation>menuitem{flex:1;-moz-appearance:none;}#tab-context-back:-moz-locale-dir(rtl),#tab-context-forward:-moz-locale-dir(rtl),#tab-context-reload:-moz-locale-dir(rtl){transform:scaleX(-1);}#contentAreaContextMenu[touchmode]>#tab-context-navigation>menuitem{padding-block:7px;}#tab-context-navigation{display:flex;flex-direction:row;background-color:menu;-moz-appearance:none;}#tab-context-sep-navigation{margin-inline-start:-28px;margin-top:-4px;}@media (-moz-windows-non-native-menus){#tab-context-navigation:not([hidden]){background-color:inherit;padding:0 0 4px;display:flex;flex-direction:row;--menuitem-min-width:calc(2em + 16px);min-width:calc(4 * var(--menuitem-min-width))}#tab-context-navigation>.menuitem-iconic{flex:1 0 auto}#tab-context-navigation>.menuitem-iconic[_moz-menuactive="true"]{background-color:transparent}#tab-context-navigation>.menuitem-iconic>.menu-iconic-left{margin:0;padding:0}#tab-context-navigation>.menuitem-iconic>.menu-iconic-left>.menu-iconic-icon{width:var(--menuitem-min-width);height:32px;padding:8px 1em;margin:0}#tab-context-navigation>.menuitem-iconic[_moz-menuactive="true"]:not([disabled="true"])>.menu-iconic-left>.menu-iconic-icon{background-color:var(--menuitem-hover-background-color)}#tab-context-navigation>.menuitem-iconic[_moz-menuactive="true"][disabled="true"]>.menu-iconic-left>.menu-iconic-icon{background-color:var(--menuitem-disabled-hover-background-color)}#tab-context-navigation>.menuitem-iconic:first-child{-moz-box-pack:start}#tab-context-navigation>.menuitem-iconic:last-child{-moz-box-pack:end}#tab-context-navigation>.menuitem-iconic:last-child,#tab-context-navigation>.menuitem-iconic:first-child{flex-grow:0;width:calc(var(--menuitem-min-width) + calc(100% - 4 * var(--menuitem-min-width)) / 6)}#tab-context-sep-navigation{margin-top:0;margin-inline:0}}:root[operatingsystem="linux"] #tab-context-navigation>.menuitem-iconic>.menu-iconic-left{padding-inline-end:0!important;margin-inline-end:0!important;}#context_reloadTab,#context_reloadSelectedTabs,#context_bookmarkTab,#context_bookmarkSelectedTabs{display:none!important;}`;
     document.head.appendChild(style);
   }
   get tabContext() {
@@ -232,3 +228,10 @@ if (gBrowserInit.delayedStartupFinished) {
   };
   Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
 }
+
+window.addEventListener("unload", () => {
+  const menu = document.getElementById("tabContextMenu");
+  if (menu && window.tabContextMenuNavigation) {
+    menu.removeEventListener("popupshowing", window.tabContextMenuNavigation);
+  }
+}, { once: true });

@@ -71,4 +71,10 @@ export class SidebarToolbarCollapser {
     clearTimeout(this.hideToolbarTimer);
     this.hideToolbarTimer = null;
   }
+
+  destroy() {
+    BrowserElements.root.removeEventListener("mousemove", this);
+    BrowserElements.root.removeEventListener("mousedown", this);
+    this.clearTimers();
+  }
 }

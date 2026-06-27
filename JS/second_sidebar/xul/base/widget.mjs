@@ -276,8 +276,17 @@ export class Widget {
    * @returns {Widget}
    */
   doWhenButtonReady(callback) {
+    let retries = 0;
+    const maxRetries = 50;
     const interval = setInterval(() => {
-      if (!this.button) return;
+      if (!this.button) {
+        retries++;
+        if (retries >= maxRetries) {
+          clearInterval(interval);
+          console.warn(`Widget ${this.id}: button never became ready after ${maxRetries} attempts`);
+        }
+        return;
+      }
       clearInterval(interval);
       callback();
     }, 100);
@@ -290,8 +299,17 @@ export class Widget {
    * @returns {Widget}
    */
   doWhenButtonImageReady(callback) {
+    let retries = 0;
+    const maxRetries = 50;
     const interval = setInterval(() => {
-      if (!this.button.getImageXUL()) return;
+      if (!this.button.getImageXUL()) {
+        retries++;
+        if (retries >= maxRetries) {
+          clearInterval(interval);
+          console.warn(`Widget ${this.id}: button image never became ready after ${maxRetries} attempts`);
+        }
+        return;
+      }
       clearInterval(interval);
       callback();
     }, 100);

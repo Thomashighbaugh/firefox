@@ -29,8 +29,7 @@
     let lower_level = threshold;   // base for tracking falling memory
 
     const Mgr = Cc["@mozilla.org/memory-reporter-manager;1"].getService(Ci.nsIMemoryReporterManager);
-    let timer_poll;     // persistent variable so nsITimer doesn't disappear
-    let timer_cooldown; // take time for RAM to stabilize after minimizing
+    const timers = new Map();
 
     function roundToNearest(number, increment) {
         if (increment === 0) return number;
@@ -38,24 +37,25 @@
         return Math.round(number / increment) * increment;
     }
 
-    function setTimeout(callback, ms, varname) {
-        setTimer(callback, ms, Ci.nsITimer.TYPE_ONE_SHOT, varname);
+    function setTimeout(callback, ms, name) {
+        const timer = Cc["@mozilla.org/timer;1"].createInstance(Ci.nsITimer);
+        timer.initWithCallback({notify: callback}, ms, Ci.nsITimer.TYPE_ONE_SHOT);
+        timers.set(name, timer);
     }
 
-    function setInterval(callback, ms, varname) {
-        setTimer(callback, ms, Ci.nsITimer.TYPE_REPEATING_SLACK, varname);
+    function setInterval(callback, ms, name) {
+        const timer = Cc["@mozilla.org/timer;1"].createInstance(Ci.nsITimer);
+        timer.initWithCallback({notify: callback}, ms, Ci.nsITimer.TYPE_REPEATING_SLACK);
+        timers.set(name, timer);
     }
 
-    function setTimer(callback, ms, type, varname) {
-        eval(
-            `${varname} = Cc['@mozilla.org/timer;1'].createInstance(Ci.nsITimer);
-            ${varname}.initWithCallback({notify: callback}, ms, type);`
-        );
+    function clearTimer(name) {
+        const timer = timers.get(name);
+        if (timer) {
+            timer.cancel();
+            timers.delete(name);
+        }
     }
-
-    // function clearTimer(timer) {
-    //     timer.cancel();
-    // }
 
     async function doMMU() {
         if (debug_beep) doBeep();

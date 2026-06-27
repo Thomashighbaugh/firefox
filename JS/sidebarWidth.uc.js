@@ -48,9 +48,11 @@
      */
     addEventListeners() {
       // Save width when sidebar is resized
-      SidebarController._box.addEventListener("resize", () => this.saveWidth());
+      this._onResize = () => this.saveWidth();
+      SidebarController._box.addEventListener("resize", this._onResize);
       // Restore width when a sidebar is shown
-      addEventListener("SidebarShown", () => this.restoreWidth());
+      this._onShown = () => this.restoreWidth();
+      addEventListener("SidebarShown", this._onShown);
     }
 
     /**
@@ -90,11 +92,26 @@
   }
 
   // Wait for the browser DOM to be ready before initializing SidebarWidth
-  var interval = setInterval(() => {
+  function initWhenReady() {
     if (document.querySelector("#browser")) {
       window.sidebarWidth = new SidebarWidth();
-      clearInterval(interval);
+    } else {
+      requestAnimationFrame(initWhenReady);
     }
-  }, TIMEOUT);
+  }
+
+  if (document.readyState === "complete" || document.readyState === "interactive") {
+    initWhenReady();
+  } else {
+    document.addEventListener("DOMContentLoaded", initWhenReady, { once: true });
+  }
+
+  window.addEventListener("unload", () => {
+    const sw = window.sidebarWidth;
+    if (sw) {
+      SidebarController._box.removeEventListener("resize", sw._onResize);
+      removeEventListener("SidebarShown", sw._onShown);
+    }
+  }, { once: true });
 })();
 

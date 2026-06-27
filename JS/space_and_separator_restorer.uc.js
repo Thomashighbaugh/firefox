@@ -1,21 +1,8 @@
 /* Restore 'Space & Separator' items script for Firefox 102+ by Aris
-
-  Default browser scripts always remove spaces and separators from default palette, so
-  because of that they are added to an own toolbar now.
-
-   - spaces and separators can be moved to any toolbar
-   - to remove spaces or separators move them into palette
-   - configuration toolbar behaves like a default toolbar, items and buttons can be placed on it
-   - configuration toolbar is not visible outside customizing mode
-   - default "Flexible Space" item is hidden from palette and added to configuration toolbar
-   [!] BUG: do not move spaces, flexible spaces or separator to configuration toolbar or it will cause glitches
-   [!] BUG: do not move main 'space'-item to palette or it will be hidden until customizing mode gets reopened
-
-   [!] Fix for WebExtensions with own windows by 黒仪大螃蟹 (for 1-N scripts)
+...
 */
-
-ChromeUtils.importESModule("resource:///modules/CustomizableUI.sys.mjs");
-var appversion = parseInt(Services.appinfo.version);
+// Use window.CustomizableUI (always available) instead of importing separately
+var CUI = window.CustomizableUI;
 
 var AddSeparator = {
   init: function() {
@@ -49,8 +36,8 @@ var AddSeparator = {
 	  
 	  document.querySelector('#navigator-toolbox').appendChild(tb_config);
 	  
-	  CustomizableUI.registerArea("configuration_toolbar", {legacy: true});
-	  CustomizableUI.registerToolbarNode(tb_config);
+	  CUI.registerArea("configuration_toolbar", {legacy: true});
+	  CUI.registerToolbarNode(tb_config);
 	  
 	  var tb_label = document.createXULElement("label");
 	  tb_label.setAttribute("label", tb_config_label+": ");

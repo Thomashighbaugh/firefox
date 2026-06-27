@@ -10,6 +10,7 @@ const { AboutNewTab } = ChromeUtils.importESModule(
   "resource:///modules/AboutNewTab.sys.mjs",
 );
 
+var UC = window.UC || {};
 UC.NewTabAboutConfig = {
   NEW_TAB_CONFIG_PATH: "browser.newtab.url",
   init: function () {

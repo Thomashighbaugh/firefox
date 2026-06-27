@@ -9,18 +9,28 @@
  * @property {function(Window):WidgetInstance} forWindow
  */
 
+/**
+ * @typedef {Object} WidgetInstance
+ * @property {HTMLElement} node
+ */
+
+/**
+ * @typedef {Object} Widget
+ * @property {Array<WidgetInstance>} instances
+ * @property {function(Window):WidgetInstance} forWindow
+ */
+
 export class CustomizableUIWrapper {
   static TYPE_TOOLBAR = "toolbar";
   static TYPE_PANEL = "panel";
 
-  /**
-   * @param {string} id
-   * @param {object} properties
-   * @param {string} properties.type
-   * @param {boolean} properties.defaultCollapsed
-   * @param {boolean} properties.overflowable
-   * @param {Array<string>} properties.defaultPlacements
-   */
+  static get #CUI() {
+    try {
+      if (typeof CustomizableUI !== "undefined") return CustomizableUI;
+      return null;
+    } catch { return null; }
+  }
+
   static registerArea(
     id,
     {
@@ -30,7 +40,8 @@ export class CustomizableUIWrapper {
       defaultPlacements = [],
     } = {},
   ) {
-    CustomizableUI.registerArea(id, {
+    if (!this.#CUI) return;
+    this.#CUI.registerArea(id, {
       type,
       defaultCollapsed,
       overflowable,
@@ -43,7 +54,8 @@ export class CustomizableUIWrapper {
    * @param {HTMLElement} node
    */
   static registerToolbarNode(node) {
-    CustomizableUI.registerToolbarNode(node);
+    if (!this.#CUI) return;
+    this.#CUI.registerToolbarNode(node);
   }
 
   /**
@@ -63,7 +75,8 @@ export class CustomizableUIWrapper {
     onCreated,
     onClick,
   }) {
-    return CustomizableUI.createWidget({
+    if (!this.#CUI) return null;
+    return this.#CUI.createWidget({
       id,
       type,
       localized,
@@ -78,7 +91,8 @@ export class CustomizableUIWrapper {
    * @returns {Widget}
    */
   static getWidget(id) {
-    return CustomizableUI.getWidget(id);
+    if (!this.#CUI) return null;
+    return this.#CUI.getWidget(id);
   }
 
   /**
@@ -86,7 +100,8 @@ export class CustomizableUIWrapper {
    * @param {string} id
    */
   static destroyWidget(id) {
-    CustomizableUI.destroyWidget(id);
+    if (!this.#CUI) return;
+    this.#CUI.destroyWidget(id);
   }
 
   /**
@@ -96,7 +111,8 @@ export class CustomizableUIWrapper {
    * @param {number} position
    */
   static addWidgetToArea(id, area, position) {
-    CustomizableUI.addWidgetToArea(id, area, position);
+    if (!this.#CUI) return;
+    this.#CUI.addWidgetToArea(id, area, position);
   }
 
   /**
@@ -105,6 +121,7 @@ export class CustomizableUIWrapper {
    * @returns {object}
    */
   static getPlacementOfWidget(id) {
-    return CustomizableUI.getPlacementOfWidget(id);
+    if (!this.#CUI) return null;
+    return this.#CUI.getPlacementOfWidget(id);
   }
 }

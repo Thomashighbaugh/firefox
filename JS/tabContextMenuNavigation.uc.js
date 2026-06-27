@@ -44,7 +44,13 @@ class TabContextMenuNavigation {
   };
   create(doc, tag, props, isHTML = false) {
     let el = isHTML ? doc.createElement(tag) : doc.createXULElement(tag);
-    for (let prop in props) el.setAttribute(prop, props[prop]);
+    for (let prop in props) {
+      if (/^on[a-z]/.test(prop) && typeof props[prop] === "function") {
+        el.addEventListener(prop.slice(2), props[prop]);
+      } else {
+        el.setAttribute(prop, props[prop]);
+      }
+    }
     return el;
   }
   constructor() {

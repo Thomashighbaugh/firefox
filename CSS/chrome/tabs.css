@@ -375,9 +375,14 @@
   }
 }
 
-/* Make tab group works correctly */
+/*Make tab group works correctly */
 tab-group[collapsed] > .tabbrowser-tab {
   visibility: collapse !important;
+}
+
+/* Hide the +N count on tab group labels, keep the colored square */
+.tab-group-overflow-count {
+  display: none !important;
 }
 
 /*=====================================================================

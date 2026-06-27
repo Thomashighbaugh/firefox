@@ -10,6 +10,9 @@
 // ==/UserScript==
 
 // This version is also documented with code comments that illuminate its functionality for ease of reading
+var UC = window.UC || {};
+var _uc = typeof _uc !== "undefined" ? _uc : null;
+var xPref = typeof xPref !== "undefined" ? xPref : null;
 UC.rebuild = {
   // Preference keys for UI options
   PREF_TOOLSBUTTON: "userChromeJS.showtoolbutton",
@@ -502,6 +505,7 @@ UC.rebuild = {
    * Should be called once at startup by fx-autoconfig.
    */
   init: function () {
+    if (!_uc || !xPref) return;
     this.setStyle();
     this.showToolButton = xPref.get(this.PREF_TOOLSBUTTON);
     if (this.showToolButton === undefined) {
@@ -527,11 +531,11 @@ UC.rebuild = {
 
     // Add toolbar button or menu item depending on platform
     if (AppConstants.MOZ_APP_NAME !== "thunderbird") {
-      const { CustomizableUI } = window;
-      CustomizableUI.createWidget({
+      const CUI = window.CustomizableUI;
+      CUI.createWidget({
         id: "userChromebtnMenu",
         type: "custom",
-        defaultArea: CustomizableUI.AREA_NAVBAR,
+        defaultArea: CUI.AREA_NAVBAR,
         onBuild: (doc) => {
           this.createPanel(doc);
           return this.createButton(doc);
@@ -724,4 +728,4 @@ UC.rebuild = {
 };
 
 // Initialize the manager at startup (called by fx-autoconfig)
-UC.rebuild.init();
+try { UC.rebuild.init(); } catch (e) { Components.utils.reportError(e); }

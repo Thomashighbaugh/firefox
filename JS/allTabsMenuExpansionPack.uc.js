@@ -38,8 +38,19 @@ All the relevant CSS for this is already included in and loaded by the script. I
   let reversePref = "userChrome.tabs.all-tabs-menu.reverse-order";
   let skipShowAllPref = "userChrome.ctrlTab.skip-show-all-button";
   const lazy = {};
-  ChromeUtils.defineESModuleGetters(lazy, {
-    TabsPanel: "resource:///modules/TabsList.sys.mjs",
+  Object.defineProperty(lazy, "TabsPanel", {
+    get() {
+      try {
+        const mod = ChromeUtils.importESModule("resource:///modules/TabsList.sys.mjs");
+        Object.defineProperty(lazy, "TabsPanel", { value: mod.TabsPanel, writable: true });
+        return mod.TabsPanel;
+      } catch (e) {
+        const fallback = window.TabsPanel || window.gTabsPanel;
+        Object.defineProperty(lazy, "TabsPanel", { value: fallback, writable: true });
+        return fallback;
+      }
+    },
+    configurable: true,
   });
 
   /**
@@ -185,6 +196,7 @@ All the relevant CSS for this is already included in and loaded by the script. I
       });
     }
     if (
+      panelViewClass?._makeNavigableTreeWalker?.toSource &&
       !panelViewClass._makeNavigableTreeWalker
         .toSource()
         .startsWith("(function uc_ATMEP_")
@@ -249,6 +261,7 @@ All the relevant CSS for this is already included in and loaded by the script. I
   }
 
   function init() {
+    if (!lazy.TabsPanel || typeof PanelView === "undefined") return;
     gTabsPanel.init();
     registerSheet();
     let tabsPanels = [
@@ -260,9 +273,9 @@ All the relevant CSS for this is already included in and loaded by the script. I
     let tooltip = vanillaTooltip.cloneNode(true);
     vanillaTooltip.after(tooltip);
     tooltip.id = "all-tabs-tooltip";
-    tooltip.setAttribute(
-      "onpopupshowing",
-      `gTabsPanel.createTabTooltip(event)`,
+    tooltip.addEventListener(
+      "popupshowing",
+      (event) => gTabsPanel.createTabTooltip(event),
     );
     tooltip.setAttribute("position", "after_end");
     gTabsPanel.createTabTooltip = function (e) {

@@ -184,14 +184,17 @@ var AddAddonbar = {
         );
 
         // Register the area for CustomizableUI
-        CustomizableUI.registerArea("addonbar", { legacy: true });
+        var CUI = window.CustomizableUI;
+        if (CUI) {
+          CUI.registerArea("addonbar", { legacy: true });
 
-        // Register again after a delay (workaround for initialization timing)
-        setTimeout(function () {
-          CustomizableUI.registerArea("addonbar", { legacy: true });
-        }, 2000);
+          // Register again after a delay (workaround for initialization timing)
+          setTimeout(function () {
+            CUI.registerArea("addonbar", { legacy: true });
+          }, 2000);
 
-        CustomizableUI.registerToolbarNode(tb_addonbar);
+          CUI.registerToolbarNode(tb_addonbar);
+        }
 
         // Keyboard shortcut: Ctrl+/ (Win/Linux) or Cmd+/ (macOS) to toggle addonbar
         var key = document.createXULElement("key");

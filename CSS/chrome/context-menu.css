@@ -62,12 +62,7 @@ panel {
 
 /* Tab context */
 #tab-context-navigation:not([hidden]) {
-  background-color: var(--firefoxcss-context-menu-top-color) !important;
-  padding: 4px !important;
-  border-top-left-radius: var(--panel-border-radius) !important;
-  border-top-right-radius: var(--panel-border-radius) !important;
-  margin-left: 0px !important;
-  margin-right: 0px !important;
+  display: none !important;
 }
 
 /* Top of context menu  */
@@ -89,20 +84,12 @@ menupopup
 #context-navigation
   #context-back[disabled="true"]
   .menu-iconic-left
-  .menu-iconic-icon,
-#tab-context-navigation
-  #tab-context-back[disabled="true"]
-  .menu-iconic-left
   .menu-iconic-icon {
   opacity: 0.5 !important;
 }
 
 #context-navigation
   #context-forward[disabled="true"]
-  .menu-iconic-left
-  .menu-iconic-icon,
-#tab-context-navigation
-  #tab-context-forward[disabled="true"]
   .menu-iconic-left
   .menu-iconic-icon {
   opacity: 0.5 !important;
@@ -135,22 +122,11 @@ menuitem {
     }
   }
 
-  /* Tab context nav items: remove padding/margin inherited from general menuitem rule */
-  #tab-context-navigation > menuitem {
-    padding: 0 !important;
-    margin: 0 !important;
-    margin-inline: 0 !important;
-    margin-block: 0 !important;
-  }
-
   #context-navigation > .menuitem-iconic .menu-iconic-icon {
     padding: 4px !important;
   }
 
   #context-navigation:not([hidden]) {
     padding: 3px 3px !important;
-  }
-  #tab-context-navigation:not([hidden]) {
-    padding: 3px 6px !important;
   }
 }

@@ -3,12 +3,12 @@
 **Context:** 100+ file ES6 module system implementing Vivaldi/Floorp-style web panels sidebar.
 
 ## OVERVIEW
-Entry: `second_sidebar.uc.mjs` → Injects sidebar UI → Decorates with functionality → Patches Firefox internals.
+Entry: `JS/second_sidebar.uc.mjs` → Imports modules via `chrome://secondsidebar/content/` → Injects sidebar UI → Decorates with functionality → Patches Firefox internals.
 
 ## ARCHITECTURE
 
 ```
-second_sidebar/
+resources/second-sidebar/
 ├── browser_elements.mjs      # Main browser DOM references
 ├── sidebar_elements.mjs       # Creates all XUL components
 ├── sidebar_injector.mjs       # Injects sidebar into DOM

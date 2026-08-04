@@ -69,7 +69,8 @@
 
   html,
   html|html,
-  body {
+  body,
+  #search-container {
     background-color: var(--firefoxcss-about-page-bg) !important;
     background-image: var(--firefoxcss-customize-menu-bg-image) !important;
     background-repeat: repeat !important;
@@ -126,22 +127,3 @@
     backdrop-filter: blur(28px);
   }
 }
-
-/* Get addons page */
-/* New addons manager doesn't use this anymore */
-@-moz-document url-prefix("https://discovery.addons.mozilla.org/")
-{
-  html|* {
-    color: inherit !important;
-  }
-  html|html,
-  html|body {
-    background-color: rgb(46, 54, 69) !important;
-    color: rgb(210, 210, 210) !important;
-  }
-  html|div.addon,
-  html|div.Notice {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-  }
-}
-

@@ -1,6 +1,6 @@
 # AGENTS.md - Root-Level UserChrome.js Scripts
 
-**Context:** 16 standalone .uc.js scripts, each adding specific Firefox enhancements.
+**Context:** 18 standalone .uc.js scripts + 2 .sys.mjs background sheet loaders + 1 .uc.mjs module entry. Each .uc.js adds a specific Firefox enhancement.
 
 ## OVERVIEW
 Standalone UserChrome.js scripts loaded by fx-autoconfig. Each script is self-contained and adds one feature (statusbar, restart button, PDF tools, etc.).
@@ -12,9 +12,11 @@ Standalone UserChrome.js scripts loaded by fx-autoconfig. Each script is self-co
 | **UI Components** | `extendedStatusbar.uc.js` | Customizable statusbar with link preview |
 | | `restart_button.uc.js` | Restart button in toolbar (left-click: normal, middle-click: clear cache) |
 | | `restart_item_in_menu.uc.js` | Restart item in menu |
-| **Tab Management** | `tabContextMenuNavigation.uc.js` | Tab context menu enhancements |
-| | `openLinkInUnloadedTab.uc.js` | Open links without loading |
+| **Tab Management** | `openLinkInUnloadedTab.uc.js` | Open links without loading |
 | | `allTabsMenuExpansionPack.uc.js` | Enhanced all-tabs menu |
+| | `tabGroupColorPicker.uc.js` | Disabled placeholder for tab-group accent color override |
+| | `tabGroupFolderToggle.uc.js` | Group/folder toggle for native tab groups |
+| **Quick Tabs** | `quick_tabs.uc.js` | Floating browser containers (Darsh-A port) with taskbar, drag-drop, context menus |
 | **Content Tools** | `pdfTools.uc.js` | PDF.js viewer enhancements |
 | | `privateWindowHomepage.uc.js` | Custom homepage for private windows |
 | | `newTabUrlInAboutConfig.uc.js` | New tab URL configuration |
@@ -25,6 +27,13 @@ Standalone UserChrome.js scripts loaded by fx-autoconfig. Each script is self-co
 | | `tooltipShadowSupport.uc.js` | Tooltip shadow effects |
 | | `sidebarWidth.uc.js` | Sidebar width management |
 | **Developer Tools** | `AboutConfigMultipleSelection.uc.js` | Multi-select + copy as user_pref() on about:config |
+
+## Background Modules (.sys.mjs)
+
+| File | Purpose |
+|------|---------|
+| `userChromeAgentAuthorSheetLoader.sys.mjs` | Loads `*.ag.css` / `*.au.css` as agent/author sheets |
+| `userChromeDevtoolsSheetLoader.sys.mjs` | Loads stylesheets into browser toolbox windows |
 
 ## CONVENTIONS
 
@@ -49,6 +58,6 @@ Two header formats used:
 
 ## NOTES
 - **Standalone:** Each script independent, can be removed individually
-- **No dependencies:** Scripts don't import from each other (except `second_sidebar.uc.mjs`)
+- **No dependencies:** Scripts don't import from each other (except `second_sidebar.uc.mjs`, which loads its modules via `chrome://secondsidebar/content/`)
 - **Manual restart:** Most changes require Firefox restart via restart button
 - **Testing:** Disable script by renaming extension or moving file

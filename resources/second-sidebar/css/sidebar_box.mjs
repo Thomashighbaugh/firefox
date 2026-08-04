@@ -56,11 +56,19 @@ export const SIDEBAR_BOX_CSS = `
       background-color: inherit;
       color: inherit;
       flex-direction: row;
-      min-height: calc(2 * var(--toolbarbutton-inner-padding) + 16px);
+      min-height: var(--tab-min-height);
+      height: var(--tab-min-height);
       gap: 4px;
       padding: 1px;
       overflow: scroll;
       -moz-window-dragging: no-drag;
+
+      /* Hover: match vertical tabs — icon scales up, bg changes, border becomes white */
+      .sb2-toolbar-button:not([disabled]):hover > .toolbarbutton-icon {
+        padding: var(--toolbarbutton-inner-padding) !important;
+        background-color: hsla(240, 2%, 55%, 0.75) !important;
+        border: 1px solid hsla(240, 2%, 95%, 0.75) !important;
+      }
 
       &[shouldAnimate="true"] {
         transition: 0.2s margin-top ease-out;

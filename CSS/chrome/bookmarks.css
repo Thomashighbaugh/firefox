@@ -46,6 +46,7 @@
     transform: rotateX(0) !important;
 }
 
+/* Make congruent with other button placement paadding through variable assignement in common */
 /* Set bookmarks bar items padding */
 #PlacesToolbarItems > .bookmark-item {
     padding-block: var(--uc-bm-padding) !important;

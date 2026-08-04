@@ -279,7 +279,7 @@ This repository provides content for the three subdirectories that Nix copies in
 ## Related Files in This Project
 
 - All `JS/*.uc.js` files — Standalone enhancement scripts
-- `JS/second_sidebar.uc.mjs` — Main entry for second sidebar framework (ES6 module)
+- `JS/second_sidebar.uc.mjs` — Main entry for second sidebar framework (ES6 module, imports from `chrome://secondsidebar/content/`)
 - `CSS/*.uc.css` — Style sheets loaded by fx-autoconfig
 - `userChrome.css` — Standard Firefox userChrome.css (NOT loaded by fx-autoconfig loader)
 - `userContent.css` — Standard Firefox userContent.css (NOT loaded by fx-autoconfig loader)

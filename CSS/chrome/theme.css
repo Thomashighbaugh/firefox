@@ -10,7 +10,7 @@
 /* Remove the white line around the content window */
 #browser #tabbrowser-tabbox {
   outline: none !important;
-  box-shadow: -1px 4px 2px #0000002e !important;
+  box-shadow: none !important;
 }
 
 /*=====================================================================

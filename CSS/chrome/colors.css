@@ -19,31 +19,34 @@
 /* Remove the white line around the content window */
 #browser #tabbrowser-tabbox {
   outline: none !important;
-  box-shadow: -1px 4px 2px #0000002e !important;
+  box-shadow: none !important;
 }
 
-/* Vertical tabs background color with transparency preserved */
+/* Vertical tabs + second sidebar: continuous gradient + texture */
+#sidebar-main,
 #sb2-main,
 #vertical-tabs {
   background-color: var(--firefoxcss-main-bg-color) !important;
+  background-image: var(--firefoxcss-sidebar-gradient), var(--firefoxcss-sidebar-texture) !important;
+  background-repeat: no-repeat, repeat !important;
+  background-size: 100% 100%, auto !important;
 }
 
-@media (prefers-color-scheme: light) {
-  #sb2-main,
-  #vertical-tabs {
-    background-color: var(--firefoxcss-main-bg-color) !important;
-  }
+#sb2-box {
+  --sidebar-background-color: var(--firefoxcss-panel-bg-color) !important;
+  background-image: var(--firefoxcss-sidebar-gradient), var(--firefoxcss-sidebar-texture) !important;
+  background-repeat: no-repeat, repeat !important;
+  background-size: 100% 100%, auto !important;
 }
+
+/* Second sidebar toolbar inherits the gradient from sb2-box */
+#sb2-toolbar {
+  background-image: none !important;
 }
 
 /* Sidebar background color change */
 #browser #sidebar-box {
   --sidebar-background-color: var(--firefoxcss-main-bg-color) !important;
-}
-
-/* Second sidebar background color */
-#sb2-box {
-  --sidebar-background-color: var(--firefoxcss-panel-bg-color) !important;
 }
 
 /* Bookmarks bar background color */
@@ -122,8 +125,6 @@ window,
 #PersonalToolbar,
 #navigator-toolbox,
 #sidebar-box,
-#sb2-main,
-#sb2-box, 
 #menubar,
 #nav-bar, 
 #browser, 

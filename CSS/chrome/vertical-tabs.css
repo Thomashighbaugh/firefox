@@ -66,7 +66,6 @@
   #sidebar-main,
   #sidebar-box {
     background-color: var(--firefoxcss-main-bg-color) !important;
-    background-image: none !important;
   }
 
   .sidebar-panel {
@@ -77,7 +76,34 @@
   /* Remove the white line around the content window */
   #tabbrowser-tabbox {
     outline: none !important;
-    box-shadow: -0px 0px 2px 0
-      light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.06)) !important;
+    box-shadow: none !important;
+  }
+
+  /* moz-button (more tools / extensions) hover: match vertical tabs behavior
+     — bg changes, border becomes white, icon scales up.
+     These are <moz-button> custom elements with shadow DOM, so we use
+     ::part(button) for the background/border and CSS vars for the icon. */
+  #sidebar-main .actions-list > moz-button {
+    /* Resting: smaller icon (matches .toolbarbutton-icon resting padding) */
+    --icon-size-default: calc(var(--toolbarbutton-icon-size) - 4px);
+
+    &:hover {
+      /* Hover: full-size icon (matches .toolbarbutton-icon hover) */
+      --icon-size-default: var(--toolbarbutton-icon-size);
+    }
+
+    /* Resting: dark bg + dark border (matches .toolbarbutton-icon resting state) */
+    &::part(button) {
+      background-color: hsla(240, 2%, 35%, 0.95) !important;
+      border: 1px solid hsla(240, 2%, 05%, 0.75) !important;
+      border-radius: var(--firefoxcss-border-radius) !important;
+      box-shadow: inset 2px 2px 4px var(--firefoxcss-toolbar-button-box-shadow) !important;
+    }
+
+    /* Hover: lighter bg + white border (matches .toolbarbutton-icon:hover) */
+    &:hover::part(button) {
+      background-color: hsla(240, 2%, 55%, 0.75) !important;
+      border: 1px solid hsla(240, 2%, 95%, 0.75) !important;
+    }
   }
 }

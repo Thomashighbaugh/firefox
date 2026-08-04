@@ -31,9 +31,9 @@
   addon-list > section,
   addon-list[type="extension"] > section,
   recommended-addon-list > section {
-    padding: 1em;
+    padding: 2em;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(480px, 3fr));
     gap: 1em;
     margin-right: var(--sidebar-width) !important;
   }
@@ -54,14 +54,14 @@
   }
 
   addon-card .addon-name-link {
-    font-size: 0.9em;
+    font-size: 1em;
   }
 
   addon-list[type="extension"] .addon-name-container {
     display: grid;
     grid-template-areas: "name badge opt" "name toggle toggle";
-    grid-row-gap: 6px;
-    grid-auto-columns: 1fr 24px auto;
+    grid-row-gap: 8px;
+    grid-auto-columns: 2fr 48px auto;
   }
 
   .addon-icon {
@@ -83,12 +83,12 @@
   }
 
   .more-options-button {
-    fill: currentColor !important;
+    fill: rgb(219, 219, 219) !important;
     -moz-context-properties: fill !important;
   }
 
   .more-options-button image {
-    fill: currentColor !important;
+    fill: rgb(219, 219, 219) !important;
     -moz-context-properties: fill !important;
   }
 

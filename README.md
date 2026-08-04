@@ -53,9 +53,11 @@ firefox/
 │   ├── chrome/            # Browser UI styling
 │   ├── common/            # Shared variables and utilities
 │   └── content/           # Web content styling
-├── JS/                     # JavaScript modules
-│   ├── second_sidebar/    # Advanced sidebar system
-│   └── *.uc.js           # UserChrome.js scripts
+├── JS/                     # UserChrome.js scripts
+│   ├── second_sidebar.uc.mjs  # Main entry for second sidebar system
+│   └── *.uc.js           # Standalone enhancement scripts
+├── resources/             # Assets, configurations and runtime modules
+│   └── second-sidebar/    # 100+ file second-sidebar web-panels framework
 ├── resources/             # Assets and configurations
 └── utils/                 # System utilities and loaders
 ```

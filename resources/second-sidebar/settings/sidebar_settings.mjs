@@ -25,7 +25,7 @@ export class SidebarSettings {
    */
   constructor({
     position = "right",
-    padding = "small",
+    padding = "xxsmall",
     newWebPanelPosition = "before",
     defaultFloatingOffset = "small",
     autoHideBackButton = false,

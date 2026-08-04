@@ -44,6 +44,7 @@ toolbarbutton#scrollbutton-down > .toolbarbutton-icon {
 }
 
 toolbar .toolbarbutton-1 > .toolbarbutton-icon,
+toolbar .toolbarbutton-1 > .toolbarbutton-badge-stack > .toolbarbutton-icon,
 #downloads-button #downloads-indicator-icon,
 #tabbrowser-tabs[orient="vertical"] .tab-icon-image,
 #unified-extensions-area .toolbarbutton-1 > .toolbarbutton-icon,
@@ -74,6 +75,7 @@ toolbarbutton#scrollbutton-down:not([disabled]):hover > .toolbarbutton-icon {
 }
 
 toolbar .toolbarbutton-1:not([disabled]):hover > .toolbarbutton-icon,
+toolbar .toolbarbutton-1:not([disabled]):hover > .toolbarbutton-badge-stack > .toolbarbutton-icon,
 #downloads-button:not([disabled]):hover #downloads-indicator-icon,
 #tabbrowser-tabs[orient="vertical"] .tabbrowser-tab:hover .tab-icon-image,
 #unified-extensions-area .toolbarbutton-1:hover > .toolbarbutton-icon,
@@ -126,7 +128,7 @@ toolbar .toolbarbutton-1:not([disabled]):active > .toolbarbutton-icon {
 
 toolbar
   .toolbarbutton-1:not([disabled="true"], [checked], [open], :active):hover
-  > .toolb-arbutton-icon,
+  > .toolbarbutton-icon,
 toolbar
   .toolbarbutton-1:not([disabled="true"], [checked], [open], :active):hover
   > .toolbarbutton-text,
@@ -266,6 +268,20 @@ toolbar
 #downloads-button:hover #downloads-indicator-icon,
 #downloads-indicator-progress-inner:hover,
 .toolbarbutton-icon:hover {
+  box-sizing: border-box !important;
+  background-color: hsla(240, 2%, 55%, 0.75) !important;
+  border: 1px solid hsla(240, 2%, 95%, 0.75) !important;
+}
+
+/* Normalized hover: trigger bg/border change on button hover (not just icon hover)
+   so all toolbar buttons match the vertical tabs hover behavior */
+toolbar
+  .toolbarbutton-1:not([disabled="true"], [checked], [open], :active):hover
+  > .toolbarbutton-icon,
+toolbar
+  .toolbarbutton-1:not([disabled="true"], [checked], [open], :active):hover
+  > .toolbarbutton-badge-stack
+  > .toolbarbutton-icon {
   box-sizing: border-box !important;
   background-color: hsla(240, 2%, 55%, 0.75) !important;
   border: 1px solid hsla(240, 2%, 95%, 0.75) !important;

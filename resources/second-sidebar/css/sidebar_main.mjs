@@ -3,10 +3,10 @@ export const SIDEBAR_MAIN_CSS = `
     display: flex;
     flex-direction: column;
     justify-content: var(--sb2-main-web-panel-buttons-position);
-    gap: var(--space-small);
+    gap: calc(2 * var(--tab-block-margin));
     top: 0;
     height: 100%;
-    padding: 0 var(--sb2-main-padding) var(--space-small) var(--sb2-main-padding);
+    padding: var(--tab-block-margin) var(--sb2-main-padding) var(--tab-block-margin) var(--sb2-main-padding);
     overflow-y: scroll;
     scrollbar-width: none;
 
@@ -38,8 +38,28 @@ export const SIDEBAR_MAIN_CSS = `
     }
 
     .toolbarbutton-1 {
-      padding: 0 !important;
+      padding: 0 12px !important;
+      min-height: var(--tab-min-height) !important;
+      height: var(--tab-min-height) !important;
+      width: calc(var(--tab-min-height) + 24px) !important;
+      box-sizing: border-box !important;
+
+      /* Hover: match vertical tabs — icon scales up, bg changes, border becomes white */
+      &:not([disabled]):hover > .toolbarbutton-badge-stack > .toolbarbutton-icon {
+        padding: var(--toolbarbutton-inner-padding) !important;
+      }
+
+      &:not([disabled]):hover > .toolbarbutton-icon {
+        padding: var(--toolbarbutton-inner-padding) !important;
+      }
     }
+  }
+
+  /* Web-panel button hover: bg change + white border (matches vertical tabs) */
+  .sb2-main-button:not([disabled]):hover > .toolbarbutton-badge-stack,
+  .sb2-main-button:not([disabled]):hover > .toolbarbutton-icon {
+    background-color: hsla(240, 2%, 55%, 0.75) !important;
+    border: 1px solid hsla(240, 2%, 95%, 0.75) !important;
   }
 
   #sb2-main[fullscreenShouldAnimate] {
@@ -145,7 +165,7 @@ export const SIDEBAR_MAIN_CSS = `
     }
 
     #sb2-collapse-button {
-      list-style-image: url("chrome://userscripts/content/second_sidebar/icons/sidebar-left.svg");
+      list-style-image: url("chrome://secondsidebar/content/icons/sidebar-left.svg");
     }
   }
 
@@ -155,7 +175,7 @@ export const SIDEBAR_MAIN_CSS = `
     }
 
     #sb2-collapse-button {
-      list-style-image: url("chrome://userscripts/content/second_sidebar/icons/sidebar-right.svg");
+      list-style-image: url("chrome://secondsidebar/content/icons/sidebar-right.svg");
     }
   }
 `;

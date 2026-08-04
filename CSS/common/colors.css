@@ -27,6 +27,14 @@
     /* Main dark color, url bar, active tab etc. */
     --firefoxcss-main-bg-color: hsla(264, 2%, 13%, 0.5);
 
+    /* Continuous gradient + texture for all sidebar bars */
+    --firefoxcss-sidebar-gradient: linear-gradient(
+      to bottom,
+      hsla(264, 2%, 13%, 0.5),
+      hsla(264, 2%, 18%, 0.5)
+    );
+    --firefoxcss-sidebar-texture: url("chrome://userchrome/content/texture/lightnoise.png");
+
     /* Main lighter color, toolbar background */
     --firefoxcss-item-bg-color: hsla(264, 2%, 25%, 0.4);
 
@@ -298,6 +306,14 @@
 
     /* Main dark color, url bar, active tab etc. */
     --firefoxcss-main-bg-color: hsl(200, 5%, 98%);
+
+    /* Continuous gradient + texture for all sidebar bars */
+    --firefoxcss-sidebar-gradient: linear-gradient(
+      to bottom,
+      hsl(200, 5%, 98%),
+      hsl(200, 5%, 94%)
+    );
+    --firefoxcss-sidebar-texture: url("chrome://userchrome/content/texture/lightnoise.png");
 
     /* Main lighter color, toolbar background */
     --firefoxcss-item-bg-color: hsl(200, 5%, 96%);

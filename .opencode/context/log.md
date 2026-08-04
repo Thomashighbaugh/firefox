@@ -1,0 +1,36 @@
+# LLM Wiki Operation Chronicle
+
+## 2026-07-19
+
+- **Refreshed** via `/init-project refresh --full`. Phase 1: Re-detected stack (CSS + JS, Firefox userChrome). Phase 6: Spawned @architect, @convention-extractor, @explore for deep codebase mapping.
+  - Created `architecture/codebase-map.md` — full directory tree, 271 files, 17 `.uc.js` discovered (vs 15 claimed), case mismatch (`css/` → `CSS/`).
+  - Created `architecture/architecture-analysis.md` — entry points, module structure, CSS variable flow, sidebar init, 4 key patterns, 3 high-priority risks.
+  - Created `architecture/conventions.md` — naming, JS/CSS patterns, error handling, git conventions.
+  - Updated `index.md` — added Architecture & Structure section.
+- **Consumed** [Firefox ESMification Guide](https://docs.google.com/document/d/1cpzIK-BdP7u6RJSar-Z955GV--2Rj8V4x2vl34m36Go/edit) — Firefox JSM-to-ESM Phase 1 Migration Guide. Covers new APIs (`ChromeUtils.importESModule`, `defineESModuleGetters`), compatibility layer with JSM→ESM auto-redirect, `./mach esmify` walkthrough, known edge cases, and terminology. Saved to `research/firefox-esmification/2026-07-17-summary.md`. Indexed in LLM Wiki. Relevant for Firefox internal API changes that affect userChrome.js script patterns.
+- **Consumed** [hermitm0nk/malevich](https://github.com/hermitm0nk/malevich) — Minimalist Firefox userChrome.css theme: auto-hide UI, native vertical tabs, sidebar-on-right, 9 modular CSS modules (`_variables.css`, `_base.css`, `_navbar-autohide.css`, etc.). Saved to `research/malevich/2026-07-17-summary.md`. Indexed in LLM Wiki. Relevant for CSS architecture patterns and auto-hide implementation reference.
+
+## 2026-07-11
+
+- **Created** `userchrome-ideas-brainstorm.md` — 37 feature ideas for userChrome.js, ranked and themed. Saved as backlog for iterative implementation.
+- **Updated** `index.md` — Added reference to the brainstorm document.
+- **Consumed** [Darsh-A/Quick-Tabs](https://github.com/Darsh-A/Quick-Tabs) — Floating tab containers for Zen Browser. Script + README + preferences saved to `research/quick-tabs/`. Exposes window.QuickTabs API for creating floating browser popups. Pattern relevant to floating panel features. Indexed in LLM Wiki.
+
+## 2026-07-23
+
+- **Consumed** `/home/tlh/Downloads/BetterAdvancedTabGroups/*.uc.js` plus matching CSS — Better Advanced Tab Groups userChrome.js reference. Ingested `better-tabgroups.uc.js` (folder/group toggle with JSON state persistence), `tabgroup_colorpicker.uc.js` (right-click color picker for tab-group swatches), and `better-advanced-tab-groups.css` (Zen vertical-tabs theming for `tab-group[groups="1"|"2"]`). Saved to `research/better-advanced-tab-groups/2026-07-23-summary.md`. Indexed in LLM Wiki. Relevant for native tab-group customization patterns, state persistence in `chrome/savestate/`, and CSS icon/toggle styling.
+
+- **Consumed** [ywzhaiqi/userChromeJS](https://github.com/ywzhaiqi/userChromeJS) — Chinese-language collection of userChrome.js scripts. Cataloged folders (addmenuPlus, moveButton, SidebarGestures, uAutoPagerize2, etc.) and standalone `.uc.js` files (chromejs, copybookmark, SimpleDragModY, etc.). Author discontinued; useful as historical idea/reference index. Saved to `research/ywzhaiqi-userchromejs/2026-07-23-summary.md`. Indexed in LLM Wiki. Relevant for menu customization, toolbar button relocation, sidebar gestures, and legacy loader patterns.
+
+## 2026-07-28
+
+- **Consumed** [goastian/midori-desktop](https://github.com/goastian/midori-desktop) — Midori Browser Firefox fork by Astian, Inc. Lightweight, privacy-focused, cross-platform. Primary dev at gitlab.com/midori-web/midori-desktop; GitHub is mirror. Uses same `userChrome.css` + modular CSS + `.uc.js` layout as the Higgs Boson theme. Saved to `research/midori-desktop/2026-07-28-summary.md`. Indexed in LLM Wiki. Relevant as a real-world Firefox userChrome consumer and packaging target.
+
+- **Consumed** [goastian/amelia](https://github.com/goastian/amelia) — Amelia (`@goastian/amelia`), the build tool for Midori Browser. TypeScript wrapper around Mozilla's `mach` commands. Forked from Zen Browser's Surfer → Gluon → melon lineage. Adds CI-safe packaging (Tor preflight, explicit aborts, addon git-init skip, branding fallback). Saved to `research/goastian-amelia/2026-07-28-summary.md`. Indexed in LLM Wiki. Relevant if the theme is ever packaged as a Midori-flavored build through `browser/extensions/`.
+
+- **Refreshed** via `/init-project refresh --full`. Phases 0–8 in merge mode. Stack unchanged (Firefox userChrome.js theme) but codebase has drifted since 2026-07-19 refresh.
+  - **Detection diff**: 243 files (was 271 — second-sidebar moved from `JS/second_sidebar/` to `resources/second-sidebar/` via chrome:// URIs); 18 `.uc.js` (was 15, +3); 2 `.sys.mjs` (new script type); 156 `.mjs`; 27 `.css`. New directories: `resources/fss/`, `resources/notifications/`, `.github/`. Removed: `JS/second_sidebar/`. New scripts: `quick_tabs.uc.js`, `tabGroupColorPicker.uc.js`, `tabGroupFolderToggle.uc.js`, `userChromeAgentAuthorSheetLoader.sys.mjs`, `userChromeDevtoolsSheetLoader.sys.mjs`. Deleted: `tabContextMenuNavigation.uc.js` (commit 139c69f).
+  - **Context updated**: `architecture-analysis.md` (entry points, file counts, symlink note, xul/ count 23→37); `conventions.md` (light-dark(), -moz-pref(), CSS-in-JS template literals, nested CSS, fluent API, console.warn(), *Collapser/*Mover suffixes, .sys.mjs naming variants, var/let split); `codebase-map.md` (second-sidebar relocation, refreshed counts).
+  - **AGENTS.md updated**: root (refreshed date, file count, deleted `tabContextMenuNavigation` removed, `CSS/AGENTS.md` noted as missing); `JS/AGENTS.md` (corrected to 18 scripts, added new scripts, removed deleted one).
+  - **Validation**: opencode.jsonc unchanged (schema-compliant). All cross-references in AGENTS.md resolve (subsystem AGENTS.md files exist; the missing `CSS/AGENTS.md` is now flagged as not existing rather than a broken link).
+  - **Stale references flagged**: JS/AGENTS.md referenced a deleted file; root AGENTS.md referenced a non-existent CSS/AGENTS.md. Both fixed.

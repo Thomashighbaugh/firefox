@@ -509,4 +509,62 @@ tab-group[collapsed] > .tabbrowser-tab {
   background-clip: padding-box !important;
 }
 
+/*=====================================================================
+================== T A B   G R O U P   T H E M E   O V E R R I D E S ===
+Targeted by: JS/tabGroupFolderToggle.uc.js and JS/tabGroupColorPicker.uc.js
+Description: The heavy tab-group folder/group styling lives in
+JS/tabGroupFolderToggle.uc.js as an injected AGENT_SHEET. This block
+only overrides the custom property values that depend on the current
+Higgs Boson theme so future variable definition changes are picked up
+without editing the embedded CSS.
+=====================================================================*/
+
+tab-group[groups="1"] .tab-group-label-container:hover {
+  background-color: var(--firefoxcss-tab-hover-bg-color) !important;
+}
+
+tab-group[groups="1"] .tab-group-label-container > label,
+tab-group[groups="2"] .tab-group-label-container > label {
+  color: var(--firefoxcss-non-active-tabs) !important;
+}
+
+tab-group[groups="1"] .tab-group-label-container > label::before {
+  background-color: var(--toolbarbutton-icon-fill) !important;
+}
+
+@media -moz-pref("sidebar.verticalTabs") {
+  tab-group[groups="1"] .tabbrowser-tab {
+    border-left-color: light-dark(#000000bf, #ffffffbf) !important;
+  }
+}
+
+/* Temporary expand state: keep transitions smooth when the JS toggles
+   the [collapsed] attribute for folder preview. */
+tab-group[groups="1"][data-temp-expanded] {
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+tab-group[groups="1"][data-temp-expanded] tab {
+  opacity: 1 !important;
+  max-height: 5em !important;
+}
+
+/*=====================================================================
+================== T A B   G R O U P   C O L O R   P I C K E R ========
+Targeted by: JS/tabGroupColorPicker.uc.js
+Description: Minimal swatch hover state for the editor panel. The color
+picker script updates `--tab-group-color-{value}` on :root; this only
+provides the discoverability affordance.
+=====================================================================*/
+
+.tab-group-editor-swatch {
+  cursor: pointer;
+}
+
+.tab-group-editor-swatch:hover {
+  outline: 1px solid var(--toolbarbutton-icon-fill);
+  outline-offset: -1px;
+  border-radius: var(--firefoxcss-border-radius) !important;
+}
+
 

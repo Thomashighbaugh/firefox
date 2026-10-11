@@ -1,6 +1,6 @@
 # AGENTS.md - Root-Level UserChrome.js Scripts
 
-**Context:** 18 standalone .uc.js scripts + 2 .sys.mjs background sheet loaders + 1 .uc.mjs module entry. Each .uc.js adds a specific Firefox enhancement.
+**Context:** 16 standalone .uc.js scripts + 2 .sys.mjs background sheet loaders + 1 .uc.mjs module entry. Each .uc.js adds a specific Firefox enhancement.
 
 ## OVERVIEW
 Standalone UserChrome.js scripts loaded by fx-autoconfig. Each script is self-contained and adds one feature (statusbar, restart button, PDF tools, etc.).
@@ -13,15 +13,13 @@ Standalone UserChrome.js scripts loaded by fx-autoconfig. Each script is self-co
 | | `restart_button.uc.js` | Restart button in toolbar (left-click: normal, middle-click: clear cache) |
 | | `restart_item_in_menu.uc.js` | Restart item in menu |
 | **Tab Management** | `openLinkInUnloadedTab.uc.js` | Open links without loading |
-| | `allTabsMenuExpansionPack.uc.js` | Enhanced all-tabs menu |
+| | `allTabsMenuExpansionPack.uc.js` | Reverse all-tabs order + mark pending/pinned/container rows (eval-free FF157 rewrite) |
 | | `tabGroupColorPicker.uc.js` | Disabled placeholder for tab-group accent color override |
 | | `tabGroupFolderToggle.uc.js` | Group/folder toggle for native tab groups |
 | **Quick Tabs** | `quick_tabs.uc.js` | Floating browser containers (Darsh-A port) with taskbar, drag-drop, context menus |
-| **Content Tools** | `pdfTools.uc.js` | PDF.js viewer enhancements |
-| | `privateWindowHomepage.uc.js` | Custom homepage for private windows |
-| | `newTabUrlInAboutConfig.uc.js` | New tab URL configuration |
+| **Content Tools** | `pdfTools.uc.js` | pdf.js viewer: download each page as an image (`@include resource://pdf.js/web/viewer.html*`) |
+| | `privateWindowHomepage.uc.js` | Private windows respect the configured homepage instead of about:privatebrowsing |
 | **System** | `minimizeMemory.uc.js` | Memory optimization |
-| | `rebuild_userChrome.uc.js` | Rebuild userChrome.css |
 | | `space_and_separator_restorer.uc.js` | Restore spacing in UI |
 | **Styling** | `autocompletePopupStyler.uc.js` | Style autocomplete popup |
 | | `tooltipShadowSupport.uc.js` | Tooltip shadow effects |
@@ -38,10 +36,12 @@ Standalone UserChrome.js scripts loaded by fx-autoconfig. Each script is self-co
 ## CONVENTIONS
 
 ### UserScript Headers
-Two header formats used:
-- `// ==UserScript==` (newer, recommended): Multi-line with @name, @description, @author, @version, @homepageURL
-- `// ==UserChromeJS==`: Older format with similar fields
-- Inline comments: Some scripts use simple comment headers
+fx-autoconfig only parses the `// ==UserScript==` … `// ==/UserScript==` block
+(`extractScriptHeader()` in `utils/utils.sys.mjs`). Any other block
+(`==UserChromeJS==`) or no block at all means the header is empty, so the script
+gets no `@include` and falls back to the default target (`main`, i.e.
+`browser.xhtml`). Every script must therefore use `// ==UserScript==` and declare
+its `@include` explicitly.
 
 ### Script Structure
 - IIFE pattern: Most scripts wrap in `(function() { ... })()` for isolation

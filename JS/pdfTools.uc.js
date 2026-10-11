@@ -1,162 +1,144 @@
-// ==UserChromeJS==
+// ==UserScript==
 // @name           PDF Tools (userChrome.js)
-// @description    Enhances the pdf.js window in Firefox as a userChrome.js script.
-// @version        1.0
-// @author         Thomas Leon Highbaugh adapted from userscript by jerone
-// ==/UserChromeJS==
+// @version        2.0.0
+// @description    Adds a "download each page as an image" tool to the pdf.js viewer.
+// @author         Thomas Leon Highbaugh (rewritten for fx-autoconfig / Firefox 157), adapted from a userscript by jerone
+// @include        resource://pdf.js/web/viewer.html*
+// ==/UserScript==
+
+/**
+ * Rewrite notes
+ * -------------
+ * The previous version used the `==UserChromeJS==` header (which fx-autoconfig
+ * does not parse) and no `@include`, so it only ever loaded in the browser
+ * window and immediately bailed on its `location.href.match(/\.pdf/)` guard.
+ * It also reached into pdf.js internals (`pdfViewer._pages`, `page.canvas`)
+ * and used `document.createElement("a")` as a fake image container.
+ *
+ * This version targets the viewer document directly and uses the documented
+ * `PDFViewerApplication` / `pdfDocument` API to render pages to a canvas and
+ * download them as PNG files.
+ */
 
 (function () {
-  // Only run in PDF.js viewer window
-  if (!location.href.match(/\.pdf([?#].*)?$/)) return;
+  "use strict";
 
-  // Wait for PDF.js to load
-  let pdfRetries = 0;
-  const pdfMaxRetries = 20;
-  function runWhenReady() {
-    const mainContainer = document.getElementById("mainContainer");
-    const toolbar = document.getElementById("toolbarViewerRight");
-    if (
-      !mainContainer ||
-      !toolbar ||
-      !window.PDFViewerApplication ||
-      !window.PDFViewerApplication.pdfViewer
-    ) {
-      pdfRetries++;
-      if (pdfRetries < pdfMaxRetries) {
-        setTimeout(runWhenReady, 500);
-      }
+  const RENDER_SCALE = 1.5;
+  let panel = null;
+  let toolbarButton = null;
+
+  function buildUI() {
+    const pdfDocument = window.PDFViewerApplication?.pdfDocument;
+    const toolbar =
+      document.getElementById("toolbarViewerRight") ||
+      document.getElementById("toolbarViewerLeft");
+    const container = document.getElementById("mainContainer");
+    if (!pdfDocument || !toolbar || !container) {
       return;
     }
 
-    var mimetype = "png";
+    // Toolbar button ------------------------------------------------------
+    toolbarButton = document.createElement("button");
+    toolbarButton.id = "uc-pdf-pages-button";
+    toolbarButton.className = "toolbarButton";
+    toolbarButton.title = "Download each page as an image";
+    toolbarButton.setAttribute("tabindex", "0");
+    toolbarButton.textContent = "Pages";
+    toolbar.insertBefore(toolbarButton, toolbar.firstChild);
 
-    var SecondaryToolbar = {
-      opened: false,
-      initialize: function secondaryToolbarInitialize() {
-        this.toolbar = document.createElement("div");
-        this.toolbar.classList.add(
-          "secondaryToolbar",
-          "doorHangerRight",
-          "hidden",
-        );
-        this.toolbar.style.right = "180px";
-        mainContainer.appendChild(this.toolbar);
+    // Floating panel ------------------------------------------------------
+    panel = document.createElement("div");
+    panel.id = "uc-pdf-pages-panel";
+    panel.className = "hidden";
+    panel.style.cssText = [
+      "position:absolute",
+      "top:40px",
+      "inset-inline-end:12px",
+      "z-index:10",
+      "max-height:70vh",
+      "overflow:auto",
+      "padding:8px",
+      "background:var(--doorhanger-bg-color,#fff)",
+      "color:var(--doorhanger-color,#000)",
+      "border:1px solid var(--doorhanger-border-color,#888)",
+      "border-radius:6px",
+      "box-shadow:0 2px 8px rgba(0,0,0,.35)",
+    ].join(";");
 
-        this.buttonContainer = document.createElement("div");
-        this.buttonContainer.classList.add("secondaryToolbarButtonContainer");
-        this.toolbar.appendChild(this.buttonContainer);
+    const header = document.createElement("div");
+    header.style.cssText = "font-weight:600;margin-bottom:6px;";
+    header.textContent = "Download page as image";
+    panel.appendChild(header);
 
-        this.attachEvents();
-      },
+    for (let i = 1; i <= pdfDocument.numPages; i++) {
+      const pageButton = document.createElement("button");
+      pageButton.className = "secondaryToolbarButton";
+      pageButton.textContent = `Page ${i}`;
+      pageButton.addEventListener("click", () => {
+        downloadPage(pdfDocument, i).catch((e) => console.error(e));
+      });
+      panel.appendChild(pageButton);
+    }
 
-      attachEvents: function () {
-        window.addEventListener(
-          "click",
-          function click(evt) {
-            if (
-              SecondaryToolbar.opened &&
-              window.PDFViewerApplication.pdfViewer.viewer.contains(evt.target)
-            ) {
-              SecondaryToolbar.close();
-            }
-          },
-          false,
-        );
-        window.addEventListener("keydown", function keydown(evt) {
-          if (
-            SecondaryToolbar.opened &&
-            (evt.key === "Escape" || evt.keyCode === 27)
-          ) {
-            SecondaryToolbar.close();
-          }
-        });
-      },
+    container.appendChild(panel);
 
-      render: function () {
-        var pages = window.PDFViewerApplication.pdfViewer._pages;
+    toolbarButton.addEventListener("click", () => {
+      panel.classList.toggle("hidden");
+    });
 
-        for (var i = 0, ii = pages.length; i < ii; i++) {
-          var page = pages[i];
-          var img = document.createElement("a");
-          img.classList.add("secondaryToolbarButton", "download");
-          img.dataset.pageIndex = i;
-          img.setAttribute("download", "page" + page.id + "." + mimetype);
-          img.setAttribute(
-            "title",
-            "Download 'page" + page.id + "." + mimetype + "'",
-          );
-          img.style.display = "inline-block";
-          img.style.boxSizing = "border-box";
-          img.appendChild(document.createTextNode("Page " + page.id));
-          img.addEventListener("click", function () {
-            var page = pages[this.dataset.pageIndex];
-            if (!page.canvas) {
-              page.draw();
-            }
-            this.href = page.canvas.toDataURL("image/" + mimetype);
-          });
-
-          var img2 = document.createElement("img");
-          img2.style.height = "16px";
-          img2.style.border = "1px solid red";
-          img2.src =
-            (page.canvas && page.canvas.toDataURL("image/" + mimetype)) || "";
-          this.buttonContainer.appendChild(img2);
-        }
-      },
-
-      empty: function () {
-        while (this.buttonContainer.hasChildNodes()) {
-          this.buttonContainer.removeChild(this.buttonContainer.lastChild);
-        }
-      },
-
-      open: function secondaryToolbarOpen() {
-        if (this.opened) {
-          return;
-        }
-        this.opened = true;
-        this.toolbar.classList.remove("hidden");
-        this.render();
-      },
-
-      close: function secondaryToolbarClose(target) {
-        if (!this.opened) {
-          return;
-        } else if (target && !this.toolbar.contains(target)) {
-          return;
-        }
-        this.opened = false;
-        this.toolbar.classList.add("hidden");
-        this.empty();
-      },
-
-      toggle: function secondaryToolbarToggle() {
-        if (this.opened) {
-          this.close();
-        } else {
-          this.open();
-        }
-      },
+    const onKeyDown = (e) => {
+      if (e.key === "Escape" && !panel.classList.contains("hidden")) {
+        panel.classList.add("hidden");
+      }
     };
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener(
+      "unload",
+      () => window.removeEventListener("keydown", onKeyDown),
+      { once: true },
+    );
+  }
 
-    SecondaryToolbar.initialize();
+  /**
+   * Render one page to a canvas and trigger a PNG download.
+   * @param {object} pdfDocument
+   * @param {number} pageNumber
+   */
+  async function downloadPage(pdfDocument, pageNumber) {
+    const page = await pdfDocument.getPage(pageNumber);
+    const viewport = page.getViewport({ scale: RENDER_SCALE });
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.ceil(viewport.width);
+    canvas.height = Math.ceil(viewport.height);
+    const ctx = canvas.getContext("2d");
+    await page.render({ canvasContext: ctx, viewport }).promise;
 
-    var btn = document.createElement("button");
-    btn.classList.add("toolbarButton", "zoomIn");
-    toolbar.insertBefore(btn, toolbar.firstChild);
-    btn.addEventListener("click", function () {
-      SecondaryToolbar.toggle();
+    await new Promise((resolve) => {
+      canvas.toBlob((blob) => {
+        if (!blob) {
+          resolve();
+          return;
+        }
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `page-${pageNumber}.png`;
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(url), 10000);
+        resolve();
+      }, "image/png");
     });
   }
 
-  // Run when DOM is ready
-  if (
-    document.readyState === "complete" ||
-    document.readyState === "interactive"
-  ) {
-    runWhenReady();
-  } else {
-    document.addEventListener("DOMContentLoaded", runWhenReady, { once: true });
+  // The viewer builds PDFViewerApplication asynchronously; wait for it.
+  let retries = 0;
+  function whenReady() {
+    const app = window.PDFViewerApplication;
+    if (app?.initializedPromise) {
+      app.initializedPromise.then(buildUI).catch((e) => console.error(e));
+    } else if (++retries < 200) {
+      setTimeout(whenReady, 50);
+    }
   }
+  whenReady();
 })();

@@ -1,3 +1,11 @@
+// ==UserScript==
+// @name           Restart Button
+// @description    Toolbar restart button (left-click: restart, middle-click: restart + clear caches)
+// @author         ARIS (Aris-t2), 2002Andreas
+// @include        main
+// @onlyonce
+// ==/UserScript==
+
 // Restart button script for Firefox 60+ by Aris
 //
 // left-click on restart button: normal restart

@@ -91,9 +91,18 @@
     }
   }
 
-  // Wait for the browser DOM to be ready before initializing SidebarWidth
+  // Wait for the browser DOM *and* the sidebar controller to be ready. On
+  // current Firefox the "Nova" sidebar populates `SidebarController.sidebars`
+  // (a Map) and `SidebarController._box` only after delayed startup, so we must
+  // poll for them rather than assuming they exist at DOMContentLoaded.
   function initWhenReady() {
-    if (document.querySelector("#browser")) {
+    const controller = window.SidebarController;
+    if (
+      document.querySelector("#browser") &&
+      controller &&
+      controller.sidebars instanceof Map &&
+      controller._box
+    ) {
       window.sidebarWidth = new SidebarWidth();
     } else {
       requestAnimationFrame(initWhenReady);

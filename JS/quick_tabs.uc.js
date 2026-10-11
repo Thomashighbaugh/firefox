@@ -225,12 +225,20 @@
 
     function loadURL(browser, url) {
         try {
-            const uri = Services.io.newURI(url);
-            const principal = Services.scriptSecurityManager.getSystemPrincipal();
+            const info = Services.uriFixup.getFixupURIInfo(url.trim(),
+                Ci.nsIURIFixup.FIXUP_FLAG_FIX_SCHEME_TYPOS | Ci.nsIURIFixup.FIXUP_FLAG_ALLOW_KEYWORD_LOOKUP);
+            const uri = info?.fixedURI;
+            // Only allow web content. chrome/data/javascript/about must never be
+            // loaded here: a data:/javascript: URL fetched with a privileged
+            // triggering principal would run with escalated privileges.
+            if (!uri || (uri.scheme !== "http" && uri.scheme !== "https")) {
+                return false;
+            }
+            const principal = Services.scriptSecurityManager.createContentPrincipal(uri, {});
             browser.loadURI(uri, { triggeringPrincipal: principal });
             return true;
         } catch (_) {
-            try { browser.loadURI(url); return true; } catch (e) { return false; }
+            return false;
         }
     }
 

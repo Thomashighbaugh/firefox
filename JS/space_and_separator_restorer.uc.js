@@ -1,3 +1,10 @@
+// ==UserScript==
+// @name           Space and Separator Restorer
+// @description    Restores Space / Separator / Flexible Space items in the customize mode palette
+// @author         ARIS (Aris-t2)
+// @include        main
+// ==/UserScript==
+
 /* Restore 'Space & Separator' items script for Firefox 102+ by Aris
 ...
 */
@@ -152,11 +159,7 @@ var AddSeparator = {
 
 }
 
-/* initialization delay workaround */
-document.addEventListener("DOMContentLoaded", AddSeparator.init(), false);
-/* Use the below code instead of the one above this line, if initialization issues occur on startup */
-/*
-setTimeout(function(){
-  AddSeparator.init();
-},2000);
-*/
+/* The loader already injects this script at DOMContentLoaded, so run init()
+   directly. (The previous version passed AddSeparator.init() — its undefined
+   return — to addEventListener, which registered a no-op listener.) */
+AddSeparator.init();

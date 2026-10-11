@@ -54,7 +54,7 @@ class ToolboxProcessSheetLoader {
   observe(sub) {
     if (this.lastSubject === sub) return;
     this.lastSubject = sub;
-    sub.addEventListener("DOMContentLoaded", this, true, { once: true });
+    sub.addEventListener("DOMContentLoaded", this, { capture: true, once: true });
   }
   handleEvent(e) {
     switch (e.type) {
@@ -66,7 +66,9 @@ class ToolboxProcessSheetLoader {
   _onContentLoaded(e) {
     let document = e.originalTarget;
     let win = document.defaultView;
-    this.lastSubject.removeEventListener("DomContentLoaded", this, true);
+    this.lastSubject.removeEventListener("DOMContentLoaded", this, {
+      capture: true,
+    });
     if (!this.isDevtools(win)) return;
     const path = this.getChromePath(win);
     this.loadSheet(win, path, "userChrome.css", "AUTHOR_SHEET");

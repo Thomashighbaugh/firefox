@@ -1,3 +1,10 @@
+// ==UserScript==
+// @name           Restart Item in Menus
+// @description    Adds a restart item to the File menu and the app menu (left-click: restart, middle-click: restart + clear caches)
+// @author         ARIS (Aris-t2), Alice0775
+// @include        main
+// ==/UserScript==
+
 /* Restart item script for Firefox 13X+ by Aris
 
   - left-click on restart item: normal restart

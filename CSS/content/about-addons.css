@@ -126,7 +126,7 @@
   addon-card:not([expanded]) .addon-badge-recommended,
   addon-card:not([expanded]) .addon-description,
   addon-card:not([expanded]) .addon-card-message button[action] {
-    display: none;
+    display: none !important;
   }
 
   addon-list[type="extension"] {

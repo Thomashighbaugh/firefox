@@ -387,8 +387,8 @@
 #appMenu-quit-button2 {
   list-style-image: url("chrome://devtools/skin/images/search-clear.svg");
   & > .toolbarbutton-icon {
-    stroke: transparent;
-    -moz-context-properties: fill, stroke;
+    stroke: transparent !important;
+    -moz-context-properties: fill, stroke !important;
   }
 }
 #appMenu-translate-button {

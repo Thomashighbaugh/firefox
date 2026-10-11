@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-11 17:36** [CSS] Hardened the two remaining declarations that Firefox 157's new author-origin rules outrank: `about:addons` `.addon-description { display: none !important }` and `#appMenu-quit-button2 > .toolbarbutton-icon { stroke: transparent !important; -moz-context-properties: fill, stroke !important }`
+
 - **2026-10-11 17:12** [CSS/Content] about:addons: fixed the addon/theme card preview image width. Firefox 157 added `max-width: var(--page-main-content-width)` on `.card-heading-image` (author origin), overriding the theme's `max-width: calc(100% + 36px)`; added `!important`. Also audited all 156→157 built-in `about:*` and browser chrome stylesheet changes against the theme's selectors — no class/id renames, no other unguarded overrides found
 
 - **2026-10-11 16:11** [CSS/Content] about:addons: restored the grid layout. Firefox 157 added an author-origin rule `#main > addon-list > section { display: flex; flex-direction: column }` to its built-in `aboutaddons.css`, which outranks our user-origin `display: grid` (author-normal beats user-normal in the cascade) and collapsed the extension list back to a single vertical column. Added `!important` to the section's `display: grid`

@@ -1,6 +1,6 @@
 # AGENTS.md - Root-Level UserChrome.js Scripts
 
-**Context:** 16 standalone .uc.js scripts + 2 .sys.mjs background sheet loaders + 1 .uc.mjs module entry. Each .uc.js adds a specific Firefox enhancement.
+**Context:** 16 standalone .uc.js scripts + 2 .sys.mjs background modules + 1 .uc.mjs module entry. Each .uc.js adds a specific Firefox enhancement. `AboutConfigMultipleSelection.uc.js` reaches about:config via `<browser>.contentDocument` because about:config is parent-process but lives in a tab `<browser>`, so the loader never sees it as a top-level window.
 
 ## OVERVIEW
 Standalone UserChrome.js scripts loaded by fx-autoconfig. Each script is self-contained and adds one feature (statusbar, restart button, PDF tools, etc.).
@@ -24,7 +24,7 @@ Standalone UserChrome.js scripts loaded by fx-autoconfig. Each script is self-co
 | **Styling** | `autocompletePopupStyler.uc.js` | Style autocomplete popup |
 | | `tooltipShadowSupport.uc.js` | Tooltip shadow effects |
 | | `sidebarWidth.uc.js` | Sidebar width management |
-| **Developer Tools** | `AboutConfigMultipleSelection.uc.js` | Multi-select + copy as user_pref() on about:config |
+| **Developer Tools** | `AboutConfigMultipleSelection.uc.js` | Checkbox-per-row multi-select + copy as `user_pref()` on about:config (reaches the parent-process tab document via `contentDocument`) |
 
 ## Background Modules (.sys.mjs)
 

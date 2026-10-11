@@ -1,225 +1,323 @@
 // ==UserScript==
 // @name           About:config Multiple Selection
-// @version        1.0.0
-// @description    Multi-select rows in about:config and copy them as user_pref() lines
+// @version        2.1.0
+// @description    Multi-select rows in about:config (with a checkbox per row) and copy them as user_pref() lines
 // @author         NightsoN (rewritten for fx-autoconfig / Firefox 157)
-// @include        about:config*
+// @include        main
 // ==/UserScript==
 
 /**
- * Rewrite notes
- * -------------
- * The previous version declared `@include chrome://browser/content/browser.xul`
- * (browser.xul no longer exists) and tried to catch about:config's
- * `DOMContentLoaded` from the browser window, which cannot work because
- * about:config is its own document. It also inserted a menuitem into a
- * `#configContext` context menu that modern about:config no longer has.
+ * `about:config` is one of the privileged internal pages the *parent* process
+ * displays, loaded inside a tab's <browser>. fx-autoconfig only sees top-level
+ * windows (it observes `domwindowopened`), so no `@include about:config` can
+ * reach it. Because it is parent-process, this browser-window script reaches it
+ * through `<browser>.contentDocument`.
  *
- * This version targets the about:config document directly. It adds Ctrl/Cmd
- * click and Shift click multi-selection over the prefs table, provides a
- * toolbar button and Ctrl+C to copy the selection as `user_pref(...)` lines,
- * and uses inline styling for the selection highlight (no stylesheet).
+ * Adds a checkbox as the first cell of every pref row, plus Ctrl/Cmd-click and
+ * Shift-click multi-selection, Ctrl+C and a toolbar button that copy the
+ * selection as user_pref(...) lines. Selection is tracked by pref name so it
+ * survives the table being rebuilt when the search filter changes.
  */
 
 (function () {
   "use strict";
 
-  const SELECTED_OUTLINE = "2px solid Highlight";
-  const SELECTED_BG = "rgba(0, 120, 215, 0.12)";
+  const installed = new WeakSet();
 
-  const selectedRows = new Set();
-  let table = null;
-  let lastRow = null;
-
-  /* ── helpers ──────────────────────────────────────────────────── */
-
-  function prefName(row) {
-    return row.querySelector("th")?.textContent?.trim() || "";
-  }
-
-  function clipboard() {
-    return Cc["@mozilla.org/widget/clipboardhelper;1"].getService(
-      Ci.nsIClipboardHelper,
-    );
-  }
-
-  /**
-   * Build a `user_pref("name", value);` string from the *live* pref store so
-   * the exact value and type are used (the table cell may be abbreviated).
-   * @param {string} name
-   * @returns {string?}
-   */
-  function formatPref(name) {
-    const P = Services.prefs;
+  function getConfigDoc(browser) {
+    if (!browser || browser.isRemoteBrowser) {
+      return null;
+    }
+    let doc;
     try {
-      switch (P.getPrefType(name)) {
-        case P.PREF_BOOL:
-          return `user_pref(${JSON.stringify(name)}, ${P.getBoolPref(name)});`;
-        case P.PREF_INT:
-          return `user_pref(${JSON.stringify(name)}, ${P.getIntPref(name)});`;
-        case P.PREF_STRING:
-          return `user_pref(${JSON.stringify(name)}, ${JSON.stringify(
-            P.getStringPref(name),
-          )});`;
-      }
+      doc = browser.contentDocument;
     } catch (e) {
-      // Pref disappeared between selection and copy.
+      return null;
     }
-    return null;
+    if (!doc?.location?.href?.startsWith("about:config")) {
+      return null;
+    }
+    return doc;
   }
 
-  /* ── selection ────────────────────────────────────────────────── */
-
-  function setSelected(row, on) {
-    if (on) {
-      selectedRows.add(row);
-      row.style.outline = SELECTED_OUTLINE;
-      row.style.outlineOffset = "-2px";
-      row.style.backgroundColor = SELECTED_BG;
-    } else {
-      selectedRows.delete(row);
-      row.style.removeProperty("outline");
-      row.style.removeProperty("outline-offset");
-      row.style.removeProperty("background-color");
-    }
-  }
-
-  function clearSelection() {
-    for (const row of selectedRows) {
-      setSelected(row, false);
-    }
-    selectedRows.clear();
-    lastRow = null;
-  }
-
-  function onTableClick(event) {
-    // Never interfere with the row's own controls (edit/reset/toggle/save).
-    if (event.target.closest("button, input, label, a, select")) {
+  function waitForTable(browser, tries = 0) {
+    const doc = getConfigDoc(browser);
+    if (!doc || installed.has(doc)) {
       return;
     }
-    const row = event.target.closest("tr");
-    if (!row || !table.contains(row)) {
+    if (doc.getElementById("prefs")) {
+      install(doc);
+    } else if (tries < 300) {
+      // The table is built after DOMContentLoaded, and not until the first-run
+      // warning is dismissed.
+      setTimeout(() => waitForTable(browser, tries + 1), 200);
+    }
+  }
+
+  function install(doc) {
+    installed.add(doc);
+
+    const win = doc.defaultView;
+    const table = doc.getElementById("prefs");
+    if (!table) {
       return;
     }
 
-    if (event.ctrlKey || event.metaKey) {
-      event.preventDefault();
-      setSelected(row, !selectedRows.has(row));
-      lastRow = row;
-    } else if (event.shiftKey && lastRow && table.contains(lastRow)) {
-      const rows = Array.from(table.querySelectorAll("tr"));
-      const a = rows.indexOf(lastRow);
-      const b = rows.indexOf(row);
-      if (a >= 0 && b >= 0) {
+    const selectedNames = new Set();
+    let lastRow = null;
+
+    const clipboard = () =>
+      Cc["@mozilla.org/widget/clipboardhelper;1"].getService(
+        Ci.nsIClipboardHelper,
+      );
+    const prefName = (row) => row.querySelector("th")?.textContent?.trim() || "";
+
+    function formatPref(name) {
+      const P = Services.prefs;
+      try {
+        switch (P.getPrefType(name)) {
+          case Ci.nsIPrefBranch.PREF_BOOL:
+            return `user_pref(${JSON.stringify(name)}, ${P.getBoolPref(name)});`;
+          case Ci.nsIPrefBranch.PREF_INT:
+            return `user_pref(${JSON.stringify(name)}, ${P.getIntPref(name)});`;
+          case Ci.nsIPrefBranch.PREF_STRING:
+            return `user_pref(${JSON.stringify(name)}, ${JSON.stringify(
+              P.getStringPref(name),
+            )});`;
+        }
+      } catch (e) {
+        // Pref disappeared between selection and copy.
+      }
+      return null;
+    }
+
+    function isPrefRow(row) {
+      return (
+        row.tagName === "TR" &&
+        !row.classList.contains("add") &&
+        !!row.querySelector("th") &&
+        !!row.querySelector("td.cell-value")
+      );
+    }
+
+    function applyRowState(row, on) {
+      if (on) {
+        row.style.outline = "2px solid Highlight";
+        row.style.outlineOffset = "-2px";
+        row.style.backgroundColor = "rgba(0, 120, 215, 0.12)";
+      } else {
+        row.style.removeProperty("outline");
+        row.style.removeProperty("outline-offset");
+        row.style.removeProperty("background-color");
+      }
+    }
+
+    /**
+     * Ensure the row starts with a selection cell (a checkbox for pref rows,
+     * an empty cell for the "add new pref" row so the fixed table layout stays
+     * aligned). Returns the cell.
+     */
+    function ensureSelectCell(row, withCheckbox) {
+      let cell = row.querySelector(":scope > td.uc-select-cell");
+      if (!cell) {
+        cell = doc.createElement("td");
+        cell.className = "uc-select-cell";
+        cell.style.cssText =
+          "width:28px;padding:0 8px;text-align:center;vertical-align:middle;";
+
+        if (withCheckbox) {
+          cell.style.cursor = "pointer";
+          const checkbox = doc.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.className = "uc-select-checkbox";
+          checkbox.title = "Select this preference";
+          // Don't let the click reach the row (which would start editing).
+          checkbox.addEventListener("click", (e) => e.stopPropagation());
+          checkbox.addEventListener("change", () => {
+            const name = prefName(row);
+            if (!name) {
+              return;
+            }
+            if (checkbox.checked) {
+              selectedNames.add(name);
+            } else {
+              selectedNames.delete(name);
+            }
+            applyRowState(row, checkbox.checked);
+          });
+          cell.appendChild(checkbox);
+        }
+
+        row.insertBefore(cell, row.firstChild);
+      }
+      return cell;
+    }
+
+    function syncRow(row) {
+      if (!isPrefRow(row)) {
+        return;
+      }
+      const cell = ensureSelectCell(row, true);
+      const checkbox = cell.querySelector("input");
+      const name = prefName(row);
+      const on = !!name && selectedNames.has(name);
+      checkbox.checked = on;
+      applyRowState(row, on);
+    }
+
+    function syncAll() {
+      for (const row of table.querySelectorAll("tr")) {
+        if (row.tagName !== "TR") {
+          continue;
+        }
+        if (row.classList.contains("add")) {
+          ensureSelectCell(row, false);
+          continue;
+        }
+        syncRow(row);
+      }
+    }
+
+    function setSelected(row, on) {
+      const name = prefName(row);
+      if (!name) {
+        return;
+      }
+      if (on) {
+        selectedNames.add(name);
+      } else {
+        selectedNames.delete(name);
+      }
+      syncRow(row);
+    }
+
+    function clearSelection() {
+      selectedNames.clear();
+      lastRow = null;
+      syncAll();
+    }
+
+    function copySelection() {
+      const text = Array.from(selectedNames)
+        .map(formatPref)
+        .filter(Boolean)
+        .join("\n");
+      if (text) {
+        clipboard().copyString(text);
+      }
+    }
+
+    function onTableClick(event) {
+      if (event.target.closest("button, input, label, a, select")) {
+        return;
+      }
+      const row = event.target.closest("tr");
+      if (!row || !table.contains(row) || !isPrefRow(row)) {
+        return;
+      }
+      const name = prefName(row);
+      const on = !!name && selectedNames.has(name);
+
+      if (event.ctrlKey || event.metaKey) {
+        event.preventDefault();
+        setSelected(row, !on);
+        lastRow = row;
+      } else if (event.shiftKey && lastRow && table.contains(lastRow)) {
+        const rows = Array.from(table.querySelectorAll("tr")).filter(isPrefRow);
+        const a = rows.indexOf(lastRow);
+        const b = rows.indexOf(row);
+        if (a >= 0 && b >= 0) {
+          selectedNames.clear();
+          for (let i = Math.min(a, b); i <= Math.max(a, b); i++) {
+            const n = prefName(rows[i]);
+            if (n) {
+              selectedNames.add(n);
+            }
+          }
+          lastRow = row;
+          syncAll();
+        }
+      } else if (!on) {
         clearSelection();
-        rows
-          .slice(Math.min(a, b), Math.max(a, b) + 1)
-          .forEach((r) => setSelected(r, true));
         lastRow = row;
       }
-    } else if (!selectedRows.has(row)) {
-      clearSelection();
-      lastRow = row;
     }
-  }
 
-  /* ── copy ─────────────────────────────────────────────────────── */
-
-  function copySelection() {
-    const names = Array.from(selectedRows).map(prefName).filter(Boolean);
-    if (!names.length) {
-      return;
+    function onKeyDown(event) {
+      if (
+        (event.ctrlKey || event.metaKey) &&
+        event.key.toLowerCase() === "c" &&
+        selectedNames.size
+      ) {
+        event.preventDefault();
+        event.stopPropagation();
+        copySelection();
+      } else if (event.key === "Escape") {
+        clearSelection();
+      }
     }
-    const text = names
-      .map((n) => formatPref(n))
-      .filter(Boolean)
-      .join("\n");
-    if (text) {
-      clipboard().copyString(text);
-    }
-  }
 
-  function onKeyDown(event) {
-    if (
-      (event.ctrlKey || event.metaKey) &&
-      event.key.toLowerCase() === "c" &&
-      selectedRows.size
-    ) {
-      event.preventDefault();
-      event.stopPropagation();
-      copySelection();
-    } else if (event.key === "Escape") {
-      clearSelection();
-    }
-  }
-
-  /* ── UI ───────────────────────────────────────────────────────── */
-
-  function addToolbarButton(doc) {
-    if (doc.getElementById("uc-multiselect-copy")) {
-      return;
-    }
-    const toolbar = doc.getElementById("toolbar");
-    if (!toolbar) {
-      return;
-    }
-    const button = doc.createElement("button");
-    button.id = "uc-multiselect-copy";
-    button.textContent = "Copy as user_pref()";
-    button.title =
-      "Copy the selected prefs as user_pref(...) lines (Ctrl+click to multi-select)";
-    button.addEventListener("click", (e) => {
-      e.preventDefault();
-      copySelection();
-    });
-    toolbar.appendChild(button);
-  }
-
-  /* ── bootstrap ────────────────────────────────────────────────── */
-
-  function init(doc) {
-    table = doc.getElementById("prefs");
-    if (!table) {
-      return false;
-    }
     table.addEventListener("click", onTableClick);
     doc.addEventListener("keydown", onKeyDown, true);
-    addToolbarButton(doc);
 
-    // The table is rebuilt whenever the search filter changes; drop selection
-    // to avoid holding detached rows.
-    const observer = new MutationObserver(() => clearSelection());
-    observer.observe(table, { childList: true });
+    // Keep checkboxes in sync as rows are added/rebuilt and clear the selection
+    // when the search filter changes.
+    const observer = new win.MutationObserver(() => syncAll());
+    observer.observe(table, { childList: true, subtree: true });
 
-    doc.defaultView.addEventListener(
+    const search = doc.getElementById("about-config-search");
+    const onSearch = () => clearSelection();
+    search?.addEventListener("input", onSearch);
+
+    const toolbar = doc.getElementById("toolbar");
+    if (toolbar && !doc.getElementById("uc-multiselect-copy")) {
+      const button = doc.createElement("button");
+      button.id = "uc-multiselect-copy";
+      button.textContent = "Copy as user_pref()";
+      button.title =
+        "Copy the selected prefs as user_pref(...) lines (Ctrl+click or tick checkboxes to multi-select)";
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        copySelection();
+      });
+      toolbar.appendChild(button);
+    }
+
+    syncAll();
+
+    win.addEventListener(
       "unload",
       () => {
         observer.disconnect();
-        table?.removeEventListener("click", onTableClick);
+        table.removeEventListener("click", onTableClick);
         doc.removeEventListener("keydown", onKeyDown, true);
+        search?.removeEventListener("input", onSearch);
         clearSelection();
       },
       { once: true },
     );
-    return true;
   }
 
-  // The prefs table only exists after the first-run warning is dismissed and
-  // about:config has finished building the page, so poll for it.
-  let retries = 0;
-  function whenReady() {
-    if (document.getElementById("prefs")) {
-      init(document);
-      return;
-    }
-    if (++retries < 100) {
-      setTimeout(whenReady, 100);
+  const progressListener = {
+    onLocationChange(browser, _webProgress, _request, location) {
+      if (location?.spec?.startsWith("about:config")) {
+        waitForTable(browser);
+      }
+    },
+  };
+
+  gBrowser.addTabsProgressListener(progressListener);
+
+  for (const tab of gBrowser.tabs) {
+    const browser = tab.linkedBrowser;
+    if (getConfigDoc(browser)) {
+      waitForTable(browser);
     }
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", whenReady, { once: true });
-  } else {
-    whenReady();
-  }
+  window.addEventListener(
+    "unload",
+    () => gBrowser.removeTabsProgressListener(progressListener),
+    { once: true },
+  );
 })();

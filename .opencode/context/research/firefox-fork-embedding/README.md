@@ -23,10 +23,11 @@ part can be read alone.
 | 04 | [04-js-injection-and-startup.md](04-js-injection-and-startup.md) | startup categories, window actors, `Services.scriptloader`/`ChromeUtils`, fx-autoconfig internals, rival loaders, ESM |
 | 05 | [05-prefs-and-policies.md](05-prefs-and-policies.md) | `firefox.js`, `StaticPrefList.yaml`, `all.js`, `policies.json`, AutoConfig |
 | 06 | [06-packaging-distribution-repackage.md](06-packaging-distribution-repackage.md) | `distribution/`, install-dir layout, `mach repackage` (deb/rpm/snap/flatpak/msix/msi/dmg/mar), l10n, NixOS |
-| 07 | [07-fork-case-studies.md](07-fork-case-studies.md) | deep dives: LibreWolf, Zen, Floorp/Noraneko, Midori/Amelia, Pulse/Dot, prefs-only stacks |
+| 07 | [07-fork-case-studies.md](07-fork-case-studies.md) | **deep dives** (build recipe + exact embed steps): LibreWolf, Zen, Floorp, Waterfox, Mercury, CachyOS, Konform, Midori, Tor, Mullvad, IceCat, UXP family, Glide, Gjoa/Palefox, Pulse, mobile |
 | 08 | [08-maintenance-rebase-dev-loop.md](08-maintenance-rebase-dev-loop.md) | upstream sync, patch stacks, rebasing, browser toolbox, live edit, tests |
 | 09 | [09-security-and-pitfalls.md](09-security-and-pitfalls.md) | AutoConfig system-principal risk, sandbox, signing, `omni.ja`, origin limits, Nova gate |
 | 10 | [10-forks-catalogue.md](10-forks-catalogue.md) | **exhaustive fork catalogue** — mainline Gecko (active), Goanna/UXP, mobile/GeckoView, discontinued, config-only; base-choice matrix |
+| 11 | [11-userchrome-ecosystem.md](11-userchrome-ecosystem.md) | the 97-repo `Thomashighbaugh/firefox-modification` stars list, categorised (userChrome themes, `.uc.js` collections, tooling, forks) with relevance to this theme |
 
 ## TL;DR
 

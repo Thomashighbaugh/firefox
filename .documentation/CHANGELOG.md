@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-11 17:12** [CSS/Content] about:addons: fixed the addon/theme card preview image width. Firefox 157 added `max-width: var(--page-main-content-width)` on `.card-heading-image` (author origin), overriding the theme's `max-width: calc(100% + 36px)`; added `!important`. Also audited all 156→157 built-in `about:*` and browser chrome stylesheet changes against the theme's selectors — no class/id renames, no other unguarded overrides found
+
 - **2026-10-11 16:11** [CSS/Content] about:addons: restored the grid layout. Firefox 157 added an author-origin rule `#main > addon-list > section { display: flex; flex-direction: column }` to its built-in `aboutaddons.css`, which outranks our user-origin `display: grid` (author-normal beats user-normal in the cascade) and collapsed the extension list back to a single vertical column. Added `!important` to the section's `display: grid`
 
 - **2026-10-11 03:53** [JS/about:config] Added a per-row selection checkbox to the about:config multi-select tool (a narrow first column on every pref row; the "add new pref" row gets an empty cell so the fixed table layout stays aligned). Selection is now tracked by pref name rather than row element, so it survives the table being rebuilt when the search filter changes; the checkboxes, row highlight, Ctrl/Cmd-click, Shift-click, Ctrl+C and the "Copy as user_pref()" button all stay in sync. The selection is cleared when the search filter changes

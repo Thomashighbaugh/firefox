@@ -106,7 +106,9 @@
   }
 
   .card-heading-image {
-    max-width: calc(100% + 36px);
+    /* Firefox 157 sets `max-width: var(--page-main-content-width)` on this
+       (author origin); without !important it overrides the card-width rule. */
+    max-width: calc(100% + 36px) !important;
     object-position: left;
   }
 

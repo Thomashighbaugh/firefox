@@ -1,5 +1,9 @@
 # LLM Wiki Operation Chronicle
 
+## 2026-10-11
+
+- **Researched** embedding the theme + userChrome.js into a Firefox fork with minimal compilation. Compared the zero-compile **overlay** path (AutoConfig `config.js` + `defaults/pref`, already used by this repo's NixOS setup) against the **source-fork + artifact-build** path (`--enable-artifact-builds`, `./mach build faster`). Key findings: (1) CSS committed into the tree loads at **author origin**, which beats Firefox's built-ins and removes the `!important` arms race that the profile `userChrome.css` forces; (2) artifact builds skip all C++/Rust compilation and only repack JS/CSS/assets; (3) JS can be embedded by vendoring fx-autoconfig's `boot.sys.mjs` or porting to `.sys.mjs` imported from `browser.js`. Surveyed LibreWolf (patches + `.cfg`), Zen (heavy full fork + Surfer), Floorp (5-layer + built-in userChromeCSS loader), and Midori/Amelia (`mach` wrapper). Saved to `research/firefox-fork-embedding/README.md`. Indexed in LLM Wiki.
+
 ## 2026-07-19
 
 - **Refreshed** via `/init-project refresh --full`. Phase 1: Re-detected stack (CSS + JS, Firefox userChrome). Phase 6: Spawned @architect, @convention-extractor, @explore for deep codebase mapping.

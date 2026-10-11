@@ -28,11 +28,15 @@
     flex-direction: column;
   }
 
+  /* NOTE: `!important` is required because Firefox 157 added an author-origin
+     rule `#main > addon-list > section { display: flex; flex-direction: column }`
+     in its built-in aboutaddons.css. Author-normal wins over user-normal in the
+     cascade, so without it the section collapses back to a vertical list. */
   addon-list > section,
   addon-list[type="extension"] > section,
   recommended-addon-list > section {
     padding: 2em;
-    display: grid;
+    display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(480px, 3fr));
     gap: 1em;
     margin-right: var(--sidebar-width) !important;

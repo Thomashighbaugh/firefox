@@ -85,17 +85,6 @@ export const POPUPS_CSS = `
         padding: 0;
       }
 
-      .subviewbutton[type="checkbox"]:not([checked="true"]) {
-        list-style-image: url(chrome://global/skin/icons/close.svg);
-        -moz-context-properties: fill;
-        fill: currentColor;
-        color: inherit;
-
-        .toolbarbutton-text {
-          padding-inline-start: 8px;
-        }
-      }
-
       #sb2-zoom-buttons {
         margin: var(--space-xsmall);
       }
@@ -141,9 +130,19 @@ export const POPUPS_CSS = `
     }
 
     input:focus-visible {
-      background-color: var(--toolbar-field-focus-background-color);
-      color: var(--toolbar-field-focus-color);
-      border: solid 1px var(--toolbar-field-focus-border-color);
+      background-color: var(
+        --toolbar-field-background-color-focus,
+        var(--toolbar-field-focus-background-color, var(--toolbar-field-background-color))
+      );
+      color: var(
+        --toolbar-field-text-color-focus,
+        var(--toolbar-field-focus-color, var(--toolbar-field-color, var(--toolbar-field-text-color)))
+      );
+      border: solid 1px
+        var(
+          --toolbar-field-border-color-focus,
+          var(--toolbar-field-focus-border-color, var(--toolbar-field-border-color))
+        );
     }
 
     .sb2-button-iconic .toolbarbutton-text {
@@ -153,6 +152,90 @@ export const POPUPS_CSS = `
     .sb2-popup-menu-list {
       margin-top: 0px;
       margin-bottom: 0px;
+    }
+  }
+
+  #sb2-main-popup-settings-backdrop,
+  #sb2-web-panel-edit-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483646;
+    background: transparent;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  .sb2-popup > panelmultiview:has(> .sb2-popup-discard-confirmation) {
+    position: relative;
+    overflow: hidden;
+
+    > .sb2-popup-discard-confirmation {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: stretch;
+      box-sizing: border-box;
+      padding: var(--space-medium);
+      background-color: rgb(0 0 0 / 42%);
+
+      &[hidden] {
+        display: none;
+      }
+
+      .sb2-popup-discard-confirmation-card {
+        display: flex;
+        flex-direction: column;
+        padding: var(--space-medium);
+        gap: var(--space-small);
+        color: var(--arrowpanel-color, CanvasText);
+        background-color: var(--arrowpanel-background, Canvas);
+        border: solid 1px
+          var(--arrowpanel-border-color, var(--border-color-deemphasized));
+        border-radius: var(--border-radius-medium);
+        box-shadow: 0 8px 24px rgb(0 0 0 / 35%);
+      }
+
+      .sb2-popup-discard-confirmation-title {
+        display: flex;
+        align-items: center;
+        gap: var(--space-xsmall);
+      }
+
+      .sb2-popup-discard-confirmation-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: none;
+        box-sizing: border-box;
+        margin: 0;
+        width: 18px;
+        height: 18px;
+        color: var(--text-color-deemphasized);
+        border: solid 1px currentColor;
+        border-radius: 50%;
+        font-weight: bold;
+      }
+
+      .sb2-popup-discard-confirmation-heading {
+        margin: 0;
+        font-weight: 600;
+      }
+
+      .sb2-popup-discard-confirmation-description {
+        margin: 0 0 0 calc(18px + var(--space-xsmall));
+        color: var(--text-color-deemphasized);
+        text-wrap: wrap;
+      }
+
+      .sb2-popup-discard-confirmation-card > .sb2-popup-footer {
+        margin: 0;
+        padding: 0;
+      }
     }
   }
 

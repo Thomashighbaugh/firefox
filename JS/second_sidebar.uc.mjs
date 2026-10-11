@@ -24,10 +24,23 @@ const cleanup = () => {
   SidebarControllers.destroy();
 };
 
-if (typeof UC_API !== "undefined") {
-  UC_API.Runtime.startupFinished().then(run);
+const runAfterStartup = () => {
+  if (window.gBrowserInit?.delayedStartupFinished) {
+    run();
+  } else if (typeof delayedStartupPromise !== "undefined") {
+    delayedStartupPromise.then(run);
+  } else if (typeof UC_API !== "undefined") {
+    UC_API.Runtime.startupFinished().then(run);
+  }
+};
+
+if (
+  document.readyState === "loading" &&
+  typeof delayedStartupPromise === "undefined"
+) {
+  window.addEventListener("DOMContentLoaded", runAfterStartup, { once: true });
 } else {
-  delayedStartupPromise.then(run);
+  runAfterStartup();
 }
 
 window.addEventListener("unload", cleanup, { once: true });

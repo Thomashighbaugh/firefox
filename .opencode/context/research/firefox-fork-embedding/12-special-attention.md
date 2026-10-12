@@ -162,7 +162,8 @@ observer cases), with per-file patches like `src/browser/actors/ContextMenuChild
   verify" rule.
 - **For this theme:** Gjoa is the closest *maintained* template for "source fork with a fast
   chrome-only iteration loop". Its Lane 1 (`sync`+`hotreload`) is the answer to "how do I iterate the
-  theme in a fork without a 30-min build".
+  theme in a fork without a 30-min build" — **full implementation walkthrough in
+  [13-lane1-dev-loop.md](13-lane1-dev-loop.md)**.
 
 ---
 

@@ -29,6 +29,7 @@ part can be read alone.
 | 10 | [10-forks-catalogue.md](10-forks-catalogue.md) | **exhaustive fork catalogue** — mainline Gecko (active), Goanna/UXP, mobile/GeckoView, discontinued, config-only; base-choice matrix |
 | 11 | [11-userchrome-ecosystem.md](11-userchrome-ecosystem.md) | the 97-repo `Thomashighbaugh/firefox-modification` stars list, categorised (userChrome themes, `.uc.js` collections, tooling, forks) with relevance to this theme |
 | 12 | [12-special-attention.md](12-special-attention.md) | **SPECIAL ATTENTION** — Midori's patch system (and how to embed the scripts into it), Palefox (loader attack-surface), Gjoa (build lanes), Hilal (Rust patch manager + Android); Linux-only distribution plan |
+| 13 | [13-lane1-dev-loop.md](13-lane1-dev-loop.md) | **implementing Lane 1** — what Gjoa's `sync`/`hotreload` actually does, and the concrete Higgs equivalent (loader, 2 patches, `bin/higgs` CLI, dev loop, limits, security, effort) |
 
 ## TL;DR
 

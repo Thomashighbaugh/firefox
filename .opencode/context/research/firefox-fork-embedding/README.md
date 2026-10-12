@@ -28,6 +28,7 @@ part can be read alone.
 | 09 | [09-security-and-pitfalls.md](09-security-and-pitfalls.md) | AutoConfig system-principal risk, sandbox, signing, `omni.ja`, origin limits, Nova gate |
 | 10 | [10-forks-catalogue.md](10-forks-catalogue.md) | **exhaustive fork catalogue** — mainline Gecko (active), Goanna/UXP, mobile/GeckoView, discontinued, config-only; base-choice matrix |
 | 11 | [11-userchrome-ecosystem.md](11-userchrome-ecosystem.md) | the 97-repo `Thomashighbaugh/firefox-modification` stars list, categorised (userChrome themes, `.uc.js` collections, tooling, forks) with relevance to this theme |
+| 12 | [12-special-attention.md](12-special-attention.md) | **SPECIAL ATTENTION** — Midori's patch system (and how to embed the scripts into it), Palefox (loader attack-surface), Gjoa (build lanes), Hilal (Rust patch manager + Android); Linux-only distribution plan |
 
 ## TL;DR
 

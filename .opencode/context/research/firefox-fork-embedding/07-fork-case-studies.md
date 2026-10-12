@@ -10,7 +10,8 @@ updated: 2026-10-11
 
 Per-fork **build recipe** + **exact embed steps** for this theme. Full fork list:
 [10-forks-catalogue.md](10-forks-catalogue.md). Ecosystem repos (themes/scripts/tools):
-[11-userchrome-ecosystem.md](11-userchrome-ecosystem.md).
+[11-userchrome-ecosystem.md](11-userchrome-ecosystem.md). **Special-attention deep analysis**
+(Midori patch system, Palefox, Gjoa, Hilal): [12-special-attention.md](12-special-attention.md).
 
 ## How to read each deep-dive
 
@@ -290,7 +291,26 @@ The universal embed map (repeat per fork):
 changes without a fork or compile. They cannot express chrome layout CSS — complementary, not
 alternatives.
 
-## 7.19 Decision matrix
+## 7.19 Hilal Browser
+
+- **Base:** experimental Firefox fork, alpha, previously "Huma Browser". `VastSea0/hilal-browser`;
+  base **Firefox 157.0a1** (`FIREFOX_COMMIT` + `upstream.lock`).
+- **Build:** its own **Rust patch manager `hil/`**:
+  ```bash
+  cargo build --release --manifest-path hil/Cargo.toml
+  # overlay dir is `changes/` (mirrors Firefox paths)
+  ```
+  `mozconfigs/{linux,macos,windows,flatpak,base}` **and Android**
+  (`mozconfigs/android-*`, `android/` Gradle). Patch verification in
+  `.github/workflows/verify-patches.yml`.
+- **Theming hook:** vertical sidebar tabs, Tahoe translucent UI, compact mode, per-site custom CSS +
+  element zapper, accent/gradient extraction. Overlay in `changes/browser/{base/content/hilal,
+  branding/hilal}/`.
+- **Embed (this theme):** `CSS/chrome/*` → `changes/…/browser.css` include; page CSS → patch target
+  sheets; JS → `changes/` component modules (or a vendored loader); prefs → `changes/browser/app/profile/`.
+- **Gotchas:** alpha; `hil` is bespoke (not Amelia) so follow its docs; best Linux+Android template.
+
+## 7.20 Decision matrix
 
 | Fork | Compile | Theming model | Best for this theme |
 | ---- | ------- | ------------- | ------------------- |

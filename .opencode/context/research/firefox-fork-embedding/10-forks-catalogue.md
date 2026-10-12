@@ -46,7 +46,7 @@ theme's stylesheet lands (author = wins without `!important`).
 | **Sumi Browser** | Firefox fork | own | full | author | native | `sumi-browser/desktop` |
 | **TerraDact** | Firefox fork | own | full | author | native | `TERRA-TECH-SYSTEMS/terradact`; "sovereign browser" + Gecko/SpiderMonkey webview for TerraCore |
 | **MarsFlow** | Firefox ESR | own | full | author | native | Zen-inspired UI, DuckDuckGo, Tor mode |
-| **Hilal Browser** | Firefox fork | own | full | author | native | `VastSea0/hilal-browser` |
+| **Hilal Browser** | Firefox 157.0a1 | own **Rust `hil`** patch manager | full | author | native | `VastSea0/hilal-browser`; alpha (ex-"Huma"); `changes/` overlay; **Android** (`android/` + `mozconfigs/android-*`) + flatpak; Tahoe UI, per-site custom CSS |
 | **firefox-vanilla** | Firefox fork | own | full | author | native | `HeXis-YS/firefox-vanilla` — performance-focused |
 | **Aquafox** | **TenFourFox** modernization | own | full | author | native | PowerPC / Mac OS X 10.4; keeps old-GPU Macs alive |
 | **KaiOS Browser** | Gecko (Firefox OS lineage) | KaiOS build | full | author | native | powers KaiOS feature phones |

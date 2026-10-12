@@ -42,7 +42,34 @@ Known smells (from `AGENTS.md` + code):
 - **1:1 boilerplate:** ~30 `xul/base/*` wrappers and 8 `web_panel_*` popups are near-duplicates.
 - **Import-cycle risk:** static-property wiring + `chrome://` imports.
 
-**Proposed approach (mechanical, behaviour-preserving):**
+### Measured condensation inventory (2026-10-12 recon)
+
+**163 files · 13,662 lines** (≈9,410 code · 4,252 comment/blank). **No `instanceof` anywhere** → all
+wrapper classes can become factories.
+
+| # | Target | Now | After | Saves | Risk |
+| - | ------ | --- | ----- | ----- | ---- |
+| C1 | `xul/base/*` — 25 of 30 are pure `super({tag})` aliases | 30 files / 1,896 ln | 1 `elements.mjs` factory + generic setters on `XULElement` | ~29 files / ~1,300 ln | low |
+| C2 | `utils/xul.mjs` `createX()` duplicates the base classes (two factory layers) | 2 layers | 1 | ~150 ln | low |
+| C3 | `css/*.mjs` — 12 CSS-in-JS template-string modules | 12 files / 873 ln | 1 `second-sidebar.css` asset, injected once | ~11 files | low-med | **✅ done 2026-10-12** — `css/` 12→1, output byte-identical, dead `css/sidebar.mjs` removed || C4 | Popups share a scaffold + repeat `listenXButtonClick` ~20× | 4–8 files / ~1,400 ln | 1 `PopupPanel` base + declarative descriptor + `onLeftClick` | ~5 files / ~500 ln | med |
+| C5 | Popup controllers are 1:1 with popups (420 ln wiring) | 4 files | 1 `WebPanelDialogs` | ~3 files / ~300 ln | med |
+| C6 | `wrappers/*` — 20+ are 4–22 ln single-method delegates | 28 files / 893 ln | ~4 grouped modules | ~24 files | low |
+| C7 | `settings/*` tiny state modules merge into parents | 8 files / 552 ln | ~3 files | ~5 files | low |
+| C8 | Redundant JSDoc (boilerplate `@param` on one-liners) | 4,252 ln | — | ~1,500–2,000 ln | none |
+
+**Projected: ~163 → ~60 files; ~13.7k → ~8k lines (~7k after JSDoc trim), identical DOM.**
+
+**Execution order (each stage gated by the DOM snapshot):**
+0. Harness — `JS/_dev_sidebar_snapshot.uc.js`: serialise the sidebar subtree (tag/`id`/`class`/`is`/
+   attrs/order) + computed styles to the console/clipboard.
+1. **C1 + C2** — the elements layer (biggest win, purely mechanical).
+2. **C6 + C7** — wrappers/settings grouping.
+3. **C3** — CSS asset.
+4. **C4 + C5** — popups + controllers.
+5. **C8** — JSDoc trim last (cosmetic).
+
+### Original proposed approach (still valid)
+
 1. **Freeze the contract first.** Build a **DOM snapshot harness**: after `SidebarElements.create()`,
    serialise the produced subtree (tag/`id`/`class`/`is`/`style` attrs, order). Snapshot before the
    refactor; assert byte-identical after each stage. This is the "looks and works the exact same"

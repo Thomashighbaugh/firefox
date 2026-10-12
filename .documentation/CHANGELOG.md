@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-12 23:04** [Second Sidebar] Condensation C3: collapsed the 12 `css/*.mjs` CSS-in-JS modules into a single `css/second_sidebar.mjs` (`SECOND_SIDEBAR_CSS`), and simplified `sidebar_decorator.mjs` to one import. The injected stylesheet is byte-identical (19,057 chars, same concatenation order). Also removed the dead `css/sidebar.mjs` (`SIDEBAR_CSS` was referenced nowhere). Net: `css/` 12 files → 1.
+
 - **2026-10-11 17:36** [CSS] Hardened the two remaining declarations that Firefox 157's new author-origin rules outrank: `about:addons` `.addon-description { display: none !important }` and `#appMenu-quit-button2 > .toolbarbutton-icon { stroke: transparent !important; -moz-context-properties: fill, stroke !important }`
 
 - **2026-10-11 17:12** [CSS/Content] about:addons: fixed the addon/theme card preview image width. Firefox 157 added `max-width: var(--page-main-content-width)` on `.card-heading-image` (author origin), overriding the theme's `max-width: calc(100% + 36px)`; added `!important`. Also audited all 156→157 built-in `about:*` and browser chrome stylesheet changes against the theme's selectors — no class/id renames, no other unguarded overrides found

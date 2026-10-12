@@ -1,4 +1,4 @@
-import { Label } from "./base/label.mjs";
+import { Label } from "./base/elements.mjs";
 import { Tooltip } from "./base/tooltip.mjs";
 
 export class WebPanelTooltip extends Tooltip {

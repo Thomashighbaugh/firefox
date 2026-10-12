@@ -1,4 +1,4 @@
-import { MenuItem } from "./base/menuitem.mjs";
+import { MenuItem } from "./base/elements.mjs";
 import { ellipsis } from "../utils/string.mjs";
 
 export class SearchInWebPanelMenuItem extends MenuItem {

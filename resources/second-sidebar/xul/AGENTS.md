@@ -9,11 +9,11 @@ Component framework for creating Firefox XUL elements. Base classes in `base/`, 
 
 ```
 xul/
-├── base/                      # 30 base element wrappers (SEE base/AGENTS.md)
-│   ├── xul_element.mjs       # Root base class
-│   ├── browser.mjs           # <browser> wrapper
-│   ├── toolbar.mjs, button.mjs, etc.
-└── *.mjs                      # 37 composed components
+├── base/                      # 10 base modules (SEE base/AGENTS.md)
+│   ├── xul_element.mjs       # Root base class + generic setters
+│   ├── elements.mjs          # Tag wrappers (Box, VBox, Div, Label, …) via defineElement
+│   ├── browser.mjs, panel.mjs, tab.mjs, widget.mjs, toolbar_button.mjs, input.mjs, menulist.mjs, tooltip.mjs
+└── *.mjs                      # composed components
     ├── sidebar_main.mjs      # Main toolbar
     ├── web_panel_button.mjs  # Panel button widget
     ├── sidebar_box.mjs       # Container box

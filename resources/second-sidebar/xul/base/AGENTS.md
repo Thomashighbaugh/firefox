@@ -1,9 +1,20 @@
 # AGENTS.md - Base XUL Element Wrappers
 
-**Context:** 30 base classes wrapping Firefox XUL/HTML elements for second sidebar framework.
+**Context:** 10 files. The trivial per-tag wrappers are generated in `elements.mjs`; the
+behaviour-bearing wrappers keep their own modules.
 
 ## OVERVIEW
 Thin wrapper classes providing fluent API over native XUL/HTML elements. Root: `XULElement`.
+
+- `elements.mjs` — `defineElement(tag, {isXUL, init})` plus the tag wrappers (Box, VBox, HBox,
+  Div, Span, Label, Button, Image, Img, Menu, MenuItem, MenuSeparator, MenuPopup, PanelMultiView,
+  Splitter, Toolbar, ToolbarSeparator, Toggle, MozButton, Header, Style). **Import element
+  wrappers from here.**
+- `xul_element.mjs` — root class; owns the shared fluent API **and the generic setters**
+  (`setText`, `setSrc`, `setLabel`, `setType`, `setMode`, `setDisabled`, `getPressed`/`setPressed`,
+  `isPanelOpen`, …).
+- Behaviour-bearing wrappers (own modules): `widget.mjs`, `toolbar_button.mjs`, `browser.mjs`,
+  `panel.mjs`, `tab.mjs`, `input.mjs`, `menulist.mjs`, `tooltip.mjs`.
 
 ## BASE CLASS HIERARCHY
 
@@ -116,7 +127,9 @@ loadURL(url) { ... }
 ```
 
 ## FILE LIST
-box.mjs, browser.mjs, button.mjs, div.mjs, hbox.mjs, header.mjs, image.mjs, img.mjs, input.mjs, label.mjs, menubar.mjs, menubutton.mjs, menuitem.mjs, menulist.mjs, menupopup.mjs, menuseparator.mjs, option.mjs, panel.mjs, popup.mjs, select.mjs, separator.mjs, spacer.mjs, splitter.mjs, stack.mjs, textarea.mjs, toolbar.mjs, toolbarbutton.mjs, toolbarseparator.mjs, vbox.mjs, widget.mjs, xul_element.mjs (31 total)
+`elements.mjs` (tag wrappers + `defineElement`), `xul_element.mjs` (root + generic setters),
+`widget.mjs`, `toolbar_button.mjs`, `browser.mjs`, `panel.mjs`, `tab.mjs`, `input.mjs`,
+`menulist.mjs`, `tooltip.mjs` (10 total).
 
 ## NOTES
 - **No Validation:** Wrappers don't validate XUL element compatibility (e.g., can call `setMode()` on non-toolbar)

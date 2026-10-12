@@ -455,4 +455,115 @@ export class XULElement {
     this.element.remove();
     return this;
   }
+
+  // ---- generic setters (absorbed from the former per-element wrapper classes) ----
+
+  /**
+   * @param {string} text
+   * @returns {XULElement}
+   */
+  setText(text) {
+    this.element.textContent = text;
+    return this;
+  }
+
+  /**
+   * @returns {string}
+   */
+  getText() {
+    return this.element.textContent;
+  }
+
+  /**
+   * @param {string} src
+   * @returns {XULElement}
+   */
+  setSrc(src) {
+    this.element.src = src;
+    return this;
+  }
+
+  /**
+   * @param {string} label
+   * @returns {XULElement}
+   */
+  setLabel(label) {
+    return this.setAttribute("label", label);
+  }
+
+  /**
+   * @param {string} type
+   * @returns {XULElement}
+   */
+  setType(type) {
+    return this.setAttribute("type", type);
+  }
+
+  /**
+   * @param {string} value
+   * @returns {XULElement}
+   */
+  setMode(value) {
+    return this.setAttribute("mode", value);
+  }
+
+  /**
+   * @param {string} value
+   * @returns {XULElement}
+   */
+  setResizeBefore(value) {
+    return this.setAttribute("resizebefore", value);
+  }
+
+  /**
+   * @param {string} value
+   * @returns {XULElement}
+   */
+  setResizeAfter(value) {
+    return this.setAttribute("resizeafter", value);
+  }
+
+  /**
+   * @param {string} value
+   * @returns {XULElement}
+   */
+  setFontSize(value) {
+    return this.setProperty("font-size", value);
+  }
+
+  /**
+   * @returns {boolean}
+   */
+  getPressed() {
+    return this.element.pressed;
+  }
+
+  /**
+   * @param {boolean} value
+   * @returns {XULElement}
+   */
+  setPressed(value) {
+    this.element.pressed = value;
+    return this;
+  }
+
+  /**
+   * @param {boolean} value
+   * @returns {XULElement}
+   */
+  setDisabled(value) {
+    if (value) {
+      this.setAttribute("disabled", true);
+    } else {
+      this.removeAttribute("disabled");
+    }
+    return this;
+  }
+
+  /**
+   * @returns {boolean}
+   */
+  isPanelOpen() {
+    return this.getAttributeBool("panelopen");
+  }
 }

@@ -1,9 +1,7 @@
 import { createMozButton } from "../utils/xul.mjs";
 
-import { HBox } from "./base/hbox.mjs";
-import { Label } from "./base/label.mjs";
+import { HBox, Label, VBox } from "./base/elements.mjs";
 import { PopupFooter } from "./popup_footer.mjs";
-import { VBox } from "./base/vbox.mjs";
 import { isLeftMouseButton } from "../utils/buttons.mjs";
 
 let confirmationId = 0;

@@ -1,11 +1,7 @@
-import { HBox } from "../xul/base/hbox.mjs";
-import { Header } from "../xul/base/header.mjs";
+import { HBox, Header, Label, MozButton, VBox } from "../xul/base/elements.mjs";
 import { Input } from "../xul/base/input.mjs";
-import { Label } from "../xul/base/label.mjs";
 import { MenuList } from "../xul/base/menulist.mjs";
-import { MozButton } from "../xul/base/moz_button.mjs";
 import { ToolbarButton } from "../xul/base/toolbar_button.mjs";
-import { VBox } from "../xul/base/vbox.mjs";
 import { XULElement } from "../xul/base/xul_element.mjs"; // eslint-disable-line no-unused-vars
 import { ZoomManagerWrapper } from "../wrappers/zoom_manager.mjs";
 

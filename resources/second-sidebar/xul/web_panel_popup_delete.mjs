@@ -4,9 +4,8 @@ import {
   createPopupSet,
 } from "../utils/xul.mjs";
 
-import { Label } from "./base/label.mjs";
+import { Label, PanelMultiView } from "./base/elements.mjs";
 import { Panel } from "./base/panel.mjs";
-import { PanelMultiView } from "./base/panel_multi_view.mjs";
 import { PopupBody } from "./popup_body.mjs";
 import { PopupFooter } from "./popup_footer.mjs";
 import { PopupHeader } from "./popup_header.mjs";

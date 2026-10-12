@@ -1,4 +1,4 @@
-import { Toolbar } from "./base/toolbar.mjs";
+import { Toolbar } from "./base/elements.mjs";
 
 export class SidebarMain extends Toolbar {
   constructor() {

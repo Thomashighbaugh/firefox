@@ -1,4 +1,4 @@
-import { Splitter } from "./base/splitter.mjs";
+import { Splitter } from "./base/elements.mjs";
 
 export class SidebarSplitter extends Splitter {
   constructor() {

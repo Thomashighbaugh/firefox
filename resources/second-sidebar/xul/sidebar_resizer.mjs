@@ -1,4 +1,4 @@
-import { Div } from "./base/div.mjs";
+import { Div } from "./base/elements.mjs";
 
 export class SidebarResizer extends Div {
   /**

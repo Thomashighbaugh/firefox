@@ -5,7 +5,7 @@ import { ObserversWrapper } from "../wrappers/observers.mjs";
 import { PopupNotificationsPatcher } from "../patchers/popup_notifications_patcher.mjs";
 import { ScriptSecurityManagerWrapper } from "../wrappers/script_security_manager.mjs";
 import { SessionStoreWrapper } from "../wrappers/session_store.mjs";
-import { Style } from "./base/style.mjs";
+import { Style } from "./base/elements.mjs";
 import { UrlbarInputPatcher } from "../patchers/urlbar_input_patcher.mjs";
 import { WebPanelSettings } from "../settings/web_panel_settings.mjs"; // eslint-disable-line no-unused-vars
 import { WebPanelState } from "../settings/web_panel_state.mjs"; // eslint-disable-line no-unused-vars

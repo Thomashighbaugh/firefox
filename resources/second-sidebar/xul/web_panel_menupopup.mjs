@@ -1,7 +1,4 @@
-import { Menu } from "./base/menu.mjs";
-import { MenuItem } from "./base/menuitem.mjs";
-import { MenuPopup } from "./base/menupopup.mjs";
-import { MenuSeparator } from "./base/menuseparator.mjs";
+import { Menu, MenuItem, MenuPopup, MenuSeparator } from "./base/elements.mjs";
 import { SidebarControllers } from "../sidebar_controllers.mjs";
 import { WebPanelController } from "../controllers/web_panel.mjs"; // eslint-disable-line no-unused-vars
 

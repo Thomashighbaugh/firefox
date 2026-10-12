@@ -1,4 +1,4 @@
-import { Label } from "./base/label.mjs";
+import { Label } from "./base/elements.mjs";
 
 export class GeometryHint extends Label {
   constructor() {

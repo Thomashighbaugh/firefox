@@ -1,6 +1,4 @@
-import { MenuItem } from "./base/menuitem.mjs";
-import { MenuPopup } from "./base/menupopup.mjs";
-import { MenuSeparator } from "./base/menuseparator.mjs";
+import { MenuItem, MenuPopup, MenuSeparator } from "./base/elements.mjs";
 
 export class SidebarMainMenuPopup extends MenuPopup {
   constructor() {

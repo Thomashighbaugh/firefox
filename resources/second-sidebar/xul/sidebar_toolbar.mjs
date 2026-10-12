@@ -1,7 +1,4 @@
-import { Div } from "./base/div.mjs";
-import { HBox } from "./base/hbox.mjs";
-import { Label } from "./base/label.mjs";
-import { Toolbar } from "./base/toolbar.mjs";
+import { Div, HBox, Label, Toolbar } from "./base/elements.mjs";
 import { ToolbarButton } from "./base/toolbar_button.mjs";
 import { isLeftMouseButton } from "../utils/buttons.mjs";
 import { useAvailableIcon } from "../utils/icons.mjs";

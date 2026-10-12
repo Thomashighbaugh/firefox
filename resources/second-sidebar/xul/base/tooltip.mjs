@@ -1,4 +1,4 @@
-import { Div } from "./div.mjs";
+import { Div } from "./elements.mjs";
 import { Panel } from "./panel.mjs";
 
 export class Tooltip extends Panel {

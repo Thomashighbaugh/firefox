@@ -1,4 +1,4 @@
-import { Box } from "./base/box.mjs";
+import { Box } from "./base/elements.mjs";
 
 export class SidebarBoxFiller extends Box {
   constructor() {

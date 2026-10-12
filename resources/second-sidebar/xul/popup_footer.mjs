@@ -1,4 +1,4 @@
-import { HBox } from "./base/hbox.mjs";
+import { HBox } from "./base/elements.mjs";
 
 export class PopupFooter extends HBox {
   constructor() {

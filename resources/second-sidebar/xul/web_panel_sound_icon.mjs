@@ -1,4 +1,4 @@
-import { Image } from "./base/image.mjs";
+import { Image } from "./base/elements.mjs";
 
 export class WebPanelSoundIcon extends Image {
   constructor() {

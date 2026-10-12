@@ -1,6 +1,4 @@
-import { Header } from "./base/header.mjs";
-import { ToolbarSeparator } from "./base/toolbar_separator.mjs";
-import { VBox } from "./base/vbox.mjs";
+import { Header, ToolbarSeparator, VBox } from "./base/elements.mjs";
 
 export class PopupHeader extends VBox {
   /**

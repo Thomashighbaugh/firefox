@@ -1,5 +1,5 @@
 import { BrowserElements } from "../browser_elements.mjs";
-import { Div } from "./base/div.mjs";
+import { Div } from "./base/elements.mjs";
 
 /**
  * Represents the area where the sidebar box is positioned.

@@ -1,5 +1,4 @@
-import { Div } from "./base/div.mjs";
-import { Span } from "./base/span.mjs";
+import { Div, Span } from "./base/elements.mjs";
 
 export class NotificationBadge extends Div {
   constructor() {

@@ -1,4 +1,4 @@
-import { VBox } from "./base/vbox.mjs";
+import { VBox } from "./base/elements.mjs";
 
 export class WebPanels extends VBox {
   constructor() {

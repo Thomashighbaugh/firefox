@@ -1,3 +1,13 @@
+import { BrowserElements } from "../browser_elements.mjs";
+import { Div, PanelMultiView, Toggle, ToolbarSeparator, VBox } from "./base/elements.mjs";
+import { Panel } from "./base/panel.mjs";
+import { PopupBody } from "./popup_body.mjs";
+import { PopupDiscardConfirmation } from "./popup_discard_confirmation.mjs";
+import { PopupFooter } from "./popup_footer.mjs";
+import { PopupHeader } from "./popup_header.mjs";
+import { SidebarControllers } from "../sidebar_controllers.mjs";
+import { SidebarSettings } from "../settings/settings.mjs";
+import { isLeftMouseButton } from "../utils/buttons.mjs";
 import {
   createCancelButton,
   createInput,
@@ -9,16 +19,6 @@ import {
   createSubviewIconicButton,
 } from "../utils/xul.mjs";
 
-import { BrowserElements } from "../browser_elements.mjs";
-import { Div, PanelMultiView, Toggle, ToolbarSeparator, VBox } from "./base/elements.mjs";
-import { Panel } from "./base/panel.mjs";
-import { PopupBody } from "./popup_body.mjs";
-import { PopupDiscardConfirmation } from "./popup_discard_confirmation.mjs";
-import { PopupFooter } from "./popup_footer.mjs";
-import { PopupHeader } from "./popup_header.mjs";
-import { SidebarControllers } from "../sidebar_controllers.mjs";
-import { SidebarSettings } from "../settings/sidebar_settings.mjs"; // eslint-disable-line no-unused-vars
-import { isLeftMouseButton } from "../utils/buttons.mjs";
 
 const ICONS = {
   UNDO: "chrome://global/skin/icons/undo.svg",

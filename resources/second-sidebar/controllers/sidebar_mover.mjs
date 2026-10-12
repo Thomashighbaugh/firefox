@@ -1,12 +1,12 @@
 import { SidebarEvents, sendEvents } from "./events.mjs";
+import { BrowserElements } from "../browser_elements.mjs";
+import { SidebarControllers } from "../sidebar_controllers.mjs";
+import { SidebarElements } from "../sidebar_elements.mjs";
 import {
   hideGeometryHint,
   showFloatingGeometryHint,
 } from "../utils/geometry_hint.mjs";
 
-import { BrowserElements } from "../browser_elements.mjs";
-import { SidebarControllers } from "../sidebar_controllers.mjs";
-import { SidebarElements } from "../sidebar_elements.mjs";
 
 export class SidebarMover {
   constructor() {

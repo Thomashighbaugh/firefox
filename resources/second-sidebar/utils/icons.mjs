@@ -1,6 +1,4 @@
-import { FaviconsWrapper } from "../wrappers/favicons.mjs";
-import { NetUtilWrapper } from "../wrappers/net_utils.mjs";
-
+import { FaviconsWrapper, NetUtilWrapper } from "../wrappers/services.mjs";
 const PREDEFINED_ICONS = {
   "about:newtab": "chrome://branding/content/icon32.png",
   "about:home": "chrome://branding/content/icon32.png",

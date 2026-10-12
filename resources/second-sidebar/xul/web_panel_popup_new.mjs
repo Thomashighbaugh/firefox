@@ -1,3 +1,10 @@
+import { Panel } from "./base/panel.mjs";
+import { PanelMultiView, Toggle, ToolbarSeparator } from "./base/elements.mjs";
+import { PopupBody } from "./popup_body.mjs";
+import { PopupFooter } from "./popup_footer.mjs";
+import { PopupHeader } from "./popup_header.mjs";
+import { ScriptSecurityManagerWrapper } from "../wrappers/services.mjs";
+import { isLeftMouseButton } from "../utils/buttons.mjs";
 import {
   applyContainerColor,
   fillContainerMenuList,
@@ -12,13 +19,6 @@ import {
   createPopupSet,
 } from "../utils/xul.mjs";
 
-import { Panel } from "./base/panel.mjs";
-import { PanelMultiView, Toggle, ToolbarSeparator } from "./base/elements.mjs";
-import { PopupBody } from "./popup_body.mjs";
-import { PopupFooter } from "./popup_footer.mjs";
-import { PopupHeader } from "./popup_header.mjs";
-import { ScriptSecurityManagerWrapper } from "../wrappers/script_security_manager.mjs";
-import { isLeftMouseButton } from "../utils/buttons.mjs";
 
 export class WebPanelPopupNew extends Panel {
   constructor() {

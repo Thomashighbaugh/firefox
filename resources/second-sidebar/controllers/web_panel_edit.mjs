@@ -1,9 +1,7 @@
 import { WebPanelEvents, sendEvents } from "./events.mjs";
-
 import { SidebarControllers } from "../sidebar_controllers.mjs";
 import { SidebarElements } from "../sidebar_elements.mjs";
-import { WebPanelController } from "./web_panel.mjs"; // eslint-disable-line no-unused-vars
-
+import { WebPanelController } from "./web_panel.mjs";
 export class WebPanelEditController {
   constructor() {
     this.#setupListeners();

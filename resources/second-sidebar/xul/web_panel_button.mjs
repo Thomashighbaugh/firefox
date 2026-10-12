@@ -1,13 +1,11 @@
 import { FALLBACK_ICON, fetchIconURL } from "../utils/icons.mjs";
-
 import { NotificationBadge } from "./notification_badge.mjs";
-import { WebPanelSettings } from "../settings/web_panel_settings.mjs"; // eslint-disable-line no-unused-vars
+import { WebPanelSettings } from "../settings/web_panel_settings.mjs";
 import { WebPanelSoundIcon } from "./web_panel_sound_icon.mjs";
 import { Widget } from "./base/widget.mjs";
 import { applyContainerColor } from "../utils/containers.mjs";
 import { clearUrl } from "../utils/url.mjs";
 import { ellipsis } from "../utils/string.mjs";
-
 const URL_LABEL_LIMIT = 24;
 const URL_TOOLTIP_LIMIT = 64;
 

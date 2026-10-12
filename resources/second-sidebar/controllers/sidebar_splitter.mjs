@@ -1,11 +1,11 @@
 import { SidebarEvents, sendEvents } from "./events.mjs";
+import { SidebarControllers } from "../sidebar_controllers.mjs";
+import { SidebarElements } from "../sidebar_elements.mjs";
 import {
   hideGeometryHint,
   showPinnedGeometryHint,
 } from "../utils/geometry_hint.mjs";
 
-import { SidebarControllers } from "../sidebar_controllers.mjs";
-import { SidebarElements } from "../sidebar_elements.mjs";
 
 export class SidebarSplitterController {
   constructor() {

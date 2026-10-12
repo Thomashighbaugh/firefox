@@ -1,16 +1,16 @@
+import { Label, PanelMultiView } from "./base/elements.mjs";
+import { Panel } from "./base/panel.mjs";
+import { PopupBody } from "./popup_body.mjs";
+import { PopupFooter } from "./popup_footer.mjs";
+import { PopupHeader } from "./popup_header.mjs";
+import { WebPanelController } from "../controllers/web_panel.mjs";
+import { isLeftMouseButton } from "../utils/buttons.mjs";
 import {
   createCancelButton,
   createDeleteButton,
   createPopupSet,
 } from "../utils/xul.mjs";
 
-import { Label, PanelMultiView } from "./base/elements.mjs";
-import { Panel } from "./base/panel.mjs";
-import { PopupBody } from "./popup_body.mjs";
-import { PopupFooter } from "./popup_footer.mjs";
-import { PopupHeader } from "./popup_header.mjs";
-import { WebPanelController } from "../controllers/web_panel.mjs"; // eslint-disable-line no-unused-vars
-import { isLeftMouseButton } from "../utils/buttons.mjs";
 
 export class WebPanelPopupDelete extends Panel {
   constructor() {

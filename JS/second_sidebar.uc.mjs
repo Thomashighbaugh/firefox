@@ -6,7 +6,7 @@
 // ==/UserScript==
 
 import { BrowserElements } from "chrome://secondsidebar/content/browser_elements.mjs";
-import { ContextualIdentityServiceWrapper } from "chrome://secondsidebar/content/wrappers/contextual_identity_service.mjs";
+import { ContextualIdentityServiceWrapper } from "chrome://secondsidebar/content/wrappers/services.mjs";
 import { CustomizeModePatcher } from "chrome://secondsidebar/content/patchers/customize_mode_patcher.mjs";
 import { SidebarDecorator } from "chrome://secondsidebar/content/sidebar_decorator.mjs";
 import { SidebarInjector } from "chrome://secondsidebar/content/sidebar_injector.mjs";

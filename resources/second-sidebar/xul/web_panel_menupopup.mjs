@@ -1,7 +1,6 @@
 import { Menu, MenuItem, MenuPopup, MenuSeparator } from "./base/elements.mjs";
 import { SidebarControllers } from "../sidebar_controllers.mjs";
-import { WebPanelController } from "../controllers/web_panel.mjs"; // eslint-disable-line no-unused-vars
-
+import { WebPanelController } from "../controllers/web_panel.mjs";
 export class WebPanelMenuPopup extends MenuPopup {
   constructor() {
     super({

@@ -1,10 +1,8 @@
 import { SidebarEvents, listenEvent } from "./events.mjs";
-
-import { FloatingWebPanelGeometrySettings } from "../settings/floating_web_panel_geometry_settings.mjs";
+import { FloatingWebPanelGeometrySettings } from "../settings/web_panel_settings.mjs";
 import { SidebarControllers } from "../sidebar_controllers.mjs";
 import { SidebarElements } from "../sidebar_elements.mjs";
-import { WebPanelController } from "./web_panel.mjs"; // eslint-disable-line no-unused-vars
-
+import { WebPanelController } from "./web_panel.mjs";
 export class SidebarGeometry {
   constructor() {
     this.#setupListeners();

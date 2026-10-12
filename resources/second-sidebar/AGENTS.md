@@ -16,11 +16,11 @@ resources/second-sidebar/
 ├── sidebar_controllers.mjs    # Main controllers registry
 ├── customize_mode_patcher.mjs # CustomizeMode patch
 ├── xul/                       # XUL components + base/elements.mjs (SEE xul/AGENTS.md)
-├── wrappers/                  # 28 Firefox API wrappers
+├── wrappers/                  # 3 modules: services.mjs, window.mjs, customizable_ui.mjs
 ├── controllers/               # 21 feature controllers
 ├── utils/                     # 10 utility modules
 ├── patchers/                  # 4 Firefox behavior patches
-├── settings/                  # 8 settings/storage modules
+├── settings/                  # 3 modules: settings.mjs, web_panel_settings.mjs, web_panels_settings.mjs
 ├── css/                       # 1 stylesheet (second_sidebar.mjs)
 └── icons/                     # 2 icon utilities
 ```

@@ -1,5 +1,4 @@
-import { NetUtilWrapper } from "../wrappers/net_utils.mjs";
-
+import { NetUtilWrapper } from "../wrappers/services.mjs";
 /**
  *
  * @param {string} url

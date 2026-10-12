@@ -1,3 +1,10 @@
+import { BrowserElements } from "../browser_elements.mjs";
+import { SidebarControllers } from "../sidebar_controllers.mjs";
+import { SidebarElements } from "../sidebar_elements.mjs";
+import { SidebarSettings } from "../settings/settings.mjs";
+import { XULElement } from "../xul/base/xul_element.mjs";
+import { changeContainerBorder } from "../utils/containers.mjs";
+import { isLeftMouseButton } from "../utils/buttons.mjs";
 import {
   SidebarEvents,
   WebPanelEvents,
@@ -5,13 +12,6 @@ import {
   sendEvents,
 } from "./events.mjs";
 
-import { BrowserElements } from "../browser_elements.mjs";
-import { SidebarControllers } from "../sidebar_controllers.mjs";
-import { SidebarElements } from "../sidebar_elements.mjs";
-import { SidebarSettings } from "../settings/sidebar_settings.mjs";
-import { XULElement } from "../xul/base/xul_element.mjs";
-import { changeContainerBorder } from "../utils/containers.mjs";
-import { isLeftMouseButton } from "../utils/buttons.mjs";
 
 export class SidebarController {
   constructor() {

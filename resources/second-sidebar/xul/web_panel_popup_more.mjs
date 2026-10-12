@@ -1,3 +1,9 @@
+import { MenuSeparator, PanelMultiView } from "./base/elements.mjs";
+import { Panel } from "./base/panel.mjs";
+import { ToolbarButton } from "./base/toolbar_button.mjs";
+import { PopupBody } from "./popup_body.mjs";
+import { WebPanelSettings } from "../settings/web_panel_settings.mjs";
+import { isLeftMouseButton } from "../utils/buttons.mjs";
 import {
   createPopupSet,
   createSubviewButton,
@@ -6,12 +12,6 @@ import {
   updateZoomButtons,
 } from "../utils/xul.mjs";
 
-import { MenuSeparator, PanelMultiView } from "./base/elements.mjs";
-import { Panel } from "./base/panel.mjs";
-import { ToolbarButton } from "./base/toolbar_button.mjs"; // eslint-disable-line no-unused-vars
-import { PopupBody } from "./popup_body.mjs";
-import { WebPanelSettings } from "../settings/web_panel_settings.mjs"; // eslint-disable-line no-unused-vars
-import { isLeftMouseButton } from "../utils/buttons.mjs";
 
 const ICONS = {
   CHECK: "chrome://global/skin/icons/check.svg",

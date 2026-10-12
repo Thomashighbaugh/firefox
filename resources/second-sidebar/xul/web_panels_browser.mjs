@@ -1,19 +1,13 @@
-import { AppConstantsWrapper } from "../wrappers/app_constants.mjs";
+import { AppConstantsWrapper, BrowserCommandsWrapper, ObserversWrapper, ScriptSecurityManagerWrapper } from "../wrappers/services.mjs";
 import { Browser } from "./base/browser.mjs";
-import { BrowserCommandsWrapper } from "../wrappers/browser_commands.mjs";
-import { ObserversWrapper } from "../wrappers/observers.mjs";
 import { PopupNotificationsPatcher } from "../patchers/popup_notifications_patcher.mjs";
-import { ScriptSecurityManagerWrapper } from "../wrappers/script_security_manager.mjs";
-import { SessionStoreWrapper } from "../wrappers/session_store.mjs";
+import { SessionStoreWrapper, WindowWatcherWrapper, WindowWrapper } from "../wrappers/window.mjs";
 import { Style } from "./base/elements.mjs";
 import { UrlbarInputPatcher } from "../patchers/urlbar_input_patcher.mjs";
-import { WebPanelSettings } from "../settings/web_panel_settings.mjs"; // eslint-disable-line no-unused-vars
-import { WebPanelState } from "../settings/web_panel_state.mjs"; // eslint-disable-line no-unused-vars
+import { WebPanelSettings } from "../settings/web_panel_settings.mjs";
+import { WebPanelState } from "../settings/web_panels_settings.mjs";
 import { WebPanelTab } from "./web_panel_tab.mjs";
-import { WindowWatcherWrapper } from "../wrappers/window_watcher.mjs";
-import { WindowWrapper } from "../wrappers/window.mjs"; // eslint-disable-line no-unused-vars
 import { XULElement } from "./base/xul_element.mjs";
-
 const BEFORE_SHOW_EVENT = "browser-window-before-show";
 const INITIALIZED_EVENT = "browser-delayed-startup-finished";
 const DOM_WINDOW_CLOSED_EVENT = "domwindowclosed";

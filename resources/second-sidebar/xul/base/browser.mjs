@@ -1,8 +1,5 @@
-import { NetUtilWrapper } from "../../wrappers/net_utils.mjs";
-import { ScriptSecurityManagerWrapper } from "../../wrappers/script_security_manager.mjs";
+import { NetUtilWrapper, ScriptSecurityManagerWrapper, ZoomManagerWrapper } from "../../wrappers/services.mjs";
 import { XULElement } from "./xul_element.mjs";
-import { ZoomManagerWrapper } from "../../wrappers/zoom_manager.mjs";
-
 export class Browser extends XULElement {
   static ZOOM_DELTA = 0.1;
   /**

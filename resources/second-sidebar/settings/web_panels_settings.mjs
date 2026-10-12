@@ -1,3 +1,4 @@
+// Consolidated module — merged from the former settings/*.mjs files.
 import { Settings } from "./settings.mjs";
 import { WebPanelSettings } from "./web_panel_settings.mjs";
 
@@ -43,6 +44,74 @@ export class WebPanelsSettings {
     Settings.save(
       PREF,
       this.#webPanels.map((webPanel) => webPanel.toObject()),
+    );
+  }
+}
+
+export class WebPanelState {
+  /**
+   *
+   * @param {string} uuid
+   * @param {object} params
+   * @param {string?} params.lastUrl
+   */
+  constructor(uuid, { lastUrl = null } = {}) {
+    this.uuid = uuid;
+    this.lastUrl = lastUrl;
+  }
+
+  /**
+   *
+   * @param {object} object
+   * @returns {WebPanelState}
+   */
+  static fromObject(object) {
+    return new WebPanelState(object.uuid, {
+      lastUrl: object.lastUrl,
+    });
+  }
+
+  /**
+   *
+   * @returns {object}
+   */
+  toObject() {
+    return {
+      uuid: this.uuid,
+      lastUrl: this.lastUrl,
+    };
+  }
+}
+
+const PREF_STATE = "second-sidebar.web-panels-state";
+
+export class WebPanelsState {
+  /**
+   *
+   * @param {Array<WebPanelState>} webPanelsState
+   */
+  constructor(webPanelsState) {
+    this.webPanelsState = webPanelsState;
+  }
+
+  /**
+   *
+   * @returns {WebPanelsState}
+   */
+  static load() {
+    const pref = Settings.load(PREF_STATE) ?? [];
+
+    return new WebPanelsState(
+      pref.map((webPanelStatePref) =>
+        WebPanelState.fromObject(webPanelStatePref),
+      ),
+    );
+  }
+
+  save() {
+    Settings.save(
+      PREF_STATE,
+      this.webPanelsState.map((webPanelState) => webPanelState.toObject()),
     );
   }
 }

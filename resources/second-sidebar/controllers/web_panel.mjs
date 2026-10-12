@@ -1,18 +1,14 @@
 import { FALLBACK_ICON, fetchIconURL } from "../utils/icons.mjs";
 import { clearUrl, extractHostname } from "../utils/url.mjs";
 import { isLeftMouseButton, isMiddleMouseButton } from "../utils/buttons.mjs";
-
-import { ChromeUtilsWrapper } from "../wrappers/chrome_utils.mjs";
-import { PinnedWebPanelGeometrySettings } from "../settings/pinned_web_panel_geometry_settings.mjs"; // eslint-disable-line no-unused-vars
+import { ChromeUtilsWrapper, ZoomManagerWrapper } from "../wrappers/services.mjs";
+import { PinnedWebPanelGeometrySettings, WebPanelSettings } from "../settings/web_panel_settings.mjs";
 import { SidebarControllers } from "../sidebar_controllers.mjs";
 import { SidebarElements } from "../sidebar_elements.mjs";
 import { WebPanelButton } from "../xul/web_panel_button.mjs";
-import { WebPanelSettings } from "../settings/web_panel_settings.mjs";
-import { WebPanelState } from "../settings/web_panel_state.mjs";
-import { WebPanelTab } from "../xul/web_panel_tab.mjs"; // eslint-disable-line no-unused-vars
-import { ZoomManagerWrapper } from "../wrappers/zoom_manager.mjs";
+import { WebPanelState } from "../settings/web_panels_settings.mjs";
+import { WebPanelTab } from "../xul/web_panel_tab.mjs";
 import { parseNotifications } from "../utils/string.mjs";
-
 const DEFAULT_ZOOM = 1;
 
 export class WebPanelController {

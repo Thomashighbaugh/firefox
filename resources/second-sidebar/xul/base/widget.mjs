@@ -1,7 +1,6 @@
 import { CustomizableUIWrapper } from "../../wrappers/customizable_ui.mjs";
 import { ToolbarButton } from "./toolbar_button.mjs";
-import { XULElement } from "./xul_element.mjs"; // eslint-disable-line no-unused-vars
-
+import { XULElement } from "./xul_element.mjs";
 export class Widget {
   #readyCleanups = new Set();
   #removed = false;

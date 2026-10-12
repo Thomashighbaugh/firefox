@@ -3,8 +3,7 @@ import { SidebarControllers } from "../sidebar_controllers.mjs";
 import { SidebarElements } from "../sidebar_elements.mjs";
 import { WindowWrapper } from "../wrappers/window.mjs";
 import { XULElement } from "../xul/base/xul_element.mjs";
-import { gNavToolboxWrapper } from "../wrappers/g_nav_toolbox.mjs";
-
+import { gNavToolboxWrapper } from "../wrappers/services.mjs";
 const FULLSCREEN_ANIMATE_ATTRIBUTE = "fullscreenShouldAnimate";
 const ANIMATE_ATTRIBUTE = "shouldAnimate";
 const TRIGGER_WIDTH = 16;

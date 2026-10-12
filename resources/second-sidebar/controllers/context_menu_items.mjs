@@ -1,9 +1,7 @@
 import { BrowserElements } from "../browser_elements.mjs";
-import { ScriptSecurityManagerWrapper } from "../wrappers/script_security_manager.mjs";
-import { SearchService } from "../wrappers/search.mjs";
+import { ScriptSecurityManagerWrapper, SearchService } from "../wrappers/services.mjs";
 import { SidebarControllers } from "../sidebar_controllers.mjs";
 import { SidebarElements } from "../sidebar_elements.mjs";
-
 export class ContextMenuItemsController {
   constructor() {
     this.#setupListeners();

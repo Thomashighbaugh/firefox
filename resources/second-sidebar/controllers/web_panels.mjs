@@ -1,3 +1,10 @@
+import { NetUtilWrapper, gCustomizeModeWrapper } from "../wrappers/services.mjs";
+import { SidebarControllers } from "../sidebar_controllers.mjs";
+import { SidebarElements } from "../sidebar_elements.mjs";
+import { WebPanelController } from "./web_panel.mjs";
+import { WebPanelSettings } from "../settings/web_panel_settings.mjs";
+import { WebPanelState, WebPanelsSettings, WebPanelsState } from "../settings/web_panels_settings.mjs";
+import { WindowWrapper } from "../wrappers/window.mjs";
 import {
   SidebarEvents,
   WebPanelEvents,
@@ -5,16 +12,6 @@ import {
   sendEvents,
 } from "./events.mjs";
 
-import { NetUtilWrapper } from "../wrappers/net_utils.mjs";
-import { SidebarControllers } from "../sidebar_controllers.mjs";
-import { SidebarElements } from "../sidebar_elements.mjs";
-import { WebPanelController } from "./web_panel.mjs";
-import { WebPanelSettings } from "../settings/web_panel_settings.mjs";
-import { WebPanelState } from "../settings/web_panel_state.mjs";
-import { WebPanelsSettings } from "../settings/web_panels_settings.mjs";
-import { WebPanelsState } from "../settings/web_panels_state.mjs";
-import { WindowWrapper } from "../wrappers/window.mjs";
-import { gCustomizeModeWrapper } from "../wrappers/g_customize_mode.mjs";
 
 export class WebPanelsController {
   constructor() {

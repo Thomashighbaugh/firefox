@@ -1,7 +1,5 @@
-import { ContextualIdentityServiceWrapper } from "../wrappers/contextual_identity_service.mjs";
-import { MenuList } from "../xul/base/menulist.mjs"; // eslint-disable-line no-unused-vars
-import { ScriptSecurityManagerWrapper } from "../wrappers/script_security_manager.mjs";
-
+import { ContextualIdentityServiceWrapper, ScriptSecurityManagerWrapper } from "../wrappers/services.mjs";
+import { MenuList } from "../xul/base/menulist.mjs";
 const CONTAINER_CLASS = "sb2-container";
 
 /**

@@ -1,6 +1,155 @@
-import { DialogBoxWrapper } from "./dialog_box.mjs";
-import { TabBrowserWrapper } from "./tab_browser.mjs";
+// Consolidated module — merged from the former wrappers/*.mjs files.
+import { Browser } from "../xul/base/browser.mjs";
+import { Tab } from "../xul/base/tab.mjs";
+import { TabPanelsWrapper, DialogBoxWrapper } from "./services.mjs";
 import { XULElement } from "../xul/base/xul_element.mjs";
+
+export class SessionStoreWrapper {
+  static get raw() {
+    return SessionStore;
+  }
+  /**
+   *
+   * @param {WindowWrapper} window
+   */
+  static maybeDontRestoreTabs(window) {
+    this.raw.maybeDontRestoreTabs(window.raw);
+  }
+
+  /**
+   *
+   * @returns {number}
+   */
+  static getWindowsCount() {
+    return this.raw.getWindows().length;
+  }
+}
+
+/**
+ * @typedef {Object} URI
+ * @property {string} scheme
+ * @property {string} host
+ * @property {string} spec
+ * @property {string} specIgnoringRef
+ */
+
+/**
+ * @typedef {Object} BrowserForTab
+ * @property {HTMLElement} browser
+ */
+
+export class TabBrowserWrapper {
+  #gBrowser;
+
+  constructor(gBrowser) {
+    this.#gBrowser = gBrowser;
+  }
+
+  get raw() {
+    return this.#gBrowser;
+  }
+
+  /**
+   * @returns {URI}
+   */
+  get currentURI() {
+    return this.raw.currentURI;
+  }
+
+  /**
+   * @returns {Array<Tab>}
+   */
+  get tabs() {
+    return this.raw.tabs.map((tab) => new Tab({ element: tab }));
+  }
+
+  /**
+   * @returns {Tab?}
+   */
+  get selectedTab() {
+    if (!this.raw?.selectedTab) return null;
+    return new Tab({ element: this.raw.selectedTab });
+  }
+
+  /**
+   * @param {Tab} tab
+   */
+  set selectedTab(tab) {
+    this.raw.selectedTab = tab.getXUL();
+  }
+
+  /**
+   * @returns {Browser}
+   */
+  get selectedBrowser() {
+    return new Browser({ element: this.raw.selectedBrowser });
+  }
+
+  /**
+   * @returns {TabPanelsWrapper}
+   */
+  get tabpanels() {
+    return new TabPanelsWrapper(this.raw.tabpanels);
+  }
+
+  /**
+   *
+   * @param {Tab} tab
+   * @returns {Browser}
+   */
+  getBrowserForTab(tab) {
+    return new Browser({
+      element: this.raw.getBrowserForTab(tab.getXUL()),
+    });
+  }
+
+  /**
+   *
+   * @param {Browser} browser
+   * @returns {Tab}
+   */
+  getTabForBrowser(browser) {
+    return new Tab({
+      element: this.raw.getTabForBrowser(browser.getXUL()),
+    });
+  }
+
+  /**
+   *
+   * @param {string} url
+   * @param {object} options
+   * @param {number} options.triggeringPrincipal
+   * @returns {Tab}
+   */
+  addTab(url, options) {
+    return new Tab({ element: this.raw.addTab(url, options) });
+  }
+
+  /**
+   *
+   * @param {Tab} tab
+   */
+  removeTab(tab) {
+    this.raw.removeTab(tab.getXUL());
+  }
+
+  /**
+   *
+   * @param {number} index
+   */
+  selectTabAtIndex(index) {
+    this.raw.selectTabAtIndex(index);
+  }
+
+  /**
+   *
+   * @param {string} type
+   * @param {function(Event):void} callback
+   */
+  addEventListener(type, callback) {
+    this.raw.addEventListener(type, callback);
+  }
+}
 
 export class WindowWrapper {
   #window;
@@ -141,5 +290,40 @@ export class WindowWrapper {
    */
   static isEqual(lhs, rhs) {
     return lhs.#window === rhs.#window;
+  }
+}
+
+export class WindowManagerWrapper {
+  /**
+   *
+   * @returns {WindowWrapper}
+   */
+  static getMostRecentBrowserWindow() {
+    return new WindowWrapper(Services.wm.getMostRecentBrowserWindow());
+  }
+}
+
+export class WindowWatcherWrapper {
+  /**
+   *
+   * @returns {Array<WindowWrapper>}
+   */
+  static getWindowEnumerator() {
+    return Array.from(this.raw.getWindowEnumerator()).map(
+      (window) => new WindowWrapper(window),
+    );
+  }
+
+  /**
+   *
+   * @param {string} name
+   * @returns {WindowWrapper}
+   */
+  static getWindowByName(name) {
+    return new WindowWrapper(this.raw.getWindowByName(name));
+  }
+
+  static get raw() {
+    return Services.ww;
   }
 }

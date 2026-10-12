@@ -1,13 +1,10 @@
 import { BrowserElements } from "../browser_elements.mjs";
-import { ScriptSecurityManagerWrapper } from "../wrappers/script_security_manager.mjs";
+import { ScriptSecurityManagerWrapper, gCustomizeModeWrapper, gNavToolboxWrapper } from "../wrappers/services.mjs";
 import { SidebarControllers } from "../sidebar_controllers.mjs";
 import { SidebarElements } from "../sidebar_elements.mjs";
 import { SidebarMainPatcher } from "../patchers/sidebar_main_patcher.mjs";
 import { XULElement } from "../xul/base/xul_element.mjs";
-import { gCustomizeModeWrapper } from "../wrappers/g_customize_mode.mjs";
-import { gNavToolboxWrapper } from "../wrappers/g_nav_toolbox.mjs";
 import { isRightMouseButton } from "../utils/buttons.mjs";
-
 export class SidebarMainController {
   constructor() {
     this.root = new XULElement({ element: document.documentElement });

@@ -1,10 +1,8 @@
 import { SidebarControllers } from "./sidebar_controllers.mjs";
 import { SidebarElements } from "./sidebar_elements.mjs";
-import { SidebarSettings } from "./settings/sidebar_settings.mjs";
-import { WebPanelsSettings } from "./settings/web_panels_settings.mjs";
-import { WebPanelsState } from "./settings/web_panels_state.mjs";
+import { SidebarSettings } from "./settings/settings.mjs";
+import { WebPanelsSettings, WebPanelsState } from "./settings/web_panels_settings.mjs";
 import { isPopupWindow } from "./utils/windows.mjs";
-
 export class SidebarInjector {
   /**
    *

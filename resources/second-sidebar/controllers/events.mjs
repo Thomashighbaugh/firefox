@@ -1,7 +1,4 @@
-import { WindowManagerWrapper } from "../wrappers/window_manager.mjs";
-import { WindowWatcherWrapper } from "../wrappers/window_watcher.mjs";
-import { WindowWrapper } from "../wrappers/window.mjs";
-
+import { WindowManagerWrapper, WindowWatcherWrapper, WindowWrapper } from "../wrappers/window.mjs";
 export const WebPanelEvents = {
   EDIT_WEB_PANEL_URL: "edit_web_panel_url",
   EDIT_WEB_PANEL_TITLE: "edit_web_panel_title",

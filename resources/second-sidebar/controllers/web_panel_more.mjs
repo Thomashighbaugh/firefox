@@ -1,10 +1,7 @@
-import { OPEN_URL_IN, openTrustedLinkInWrapper } from "../wrappers/global.mjs";
+import { OPEN_URL_IN, openTrustedLinkInWrapper, ClipboardHelperWrapper } from "../wrappers/services.mjs";
 import { WebPanelEvents, sendEvents } from "./events.mjs";
-
-import { ClipboardHelperWrapper } from "../wrappers/clipboard_helper.mjs";
 import { SidebarControllers } from "../sidebar_controllers.mjs";
 import { SidebarElements } from "../sidebar_elements.mjs";
-
 export class WebPanelMoreController {
   constructor() {
     this.#setupListeners();

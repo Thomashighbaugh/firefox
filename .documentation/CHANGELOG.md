@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-12 23:29** [Second Sidebar] Condensation C6+C7: merged `wrappers/*` 28 → 3 (`services.mjs`, `window.mjs`, `customizable_ui.mjs`) and `settings/*` 8 → 3 (`settings.mjs`, `web_panel_settings.mjs`, `web_panels_settings.mjs`). 37 files had imports rewritten; fixed a merged-module `const PREF` collision (`PREF_STATE`) and the entry's `chrome://` import. No `extends` among the merged classes, so grouping order is safe. Verified: all modules parse, 302 relative imports resolve (0 dangling), 39 imports from merged modules resolve to exports (0 missing). Subsystem now 102 files.
+
 - **2026-10-12 23:21** [Second Sidebar] Condensation C1+C2: collapsed the 21 trivial per-tag base wrappers (`box.mjs`, `div.mjs`, `vbox.mjs`, `label.mjs`, …) into one `xul/base/elements.mjs` (`defineElement(tag, {isXUL, init})` + the tag classes), and lifted the shared generic setters (`setText`, `setSrc`, `setLabel`, `setType`, `setMode`, `setResizeBefore/After`, `setFontSize`, `getPressed`/`setPressed`, `setDisabled`, `isPanelOpen`) onto `XULElement`. 34 files had their imports collapsed (63 import lines → 34). `xul/base/` 30 → 10 files; no `instanceof`/`constructor.name` used, so DOM output is unchanged. All 335 relative imports resolve, all modules parse.
 
 - **2026-10-12 23:04** [Second Sidebar] Condensation C3: collapsed the 12 `css/*.mjs` CSS-in-JS modules into a single `css/second_sidebar.mjs` (`SECOND_SIDEBAR_CSS`), and simplified `sidebar_decorator.mjs` to one import. The injected stylesheet is byte-identical (19,057 chars, same concatenation order). Also removed the dead `css/sidebar.mjs` (`SIDEBAR_CSS` was referenced nowhere). Net: `css/` 12 files → 1.

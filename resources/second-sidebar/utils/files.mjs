@@ -1,7 +1,4 @@
-import { ChromeRegistry } from "../wrappers/chrome_registry.mjs";
-import { IOUtilsWrapper } from "../wrappers/io_utils.mjs";
-import { PathUtilsWrapper } from "../wrappers/path_utils.mjs";
-
+import { ChromeRegistry, IOUtilsWrapper, PathUtilsWrapper } from "../wrappers/services.mjs";
 const CONTENT_URL = "chrome://userchrome/content/";
 
 /**

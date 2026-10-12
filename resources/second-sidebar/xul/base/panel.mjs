@@ -1,6 +1,5 @@
-import { Widget } from "./widget.mjs"; // eslint-disable-line no-unused-vars
+import { Widget } from "./widget.mjs";
 import { XULElement } from "./xul_element.mjs";
-
 export class Panel extends XULElement {
   /**
    *

@@ -1,9 +1,8 @@
-import { MenuSeparator, PanelMultiView } from "./base/elements.mjs";
-import { Panel } from "./base/panel.mjs";
-import { ToolbarButton } from "./base/toolbar_button.mjs";
-import { PopupBody } from "./popup_body.mjs";
-import { WebPanelSettings } from "../settings/web_panel_settings.mjs";
-import { isLeftMouseButton } from "../utils/buttons.mjs";
+import { MenuSeparator } from "./base/elements.mjs";
+import { PopupPanel } from "./popup_panel.mjs";
+import { ToolbarButton } from "./base/toolbar_button.mjs"; // eslint-disable-line no-unused-vars
+import { WebPanelSettings } from "../settings/web_panel_settings.mjs"; // eslint-disable-line no-unused-vars
+import { onLeftClick } from "../utils/buttons.mjs";
 import {
   createPopupSet,
   createSubviewButton,
@@ -12,7 +11,6 @@ import {
   updateZoomButtons,
 } from "../utils/xul.mjs";
 
-
 const ICONS = {
   CHECK: "chrome://global/skin/icons/check.svg",
   CLOSE: "chrome://global/skin/icons/close.svg",
@@ -20,13 +18,9 @@ const ICONS = {
   PLUS: "chrome://global/skin/icons/plus.svg",
 };
 
-export class WebPanelPopupMore extends Panel {
+export class WebPanelPopupMore extends PopupPanel {
   constructor() {
-    super({
-      id: "sb2-web-panel-more",
-      classList: ["sb2-popup"],
-    });
-    this.setType("arrow");
+    super({ id: "sb2-web-panel-more" });
 
     this.openInNewTabButton = createSubviewButton("Open in New Tab");
     this.copyPageUrlButton = createSubviewButton("Copy Page URL");
@@ -39,31 +33,27 @@ export class WebPanelPopupMore extends Panel {
       id: "sb2-zoom-button",
       tooltipText: "Reset Zoom",
     });
-    this.#compose();
-  }
 
-  #compose() {
-    this.appendChild(
-      new PanelMultiView().appendChildren(
-        new PopupBody({ compact: true }).appendChildren(
-          createPopupSet("", [
-            this.openInNewTabButton,
-            this.copyPageUrlButton,
-            this.mobileButton,
-            new MenuSeparator(),
-            this.alwaysOnTopButton,
-            new MenuSeparator(),
-            this.temporaryButton,
-            new MenuSeparator(),
-            createZoomButtons(
-              this.zoomOutButton,
-              this.resetZoomButton,
-              this.zoomInButton,
-            ),
-          ]),
-        ),
-      ),
-    );
+    this.compose({
+      compact: true,
+      body: [
+        createPopupSet("", [
+          this.openInNewTabButton,
+          this.copyPageUrlButton,
+          this.mobileButton,
+          new MenuSeparator(),
+          this.alwaysOnTopButton,
+          new MenuSeparator(),
+          this.temporaryButton,
+          new MenuSeparator(),
+          createZoomButtons(
+            this.zoomOutButton,
+            this.resetZoomButton,
+            this.zoomInButton,
+          ),
+        ]),
+      ],
+    });
   }
 
   /**
@@ -81,10 +71,8 @@ export class WebPanelPopupMore extends Panel {
    * @param {function(string):void} callback
    */
   listenOpenInNewTabButtonClick(callback) {
-    this.openInNewTabButton.addEventListener("click", (event) => {
-      if (isLeftMouseButton(event)) {
-        callback(event, this.settings.uuid);
-      }
+    onLeftClick(this.openInNewTabButton, (event) => {
+      callback(event, this.settings.uuid);
     });
   }
 
@@ -93,10 +81,8 @@ export class WebPanelPopupMore extends Panel {
    * @param {function(string):void} callback
    */
   listenCopyPageUrlButtonClick(callback) {
-    this.copyPageUrlButton.addEventListener("click", (event) => {
-      if (isLeftMouseButton(event)) {
-        callback(this.settings.uuid);
-      }
+    onLeftClick(this.copyPageUrlButton, () => {
+      callback(this.settings.uuid);
     });
   }
 
@@ -139,12 +125,10 @@ export class WebPanelPopupMore extends Panel {
    * @param {function(string, boolean):void} callback
    */
   #listenFlagButtonClick(button, callback) {
-    button.addEventListener("click", (event) => {
-      if (isLeftMouseButton(event)) {
-        const checked = !button.isChecked();
-        this.#setFlagButtonChecked(button, checked);
-        callback(this.settings.uuid, checked);
-      }
+    onLeftClick(button, () => {
+      const checked = !button.isChecked();
+      this.#setFlagButtonChecked(button, checked);
+      callback(this.settings.uuid, checked);
     });
   }
 
@@ -164,11 +148,9 @@ export class WebPanelPopupMore extends Panel {
    * @param {function(string):number} callback
    */
   listenZoomInButtonClick(callback) {
-    this.zoomInButton.addEventListener("click", (event) => {
-      if (isLeftMouseButton(event)) {
-        const zoom = callback(this.settings.uuid);
-        this.#updateZoomButtons(zoom);
-      }
+    onLeftClick(this.zoomInButton, () => {
+      const zoom = callback(this.settings.uuid);
+      this.#updateZoomButtons(zoom);
     });
   }
 
@@ -177,11 +159,9 @@ export class WebPanelPopupMore extends Panel {
    * @param {function(string):number} callback
    */
   listenZoomOutButtonClick(callback) {
-    this.zoomOutButton.addEventListener("click", (event) => {
-      if (isLeftMouseButton(event)) {
-        const zoom = callback(this.settings.uuid);
-        this.#updateZoomButtons(zoom);
-      }
+    onLeftClick(this.zoomOutButton, () => {
+      const zoom = callback(this.settings.uuid);
+      this.#updateZoomButtons(zoom);
     });
   }
 
@@ -190,11 +170,9 @@ export class WebPanelPopupMore extends Panel {
    * @param {function(string):number} callback
    */
   listenResetZoomButtonClick(callback) {
-    this.resetZoomButton.addEventListener("click", (event) => {
-      if (isLeftMouseButton(event)) {
-        const zoom = callback(this.settings.uuid);
-        this.#updateZoomButtons(zoom);
-      }
+    onLeftClick(this.resetZoomButton, () => {
+      const zoom = callback(this.settings.uuid);
+      this.#updateZoomButtons(zoom);
     });
   }
 

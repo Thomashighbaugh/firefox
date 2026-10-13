@@ -1,10 +1,7 @@
-import { Panel } from "./base/panel.mjs";
-import { PanelMultiView, Toggle, ToolbarSeparator } from "./base/elements.mjs";
-import { PopupBody } from "./popup_body.mjs";
-import { PopupFooter } from "./popup_footer.mjs";
-import { PopupHeader } from "./popup_header.mjs";
 import { ScriptSecurityManagerWrapper } from "../wrappers/services.mjs";
-import { isLeftMouseButton } from "../utils/buttons.mjs";
+import { Toggle, ToolbarSeparator } from "./base/elements.mjs";
+import { onLeftClick } from "../utils/buttons.mjs";
+import { PopupPanel } from "./popup_panel.mjs";
 import {
   applyContainerColor,
   fillContainerMenuList,
@@ -19,14 +16,12 @@ import {
   createPopupSet,
 } from "../utils/xul.mjs";
 
-
-export class WebPanelPopupNew extends Panel {
+export class WebPanelPopupNew extends PopupPanel {
   constructor() {
     super({
       id: "sb2-web-panel-new",
-      classList: ["sb2-popup", "sb2-popup-with-header"],
+      classList: ["sb2-popup-with-header"],
     });
-    this.setType("arrow").setRole("group");
 
     this.input = createInput({ placeholder: "Web page URL" });
     this.containerMenuList = createMenuList({ id: "sb2-container-menu-list" });
@@ -34,29 +29,25 @@ export class WebPanelPopupNew extends Panel {
 
     this.saveButton = createCreateButton();
     this.cancelButton = createCancelButton();
-    this.#compose();
+
+    this.compose({
+      role: "group",
+      title: "New Web Panel",
+      body: [
+        createPopupSet("", [
+          createPopupRow(this.input),
+          new ToolbarSeparator(),
+          createPopupGroup("Multi-Account Container", this.containerMenuList),
+          new ToolbarSeparator(),
+          createPopupGroup("Temporary", this.temporaryToggle),
+        ]),
+      ],
+      footer: [this.cancelButton, this.saveButton],
+    });
 
     this.addEventListener("popupshown", () => {
       this.input.focus();
     });
-  }
-
-  #compose() {
-    this.appendChild(
-      new PanelMultiView().appendChildren(
-        new PopupHeader("New Web Panel"),
-        new PopupBody().appendChildren(
-          createPopupSet("", [
-            createPopupRow(this.input),
-            new ToolbarSeparator(),
-            createPopupGroup("Multi-Account Container", this.containerMenuList),
-            new ToolbarSeparator(),
-            createPopupGroup("Temporary", this.temporaryToggle),
-          ]),
-        ),
-        new PopupFooter().appendChildren(this.cancelButton, this.saveButton),
-      ),
-    );
   }
 
   /**
@@ -76,17 +67,17 @@ export class WebPanelPopupNew extends Panel {
         );
       }
     });
-    this.saveButton.addEventListener("click", (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-      if (isLeftMouseButton(event)) {
+    onLeftClick(
+      this.saveButton,
+      () => {
         callback(
           this.input.getValue(),
           this.containerMenuList.getValue(),
           this.temporaryToggle.getPressed(),
         );
-      }
-    });
+      },
+      { preventDefault: true, stopPropagation: true },
+    );
   }
 
   /**
@@ -95,10 +86,8 @@ export class WebPanelPopupNew extends Panel {
    * @returns {WebPanelPopupNew}
    */
   listenCancelButtonClick(callback) {
-    this.cancelButton.addEventListener("click", (event) => {
-      if (isLeftMouseButton(event)) {
-        callback(this.input.getValue());
-      }
+    onLeftClick(this.cancelButton, () => {
+      callback(this.input.getValue());
     });
   }
 
@@ -122,6 +111,6 @@ export class WebPanelPopupNew extends Panel {
 
     this.temporaryToggle.setPressed(false);
 
-    return Panel.prototype.openPopup.call(this, target);
+    return super.openPopup(target);
   }
 }

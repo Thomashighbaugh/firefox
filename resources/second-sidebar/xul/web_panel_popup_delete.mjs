@@ -1,73 +1,56 @@
-import { Label, PanelMultiView } from "./base/elements.mjs";
-import { Panel } from "./base/panel.mjs";
-import { PopupBody } from "./popup_body.mjs";
-import { PopupFooter } from "./popup_footer.mjs";
-import { PopupHeader } from "./popup_header.mjs";
-import { WebPanelController } from "../controllers/web_panel.mjs";
-import { isLeftMouseButton } from "../utils/buttons.mjs";
+import { Label } from "./base/elements.mjs";
+import { PopupPanel } from "./popup_panel.mjs";
+import { WebPanelController } from "../controllers/web_panel.mjs"; // eslint-disable-line no-unused-vars
+import { onLeftClick } from "../utils/buttons.mjs";
 import {
   createCancelButton,
   createDeleteButton,
   createPopupSet,
 } from "../utils/xul.mjs";
 
-
-export class WebPanelPopupDelete extends Panel {
+export class WebPanelPopupDelete extends PopupPanel {
   constructor() {
     super({
       id: "sb2-web-panel-delete",
-      classList: ["sb2-popup", "sb2-popup-with-header"],
+      classList: ["sb2-popup-with-header"],
     });
-    this.setType("arrow").setRole("group");
 
     this.deleteButton = createDeleteButton();
     this.cancelButton = createCancelButton();
-    this.#compose();
-  }
 
-  #compose() {
-    this.appendChild(
-      new PanelMultiView().appendChildren(
-        new PopupHeader("Delete Web Panel"),
-        new PopupBody().appendChildren(
-          createPopupSet(
-            null,
-            [
-              new Label().setText(
-                "Are you sure? This action cannot be undone.",
-              ),
-            ],
-            { classList: ["sb2-popup-warning"] },
-          ),
+    this.compose({
+      role: "group",
+      title: "Delete Web Panel",
+      body: [
+        createPopupSet(
+          null,
+          [new Label().setText("Are you sure? This action cannot be undone.")],
+          { classList: ["sb2-popup-warning"] },
         ),
-        new PopupFooter().appendChildren(this.cancelButton, this.deleteButton),
-      ),
-    );
-  }
-
-  /**
-   *
-   * @param {function(string):void} callback
-   * @returns {WebPanelPopupNew}
-   */
-  listenDeleteButtonClick(callback) {
-    this.deleteButton.addEventListener("click", (event) => {
-      if (isLeftMouseButton(event)) {
-        callback(this.uuid);
-      }
+      ],
+      footer: [this.cancelButton, this.deleteButton],
     });
   }
 
   /**
    *
    * @param {function(string):void} callback
-   * @returns {WebPanelPopupNew}
+   * @returns {WebPanelPopupDelete}
+   */
+  listenDeleteButtonClick(callback) {
+    onLeftClick(this.deleteButton, () => {
+      callback(this.uuid);
+    });
+  }
+
+  /**
+   *
+   * @param {function():void} callback
+   * @returns {WebPanelPopupDelete}
    */
   listenCancelButtonClick(callback) {
-    this.cancelButton.addEventListener("click", (event) => {
-      if (isLeftMouseButton(event)) {
-        callback();
-      }
+    onLeftClick(this.cancelButton, () => {
+      callback();
     });
   }
 
@@ -87,6 +70,6 @@ export class WebPanelPopupDelete extends Panel {
     };
     this.addEventListener("popuphidden", this.restoreWebPanelButtonState);
 
-    Panel.prototype.openPopup.call(this, webPanelController.button);
+    super.openPopup(webPanelController.button);
   }
 }

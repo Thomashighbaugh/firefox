@@ -9,13 +9,8 @@ import { SidebarMover } from "./controllers/sidebar_mover.mjs";
 import { SidebarResizer } from "./controllers/sidebar_resizer.mjs";
 import { SidebarSplitterController } from "./controllers/sidebar_splitter.mjs";
 import { SidebarToolbarCollapser } from "./controllers/sidebar_toolbar_collapser.mjs";
-import { WebPanelDeleteController } from "./controllers/web_panel_delete.mjs";
-import { WebPanelEditController } from "./controllers/web_panel_edit.mjs";
-import { WebPanelMoreController } from "./controllers/web_panel_more.mjs";
-import { WebPanelNewController } from "./controllers/web_panel_new.mjs";
-import { WebPanelTooltipController } from "./controllers/web_panel_tooltip.mjs";
+import { WebPanelDeleteController, WebPanelEditController, WebPanelMoreController, WebPanelNewController, WebPanelTooltipController } from "./controllers/web_panel_dialogs.mjs";
 import { WebPanelsController } from "./controllers/web_panels.mjs";
-
 export class SidebarControllers {
   static create() {
     this.sidebarMainController = new SidebarMainController();

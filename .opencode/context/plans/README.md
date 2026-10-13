@@ -33,6 +33,7 @@ All in `../research/firefox-fork-embedding/`:
 | 12 | **special attention** (Midori patch system, Palefox, Gjoa, Hilal) |
 | 13 | **Lane 1 implementation walkthrough** |
 | — | `CSS/content/about-addons.css` fixes (FF157 grid + card image), `CSS/chrome/icons.css` guard — committed |
+| — | **Test suite** (`tests/`, `npm test`) — 27 tests validating JS + XUL (parse, imports, exports, element tags, CSS, manifest, DOM shape, UserScript headers, integrity). Found + fixed a CRLF defect in `JS/minimizeMemory.uc.js`. |
 
 ## Decision log
 

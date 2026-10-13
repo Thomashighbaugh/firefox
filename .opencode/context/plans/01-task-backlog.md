@@ -18,6 +18,8 @@ Legend: **P1** = do first · **P2** = next · **P3** = after fork skeleton exist
 
 ## Task 1 — Refactor the second-sidebar subsystem (P1)
 
+**Status: ✅ complete 2026-10-13.** 163 → 99 files (−39%); 13,662 → 11,837 lines (−13%). All stages C1–C8 done (C2 resolved by C1). Verified static: all modules parse, 277 relative imports resolve (0 dangling), `chrome://` entry chain intact, no `instanceof`/`constructor.name`, no refs to deleted modules. **Not yet smoke-tested in a running Firefox.**
+
 **Goal:** cut the complexity of `resources/second-sidebar/` dramatically **without any user-visible
 change** to UI or interactions.
 

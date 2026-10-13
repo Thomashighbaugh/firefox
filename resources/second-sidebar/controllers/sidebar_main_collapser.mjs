@@ -60,10 +60,6 @@ export class SidebarMainCollapser {
     });
   }
 
-  /**
-   *
-   * @param {boolean} animate
-   */
   shouldAnimate(animate) {
     SidebarElements.sidebarMain.toggleAttribute(ANIMATE_ATTRIBUTE, animate);
   }
@@ -213,18 +209,10 @@ export class SidebarMainCollapser {
     );
   }
 
-  /**
-   *
-   * @param {MouseEvent} event
-   */
   isEventInsideSidebarMain(event) {
     return SidebarElements.sidebarMain.element.contains(event.target);
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   collapsed() {
     return SidebarControllers.sidebarMainController.collapsed();
   }

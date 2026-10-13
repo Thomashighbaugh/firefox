@@ -225,12 +225,6 @@ export class Shortcuts {
     return parts;
   }
 
-  /**
-   *
-   * @param {string[]} lhs
-   * @param {string[]} rhs
-   * @returns {boolean}
-   */
   isEqual(lhs, rhs) {
     return JSON.stringify([...lhs].sort()) === JSON.stringify([...rhs].sort());
   }

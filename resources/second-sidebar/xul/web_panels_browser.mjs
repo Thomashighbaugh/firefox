@@ -48,11 +48,6 @@ export class WebPanelsBrowser extends Browser {
     this.setAttribute("src", AppConstantsWrapper.BROWSER_CHROME_URL);
   }
 
-  /**
-   *
-   * @param {Window} subj
-   * @param {string} topic
-   */
   observe(subj, topic) {
     if (this.window.name !== subj.name) {
       return;
@@ -168,10 +163,6 @@ export class WebPanelsBrowser extends Browser {
     }, 5000);
   }
 
-  /**
-   *
-   * @param {function():void} callback
-   */
   addTabSelectListener(callback) {
     this.window.gBrowser.tabpanels.addEventListener("select", () => callback());
   }
@@ -188,9 +179,6 @@ export class WebPanelsBrowser extends Browser {
     });
   }
 
-  /**
-   * @returns {WindowWrapper}
-   */
   get window() {
     return WindowWatcherWrapper.getWindowByName(this.id);
   }
@@ -229,18 +217,10 @@ export class WebPanelsBrowser extends Browser {
     return tab;
   }
 
-  /**
-   *
-   * @returns {WebPanelTab?}
-   */
   getActiveWebPanelTab() {
     return WebPanelTab.fromTab(this.window.gBrowser.selectedTab);
   }
 
-  /**
-   *
-   * @param {WebPanelTab} tab
-   */
   selectWebPanelTab(tab) {
     this.window.gBrowser.selectedTab = tab;
   }
@@ -249,10 +229,6 @@ export class WebPanelsBrowser extends Browser {
     this.window.gBrowser.selectTabAtIndex(FIRST_TAB_INDEX);
   }
 
-  /**
-   *
-   * @param {WebPanelTab} tab
-   */
   removeWebPanelTab(tab) {
     this.window.gBrowser.removeTab(tab);
   }
@@ -272,10 +248,6 @@ export class WebPanelsBrowser extends Browser {
     );
   }
 
-  /**
-   *
-   * @param {function():void} callback
-   */
   waitInitialization(callback) {
     this.waitUntil(() => this.initialized, callback);
   }

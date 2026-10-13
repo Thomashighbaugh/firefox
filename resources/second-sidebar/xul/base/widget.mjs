@@ -106,10 +106,6 @@ export class Widget {
     );
   }
 
-  /**
-   *
-   * @returns {XULElement?}
-   */
   get parentElement() {
     return this.button.parentElement;
   }
@@ -186,10 +182,6 @@ export class Widget {
     return this;
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   isUnloaded() {
     return this.unloaded;
   }
@@ -207,10 +199,6 @@ export class Widget {
     return this;
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   isOpen() {
     return this.open;
   }
@@ -266,10 +254,6 @@ export class Widget {
     return this;
   }
 
-  /**
-   *
-   * @returns {HTMLElement?}
-   */
   getXUL() {
     return this.button?.getXUL();
   }

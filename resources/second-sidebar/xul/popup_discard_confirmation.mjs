@@ -68,16 +68,10 @@ export class PopupDiscardConfirmation extends VBox {
     this.addEventListener("keydown", (event) => this.#trapFocus(event));
   }
 
-  /**
-   * @returns {boolean}
-   */
   isVisible() {
     return !this.hidden();
   }
 
-  /**
-   * @returns {PopupDiscardConfirmation}
-   */
   show() {
     if (this.isVisible()) {
       return this;
@@ -88,12 +82,6 @@ export class PopupDiscardConfirmation extends VBox {
     return this;
   }
 
-  /**
-   *
-   * @param {object} params
-   * @param {boolean} params.restoreFocus
-   * @returns {PopupDiscardConfirmation}
-   */
   hide({ restoreFocus = true } = {}) {
     if (!this.isVisible()) {
       return this;
@@ -108,10 +96,6 @@ export class PopupDiscardConfirmation extends VBox {
     return this;
   }
 
-  /**
-   *
-   * @param {KeyboardEvent} event
-   */
   #trapFocus(event) {
     if (event.key !== "Tab") {
       return;

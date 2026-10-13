@@ -72,18 +72,10 @@ export class CollapseController {
     });
   }
 
-  /**
-   *
-   * @param {boolean} animate
-   */
   shouldAnimate(animate) {
     this.sidebarMain.toggleAttribute(ANIMATE_ATTRIBUTE, animate);
   }
 
-  /**
-   *
-   * @param {boolean} animate
-   */
   fullScreenShouldAnimate(animate) {
     this.sidebarMain.toggleAttribute(FULLSCREEN_ANIMATE_ATTRIBUTE, animate);
   }
@@ -120,10 +112,6 @@ export class CollapseController {
     }
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   collapsed() {
     return this.sidebarMainController.collapsed();
   }

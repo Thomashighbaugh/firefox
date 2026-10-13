@@ -49,13 +49,13 @@ wrapper classes can become factories.
 
 | # | Target | Now | After | Saves | Risk |
 | - | ------ | --- | ----- | ----- | ---- |
-| C1 | `xul/base/*` — 25 of 30 are pure `super({tag})` aliases | 30 files / 1,896 ln | 1 `elements.mjs` factory + generic setters on `XULElement` | ~29 files / ~1,300 ln | low | **✅ done 2026-10-12** — 21 alias files → `elements.mjs`; base 30→10; generic setters on `XULElement`; 63 imports collapsed across 34 files; 335 relative imports resolve |
-| C2 | `utils/xul.mjs` `createX()` duplicates the base classes (two factory layers) | 2 layers | 1 | ~150 ln | low | **✅ partly done** — `utils/xul.mjs` now imports from `elements.mjs`; full factory merge still open |
-| C3 | `css/*.mjs` — 12 CSS-in-JS template-string modules | 12 files / 873 ln | 1 `second-sidebar.css` asset, injected once | ~11 files | low-med | **✅ done 2026-10-12** — `css/` 12→1, output byte-identical, dead `css/sidebar.mjs` removed || C4 | Popups share a scaffold + repeat `listenXButtonClick` ~20× | 4–8 files / ~1,400 ln | 1 `PopupPanel` base + declarative descriptor + `onLeftClick` | ~5 files / ~500 ln | med | **✅ mostly done 2026-10-13** — `PopupPanel` + `onLeftClick`; New/Delete/More migrated; Edit + SidebarMainPopupSettings deferred (bespoke) |
+| C1 | `xul/base/*` — 25 of 30 are pure `super({tag})` aliases | 30 files / 1,896 ln | 1 `elements.mjs` factory + generic setters on `XULElement` | ~29 files / ~1,300 ln | low | **✅ done** — base 30→10; 63 imports collapsed |
+| C2 | `utils/xul.mjs` `createX()` duplicates the base classes | 2 layers | 1 | ~150 ln | low | **✅ resolved by C1** — `elements.mjs` = raw factories; `utils/xul.mjs` = distinct composition layer that imports it (no longer duplicate) |
+| C3 | `css/*.mjs` — 12 CSS-in-JS template-string modules | 12 files / 873 ln | 1 `second-sidebar.css` asset, injected once | ~11 files | low-med | **✅ done 2026-10-12** — `css/` 12→1, output byte-identical, dead `css/sidebar.mjs` removed || C4 | Popups share a scaffold + repeat `listenXButtonClick` ~20× | 4–8 files / ~1,400 ln | 1 `PopupPanel` base + declarative descriptor + `onLeftClick` | ~5 files / ~500 ln | med | **✅ done** — `PopupPanel` + `onLeftClick`; all 5 popups migrated (New/Delete/More/Edit/SidebarMainPopupSettings) |
 | C5 | Popup controllers are 1:1 with popups (420 ln wiring) | 4 files | 1 `WebPanelDialogs` | ~3 files / ~300 ln | med | **✅ done 2026-10-13** — 5→1 `web_panel_dialogs.mjs` |
 | C6 | `wrappers/*` — 20+ are 4–22 ln single-method delegates | 28 files / 893 ln | ~4 grouped modules | ~24 files | low | **✅ done 2026-10-12** — 28→3 (`services`/`window`/`customizable_ui`) |
 | C7 | `settings/*` tiny state modules merge into parents | 8 files / 552 ln | ~3 files | ~5 files | low | **✅ done 2026-10-12** — 8→3 (`settings`/`web_panel_settings`/`web_panels_settings`) |
-| C8 | Redundant JSDoc (boilerplate `@param` on one-liners) | 4,252 ln | — | ~1,500–2,000 ln | none |
+| C8 | Redundant JSDoc (boilerplate `@param` on one-liners) | 4,252 ln | — | ~1,500–2,000 ln | none | **✅ done 2026-10-13** — 325 pure `@param`/`@returns` blocks removed (−1,418 ln); `@type`/prose kept |
 
 **Projected: ~163 → ~60 files; ~13.7k → ~8k lines (~7k after JSDoc trim), identical DOM.**
 

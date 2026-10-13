@@ -15,11 +15,6 @@ export class Settings {
     return value;
   }
 
-  /**
-   *
-   * @param {string} pref
-   * @param {Object | Array<Object>} value
-   */
   static save(pref, value) {
     console.log(`Saving pref "${pref}":`, value);
     PreferencesWrapper.setStringPref(pref, JSON.stringify(value));

@@ -8,10 +8,6 @@ export class WebPanelsSettings {
   /**@type {Array<WebPanelSettings} */
   #webPanels = [];
 
-  /**
-   *
-   * @param {Array<WebPanelSettings>} webPanels
-   */
   constructor(webPanels) {
     this.#webPanels = webPanels;
   }
@@ -49,12 +45,6 @@ export class WebPanelsSettings {
 }
 
 export class WebPanelState {
-  /**
-   *
-   * @param {string} uuid
-   * @param {object} params
-   * @param {string?} params.lastUrl
-   */
   constructor(uuid, { lastUrl = null } = {}) {
     this.uuid = uuid;
     this.lastUrl = lastUrl;
@@ -86,10 +76,6 @@ export class WebPanelState {
 const PREF_STATE = "second-sidebar.web-panels-state";
 
 export class WebPanelsState {
-  /**
-   *
-   * @param {Array<WebPanelState>} webPanelsState
-   */
   constructor(webPanelsState) {
     this.webPanelsState = webPanelsState;
   }

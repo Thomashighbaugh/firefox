@@ -1,10 +1,7 @@
 import { BrowserElements } from "../browser_elements.mjs";
-import { Div, PanelMultiView, Toggle, ToolbarSeparator, VBox } from "./base/elements.mjs";
-import { Panel } from "./base/panel.mjs";
-import { PopupBody } from "./popup_body.mjs";
+import { Div, Toggle, ToolbarSeparator, VBox } from "./base/elements.mjs";
 import { PopupDiscardConfirmation } from "./popup_discard_confirmation.mjs";
-import { PopupFooter } from "./popup_footer.mjs";
-import { PopupHeader } from "./popup_header.mjs";
+import { PopupPanel } from "./popup_panel.mjs";
 import { SidebarControllers } from "../sidebar_controllers.mjs";
 import { WebPanelController } from "../controllers/web_panel.mjs";
 import { fetchIconURL } from "../utils/icons.mjs";
@@ -37,14 +34,13 @@ const ICONS = {
 const SECOND = 1000;
 const MINUTE = 60 * SECOND;
 
-export class WebPanelPopupEdit extends Panel {
+export class WebPanelPopupEdit extends PopupPanel {
   constructor() {
     super({
       id: "sb2-web-panel-edit",
-      classList: ["sb2-popup", "sb2-popup-with-header"],
+      classList: ["sb2-popup-with-header"],
     });
-    this.setType("arrow")
-      .setRole("group")
+    this.setRole("group")
       .setAttribute("no-open-on-anchor", "true")
       .setAttribute("noautohide", "true")
       .setAttribute("consumeoutsideclicks", "false")
@@ -295,104 +291,99 @@ export class WebPanelPopupEdit extends Panel {
   }
 
   #compose() {
-    this.appendChildren(
-      new PanelMultiView().appendChildren(
-        new PopupHeader("Edit Web Panel"),
-        new PopupBody().appendChildren(
-          createPopupSet("", [
-            createPopupRow(this.urlInput),
-            new ToolbarSeparator(),
-            createPopupGroup("Multi-Account Container", this.containerMenuList),
-            new ToolbarSeparator(),
-            createPopupGroup("Temporary", this.temporaryToggle),
-            new ToolbarSeparator(),
-            createPopupGroup("Mobile View", this.mobileToggle),
-            new ToolbarSeparator(),
-            createPopupGroup(
-              "Zoom",
-              createZoomButtons(
-                this.zoomOutButton,
-                this.resetZoomButton,
-                this.zoomInButton,
-              ),
+    this.compose({
+      title: "Edit Web Panel",
+      body: [
+        createPopupSet("", [
+          createPopupRow(this.urlInput),
+          new ToolbarSeparator(),
+          createPopupGroup("Multi-Account Container", this.containerMenuList),
+          new ToolbarSeparator(),
+          createPopupGroup("Temporary", this.temporaryToggle),
+          new ToolbarSeparator(),
+          createPopupGroup("Mobile View", this.mobileToggle),
+          new ToolbarSeparator(),
+          createPopupGroup(
+            "Zoom",
+            createZoomButtons(
+              this.zoomOutButton,
+              this.resetZoomButton,
+              this.zoomInButton,
             ),
-          ]),
-          createPopupSet("Title", [
-            createPopupGroup("Dynamic", this.dynamicTitleToggle),
-            new Div({ id: "sb2-popup-title-items" }).appendChildren(
-              new ToolbarSeparator(),
-              createPopupRow(this.titleInput, this.titleResetButton),
-            ),
-          ]),
-          createPopupSet("Favicon", [
-            createPopupGroup("Dynamic", this.dynamicFaviconToggle),
-            new Div({ id: "sb2-popup-favicon-items" }).appendChildren(
-              new ToolbarSeparator(),
-              createPopupRow(this.faviconURLInput, this.faviconResetButton),
-            ),
-          ]),
-          createPopupSet("Position and size", [
-            createPopupGroup("Mode", this.pinnedMenuList),
-            new Div({
-              id: "sb2-popup-floating-items",
-            }).appendChildren(
-              new ToolbarSeparator(),
-              createPopupGroup("Always on top", this.alwaysOnTopToggle),
-              new ToolbarSeparator(),
-              createPopupGroup("Position anchor", this.floatingAnchorMenuList),
-              new ToolbarSeparator(),
-              createPopupGroup("Horizontal offset", this.offsetXTypeMenuList),
-              new ToolbarSeparator(),
-              createPopupGroup("Vertical offset", this.offsetYTypeMenuList),
-              new ToolbarSeparator(),
-              createPopupGroup("Width", this.widthTypeMenuList),
-              new ToolbarSeparator(),
-              createPopupGroup("Height", this.heightTypeMenuList),
-            ),
-          ]),
-          createPopupSet("Loading", [
-            createPopupGroup(
-              "Load into memory at startup",
-              this.loadOnStartupToggle,
-            ),
+          ),
+        ]),
+        createPopupSet("Title", [
+          createPopupGroup("Dynamic", this.dynamicTitleToggle),
+          new Div({ id: "sb2-popup-title-items" }).appendChildren(
             new ToolbarSeparator(),
-            createPopupGroup(
-              "Restore last opened page",
-              this.loadLastUrlToggle,
-            ),
+            createPopupRow(this.titleInput, this.titleResetButton),
+          ),
+        ]),
+        createPopupSet("Favicon", [
+          createPopupGroup("Dynamic", this.dynamicFaviconToggle),
+          new Div({ id: "sb2-popup-favicon-items" }).appendChildren(
             new ToolbarSeparator(),
-            createPopupGroup(
-              "Unload from memory after closing",
-              this.unloadOnCloseToggle,
-            ),
+            createPopupRow(this.faviconURLInput, this.faviconResetButton),
+          ),
+        ]),
+        createPopupSet("Position and size", [
+          createPopupGroup("Mode", this.pinnedMenuList),
+          new Div({
+            id: "sb2-popup-floating-items",
+          }).appendChildren(
             new ToolbarSeparator(),
-            createPopupGroup("Periodic reload", this.periodicReloadMenuList),
-          ]),
-          createPopupSet("Keyboard shortcut", [
-            createPopupRow(this.shortcutInput, this.shortcutResetButton),
-          ]),
-          createPopupSet("CSS selector", [
-            createPopupGroup("Enable", this.selectorToggle),
-            new Div({ id: "sb2-popup-css-selector-items" }).appendChildren(
-              new ToolbarSeparator(),
-              createPopupRow(this.selectorInput),
-            ),
-          ]),
-          createPopupSet("Hide elements", [
-            createPopupGroup("Hide toolbar", this.hideToolbarToggle),
+            createPopupGroup("Always on top", this.alwaysOnTopToggle),
             new ToolbarSeparator(),
-            createPopupGroup("Hide sound icon", this.hideSoundIconToggle),
+            createPopupGroup("Position anchor", this.floatingAnchorMenuList),
             new ToolbarSeparator(),
-            createPopupGroup(
-              "Hide notification badge",
-              this.hideNotificationBadgeToggle,
-            ),
-          ]),
-        ),
-        new PopupFooter().appendChildren(this.cancelButton, this.saveButton),
-        this.discardConfirmation,
-      ),
-    );
+            createPopupGroup("Horizontal offset", this.offsetXTypeMenuList),
+            new ToolbarSeparator(),
+            createPopupGroup("Vertical offset", this.offsetYTypeMenuList),
+            new ToolbarSeparator(),
+            createPopupGroup("Width", this.widthTypeMenuList),
+            new ToolbarSeparator(),
+            createPopupGroup("Height", this.heightTypeMenuList),
+          ),
+        ]),
+        createPopupSet("Loading", [
+          createPopupGroup(
+            "Load into memory at startup",
+            this.loadOnStartupToggle,
+          ),
+          new ToolbarSeparator(),
+          createPopupGroup("Restore last opened page", this.loadLastUrlToggle),
+          new ToolbarSeparator(),
+          createPopupGroup(
+            "Unload from memory after closing",
+            this.unloadOnCloseToggle,
+          ),
+          new ToolbarSeparator(),
+          createPopupGroup("Periodic reload", this.periodicReloadMenuList),
+        ]),
+        createPopupSet("Keyboard shortcut", [
+          createPopupRow(this.shortcutInput, this.shortcutResetButton),
+        ]),
+        createPopupSet("CSS selector", [
+          createPopupGroup("Enable", this.selectorToggle),
+          new Div({ id: "sb2-popup-css-selector-items" }).appendChildren(
+            new ToolbarSeparator(),
+            createPopupRow(this.selectorInput),
+          ),
+        ]),
+        createPopupSet("Hide elements", [
+          createPopupGroup("Hide toolbar", this.hideToolbarToggle),
+          new ToolbarSeparator(),
+          createPopupGroup("Hide sound icon", this.hideSoundIconToggle),
+          new ToolbarSeparator(),
+          createPopupGroup(
+            "Hide notification badge",
+            this.hideNotificationBadgeToggle,
+          ),
+        ]),
+      ],
+      footer: [this.cancelButton, this.saveButton],
+      trailing: [this.discardConfirmation],
+    });
   }
 
   /**
@@ -640,19 +631,11 @@ export class WebPanelPopupEdit extends Panel {
     });
   }
 
-  /**
-   * @returns {WebPanelPopupEdit}
-   */
   hidePopup() {
     this.#requestClose();
     return this;
   }
 
-  /**
-   *
-   * @param {WebPanelController} webPanelController
-   * @returns {WebPanelPopupEdit}
-   */
   openPopup(webPanelController) {
     if (this.editSessionActive) {
       this.#cancelChanges();
@@ -724,7 +707,7 @@ export class WebPanelPopupEdit extends Panel {
     this.addEventListener("popuphidden", this.closeOnPopupHidden);
     window.addEventListener("keydown", this.escapeOnKeyDown, true);
 
-    return Panel.prototype.openPopup.call(this, webPanelController.button);
+    return super.openPopup(webPanelController.button);
   }
 
   #requestClose() {
@@ -732,14 +715,14 @@ export class WebPanelPopupEdit extends Panel {
       this.discardConfirmation.show();
       return;
     }
-    Panel.prototype.hidePopup.call(this);
+    super.hidePopup();
   }
 
   #discardChangesAndClose() {
     this.#cancelFaviconRequest();
     this.#cancelChanges();
     this.#endEditSession();
-    Panel.prototype.hidePopup.call(this);
+    super.hidePopup();
   }
 
   #endEditSession() {

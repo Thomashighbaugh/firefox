@@ -2,28 +2,14 @@ import { NetUtilWrapper, ScriptSecurityManagerWrapper, ZoomManagerWrapper } from
 import { XULElement } from "./xul_element.mjs";
 export class Browser extends XULElement {
   static ZOOM_DELTA = 0.1;
-  /**
-   *
-   * @param {object} params
-   * @param {string?} params.id
-   * @param {Array<string>} params.classList
-   * @param {HTMLElement?} params.element
-   */
   constructor({ id = null, classList = [], element } = {}) {
     super({ tag: "browser", id, classList, element });
   }
 
-  /**
-   * @returns {Document?}
-   */
   get contentDocument() {
     return this.element.contentDocument;
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   getCurrentUrl() {
     return this.element.currentURI.spec;
   }
@@ -54,10 +40,6 @@ export class Browser extends XULElement {
     }
   }
 
-  /**
-   *
-   * @returns {Browser}
-   */
   goBack() {
     this.element.goBack();
     return this;
@@ -76,19 +58,11 @@ export class Browser extends XULElement {
     }
   }
 
-  /**
-   *
-   * @returns {Browser}
-   */
   goForward() {
     this.element.goForward();
     return this;
   }
 
-  /**
-   *
-   * @returns {Browser}
-   */
   reload() {
     this.element.reload();
     return this;
@@ -107,28 +81,15 @@ export class Browser extends XULElement {
     return this;
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   getZoom() {
     return ZoomManagerWrapper.getZoomForBrowser(this);
   }
 
-  /**
-   *
-   * @param {number} value
-   * @returns {Browser}
-   */
   setZoom(value) {
     ZoomManagerWrapper.setZoomForBrowser(this, value);
     return this;
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   getTitle() {
     return this.element.contentTitle;
   }

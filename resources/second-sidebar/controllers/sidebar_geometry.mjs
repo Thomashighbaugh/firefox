@@ -328,51 +328,27 @@ export class SidebarGeometry {
     SidebarElements.sidebarBox.setProperty("width", width);
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   getDefaultAnchor() {
     const position = SidebarElements.sidebarWrapper.getPosition();
     return position == "left" ? "topleft" : "topright";
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   getDefaultFloatingOffset() {
     return this.defaultFloatingOffset;
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   getDefaultFloatingOffsetCSS() {
     return `var(--space-${this.getDefaultFloatingOffset()})`;
   }
 
-  /**
-   *
-   * @param {string} value
-   */
   setDefaultFloatingOffset(value) {
     this.defaultFloatingOffset = value;
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   getEnableSidebarBoxHint() {
     return this.enableSidebarBoxHint;
   }
 
-  /**
-   *
-   * @param {boolean} value
-   */
   setEnableSidebarBoxHint(value) {
     this.enableSidebarBoxHint = value;
   }

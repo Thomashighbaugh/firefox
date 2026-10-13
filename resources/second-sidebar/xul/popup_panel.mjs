@@ -13,11 +13,6 @@ import { PopupHeader } from "./popup_header.mjs";
  * every popup.
  */
 export class PopupPanel extends Panel {
-  /**
-   * @param {object} params
-   * @param {string?} params.id
-   * @param {string[]} params.classList  extra classes (the base adds "sb2-popup")
-   */
   constructor({ id = null, classList = [] } = {}) {
     super({ id, classList: ["sb2-popup", ...classList] });
     this.setType("arrow");
@@ -31,9 +26,17 @@ export class PopupPanel extends Panel {
    * @param {boolean} params.compact
    * @param {XULElement[]} params.body
    * @param {XULElement[]} params.footer
+   * @param {XULElement[]} params.trailing  extra children appended after the footer
    * @returns {PopupPanel}
    */
-  compose({ role = null, title = null, compact = false, body = [], footer = [] } = {}) {
+  compose({
+    role = null,
+    title = null,
+    compact = false,
+    body = [],
+    footer = [],
+    trailing = [],
+  } = {}) {
     if (role !== null) {
       this.setRole(role);
     }
@@ -46,6 +49,7 @@ export class PopupPanel extends Panel {
         ...(title !== null ? [new PopupHeader(title)] : []),
         bodyElement,
         ...(footerElement ? [footerElement] : []),
+        ...trailing,
       ),
     );
     return this;

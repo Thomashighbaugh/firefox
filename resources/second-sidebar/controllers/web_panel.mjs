@@ -162,33 +162,18 @@ export class WebPanelController {
     return button;
   }
 
-  /**
-   * @returns {WebPanelButton}
-   */
   get button() {
     return this.#button;
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   getUUID() {
     return this.#settings.uuid;
   }
 
-  /**
-   *
-   * @returns {string?}
-   */
   getTabUrl() {
     return this.#tab?.linkedBrowser?.getCurrentUrl();
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   getURL() {
     return this.#settings.url;
   }
@@ -205,10 +190,6 @@ export class WebPanelController {
     return fullUrlSetting ? clearUrl(url) : extractHostname(url);
   }
 
-  /**
-   *
-   * @param {string} value
-   */
   setURL(value) {
     this.#settings.url = value;
   }
@@ -232,53 +213,27 @@ export class WebPanelController {
     this.#button.setUserContextId(userContextId);
   }
 
-  /**
-   *
-   * @returns {string?}
-   */
   getTabTitle() {
     return this.#tab?.linkedBrowser?.getTitle();
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   isTitleDynamic() {
     return this.#settings.dynamicTitle;
   }
 
-  /**
-   *
-   * @returns {string?}
-   */
   getTitle() {
     return this.isTitleDynamic() ? this.getTabTitle() : this.#settings.title;
   }
 
-  /**
-   *
-   * @param {boolean} dynamicTitle
-   * @param {string} title
-   */
   setTitle(dynamicTitle, title) {
     this.#settings.dynamicTitle = dynamicTitle;
     this.#settings.title = title;
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   getFaviconURL() {
     return this.#settings.faviconURL;
   }
 
-  /**
-   *
-   * @param {boolean} dynamicFavicon
-   * @param {string} faviconURL
-   */
   setFaviconURL(dynamicFavicon, faviconURL) {
     this.#settings.dynamicFavicon = dynamicFavicon;
     this.#settings.faviconURL = faviconURL;
@@ -298,10 +253,6 @@ export class WebPanelController {
     }
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   isActive() {
     return this.#tab && this.#tab.selected;
   }
@@ -436,10 +387,6 @@ export class WebPanelController {
     }
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   isUnloaded() {
     return this.#tab === null;
   }
@@ -448,18 +395,10 @@ export class WebPanelController {
     this.#tab.linkedBrowser.reload();
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   canGoBack() {
     return this.#tab.linkedBrowser.canGoBack();
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   canGoForward() {
     return this.#tab.linkedBrowser.canGoForward();
   }
@@ -476,10 +415,6 @@ export class WebPanelController {
     this.#tab.linkedBrowser.go(this.#settings.url);
   }
 
-  /**
-   *
-   * @param {boolean} value
-   */
   setTemporary(value) {
     this.#settings.temporary = value;
     this.#button.setAttribute("temporary", value);
@@ -501,26 +436,14 @@ export class WebPanelController {
     }
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   getAlwaysOnTop() {
     return this.#settings.alwaysOnTop;
   }
 
-  /**
-   *
-   * @param {boolean} value
-   */
   setAlwaysOnTop(value) {
     this.#settings.alwaysOnTop = value;
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   getZoom() {
     return this.#settings.zoom;
   }
@@ -547,10 +470,6 @@ export class WebPanelController {
     }
   }
 
-  /**
-   *
-   * @param {number} zoom
-   */
   setZoom(zoom) {
     this.#settings.zoom = zoom;
     this.#tab?.linkedBrowser?.setZoom(zoom);
@@ -560,83 +479,43 @@ export class WebPanelController {
     this.setZoom(DEFAULT_ZOOM);
   }
 
-  /**
-   *
-   * @param {boolean} value
-   */
   setLoadOnStartup(value) {
     this.#settings.loadOnStartup = value;
   }
 
-  /**
-   *
-   * @param {boolean} value
-   */
   setLoadLastUrl(value) {
     this.#settings.loadLastUrl = value;
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   getUnloadOnClose() {
     return this.#settings.unloadOnClose;
   }
 
-  /**
-   *
-   * @param {boolean} value
-   */
   setUnloadOnClose(value) {
     this.#settings.unloadOnClose = value;
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   getShortcut() {
     return this.#settings.shortcut;
   }
 
-  /**
-   *
-   * @param {string} value
-   */
   setShortcut(value) {
     this.#settings.shortcut = value;
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   getHideToolbar() {
     return this.#settings.hideToolbar;
   }
 
-  /**
-   *
-   * @param {boolean} value
-   */
   setHideToolbar(value) {
     this.#settings.hideToolbar = value;
   }
 
-  /**
-   *
-   * @param {boolean} value
-   */
   setHideSoundIcon(value) {
     this.#settings.hideSoundIcon = value;
     this.#button.hideSoundIcon(value);
   }
 
-  /**
-   *
-   * @param {boolean} value
-   */
   setHideNotificationBadge(value) {
     this.#settings.hideNotificationBadge = value;
     this.#button.hideNotificationBadge(value);
@@ -652,162 +531,82 @@ export class WebPanelController {
       this.#startTimer();
     }
   }
-  /**
-   *
-   * @param {number} width
-   */
   setPinnedWidth(width) {
     this.#settings.floatingGeometry.width = `${width}px`;
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   getAnchor() {
     return this.#settings.floatingGeometry.anchor;
   }
 
-  /**
-   *
-   * @param {string} anchor
-   */
   setAnchor(anchor) {
     this.#settings.floatingGeometry.anchor = anchor;
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   getOffsetXType() {
     return this.#settings.floatingGeometry.offsetXType;
   }
 
-  /**
-   *
-   * @param {string} offsetXType
-   */
   setOffsetXType(offsetXType) {
     this.#settings.floatingGeometry.offsetXType = offsetXType;
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   getOffsetYType() {
     return this.#settings.floatingGeometry.offsetYType;
   }
 
-  /**
-   *
-   * @param {string} offsetYType
-   */
   setOffsetYType(offsetYType) {
     this.#settings.floatingGeometry.offsetYType = offsetYType;
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   getWidthType() {
     return this.#settings.floatingGeometry.widthType;
   }
 
-  /**
-   *
-   * @param {string} widthType
-   */
   setWidthType(widthType) {
     this.#settings.floatingGeometry.widthType = widthType;
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   getHeightType() {
     return this.#settings.floatingGeometry.heightType;
   }
 
-  /**
-   *
-   * @param {string} heightType
-   */
   setHeightType(heightType) {
     this.#settings.floatingGeometry.heightType = heightType;
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   getSelectorEnabled() {
     return this.#settings.selectorEnabled;
   }
 
-  /**
-   *
-   * @param {boolean} value
-   */
   setSelectorEnabled(value) {
     this.#settings.selectorEnabled = value;
   }
 
-  /**
-   *
-   * @returns {string?}
-   */
   getSelector() {
     return this.#settings.selector;
   }
 
-  /**
-   *
-   * @param {string} selector
-   */
   setSelector(selector) {
     this.#settings.selector = selector;
   }
 
-  /**
-   *
-   * @returns {FloatingWebPanelGeometrySettings}
-   */
   getFloatingGeometry() {
     return this.#settings.floatingGeometry;
   }
 
-  /**
-   *
-   * @param {FloatingWebPanelGeometrySettings} geometry
-   */
   setFloatingGeometry(geometry) {
     this.#settings.floatingGeometry = geometry;
   }
 
-  /**
-   *
-   * @returns {PinnedWebPanelGeometrySettings}
-   */
   getPinnedGeometry() {
     return this.#settings.pinnedGeometry;
   }
 
-  /**
-   *
-   * @param {string} width
-   */
   setPinnedGeometry(width) {
     this.#settings.pinnedGeometry.width = width;
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   pinned() {
     return this.#settings.pinned;
   }
@@ -820,18 +619,10 @@ export class WebPanelController {
     this.#settings.pinned = false;
   }
 
-  /**
-   *
-   * @param {string} url
-   */
   go(url) {
     this.#tab.linkedBrowser.go(url);
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   isMuted() {
     return this.#tab.muted;
   }
@@ -859,18 +650,10 @@ export class WebPanelController {
     );
   }
 
-  /**
-   *
-   * @returns {WebPanelState}
-   */
   dumpState() {
     return WebPanelState.fromObject(this.#state.toObject());
   }
 
-  /**
-   *
-   * @param {string} message
-   */
   #log(message) {
     console.log(`Web panel ${this.getUUID()}:`, message);
   }

@@ -527,28 +527,15 @@ export class WebPanelsController {
     );
   }
 
-  /**
-   *
-   * @param {string} uuid
-   * @returns {WebPanelController?}
-   */
   get(uuid) {
     return this.webPanelControllers.get(uuid) ?? null;
   }
 
-  /**
-   *
-   * @returns {WebPanelController?}
-   */
   getActive() {
     const tab = SidebarElements.webPanelsBrowser.getActiveWebPanelTab();
     return tab && !tab.isEmpty() ? this.get(tab.uuid) : null;
   }
 
-  /**
-   *
-   * @returns {WebPanelController[]}
-   */
   getAll() {
     return [...this.webPanelControllers.values()];
   }

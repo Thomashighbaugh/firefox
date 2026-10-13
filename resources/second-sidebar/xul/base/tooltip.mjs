@@ -28,21 +28,11 @@ export class Tooltip extends Panel {
     this.appendChild(this.container);
   }
 
-  /**
-   *
-   * @param {XULElement} item
-   * @returns {Tooltip}
-   */
   appendItem(item) {
     this.container.appendChild(item);
     return this;
   }
 
-  /**
-   *
-   * @param {Array<XULElement>} items
-   * @returns {Tooltip}
-   */
   appendItems(...items) {
     items.forEach((item) => this.appendItem(item));
     return this;

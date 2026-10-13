@@ -21,21 +21,11 @@ export class WebPanelTooltip extends Tooltip {
     this.appendItems(this.titleLabel, this.urlLabel);
   }
 
-  /**
-   *
-   * @param {string} title
-   * @returns {WebPanelTooltip}
-   */
   setTitle(title) {
     this.titleLabel.setText(title);
     return this;
   }
 
-  /**
-   *
-   * @param {string} url
-   * @returns {WebPanelTooltip}
-   */
   setUrl(url) {
     this.urlLabel.setText(url);
     return this;
@@ -51,19 +41,11 @@ export class WebPanelTooltip extends Tooltip {
     return this;
   }
 
-  /**
-   *
-   * @returns {WebPanelTooltip}
-   */
   showTitle() {
     this.titleLabel.show();
     return this;
   }
 
-  /**
-   *
-   * @returns {WebPanelTooltip}
-   */
   showUrl() {
     this.urlLabel.show();
     return this;

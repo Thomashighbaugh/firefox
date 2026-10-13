@@ -5,19 +5,10 @@ export class SidebarWrapper extends Div {
     super({ id: "sb2-wrapper" });
   }
 
-  /**
-   *
-   * @param {string} position
-   * @returns {SidebarWrapper}
-   */
   setPosition(position) {
     return this.setAttribute("position", position);
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   getPosition() {
     return this.getAttribute("position");
   }

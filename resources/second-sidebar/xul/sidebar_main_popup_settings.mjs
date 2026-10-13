@@ -1,10 +1,7 @@
 import { BrowserElements } from "../browser_elements.mjs";
-import { Div, PanelMultiView, Toggle, ToolbarSeparator, VBox } from "./base/elements.mjs";
-import { Panel } from "./base/panel.mjs";
-import { PopupBody } from "./popup_body.mjs";
+import { Div, Toggle, ToolbarSeparator, VBox } from "./base/elements.mjs";
 import { PopupDiscardConfirmation } from "./popup_discard_confirmation.mjs";
-import { PopupFooter } from "./popup_footer.mjs";
-import { PopupHeader } from "./popup_header.mjs";
+import { PopupPanel } from "./popup_panel.mjs";
 import { SidebarControllers } from "../sidebar_controllers.mjs";
 import { SidebarSettings } from "../settings/settings.mjs";
 import { isLeftMouseButton } from "../utils/buttons.mjs";
@@ -24,14 +21,13 @@ const ICONS = {
   UNDO: "chrome://global/skin/icons/undo.svg",
 };
 
-export class SidebarMainPopupSettings extends Panel {
+export class SidebarMainPopupSettings extends PopupPanel {
   constructor() {
     super({
       id: "sb2-main-popup-settings",
-      classList: ["sb2-popup", "sb2-popup-with-header"],
+      classList: ["sb2-popup-with-header"],
     });
-    this.setType("arrow")
-      .setRole("group")
+    this.setRole("group")
       .setAttribute("noautohide", "true")
       .setAttribute("consumeoutsideclicks", "false")
       .setAttribute("level", "parent");
@@ -242,100 +238,98 @@ export class SidebarMainPopupSettings extends Panel {
   }
 
   #compose() {
-    this.appendChild(
-      new PanelMultiView().appendChildren(
-        new PopupHeader("Sidebar Settings"),
-        new PopupBody().appendChildren(
-          createPopupSet("", [
-            createPopupGroup("Position", this.positionMenuList),
-            new ToolbarSeparator(),
-            createPopupGroup("Width", this.paddingMenuList),
-          ]),
-          createPopupSet("Visibility", [
-            createPopupGroup("Auto-hide sidebar", this.autoHideSidebarToggle),
-            new ToolbarSeparator(),
-            new Div({
-              id: "sb2-main-popup-settings-auto-hide-sidebar-items",
-            }).appendChildren(
-              createPopupGroup(
-                "Auto-hide behavior",
-                this.autoHideSidebarBehaviorMenuList,
-              ),
-            ),
-            new Div({
-              id: "sb2-main-popup-settings-sidebar-widget-items",
-            }).appendChildren(
-              createPopupGroup(
-                "Hide web panel when sidebar is hidden",
-                this.sidebarWidgetHideWebPanelToggle,
-              ),
-              new ToolbarSeparator(),
-              createPopupRow(
-                this.sidebarWidgetShortcutInput,
-                this.sidebarWidgetShortcutResetButton,
-              ),
-            ),
-          ]),
-          createPopupSet("Web panel", [
+    this.compose({
+      title: "Sidebar Settings",
+      body: [
+        createPopupSet("", [
+          createPopupGroup("Position", this.positionMenuList),
+          new ToolbarSeparator(),
+          createPopupGroup("Width", this.paddingMenuList),
+        ]),
+        createPopupSet("Visibility", [
+          createPopupGroup("Auto-hide sidebar", this.autoHideSidebarToggle),
+          new ToolbarSeparator(),
+          new Div({
+            id: "sb2-main-popup-settings-auto-hide-sidebar-items",
+          }).appendChildren(
             createPopupGroup(
-              "Default floating panel offset",
-              this.defaultFloatingOffsetMenuList,
+              "Auto-hide behavior",
+              this.autoHideSidebarBehaviorMenuList,
+            ),
+          ),
+          new Div({
+            id: "sb2-main-popup-settings-sidebar-widget-items",
+          }).appendChildren(
+            createPopupGroup(
+              "Hide web panel when sidebar is hidden",
+              this.sidebarWidgetHideWebPanelToggle,
             ),
             new ToolbarSeparator(),
-            createPopupGroup(
-              "New panel position",
-              this.newWebPanelPositionMenuList,
-            ),
-            new ToolbarSeparator(),
-            createPopupGroup(
-              "Show geometry hint",
-              this.enableSidebarBoxHintToggle,
-            ),
-          ]),
-          createPopupSet("Open/close last active web panel", [
             createPopupRow(
-              this.lastWebPanelShortcutInput,
-              this.lastWebPanelShortcutResetButton,
+              this.sidebarWidgetShortcutInput,
+              this.sidebarWidgetShortcutResetButton,
             ),
-          ]),
-          createPopupSet("Web panel button", [
-            createPopupGroup(
-              "Container indicator",
-              this.containerBorderMenuList,
-            ),
+          ),
+        ]),
+        createPopupSet("Web panel", [
+          createPopupGroup(
+            "Default floating panel offset",
+            this.defaultFloatingOffsetMenuList,
+          ),
+          new ToolbarSeparator(),
+          createPopupGroup(
+            "New panel position",
+            this.newWebPanelPositionMenuList,
+          ),
+          new ToolbarSeparator(),
+          createPopupGroup(
+            "Show geometry hint",
+            this.enableSidebarBoxHintToggle,
+          ),
+        ]),
+        createPopupSet("Open/close last active web panel", [
+          createPopupRow(
+            this.lastWebPanelShortcutInput,
+            this.lastWebPanelShortcutResetButton,
+          ),
+        ]),
+        createPopupSet("Web panel button", [
+          createPopupGroup(
+            "Container indicator",
+            this.containerBorderMenuList,
+          ),
+          new ToolbarSeparator(),
+          createPopupGroup("Tooltip", this.tooltipMenuList),
+          new Div({
+            id: "sb2-main-popup-settings-tooltip-items",
+          }).appendChildren(
             new ToolbarSeparator(),
-            createPopupGroup("Tooltip", this.tooltipMenuList),
-            new Div({
-              id: "sb2-main-popup-settings-tooltip-items",
-            }).appendChildren(
-              new ToolbarSeparator(),
-              createPopupGroup(
-                "Show full URL in tooltip",
-                this.tooltipFullUrlToggle,
-              ),
-            ),
-          ]),
-          createPopupSet("Web panel toolbar", [
             createPopupGroup(
-              "Auto-hide forward button",
-              this.autoHideForwardToggle,
+              "Show full URL in tooltip",
+              this.tooltipFullUrlToggle,
             ),
-            new ToolbarSeparator(),
-            createPopupGroup("Auto-hide back button", this.autoHideBackToggle),
-          ]),
-          createPopupSet("Animations", [
-            createPopupGroup("Animate sidebar", this.hideSidebarAnimatedToggle),
-            new ToolbarSeparator(),
-            createPopupGroup(
-              "Animate web panel toolbar",
-              this.hideToolbarAnimatedToggle,
-            ),
-          ]),
-        ),
-        new PopupFooter().appendChildren(this.cancelButton, this.saveButton),
-        this.discardConfirmation,
-      ),
-    );
+          ),
+        ]),
+        createPopupSet("Web panel toolbar", [
+          createPopupGroup(
+            "Auto-hide forward button",
+            this.autoHideForwardToggle,
+          ),
+          new ToolbarSeparator(),
+          createPopupGroup("Auto-hide back button", this.autoHideBackToggle),
+        ]),
+        createPopupSet("Animations", [
+          createPopupGroup("Animate sidebar", this.hideSidebarAnimatedToggle),
+          new ToolbarSeparator(),
+          createPopupGroup(
+            "Animate web panel toolbar",
+            this.hideToolbarAnimatedToggle,
+          ),
+        ]),
+      ],
+      footer: [this.cancelButton, this.saveButton],
+      trailing: [this.discardConfirmation],
+    });
   }
 
   /**
@@ -496,20 +490,11 @@ export class SidebarMainPopupSettings extends Panel {
     });
   }
 
-  /**
-   * @returns {SidebarMainPopupSettings}
-   */
   hidePopup() {
     this.#requestClose();
     return this;
   }
 
-  /**
-   *
-   * @param {number} screenX
-   * @param {number} screenY
-   * @param {SidebarSettings} settings
-   */
   openPopupAtScreen(screenX, screenY, settings) {
     if (this.editSessionActive) {
       this.#cancelChanges();
@@ -569,7 +554,7 @@ export class SidebarMainPopupSettings extends Panel {
     this.addEventListener("popuphidden", this.closeOnPopupHidden);
     window.addEventListener("keydown", this.escapeOnKeyDown, true);
 
-    Panel.prototype.openPopupAtScreen.call(this, screenX, screenY);
+    super.openPopupAtScreen(screenX, screenY);
   }
 
   #requestClose() {
@@ -577,13 +562,13 @@ export class SidebarMainPopupSettings extends Panel {
       this.discardConfirmation.show();
       return;
     }
-    Panel.prototype.hidePopup.call(this);
+    super.hidePopup();
   }
 
   #discardChangesAndClose() {
     this.#cancelChanges();
     this.#endEditSession();
-    Panel.prototype.hidePopup.call(this);
+    super.hidePopup();
   }
 
   #endEditSession() {

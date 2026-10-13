@@ -235,10 +235,6 @@ export class SidebarController {
     document.addEventListener("click", this.onClickOutsideWhileFloating);
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   pinned() {
     return SidebarElements.sidebarBox.getAttributeBool("pinned");
   }
@@ -260,51 +256,27 @@ export class SidebarController {
     hideToolbar ? this.collapseToolbar() : this.uncollapseToolbar();
   }
 
-  /**
-   *
-   * @param {WebPanelController} webPanelController
-   */
   updatePinState(webPanelController) {
     webPanelController.pinned() ? this.pin() : this.unpin();
   }
 
-  /**
-   *
-   * @param {string} value
-   */
   setContainerBorder(value) {
     this.containerBorder = value;
     changeContainerBorder(value);
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   getWebPanelTooltip() {
     return this.tooltip;
   }
 
-  /**
-   *
-   * @param {string} value
-   */
   setWebPanelTooltip(value) {
     this.tooltip = value;
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   getWebPanelTooltipFullUrl() {
     return this.tooltipFullUrl;
   }
 
-  /**
-   *
-   * @param {boolean} value
-   */
   setWebPanelTooltipFullUrl(value) {
     this.tooltipFullUrl = value;
   }
@@ -340,18 +312,10 @@ export class SidebarController {
     this.sidebarWidgetShortcut = sidebarWidgetShortcut;
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   getHideToolbarAnimated() {
     return this.hideToolbarAnimated;
   }
 
-  /**
-   *
-   * @param {boolean} value
-   */
   setHideToolbarAnimated(value) {
     this.hideToolbarAnimated = value;
     SidebarElements.sidebarToolbar.setAttribute("shouldAnimate", value);

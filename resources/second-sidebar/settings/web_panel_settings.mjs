@@ -88,39 +88,20 @@ export class FloatingWebPanelGeometrySettings {
     };
   }
 
-  /**
-   *
-   * @param {string} offsetCSS
-   * @returns {string}
-   */
   makeDefaultHeight(offsetCSS) {
     return `calc(100% - ${offsetCSS} * 2)`;
   }
 }
 
 export class PinnedWebPanelGeometrySettings {
-  /**
-   *
-   * @param {object} params
-   * @param {string} params.width
-   */
   constructor({ width = "600px" } = {}) {
     this.width = width;
   }
 
-  /**
-   *
-   * @param {object} object
-   * @returns {PinnedWebPanelGeometrySettings}
-   */
   static fromObject(object) {
     return new PinnedWebPanelGeometrySettings(object);
   }
 
-  /**
-   *
-   * @returns {object}
-   */
   toObject() {
     return { width: this.width };
   }

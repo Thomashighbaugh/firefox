@@ -86,35 +86,18 @@ export class WebPanelPopupMore extends PopupPanel {
     });
   }
 
-  /**
-   *
-   * @param {function(string, boolean):void} callback
-   */
   listenMobileButtonClick(callback) {
     this.#listenFlagButtonClick(this.mobileButton, callback);
   }
 
-  /**
-   *
-   * @param {function(string, boolean):void} callback
-   */
   listenTemporaryButtonClick(callback) {
     this.#listenFlagButtonClick(this.temporaryButton, callback);
   }
 
-  /**
-   *
-   * @param {function(string, boolean):void} callback
-   */
   listenAlwaysOnTopButtonClick(callback) {
     this.#listenFlagButtonClick(this.alwaysOnTopButton, callback);
   }
 
-  /**
-   *
-   * @param {string} label
-   * @returns {ToolbarButton}
-   */
   #createFlagButton(label) {
     return createSubviewButton(label).setAttribute("role", "checkbox");
   }

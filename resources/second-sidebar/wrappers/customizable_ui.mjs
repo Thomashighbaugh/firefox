@@ -49,10 +49,6 @@ export class CustomizableUIWrapper {
     });
   }
 
-  /**
-   *
-   * @param {HTMLElement} node
-   */
   static registerToolbarNode(node) {
     if (!this.#CUI) return;
     this.#CUI.registerToolbarNode(node);
@@ -85,41 +81,21 @@ export class CustomizableUIWrapper {
     });
   }
 
-  /**
-   *
-   * @param {string} id
-   * @returns {Widget}
-   */
   static getWidget(id) {
     if (!this.#CUI) return null;
     return this.#CUI.getWidget(id);
   }
 
-  /**
-   *
-   * @param {string} id
-   */
   static destroyWidget(id) {
     if (!this.#CUI) return;
     this.#CUI.destroyWidget(id);
   }
 
-  /**
-   *
-   * @param {string} id
-   * @param {string} area
-   * @param {number} position
-   */
   static addWidgetToArea(id, area, position) {
     if (!this.#CUI) return;
     this.#CUI.addWidgetToArea(id, area, position);
   }
 
-  /**
-   *
-   * @param {string} id
-   * @returns {object}
-   */
   static getPlacementOfWidget(id) {
     if (!this.#CUI) return null;
     return this.#CUI.getPlacementOfWidget(id);

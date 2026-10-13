@@ -61,12 +61,6 @@ export class SidebarToolbar extends Toolbar {
       .setTooltipText(tooltipText);
   }
 
-  /**
-   *
-   * @param {string} tooltipText
-   * @param {string} iconUrl
-   * @returns {ToolbarButton}
-   */
   #createMenuButton(tooltipText, iconUrl) {
     return this.#createButton(tooltipText, iconUrl).setType("menu");
   }
@@ -86,10 +80,6 @@ export class SidebarToolbar extends Toolbar {
     return toolbarButtons;
   }
 
-  /**
-   *
-   * @returns {Label}
-   */
   #createToolbarTitle() {
     return new Label({ id: "sb2-toolbar-title" });
   }
@@ -137,47 +127,24 @@ export class SidebarToolbar extends Toolbar {
     return this;
   }
 
-  /**
-   *
-   * @param {boolean} value
-   * @returns {SidebarToolbar}
-   */
   setAutoHideBackButton(value) {
     this.autoHideBackButton = value;
     return this;
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   getAutoHideBackButton() {
     return this.autoHideBackButton;
   }
 
-  /**
-   *
-   * @param {boolean} value
-   * @returns {SidebarToolbar}
-   */
   setAutoHideForwardButton(value) {
     this.autoHideForwardButton = value;
     return this;
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   getAutoHideForwardButton() {
     return this.autoHideForwardButton;
   }
 
-  /**
-   *
-   * @param {string} title
-   * @returns {SidebarToolbar}
-   */
   setTitle(title) {
     this.toolbarTitle.setText(title);
     return this;
@@ -225,56 +192,26 @@ export class SidebarToolbar extends Toolbar {
     return this;
   }
 
-  /**
-   *
-   * @param {function(MouseEvent):void} callback
-   * @returns {SidebarToolbar}
-   */
   listenBackButtonClick(callback) {
     return this.#addButtonClickListener(this.backButton, callback);
   }
 
-  /**
-   *
-   * @param {function(MouseEvent):void} callback
-   * @returns {SidebarToolbar}
-   */
   listenForwardButtonClick(callback) {
     return this.#addButtonClickListener(this.forwardButton, callback);
   }
 
-  /**
-   *
-   * @param {function(MouseEvent):void} callback
-   * @returns {SidebarToolbar}
-   */
   listenReloadButtonClick(callback) {
     return this.#addButtonClickListener(this.reloadButton, callback);
   }
 
-  /**
-   *
-   * @param {function(MouseEvent):void} callback
-   * @returns {SidebarToolbar}
-   */
   listenHomeButtonClick(callback) {
     return this.#addButtonClickListener(this.homeButton, callback);
   }
 
-  /**
-   *
-   * @param {function(MouseEvent):void} callback
-   * @returns {SidebarToolbar}
-   */
   listenPinButtonClick(callback) {
     return this.#addButtonClickListener(this.pinButton, callback);
   }
 
-  /**
-   *
-   * @param {function(MouseEvent):void} callback
-   * @returns {SidebarToolbar}
-   */
   listenCloseButtonClick(callback) {
     return this.#addButtonClickListener(this.closeButton, callback);
   }

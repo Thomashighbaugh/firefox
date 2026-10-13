@@ -63,18 +63,10 @@ export class WebPanelNewController {
     SidebarElements.webPanelPopupNew.hidePopup();
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   getNewWebPanelPosition() {
     return this.newWebPanelPosition;
   }
 
-  /**
-   *
-   * @param {string} value
-   */
   setNewWebPanelPosition(value) {
     this.newWebPanelPosition = value;
   }
@@ -97,10 +89,6 @@ export class WebPanelDeleteController {
     });
   }
 
-  /**
-   *
-   * @param {WebPanelController} webPanelController
-   */
   openPopup(webPanelController) {
     SidebarElements.webPanelPopupDelete.openPopup(webPanelController);
   }
@@ -393,10 +381,6 @@ export class WebPanelEditController {
     });
   }
 
-  /**
-   *
-   * @param {WebPanelController} webPanelController
-   */
   openPopup(webPanelController) {
     SidebarElements.webPanelPopupEdit.openPopup(webPanelController);
   }

@@ -99,21 +99,11 @@ export class WebPanelButton extends Widget {
     });
   }
 
-  /**
-   *
-   * @param {string} text
-   * @returns {WebPanelButton}
-   */
   setLabel(text) {
     text = ellipsis(clearUrl(text), URL_LABEL_LIMIT);
     return Widget.prototype.setLabel.call(this, text);
   }
 
-  /**
-   *
-   * @param {string} text
-   * @returns {WebPanelButton}
-   */
   setTooltipText(text) {
     text = ellipsis(clearUrl(text), URL_TOOLTIP_LIMIT);
     return Widget.prototype.setTooltipText.call(this, text);
@@ -130,10 +120,6 @@ export class WebPanelButton extends Widget {
     );
   }
 
-  /**
-   *
-   * @returns {boolean}
-   */
   getLoading() {
     return this.button.hasAttribute("loading");
   }

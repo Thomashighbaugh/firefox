@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Home</title>
+    <link rel="stylesheet" href="home.css" />
+  </head>
+  <body>
+    <header class="home-header">
+      <h1 class="home-title">Tabs</h1>
+      <input
+        id="home-search"
+        class="home-search"
+        type="search"
+        placeholder="Search tabs, devices, history…"
+        aria-label="Search tabs"
+        autocomplete="off"
+        spellcheck="false"
+      />
+    </header>
+
+    <main class="home-main">
+      <section class="home-section" id="section-open">
+        <h2 class="home-section-title">
+          Open Tabs <span class="home-count" data-count="open"></span>
+        </h2>
+        <ul class="home-list" id="list-open"></ul>
+        <p class="home-empty" data-empty="open" hidden>No open tabs.</p>
+      </section>
+
+      <section class="home-section" id="section-devices">
+        <h2 class="home-section-title">
+          Tabs from Other Devices
+          <span class="home-count" data-count="devices"></span>
+        </h2>
+        <ul class="home-list" id="list-devices"></ul>
+        <p class="home-empty" data-empty="devices" hidden>
+          No synced devices found.
+        </p>
+      </section>
+
+      <section class="home-section" id="section-closed">
+        <h2 class="home-section-title">
+          Recently Closed <span class="home-count" data-count="closed"></span>
+        </h2>
+        <ul class="home-list" id="list-closed"></ul>
+        <p class="home-empty" data-empty="closed" hidden>
+          No recently closed tabs.
+        </p>
+      </section>
+    </main>
+
+    <script type="module" src="home.mjs"></script>
+  </body>
+</html>

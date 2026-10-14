@@ -101,10 +101,22 @@ collapse, splitter, shortcuts, container tabs, customize mode) manually pass; no
 
 ## Task 2 — All-Tabs-Menu as home / new-tab page (P2)
 
+**Status: ✅ implemented 2026-10-14** (page + wiring; needs live smoke test in Firefox).
+
 **Goal:** replace the home + new-tab pages with a full page built from the **existing All Tabs Menu**,
 plus the **Firefox View** elements (hidden tabs, tabs from other devices, recently closed).
 
-**Approach:**
+**Delivered:**
+- `resources/home/{home.xhtml,home.mjs,home.css}` → `chrome://userchrome/content/home/home.xhtml`.
+- Sections: Open Tabs (all `gBrowser.tabs`, incl. `tab.hidden`; switch/close), Tabs from Other
+  Devices (`SyncedTabs.getTabClients()`), Recently Closed (`SessionStore.getClosedTabData()` → restore).
+- Live search filter; observers for `TabOpen/Close/Select/Move/AttrModified`,
+  `sessionstore-closed-objects-changed`, `services.sync.tabs.changed`.
+- Wiring: `JS/homeRedirect.uc.js` (`about:newtab` → page; pref `higgs.home.newtab.enabled` default
+  true); home via `browser.startup.homepage`. Fork will patch `AboutNewTab.sys.mjs` (Lane 2) instead.
+- Chrome window resolved via `window.browsingContext` (same pattern as `about:firefoxview`).
+
+**Original approach (for reference):**
 - Register a privileged page `about:higgs-home` (or `about:newtab` override). Since
   `browser.newtab.url` is gone, use a bundled WebExtension `chrome_url_overrides.newtab`, **or** patch
   `AboutNewTab.sys.mjs` in the fork (Lane 2).
@@ -228,7 +240,7 @@ where possible; no per-item round-trips for bulk ops.
 | # | Task | Priority | Lane impact |
 | - | ---- | -------- | ----------- |
 | 1 | Second-sidebar refactor | **P1** | chrome JS (Lane 1) |
-| 2 | All-Tabs-Menu home/new-tab | P2 | page + pref (Lane 1/2) |
+| 2 | All-Tabs-Menu home/new-tab | P2 | page + pref (Lane 1/2) | ✅ done |
 | 3 | Durable workspaces via Tab Groups | P2 | chrome JS + prefs |
 | 4 | Library → `about:` page | P2 | page + Places/Downloads |
 | 5 | QuickTabs Search | P3 | chrome JS (Lane 1) |

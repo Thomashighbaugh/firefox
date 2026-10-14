@@ -1,0 +1,181 @@
+/* Home / new-tab page — reuses the theme's variables where available. */
+
+:root {
+  color-scheme: light dark;
+  --home-bg: var(--firefoxcss-about-page-bg, light-dark(#f9f9fb, #1c1b22));
+  --home-card: var(--firefoxcss-about-page-item-bg, light-dark(#ffffff, #2b2a33));
+  --home-fg: light-dark(#15141a, #fbfbfe);
+  --home-dim: color-mix(in srgb, var(--home-fg) 65%, transparent);
+  --home-border: color-mix(in srgb, var(--home-fg) 12%, transparent);
+  --home-radius: 10px;
+  --home-accent: var(--color-accent-primary, #0060df);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--home-bg);
+  color: var(--home-fg);
+  font: message-box;
+}
+
+.home-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 24px;
+  background: color-mix(in srgb, var(--home-bg) 88%, transparent);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--home-border);
+}
+
+.home-title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.home-search {
+  flex: 1 1 auto;
+  max-width: 520px;
+  padding: 8px 12px;
+  border: 1px solid var(--home-border);
+  border-radius: var(--home-radius);
+  background: var(--home-card);
+  color: inherit;
+  font: inherit;
+}
+
+.home-search:focus {
+  outline: 2px solid var(--home-accent);
+  outline-offset: 1px;
+}
+
+.home-main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 20px 24px 64px;
+  display: grid;
+  gap: 28px;
+}
+
+.home-section-title {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.home-count {
+  color: var(--home-dim);
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+.home-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.home-device {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--home-dim);
+}
+
+.home-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--home-border);
+  border-radius: var(--home-radius);
+  background: var(--home-card);
+  cursor: default;
+}
+
+.home-row:hover {
+  border-color: color-mix(in srgb, var(--home-accent) 45%, var(--home-border));
+}
+
+.home-row-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  -moz-context-properties: fill;
+}
+
+.home-row-main {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.home-row-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.home-row-url {
+  color: var(--home-dim);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.home-row-badges {
+  display: flex;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+.home-badge {
+  font-size: 0.7rem;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--home-fg) 10%, transparent);
+  color: var(--home-dim);
+}
+
+.home-row-actions {
+  display: flex;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+.home-row-action {
+  padding: 4px 10px;
+  border: 1px solid var(--home-border);
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.home-row-action:hover {
+  background: color-mix(in srgb, var(--home-fg) 10%, transparent);
+}
+
+.home-empty {
+  color: var(--home-dim);
+  font-size: 0.9rem;
+}

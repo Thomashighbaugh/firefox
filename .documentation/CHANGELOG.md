@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-14 04:58** [Home / New Tab] Task 2: added a custom Home page replacing the stock new-tab/home page — `resources/home/{home.xhtml,home.mjs,home.css}` (served as `chrome://userchrome/content/home/home.xhtml`). It renders the All-Tabs-Menu content (all open tabs incl. hidden, with switch/close) plus the Firefox View sections: **tabs from other devices** (`SyncedTabs.getTabClients()`) and **recently closed** (`SessionStore.getClosedTabData()` → restore), with a live search filter and observers for tab/closed/sync changes. Wired via `JS/homeRedirect.uc.js` (`about:newtab` → page, pref `higgs.home.newtab.enabled`, default true); home via `browser.startup.homepage`. The fork will patch `AboutNewTab.sys.mjs` instead. Test suite still 27/27.
+
 - **2026-10-14 04:42** [CSS/URL bar] Reverted the previous page-action reveal change — the URL-bar icons returned on their own (transient), so `url-auto-hide.css` is back to the original container-only hover reveal (`#page-action-buttons:hover`).
 
 - **2026-10-14 04:35** [CSS/URL bar] Fixed the vanished URL-bar page-action icons. The theme's auto-hide (`url-auto-hide.css`) collapsed `.urlbar-page-action` to `opacity: 0` and only revealed them on hovering the (near-zero-width) `#page-action-buttons` container via its `•••` pseudo-indicator, which became an unreachable hover target. Added `#urlbar-input-container:hover #page-action-buttons > .urlbar-page-action` to the reveal rule so the icons now also appear when hovering anywhere in the urlbar input row. (Set `mod.search.info.buttons.show.always = true` to keep them permanently visible instead.)

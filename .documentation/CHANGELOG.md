@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-14 21:23** [Home / New Tab] "New Group…" now opens the native tab-group editor (for naming): `addTabGroup` is passed a user-triggered `TabMetrics` context so Firefox dispatches `TabGroupCreateByUser` → `tabGroupMenu.openCreateModal(group)`, with an explicit `openCreateModal` fallback. Card favicons 60px → **128px**.
+
 - **2026-10-14 21:15** [Home / New Tab] Card favicons 20px → **60px** (+200%). Added an **"Add to Tab Group"** submenu to the context menu of **every** tab source — open, hidden, recently-closed, and other-device. The submenu lists existing groups (`group.addTabs([tab])`) plus "New Group…" (`gBrowser.addTabGroup([tab], {})`); for closed/synced tabs it restores/opens the tab first, then groups it. Context menu gained drill-down submenu support (Back entry, `›` affordance).
 
 - **2026-10-14 20:36** [Home / New Tab] Reworked the Home page layout & features: (1) added **Hidden Tabs** and **Tab Groups** views (native `tab.group` → `{tabs,name,color,collapsed}`), alongside Open/Other Devices/Recently Closed; (2) **tab-panel nav** — one list shown at a time via top nav tabs with per-view counts; (3) **5-column card grid** (1→2→3→4→5 by breakpoint) modelled on `about:addons`; (4) clicking a card switches to the tab (unhiding it) or opens synced/closed tabs in the current window; (5) a **✕ close button** on every tab card; (6) a **right-click context menu** per card/groups (Switch, Reload, Duplicate, Pin/Unpin, Move to New Window, Mute/Unmute, Unhide, Copy URL, Close/Close Others; groups: Expand/Collapse, Ungroup, Close Group; closed: Restore). Test suite 27/27.

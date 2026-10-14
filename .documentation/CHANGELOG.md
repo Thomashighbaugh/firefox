@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-14 18:52** [Home / New Tab] Fixed the new-tab redirect (v1.2.0). Root cause: Firefox preloads `about:newtab` in a detached browser (`browser.newtab.preload = true`) and swaps it into a new tab **without** a fresh `onLocationChange`, so the progress listener never fired — `about:home` worked but `about:newtab` didn't. Added a `TabOpen` hook (deferred) that redirects the tab's browser, and disabled `browser.newtab.preload` so the normal navigation path also fires.
+
 - **2026-10-14 18:25** [Home / New Tab] Hardened `JS/homeRedirect.uc.js` (v1.1.0): defer the navigation out of `onLocationChange` (synchronous `loadURI` there is unreliable), guard by `gBrowser.getTabForBrowser`, also redirect `about:home`, and add `higgs.home.debug` logging.
 
 - **2026-10-14 14:59** [Home / New Tab] Fixed the Home page failing to load with `XML Parsing Error: not well-formed` — it was served as `home.xhtml` (strict XML via `application/xhtml+xml`), and the bare `hidden` boolean attributes are not well-formed XML. Renamed to `home.html` (served as lenient `text/html`, matching `about:firefoxview`) and updated all references (`JS/homeRedirect.uc.js`, docs).

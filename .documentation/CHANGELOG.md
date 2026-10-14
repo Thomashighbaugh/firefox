@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-14 04:42** [CSS/URL bar] Reverted the previous page-action reveal change — the URL-bar icons returned on their own (transient), so `url-auto-hide.css` is back to the original container-only hover reveal (`#page-action-buttons:hover`).
+
 - **2026-10-14 04:35** [CSS/URL bar] Fixed the vanished URL-bar page-action icons. The theme's auto-hide (`url-auto-hide.css`) collapsed `.urlbar-page-action` to `opacity: 0` and only revealed them on hovering the (near-zero-width) `#page-action-buttons` container via its `•••` pseudo-indicator, which became an unreachable hover target. Added `#urlbar-input-container:hover #page-action-buttons > .urlbar-page-action` to the reveal rule so the icons now also appear when hovering anywhere in the urlbar input row. (Set `mod.search.info.buttons.show.always = true` to keep them permanently visible instead.)
 
 - **2026-10-13 20:14** [Tests] Added a dependency-free Node test suite (`tests/`, `npm test`) that validates the theme's JS and XUL: 27 tests across 9 files — parse all `.uc.js`/`.uc.mjs`/`.sys.mjs`/`.mjs`; resolve every relative and `chrome://` import; verify named imports match declared exports; validate every created element tag; CSS brace balance + `@import` resolution; `chrome.manifest` integrity; DOM-shape assertions for the element factories / `utils/xul.mjs` / `PopupPanel` against a fake chrome environment; `==UserScript==` header validity; and integrity invariants (LF endings, no `eval`/`toSource`, popups extend `PopupPanel`, entry-point uniqueness). The suite immediately caught a real defect: `JS/minimizeMemory.uc.js` (and one context CSV) used CRLF line endings — normalized to LF.

@@ -210,9 +210,6 @@
     opacity: 1 !important;
   }
 
-  /* Reveal on hover of the whole urlbar input row (robust — no longer depends
-     solely on the collapsed #page-action-buttons / ••• indicator being hoverable). */
-  #urlbar-input-container:hover #page-action-buttons > .urlbar-page-action,
   #page-action-buttons:hover > .urlbar-page-action,
   #page-action-buttons .urlbar-page-action[open],
   #page-action-buttons .urlbar-page-action[open] ~ .urlbar-page-action {

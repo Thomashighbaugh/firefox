@@ -19,7 +19,8 @@ const XUL = [
 ];
 const HTML = [
   "div", "span", "a", "img", "canvas", "style", "link", "input", "button", "template", "p",
-  "h1", "h2", "h3", "h4", "h5", "h6", "ul", "li", "section", "header", "footer", "video", "audio",
+  "h1", "h2", "h3", "h4", "h5", "h6", "ul", "ol", "li", "section", "header", "footer", "nav",
+  "main", "aside", "hr", "br", "strong", "em", "code", "pre", "video", "audio",
   "table", "thead", "tbody", "tr", "td", "th", "select", "option", "textarea", "label", "svg", "path",
 ];
 const CUSTOM = [

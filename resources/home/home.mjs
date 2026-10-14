@@ -34,16 +34,6 @@ const FALLBACK_ICON = "chrome://global/skin/icons/defaultFavicon.svg";
 
 /* ------------------------------------------------------------ card builder */
 
-/**
- * @param {object} opts
- * @param {string} opts.title
- * @param {string} [opts.url]
- * @param {string} [opts.image]
- * @param {string[]} [opts.badges]
- * @param {() => void} [opts.onActivate]
- * @param {() => void} [opts.onClose]
- * @param {Array<{label:string, onSelect:() => void, disabled?:boolean}>} [opts.menu]
- */
 function buildCard({ title, url, image, badges = [], onActivate, onClose, menu }) {
   const card = document.createElement("div");
   card.className = "card";
@@ -115,64 +105,40 @@ function buildCard({ title, url, image, badges = [], onActivate, onClose, menu }
   return card;
 }
 
-/* ------------------------------------------------------------ card context menus */
-
-function tabMenu(tab, win) {
-  const gb = win.gBrowser;
-  const onTop = !!tab.pinned;
-  const items = [
-    { label: "Switch to Tab", onSelect: () => activate(tab, win) },
-    { label: "Reload", onSelect: () => gb.reloadTab(tab) },
-    { label: "Duplicate", onSelect: () => gb.duplicateTab(tab) },
-    {
-      label: onTop ? "Unpin Tab" : "Pin Tab",
-      onSelect: () => (onTop ? gb.unpinTab(tab) : gb.pinTab(tab)),
-    },
-    { label: "Move to New Window", onSelect: () => gb.replaceTabWithWindow(tab) },
-    {
-      label: tab.muted ? "Unmute Tab" : "Mute Tab",
-      onSelect: () => tab.toggleMuteAudio(),
-    },
-    { label: "Copy URL", onSelect: () => copyToClipboard(tab.linkedBrowser?.currentURI?.spec ?? "") },
-  ];
-  if (tab.hidden) {
-    items.unshift({ label: "Unhide Tab", onSelect: () => gb.showTab?.(tab) ?? (tab.hidden = false) });
-  }
-  items.push(
-    { label: "Close Tab", onSelect: () => gb.removeTab(tab) },
-    { label: "Close Other Tabs", onSelect: () => gb.removeAllTabsBut(tab) },
-  );
-  return items;
-}
-
-function closedMenu(entry) {
-  return [
-    { label: "Restore Tab", onSelect: () => lazy.SessionStore.undoCloseById(entry.closedId) },
-    { label: "Copy URL", onSelect: () => copyToClipboard(entry.url ?? "") },
-  ];
-}
-
-function syncedMenu(tab, win) {
-  return [
-    { label: "Open on This Device", onSelect: () => openUrl(tab.url, win) },
-    { label: "Copy URL", onSelect: () => copyToClipboard(tab.url ?? "") },
-  ];
-}
-
 /* ------------------------------------------------------------ context menu UI */
 
 const menuEl = $("#context-menu");
 
-function openContextMenu(x, y, items) {
+/**
+ * @param {number} x
+ * @param {number} y
+ * @param {Array<{label:string, onSelect?:()=>void, disabled?:boolean, submenu?:Array}>} items
+ * @param {Array|null} backItems  parent items (renders a "Back" entry when set)
+ */
+function openContextMenu(x, y, items, backItems = null) {
   menuEl.textContent = "";
+  if (backItems) {
+    const back = document.createElement("button");
+    back.className = "context-menu-item context-menu-nav";
+    back.type = "button";
+    back.textContent = "‹ Back";
+    back.addEventListener("click", () => openContextMenu(x, y, backItems));
+    menuEl.appendChild(back);
+    menuEl.appendChild(document.createElement("hr"));
+  }
   for (const item of items) {
     const btn = document.createElement("button");
     btn.className = "context-menu-item";
     btn.type = "button";
     btn.setAttribute("role", "menuitem");
     btn.textContent = item.label;
+    if (item.submenu) {
+      btn.classList.add("has-submenu");
+    }
     if (item.disabled) {
       btn.disabled = true;
+    } else if (item.submenu) {
+      btn.addEventListener("click", () => openContextMenu(x, y, item.submenu, items));
     } else {
       btn.addEventListener("click", () => {
         hideContextMenu();
@@ -182,10 +148,9 @@ function openContextMenu(x, y, items) {
     menuEl.appendChild(btn);
   }
   menuEl.hidden = false;
-  // Keep on-screen.
   const rect = menuEl.getBoundingClientRect();
-  menuEl.style.left = `${Math.min(x, window.innerWidth - rect.width - 8)}px`;
-  menuEl.style.top = `${Math.min(y, window.innerHeight - rect.height - 8)}px`;
+  menuEl.style.left = `${Math.max(4, Math.min(x, window.innerWidth - rect.width - 8))}px`;
+  menuEl.style.top = `${Math.max(4, Math.min(y, window.innerHeight - rect.height - 8))}px`;
 }
 
 function hideContextMenu() {
@@ -212,6 +177,106 @@ function activate(tab, win) {
 function openUrl(url, win) {
   if (!url) return;
   win.openTrustedLinkIn(url, "tab");
+}
+
+/** Restore a closed entry and return the new tab (or []). */
+function restoreEntry(entry, win) {
+  const res = lazy.SessionStore.undoCloseById(entry.closedId, win);
+  const tab = res?.linkedBrowser ? res : win.gBrowser.selectedTab;
+  return tab ? [tab] : [];
+}
+
+/** Open a synced URL as a new tab and return it (or []). */
+function openSynced(url, win) {
+  if (!url) return [];
+  const tab = win.gBrowser.addTrustedTab(url);
+  return tab ? [tab] : [];
+}
+
+/* ------------------------------------------------------------ tab groups */
+
+function groupsOf(win) {
+  const map = new Map();
+  for (const tab of win.gBrowser.tabs) {
+    const g = tab.group;
+    if (!g) continue;
+    if (!map.has(g.id)) map.set(g.id, { group: g, tabs: [] });
+    map.get(g.id).tabs.push(tab);
+  }
+  return [...map.values()];
+}
+
+/**
+ * Submenu that adds the resolved tab(s) to an existing group or a new one.
+ * @param {object} win
+ * @param {() => object[]} resolveTabs  returns the tab(s) to group
+ */
+function addToGroupSubmenu(win, resolveTabs) {
+  const items = groupsOf(win).map(({ group }) => ({
+    label: group.name || "Group",
+    onSelect: () => {
+      const tabs = resolveTabs();
+      if (tabs.length) group.addTabs(tabs);
+    },
+  }));
+  items.push({
+    label: "New Group…",
+    onSelect: () => {
+      const tabs = resolveTabs();
+      if (tabs.length) win.gBrowser.addTabGroup(tabs, {});
+    },
+  });
+  return { label: "Add to Tab Group", submenu: items };
+}
+
+/* ------------------------------------------------------------ per-source menus */
+
+function tabMenu(tab, win) {
+  const gb = win.gBrowser;
+  const onTop = !!tab.pinned;
+  const items = [
+    { label: "Switch to Tab", onSelect: () => activate(tab, win) },
+    { label: "Reload", onSelect: () => gb.reloadTab(tab) },
+    { label: "Duplicate", onSelect: () => gb.duplicateTab(tab) },
+    {
+      label: onTop ? "Unpin Tab" : "Pin Tab",
+      onSelect: () => (onTop ? gb.unpinTab(tab) : gb.pinTab(tab)),
+    },
+    { label: "Move to New Window", onSelect: () => gb.replaceTabWithWindow(tab) },
+    {
+      label: tab.muted ? "Unmute Tab" : "Mute Tab",
+      onSelect: () => tab.toggleMuteAudio(),
+    },
+    { label: "Copy URL", onSelect: () => copyToClipboard(tab.linkedBrowser?.currentURI?.spec ?? "") },
+    addToGroupSubmenu(win, () => [tab]),
+  ];
+  if (tab.hidden) {
+    items.unshift({
+      label: "Unhide Tab",
+      onSelect: () => (gb.showTab ? gb.showTab(tab) : (tab.hidden = false)),
+    });
+  }
+  items.push(
+    { label: "Close Tab", onSelect: () => gb.removeTab(tab) },
+    { label: "Close Other Tabs", onSelect: () => gb.removeAllTabsBut(tab) },
+  );
+  return items;
+}
+
+function closedMenu(entry, win) {
+  return [
+    { label: "Restore Tab", onSelect: () => lazy.SessionStore.undoCloseById(entry.closedId) },
+    addToGroupSubmenu(win, () => restoreEntry(entry, win)),
+    { label: "Copy URL", onSelect: () => copyToClipboard(entry.url ?? "") },
+  ];
+}
+
+function syncedMenu(tab, win) {
+  return [
+    { label: "Open on This Device", onSelect: () => openUrl(tab.url, win) },
+    addToGroupSubmenu(win, () => openSynced(tab.url, win)),
+    { label: "Copy URL", onSelect: () => copyToClipboard(tab.url ?? "") },
+  ];
 }
 
 /* ------------------------------------------------------------ renderers */
@@ -241,7 +306,6 @@ function renderGrid(gridId, emptyKey, tabs, win) {
   grid.textContent = "";
   for (const tab of tabs) grid.appendChild(makeTabCard(tab, win));
   $(`[data-empty=${emptyKey}]`).hidden = tabs.length > 0;
-  grid.closest(".panel").dataset.count = String(tabs.length);
 }
 
 function renderOpen(win) {
@@ -254,17 +318,6 @@ function renderHidden(win) {
   const tabs = [...win.gBrowser.tabs].filter(isHidden);
   renderGrid("#grid-hidden", "hidden", tabs, win);
   setNavCount("hidden", tabs.length);
-}
-
-function groupsOf(win) {
-  const map = new Map();
-  for (const tab of win.gBrowser.tabs) {
-    const g = tab.group;
-    if (!g) continue;
-    if (!map.has(g.id)) map.set(g.id, { group: g, tabs: [] });
-    map.get(g.id).tabs.push(tab);
-  }
-  return [...map.values()];
 }
 
 function renderGroups(win) {
@@ -295,10 +348,7 @@ function renderGroups(win) {
           label: group.collapsed ? "Expand Group" : "Collapse Group",
           onSelect: () => (group.collapsed = !group.collapsed),
         },
-        {
-          label: "Ungroup Tabs",
-          onSelect: () => group.ungroupTabs?.(),
-        },
+        { label: "Ungroup Tabs", onSelect: () => group.ungroupTabs?.() },
         {
           label: "Close Group",
           onSelect: () => [...group.tabs].forEach((t) => win.gBrowser.removeTab(t)),
@@ -382,7 +432,7 @@ function renderClosed(win) {
         image: entry.image,
         badges: ["closed"],
         onActivate: () => lazy.SessionStore.undoCloseById(entry.closedId),
-        menu: closedMenu(entry),
+        menu: closedMenu(entry, win),
       }),
     );
   }
@@ -410,7 +460,7 @@ function selectView(view) {
 function applyFilter() {
   const q = $("#home-search").value.trim().toLowerCase();
   const active = $(".panel:not([hidden])") ?? $(".panel");
-  for (const card of $$(".card, .group", active)) {
+  for (const card of $$(".card", active)) {
     card.hidden = q !== "" && !(card.dataset.text ?? "").includes(q);
   }
   for (const group of $$(".group", active)) {
@@ -434,7 +484,7 @@ function refresh(win) {
 function observe(win) {
   const gb = win.gBrowser;
   if (gb?.tabContainer) {
-    for (const ev of ["TabOpen", "TabClose", "TabSelect", "TabMove", "TabAttrModified", "TabGroupChange", "TabGroupRemoved"]) {
+    for (const ev of ["TabOpen", "TabClose", "TabSelect", "TabMove", "TabAttrModified"]) {
       gb.tabContainer.addEventListener(ev, () => refresh(win));
     }
   }

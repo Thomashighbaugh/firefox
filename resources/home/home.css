@@ -177,8 +177,8 @@ body {
 
 .card-icon {
   grid-area: icon;
-  width: 20px;
-  height: 20px;
+  width: 60px;
+  height: 60px;
   -moz-context-properties: fill;
 }
 
@@ -314,4 +314,20 @@ body {
 
 .context-menu-item:disabled {
   opacity: 0.5;
+}
+
+.context-menu-item.has-submenu::after {
+  content: "›";
+  float: right;
+  color: var(--home-dim);
+}
+
+.context-menu-nav {
+  font-weight: 600;
+}
+
+.context-menu hr {
+  border: none;
+  border-top: 1px solid var(--home-border);
+  margin: 4px 0;
 }

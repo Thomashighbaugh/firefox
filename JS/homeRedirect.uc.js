@@ -14,7 +14,7 @@
     return;
   }
 
-  const HOME = "chrome://userchrome/content/home/home.xhtml";
+  const HOME = "chrome://userchrome/content/home/home.html";
   const REDIRECT_SPECS = new Set(["about:newtab"]);
 
   const listener = {

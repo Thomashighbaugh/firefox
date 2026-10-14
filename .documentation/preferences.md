@@ -168,7 +168,7 @@ If you're using custom Firefox themes and the colors don't match:
 ## 🏠 Home / New Tab Page
 
 Replaces the stock new-tab/home page with the theme's **All-Tabs-Menu page**
-(`resources/home/home.xhtml` → `chrome://userchrome/content/home/home.xhtml`):
+(`resources/home/home.html` → `chrome://userchrome/content/home/home.html`):
 open tabs (including hidden ones), tabs from other devices, and recently closed
 tabs, with a search filter.
 
@@ -183,7 +183,7 @@ tabs, with a search filter.
 - **New tab:** `JS/homeRedirect.uc.js` redirects `about:newtab` to the page. Set
   `higgs.home.newtab.enabled = false` to disable.
 - **Home:** set `browser.startup.homepage` to
-  `chrome://userchrome/content/home/home.xhtml`.
+  `chrome://userchrome/content/home/home.html`.
 
 ---
 

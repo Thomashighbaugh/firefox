@@ -107,7 +107,7 @@ collapse, splitter, shortcuts, container tabs, customize mode) manually pass; no
 plus the **Firefox View** elements (hidden tabs, tabs from other devices, recently closed).
 
 **Delivered:**
-- `resources/home/{home.xhtml,home.mjs,home.css}` → `chrome://userchrome/content/home/home.xhtml`.
+- `resources/home/{home.html,home.mjs,home.css}` → `chrome://userchrome/content/home/home.html`.
 - Sections: Open Tabs (all `gBrowser.tabs`, incl. `tab.hidden`; switch/close), Tabs from Other
   Devices (`SyncedTabs.getTabClients()`), Recently Closed (`SessionStore.getClosedTabData()` → restore).
 - Live search filter; observers for `TabOpen/Close/Select/Move/AttrModified`,

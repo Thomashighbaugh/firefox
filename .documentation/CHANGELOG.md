@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-14 18:25** [Home / New Tab] Hardened `JS/homeRedirect.uc.js` (v1.1.0): defer the navigation out of `onLocationChange` (synchronous `loadURI` there is unreliable), guard by `gBrowser.getTabForBrowser`, also redirect `about:home`, and add `higgs.home.debug` logging.
+
 - **2026-10-14 14:59** [Home / New Tab] Fixed the Home page failing to load with `XML Parsing Error: not well-formed` — it was served as `home.xhtml` (strict XML via `application/xhtml+xml`), and the bare `hidden` boolean attributes are not well-formed XML. Renamed to `home.html` (served as lenient `text/html`, matching `about:firefoxview`) and updated all references (`JS/homeRedirect.uc.js`, docs).
 
 - **2026-10-14 04:58** [Home / New Tab] Task 2: added a custom Home page replacing the stock new-tab/home page — `resources/home/{home.html,home.mjs,home.css}` (served as `chrome://userchrome/content/home/home.html`). It renders the All-Tabs-Menu content (all open tabs incl. hidden, with switch/close) plus the Firefox View sections: **tabs from other devices** (`SyncedTabs.getTabClients()`) and **recently closed** (`SessionStore.getClosedTabData()` → restore), with a live search filter and observers for tab/closed/sync changes. Wired via `JS/homeRedirect.uc.js` (`about:newtab` → page, pref `higgs.home.newtab.enabled`, default true); home via `browser.startup.homepage`. The fork will patch `AboutNewTab.sys.mjs` instead. Test suite still 27/27.

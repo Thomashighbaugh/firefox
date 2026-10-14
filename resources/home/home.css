@@ -177,8 +177,8 @@ body {
 
 .card-icon {
   grid-area: icon;
-  width: 60px;
-  height: 60px;
+  width: 128px;
+  height: 128px;
   -moz-context-properties: fill;
 }
 

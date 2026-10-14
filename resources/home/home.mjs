@@ -207,6 +207,37 @@ function groupsOf(win) {
 }
 
 /**
+ * Create a group for `tabs` and open the native tab-group editor so it can be
+ * named. Passing a user-triggered metrics context makes Firefox dispatch
+ * `TabGroupCreateByUser`, which opens the editor itself; we also open it
+ * explicitly as a fallback.
+ */
+function createGroupWithEditor(win, tabs) {
+  const gb = win.gBrowser;
+  let metricsContext = null;
+  try {
+    metricsContext = gb.TabMetrics.userTriggeredContext(
+      gb.TabMetrics.METRIC_SOURCE.TAB_MENU,
+    );
+  } catch (e) {
+    metricsContext = null;
+  }
+  const group = gb.addTabGroup(tabs, metricsContext ? { metricsContext } : {});
+  if (!group) {
+    return;
+  }
+  Services.tm.dispatchToMainThread(() => {
+    try {
+      if (gb.tabGroupMenu?.panel?.state === "closed") {
+        gb.tabGroupMenu.openCreateModal(group);
+      }
+    } catch (e) {
+      /* ignore */
+    }
+  });
+}
+
+/**
  * Submenu that adds the resolved tab(s) to an existing group or a new one.
  * @param {object} win
  * @param {() => object[]} resolveTabs  returns the tab(s) to group
@@ -223,7 +254,7 @@ function addToGroupSubmenu(win, resolveTabs) {
     label: "New Group…",
     onSelect: () => {
       const tabs = resolveTabs();
-      if (tabs.length) win.gBrowser.addTabGroup(tabs, {});
+      if (tabs.length) createGroupWithEditor(win, tabs);
     },
   });
   return { label: "Add to Tab Group", submenu: items };

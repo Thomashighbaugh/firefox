@@ -1,14 +1,15 @@
-/* Home / new-tab page — reuses the theme's variables where available. */
+/* Home / new-tab page — tab-panel layout + card grid modelled on about:addons. */
 
 :root {
   color-scheme: light dark;
   --home-bg: var(--firefoxcss-about-page-bg, light-dark(#f9f9fb, #1c1b22));
   --home-card: var(--firefoxcss-about-page-item-bg, light-dark(#ffffff, #2b2a33));
   --home-fg: light-dark(#15141a, #fbfbfe);
-  --home-dim: color-mix(in srgb, var(--home-fg) 65%, transparent);
-  --home-border: color-mix(in srgb, var(--home-fg) 12%, transparent);
-  --home-radius: 10px;
+  --home-dim: color-mix(in srgb, var(--home-fg) 60%, transparent);
+  --home-border: color-mix(in srgb, var(--home-fg) 14%, transparent);
+  --home-radius: 8px;
   --home-accent: var(--color-accent-primary, #0060df);
+  --home-gap: 12px;
 }
 
 * {
@@ -24,29 +25,30 @@ body {
   font: message-box;
 }
 
-.home-header {
+/* ---------------------------------------------------------------- header */
+
+.page-header {
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 18px 24px;
-  background: color-mix(in srgb, var(--home-bg) 88%, transparent);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--home-border);
+  padding: 16px 24px 12px;
+  background: color-mix(in srgb, var(--home-bg) 90%, transparent);
+  backdrop-filter: blur(14px);
 }
 
-.home-title {
+.page-title {
   margin: 0;
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   font-weight: 600;
 }
 
-.home-search {
-  flex: 1 1 auto;
-  max-width: 520px;
-  padding: 8px 12px;
+.search-input {
+  margin-inline-start: auto;
+  width: min(420px, 45vw);
+  padding: 7px 12px;
   border: 1px solid var(--home-border);
   border-radius: var(--home-radius);
   background: var(--home-card);
@@ -54,128 +56,262 @@ body {
   font: inherit;
 }
 
-.home-search:focus {
+.search-input:focus {
   outline: 2px solid var(--home-accent);
   outline-offset: 1px;
 }
 
-.home-main {
-  max-width: 1080px;
+/* ---------------------------------------------------------------- nav tabs */
+
+.tab-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--home-border);
+  position: sticky;
+  top: 57px;
+  z-index: 2;
+  background: color-mix(in srgb, var(--home-bg) 90%, transparent);
+  backdrop-filter: blur(14px);
+}
+
+.tab-nav-item {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--home-dim);
+  font: inherit;
+  font-weight: 500;
+  padding: 10px 14px;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  cursor: pointer;
+}
+
+.tab-nav-item:hover {
+  color: var(--home-fg);
+}
+
+.tab-nav-item[aria-selected="true"] {
+  color: var(--home-fg);
+  border-bottom-color: var(--home-accent);
+}
+
+.tab-nav-item::after {
+  content: attr(data-count);
+  margin-inline-start: 6px;
+  font-size: 0.75rem;
+  color: var(--home-dim);
+}
+
+.tab-nav-item:not([data-count])::after,
+.tab-nav-item[data-count="0"]::after {
+  content: none;
+}
+
+/* ---------------------------------------------------------------- panels */
+
+.panels {
+  max-width: 1400px;
   margin: 0 auto;
   padding: 20px 24px 64px;
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+/* ---------------------------------------------------------------- grid */
+
+.grid {
   display: grid;
-  gap: 28px;
+  gap: var(--home-gap);
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
-.home-section-title {
-  margin: 0 0 10px;
-  font-size: 1rem;
-  font-weight: 600;
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
+@media (min-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 880px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1160px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1440px) {
+  .grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
 }
 
-.home-count {
-  color: var(--home-dim);
-  font-size: 0.85rem;
-  font-weight: 400;
-}
+/* ---------------------------------------------------------------- card */
 
-.home-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.card {
+  position: relative;
   display: grid;
-  gap: 6px;
-}
-
-.home-device {
-  margin-top: 8px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--home-dim);
-}
-
-.home-row {
-  display: flex;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: "icon main close" "badges badges badges";
   align-items: center;
-  gap: 12px;
-  padding: 8px 12px;
+  gap: 10px;
+  padding: 12px;
+  min-height: 84px;
   border: 1px solid var(--home-border);
   border-radius: var(--home-radius);
   background: var(--home-card);
-  cursor: default;
 }
 
-.home-row:hover {
-  border-color: color-mix(in srgb, var(--home-accent) 45%, var(--home-border));
+.card-activatable {
+  cursor: pointer;
 }
 
-.home-row-icon {
-  width: 16px;
-  height: 16px;
-  flex: 0 0 auto;
+.card-activatable:hover {
+  border-color: color-mix(in srgb, var(--home-accent) 50%, var(--home-border));
+}
+
+.card-icon {
+  grid-area: icon;
+  width: 20px;
+  height: 20px;
   -moz-context-properties: fill;
 }
 
-.home-row-main {
+.card-main {
+  grid-area: main;
   min-width: 0;
-  flex: 1 1 auto;
 }
 
-.home-row-title {
+.card-title {
+  font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.home-row-url {
-  color: var(--home-dim);
+.card-url {
   font-size: 0.8rem;
+  color: var(--home-dim);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.home-row-badges {
+.card-badges {
+  grid-area: badges;
   display: flex;
+  flex-wrap: wrap;
   gap: 6px;
-  flex: 0 0 auto;
 }
 
-.home-badge {
+.badge {
   font-size: 0.7rem;
-  padding: 1px 6px;
+  padding: 1px 7px;
   border-radius: 999px;
   background: color-mix(in srgb, var(--home-fg) 10%, transparent);
   color: var(--home-dim);
 }
 
-.home-row-actions {
-  display: flex;
-  gap: 6px;
-  flex: 0 0 auto;
+.card-close {
+  grid-area: close;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--home-dim);
+  font-size: 0.8rem;
+  line-height: 1;
+  cursor: pointer;
 }
 
-.home-row-action {
-  padding: 4px 10px;
+.card-close:hover {
+  background: color-mix(in srgb, var(--home-fg) 14%, transparent);
+  color: var(--home-fg);
+}
+
+/* ---------------------------------------------------------------- groups */
+
+.groups {
+  display: grid;
+  gap: 28px;
+}
+
+.group-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.group-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--home-accent);
+}
+
+.group-dot[data-color="blue"] { background: #37adff; }
+.group-dot[data-color="purple"] { background: #c069ff; }
+.group-dot[data-color="pink"] { background: #ff6dc7; }
+.group-dot[data-color="red"] { background: #ff4b5c; }
+.group-dot[data-color="orange"] { background: #ff9f3e; }
+.group-dot[data-color="yellow"] { background: #ffcf2e; }
+.group-dot[data-color="green"] { background: #3fe1b0; }
+.group-dot[data-color="cyan"] { background: #00c8d7; }
+.group-dot[data-color="grey"] { background: #a7a7b0; }
+
+.group-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.group-count {
+  color: var(--home-dim);
+  font-size: 0.8rem;
+}
+
+/* ---------------------------------------------------------------- misc */
+
+.empty {
+  color: var(--home-dim);
+  font-size: 0.9rem;
+}
+
+.context-menu {
+  position: fixed;
+  z-index: 10;
+  min-width: 200px;
+  padding: 4px;
   border: 1px solid var(--home-border);
+  border-radius: var(--home-radius);
+  background: color-mix(in srgb, var(--home-card) 96%, transparent);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.context-menu-item {
+  display: block;
+  width: 100%;
+  text-align: start;
+  padding: 7px 10px;
+  border: none;
   border-radius: 6px;
   background: transparent;
   color: inherit;
   font: inherit;
-  font-size: 0.8rem;
   cursor: pointer;
 }
 
-.home-row-action:hover {
-  background: color-mix(in srgb, var(--home-fg) 10%, transparent);
+.context-menu-item:hover {
+  background: color-mix(in srgb, var(--home-fg) 12%, transparent);
 }
 
-.home-empty {
-  color: var(--home-dim);
-  font-size: 0.9rem;
+.context-menu-item:disabled {
+  opacity: 0.5;
 }

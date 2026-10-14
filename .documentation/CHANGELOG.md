@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-14 20:36** [Home / New Tab] Reworked the Home page layout & features: (1) added **Hidden Tabs** and **Tab Groups** views (native `tab.group` → `{tabs,name,color,collapsed}`), alongside Open/Other Devices/Recently Closed; (2) **tab-panel nav** — one list shown at a time via top nav tabs with per-view counts; (3) **5-column card grid** (1→2→3→4→5 by breakpoint) modelled on `about:addons`; (4) clicking a card switches to the tab (unhiding it) or opens synced/closed tabs in the current window; (5) a **✕ close button** on every tab card; (6) a **right-click context menu** per card/groups (Switch, Reload, Duplicate, Pin/Unpin, Move to New Window, Mute/Unmute, Unhide, Copy URL, Close/Close Others; groups: Expand/Collapse, Ungroup, Close Group; closed: Restore). Test suite 27/27.
+
 - **2026-10-14 18:52** [Home / New Tab] Fixed the new-tab redirect (v1.2.0). Root cause: Firefox preloads `about:newtab` in a detached browser (`browser.newtab.preload = true`) and swaps it into a new tab **without** a fresh `onLocationChange`, so the progress listener never fired — `about:home` worked but `about:newtab` didn't. Added a `TabOpen` hook (deferred) that redirects the tab's browser, and disabled `browser.newtab.preload` so the normal navigation path also fires.
 
 - **2026-10-14 18:25** [Home / New Tab] Hardened `JS/homeRedirect.uc.js` (v1.1.0): defer the navigation out of `onLocationChange` (synchronous `loadURI` there is unreliable), guard by `gBrowser.getTabForBrowser`, also redirect `about:home`, and add `higgs.home.debug` logging.

@@ -196,14 +196,23 @@ function openSynced(url, win) {
 /* ------------------------------------------------------------ tab groups */
 
 function groupsOf(win) {
-  const map = new Map();
-  for (const tab of win.gBrowser.tabs) {
-    const g = tab.group;
-    if (!g) continue;
-    if (!map.has(g.id)) map.set(g.id, { group: g, tabs: [] });
-    map.get(g.id).tabs.push(tab);
+  // Collect <tab-group> elements from every plausible source so this works
+  // regardless of layout (horizontal / vertical / re-parented strip).
+  const set = new Set();
+  const container = win.gBrowser?.tabContainer;
+  if (container) {
+    for (const g of container.querySelectorAll("tab-group")) set.add(g);
   }
-  return [...map.values()];
+  for (const g of win.document.querySelectorAll("tab-group")) set.add(g);
+  for (const tab of win.gBrowser?.tabs ?? []) {
+    if (tab.group) set.add(tab.group);
+  }
+  const out = [];
+  for (const group of set) {
+    const tabs = [...group.tabs];
+    if (tabs.length) out.push({ group, tabs });
+  }
+  return out;
 }
 
 /**
@@ -510,12 +519,33 @@ function refresh(win) {
   renderClosed(win);
   renderDevices(win);
   applyFilter();
+  if (Services.prefs.getBoolPref("higgs.home.debug", false)) {
+    const tabs = [...win.gBrowser.tabs];
+    console.log("[home] refresh", {
+      open: tabs.length,
+      hidden: tabs.filter(isHidden).length,
+      groups: groupsOf(win).length,
+      groupEls: win.gBrowser.tabContainer?.querySelectorAll("tab-group").length,
+    });
+  }
 }
 
 function observe(win) {
   const gb = win.gBrowser;
   if (gb?.tabContainer) {
-    for (const ev of ["TabOpen", "TabClose", "TabSelect", "TabMove", "TabAttrModified"]) {
+    for (const ev of [
+      "TabOpen",
+      "TabClose",
+      "TabSelect",
+      "TabMove",
+      "TabAttrModified",
+      "TabHide",
+      "TabShow",
+      "TabGroupChange",
+      "TabGroupRemoved",
+      "TabGroupCreateByUser",
+      "TabGroupUpdate",
+    ]) {
       gb.tabContainer.addEventListener(ev, () => refresh(win));
     }
   }
@@ -532,4 +562,7 @@ const win = getChromeWindow();
 if (win) {
   observe(win);
   refresh(win);
+  // Re-render once the window has settled (groups / hidden tabs may populate
+  // slightly after this page loads).
+  Services.tm.dispatchToMainThread(() => refresh(win));
 }

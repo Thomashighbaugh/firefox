@@ -132,10 +132,18 @@ tab from any section works; falls back to stock new tab if the pref is off.
 
 ## Task 3 — Session-durable Workspaces over Firefox Tab Groups (P2)
 
-**Goal:** Zen-style workspaces implemented as **Firefox Tab Groups**, switchable, durable across
-sessions, with a catch-all "session" workspace for ungrouped tabs.
+**Status: ✅ implemented 2026-10-15** (controller + Home view; needs live smoke test).
 
-**Approach:**
+**Delivered:**
+- `JS/workspaces.uc.js` — workspaces = native tab groups; catch-all **Session** for ungrouped
+  tabs. `switchTo(id)` shows the target workspace's tabs and hides the rest (pinned tabs stay);
+  active id persisted in `higgs.workspaces.active`; applied on `sessionstore-windows-restored`.
+- Hotkeys `Ctrl+Alt+1…9` (group workspaces), `Ctrl+Alt+0` (Session). New tabs join the active
+  group workspace. Exposes `window.HiggsWorkspaces` (`list`/`switchTo`/`create`/`activeId`).
+- Home page: **Workspaces** nav view with per-workspace tab grids, a Switch button, and an
+  active indicator.
+
+**Original approach (for reference):**
 - A workspace **is** a tab group (`browser.tabs.groups`). A controller maps `groupId → workspace`.
 - Switching: activate the target group's tabs and move/hide the rest; on switch, **ungrouped tabs go
   to the catch-all workspace** so nothing is lost.
@@ -241,7 +249,7 @@ where possible; no per-item round-trips for bulk ops.
 | - | ---- | -------- | ----------- |
 | 1 | Second-sidebar refactor | **P1** | chrome JS (Lane 1) |
 | 2 | All-Tabs-Menu home/new-tab | P2 | page + pref (Lane 1/2) | ✅ done |
-| 3 | Durable workspaces via Tab Groups | P2 | chrome JS + prefs |
+| 3 | Durable workspaces via Tab Groups | P2 | chrome JS + prefs | ✅ done |
 | 4 | Library → `about:` page | P2 | page + Places/Downloads |
 | 5 | QuickTabs Search | P3 | chrome JS (Lane 1) |
 | 6 | Drop-to-split + 2×2 | P3 | chrome JS, maybe patch |

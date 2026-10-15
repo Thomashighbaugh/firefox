@@ -277,6 +277,32 @@ body {
   font-size: 0.8rem;
 }
 
+.workspace-active {
+  border-inline-start: 3px solid var(--home-accent);
+  padding-inline-start: 12px;
+}
+
+.workspace-switch {
+  margin-inline-start: auto;
+  padding: 4px 12px;
+  border: 1px solid var(--home-border);
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.workspace-switch:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--home-fg) 10%, transparent);
+}
+
+.workspace-switch:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
 /* ---------------------------------------------------------------- misc */
 
 .empty {

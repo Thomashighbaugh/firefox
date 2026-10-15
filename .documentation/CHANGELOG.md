@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-15 10:27** [Workspaces] Task 3: added `JS/workspaces.uc.js` — Zen-style workspaces on **native Firefox tab groups** with a catch-all **Session** workspace for ungrouped tabs. `switchTo(id)` shows the target workspace's tabs and hides the rest (pinned tabs stay everywhere); the active workspace is persisted in `higgs.workspaces.active` and restored on `sessionstore-windows-restored`; new tabs join the active group workspace. Hotkeys `Ctrl+Alt+1…9` / `Ctrl+Alt+0`; exposes `window.HiggsWorkspaces`. Home page gained a **Workspaces** view (per-workspace grids, Switch button, active indicator). Docs + plan updated; tests 27/27.
+
 - **2026-10-14 21:23** [Home / New Tab] "New Group…" now opens the native tab-group editor (for naming): `addTabGroup` is passed a user-triggered `TabMetrics` context so Firefox dispatches `TabGroupCreateByUser` → `tabGroupMenu.openCreateModal(group)`, with an explicit `openCreateModal` fallback. Card favicons 60px → **128px**.
 
 - **2026-10-14 21:15** [Home / New Tab] Card favicons 20px → **60px** (+200%). Added an **"Add to Tab Group"** submenu to the context menu of **every** tab source — open, hidden, recently-closed, and other-device. The submenu lists existing groups (`group.addTabs([tab])`) plus "New Group…" (`gBrowser.addTabGroup([tab], {})`); for closed/synced tabs it restores/opens the tab first, then groups it. Context menu gained drill-down submenu support (Back entry, `›` affordance).

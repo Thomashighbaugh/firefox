@@ -360,8 +360,53 @@ function renderHidden(win) {
   setNavCount("hidden", tabs.length);
 }
 
-function renderGroups(win) {
-  const container = $("#groups");
+function renderWorkspaces(win) {
+  const container = $("#workspaces");
+  container.textContent = "";
+  const api = win.HiggsWorkspaces;
+  if (!api) {
+    $("[data-empty=workspaces]").hidden = false;
+    setNavCount("workspaces", 0);
+    return;
+  }
+  const active = api.activeId();
+  const workspaces = api.list();
+  for (const w of workspaces) {
+    const section = document.createElement("section");
+    section.className = "group workspace" + (w.id === active ? " workspace-active" : "");
+    section.dataset.text = (w.name ?? "").toLowerCase();
+
+    const head = document.createElement("div");
+    head.className = "group-head";
+    const dot = document.createElement("span");
+    dot.className = "group-dot";
+    if (w.color) dot.dataset.color = w.color;
+    const h = document.createElement("h3");
+    h.className = "group-title";
+    h.textContent = w.name;
+    const count = document.createElement("span");
+    count.className = "group-count";
+    count.textContent = `${w.tabs.length}`;
+    const sw = document.createElement("button");
+    sw.className = "workspace-switch";
+    sw.type = "button";
+    sw.textContent = w.id === active ? "Active" : "Switch";
+    sw.disabled = w.id === active;
+    sw.addEventListener("click", () => api.switchTo(w.id));
+    head.append(dot, h, count, sw);
+    section.appendChild(head);
+
+    const grid = document.createElement("div");
+    grid.className = "grid";
+    for (const tab of w.tabs) grid.appendChild(makeTabCard(tab, win));
+    section.appendChild(grid);
+    container.appendChild(section);
+  }
+  $("[data-empty=workspaces]").hidden = workspaces.length > 0;
+  setNavCount("workspaces", workspaces.length);
+}
+
+function renderGroups(win) {  const container = $("#groups");
   container.textContent = "";
   const groups = groupsOf(win);
   for (const { group, tabs } of groups) {
@@ -514,6 +559,7 @@ function applyFilter() {
 
 function refresh(win) {
   renderOpen(win);
+  renderWorkspaces(win);
   renderHidden(win);
   renderGroups(win);
   renderClosed(win);

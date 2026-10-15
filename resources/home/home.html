@@ -24,6 +24,9 @@
       <button class="tab-nav-item" role="tab" data-view="open" aria-selected="true">
         Open Tabs
       </button>
+      <button class="tab-nav-item" role="tab" data-view="workspaces" aria-selected="false">
+        Workspaces
+      </button>
       <button class="tab-nav-item" role="tab" data-view="hidden" aria-selected="false">
         Hidden Tabs
       </button>
@@ -42,6 +45,11 @@
       <section class="panel" data-panel="open" role="tabpanel">
         <div class="grid" id="grid-open"></div>
         <p class="empty" data-empty="open" hidden>No open tabs.</p>
+      </section>
+
+      <section class="panel" data-panel="workspaces" role="tabpanel" hidden>
+        <div class="groups" id="workspaces"></div>
+        <p class="empty" data-empty="workspaces" hidden>No workspaces.</p>
       </section>
 
       <section class="panel" data-panel="hidden" role="tabpanel" hidden>

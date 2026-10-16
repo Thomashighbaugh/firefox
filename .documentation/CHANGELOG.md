@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-16 20:03** [Library] Added file deletion for downloads: a per-row **"Delete file"** button (removes the download entry *and* the file on disk via `IOUtils.remove`) and a bulk **"Delete + files"** button (shown only in the Downloads view).
+
 - **2026-10-16 19:37** [Library] Task 4: added a Library page (`resources/library/{library.html,library.mjs,library.css}` → `chrome://userchrome/content/library/library.html`) with **Bookmarks**, **History**, **Downloads** and **Tab Groups** views. Reads via Places SQL (`moz_bookmarks`/`moz_places`) and the `Downloads` API; deletes via `PlacesUtils.bookmarks.remove` / `PlacesUtils.history.remove` / `DownloadsList.remove`. **Batch management**: per-row checkbox, select-all (indeterminate), live "N selected", bulk delete per view, clear, plus per-row Open/Delete and a search filter. `JS/libraryRedirect.uc.js` repoints the toolbar Library button + app-menu entry to the page (pref `higgs.library.page.enabled`). Docs + plan updated; tests 27/27.
 
 - **2026-10-15 10:27** [Workspaces] Task 3: added `JS/workspaces.uc.js` — Zen-style workspaces on **native Firefox tab groups** with a catch-all **Session** workspace for ungrouped tabs. `switchTo(id)` shows the target workspace's tabs and hides the rest (pinned tabs stay everywhere); the active workspace is persisted in `higgs.workspaces.active` and restored on `sessionstore-windows-restored`; new tabs join the active group workspace. Hotkeys `Ctrl+Alt+1…9` / `Ctrl+Alt+0`; exposes `window.HiggsWorkspaces`. Home page gained a **Workspaces** view (per-workspace grids, Switch button, active indicator). Docs + plan updated; tests 27/27.

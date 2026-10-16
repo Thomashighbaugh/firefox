@@ -22,6 +22,16 @@ function getChromeWindow() {
 
 const FALLBACK_ICON = "chrome://global/skin/icons/defaultFavicon.svg";
 
+/** Delete a file from disk (ignore a missing file). */
+async function deleteFile(path) {
+  if (!path) return;
+  try {
+    await IOUtils.remove(path, { ignoreAbsent: true });
+  } catch (e) {
+    /* ignore */
+  }
+}
+
 /* -------------------------------------------------------------- places SQL */
 
 async function sqlRows(query, mapper) {
@@ -48,6 +58,7 @@ function updateBulkbar(view) {
   const n = selFor(view).size;
   $("#bulk-count").textContent = `${n} selected`;
   $("#bulk-delete").disabled = n === 0;
+  $("#bulk-delete-files").disabled = n === 0;
   $("#bulk-clear").disabled = n === 0;
   const keys = viewKeys.get(view) ?? [];
   const all = keys.length > 0 && keys.every((k) => selFor(view).has(k));
@@ -57,7 +68,7 @@ function updateBulkbar(view) {
 
 /* -------------------------------------------------------------- row builder */
 
-function buildRow({ key, title, url, image, meta, onOpen, onDelete }) {
+function buildRow({ key, title, url, image, meta, onOpen, onDelete, onDeleteFile }) {
   const li = document.createElement("li");
   li.className = "row";
   li.dataset.key = key;
@@ -118,6 +129,15 @@ function buildRow({ key, title, url, image, meta, onOpen, onDelete }) {
     del.textContent = "Delete";
     del.addEventListener("click", onDelete);
     actions.appendChild(del);
+  }
+  if (onDeleteFile) {
+    const delFile = document.createElement("button");
+    delFile.className = "row-btn row-danger";
+    delFile.type = "button";
+    delFile.textContent = "Delete file";
+    delFile.title = "Delete the downloaded file from disk as well";
+    delFile.addEventListener("click", onDeleteFile);
+    actions.appendChild(delFile);
   }
   li.appendChild(actions);
 
@@ -240,6 +260,12 @@ async function renderDownloads(win) {
           await l.remove(dl);
           renderDownloads(win);
         },
+        onDeleteFile: async () => {
+          await deleteFile(path);
+          const l = await lazy.Downloads.getList(lazy.Downloads.ALL);
+          await l.remove(dl);
+          renderDownloads(win);
+        },
       }),
     );
   }
@@ -309,7 +335,7 @@ function renderGroups(win) {
 
 /* -------------------------------------------------------------- bulk delete */
 
-async function bulkDelete(view, win) {
+async function bulkDelete(view, win, deleteFiles = false) {
   const keys = [...selFor(view)];
   if (!keys.length) return;
   if (view === "bookmarks") {
@@ -332,7 +358,11 @@ async function bulkDelete(view, win) {
     const list = await lazy.Downloads.getList(lazy.Downloads.ALL);
     const all = await list.getAll();
     for (const dl of all) {
-      if (keys.includes(dl.target?.path ?? String(dl.id))) {
+      const path = dl.target?.path ?? String(dl.id);
+      if (keys.includes(path)) {
+        if (deleteFiles) {
+          await deleteFile(dl.target?.path);
+        }
         try {
           await list.remove(dl);
         } catch (e) {
@@ -364,6 +394,7 @@ function selectView(view) {
     panel.hidden = panel.dataset.panel !== view;
   }
   $("#bulkbar").hidden = view === "groups";
+  $("#bulk-delete-files").hidden = view !== "downloads";
   applyFilter();
   updateBulkbar(view);
 }
@@ -390,6 +421,9 @@ for (const btn of $$(".tab-nav-item")) {
 }
 $("#lib-search").addEventListener("input", applyFilter);
 $("#bulk-delete").addEventListener("click", () => bulkDelete(currentView, getChromeWindow()));
+$("#bulk-delete-files").addEventListener("click", () =>
+  bulkDelete(currentView, getChromeWindow(), true),
+);
 $("#bulk-clear").addEventListener("click", () => {
   selFor(currentView).clear();
   for (const c of $$(".row-check", $(`.panel[data-panel="${currentView}"]`))) c.checked = false;

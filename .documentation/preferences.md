@@ -212,6 +212,21 @@ an active indicator.
 
 ---
 
+## 📚 Library Page
+
+Replaces the Library popup with a full page
+(`resources/library/library.html` → `chrome://userchrome/content/library/library.html`):
+**Bookmarks**, **History**, **Downloads** and **Tab Groups**, each with checkbox
+multi-select, select-all, and bulk delete (plus per-row Open/Delete).
+
+### Custom Preferences
+
+| Preference Name | Type | Default | Description |
+|----------------|------|---------|-------------|
+| `higgs.library.page.enabled` | boolean | true | Repoint the toolbar Library button + app-menu Library entry to the Library page (via `JS/libraryRedirect.uc.js`) |
+
+---
+
 ## 🤝 Contributing
 
 If you add new preferences to the theme:

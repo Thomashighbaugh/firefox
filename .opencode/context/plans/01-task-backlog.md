@@ -160,10 +160,19 @@ ungrouped tabs survive a switch; no tab loss.
 
 ## Task 4 — Library overhaul → `about:` page (P2)
 
-**Goal:** replace the Library popup/panel (bookmarks & history) with a modern **`about:higgs-library`**
-page that also includes **downloads** and **tab groups**, with **robust batch management**.
+**Status: ✅ implemented 2026-10-15** (page + redirect; needs live smoke test).
 
-**Approach:**
+**Delivered:**
+- `resources/library/{library.html,library.mjs,library.css}` → `chrome://userchrome/content/library/library.html`.
+- Views: **Bookmarks** (`moz_bookmarks` SQL → `PlacesUtils.bookmarks.remove`), **History**
+  (`moz_places` SQL → `PlacesUtils.history.remove`), **Downloads** (`Downloads.getList(ALL)` →
+  `list.remove`), **Tab Groups** (native groups → per-tab Open/Close).
+- **Batch management**: per-row checkbox, select-all (indeterminate), live "N selected", bulk
+  delete per view, clear; per-row Open/Delete; search filter.
+- Wiring: `JS/libraryRedirect.uc.js` repoints `#library-button` + app-menu Library entry to the page
+  (pref `higgs.library.page.enabled`). The fork can register `about:higgs-library` (Lane 2).
+
+**Original approach (for reference):**
 - New privileged `about:` page (Lit/React or plain, matching the fork's stack).
 - Sections: Bookmarks (Places), History (Places), **Downloads** (`Downloads` API),
   **Tab Groups** (native groups).
@@ -250,7 +259,7 @@ where possible; no per-item round-trips for bulk ops.
 | 1 | Second-sidebar refactor | **P1** | chrome JS (Lane 1) |
 | 2 | All-Tabs-Menu home/new-tab | P2 | page + pref (Lane 1/2) | ✅ done |
 | 3 | Durable workspaces via Tab Groups | P2 | chrome JS + prefs | ✅ done |
-| 4 | Library → `about:` page | P2 | page + Places/Downloads |
+| 4 | Library → `about:` page | P2 | page + Places/Downloads | ✅ done |
 | 5 | QuickTabs Search | P3 | chrome JS (Lane 1) |
 | 6 | Drop-to-split + 2×2 | P3 | chrome JS, maybe patch |
 | 7 | Shortcut cheat-sheet | P3 | chrome JS + registry |

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Library</title>
+    <link rel="stylesheet" href="library.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1 class="page-title">Library</h1>
+      <input
+        id="lib-search"
+        class="search-input"
+        type="search"
+        placeholder="Search…"
+        aria-label="Search library"
+        autocomplete="off"
+        spellcheck="false"
+      />
+    </header>
+
+    <nav class="tab-nav" role="tablist" aria-label="Library views">
+      <button class="tab-nav-item" role="tab" data-view="bookmarks" aria-selected="true">
+        Bookmarks
+      </button>
+      <button class="tab-nav-item" role="tab" data-view="history" aria-selected="false">
+        History
+      </button>
+      <button class="tab-nav-item" role="tab" data-view="downloads" aria-selected="false">
+        Downloads
+      </button>
+      <button class="tab-nav-item" role="tab" data-view="groups" aria-selected="false">
+        Tab Groups
+      </button>
+    </nav>
+
+    <div class="bulkbar" id="bulkbar">
+      <label class="bulk-select-all">
+        <input type="checkbox" id="select-all" /> Select all
+      </label>
+      <span class="bulk-count" id="bulk-count">0 selected</span>
+      <button class="bulk-btn bulk-danger" id="bulk-delete" type="button" disabled>
+        Delete selected
+      </button>
+      <button class="bulk-btn" id="bulk-clear" type="button" disabled>Clear</button>
+    </div>
+
+    <main class="panels">
+      <section class="panel" data-panel="bookmarks" role="tabpanel">
+        <ul class="rows" id="rows-bookmarks"></ul>
+        <p class="empty" data-empty="bookmarks" hidden>No bookmarks.</p>
+      </section>
+      <section class="panel" data-panel="history" role="tabpanel" hidden>
+        <ul class="rows" id="rows-history"></ul>
+        <p class="empty" data-empty="history" hidden>No history.</p>
+      </section>
+      <section class="panel" data-panel="downloads" role="tabpanel" hidden>
+        <ul class="rows" id="rows-downloads"></ul>
+        <p class="empty" data-empty="downloads" hidden>No downloads.</p>
+      </section>
+      <section class="panel" data-panel="groups" role="tabpanel" hidden>
+        <div class="groups" id="groups"></div>
+        <p class="empty" data-empty="groups" hidden>No tab groups.</p>
+      </section>
+    </main>
+
+    <script type="module" src="library.mjs"></script>
+  </body>
+</html>

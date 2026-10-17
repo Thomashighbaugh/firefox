@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-17 11:52** [Library] Download removal now **cancels an in-progress download first** (`dl.cancel()` when not `succeeded`/`canceled`/`error`) so the file is released before `IOUtils.remove` deletes it — applies to both per-row Delete/Delete file and the bulk buttons.
+
 - **2026-10-16 20:03** [Library] Added file deletion for downloads: a per-row **"Delete file"** button (removes the download entry *and* the file on disk via `IOUtils.remove`) and a bulk **"Delete + files"** button (shown only in the Downloads view).
 
 - **2026-10-16 19:37** [Library] Task 4: added a Library page (`resources/library/{library.html,library.mjs,library.css}` → `chrome://userchrome/content/library/library.html`) with **Bookmarks**, **History**, **Downloads** and **Tab Groups** views. Reads via Places SQL (`moz_bookmarks`/`moz_places`) and the `Downloads` API; deletes via `PlacesUtils.bookmarks.remove` / `PlacesUtils.history.remove` / `DownloadsList.remove`. **Batch management**: per-row checkbox, select-all (indeterminate), live "N selected", bulk delete per view, clear, plus per-row Open/Delete and a search filter. `JS/libraryRedirect.uc.js` repoints the toolbar Library button + app-menu entry to the page (pref `higgs.library.page.enabled`). Docs + plan updated; tests 27/27.

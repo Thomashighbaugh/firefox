@@ -32,6 +32,32 @@ async function deleteFile(path) {
   }
 }
 
+/**
+ * Remove a download. Cancels it first when still in progress (so the file is
+ * released), optionally deletes the file, then drops it from the list.
+ * @param {object} dl
+ * @param {boolean} deleteFileToo
+ */
+async function removeDownload(dl, deleteFileToo) {
+  const finished = dl.succeeded || dl.canceled || dl.error;
+  if (!finished) {
+    try {
+      await dl.cancel();
+    } catch (e) {
+      /* already finished / not cancellable */
+    }
+  }
+  if (deleteFileToo) {
+    await deleteFile(dl.target?.path);
+  }
+  try {
+    const list = await lazy.Downloads.getList(lazy.Downloads.ALL);
+    await list.remove(dl);
+  } catch (e) {
+    /* ignore */
+  }
+}
+
 /* -------------------------------------------------------------- places SQL */
 
 async function sqlRows(query, mapper) {
@@ -256,14 +282,11 @@ async function renderDownloads(win) {
         meta: dl.error ? "failed" : dl.succeeded ? "complete" : "incomplete",
         onOpen: () => dl.launch?.().catch(() => {}),
         onDelete: async () => {
-          const l = await lazy.Downloads.getList(lazy.Downloads.ALL);
-          await l.remove(dl);
+          await removeDownload(dl, false);
           renderDownloads(win);
         },
         onDeleteFile: async () => {
-          await deleteFile(path);
-          const l = await lazy.Downloads.getList(lazy.Downloads.ALL);
-          await l.remove(dl);
+          await removeDownload(dl, true);
           renderDownloads(win);
         },
       }),
@@ -360,14 +383,7 @@ async function bulkDelete(view, win, deleteFiles = false) {
     for (const dl of all) {
       const path = dl.target?.path ?? String(dl.id);
       if (keys.includes(path)) {
-        if (deleteFiles) {
-          await deleteFile(dl.target?.path);
-        }
-        try {
-          await list.remove(dl);
-        } catch (e) {
-          /* ignore */
-        }
+        await removeDownload(dl, deleteFiles);
       }
     }
     await renderDownloads(win);

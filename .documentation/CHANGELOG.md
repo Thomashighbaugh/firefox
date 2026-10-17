@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-17 13:26** [Library] Redirect now also intercepts the **`Browser:ShowAllHistory`** / **`Browser:ShowAllBookmarks`** `<command>`s (v1.1.0) — so the History/Bookmarks "Show All …" menu items **and** `Ctrl+Shift+H` / `Ctrl+Shift+O` open the Library page (on the History/Bookmarks view) instead of the Places organizer popup. Opens/focuses a single Library tab and switches its view via `#hash`.
+
 - **2026-10-17 11:52** [Library] Download removal now **cancels an in-progress download first** (`dl.cancel()` when not `succeeded`/`canceled`/`error`) so the file is released before `IOUtils.remove` deletes it — applies to both per-row Delete/Delete file and the bulk buttons.
 
 - **2026-10-16 20:03** [Library] Added file deletion for downloads: a per-row **"Delete file"** button (removes the download entry *and* the file on disk via `IOUtils.remove`) and a bulk **"Delete + files"** button (shown only in the Downloads view).

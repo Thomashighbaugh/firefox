@@ -456,4 +456,9 @@ $("#select-all").addEventListener("change", () => {
 
 const win = getChromeWindow();
 if (win) refresh(win);
-selectView("bookmarks");
+const initialView = (location.hash || "").replace(/^#/, "");
+selectView(["bookmarks", "history", "downloads", "groups"].includes(initialView) ? initialView : "bookmarks");
+window.addEventListener("hashchange", () => {
+  const v = (location.hash || "").replace(/^#/, "");
+  if (["bookmarks", "history", "downloads", "groups"].includes(v)) selectView(v);
+});

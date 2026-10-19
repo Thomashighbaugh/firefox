@@ -1,0 +1,95 @@
+/*=====================================================================================================
+========================== A N I M A T I O N S   ( r e n d e r . j s - i n s p i r e d ) ==========================
+=====================================================================================================*
+
+DESCRIPTION: Ambient motion and micro-interactions, adapted from the animation language of the
+render.js Zen theme (github.com/SehajveerSingh2005/render.js) to Firefox chrome.
+The original animates Zen's workspace switcher into a radial "fan" on hover. Firefox has no
+workspace switcher, but the tab-group editor renders exactly nine circular colour swatches in a
+row — the same shape a card-fan wants. This ports the *techniques*, not the Zen-specific targets:
+
+  1. Motion token pair       -> --uc-motion-speed / --uc-motion-ease (CSS/common/variables.css)
+  2. Arc/fan reveal          -> swatches fan out on hover (arc maths in JS/uiAnimations.uc.js)
+  3. Colored glow + scale    -> hovered swatch glows in its own group colour
+  4. Coordinated re-layout   -> siblings shift as the arc opens out
+  5. Reduced-motion respect  -> motion collapses under prefers-reduced-motion
+
+TRANSFORM OWNERSHIP: JS owns every `transform` on the swatches and writes it with
+`setProperty(..., "important")`, so JS wins over `!important` here. CSS owns transition / filter /
+shadow, and the at-rest look. Do not add a resting `transform` that must survive the fan opening.
+
+DEPENDENCIES: variables.css (tokens), JS/uiAnimations.uc.js (arc transforms + root attribute)
+=====================================================================================================*/
+
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/*=====================================================================================================
+Tab-group colour swatches — the fan.
+=====================================================================================================*/
+.tab-group-editor-swatch {
+  border-radius: 50%;
+  transition:
+    transform var(--uc-motion-speed) var(--uc-motion-ease),
+    filter 0.28s ease,
+    box-shadow 0.28s ease !important;
+}
+
+/* The open fan needs room to spill out of its row, exactly as render.js lifts
+   the workspace button's overflow. */
+.tab-group-editor-swatches[fan-open="true"],
+.tab-group-editor-swatches[fan-open="true"] .tab-group-editor-swatch {
+  overflow: visible !important;
+  z-index: 3;
+}
+
+/* Glow: hovered or currently-checked swatch lights up in its own colour. */
+.tab-group-editor-swatches input:checked + .tab-group-editor-swatch,
+.tab-group-editor-swatch:hover {
+  filter: drop-shadow(
+    0 0 var(--uc-motion-glow-spread) var(--tabgroup-swatch-color)
+  ) !important;
+}
+
+/* Icon micro-scale — same trick render.js uses on workspace icons. */
+.tab-group-editor-swatch:hover::before,
+.tab-group-editor-swatch:has(+ input:checked)::before {
+  transition: transform 0.15s ease !important;
+}
+
+/*=====================================================================================================
+Ambient micro-interactions elsewhere in the chrome. Short, same curve, not loud.
+=====================================================================================================*/
+toolbar .toolbarbutton-1 > .toolbarbutton-icon,
+toolbar .toolbarbutton-1 > .toolbarbutton-badge-stack {
+  transition: transform 0.18s var(--uc-motion-ease) !important;
+}
+
+.tab-close-button {
+  transition:
+    opacity 0.18s var(--uc-motion-ease),
+    transform 0.18s var(--uc-motion-ease) !important;
+}
+
+/*=====================================================================================================
+Kill-switches. The root attribute is set by JS from userchrome.animations.enabled, so an undefined
+pref cannot accidentally disable motion (a bare `-moz-pref()` on an unset pref reads false).
+=====================================================================================================*/
+:root[uc-animations="off"] .tab-group-editor-swatch,
+:root[uc-animations="off"] .tab-group-editor-swatches[fan-open="true"] .tab-group-editor-swatch,
+:root[uc-animations="off"] toolbar .toolbarbutton-1 > .toolbarbutton-icon,
+:root[uc-animations="off"] .tab-close-button {
+  transition: none !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-group-editor-swatch,
+  .tab-group-editor-swatches[fan-open="true"] .tab-group-editor-swatch,
+  toolbar .toolbarbutton-1 > .toolbarbutton-icon,
+  .tab-close-button {
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

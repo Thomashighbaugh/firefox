@@ -150,6 +150,14 @@ DEPENDENCIES: variables.css, colors.css
 @import url("CSS/chrome/statuspanel.css");
 
 /*=====================================================================================================
+IMPORT: UI Animations (render.js-inspired)
+PURPOSE: Ambient motion and micro-interactions
+DESCRIPTION: Shared motion tokens plus a radial fan reveal for the tab-group editor colour swatches
+DEPENDENCIES: variables.css (motion tokens), JS/uiAnimations.uc.js (arc transforms)
+=====================================================================================================*/
+@import url("CSS/chrome/animations.css");
+
+/*=====================================================================================================
 IMPORT: Container Tabs Styling
 PURPOSE: Customizes container-specific tab appearance
 DESCRIPTION: Applies container colors to unselected tabs and manages tab context line visibility

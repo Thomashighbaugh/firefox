@@ -5,6 +5,14 @@
 :root {
   --firefoxcss-top-bar-border-bottom-size: 0;
   --firefoxcss-border-radius: 6px;
+
+  /* === Motion system (render.js-inspired) ===
+     One speed + one easing curve, reused by every animated surface so motion
+     feels intentional rather than incidental. Overridden at runtime by
+     JS/uiAnimations.uc.js from userchrome.animations.* prefs. */
+  --uc-motion-speed: 0.45s;
+  --uc-motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --uc-motion-glow-spread: 6px;
   --firefoxcss-control-buttons-margin: 0px;
   --firefoxcss-tab-min-width: 108px;
   --firefoxcss-tab-max-width: 150px;

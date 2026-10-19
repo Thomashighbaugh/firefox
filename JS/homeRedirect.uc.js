@@ -9,14 +9,15 @@
 (function () {
   "use strict";
 
+  const lazy = {};
+  ChromeUtils.defineESModuleGetters(lazy, {
+    AboutNewTab: "resource:///modules/AboutNewTab.sys.mjs",
+  });
+
   const PREF = "userchrome.home.newtab.enabled";
   const DEBUG_PREF = "userchrome.home.debug";
   const HOME = "chrome://userchrome/content/home/home.html";
-  // `about:newtab` (new tabs) and `about:home` (home button / startup page).
-  const TARGETS = new Set(["about:newtab", "about:home"]);
-
-  const SYSTEM = Services.scriptSecurityManager.getSystemPrincipal();
-  const HOME_URI = Services.io.newURI(HOME);
+  const NATIVE = "about:newtab";
 
   const debug = (...args) => {
     if (Services.prefs.getBoolPref(DEBUG_PREF, false)) {
@@ -25,60 +26,41 @@
   };
   const enabled = () => Services.prefs.getBoolPref(PREF, true);
 
-  // Firefox preloads about:newtab in a detached browser and swaps it into a new
-  // tab *without* firing a fresh onLocationChange, so a progress listener alone
-  // never sees it. Disabling the preload makes the normal navigation path fire;
-  // the TabOpen hook below also covers the preloaded case regardless.
-  try {
-    if (Services.prefs.getBoolPref("browser.newtab.preload", false)) {
-      Services.prefs.setBoolPref("browser.newtab.preload", false);
+  function apply() {
+    try {
+      if (enabled()) {
+        // Sanctioned FF157 override: setting newTabURL flips newTabURLOverridden,
+        // which both serves the page for new tabs and disables the new-tab
+        // preloader (so no about:newtab preload swap bypasses it).
+        lazy.AboutNewTab.newTabURL = HOME;
+        debug("newTabURL ->", HOME);
+      } else if (lazy.AboutNewTab.newTabURL === HOME) {
+        lazy.AboutNewTab.resetNewTabURL();
+        debug("reset to", NATIVE);
+      }
+    } catch (e) {
+      console.error("[homeRedirect] apply failed:", e);
     }
+  }
+
+  apply();
+
+  const prefObserver = { observe: apply };
+  try {
+    Services.prefs.addObserver(PREF, prefObserver);
   } catch (e) {
     /* ignore */
   }
 
-  function redirect(browser) {
-    const spec = browser?.currentURI?.spec;
-    if (!TARGETS.has(spec)) {
-      return false;
-    }
-    debug("redirecting", spec, "->", HOME);
-    try {
-      browser.loadURI(HOME_URI, { triggeringPrincipal: SYSTEM });
-      return true;
-    } catch (e) {
-      console.error("[homeRedirect] loadURI failed:", e);
-      return false;
-    }
-  }
-
-  // New tab (covers the preloaded-browser swap): defer so the browser is attached.
-  gBrowser.tabContainer.addEventListener("TabOpen", (event) => {
-    if (!enabled()) {
-      return;
-    }
-    const { linkedBrowser } = event.target;
-    setTimeout(() => redirect(linkedBrowser), 0);
-  });
-
-  // Navigations to about:newtab / about:home in any tab.
-  const listener = {
-    onLocationChange(browser, webProgress, request, uri) {
-      if (!uri || !gBrowser.getTabForBrowser(browser)) {
-        return;
-      }
-      if (!TARGETS.has(uri.spec) || !enabled()) {
-        return;
-      }
-      Services.tm.dispatchToMainThread(() => redirect(browser));
-    },
-  };
-  gBrowser.addTabsProgressListener(listener);
-  debug("installed");
-
   window.addEventListener(
     "unload",
-    () => gBrowser.removeTabsProgressListener(listener),
+    () => {
+      try {
+        Services.prefs.removeObserver(PREF, prefObserver);
+      } catch (e) {
+        /* ignore */
+      }
+    },
     { once: true },
   );
 })();

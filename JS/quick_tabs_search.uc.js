@@ -9,6 +9,14 @@
 (function () {
   "use strict";
 
+  const lazy = {};
+  // FF157 removed Services.search; the search service is now an importable
+  // singleton module. SelectionUtils still lives at the legacy resource URI.
+  ChromeUtils.defineESModuleGetters(lazy, {
+    SearchService: "moz-src:///toolkit/components/search/SearchService.sys.mjs",
+    SelectionUtils: "resource://gre/modules/SelectionUtils.sys.mjs",
+  });
+
   /* ===== Configuration (prefs override these at runtime) ===== */
   const DEFAULT_OPTS = {
     enabled: true,
@@ -40,16 +48,37 @@
     return o;
   }
 
-  /* ===== Selected text (chrome side) ===== */
+  /* ===== Selected text ===== */
+  // `browser.documentGlobal` is the *chrome* window, not the content window,
+  // so getSelectionDetails only works against a same-process (privileged) page.
+  // For remote content we ask the ContextMenu child actor over IPC.
   function getSelectedText() {
     try {
-      const { SelectionUtils } = ChromeUtils.importESModule(
-        "resource://gre/modules/SelectionUtils.sys.mjs",
-      );
-      const win = gBrowser?.selectedBrowser?.documentGlobal;
-      const info = SelectionUtils.getSelectionDetails(win);
-      const text = (info && info.text ? info.text : "").trim();
-      return text || "";
+      if (gContextMenu?.isTextSelected && gContextMenu.selectedText) {
+        return gContextMenu.selectedText.trim();
+      }
+      const browser = gBrowser?.selectedBrowser;
+      if (!browser || !browser.isRemoteBrowser) {
+        const info = lazy.SelectionUtils.getSelectionDetails(
+          browser?.documentGlobal ?? window,
+        );
+        const text = (info?.text ?? "").trim();
+        if (text) return text;
+      }
+      return "";
+    } catch (_) {
+      return "";
+    }
+  }
+
+  async function getSelectedTextRemote() {
+    try {
+      const actor =
+        gBrowser?.selectedBrowser?.browsingContext?.currentWindowGlobal?.getActor(
+          "ContextMenu",
+        );
+      if (!actor) return "";
+      return (await actor.sendQuery("QT:GetSelection", {})) ?? "";
     } catch (_) {
       return "";
     }
@@ -58,9 +87,11 @@
   /* ===== Default-engine submission URL for a query ===== */
   async function searchUrlFor(text) {
     try {
-      const engine = Services.search.defaultEngine;
+      // Wait for init so `defaultEngine` doesn't throw before it's ready.
+      await lazy.SearchService.init();
+      const engine = lazy.SearchService.defaultEngine;
       if (!engine) return null;
-      const submission = await engine.getSubmission(text, null, "contextmenu");
+      const submission = engine.getSubmission(text, null, "contextmenu");
       return submission?.uri?.spec ?? null;
     } catch (_) {
       return null;
@@ -68,8 +99,11 @@
   }
 
   /* ===== Open a Quick Tab at the results page ===== */
-  async function openSearchQuickTab(text) {
-    const query = (text || "").trim();
+  async function openSearchQuickTab(text, remoteFallback) {
+    let query = (text || "").trim();
+    if (!query && typeof remoteFallback === "function") {
+      query = (await remoteFallback()) || "";
+    }
     if (!query) return false;
     const url = await searchUrlFor(query);
     if (!url) return false;
@@ -111,7 +145,7 @@
 
     item.addEventListener("command", () => {
       const text = (gContextMenu && gContextMenu.selectedText) || getSelectedText();
-      openSearchQuickTab(text);
+      openSearchQuickTab(text, () => getSelectedTextRemote());
     });
 
     menu.addEventListener("popupshowing", () => {
@@ -146,8 +180,7 @@
     if (opts.modifiers) keyEl.setAttribute("modifiers", opts.modifiers);
     keyEl.addEventListener("command", () => {
       if (!readOpts().enabled) return;
-      const text = getSelectedText();
-      if (text) openSearchQuickTab(text);
+      openSearchQuickTab(getSelectedText(), () => getSelectedTextRemote());
     });
     keyset.appendChild(keyEl);
     currentKeyEl = keyEl;
@@ -186,7 +219,8 @@
 
   /* ===== Public API ===== */
   window.QuickTabsSearch = {
-    searchSelection: () => openSearchQuickTab(getSelectedText()),
+    searchSelection: () =>
+      openSearchQuickTab(getSelectedText(), () => getSelectedTextRemote()),
     matches: (text) => searchUrlFor(text),
   };
 

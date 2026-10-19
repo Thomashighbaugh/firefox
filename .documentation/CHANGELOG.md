@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-19 18:52** [Library] **Eliminated the legacy organizer entirely** (v1.2.0). Every entry point now lands on the Library page: `Tools:Downloads` (Ctrl+Shift+J) and the app-menu **Downloads** item map to the Downloads view; a **catch-all patch of `PlacesCommandHook.showPlacesOrganizer`** redirects anything else that would open `places.xhtml`, with `DownloadsPanel.showDownloadsHistory` patched to hide the popup and open the page. So the hamburger menu, the downloads popup footer ("Show all downloads"), bookmark-folder "Open in Library", and private-window downloads all stay in-page.
+
 - **2026-10-17 13:26** [Library] Redirect now also intercepts the **`Browser:ShowAllHistory`** / **`Browser:ShowAllBookmarks`** `<command>`s (v1.1.0) — so the History/Bookmarks "Show All …" menu items **and** `Ctrl+Shift+H` / `Ctrl+Shift+O` open the Library page (on the History/Bookmarks view) instead of the Places organizer popup. Opens/focuses a single Library tab and switches its view via `#hash`.
 
 - **2026-10-17 11:52** [Library] Download removal now **cancels an in-progress download first** (`dl.cancel()` when not `succeeded`/`canceled`/`error`) so the file is released before `IOUtils.remove` deletes it — applies to both per-row Delete/Delete file and the bulk buttons.

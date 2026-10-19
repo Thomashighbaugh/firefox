@@ -9,12 +9,12 @@
 (function () {
   "use strict";
 
-  const ACTIVE_PREF = "higgs.workspaces.active";
+  const ACTIVE_PREF = "userchrome.workspaces.active";
   const SESSION_ID = "__session__";
   const SESSION_NAME = "Session";
 
   const debug = (...a) => {
-    if (Services.prefs.getBoolPref("higgs.home.debug", false)) {
+    if (Services.prefs.getBoolPref("userchrome.home.debug", false)) {
       console.log("[workspaces]", ...a);
     }
   };

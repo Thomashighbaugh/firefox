@@ -112,7 +112,7 @@ plus the **Firefox View** elements (hidden tabs, tabs from other devices, recent
   Devices (`SyncedTabs.getTabClients()`), Recently Closed (`SessionStore.getClosedTabData()` → restore).
 - Live search filter; observers for `TabOpen/Close/Select/Move/AttrModified`,
   `sessionstore-closed-objects-changed`, `services.sync.tabs.changed`.
-- Wiring: `JS/homeRedirect.uc.js` (`about:newtab` → page; pref `higgs.home.newtab.enabled` default
+- Wiring: `JS/homeRedirect.uc.js` (`about:newtab` → page; pref `userchrome.home.newtab.enabled` default
   true); home via `browser.startup.homepage`. Fork will patch `AboutNewTab.sys.mjs` (Lane 2) instead.
 - Chrome window resolved via `window.browsingContext` (same pattern as `about:firefoxview`).
 
@@ -123,7 +123,7 @@ plus the **Firefox View** elements (hidden tabs, tabs from other devices, recent
 - Data sources: `gBrowser.tabs` (incl. hidden), `SyncedTabs.sys.mjs` (other devices),
   `SessionStore.getClosedTabData()` (recently closed) — the same APIs Firefox View uses.
 - Reuse `JS/allTabsMenuExpansionPack.uc.js` for the tab list rendering.
-- Pref: `higgs.home.mode = allTabsMenu` (see roadmap §00.5).
+- Pref: `userchrome.home.mode = allTabsMenu` (see roadmap §00.5).
 
 **Acceptance:** home + new tab both render the page; hidden/synced/closed sections work; opening a
 tab from any section works; falls back to stock new tab if the pref is off.
@@ -137,7 +137,7 @@ tab from any section works; falls back to stock new tab if the pref is off.
 **Delivered:**
 - `JS/workspaces.uc.js` — workspaces = native tab groups; catch-all **Session** for ungrouped
   tabs. `switchTo(id)` shows the target workspace's tabs and hides the rest (pinned tabs stay);
-  active id persisted in `higgs.workspaces.active`; applied on `sessionstore-windows-restored`.
+  active id persisted in `userchrome.workspaces.active`; applied on `sessionstore-windows-restored`.
 - Hotkeys `Ctrl+Alt+1…9` (group workspaces), `Ctrl+Alt+0` (Session). New tabs join the active
   group workspace. Exposes `window.HiggsWorkspaces` (`list`/`switchTo`/`create`/`activeId`).
 - Home page: **Workspaces** nav view with per-workspace tab grids, a Switch button, and an
@@ -148,7 +148,7 @@ tab from any section works; falls back to stock new tab if the pref is off.
 - Switching: activate the target group's tabs and move/hide the rest; on switch, **ungrouped tabs go
   to the catch-all workspace** so nothing is lost.
 - Durability: rely on native Tab Groups + `SessionStore` persistence; add a small pref-backed index
-  (`higgs.workspaces.*`) for naming/order.
+  (`userchrome.workspaces.*`) for naming/order.
 - Expose via hotkey + `about:config`.
 
 **Acceptance:** create/rename/switch workspaces; restart restores the active workspace and members;
@@ -170,7 +170,7 @@ ungrouped tabs survive a switch; no tab loss.
 - **Batch management**: per-row checkbox, select-all (indeterminate), live "N selected", bulk
   delete per view, clear; per-row Open/Delete; search filter.
 - Wiring: `JS/libraryRedirect.uc.js` repoints `#library-button` + app-menu Library entry to the page
-  (pref `higgs.library.page.enabled`). The fork can register `about:higgs-library` (Lane 2).
+  (pref `userchrome.library.page.enabled`). The fork can register `about:higgs-library` (Lane 2).
 
 **Original approach (for reference):**
 - New privileged `about:` page (Lit/React or plain, matching the fork's stack).
@@ -195,13 +195,13 @@ longer the default Library target.
 - Query via `Services.search.defaultEngine.getSubmission(text, null, "contextmenu").uri.spec`.
 - Selection read chrome-side via `SelectionUtils.getSelectionDetails(browser.documentGlobal)`; the
   menu path uses `gContextMenu.selectedText` / `isTextSelected`.
-- Prefs: `higgs.quicktabs.search.enabled`, `.key` (default `S`), `.modifiers` (default `accel alt`),
+- Prefs: `userchrome.quicktabs.search.enabled`, `.key` (default `S`), `.modifiers` (default `accel alt`),
   `.menu`; live rebinding via a pref observer. Falls back to a normal tab if QuickTabs is absent.
 - Exposes `window.QuickTabsSearch`.
 
 **Note on the hotkey:** roadmap §00.5 proposed `Ctrl+Shift+S`, but that is Firefox's **Screenshot**
 (Firefox View / `Browser:Screenshot`) in FF157 — the default is therefore **`Ctrl+Alt+S`** (verified
-free in `browser.xhtml`), rebindable via `higgs.quicktabs.search.key`/`.modifiers`.
+free in `browser.xhtml`), rebindable via `userchrome.quicktabs.search.key`/`.modifiers`.
 
 **Original approach (for reference):**
 - Extend the existing QuickTabs mod; add a `contextmenu`/`gContextMenu` handler + hotkey.
@@ -221,7 +221,7 @@ with a selection; hotkey rebindable.
   split API.
 - **2×2 grid** is not native: needs either two stacked split-views, or a custom grid container that
   hosts 4 `<browser>`s. This is a real feature — plan a prototype before committing.
-- Prefs `higgs.split.dropToSplit`, `higgs.split.grid4`.
+- Prefs `userchrome.split.dropToSplit`, `userchrome.split.grid4`.
 
 **Acceptance:** dropping a tab on content splits it; 4-way grid renders and is interactive; unsplit
 restores cleanly.

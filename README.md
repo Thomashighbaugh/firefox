@@ -15,25 +15,23 @@ A comprehensive Firefox customization project providing a highly customized brow
 ## Documentation Index
 
 ### Core Documentation
-- [Installation Guide](installation.md) - Detailed setup instructions
-- [Configuration Guide](configuration.md) - Customization options and settings
-- [Architecture Overview](architecture.md) - Project structure and code organization
-- [Customization Guide](customization.md) - How to modify and extend the theme
+- [Installation Guide](.documentation/installation.md) - Detailed setup instructions
+- [Configuration Guide](.documentation/configuration.md) - Customization options and settings
+- [Architecture Overview](.documentation/architecture.md) - Project structure and code organization
 
 ### Component Documentation
-- [CSS Components](css-components.md) - Detailed breakdown of CSS modules
-- [JavaScript Modules](javascript-modules.md) - UserChrome.js scripts and functionality
-- [Second Sidebar System](second-sidebar.md) - Advanced sidebar implementation
+- [CSS Components](.documentation/css-components.md) - Detailed breakdown of CSS modules
+- [JavaScript Modules](.documentation/javascript-modules.md) - UserChrome.js scripts and functionality
+- [Second Sidebar System](resources/second-sidebar/AGENTS.md) - Advanced sidebar implementation
 
 ### Reference Materials
-- [CSS Variables Reference](css-variables.md) - Complete list of available CSS custom properties
-- [Browser Compatibility](compatibility.md) - Firefox version support and known issues
-- [Troubleshooting](troubleshooting.md) - Common issues and solutions
+- [Preferences Reference](.documentation/preferences.md) - Every theme preference (`userchrome.*`, `firefoxcss.*`, `mod.*`) with type, default and description
+- [CSS Variables Reference](.documentation/css-variables.md) - Complete list of available CSS custom properties
+- [Browser Compatibility](.documentation/compatibility.md) - Firefox version support and known issues
+- [Troubleshooting](.documentation/troubleshooting.md) - Common issues and solutions
 
 ### Development
-- [Contributing Guidelines](contributing.md) - How to contribute to the project
-- [Development Setup](development.md) - Setting up a development environment
-- [Code Style Guide](code-style.md) - Coding standards and conventions
+- [Development Setup](.documentation/development.md) - Setting up a development environment
 
 ## Key Features
 
@@ -42,6 +40,12 @@ A comprehensive Firefox customization project providing a highly customized brow
 - **Second Sidebar**: Advanced sidebar system with web panels and collapsible sections
 - **Enhanced UI**: Comprehensive theming with blur effects and custom styling
 - **JavaScript Extensions**: Advanced functionality through UserChrome.js scripts
+- **Library Page**: Full-page replacement for the Library popup — Bookmarks, History, Downloads and Tab Groups with batch multi-select and bulk delete; every legacy entry point (menu, hotkeys, organizer) is redirected to it
+- **Home / New Tab Page**: All-Tabs-Menu + Firefox View (other devices, recently closed) replacing the stock new-tab page
+- **Workspaces**: Zen-style workspaces on native Firefox tab groups, with a catch-all Session workspace and `Ctrl+Alt+1…9` switching
+- **QuickTabs Search**: Select text → `Ctrl+Alt+S` or the right-click menu opens a floating Quick Tab at your default engine's results
+
+See the [Preferences Reference](.documentation/preferences.md) for every toggle these features expose.
 
 ## Project Structure
 

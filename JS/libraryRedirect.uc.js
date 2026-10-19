@@ -9,7 +9,7 @@
 (function () {
   "use strict";
 
-  const PREF = "higgs.library.page.enabled";
+  const PREF = "userchrome.library.page.enabled";
   const BASE = "chrome://userchrome/content/library/library.html";
   const SYSTEM = Services.scriptSecurityManager.getSystemPrincipal();
   const VIEWS = ["bookmarks", "history", "downloads", "groups"];

@@ -76,23 +76,23 @@ Deliverable: a 1-page comparison + the spike result.
 
 ## 00.5 Open decision — Prefs + hotkeys surface
 
-Every component needs an `about:config` toggle and a rebindable hotkey. Proposed namespace:
-**`higgs.*`** (mirror Palefox's `pfx.*` and Zen's `zen.*`).
+Every component needs an `about:config` toggle and a rebindable hotkey. Namespace:
+**`userchrome.*`** (mirror Palefox's `pfx.*` and Zen's `zen.*`).
 
 | Component | Pref | Default hotkey (proposal) |
 | --------- | ---- | ------------------------- |
-| UI front-end components (master switch) | `higgs.ui.enabled` | — |
-| Status bar | `higgs.statusbar.enabled` | `Ctrl+/` toggle |
-| Second sidebar | `higgs.secondSidebar.enabled` | `Ctrl+B` (or `Alt+B`) |
-| Top bar (toolbar) | `higgs.topbar.enabled` | `Ctrl+Shift+B` |
-| QuickTabs | `higgs.quicktabs.enabled` | `Ctrl+Alt+Q` |
-| All-Tabs-Menu as home/new-tab | `higgs.home.mode` = `allTabsMenu` | — |
-| QuickTabs Search (sel. text) | `higgs.quicktabs.search.enabled` | `Ctrl+Shift+S` |
-| Tab-drop split | `higgs.split.dropToSplit` | — |
-| 4-way split | `higgs.split.grid4` | — |
-| Shortcut cheat-sheet button | `higgs.shortcuts.button` | `Ctrl+Alt+K` |
+| UI front-end components (master switch) | `userchrome.ui.enabled` | — |
+| Status bar | `userchrome.statusbar.enabled` | `Ctrl+/` toggle |
+| Second sidebar | `userchrome.secondSidebar.enabled` | `Ctrl+B` (or `Alt+B`) |
+| Top bar (toolbar) | `userchrome.topbar.enabled` | `Ctrl+Shift+B` |
+| QuickTabs | `userchrome.quicktabs.enabled` | `Ctrl+Alt+Q` |
+| All-Tabs-Menu as home/new-tab | `userchrome.home.mode` = `allTabsMenu` | — |
+| QuickTabs Search (sel. text) | `userchrome.quicktabs.search.enabled` | `Ctrl+Alt+S` |
+| Tab-drop split | `userchrome.split.dropToSplit` | — |
+| 4-way split | `userchrome.split.grid4` | — |
+| Shortcut cheat-sheet button | `userchrome.shortcuts.button` | `Ctrl+Alt+K` |
 
-Deliverable: a `higgs.*` pref schema + a `Shortcuts` registry design (one place that owns all
+Deliverable: a `userchrome.*` pref schema + a `Shortcuts` registry design (one place that owns all
 bindings, so the task-7 cheat-sheet can enumerate them).
 
 ## 00.6 Order of work

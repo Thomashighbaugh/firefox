@@ -18,10 +18,10 @@
   };
 
   const PREF = {
-    enabled: "higgs.quicktabs.search.enabled",
-    key: "higgs.quicktabs.search.key",
-    modifiers: "higgs.quicktabs.search.modifiers",
-    menu: "higgs.quicktabs.search.menu",
+    enabled: "userchrome.quicktabs.search.enabled",
+    key: "userchrome.quicktabs.search.key",
+    modifiers: "userchrome.quicktabs.search.modifiers",
+    menu: "userchrome.quicktabs.search.menu",
   };
 
   const MENU_ID = "qt-context-search-menuitem";
@@ -168,7 +168,7 @@
     addContextMenuItem(readOpts());
     installHotkey(readOpts());
     try {
-      Services.prefs.addObserver("higgs.quicktabs.search.", prefObserver);
+      Services.prefs.addObserver("userchrome.quicktabs.search.", prefObserver);
     } catch (_) {
       /* ignore */
     }
@@ -176,7 +176,7 @@
 
   window.addEventListener("unload", () => {
     try {
-      Services.prefs.removeObserver("higgs.quicktabs.search.", prefObserver);
+      Services.prefs.removeObserver("userchrome.quicktabs.search.", prefObserver);
     } catch (_) {
       /* ignore */
     }

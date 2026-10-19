@@ -9,8 +9,8 @@
 (function () {
   "use strict";
 
-  const PREF = "higgs.home.newtab.enabled";
-  const DEBUG_PREF = "higgs.home.debug";
+  const PREF = "userchrome.home.newtab.enabled";
+  const DEBUG_PREF = "userchrome.home.debug";
   const HOME = "chrome://userchrome/content/home/home.html";
   // `about:newtab` (new tabs) and `about:home` (home button / startup page).
   const TARGETS = new Set(["about:newtab", "about:home"]);

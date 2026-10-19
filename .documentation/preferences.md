@@ -176,12 +176,13 @@ tabs, with a search filter.
 
 | Preference Name | Type | Default | Description |
 |----------------|------|---------|-------------|
-| `higgs.home.newtab.enabled` | boolean | true | Redirect `about:newtab` to the custom Home page (via `JS/homeRedirect.uc.js`). The fork will patch `AboutNewTab.sys.mjs` instead. |
+| `userchrome.home.newtab.enabled` | boolean | true | Redirect `about:newtab` to the custom Home page (via `JS/homeRedirect.uc.js`). The fork will patch `AboutNewTab.sys.mjs` instead. |
+| `userchrome.home.debug` | boolean | false | Log Home / new-tab redirect decisions to the browser console |
 
 ### Wiring
 
 - **New tab:** `JS/homeRedirect.uc.js` redirects `about:newtab` to the page. Set
-  `higgs.home.newtab.enabled = false` to disable.
+  `userchrome.home.newtab.enabled = false` to disable.
 - **Home:** set `browser.startup.homepage` to
   `chrome://userchrome/content/home/home.html`.
 
@@ -198,7 +199,7 @@ in every workspace). The active workspace is restored on restart.
 
 | Preference Name | Type | Default | Description |
 |----------------|------|---------|-------------|
-| `higgs.workspaces.active` | string | `__session__` | Id of the active workspace (a tab-group id, or `__session__` for the catch-all) |
+| `userchrome.workspaces.active` | string | `__session__` | Id of the active workspace (a tab-group id, or `__session__` for the catch-all) |
 
 ### Hotkeys
 
@@ -223,7 +224,43 @@ multi-select, select-all, and bulk delete (plus per-row Open/Delete).
 
 | Preference Name | Type | Default | Description |
 |----------------|------|---------|-------------|
-| `higgs.library.page.enabled` | boolean | true | Repoint the toolbar Library button + app-menu Library entry to the Library page (via `JS/libraryRedirect.uc.js`) |
+| `userchrome.library.page.enabled` | boolean | true | Repoint every Library entry point (toolbar button, app menu, History/Bookmarks "Show All", `Ctrl+Shift+J` Downloads) to the Library page instead of the legacy Places organizer (via `JS/libraryRedirect.uc.js`) |
+
+### Wired entry points
+
+`JS/libraryRedirect.uc.js` intercepts the toolbar Library button, the app-menu Library
+entries, the `Browser:ShowAllHistory` / `Browser:ShowAllBookmarks` commands (menu +
+`Ctrl+Shift+H` / `Ctrl+Shift+O`), `Tools:Downloads` (`Ctrl+Shift+J`), and — as a catch-all —
+`PlacesCommandHook.showPlacesOrganizer` and `DownloadsPanel.showDownloadsHistory`. The
+downloads **flyout** (toolbar downloads icon) is deliberately left native for quick checks.
+
+---
+
+## 🔎 QuickTabs — Search Selection
+
+With text selected, opens a **Quick Tab** (floating container, see `JS/quick_tabs.uc.js`) at
+the **default search engine's** results. Provided by `JS/quick_tabs_search.uc.js`.
+
+### Custom Preferences
+
+| Preference Name | Type | Default | Description |
+|----------------|------|---------|-------------|
+| `userchrome.quicktabs.search.enabled` | boolean | true | Master switch for the selection-search feature |
+| `userchrome.quicktabs.search.key` | string | `S` | Hotkey character |
+| `userchrome.quicktabs.search.modifiers` | string | `accel alt` | Hotkey modifiers (`accel`, `alt`, `shift`, `control`, `meta`, space-separated) |
+| `userchrome.quicktabs.search.menu` | boolean | true | Show the right-click **"Search in Quick Tab …"** item (only with a selection) |
+
+### Hotkey
+
+| Keys | Action |
+|------|--------|
+| `Ctrl+Alt+S` | Search the selected text in a Quick Tab |
+
+The default is `Ctrl+Alt+S` rather than `Ctrl+Shift+S` because the latter is Firefox's
+**Screenshot** shortcut in current versions. Rebind via
+`userchrome.quicktabs.search.key` / `.modifiers` — changes apply live (the script observes
+the `userchrome.quicktabs.search.` branch). If the QuickTabs mod is not loaded, the search
+opens in a normal tab instead. Also exposed as `window.QuickTabsSearch`.
 
 ---
 

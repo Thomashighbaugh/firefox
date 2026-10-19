@@ -36,18 +36,18 @@ Precedence: factory default → `StaticPrefList` → pref data file. **If a pref
 
 - **JS-default pref** → append to `browser/app/profile/firefox.js`:
   ```js
-  pref("higgs.verticalTabs.enabled", true);
+  pref("userchrome.verticalTabs.enabled", true);
   ```
 - **Static pref** → add to `modules/libpref/init/StaticPrefList.yaml`:
   ```yaml
-  - name: higgs.some.enabled
+  - name: userchrome.some.enabled
     type: bool
     value: true
     mirror: always   # or never / once …
   ```
   Static prefs are exposed to C++ with a defined mirror kind. Use these only if C++ reads them.
 
-Read at runtime: `Services.prefs.getBoolPref("higgs.…", defaultValue)` — always pass a default.
+Read at runtime: `Services.prefs.getBoolPref("userchrome.…", defaultValue)` — always pass a default.
 
 ## 5.4 policies.json (enterprise / distribution)
 

@@ -565,7 +565,7 @@ function refresh(win) {
   renderClosed(win);
   renderDevices(win);
   applyFilter();
-  if (Services.prefs.getBoolPref("higgs.home.debug", false)) {
+  if (Services.prefs.getBoolPref("userchrome.home.debug", false)) {
     const tabs = [...win.gBrowser.tabs];
     console.log("[home] refresh", {
       open: tabs.length,

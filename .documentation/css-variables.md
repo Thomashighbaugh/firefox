@@ -2,6 +2,25 @@
 
 Complete reference of all CSS custom properties (variables) available in the Higgs Boson Firefox Theme.
 
+## Motion Variables (render.js-inspired)
+
+Located in `css/common/variables.css`; consumed by `CSS/chrome/animations.css` and written at
+runtime by `JS/uiAnimations.uc.js`.
+
+```css
+:root {
+  --uc-motion-speed: 0.45s;                     /* shared motion duration */
+  --uc-motion-ease: cubic-bezier(0.22, 1, 0.36, 1); /* shared easing curve */
+  --uc-motion-glow-spread: 6px;                 /* swatch glow blur radius */
+}
+```
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--uc-motion-speed` | `0.45s` | Motion duration for the tab-group swatch fan (overridden by `userchrome.animations.speed`) |
+| `--uc-motion-ease` | `cubic-bezier(0.22, 1, 0.36, 1)` | Shared easing curve for all theme motion |
+| `--uc-motion-glow-spread` | `6px` | Blur radius of the hovered/checked swatch glow |
+
 ## Global Variables
 
 Located in `css/common/variables.css`

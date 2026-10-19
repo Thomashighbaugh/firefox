@@ -9,12 +9,15 @@
 
 /*
  * Adapter, not a port. render.js animates Zen's `#zen-workspaces-button` into a
- * radial fan on hover. Firefox has no workspace switcher, but the tab-group
- * editor renders exactly nine circular colour swatches in a row — the same
- * shape a card-fan wants. This takes render.js's `layoutFan` maths (arc grows
- * with item count, capped; radius grows per item; items distributed across the
- * arc) and applies it to those swatches. The CSS look (glow, scale, tokens)
- * lives in CSS/chrome/animations.css.
+ * radial fan on hover: the maths distributes the *non-active* children across an
+ * arc that grows with their count (capped), at a radius that grows per item, and
+ * leaves the active child anchored. Firefox has no workspace switcher, but the
+ * tab-group editor renders exactly nine circular colour swatches in a row — the
+ * same shape a card-fan wants, with the checked swatch as the natural anchor.
+ *
+ * The CSS look (glow, transitions, tokens) lives in CSS/chrome/animations.css.
+ * JS owns every `transform` on the swatches and writes it `important`, so it wins
+ * over the stylesheet's `!important` transitions.
  */
 
 (function () {
@@ -47,11 +50,13 @@
     }
   };
 
-  /* Push the speed token + kill-switch into :root so CSS and JS stay in sync. */
+  /* Push the speed token + kill-switch onto :root so CSS and JS stay in sync.
+     (A bare `-moz-pref()` on an *unset* pref reads false, so CSS cannot safely
+     gate on the pref itself — hence the attribute.) */
   function applyTokens() {
-    const root = document.documentElement;
     try {
       const o = opts();
+      const root = document.documentElement;
       root.setAttribute("uc-animations", o.enabled ? "on" : "off");
       if (o.enabled) root.style.setProperty("--uc-motion-speed", o.speed);
     } catch (_) {
@@ -59,18 +64,31 @@
     }
   }
 
-  /* ===== Fan geometry (ported from render.js workspace.uc.mjs) ===== */
+  /* ===== Fan geometry (ported from render.js workspace.uc.mjs `layoutFan`) ===== */
   const FAN = {
     baseArc: Math.PI * 0.6, // ~108°
-    arcGrowth: Math.PI * 0.08,
-    maxArc: Math.PI * 0.95, // ~170°
+    arcGrowth: Math.PI * 0.08, // arc grows per item
+    maxArc: Math.PI * 0.95, // ~170° cap
     baseRadius: 34,
     radiusGrowth: 2.6,
     tilt: 0.35, // gentle card-fan rotation
+    hoverScale: 1.4,
   };
 
-  function layoutFan(container) {
-    const items = [...container.querySelectorAll(".tab-group-editor-swatch")];
+  const setTf = (el, value) =>
+    el.style.setProperty("transform", value, "important");
+
+  function layoutFan(container, hovered) {
+    const all = [...container.querySelectorAll(".tab-group-editor-swatch")];
+    if (!all.length) return;
+
+    // The checked swatch is the anchor: it keeps its slot, as in render.js.
+    const active = container.querySelector(
+      "input:checked + .tab-group-editor-swatch",
+    );
+    const items = all.filter((el) => el !== active);
+    if (active) active.style.removeProperty("transform");
+
     const count = items.length;
     if (!count) return;
 
@@ -87,14 +105,13 @@
       const x = Math.cos(angle) * radius;
       const y = Math.sin(angle) * radius;
       const rot = (angle + Math.PI / 2) * FAN.tilt;
-      // Write transform as important so JS owns it (the theme stylesheet sets
-      // `transition ... !important` but never a resting transform).
-      el.style.setProperty(
-        "transform",
-        `translate(${x}px, ${y}px) rotate(${rot}rad) scale(1)`,
-        "important",
+      const scale = el === hovered ? FAN.hoverScale : 1;
+      setTf(
+        el,
+        `translate(${x}px, ${y}px) rotate(${rot}rad) scale(${scale})`,
       );
     });
+
     container.setAttribute("fan-open", "true");
   }
 
@@ -104,6 +121,7 @@
       el.style.removeProperty("transform");
     }
     container.removeAttribute("fan-open");
+    container.__ucFanHovered = null;
   }
 
   /* ===== Wire the editor (swatches are rebuilt every time it opens) ===== */
@@ -115,7 +133,7 @@
       const o = opts();
       if (!o.enabled || !o.fan || prefersReducedMotion()) return;
       applyTokens();
-      layoutFan(container);
+      layoutFan(container, container.__ucFanHovered);
     };
     const close = () => resetFan(container);
 
@@ -124,9 +142,19 @@
     container.addEventListener("focusin", open);
     container.addEventListener("focusout", close);
 
+    // Hovering one swatch pops it out of the fan.
+    container.addEventListener("mouseover", (e) => {
+      const s = e.target?.closest?.(".tab-group-editor-swatch");
+      if (!s || s === container.__ucFanHovered) return;
+      container.__ucFanHovered = s;
+      if (container.hasAttribute("fan-open")) layoutFan(container, s);
+    });
+
     // Re-layout while hovered as the swatch list changes (colour picked, etc.).
     new MutationObserver(() => {
-      if (container.matches(":hover")) layoutFan(container);
+      if (container.matches(":hover")) {
+        layoutFan(container, container.__ucFanHovered);
+      }
     }).observe(container, { childList: true });
   }
 
@@ -175,7 +203,7 @@
     );
   });
 
-  /* Public API (mirrors render.js's exposure). */
+  /* Public API. */
   window.UiAnimations = { layoutFan, resetFan };
 
   if (document.readyState === "loading") {

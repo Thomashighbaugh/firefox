@@ -23,6 +23,7 @@ Standalone UserChrome.js scripts loaded by fx-autoconfig. Each script is self-co
 | **System** | `minimizeMemory.uc.js` | Memory optimization |
 | | `space_and_separator_restorer.uc.js` | Restore spacing in UI |
 | **Styling** | `autocompletePopupStyler.uc.js` | Style autocomplete popup |
+| | `uiAnimations.uc.js` | render.js-inspired motion: tab-group swatch fan, root motion tokens (`userchrome.animations.*`) |
 | | `tooltipShadowSupport.uc.js` | Tooltip shadow effects |
 | | `sidebarWidth.uc.js` | Sidebar width management |
 | **Developer Tools** | `AboutConfigMultipleSelection.uc.js` | Checkbox-per-row multi-select + copy as `user_pref()` on about:config (reaches the parent-process tab document via `contentDocument`) |

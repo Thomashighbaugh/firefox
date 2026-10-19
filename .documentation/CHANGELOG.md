@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-19 20:15** [Animations] **render.js-inspired motion.** New `CSS/chrome/animations.css` + `JS/uiAnimations.uc.js`: a shared motion token pair (`--uc-motion-speed`/`--uc-motion-ease`), a radial **fan reveal** for the tab-group editor's colour swatches (arc maths ported from render.js's `layoutFan`, active swatch anchored, hovered swatch pops), coloured glow, and ambient hover micro-interactions. Prefs `userchrome.animations.{enabled,tabGroupFan,speed}`; honours `prefers-reduced-motion`. Docs: README feature, `preferences.md` + `css-variables.md` sections.
+
 - **2026-10-19 19:45** [Docs/Prefs] **Renamed the custom pref namespace `higgs.*` → `userchrome.*`** across all scripts (`homeRedirect`, `workspaces`, `libraryRedirect`, `quick_tabs_search`, `home.mjs`) and docs. Documented the new options: README gained a Preferences Reference link + feature list (Library page, Home/new-tab, Workspaces, QuickTabs Search); `preferences.md` gained a **QuickTabs — Search Selection** section, the Library entry-point rundown, and `userchrome.home.debug`. Fixes broken README doc links (files live in `.documentation/`, not the root).
 
 - **2026-10-19 19:20** [QuickTabs] **Task 5 — Search selected text in a Quick Tab.** New `JS/quick_tabs_search.uc.js`: with text selected, open a Quick Tab at the **default search engine's** results via a right-click item ("Search in Quick Tab …", shown only with a selection) or the **`Ctrl+Alt+S`** hotkey. Prefs `userchrome.quicktabs.search.{enabled,key,modifiers,menu}` with live rebinding; falls back to a normal tab if the QuickTabs mod is absent. (`Ctrl+Shift+S` from the roadmap is Firefox's Screenshot in FF157, hence `Ctrl+Alt+S`.)

@@ -264,6 +264,41 @@ opens in a normal tab instead. Also exposed as `window.QuickTabsSearch`.
 
 ---
 
+## 🎞️ Animations (render.js-inspired)
+
+Ambient motion adapted from the [render.js](https://github.com/SehajveerSingh2005/render.js)
+Zen theme. The centrepiece is a radial **"fan" reveal** for the tab-group editor's nine
+colour swatches: on hover they arc outward (arc grows with item count, capped), the checked
+swatch stays anchored, and the hovered one pops and glows in its own group colour. Plus a
+shared motion token pair and ambient hover micro-interactions.
+
+| Files | Role |
+|-------|------|
+| `CSS/chrome/animations.css` | Swatch glow/transitions, micro-interactions, reduced-motion kill-switch |
+| `JS/uiAnimations.uc.js` | Arc maths (`layoutFan`, ported from render.js), root tokens/attributes |
+| `CSS/common/variables.css` | `--uc-motion-speed`, `--uc-motion-ease`, `--uc-motion-glow-spread` |
+
+### Custom Preferences
+
+| Preference Name | Type | Default | Description |
+|----------------|------|---------|-------------|
+| `userchrome.animations.enabled` | boolean | true | Master switch for theme animations (hard kill-switch; also honours `prefers-reduced-motion`) |
+| `userchrome.animations.tabGroupFan` | boolean | true | Radial fan reveal on the tab-group editor colour swatches |
+| `userchrome.animations.speed` | string | `0.45s` | Motion duration used by the fan (written to `--uc-motion-speed`) |
+
+### CSS Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--uc-motion-speed` | `0.45s` | Shared motion duration (overridden at runtime by `userchrome.animations.speed`) |
+| `--uc-motion-ease` | `cubic-bezier(0.22, 1, 0.36, 1)` | Shared easing curve |
+| `--uc-motion-glow-spread` | `6px` | Blur radius of the swatch glow |
+
+Also exposed as `window.UiAnimations`. Open the tab-group editor (**right-click a tab group →
+Edit group**, or the tab-group button) and hover the colour row to see the fan.
+
+---
+
 ## 🤝 Contributing
 
 If you add new preferences to the theme:

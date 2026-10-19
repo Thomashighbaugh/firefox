@@ -50,12 +50,6 @@ Tab-group colour swatches — the fan.
   ) !important;
 }
 
-/* Icon micro-scale — same trick render.js uses on workspace icons. */
-.tab-group-editor-swatch:hover::before,
-.tab-group-editor-swatch:has(+ input:checked)::before {
-  transition: transform 0.15s ease !important;
-}
-
 /*=====================================================================================================
 Ambient micro-interactions elsewhere in the chrome. Short, same curve, not loud.
 =====================================================================================================*/

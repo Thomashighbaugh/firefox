@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-19 23:05** [Tests] **New `tests/10-features.test.mjs` (12 tests) pinning the FF157-API decisions behind the recent regression fixes.** Guards: quick_tabs_search uses the `SearchService` singleton (never the removed `Services.search`), reads selection from a remote-safe source, and defaults to `Ctrl+Alt+S`; homeRedirect drives the new-tab page via the `AboutNewTab.newTabURL` override (no progress-listener/`TabOpen` redirect) and only resets when it owns the value; uiAnimations owns the motion tokens, the `:root[uc-animations="off"]` kill-switch, `prefers-reduced-motion`, and the `!important` fan transform. Full suite now 39/39.
+
 - **2026-10-19 20:50** [QuickTabs] **Fixed QuickTab search-from-selection (no-op regression).** FF157 removed `Services.search`; `JS/quick_tabs_search.uc.js` now uses the importable `SearchService` singleton (`SearchService.defaultEngine.getSubmission()`, gated on `init()`). Also fixed the selection source: `browser.documentGlobal` is the chrome window, so the hotkey now reads `gContextMenu.selectedText` / a `ContextMenu` actor query for remote content, falling back to `getSelectionDetails` for same-process pages.
 
 - **2026-10-19 20:50** [Home] **Fixed custom Home page not opening as new tab (regression).** Replaced the preload/`onLocationChange` redirect with the sanctioned FF157 override: set `AboutNewTab.newTabURL` to the custom Home page. This flips `newTabURLOverridden` (disabling the new-tab preloader) and makes `BROWSER_NEW_TAB_URL` (a live getter) resolve to Home for every new-tab entry point.

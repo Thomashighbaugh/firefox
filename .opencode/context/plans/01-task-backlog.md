@@ -186,13 +186,25 @@ longer the default Library target.
 
 ## Task 5 — QuickTabs Search from selected text (P3)
 
-**Goal:** with text selected, a hotkey + context-menu item opens a QuickTab searching the **default
-engine** for that text.
+**Status: ✅ implemented 2026-10-19** (needs live smoke test).
 
-**Approach:**
+**Delivered:**
+- `JS/quick_tabs_search.uc.js` — with text selected, opens a Quick Tab at the **default engine's**
+  results. Right-click menu item ("Search in Quick Tab …", shown only with a selection, placed after
+  the native `context-searchselect`) + hotkey.
+- Query via `Services.search.defaultEngine.getSubmission(text, null, "contextmenu").uri.spec`.
+- Selection read chrome-side via `SelectionUtils.getSelectionDetails(browser.documentGlobal)`; the
+  menu path uses `gContextMenu.selectedText` / `isTextSelected`.
+- Prefs: `higgs.quicktabs.search.enabled`, `.key` (default `S`), `.modifiers` (default `accel alt`),
+  `.menu`; live rebinding via a pref observer. Falls back to a normal tab if QuickTabs is absent.
+- Exposes `window.QuickTabsSearch`.
+
+**Note on the hotkey:** roadmap §00.5 proposed `Ctrl+Shift+S`, but that is Firefox's **Screenshot**
+(Firefox View / `Browser:Screenshot`) in FF157 — the default is therefore **`Ctrl+Alt+S`** (verified
+free in `browser.xhtml`), rebindable via `higgs.quicktabs.search.key`/`.modifiers`.
+
+**Original approach (for reference):**
 - Extend the existing QuickTabs mod; add a `contextmenu`/`gContextMenu` handler + hotkey.
-- Query: `Services.search.defaultEngine.getSubmission(text, null, "contextmenu").uri.spec`.
-- Pref `higgs.quicktabs.search.enabled`, hotkey `Ctrl+Shift+S` (roadmap §00.5).
 
 **Acceptance:** selected text → QuickTab opens at the default engine's results; menu item appears only
 with a selection; hotkey rebindable.
@@ -260,7 +272,7 @@ where possible; no per-item round-trips for bulk ops.
 | 2 | All-Tabs-Menu home/new-tab | P2 | page + pref (Lane 1/2) | ✅ done |
 | 3 | Durable workspaces via Tab Groups | P2 | chrome JS + prefs | ✅ done |
 | 4 | Library → `about:` page | P2 | page + Places/Downloads | ✅ done |
-| 5 | QuickTabs Search | P3 | chrome JS (Lane 1) |
+| 5 | QuickTabs Search | P3 | chrome JS (Lane 1) | ✅ done |
 | 6 | Drop-to-split + 2×2 | P3 | chrome JS, maybe patch |
 | 7 | Shortcut cheat-sheet | P3 | chrome JS + registry |
 | 8 | about:passwords batch | P3 | in-tree patch or new page |

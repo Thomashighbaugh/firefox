@@ -17,6 +17,7 @@ Standalone UserChrome.js scripts loaded by fx-autoconfig. Each script is self-co
 | | `tabGroupColorPicker.uc.js` | Disabled placeholder for tab-group accent color override |
 | | `tabGroupFolderToggle.uc.js` | Group/folder toggle for native tab groups |
 | **Quick Tabs** | `quick_tabs.uc.js` | Floating browser containers (Darsh-A port) with taskbar, drag-drop, context menus |
+| | `quick_tabs_search.uc.js` | Selected text → Quick Tab at the default engine's results (right-click item + `Ctrl+Alt+S`; prefs `higgs.quicktabs.search.*`) |
 | **Content Tools** | `pdfTools.uc.js` | pdf.js viewer: download each page as an image (`@include resource://pdf.js/web/viewer.html*`) |
 | | `privateWindowHomepage.uc.js` | Private windows respect the configured homepage instead of about:privatebrowsing |
 | **System** | `minimizeMemory.uc.js` | Memory optimization |

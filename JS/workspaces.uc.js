@@ -88,8 +88,14 @@
     }
   }
 
+  /** Re-assert group membership after restore WITHOUT hiding tabs. Hiding during
+   *  restore would drop those tabs from the next session save (see note above).
+   *  Restore-native visibility; only the user-initiated switchTo() hides. */
   function apply() {
-    switchTo(activeId());
+    // No-op on visibility. We intentionally do NOT call switchTo() here.
+    // Firefox already restored every tab/group; re-hiding now is what corrupted
+    // the next session. Membership is handled by onTabOpen going forward.
+    debug("apply: leaving restored visibility intact, active =", activeId());
   }
 
   function onKey(event) {

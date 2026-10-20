@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-20 03:45** [Workspaces / Session] **Fixed session corruption on restart/crash.** `JS/workspaces.uc.js` `apply()` (fired on `sessionstore-windows-restored`) called `switchTo()`, which `hideTab()`-ed every tab outside the active workspace. Hidden tabs are excluded from the SessionStore save, so the next shutdown persisted a partial session — restarts reopened a stale/partial snapshot with missing tabs and scrambled groups. `apply()` no longer touches visibility; tabs are only hidden on an explicit user `switchTo()` (hotkey/API). Restart now restores the full session.
+
 - **2026-10-20 02:25** [Extended Statusbar] Removed the `Ctrl+/` (Cmd+/) toggle hotkey from `JS/extendedStatusbar.uc.js` — freed the binding and dropped the stale header reference.
 
 - **2026-10-19 21:10** [Home / Session] **Fixed new-tab Home override + session restore.** `JS/homeRedirect.uc.js`: initialise `AboutNewTab` before setting `newTabURL` (kills the startup race where a later `init()`→`toggleActivityStream(true)` could reset the URL) and re-assert on the `newtab-url-changed` observer if anything overrides it. Session restore was broken by config, not Firefox: `browser.startup.page` was `"0"` (blank) in `modules/home-manager/programs/firefox.nix` — set to `"3"` (restore previous session).

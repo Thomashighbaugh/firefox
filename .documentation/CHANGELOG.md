@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-20 02:25** [Extended Statusbar] Removed the `Ctrl+/` (Cmd+/) toggle hotkey from `JS/extendedStatusbar.uc.js` — freed the binding and dropped the stale header reference.
+
 - **2026-10-19 21:10** [Home / Session] **Fixed new-tab Home override + session restore.** `JS/homeRedirect.uc.js`: initialise `AboutNewTab` before setting `newTabURL` (kills the startup race where a later `init()`→`toggleActivityStream(true)` could reset the URL) and re-assert on the `newtab-url-changed` observer if anything overrides it. Session restore was broken by config, not Firefox: `browser.startup.page` was `"0"` (blank) in `modules/home-manager/programs/firefox.nix` — set to `"3"` (restore previous session).
 
 - **2026-10-19 23:05** [Tests] **New `tests/10-features.test.mjs` (12 tests) pinning the FF157-API decisions behind the recent regression fixes.** Guards: quick_tabs_search uses the `SearchService` singleton (never the removed `Services.search`), reads selection from a remote-safe source, and defaults to `Ctrl+Alt+S`; homeRedirect drives the new-tab page via the `AboutNewTab.newTabURL` override (no progress-listener/`TabOpen` redirect) and only resets when it owns the value; uiAnimations owns the motion tokens, the `:root[uc-animations="off"]` kill-switch, `prefers-reduced-motion`, and the `!important` fan transform. Full suite now 39/39.

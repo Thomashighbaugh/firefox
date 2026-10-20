@@ -18,7 +18,6 @@
  * Features:
  * - Adds a persistent addonbar at the bottom of the browser window.
  * - Supports compact mode for smaller toolbar buttons.
- * - Keyboard shortcut (Ctrl+/ or Cmd+/) to toggle the addonbar.
  * - Remembers visibility state across sessions.
  * - Fixes for downloads button and compatibility with modern Firefox.
  *
@@ -195,20 +194,6 @@ var AddAddonbar = {
 
           CUI.registerToolbarNode(tb_addonbar);
         }
-
-        // Keyboard shortcut: Ctrl+/ (Win/Linux) or Cmd+/ (macOS) to toggle addonbar
-        var key = document.createXULElement("key");
-        key.id = "key_toggleAddonBar";
-        key.setAttribute("key", "/");
-        key.setAttribute("modifiers", "accel");
-        key.addEventListener("command", () => {
-          var newAddonBar = document.getElementById("addonbar");
-          setToolbarVisibility(newAddonBar, newAddonBar.collapsed);
-          Services.prefs
-            .getBranch("browser.addonbar.")
-            .setBoolPref("enabled", !newAddonBar.collapsed);
-        });
-        document.getElementById("mainKeyset").appendChild(key);
 
         // Set toolbar visibility based on preference
         try {

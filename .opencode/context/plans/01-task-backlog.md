@@ -18,7 +18,7 @@ Legend: **P1** = do first · **P2** = next · **P3** = after fork skeleton exist
 
 ## Task 1 — Refactor the second-sidebar subsystem (P1)
 
-**Status: ✅ complete 2026-10-13.** 163 → 99 files (−39%); 13,662 → 11,837 lines (−13%). All stages C1–C8 done (C2 resolved by C1). Verified static: all modules parse, 277 relative imports resolve (0 dangling), `chrome://` entry chain intact, no `instanceof`/`constructor.name`, no refs to deleted modules. **Not yet smoke-tested in a running Firefox.**
+**Status: ✅ complete 2026-10-13, smoke-tested.** 163 → 99 files (−39%); 13,662 → 11,837 lines (−13%). All stages C1–C8 done (C2 resolved by C1). Verified static: all modules parse, 277 relative imports resolve (0 dangling), `chrome://` entry chain intact, no `instanceof`/`constructor.name`, no refs to deleted modules. Smoke-tested in live Firefox via daily use.
 
 **Goal:** cut the complexity of `resources/second-sidebar/` dramatically **without any user-visible
 change** to UI or interactions.
@@ -101,7 +101,7 @@ collapse, splitter, shortcuts, container tabs, customize mode) manually pass; no
 
 ## Task 2 — All-Tabs-Menu as home / new-tab page (P2)
 
-**Status: ✅ implemented 2026-10-14** (page + wiring; needs live smoke test in Firefox).
+**Status: ✅ implemented 2026-10-14, smoke-tested** (homepage confirmed working live 2026-10-20).
 
 **Goal:** replace the home + new-tab pages with a full page built from the **existing All Tabs Menu**,
 plus the **Firefox View** elements (hidden tabs, tabs from other devices, recently closed).
@@ -132,7 +132,7 @@ tab from any section works; falls back to stock new tab if the pref is off.
 
 ## Task 3 — Session-durable Workspaces over Firefox Tab Groups (P2)
 
-**Status: ✅ implemented 2026-10-15** (controller + Home view; needs live smoke test).
+**Status: ✅ implemented 2026-10-15, smoke-tested** (in daily use).
 
 **Delivered:**
 - `JS/workspaces.uc.js` — workspaces = native tab groups; catch-all **Session** for ungrouped
@@ -160,7 +160,7 @@ ungrouped tabs survive a switch; no tab loss.
 
 ## Task 4 — Library overhaul → `about:` page (P2)
 
-**Status: ✅ implemented 2026-10-15** (page + redirect; needs live smoke test).
+**Status: ✅ implemented 2026-10-15, smoke-tested** (in daily use).
 
 **Delivered:**
 - `resources/library/{library.html,library.mjs,library.css}` → `chrome://userchrome/content/library/library.html`.
@@ -186,7 +186,7 @@ longer the default Library target.
 
 ## Task 5 — QuickTabs Search from selected text (P3)
 
-**Status: ✅ implemented 2026-10-19** (needs live smoke test).
+**Status: ✅ implemented 2026-10-19, smoke-tested** (in daily use).
 
 **Delivered:**
 - `JS/quick_tabs_search.uc.js` — with text selected, opens a Quick Tab at the **default engine's**

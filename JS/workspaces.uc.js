@@ -1,15 +1,14 @@
 // ==UserScript==
 // @name           Workspaces (native tab-group based)
-// @description    Zen-style workspaces built on Firefox's native tab groups. A catch-all "Session" workspace holds ungrouped tabs; switching shows one workspace's tabs and hides the rest. Durable across sessions via a pref.
+// @description    Zen-style, per-window workspaces built on Firefox's native tab groups. A workspace is a tab group plus a catch-all "Session" for ungrouped tabs. Switching is mutually exclusive and uses native group collapse (NOT hideTab), so every tab stays in the session and survives restart/crash. Collapse state is persisted natively by SessionStore.
 // @author         Thomas Leon Highbaugh
-// @version        1.0.0
+// @version        2.0.0
 // @include        main
 // ==/UserScript==
 
 (function () {
   "use strict";
 
-  const ACTIVE_PREF = "userchrome.workspaces.active";
   const SESSION_ID = "__session__";
   const SESSION_NAME = "Session";
 
@@ -27,42 +26,88 @@
     return [...set];
   }
 
-  /** All workspaces: one per tab group, plus the catch-all "Session". */
+  /** All workspaces in THIS window: one per tab group, plus the catch-all "Session". */
   function list() {
-    const out = groupElements().map((g) => ({
+    const groups = groupElements();
+    const out = groups.map((g) => ({
       id: g.id,
       name: g.name || "Workspace",
       color: g.color,
       kind: "group",
+      collapsed: g.collapsed,
       tabs: [...g.tabs],
       group: g,
     }));
-    const ungrouped = [...gBrowser.tabs].filter((t) => !t.group && !t.pinned);
+    const ungrouped = [...gBrowser.tabs].filter((t) => !t.group);
     out.push({
       id: SESSION_ID,
       name: SESSION_NAME,
       kind: "session",
+      collapsed: groups.length > 0 && groups.every((g) => g.collapsed),
       tabs: ungrouped,
     });
     return out;
   }
 
-  const activeId = () => Services.prefs.getStringPref(ACTIVE_PREF, SESSION_ID);
+  /**
+   * The active workspace of THIS window. Derived from live state (there is no
+   * global pref): the single expanded group is active; if every group is
+   * collapsed, the catch-all "Session" is active. If more than one group is
+   * expanded (drift), the one holding the selected tab wins.
+   */
+  function activeId() {
+    const groups = groupElements();
+    const expanded = groups.filter((g) => !g.collapsed);
+    if (!expanded.length) return SESSION_ID;
+    if (expanded.length === 1) return expanded[0].id;
+    const sel = gBrowser.selectedTab;
+    const withSel = expanded.find((g) => sel && sel.group && sel.group.id === g.id);
+    return (withSel ?? expanded[0]).id;
+  }
 
-  /** Switch to a workspace: show its tabs, hide everything else. */
+  /** Collapse every group except `keepId` (null = collapse all). Never hides. */
+  function collapseOthers(keepId) {
+    for (const g of groupElements()) {
+      const shouldCollapse = g.id !== keepId;
+      if (g.collapsed !== shouldCollapse) g.collapsed = shouldCollapse;
+    }
+  }
+
+  /** Ensure at most one group is expanded (mutual exclusion). Collapse-only, so
+   *  it is always session-safe. */
+  function normalizeExclusivity() {
+    const groups = groupElements();
+    const expanded = groups.filter((g) => !g.collapsed);
+    if (expanded.length <= 1) return;
+    const sel = gBrowser.selectedTab;
+    const keep =
+      expanded.find((g) => sel && sel.group && sel.group.id === g.id) ?? expanded[0];
+    collapseOthers(keep.id);
+    debug("normalized exclusivity -> keeping", keep.id);
+  }
+
+  /**
+   * Switch to a workspace in this window: expand it, collapse the rest.
+   * `SESSION_ID` collapses every group (ungrouped tabs remain visible).
+   * Session-safe: uses native group collapse, never hideTab.
+   */
   function switchTo(id) {
-    for (const tab of gBrowser.tabs) {
-      if (tab.pinned) continue; // pinned tabs live in every workspace
-      const inTarget =
-        id === SESSION_ID ? !tab.group : tab.group && tab.group.id === id;
-      if (inTarget) {
-        if (tab.hidden) gBrowser.showTab(tab);
-      } else if (!tab.hidden) {
-        gBrowser.hideTab(tab, "workspaces");
+    if (id === SESSION_ID) {
+      collapseOthers(null);
+    } else {
+      const groups = groupElements();
+      const target = groups.find((g) => g.id === id);
+      if (!target) return;
+      collapseOthers(id);
+      // If the selected tab is now inside a collapsed group, surface one of the
+      // target group's tabs so the window is not left on a hidden selection.
+      const sel = gBrowser.selectedTab;
+      if (sel && sel.group && sel.group.id !== id) {
+        const pick = target.tabs[0] ?? [...gBrowser.tabs].find((t) => t.pinned);
+        if (pick) gBrowser.selectedTab = pick;
       }
     }
-    Services.prefs.setStringPref(ACTIVE_PREF, id);
-    debug("switched to", id);
+    debug("switched to", id, "(active =", activeId() + ")");
   }
 
   /** Create a workspace (tab group) containing the current tab. */
@@ -70,14 +115,35 @@
     const tab = gBrowser.selectedTab;
     if (!tab) return null;
     const group = gBrowser.addTabGroup([tab], { label: name });
+    if (group) switchTo(group.id);
     return group;
+  }
+
+  /** Move `tab` into the workspace `id`. SESSION_ID ungroups it. */
+  function moveTab(tab, id) {
+    if (!tab) return;
+    try {
+      if (id === SESSION_ID) {
+        if (tab.group) gBrowser.ungroupTab(tab);
+      } else {
+        const group = groupElements().find((g) => g.id === id);
+        if (group) group.addTabs([tab]);
+      }
+      // Keep the moved tab visible if it landed in the active workspace.
+      if (id !== SESSION_ID && id === activeId()) {
+        tab.group.collapsed = false;
+      }
+    } catch (e) {
+      debug("moveTab failed:", e);
+    }
   }
 
   /** Keep new tabs inside the active workspace. */
   function onTabOpen(event) {
     const tab = event.target;
+    if (tab.pinned) return;
     const id = activeId();
-    if (id === SESSION_ID || tab.pinned) return;
+    if (id === SESSION_ID) return;
     const group = groupElements().find((g) => g.id === id);
     if (group && !tab.group) {
       try {
@@ -88,14 +154,11 @@
     }
   }
 
-  /** Re-assert group membership after restore WITHOUT hiding tabs. Hiding during
-   *  restore would drop those tabs from the next session save (see note above).
-   *  Restore-native visibility; only the user-initiated switchTo() hides. */
+  /** On restore: do NOT hide anything. Only normalize drift so at most one group
+   *  is expanded. Collapse state itself is restored natively by SessionStore. */
   function apply() {
-    // No-op on visibility. We intentionally do NOT call switchTo() here.
-    // Firefox already restored every tab/group; re-hiding now is what corrupted
-    // the next session. Membership is handled by onTabOpen going forward.
-    debug("apply: leaving restored visibility intact, active =", activeId());
+    normalizeExclusivity();
+    debug("apply: active =", activeId());
   }
 
   function onKey(event) {
@@ -127,6 +190,7 @@
     list,
     switchTo,
     create,
+    moveTab,
     apply,
     activeId,
     SESSION_ID,

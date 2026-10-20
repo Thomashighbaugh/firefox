@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-20 16:59** [Workspaces] **Reworked to per-window, mutually-exclusive, session-safe.** `JS/workspaces.uc.js` v2: exclusivity now uses native **tab-group collapse** (persisted by SessionStore per window), never `hideTab` — so all tabs survive restart/crash and the active workspace is restored from native group state (no global pref; derived per window). `switchTo()` expands the target group and collapses the rest; the catch-all **Session** = all groups collapsed. Added `HiggsWorkspaces.moveTab(tab, id)`. Home page (`resources/home/home.mjs`): every tab/closed/synced row now has a **Move to Workspace** context submenu (each workspace in the window + “New Workspace…”), and closed/synced rows support it too.
+
 - **2026-10-20 03:45** [Workspaces / Session] **Fixed session corruption on restart/crash.** `JS/workspaces.uc.js` `apply()` (fired on `sessionstore-windows-restored`) called `switchTo()`, which `hideTab()`-ed every tab outside the active workspace. Hidden tabs are excluded from the SessionStore save, so the next shutdown persisted a partial session — restarts reopened a stale/partial snapshot with missing tabs and scrambled groups. `apply()` no longer touches visibility; tabs are only hidden on an explicit user `switchTo()` (hotkey/API). Restart now restores the full session.
 
 - **2026-10-20 02:25** [Extended Statusbar] Removed the `Ctrl+/` (Cmd+/) toggle hotkey from `JS/extendedStatusbar.uc.js` — freed the binding and dropped the stale header reference.

@@ -269,6 +269,43 @@ function addToGroupSubmenu(win, resolveTabs) {
   return { label: "Add to Tab Group", submenu: items };
 }
 
+/**
+ * Submenu that moves the resolved tab(s) into a workspace (of this window).
+ * Workspaces are the native tab groups plus the catch-all "Session".
+ * @param {object} win
+ * @param {() => object[]} resolveTabs  returns the tab(s) to move
+ */
+function moveToWorkspaceSubmenu(win, resolveTabs) {
+  const api = win.HiggsWorkspaces;
+  if (!api) return null;
+  const active = api.activeId();
+  const items = api.list().map((w) => ({
+    label: `${w.name}${w.id === active ? "  ✓" : ""}`,
+    onSelect: () => {
+      for (const tab of resolveTabs()) api.moveTab(tab, w.id);
+    },
+  }));
+  items.push({
+    label: "New Workspace…",
+    onSelect: () => {
+      const tabs = resolveTabs();
+      if (!tabs.length) return;
+      const group = win.gBrowser.addTabGroup(tabs, {});
+      const gb = win.gBrowser;
+      Services.tm.dispatchToMainThread(() => {
+        try {
+          if (group && gb.tabGroupMenu?.panel?.state === "closed") {
+            gb.tabGroupMenu.openCreateModal(group);
+          }
+        } catch (e) {
+          /* ignore */
+        }
+      });
+    },
+  });
+  return { label: "Move to Workspace", submenu: items };
+}
+
 /* ------------------------------------------------------------ per-source menus */
 
 function tabMenu(tab, win) {
@@ -290,6 +327,8 @@ function tabMenu(tab, win) {
     { label: "Copy URL", onSelect: () => copyToClipboard(tab.linkedBrowser?.currentURI?.spec ?? "") },
     addToGroupSubmenu(win, () => [tab]),
   ];
+  const wsMenu = moveToWorkspaceSubmenu(win, () => [tab]);
+  if (wsMenu) items.push(wsMenu);
   if (tab.hidden) {
     items.unshift({
       label: "Unhide Tab",
@@ -304,19 +343,25 @@ function tabMenu(tab, win) {
 }
 
 function closedMenu(entry, win) {
-  return [
+  const items = [
     { label: "Restore Tab", onSelect: () => lazy.SessionStore.undoCloseById(entry.closedId) },
     addToGroupSubmenu(win, () => restoreEntry(entry, win)),
     { label: "Copy URL", onSelect: () => copyToClipboard(entry.url ?? "") },
   ];
+  const wsMenu = moveToWorkspaceSubmenu(win, () => restoreEntry(entry, win));
+  if (wsMenu) items.push(wsMenu);
+  return items;
 }
 
 function syncedMenu(tab, win) {
-  return [
+  const items = [
     { label: "Open on This Device", onSelect: () => openUrl(tab.url, win) },
     addToGroupSubmenu(win, () => openSynced(tab.url, win)),
     { label: "Copy URL", onSelect: () => copyToClipboard(tab.url ?? "") },
   ];
+  const wsMenu = moveToWorkspaceSubmenu(win, () => openSynced(tab.url, win));
+  if (wsMenu) items.push(wsMenu);
+  return items;
 }
 
 /* ------------------------------------------------------------ renderers */

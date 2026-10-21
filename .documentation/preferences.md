@@ -193,7 +193,9 @@ tabs, with a search filter.
 Replaces the Library popup with a full page
 (`resources/library/library.html` → `chrome://userchrome/content/library/library.html`):
 **Bookmarks**, **History**, **Downloads** and **Tab Groups**, each with checkbox
-multi-select, select-all, and bulk delete (plus per-row Open/Delete).
+multi-select, select-all, and bulk delete (plus per-row Open/Delete). The **Downloads**
+view also has per-row **Retry** (restarts a failed/incomplete download) and **Copy link**
+(copies the original download URL).
 
 ### Custom Preferences
 

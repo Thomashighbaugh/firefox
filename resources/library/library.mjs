@@ -94,7 +94,7 @@ function updateBulkbar(view) {
 
 /* -------------------------------------------------------------- row builder */
 
-function buildRow({ key, title, url, image, meta, onOpen, onDelete, onDeleteFile }) {
+function buildRow({ key, title, url, image, meta, onOpen, onDelete, onDeleteFile, extraActions }) {
   const li = document.createElement("li");
   li.className = "row";
   li.dataset.key = key;
@@ -140,6 +140,17 @@ function buildRow({ key, title, url, image, meta, onOpen, onDelete, onDeleteFile
 
   const actions = document.createElement("div");
   actions.className = "row-actions";
+  if (extraActions) {
+    for (const { label, title: tip, fn } of extraActions) {
+      const b = document.createElement("button");
+      b.className = "row-btn";
+      b.type = "button";
+      b.textContent = label;
+      if (tip) b.title = tip;
+      b.addEventListener("click", fn);
+      actions.appendChild(b);
+    }
+  }
   if (onOpen) {
     const open = document.createElement("button");
     open.className = "row-btn";
@@ -274,12 +285,47 @@ async function renderDownloads(win) {
   for (const dl of downloads) {
     const path = dl.target?.path ?? "";
     const name = path.split(/[\\/]/).pop() || path;
+    const sourceUrl = dl.source?.url ?? "";
+    const failedOrIncomplete = !!dl.error || (!dl.succeeded && !dl.canceled);
     rows.push(
       buildRow({
         key: path || String(dl.id),
         title: name,
         url: path,
         meta: dl.error ? "failed" : dl.succeeded ? "complete" : "incomplete",
+        extraActions: [
+          // Retry restarts a failed/incomplete download (Download.start()).
+          ...(failedOrIncomplete
+            ? [{
+                label: "Retry",
+                title: "Restart this download",
+                fn: async () => {
+                  try {
+                    await dl.start();
+                  } catch (e) {
+                    /* ignore */
+                  }
+                  renderDownloads(win);
+                },
+              }]
+            : []),
+          // Copy the original download URL to the clipboard.
+          ...(sourceUrl
+            ? [{
+                label: "Copy link",
+                title: sourceUrl,
+                fn: () => {
+                  try {
+                    Cc["@mozilla.org/widget/clipboardhelper;1"]
+                      .getService(Ci.nsIClipboardHelper)
+                      .copyString(sourceUrl);
+                  } catch (e) {
+                    /* ignore */
+                  }
+                },
+              }]
+            : []),
+        ],
         onOpen: () => dl.launch?.().catch(() => {}),
         onDelete: async () => {
           await removeDownload(dl, false);

@@ -177,3 +177,20 @@ test("loginsRedirect patches the single openPasswordManager choke point", () => 
   // Points at the new page.
   assert.match(loginsRedirect, /chrome:\/\/userchrome\/content\/logins\/logins\.html/);
 });
+
+/* ------------------------- library downloads manager ------------------------- */
+
+const lib = fs.readFileSync(`${REPO}/resources/library/library.mjs`, "utf8");
+
+test("downloads rows support retry of failed/incomplete downloads", () => {
+  // Download.start() restarts a failed/canceled/incomplete download.
+  assert.match(lib, /dl\.start\(\)/);
+  assert.match(lib, /Retry/);
+});
+
+test("downloads rows can copy the download link", () => {
+  // The original source URL is copied to the clipboard.
+  assert.match(lib, /dl\.source\?\.url/);
+  assert.match(lib, /Copy link/);
+  assert.match(lib, /nsIClipboardHelper|clipboardhelper/);
+});

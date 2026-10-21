@@ -237,20 +237,28 @@ a row can invoke the action.
 
 ---
 
-## Task 8 — `about:passwords` batch management (P3)
+## Task 8 — Logins & Passwords page (P3)
 
-**Goal:** redesign `about:logins` to allow **batch modification** — e.g. checkbox-select and delete
-unused/old passwords.
+**Status: ✅ implemented 2026-10-21** (page + redirect; needs live smoke test).
 
-**Approach:**
-- `about:logins` is a Lit app in `browser/components/aboutlogins/`. Two routes:
-  - **Patch it in-tree** (Lane 2) to add checkboxes + bulk delete.
-  - **New page** using `nsILoginManager` (`getAllLoginsAsync`, `removeLogin`) for full control.
-- "Old/unused" heuristics: `timeLastUsed` / `timeCreated` / `timesUsed` (exposed by LoginManager) +
-  filters.
+**Delivered:**
+- `resources/logins/{logins.html,logins.mjs,logins.css}` → `chrome://userchrome/content/logins/logins.html`.
+- Full management: search, sort (site/username/last-used/created/times-used/password-changed),
+  age/usage quick-filters (never used, 90/180/365-day stale), per-row reveal/edit/copy/delete,
+  right-click context menu, add/edit dialog.
+- **Batch suite:** checkbox multi-select + select-all + clear, bulk delete, bulk export-selected.
+- **Export:** CSV (via Firefox's own `LoginExport.exportAsCSV` → import-compatible), JSON (full
+  metadata incl. guid/timestamps/timesUsed), and HTML (human-readable, HTML-escaped, with a
+  plaintext-warning banner). **Import:** CSV (via `LoginCSVImport.importFromCSV`) + JSON.
+- **Auth:** password reveal / copy / export gated behind `LoginHelper.requestReauth`
+  (OS/primary-password, 5-min expiry), matching about:logins. Delete does not re-auth (same as
+  Firefox).
+- Wiring: `JS/loginsRedirect.uc.js` patches `LoginHelper.openPasswordManager` (the single choke
+  point for the app-menu Passwords button, context-menu "Manage Passwords", toolbar, autocomplete
+  footers), pref `userchrome.logins.page.enabled`. Fork can register `about:higgs-logins` (Lane 2).
 
-**Acceptance:** select multiple logins → bulk delete; sort/filter by age/use; confirmation + undo
-where possible; no per-item round-trips for bulk ops.
+**Acceptance:** all sections functional; batch select/delete/export works; export→import round-trips;
+reveal/export prompt for OS/primary auth; stock about:logins reachable when the pref is off.
 
 ---
 
@@ -265,4 +273,4 @@ where possible; no per-item round-trips for bulk ops.
 | 5 | QuickTabs Search | P3 | chrome JS (Lane 1) | ✅ done |
 | 6 | Drop-to-split + 2×2 | P3 | chrome JS, maybe patch |
 | 7 | Shortcut cheat-sheet | P3 | chrome JS + registry |
-| 8 | about:passwords batch | P3 | in-tree patch or new page |
+| 8 | Logins & Passwords page | P3 | page + LoginManager | ✅ done |

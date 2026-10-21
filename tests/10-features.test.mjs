@@ -122,3 +122,58 @@ test("uiAnimations honours prefers-reduced-motion", () => {
 test("uiAnimations writes the fan transform with !important (CSS can't override it)", () => {
   assert.match(anim, /setProperty\(\s*"transform",\s*value,\s*"important"\s*\)/);
 });
+
+/* ------------------------- logins page + redirect ------------------------- */
+
+const loginsPage = fs.readFileSync(`${REPO}/resources/logins/logins.mjs`, "utf8");
+const loginsRedirect = fs.readFileSync(`${REPO}/JS/loginsRedirect.uc.js`, "utf8");
+
+test("logins page exists and is wired for privileged access", () => {
+  assert.ok(fs.existsSync(`${REPO}/resources/logins/logins.html`), "logins.html exists");
+  assert.ok(fs.existsSync(`${REPO}/resources/logins/logins.css`), "logins.css exists");
+  // Uses the privileged LoginManager service.
+  assert.match(loginsPage, /Services\.logins/);
+  assert.match(loginsPage, /getAllLogins/);
+});
+
+test("logins page gates password reveal and export behind re-auth", () => {
+  // Both reveal and export must route through requireAuth -> requestReauth.
+  assert.match(loginsPage, /requestReauth/);
+  assert.match(loginsPage, /requireAuth/);
+  const authCalls = (loginsPage.match(/await requireAuth\(\)/g) || []).length;
+  assert.ok(authCalls >= 2, "reveal + copy + export all require auth");
+});
+
+test("logins page supports CSV, JSON and HTML export", () => {
+  for (const fmt of ["csv", "json", "html"]) {
+    assert.match(loginsPage, new RegExp(`["']${fmt}["']`), `export format "${fmt}" present`);
+  }
+  // CSV uses Firefox's own exporter for import-compatibility.
+  assert.match(loginsPage, /LoginExport\.exportAsCSV/);
+  // HTML export escapes values (no password -> markup injection).
+  assert.match(loginsPage, /escapeHtml/);
+});
+
+test("logins page import handles CSV and JSON", () => {
+  assert.match(loginsPage, /LoginCSVImport\.importFromCSV/);
+  assert.match(loginsPage, /JSON\.parse/);
+});
+
+test("logins page has the full batch suite", () => {
+  // select-all, bulk delete, bulk export, age/usage filters, sorting.
+  for (const id of ["select-all", "bulk-delete", "bulk-export", "age-filter", "sort"]) {
+    assert.match(loginsPage, new RegExp(`#${id}`), `#${id} wired`);
+  }
+  assert.match(loginsPage, /removeLoginAsync/);
+  assert.match(loginsPage, /timesUsed/);
+  assert.match(loginsPage, /timeLastUsed/);
+});
+
+test("loginsRedirect patches the single openPasswordManager choke point", () => {
+  assert.match(loginsRedirect, /openPasswordManager/);
+  // Keeps an unpatch path and restores the original.
+  assert.match(loginsRedirect, /__loginsPageOriginal/);
+  assert.match(loginsRedirect, /userchrome\.logins\.page\.enabled/);
+  // Points at the new page.
+  assert.match(loginsRedirect, /chrome:\/\/userchrome\/content\/logins\/logins\.html/);
+});

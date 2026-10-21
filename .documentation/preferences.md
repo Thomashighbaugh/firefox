@@ -211,6 +211,35 @@ downloads **flyout** (toolbar downloads icon) is deliberately left native for qu
 
 ---
 
+## 🔑 Logins & Passwords Page
+
+Replaces `about:logins` with a full management page
+(`resources/logins/logins.html` → `chrome://userchrome/content/logins/logins.html`).
+
+**Features:** search, sort (site / username / last-used / created / times-used / password-changed),
+age/usage quick-filters (never used, 90/180/365-day stale), per-row reveal/edit/copy/delete,
+right-click context menu, add/edit dialog, checkbox multi-select with select-all, bulk delete, and
+bulk export-selected. **Import** from CSV (Firefox-compatible) and JSON. **Export** to CSV
+(re-importable), JSON (full metadata), and HTML (human-readable, with a plaintext-warning banner).
+
+**Auth:** password reveal / copy / export are gated behind OS/primary-password re-auth
+(`LoginHelper.requestReauth`, 5-minute expiry) — matching stock about:logins. Delete does not
+re-auth (same as Firefox).
+
+### Custom Preferences
+
+| Preference Name | Type | Default | Description |
+|----------------|------|---------|-------------|
+| `userchrome.logins.page.enabled` | boolean | true | Repoint all password-manager entry points to the Logins page instead of stock `about:logins` (via `JS/loginsRedirect.uc.js`) |
+
+### Wired entry points
+
+`JS/loginsRedirect.uc.js` patches `LoginHelper.openPasswordManager` — the single choke point for the
+app-menu **Passwords** button, the context-menu **Manage Passwords** item, the toolbar, and
+autocomplete footers. Set the pref to `false` to restore stock `about:logins`.
+
+---
+
 ## 🔎 QuickTabs — Search Selection
 
 With text selected, opens a **Quick Tab** (floating container, see `JS/quick_tabs.uc.js`) at

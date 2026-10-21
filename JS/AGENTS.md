@@ -20,6 +20,7 @@ Standalone UserChrome.js scripts loaded by fx-autoconfig. Each script is self-co
 | | `quick_tabs_search.uc.js` | Selected text → Quick Tab at the default engine's results (right-click item + `Ctrl+Alt+S`; prefs `userchrome.quicktabs.search.*`) |
 | **Content Tools** | `pdfTools.uc.js` | pdf.js viewer: download each page as an image (`@include resource://pdf.js/web/viewer.html*`) |
 | | `privateWindowHomepage.uc.js` | Private windows respect the configured homepage instead of about:privatebrowsing |
+| | `loginsRedirect.uc.js` | Repoints all password-manager entry points (`LoginHelper.openPasswordManager`) to the Logins page (`chrome://userchrome/content/logins/logins.html`; pref `userchrome.logins.page.enabled`) |
 | **System** | `minimizeMemory.uc.js` | Memory optimization |
 | | `space_and_separator_restorer.uc.js` | Restore spacing in UI |
 | **Styling** | `autocompletePopupStyler.uc.js` | Style autocomplete popup |

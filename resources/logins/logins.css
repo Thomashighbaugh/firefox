@@ -1,0 +1,407 @@
+/* Logins & Passwords page — full password management with batch ops and export. */
+
+:root {
+  color-scheme: light dark;
+  --log-bg: var(--firefoxcss-about-page-bg, light-dark(#f9f9fb, #1c1b22));
+  --log-card: var(--firefoxcss-about-page-item-bg, light-dark(#ffffff, #2b2a33));
+  --log-fg: light-dark(#15141a, #fbfbfe);
+  --log-dim: color-mix(in srgb, var(--log-fg) 60%, transparent);
+  --log-border: color-mix(in srgb, var(--log-fg) 14%, transparent);
+  --log-radius: 8px;
+  --log-accent: var(--color-accent-primary, #0060df);
+  --log-danger: light-dark(#c50042, #ff9aa2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--log-bg);
+  color: var(--log-fg);
+  font: message-box;
+}
+
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px 12px;
+  background: color-mix(in srgb, var(--log-bg) 90%, transparent);
+  backdrop-filter: blur(14px);
+}
+
+.page-title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.search-input {
+  margin-inline-start: auto;
+  width: min(420px, 45vw);
+  padding: 7px 12px;
+  border: 1px solid var(--log-border);
+  border-radius: var(--log-radius);
+  background: var(--log-card);
+  color: inherit;
+  font: inherit;
+}
+
+.search-input:focus {
+  outline: 2px solid var(--log-accent);
+  outline-offset: 1px;
+}
+
+/* ------------------------------------------------------------ toolbar */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 24px 12px;
+  border-bottom: 1px solid var(--log-border);
+  position: sticky;
+  top: 57px;
+  z-index: 2;
+  background: color-mix(in srgb, var(--log-bg) 90%, transparent);
+  backdrop-filter: blur(14px);
+}
+
+.toolbar-spacer {
+  flex: 1;
+}
+
+.sort-select {
+  padding: 6px 10px;
+  border: 1px solid var(--log-border);
+  border-radius: 6px;
+  background: var(--log-card);
+  color: inherit;
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.tool-btn {
+  padding: 6px 14px;
+  border: 1px solid var(--log-border);
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.tool-btn:hover {
+  background: color-mix(in srgb, var(--log-fg) 10%, transparent);
+}
+
+.tool-primary {
+  background: var(--log-accent);
+  border-color: var(--log-accent);
+  color: #fff;
+}
+
+.tool-primary:hover {
+  filter: brightness(1.1);
+  background: var(--log-accent);
+}
+
+.menu-wrap {
+  position: relative;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  inset-inline-end: 0;
+  z-index: 10;
+  min-width: 180px;
+  padding: 4px;
+  border: 1px solid var(--log-border);
+  border-radius: 8px;
+  background: var(--log-card);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  padding: 7px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.menu-item:hover {
+  background: color-mix(in srgb, var(--log-fg) 10%, transparent);
+}
+
+/* ------------------------------------------------------------ bulk bar */
+
+.bulkbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 24px;
+  border-bottom: 1px solid var(--log-border);
+  background: color-mix(in srgb, var(--log-bg) 92%, transparent);
+  position: sticky;
+  top: 100px;
+  z-index: 1;
+}
+
+.bulk-select-all {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+}
+
+.bulk-count {
+  color: var(--log-dim);
+  font-size: 0.85rem;
+}
+
+.bulk-btn {
+  padding: 5px 12px;
+  border: 1px solid var(--log-border);
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.bulk-btn:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--log-fg) 10%, transparent);
+}
+
+.bulk-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.bulk-danger:not(:disabled) {
+  color: var(--log-danger);
+  border-color: color-mix(in srgb, #c50042 40%, var(--log-border));
+}
+
+/* ------------------------------------------------------------ rows */
+
+.panels {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 24px 64px;
+}
+
+.rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--log-border);
+  border-radius: var(--log-radius);
+  background: var(--log-card);
+}
+
+.row:hover {
+  border-color: color-mix(in srgb, var(--log-accent) 45%, var(--log-border));
+}
+
+.row-icon {
+  width: 16px;
+  height: 16px;
+  -moz-context-properties: fill;
+}
+
+.row-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.row-top {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 0;
+}
+
+.row-title {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.row-user {
+  color: var(--log-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.row-password {
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: var(--log-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+}
+
+.row-meta {
+  color: var(--log-dim);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.row-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.row-btn {
+  padding: 4px 10px;
+  border: 1px solid var(--log-border);
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.row-btn:hover {
+  background: color-mix(in srgb, var(--log-fg) 10%, transparent);
+}
+
+.row-danger {
+  color: var(--log-danger);
+}
+
+.empty {
+  color: var(--log-dim);
+  font-size: 0.9rem;
+}
+
+/* ------------------------------------------------------------ context menu */
+
+.context-menu {
+  position: fixed;
+  z-index: 100;
+  min-width: 180px;
+  padding: 4px;
+  border: 1px solid var(--log-border);
+  border-radius: 8px;
+  background: var(--log-card);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.context-menu-item {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  padding: 7px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.context-menu-item:hover {
+  background: color-mix(in srgb, var(--log-fg) 10%, transparent);
+}
+
+/* ------------------------------------------------------------ dialog */
+
+.dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog {
+  width: min(440px, 90vw);
+  padding: 24px;
+  border: 1px solid var(--log-border);
+  border-radius: 12px;
+  background: var(--log-card);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+}
+
+.dialog-title {
+  margin: 0 0 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.field-label {
+  font-size: 0.85rem;
+  color: var(--log-dim);
+}
+
+.field-input {
+  padding: 8px 12px;
+  border: 1px solid var(--log-border);
+  border-radius: 6px;
+  background: var(--log-bg);
+  color: inherit;
+  font: inherit;
+}
+
+.field-input:focus {
+  outline: 2px solid var(--log-accent);
+  outline-offset: 1px;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 20px;
+}

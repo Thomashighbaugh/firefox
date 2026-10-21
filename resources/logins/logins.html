@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Logins &amp; Passwords</title>
+    <link rel="stylesheet" href="logins.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1 class="page-title">Logins &amp; Passwords</h1>
+      <input
+        id="logins-search"
+        class="search-input"
+        type="search"
+        placeholder="Search logins…"
+        aria-label="Search logins"
+        autocomplete="off"
+        spellcheck="false"
+      />
+    </header>
+
+    <div class="toolbar" role="toolbar" aria-label="Logins actions">
+      <select id="sort" class="sort-select" aria-label="Sort logins">
+        <option value="origin">Sort: Site</option>
+        <option value="username">Sort: Username</option>
+        <option value="timeLastUsed">Sort: Last used</option>
+        <option value="timeCreated">Sort: Date created</option>
+        <option value="timesUsed">Sort: Times used</option>
+        <option value="timePasswordChanged">Sort: Password changed</option>
+      </select>
+
+      <select id="age-filter" class="sort-select" aria-label="Filter by age">
+        <option value="all">All logins</option>
+        <option value="never-used">Never used</option>
+        <option value="stale-90">Not used in 90+ days</option>
+        <option value="stale-180">Not used in 180+ days</option>
+        <option value="stale-365">Not used in a year</option>
+      </select>
+
+      <span class="toolbar-spacer"></span>
+
+      <button class="tool-btn" id="import-btn" type="button">Import…</button>
+      <div class="menu-wrap">
+        <button class="tool-btn" id="export-btn" type="button" aria-haspopup="true">
+          Export ▾
+        </button>
+        <div class="menu" id="export-menu" role="menu" hidden>
+          <button class="menu-item" data-format="csv" type="button">Export as CSV…</button>
+          <button class="menu-item" data-format="json" type="button">Export as JSON…</button>
+          <button class="menu-item" data-format="html" type="button">Export as HTML…</button>
+        </div>
+      </div>
+      <button class="tool-btn" id="add-btn" type="button">Add login…</button>
+    </div>
+
+    <div class="bulkbar" id="bulkbar">
+      <label class="bulk-select-all">
+        <input type="checkbox" id="select-all" /> Select all
+      </label>
+      <span class="bulk-count" id="bulk-count">0 selected</span>
+      <button class="bulk-btn" id="bulk-export" type="button" disabled>Export selected ▾</button>
+      <div class="menu" id="bulk-export-menu" role="menu" hidden>
+        <button class="menu-item" data-format="csv" type="button">CSV…</button>
+        <button class="menu-item" data-format="json" type="button">JSON…</button>
+        <button class="menu-item" data-format="html" type="button">HTML…</button>
+      </div>
+      <button class="bulk-btn bulk-danger" id="bulk-delete" type="button" disabled>
+        Delete selected
+      </button>
+      <button class="bulk-btn" id="bulk-clear" type="button" disabled>Clear</button>
+    </div>
+
+    <main class="panels">
+      <section class="panel" role="tabpanel">
+        <ul class="rows" id="rows"></ul>
+        <p class="empty" id="empty" hidden>No logins match.</p>
+      </section>
+    </main>
+
+    <div id="context-menu" class="context-menu" role="menu" hidden></div>
+
+    <!-- Add/Edit dialog -->
+    <div class="dialog-backdrop" id="dialog-backdrop" hidden>
+      <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+        <h2 id="dialog-title" class="dialog-title">Add login</h2>
+        <label class="field">
+          <span class="field-label">Website address</span>
+          <input class="field-input" id="f-origin" type="text" placeholder="https://example.com" />
+        </label>
+        <label class="field">
+          <span class="field-label">Username</span>
+          <input class="field-input" id="f-username" type="text" autocomplete="off" />
+        </label>
+        <label class="field">
+          <span class="field-label">Password</span>
+          <input class="field-input" id="f-password" type="password" autocomplete="new-password" />
+        </label>
+        <div class="dialog-actions">
+          <button class="tool-btn" id="dialog-cancel" type="button">Cancel</button>
+          <button class="tool-btn tool-primary" id="dialog-save" type="button">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="logins.mjs"></script>
+  </body>
+</html>

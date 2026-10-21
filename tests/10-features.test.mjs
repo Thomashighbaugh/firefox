@@ -204,8 +204,9 @@ test("drop-to-split creates a native split view via gBrowser.addTabSplitView", (
 });
 
 test("drop-to-split has content-area left/right drop zones", () => {
-  assert.match(dts, /dataset\.side\s*=\s*"left"/);
-  assert.match(dts, /dataset\.side\s*=\s*"right"/);
+  assert.match(dts, /mk\([^)]*"left"\)/);
+  assert.match(dts, /mk\([^)]*"right"\)/);
+  assert.match(dts, /z\.dataset\.side\s*=\s*side/);
 });
 
 test("drop-to-split adds a tab context-menu item", () => {

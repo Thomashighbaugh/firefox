@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Changes
 
+- **2026-10-21 13:19** [Task 6] Fixed drop-to-split: detach-to-new-window happens on `dragend`, not a content `drop`, so the drag now intercepts `dragend` in capture phase, splits via `gBrowser.addTabSplitView` when the drop is over a content left/right zone, and sets `dropEffect=move` so the native detach is skipped. Tests 51/51.
+
 - **2026-10-21 11:40** [Task 6] **Drop-to-split** (`JS/dropToSplit.uc.js`): dragging a tab over the page shows left/right drop zones; dropping splits the dragged tab with the current tab into a native 2-pane split view (`gBrowser.addTabSplitView`). Also adds a **Split with current tab** tab-context-menu item. Behind `userchrome.dropToSplit.enabled` (default on). The 2×2 grid is deferred to the fork (native split view is 2-pane). Tests 51/51.
 
 - **2026-10-21 11:24** [Library / Downloads] Downloads view gained **Retry** (restarts a failed/incomplete download via `Download.start()`) and **Copy link** (copies the original download URL to the clipboard), restoring the native downloads manager's core actions. Added an `extraActions` slot to the library row builder. Tests 47/47.

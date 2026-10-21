@@ -130,31 +130,21 @@ tab from any section works; falls back to stock new tab if the pref is off.
 
 ---
 
-## Task 3 — Session-durable Workspaces over Firefox Tab Groups (P2)
+## Task 3 — Workspaces — REMOVED, folded into native Tab Groups
 
-**Status: ✅ implemented 2026-10-15, smoke-tested** (in daily use).
+**Status: ❌ removed 2026-10-20.** The `Workspaces` branding layer was cut. Rationale: it was a
+confusing extra name over functionality Firefox already has, and its hide/collapse logic fought
+SessionStore. What survives is **native tab groups** on their own terms — no hiding, no switching,
+no parallel concept of a "workspace" or "Session". The Home page's **Groups** view (nav tab)
+supersedes the old **Workspaces** view, and the tab context menu's **Add to Tab Group** supersedes
+**Move to Workspace**.
 
-**Delivered:**
-- `JS/workspaces.uc.js` — workspaces = native tab groups; catch-all **Session** for ungrouped
-  tabs. `switchTo(id)` shows the target workspace's tabs and hides the rest (pinned tabs stay);
-  active id persisted in `userchrome.workspaces.active`; applied on `sessionstore-windows-restored`.
-- Hotkeys `Ctrl+Alt+1…9` (group workspaces), `Ctrl+Alt+0` (Session). New tabs join the active
-  group workspace. Exposes `window.HiggsWorkspaces` (`list`/`switchTo`/`create`/`activeId`).
-- Home page: **Workspaces** nav view with per-workspace tab grids, a Switch button, and an
-  active indicator.
+**Removed:** `JS/workspaces.uc.js` (deleted); the Home page **Workspaces** nav view, its renderer,
+and the `Move to Workspace` submenu; `userchrome.workspaces.active` pref; the `Ctrl+Alt+1…9/0`
+hotkeys; the Workspaces section in `.documentation/preferences.md`.
 
-**Original approach (for reference):**
-- A workspace **is** a tab group (`browser.tabs.groups`). A controller maps `groupId → workspace`.
-- Switching: activate the target group's tabs and move/hide the rest; on switch, **ungrouped tabs go
-  to the catch-all workspace** so nothing is lost.
-- Durability: rely on native Tab Groups + `SessionStore` persistence; add a small pref-backed index
-  (`userchrome.workspaces.*`) for naming/order.
-- Expose via hotkey + `about:config`.
-
-**Acceptance:** create/rename/switch workspaces; restart restores the active workspace and members;
-ungrouped tabs survive a switch; no tab loss.
-
-**Dependencies:** native Tab Groups available (FF137+; this machine is FF157).
+**Kept:** native tab groups (collapse/expand via the group header context menu in the **Groups**
+view), the **Add to Tab Group** submenu on every Home-page row, and the Groups nav view.
 
 ---
 
@@ -270,7 +260,7 @@ where possible; no per-item round-trips for bulk ops.
 | - | ---- | -------- | ----------- |
 | 1 | Second-sidebar refactor | **P1** | chrome JS (Lane 1) |
 | 2 | All-Tabs-Menu home/new-tab | P2 | page + pref (Lane 1/2) | ✅ done |
-| 3 | Durable workspaces via Tab Groups | P2 | chrome JS + prefs | ✅ done |
+| 3 | ~~Workspaces~~ → native Tab Groups | P2 | chrome JS | ❌ removed (folded into Groups) |
 | 4 | Library → `about:` page | P2 | page + Places/Downloads | ✅ done |
 | 5 | QuickTabs Search | P3 | chrome JS (Lane 1) | ✅ done |
 | 6 | Drop-to-split + 2×2 | P3 | chrome JS, maybe patch |

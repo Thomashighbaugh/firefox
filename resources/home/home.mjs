@@ -269,43 +269,6 @@ function addToGroupSubmenu(win, resolveTabs) {
   return { label: "Add to Tab Group", submenu: items };
 }
 
-/**
- * Submenu that moves the resolved tab(s) into a workspace (of this window).
- * Workspaces are the native tab groups plus the catch-all "Session".
- * @param {object} win
- * @param {() => object[]} resolveTabs  returns the tab(s) to move
- */
-function moveToWorkspaceSubmenu(win, resolveTabs) {
-  const api = win.HiggsWorkspaces;
-  if (!api) return null;
-  const active = api.activeId();
-  const items = api.list().map((w) => ({
-    label: `${w.name}${w.id === active ? "  ✓" : ""}`,
-    onSelect: () => {
-      for (const tab of resolveTabs()) api.moveTab(tab, w.id);
-    },
-  }));
-  items.push({
-    label: "New Workspace…",
-    onSelect: () => {
-      const tabs = resolveTabs();
-      if (!tabs.length) return;
-      const group = win.gBrowser.addTabGroup(tabs, {});
-      const gb = win.gBrowser;
-      Services.tm.dispatchToMainThread(() => {
-        try {
-          if (group && gb.tabGroupMenu?.panel?.state === "closed") {
-            gb.tabGroupMenu.openCreateModal(group);
-          }
-        } catch (e) {
-          /* ignore */
-        }
-      });
-    },
-  });
-  return { label: "Move to Workspace", submenu: items };
-}
-
 /* ------------------------------------------------------------ per-source menus */
 
 function tabMenu(tab, win) {
@@ -327,8 +290,6 @@ function tabMenu(tab, win) {
     { label: "Copy URL", onSelect: () => copyToClipboard(tab.linkedBrowser?.currentURI?.spec ?? "") },
     addToGroupSubmenu(win, () => [tab]),
   ];
-  const wsMenu = moveToWorkspaceSubmenu(win, () => [tab]);
-  if (wsMenu) items.push(wsMenu);
   if (tab.hidden) {
     items.unshift({
       label: "Unhide Tab",
@@ -348,8 +309,6 @@ function closedMenu(entry, win) {
     addToGroupSubmenu(win, () => restoreEntry(entry, win)),
     { label: "Copy URL", onSelect: () => copyToClipboard(entry.url ?? "") },
   ];
-  const wsMenu = moveToWorkspaceSubmenu(win, () => restoreEntry(entry, win));
-  if (wsMenu) items.push(wsMenu);
   return items;
 }
 
@@ -359,8 +318,6 @@ function syncedMenu(tab, win) {
     addToGroupSubmenu(win, () => openSynced(tab.url, win)),
     { label: "Copy URL", onSelect: () => copyToClipboard(tab.url ?? "") },
   ];
-  const wsMenu = moveToWorkspaceSubmenu(win, () => openSynced(tab.url, win));
-  if (wsMenu) items.push(wsMenu);
   return items;
 }
 
@@ -403,52 +360,6 @@ function renderHidden(win) {
   const tabs = [...win.gBrowser.tabs].filter(isHidden);
   renderGrid("#grid-hidden", "hidden", tabs, win);
   setNavCount("hidden", tabs.length);
-}
-
-function renderWorkspaces(win) {
-  const container = $("#workspaces");
-  container.textContent = "";
-  const api = win.HiggsWorkspaces;
-  if (!api) {
-    $("[data-empty=workspaces]").hidden = false;
-    setNavCount("workspaces", 0);
-    return;
-  }
-  const active = api.activeId();
-  const workspaces = api.list();
-  for (const w of workspaces) {
-    const section = document.createElement("section");
-    section.className = "group workspace" + (w.id === active ? " workspace-active" : "");
-    section.dataset.text = (w.name ?? "").toLowerCase();
-
-    const head = document.createElement("div");
-    head.className = "group-head";
-    const dot = document.createElement("span");
-    dot.className = "group-dot";
-    if (w.color) dot.dataset.color = w.color;
-    const h = document.createElement("h3");
-    h.className = "group-title";
-    h.textContent = w.name;
-    const count = document.createElement("span");
-    count.className = "group-count";
-    count.textContent = `${w.tabs.length}`;
-    const sw = document.createElement("button");
-    sw.className = "workspace-switch";
-    sw.type = "button";
-    sw.textContent = w.id === active ? "Active" : "Switch";
-    sw.disabled = w.id === active;
-    sw.addEventListener("click", () => api.switchTo(w.id));
-    head.append(dot, h, count, sw);
-    section.appendChild(head);
-
-    const grid = document.createElement("div");
-    grid.className = "grid";
-    for (const tab of w.tabs) grid.appendChild(makeTabCard(tab, win));
-    section.appendChild(grid);
-    container.appendChild(section);
-  }
-  $("[data-empty=workspaces]").hidden = workspaces.length > 0;
-  setNavCount("workspaces", workspaces.length);
 }
 
 function renderGroups(win) {  const container = $("#groups");
@@ -604,7 +515,6 @@ function applyFilter() {
 
 function refresh(win) {
   renderOpen(win);
-  renderWorkspaces(win);
   renderHidden(win);
   renderGroups(win);
   renderClosed(win);

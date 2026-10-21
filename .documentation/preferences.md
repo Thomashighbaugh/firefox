@@ -188,31 +188,6 @@ tabs, with a search filter.
 
 ---
 
-## 🗂 Workspaces
-
-Zen-style workspaces built on **native Firefox tab groups** (`JS/workspaces.uc.js`).
-Each tab group is a workspace; a catch-all **Session** workspace holds ungrouped
-tabs. Switching shows one workspace's tabs and hides the rest (pinned tabs stay
-in every workspace). The active workspace is restored on restart.
-
-### Custom Preferences
-
-| Preference Name | Type | Default | Description |
-|----------------|------|---------|-------------|
-| `userchrome.workspaces.active` | string | `__session__` | Id of the active workspace (a tab-group id, or `__session__` for the catch-all) |
-
-### Hotkeys
-
-| Keys | Action |
-|------|--------|
-| `Ctrl+Alt+1…9` | Switch to the Nth tab-group workspace |
-| `Ctrl+Alt+0` | Switch to the **Session** workspace |
-
-The Home page also has a **Workspaces** view (nav tab) with a Switch button and
-an active indicator.
-
----
-
 ## 📚 Library Page
 
 Replaces the Library popup with a full page

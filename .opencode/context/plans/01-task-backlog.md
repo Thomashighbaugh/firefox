@@ -1,5 +1,5 @@
 ---
-title: "Task backlog — 8 tasks before fork work"
+title: "Task backlog — 9 tasks before fork work"
 type: plan
 tags: [backlog, refactor, second-sidebar, newtab, workspaces, library, quicktabs, split-tabs, shortcuts, passwords]
 created: 2026-10-12
@@ -262,6 +262,38 @@ reveal/export prompt for OS/primary auth; stock about:logins reachable when the 
 
 ---
 
+## Task 9 — Full documentation + screen-recorded GIF demos (P3)
+
+**Status: ⬜ not started.**
+
+**Goal:** bring the project's docs to a complete, current state and produce a screen-recorded
+**GIF demo for every user-facing feature**, so the README and per-feature docs show each feature
+working — not just describe it.
+
+**Scope:**
+- **Docs pass:** audit + refresh `README.md`, `AGENTS.md` (root + subsystem), `.documentation/`
+  (preferences.md, javascript-modules.md, CHANGELOG.md), and per-component docs so every script,
+  page (Home, Library, Logins), pref (`userchrome.*`), and hotkey is documented and current. Fill
+  the gaps left by the recent feature work (Logins page, QuickTabs search, Home/Library redirects).
+- **GIF demos:** for each feature, record a short screen capture of the interaction, then convert
+  to an optimized, looping GIF. Candidates: vertical tabs, second sidebar web panels, Home/new-tab
+  page (all 5 views), Library page (4 views + batch ops), Logins page (reveal/auth + batch ops +
+  export), QuickTabs (+ search-from-selection), tab groups / collapse, restart button, toolbar
+  customizations, animations.
+- **Wire-in:** embed each GIF alongside its feature section in the README / docs; store the source
+  recordings + the GIFs under `.documentation/demos/` (or a `docs/assets/` dir).
+
+**Tooling (to decide at build time):**
+- Record: `wf-recorder` / `obs` / `peek` (Wayland on Sway — confirm what works on this machine).
+- Convert/optimize: `ffmpeg` (`-vf "fps=…,scale=…:flags=lanczos,palettegen/paletteuse"`) or `gifski`
+  for better quality/size. Keep each GIF short (<10 s), small (<2 MB), and looping.
+
+**Acceptance:** every documented feature has a current doc entry; every user-facing feature has a
+linked GIF that actually shows the interaction; GIFs are committed under a demos/assets dir and
+referenced from README/docs; total added repo weight stays reasonable.
+
+---
+
 ## Summary table
 
 | # | Task | Priority | Lane impact |
@@ -274,3 +306,4 @@ reveal/export prompt for OS/primary auth; stock about:logins reachable when the 
 | 6 | Drop-to-split + 2×2 | P3 | chrome JS, maybe patch |
 | 7 | Shortcut cheat-sheet | P3 | chrome JS + registry |
 | 8 | Logins & Passwords page | P3 | page + LoginManager | ✅ done |
+| 9 | Docs + GIF demos | P3 | docs + screen capture |

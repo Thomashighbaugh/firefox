@@ -8,7 +8,7 @@
 
 ## Plans & Brainstorms
 
-- [plans/](plans/) — Durable plan/backlog for turning this theme into a **Linux-only Firefox fork with a Gjoa-style 3-lane dev loop**. `00-fork-3-lane-roadmap.md` (lanes, plus open decisions: retire Higgs Boson branding, Beagle-alternative language, `userchrome.*` prefs/hotkey matrix) and `01-task-backlog.md` (8 tasks: second-sidebar refactor, All-Tabs-Menu home/new-tab, native Tab Groups (workspaces concept removed), Library→about: page, QuickTabs Search, drop-to-split + 2×2, shortcut cheat-sheet, about:passwords batch).
+- [plans/](plans/) — Durable plan/backlog for turning this theme into a **Linux-only Firefox fork with a Gjoa-style 3-lane dev loop**. `00-fork-3-lane-roadmap.md` (lanes, plus open decisions: retire Higgs Boson branding, Beagle-alternative language, `userchrome.*` prefs/hotkey matrix) and `01-task-backlog.md` (9 tasks: second-sidebar refactor, All-Tabs-Menu home/new-tab, native Tab Groups (workspaces concept removed), Library→about: page, QuickTabs Search, drop-to-split + 2×2, shortcut cheat-sheet, Logins & Passwords page, full docs + GIF demos).
 - [userchrome-ideas-brainstorm.md](userchrome-ideas-brainstorm.md) — 37 userChrome.js feature ideas across 6 themes, ranked by impact/feasibility. Top 5: Command Palette, Tab Search, URL Cleaner, Temporary Container, Tab Snooze.
 
 ## External References

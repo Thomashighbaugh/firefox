@@ -283,10 +283,20 @@ working — not just describe it.
 - **Wire-in:** embed each GIF alongside its feature section in the README / docs; store the source
   recordings + the GIFs under `.documentation/demos/` (or a `docs/assets/` dir).
 
-**Tooling (to decide at build time):**
-- Record: `wf-recorder` / `obs` / `peek` (Wayland on Sway — confirm what works on this machine).
-- Convert/optimize: `ffmpeg` (`-vf "fps=…,scale=…:flags=lanczos,palettegen/paletteuse"`) or `gifski`
-  for better quality/size. Keep each GIF short (<10 s), small (<2 MB), and looping.
+**Tooling (scripted, X11):** this machine is **X11** (`$XDG_SESSION_TYPE=x11`), not Wayland. The
+pipeline is fully scripted under `.opencode/tools/demos/` so no manual recording is needed:
+- `demo-record.sh` — one command records + converts every feature. Focuses Firefox, drives each
+  interaction hands-off via `xdotool`, records a windowed region with `ffmpeg x11grab`, and
+  converts to an optimized looping GIF. `./demo-record.sh --list` lists features;
+  `./demo-record.sh <name>…` records only those.
+- `record-demo.sh` — record a single feature to raw `.mp4`.
+- `to-gif.sh` — `ffmpeg` palettegen+paletteuse → `gifsicle -O3 --lossy` for an optimized,
+  loop-forever GIF.
+- Feature interactions use **verified bindings** (Home = Ctrl+T, Library = Ctrl+Shift+H, Logins =
+  `about:logins`, QuickTabs = Ctrl+Shift+9/F4, selection-search = Ctrl+Alt+S). Sidebar toggles via
+  its toolbar widget (shortcuts are user-configured, often unset).
+- Output: raw captures in `.documentation/demos/raw/`, GIFs in `.documentation/demos/`
+  (loop-forever, ≤ ~960 px, ~15 fps).
 
 **Acceptance:** every documented feature has a current doc entry; every user-facing feature has a
 linked GIF that actually shows the interaction; GIFs are committed under a demos/assets dir and

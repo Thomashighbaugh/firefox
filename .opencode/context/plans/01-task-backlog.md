@@ -201,22 +201,26 @@ with a selection; hotkey rebindable.
 
 ---
 
-## Task 6 — Drop-to-split + 4-way splits (P3)
+## Task 6 — Drop-to-split + 4-way splits (P3) — drop-to-split ✅ done, 2×2 deferred to fork
 
-**Goal:** dropping a tab on the content area triggers split view; extend split view to a **2×2 grid**.
+**Status:** Drop-to-split is **done** (`JS/dropToSplit.uc.js`): content-area left/right drop zones
+while dragging a tab + a tab context-menu "Split with current tab" item, both calling
+`gBrowser.addTabSplitView`. Behind pref `userchrome.dropToSplit.enabled`. **2×2 grid deferred to the
+fork** — native split view is 2-pane; re-parenting 4 tabs' `<browser>`s into a custom grid fights
+SessionStore/tab-close (see notes).
 
-**Approach:**
-- Native split view exists (`browser.tabs.splitView.enabled` is already set on this machine) — it
-  supports **2 panes**. Drop-to-split: intercept drag-drop on `#tabbrowser-tabpanels` and call the
-  split API.
-- **2×2 grid** is not native: needs either two stacked split-views, or a custom grid container that
-  hosts 4 `<browser>`s. This is a real feature — plan a prototype before committing.
-- Prefs `userchrome.split.dropToSplit`, `userchrome.split.grid4`.
+**Approach (drop-to-split, done):**
+- Drag detection: capture-phase `dragstart`/`dragend` on the tab strip records the dragged tab;
+  `dragover`/`drop` on `#browser` shows the zones and calls the split API. Zones split the dragged
+  tab to the left/right of the current tab.
 
-**Acceptance:** dropping a tab on content splits it; 4-way grid renders and is interactive; unsplit
-restores cleanly.
+**Approach (2×2, fork):** needs a custom grid container hosting 4 `<browser>`s; plan a prototype.
+- Prefs: `userchrome.dropToSplit.enabled` (done); `userchrome.split.grid4` (fork).
 
-**Risks:** the 2×2 grid may require patching `tabbrowser` (Lane 2/3) — scope it in a spike.
+**Acceptance:** dropping a tab on content splits it ✅; 4-way grid renders and is interactive (fork);
+unsplit restores cleanly (native).
+
+**Risks:** the 2×2 grid may require patching `tabbrowser` (Lane 2/3) — deferred as decided.
 
 ---
 

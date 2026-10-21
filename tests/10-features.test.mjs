@@ -194,3 +194,25 @@ test("downloads rows can copy the download link", () => {
   assert.match(lib, /Copy link/);
   assert.match(lib, /nsIClipboardHelper|clipboardhelper/);
 });
+
+/* ------------------------------- drop to split ------------------------------- */
+
+const dts = fs.readFileSync(`${REPO}/JS/dropToSplit.uc.js`, "utf8");
+
+test("drop-to-split creates a native split view via gBrowser.addTabSplitView", () => {
+  assert.match(dts, /addTabSplitView/);
+});
+
+test("drop-to-split has content-area left/right drop zones", () => {
+  assert.match(dts, /dataset\.side\s*=\s*"left"/);
+  assert.match(dts, /dataset\.side\s*=\s*"right"/);
+});
+
+test("drop-to-split adds a tab context-menu item", () => {
+  assert.match(dts, /tabContextMenu/);
+  assert.match(dts, /dropToSplit-context-item/);
+});
+
+test("drop-to-split is behind the userchrome.dropToSplit.enabled pref", () => {
+  assert.match(dts, /userchrome\.dropToSplit\.enabled/);
+});

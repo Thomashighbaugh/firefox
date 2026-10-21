@@ -316,3 +316,11 @@ If you add new preferences to the theme:
 ---
 
 *Last updated: October 2026*
+
+### `userchrome.dropToSplit.enabled` (default `true`)
+
+Drop-to-split (`JS/dropToSplit.uc.js`). While dragging a tab over the page content,
+left/right drop zones appear; dropping on a half splits the dragged tab with the
+current tab into a native 2-pane split view. Also adds a **Split with current tab**
+item to the tab context menu. (2×2 grid deferred to the fork — native split view is
+2-pane.)

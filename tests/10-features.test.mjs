@@ -217,3 +217,43 @@ test("drop-to-split adds a tab context-menu item", () => {
 test("drop-to-split is behind the userchrome.dropToSplit.enabled pref", () => {
   assert.match(dts, /userchrome\.dropToSplit\.enabled/);
 });
+
+/* --------------------------- shortcut cheat-sheet --------------------------- */
+
+const scs = fs.readFileSync(`${REPO}/JS/shortcutCheatsheet.uc.js`, "utf8");
+
+test("shortcut cheatsheet exposes a registry and enumerates XUL keys", () => {
+  assert.match(scs, /window\.HiggsShortcuts\s*=/);
+  assert.match(scs, /register\(entry\)/);
+  assert.match(scs, /querySelectorAll\("keyset key"\)/);
+});
+
+test("shortcut cheatsheet includes second-sidebar bindings from prefs", () => {
+  assert.match(scs, /second-sidebar\.settings/);
+  assert.match(scs, /second-sidebar\.web-panels/);
+  assert.match(scs, /sidebarWidgetShortcut/);
+  assert.match(scs, /lastWebPanelShortcut/);
+});
+
+test("shortcut cheatsheet adds a toolbar button and a searchable panel", () => {
+  assert.match(scs, /CustomizableUI\.createWidget/);
+  assert.match(scs, /higgs-shortcut-cheatsheet-panel/);
+  assert.match(scs, /addEventListener\("input", renderList\)/);
+  assert.match(scs, /openPopup/);
+});
+
+test("shortcut cheatsheet rows invoke their binding", () => {
+  assert.match(scs, /invokeEntry/);
+  assert.match(scs, /doCommand/);
+  assert.match(scs, /dispatchShortcut/);
+});
+
+test("shortcut cheatsheet is behind userchrome.shortcuts.* prefs", () => {
+  assert.match(scs, /userchrome\.shortcuts\.button/);
+  assert.match(scs, /userchrome\.shortcuts\.hotkey/);
+  assert.match(scs, /Ctrl\+Alt\+K/);
+  assert.match(
+    fs.readFileSync(`${REPO}/userChrome.css`, "utf8"),
+    /CSS\/chrome\/shortcut-cheatsheet\.css/,
+  );
+});

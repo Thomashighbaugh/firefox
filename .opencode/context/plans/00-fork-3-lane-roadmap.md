@@ -95,6 +95,12 @@ Every component needs an `about:config` toggle and a rebindable hotkey. Namespac
 Deliverable: a `userchrome.*` pref schema + a `Shortcuts` registry design (one place that owns all
 bindings, so the task-7 cheat-sheet can enumerate them).
 
+**Status 2026-10-24:** the registry shipped with Task 7 — `window.HiggsShortcuts` +
+`window.HiggsShortcutsQueue` in `JS/shortcutCheatsheet.uc.js`. It is a runtime registry layered over
+the live DOM (`<keyset><key>`) and the second-sidebar JSON prefs rather than a declarative manifest;
+components with no XUL key call `register({id,name,keys,category,invoke})`. The cheat-sheet prefs
+(`userchrome.shortcuts.button`, `userchrome.shortcuts.hotkey`) are live.
+
 ## 00.6 Order of work
 
 1. **Finish the theme itself** (task backlog — §01), still on the current overlay. Refactors/features

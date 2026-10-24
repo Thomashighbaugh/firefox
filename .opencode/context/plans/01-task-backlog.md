@@ -226,6 +226,14 @@ unsplit restores cleanly (native).
 
 ## Task 7 — Shortcut cheat-sheet toolbar button with search (P3)
 
+**Status: ✅ implemented 2026-10-24** (needs live smoke test).
+
+**Delivered:**
+- `JS/shortcutCheatsheet.uc.js` — `window.HiggsShortcuts` registry + `window.HiggsShortcutsQueue`; enumerates live `<keyset><key>` bindings, second-sidebar JSON-pref shortcuts, and registered entries; toolbar widget, `Ctrl+Alt+K` hotkey, searchable panel with click/Enter invocation.
+- `CSS/chrome/shortcut-cheatsheet.css` — panel layout, category headers, key chips, toolbar icon.
+- Prefs `userchrome.shortcuts.button` (default `true`) and `userchrome.shortcuts.hotkey` (default `Ctrl+Alt+K`).
+- Tests 56/56.
+
 **Goal:** a toolbar icon opening a searchable panel of **all currently configured shortcuts**.
 
 **Approach:**

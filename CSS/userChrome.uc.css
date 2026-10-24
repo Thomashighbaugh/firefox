@@ -102,6 +102,14 @@ DEPENDENCIES: variables.css, colors.css
 @import url("CSS/chrome/buttons.css");
 
 /*=====================================================================================================
+IMPORT: Shortcut Cheat-sheet
+PURPOSE: Styles the toolbar button and the searchable shortcut panel
+DESCRIPTION: Panel chrome, search field, category headers, rows and key chips
+DEPENDENCIES: variables.css, colors.css
+=====================================================================================================*/
+@import url("CSS/chrome/shortcut-cheatsheet.css");
+
+/*=====================================================================================================
 IMPORT: URL Auto-Hide Behavior
 PURPOSE: Controls URL bar visibility and auto-hide functionality
 DESCRIPTION: Implements smart URL bar hiding/showing based on user interaction

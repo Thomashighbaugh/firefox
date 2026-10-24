@@ -1,0 +1,107 @@
+/* Shortcut cheat-sheet — toolbar button + searchable panel (JS/shortcutCheatsheet.uc.js) */
+
+#higgs-shortcut-cheatsheet .toolbarbutton-icon {
+  list-style-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='context-fill' fill-opacity='context-fill-opacity' d='M1.5 4A1.5 1.5 0 0 1 3 2.5h10A1.5 1.5 0 0 1 14.5 4v8a1.5 1.5 0 0 1-1.5 1.5H3A1.5 1.5 0 0 1 1.5 12V4Zm1 0v8a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V4a.5.5 0 0 0-.5-.5H3a.5.5 0 0 0-.5.5Zm1.5 1h1.5v1H4V5Zm2.5 0h1.5v1H6.5V5Zm2.5 0H10v1H9V5Zm2.5 0H12v1h-1V5ZM4 7h1.5v1H4V7Zm2.5 0h1.5v1H6.5V7Zm2.5 0H10v1H9V7Zm2.5 0H12v1h-1V7ZM4 9h8v1H4V9Z'/%3E%3C/svg%3E");
+}
+
+#higgs-shortcut-cheatsheet-panel {
+  --higgs-shortcut-row-hover: color-mix(in srgb, currentColor 10%, transparent);
+  --higgs-shortcut-chip-bg: color-mix(in srgb, currentColor 8%, transparent);
+}
+
+#higgs-shortcut-cheatsheet-panel .higgs-shortcut-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 380px;
+  max-height: 540px;
+  padding: 12px;
+}
+
+#higgs-shortcut-cheatsheet-panel .higgs-shortcut-search {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 7px 9px;
+  border: 1px solid var(--panel-border-color, color-mix(in srgb, currentColor 20%, transparent));
+  border-radius: 6px;
+  background: var(--arrowpanel-background, Field);
+  color: inherit;
+  font: inherit;
+}
+
+#higgs-shortcut-cheatsheet-panel .higgs-shortcut-search:focus {
+  outline: 2px solid var(--focus-outline-color, Highlight);
+  outline-offset: -1px;
+}
+
+#higgs-shortcut-cheatsheet-panel .higgs-shortcut-scroll {
+  max-height: 420px;
+}
+
+#higgs-shortcut-cheatsheet-panel .higgs-shortcut-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+#higgs-shortcut-cheatsheet-panel .higgs-shortcut-category {
+  margin: 10px 4px 4px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+#higgs-shortcut-cheatsheet-panel .higgs-shortcut-category:first-child {
+  margin-top: 2px;
+}
+
+#higgs-shortcut-cheatsheet-panel .higgs-shortcut-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#higgs-shortcut-cheatsheet-panel .higgs-shortcut-row:hover,
+#higgs-shortcut-cheatsheet-panel .higgs-shortcut-row:focus {
+  background: var(--higgs-shortcut-row-hover);
+  outline: none;
+}
+
+#higgs-shortcut-cheatsheet-panel .higgs-shortcut-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#higgs-shortcut-cheatsheet-panel .higgs-shortcut-keys {
+  flex-shrink: 0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--higgs-shortcut-chip-bg);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+#higgs-shortcut-cheatsheet-panel .higgs-shortcut-empty {
+  padding: 18px 8px;
+  text-align: center;
+  opacity: 0.65;
+}
+
+#higgs-shortcut-cheatsheet-panel .higgs-shortcut-footer {
+  border-top: 1px solid var(--panel-border-color, color-mix(in srgb, currentColor 15%, transparent));
+  padding-top: 7px;
+}
+
+#higgs-shortcut-cheatsheet-panel .higgs-shortcut-count {
+  font-size: 11px;
+  opacity: 0.6;
+}

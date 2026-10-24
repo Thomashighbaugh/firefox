@@ -42,8 +42,8 @@ A comprehensive Firefox customization project providing a highly customized brow
 - **JavaScript Extensions**: Advanced functionality through UserChrome.js scripts
 - **Library Page**: Full-page replacement for the Library popup — Bookmarks, History, Downloads and Tab Groups with batch multi-select and bulk delete; every legacy entry point (menu, hotkeys, organizer) is redirected to it
 - **Home / New Tab Page**: All-Tabs-Menu + Firefox View (other devices, recently closed) replacing the stock new-tab page
-- **Workspaces**: Zen-style workspaces on native Firefox tab groups, with a catch-all Session workspace and `Ctrl+Alt+1…9` switching
 - **QuickTabs Search**: Select text → `Ctrl+Alt+S` or the right-click menu opens a floating Quick Tab at your default engine's results
+- **Shortcut Cheat-sheet**: toolbar button / `Ctrl+Alt+K` opens a searchable list of every active browser, QuickTabs and second-sidebar binding; click a row to run it
 - **Animations**: render.js-inspired motion — a shared speed/easing token pair, a radial "fan" reveal for the tab-group editor's colour swatches, coloured glow, and ambient hover micro-interactions; all respect `prefers-reduced-motion`
 
 See the [Preferences Reference](.documentation/preferences.md) for every toggle these features expose.

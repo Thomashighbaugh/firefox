@@ -305,6 +305,49 @@ Edit group**, or the tab-group button) and hover the colour row to see the fan.
 
 ---
 
+## ⌨️ Shortcut Cheat-sheet
+
+`JS/shortcutCheatsheet.uc.js` adds a **Shortcut cheat-sheet** toolbar button (navbar) and a
+`Ctrl+Alt+K` hotkey. The panel lists every active binding from three sources:
+
+1. live XUL `<key>` elements in every `<keyset>` — native Firefox commands plus our scripts
+   (QuickTabs, the cheat-sheet hotkey itself). Because the DOM is read at open time, remapped
+   keys show their current binding;
+2. second-sidebar bindings from the `second-sidebar.settings` and `second-sidebar.web-panels`
+   JSON prefs (sidebar toggle, last web panel, each web panel);
+3. entries registered by other components through `window.HiggsShortcuts.register()`.
+
+Search filters by name, binding and category. Click a row (or focus it and press Enter) to run
+the action: XUL keys dispatch their command, second-sidebar entries replay their keypress or
+click the matching widget. `Esc` closes; `↑`/`↓` move between rows.
+
+### Custom Preferences
+
+| Preference | Type | Default | Description |
+|------------|------|---------|-------------|
+| `userchrome.shortcuts.button` | boolean | `true` | Show the toolbar button, hotkey and panel |
+| `userchrome.shortcuts.hotkey` | string | `Ctrl+Alt+K` | Hotkey that toggles the panel (`Ctrl`/`Alt`/`Shift`/`Meta` + key) |
+
+### Registry API
+
+```js
+window.HiggsShortcuts.register({
+  id: "my-feature:action",
+  name: "Do the thing",
+  keys: "Ctrl+Alt+T",
+  category: "Tools",
+  invoke: () => doTheThing(),
+});
+window.HiggsShortcuts.unregister("my-feature:action");
+window.HiggsShortcuts.open();   // open the panel programmatically
+```
+
+Scripts that load before this one can push the same descriptor shape onto
+`window.HiggsShortcutsQueue`; it is drained when the panel is built. Clicking a row invokes
+`entry.invoke` when provided, otherwise the binding is display-only.
+
+---
+
 ## 🤝 Contributing
 
 If you add new preferences to the theme:

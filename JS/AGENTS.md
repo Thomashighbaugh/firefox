@@ -1,6 +1,6 @@
 # AGENTS.md - Root-Level UserChrome.js Scripts
 
-**Context:** 16 standalone .uc.js scripts + 2 .sys.mjs background modules + 1 .uc.mjs module entry. Each .uc.js adds a specific Firefox enhancement. `AboutConfigMultipleSelection.uc.js` reaches about:config via `<browser>.contentDocument` because about:config is parent-process but lives in a tab `<browser>`, so the loader never sees it as a top-level window.
+**Context:** 23 standalone .uc.js scripts + 2 .sys.mjs background modules + 1 .uc.mjs module entry. Each .uc.js adds a specific Firefox enhancement. `AboutConfigMultipleSelection.uc.js` reaches about:config via `<browser>.contentDocument` because about:config is parent-process but lives in a tab `<browser>`, so the loader never sees it as a top-level window.
 
 ## OVERVIEW
 Standalone UserChrome.js scripts loaded by fx-autoconfig. Each script is self-contained and adds one feature (statusbar, restart button, PDF tools, etc.).
@@ -12,6 +12,7 @@ Standalone UserChrome.js scripts loaded by fx-autoconfig. Each script is self-co
 | **UI Components** | `extendedStatusbar.uc.js` | Customizable statusbar with link preview |
 | | `restart_button.uc.js` | Restart button in toolbar (left-click: normal, middle-click: clear cache) |
 | | `restart_item_in_menu.uc.js` | Restart item in menu |
+| | `shortcutCheatsheet.uc.js` | Searchable list of all active shortcuts (toolbar button, `Ctrl+Alt+K`); exposes `window.HiggsShortcuts` registry |
 | **Tab Management** | `openLinkInUnloadedTab.uc.js` | Open links without loading |
 | | `allTabsMenuExpansionPack.uc.js` | Reverse all-tabs order + mark pending/pinned/container rows (eval-free FF157 rewrite) |
 | | `tabGroupColorPicker.uc.js` | Disabled placeholder for tab-group accent color override |

@@ -49,7 +49,7 @@ firefox-theme/
 - Date and time should be surrounded by double asterisks to make them bold
 
 ### File Extensions
-- `.uc.js` - Standalone UserChrome.js scripts (18 files in JS/)
+- `.uc.js` - Standalone UserChrome.js scripts (23 files in JS/)
 - `.uc.mjs` - ES6 module entry point (`second_sidebar.uc.mjs`)
 - `.sys.mjs` - Background modules (sheet loaders); loaded by fx-autoconfig's background module system
 - `.mjs` - ES6 modules (internal, imported by .uc.mjs, located in `resources/second-sidebar/`)

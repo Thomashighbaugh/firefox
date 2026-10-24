@@ -257,3 +257,50 @@ test("shortcut cheatsheet is behind userchrome.shortcuts.* prefs", () => {
     /CSS\/chrome\/shortcut-cheatsheet\.css/,
   );
 });
+
+/* ---------------------- about-page cards + chrome alignment ---------------------- */
+
+const libCss = fs.readFileSync(`${REPO}/resources/library/library.css`, "utf8");
+const loginsCss = fs.readFileSync(
+  `${REPO}/resources/logins/logins.css`,
+  "utf8",
+);
+
+test("library and logins use the about:addons card grid", () => {
+  for (const css of [libCss, loginsCss]) {
+    assert.match(css, /\.rows\s*\{[^}]*grid-template-columns:\s*repeat\(auto-fill/);
+    assert.match(css, /\.row\s*\{[^}]*grid-template-columns:\s*auto auto minmax\(0,\s*1fr\) auto/);
+  }
+});
+
+test("sidebar More tools panel is wide and distinct from the extensions grid", () => {
+  const bo = fs.readFileSync(`${REPO}/CSS/chrome/buttons.css`, "utf8");
+  assert.match(bo, /#sidebar-tools-overflow\s*\{[^}]*width:\s*min\(40em/);
+  assert.match(bo, /#tools-overflow-list\s*\{[^}]*grid-template-columns:\s*repeat\(auto-fit/);
+  assert.match(bo, /#appmenu-moreTools\s+\.panel-subview-body/);
+});
+
+test("status bar reuses the sidebar gradient's end colour", () => {
+  const colors = fs.readFileSync(`${REPO}/CSS/common/colors.css`, "utf8");
+  assert.match(colors, /--firefoxcss-sidebar-end-bg-color/);
+  assert.match(
+    fs.readFileSync(`${REPO}/JS/extendedStatusbar.uc.js`, "utf8"),
+    /var\(--firefoxcss-sidebar-end-bg-color,\s*var\(--in-content-page-background\)\)/,
+  );
+});
+
+test("second-sidebar web panels share the tab button metrics", () => {
+  const sb = fs.readFileSync(
+    `${REPO}/resources/second-sidebar/css/second_sidebar.mjs`,
+    "utf8",
+  );
+  assert.match(sb, /\.toolbarbutton-1,\s*\n\s*\.sb2-main-button\s*\{/);
+  assert.match(sb, /min-height:\s*var\(--tab-min-height\)\s*!important/);
+});
+
+test("first toolbar button is centred on the vertical tab icon axis", () => {
+  const vt = fs.readFileSync(`${REPO}/CSS/chrome/vertical-tabs.css`, "utf8");
+  assert.match(vt, /--tab-inner-inline-margin/);
+  assert.match(vt, /--tab-collapsed-background-width/);
+  assert.match(vt, /#PanelUI-menu-button\s*\{[^}]*padding-inline-end/);
+});

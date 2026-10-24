@@ -408,3 +408,43 @@ hbox .titlebar-spacer,
   .unified-extensions-item-menu-button {
   opacity: 1 !important;
 }
+
+/*=====================================================================
+=============== S I D E B A R   " M O R E   T O O L S " ==============
+=======================================================================
+The vertical-sidebar overflow panel is a text list, not an icon grid. Keep
+it deliberately distinct from #unified-extensions-panel: wide, multi-column
+and scrollable so every hidden tool can be reached without clipping. */
+
+#sidebar-tools-overflow {
+  width: min(40em, calc(100vw - 64px)) !important;
+  max-width: calc(100vw - 64px) !important;
+  max-height: calc(100vh - 48px) !important;
+}
+
+#tools-overflow-list {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)) !important;
+  gap: 6px !important;
+  padding: 10px !important;
+  max-height: min(72vh, 760px) !important;
+  overflow-y: auto !important;
+  scrollbar-width: thin;
+}
+
+#tools-overflow-list > .expanded-button {
+  width: 100% !important;
+}
+
+#tools-overflow-list > .expanded-button::part(button) {
+  justify-content: flex-start !important;
+  border-radius: var(--firefoxcss-border-radius) !important;
+}
+
+/* The app-menu "More tools" subview also needs room for its full label list. */
+#appmenu-moreTools .panel-subview-body {
+  min-width: min(32em, 80vw) !important;
+  max-height: min(72vh, 760px) !important;
+  overflow-y: auto !important;
+  scrollbar-width: thin;
+}

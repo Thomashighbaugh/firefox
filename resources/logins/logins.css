@@ -214,27 +214,33 @@ body {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 6px;
+  grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+  gap: 12px;
 }
 
 .row {
   display: grid;
-  grid-template-columns: auto auto 1fr auto;
-  align-items: center;
+  grid-template-columns: auto auto minmax(0, 1fr) auto;
+  align-items: start;
   gap: 12px;
-  padding: 8px 12px;
+  padding: 14px;
   border: 1px solid var(--log-border);
-  border-radius: var(--log-radius);
+  border-radius: 10px;
   background: var(--log-card);
+  box-shadow: 0 1px 2px light-dark(rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.2));
 }
 
 .row:hover {
   border-color: color-mix(in srgb, var(--log-accent) 45%, var(--log-border));
+  box-shadow: 0 4px 14px light-dark(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.35));
 }
 
 .row-icon {
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--log-fg) 6%, transparent);
   -moz-context-properties: fill;
 }
 

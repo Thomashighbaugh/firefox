@@ -68,7 +68,8 @@ export const SECOND_SIDEBAR_CSS = `
       margin-inline: 0;
     }
 
-    .toolbarbutton-1 {
+    .toolbarbutton-1,
+    .sb2-main-button {
       padding: 0 12px !important;
       min-height: var(--tab-min-height) !important;
       height: var(--tab-min-height) !important;

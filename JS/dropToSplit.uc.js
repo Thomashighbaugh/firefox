@@ -11,6 +11,18 @@
 // (fired on the tab strip), NOT on a content-area `drop`. So drop-to-split must
 // intercept `dragend`, decide the side from the drop position over the content
 // area, and call `gBrowser.addTabSplitView` before the native detach runs.
+//
+// The tab that receives mousedown is selected immediately (left-drag AND
+// right-click both select), so by `dragend` or by menu-open time
+// `gBrowser.selectedTab` is the target tab itself. The split partner is
+// therefore the tab that was selected before it, from
+// `TabSelect.detail.previousTab` (`previousTab`).
+//
+// The tab context menu is laid out by native `TabContextMenu.MenuSectionLayout`;
+// any child of #tabContextMenu not declared in its layout makes `arrange()`
+// throw and the whole menu is left unarranged. Our item is registered into the
+// layout (into the split-view item group) and the menu is re-arranged after
+// insertion.
 // 2×2 grid is deferred to the fork — native split view is 2-pane.
 
 (function () {
@@ -19,7 +31,8 @@
   if (location.href !== "chrome://browser/content/browser.xhtml") return;
 
   const PREF = "userchrome.dropToSplit.enabled";
-  const XULNS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+  const MENU_ID = "dropToSplit-context-item";
+  const MENU_SEL = "#dropToSplit-context-item";
 
   const prefOn = () => {
     try {
@@ -29,14 +42,50 @@
     }
   };
 
+  // Split view feature flag: the native API and UI are gated on it.
+  const splitViewOn = () => {
+    try {
+      return Services.prefs.getBoolPref("browser.tabs.splitView.enabled", true);
+    } catch (e) {
+      return true;
+    }
+  };
+
   /* --------------------------- dragged tab tracking --------------------------- */
   let draggedTab = null;
+  // The tab selected before the current one, from TabSelect.detail.previousTab.
+  // Firefox selects a tab on mousedown (both left-drag and right-click), so the
+  // "current tab" that is *not* the target of the action has to be remembered
+  // from the last selection change.
+  let previousTab = null;
   let dropSide = null; // "left" | "right" | null — set by dragover, used on dragend
   let overlay = null;
 
   function onStripDragStart(e) {
     const tab = e.target?.closest?.("tab");
     draggedTab = tab || null;
+  }
+
+  function onTabSelect(e) {
+    // detail.previousTab is the tab that was selected before this one.
+    const prev = e.detail?.previousTab;
+    if (prev && prev !== gBrowser.selectedTab) previousTab = prev;
+  }
+
+  // Resolve the tab that should share a split view with `tab`. `previousTab` is
+  // authoritative because it is the tab the user was looking at before the
+  // target tab got selected by mousedown. Fall back to the first usable tab.
+  function findPartner(tab) {
+    if (!tab || !window.gBrowser) return null;
+
+    const usable = t =>
+      t && t !== tab && t.isConnected && !t.pinned && !t.hidden && !t.closing;
+
+    let other = usable(previousTab) ? previousTab : null;
+    if (usable(other)) return other;
+
+    const candidates = gBrowser.tabs.filter(usable);
+    return candidates[0] || null;
   }
 
   /* ------------------------------ drop overlay ------------------------------- */
@@ -112,18 +161,55 @@
   }
 
   /* ------------------------------- split action ------------------------------- */
+  // Native split view is 2-pane. `addTabSplitView` silently no-ops when the
+  // feature flag is off, when a tab is pinned, or when both tabs are already in
+  // the same split view — so wrap it and make the failures visible.
+  function addSplitView(tabs, { insertBefore = null, trigger = null } = {}) {
+    if (!window.gBrowser || !splitViewOn()) return null;
+    try {
+      const opts = {};
+      if (insertBefore) opts.insertBefore = insertBefore;
+      if (trigger) opts.trigger = trigger;
+      return gBrowser.addTabSplitView(tabs, opts);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  // Split `tab` with `other`. If `other` is already in a split view, drop onto
+  // the other pane (the non-selected one) so the drop still does something.
+  function splitWith(tab, other, side, trigger) {
+    if (!tab || !other || tab === other || tab.pinned || other.pinned) return;
+    // Order determines left/right in the native split view.
+    const tabs = side === "left" ? [tab, other] : [other, tab];
+    addSplitView(tabs, { insertBefore: other, trigger });
+  }
+
   function doSplit(side) {
     const tab = draggedTab;
     if (!tab || !window.gBrowser) return;
-    const cur = gBrowser.selectedTab;
-    if (tab === cur || tab.pinned) return;
-    // Order determines left/right in the native split view.
-    const tabs = side === "left" ? [tab, cur] : [cur, tab];
+    // The dragged tab is selected on mousedown, so the partner is the tab that
+    // was selected before it. Fall back to a neighbouring tab.
+    const other = findPartner(tab);
+    if (!other || tab.splitview) return;
+    splitWith(tab, other, side, "drop");
+  }
+
+  // Native handle_dragend() performs this cleanup before it considers detaching.
+  // Because our capture listener stops that handler, run the strip cleanup here
+  // so dragged tabs do not keep their transform/pointer-events styles.
+  function finishNativeDrag(tab) {
+    const strip = gBrowser.tabContainer;
+    const dnd = strip?.tabDragAndDrop;
     try {
-      gBrowser.addTabSplitView(tabs, { trigger: "drop" });
+      dnd?.finishMoveTogetherSelectedTabs?.(tab);
+      dnd?.finishAnimateTabMove?.();
+      dnd?._resetTabsAfterDrop?.(tab);
+      if (dnd?._tabDropIndicator) dnd._tabDropIndicator.hidden = true;
     } catch (e) {
-      try { gBrowser.addTabSplitView(tabs, {}); } catch (e2) { /* give up */ }
+      // Cleanup is best-effort; the split action is the user-visible result.
     }
+    if (tab) delete tab._dragData;
   }
 
   // Detach-to-new-window happens in this same event. We run first (capture) and,
@@ -135,11 +221,11 @@
     hideOverlay();
     dropSide = null;
     if (tab && side && prefOn()) {
+      // Finish the strip's own drag teardown before moving the tab between
+      // containers (the split view wrapper). Then stop the native handler so it
+      // cannot interpret the same gesture as detach-to-a-new-window.
+      finishNativeDrag(tab);
       doSplit(side);
-      // Prevent the native detach: signal "handled" on the dataTransfer.
-      try {
-        if (e.dataTransfer) e.dataTransfer.dropEffect = "move";
-      } catch (e2) { /* noop */ }
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
@@ -148,24 +234,67 @@
   }
 
   /* ------------------------------ context menu ------------------------------- */
-  const MENU_ID = "dropToSplit-context-item";
+  const MENU_LABEL = "Split with current tab";
+
+  // Register our item into the native tab-context-menu layout so
+  // `MenuSectionLayout.arrange()` doesn't throw (an unaccounted-for child of
+  // #tabContextMenu leaves the whole menu unarranged). Then force the menu to
+  // re-arrange so our item lands in the split-view item group.
+  function registerMenuInLayout(menu) {
+    const TCM = window.TabContextMenu;
+    if (!TCM || !TCM.MENU_SECTIONS) return;
+    // `TCM._altTabContextMenu` is a lazy pref getter and is undefined until the
+    // native code initializes it, so register into BOTH layouts and let the
+    // active one place the item. Patching both is idempotent and avoids
+    // arrange() throwing if the alternate layout is enabled.
+    for (const layout of [
+      TCM.MENU_SECTIONS.classic,
+      TCM.MENU_SECTIONS.altstructure,
+    ]) {
+      const sections = layout?.tabContextMenu;
+      if (!sections) continue;
+      const target =
+        sections.find(s =>
+          s.items.some(
+            i =>
+              (Array.isArray(i) &&
+                i.includes("#context_moveTabToSplitView")) ||
+              i === "#context_moveTabToSplitView"
+          )
+        ) || sections[sections.length - 1];
+      if (!target) continue;
+      // Append as its own entry so the item gets its own slot after the
+      // split-view "twin" array rather than twinning with a native item.
+      if (!target.items.includes(MENU_SEL)) target.items.push(MENU_SEL);
+    }
+    TCM._tabContextMenuArranged = false;
+    if (menu && typeof TCM._ensureMenuArranged === "function") {
+      TCM._ensureMenuArranged(menu);
+    }
+  }
 
   function buildMenuItem() {
     const menu = document.getElementById("tabContextMenu");
-    if (!menu || document.getElementById(MENU_ID)) return;
+    if (!menu) {
+      setTimeout(buildMenuItem, 500);
+      return;
+    }
+    if (document.getElementById(MENU_ID)) return;
     const item = document.createXULElement("menuitem");
     item.id = MENU_ID;
-    item.setAttribute("label", "Split with current tab");
+    item.setAttribute("label", MENU_LABEL);
     item.addEventListener("command", () => {
       const tab = window.TabContextMenu?.contextTab;
-      if (tab && tab !== gBrowser.selectedTab) {
-        try {
-          gBrowser.addTabSplitView([gBrowser.selectedTab, tab], { trigger: "context" });
-        } catch (e) { /* noop */ }
-      }
+      if (!tab) return;
+      // Right-click selects the tab, so findPartner() supplies the tab that was
+      // selected before the gesture (same rule as drop-to-split).
+      const other = findPartner(tab);
+      if (!other) return;
+      addSplitView([tab, other], { insertBefore: tab, trigger: "context" });
     });
     const anchor = menu.querySelector("#context_moveSplitViewToNewGroup, #context_unPinTab");
     menu.insertBefore(item, anchor ? anchor.nextSibling : null);
+    registerMenuInLayout(menu);
     menu.addEventListener("popupshowing", onMenuShowing);
   }
 
@@ -173,7 +302,15 @@
     const item = document.getElementById(MENU_ID);
     if (!item) return;
     const tab = window.TabContextMenu?.contextTab;
-    item.hidden = !(tab && tab !== gBrowser.selectedTab && !tab.pinned && !tab.splitview);
+    // Right-click selects the tab first, so `tab !== gBrowser.selectedTab` would
+    // always be false here. Availability is decided by the partner lookup.
+    item.hidden = !(
+      tab &&
+      splitViewOn() &&
+      !tab.pinned &&
+      !tab.splitview &&
+      findPartner(tab)
+    );
   }
 
   /* --------------------------------- lifecycle -------------------------------- */
@@ -185,6 +322,7 @@
     strip.addEventListener("dragstart", onStripDragStart, true);
     // Capture-phase dragend so we act before the native detach handler.
     strip.addEventListener("dragend", onStripDragEnd, true);
+    strip.addEventListener("TabSelect", onTabSelect, true);
     content.addEventListener("dragover", onContentDragOver, true);
     content.addEventListener("drop", (e) => {
       // If a drop somehow fires on content (shouldn't for tabs), treat as handled.
@@ -220,6 +358,7 @@
     try {
       gBrowser.tabContainer?.removeEventListener("dragstart", onStripDragStart, true);
       gBrowser.tabContainer?.removeEventListener("dragend", onStripDragEnd, true);
+      gBrowser.tabContainer?.removeEventListener("TabSelect", onTabSelect, true);
       document.getElementById("browser")?.removeEventListener("dragover", onContentDragOver, true);
     } catch (e) { /* noop */ }
   }, { once: true });

@@ -321,6 +321,16 @@ If you add new preferences to the theme:
 
 Drop-to-split (`JS/dropToSplit.uc.js`). While dragging a tab over the page content,
 left/right drop zones appear; dropping on a half splits the dragged tab with the
-current tab into a native 2-pane split view. Also adds a **Split with current tab**
-item to the tab context menu. (2×2 grid deferred to the fork — native split view is
-2-pane.)
+tab that was selected before the drag into a native 2-pane split view. Also adds a
+**Split with current tab** item to the tab context menu, which pairs the
+right-clicked tab with the previously selected tab.
+
+Firefox selects a tab on mousedown, so the tab under the pointer is already the
+selected tab when the drop or menu command runs. The script therefore tracks the
+partner from `TabSelect.detail.previousTab` and falls back to the first other
+non-pinned, visible tab. The menu item is registered with the native
+`TabContextMenu` layout; without that, `MenuSectionLayout.arrange()` throws on the
+unknown child and the item never displays.
+
+Also requires `browser.tabs.splitView.enabled` (the native split-view feature
+flag). 2×2 grid is deferred to the fork — native split view is 2-pane.

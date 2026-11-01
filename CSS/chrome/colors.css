@@ -22,6 +22,15 @@
   box-shadow: none !important;
 }
 
+/* Make all viewport corners consistent (remove rounded corner where
+   sidebar/vertical tabs meet the top bar) */
+#tabbrowser-tabbox[sidebar-shown] .browserSidebarContainer,
+.browserSidebarContainer {
+  border-radius: 0 !important;
+  border-start-start-radius: 0 !important;
+  border-start-end-radius: 0 !important;
+}
+
 /* Vertical tabs + second sidebar: continuous gradient + texture */
 #sidebar-main,
 #sb2-main,

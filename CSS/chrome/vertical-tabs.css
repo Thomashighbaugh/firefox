@@ -86,6 +86,15 @@
     background-color: var(--firefoxcss-main-bg-color) !important;
   }
 
+  /* Tools/extensions overflow group should blend with the vertical tabs bar */
+  #sidebar-main::part(overflow-button) {
+    background: transparent !important;
+  }
+
+  #sidebar-main::part(overflow-button) > * {
+    background: transparent !important;
+  }
+
   .sidebar-panel {
     background-color: var(--firefoxcss-main-bg-color) !important;
     backdrop-filter: blur(12px) !important;
@@ -95,6 +104,14 @@
   #tabbrowser-tabbox {
     outline: none !important;
     box-shadow: none !important;
+  }
+
+  /* Make all viewport corners consistent */
+  #tabbrowser-tabbox[sidebar-shown] .browserSidebarContainer,
+  .browserSidebarContainer {
+    border-radius: 0 !important;
+    border-start-start-radius: 0 !important;
+    border-start-end-radius: 0 !important;
   }
 
   /* moz-button (more tools / extensions) hover: match vertical tabs behavior

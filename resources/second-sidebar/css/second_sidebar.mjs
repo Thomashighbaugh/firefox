@@ -34,7 +34,7 @@ export const SECOND_SIDEBAR_CSS = `
     display: flex;
     flex-direction: column;
     justify-content: var(--sb2-main-web-panel-buttons-position);
-    gap: calc(2 * var(--tab-block-margin));
+    gap: calc(2 * var(--tab-block-margin) + var(--space-small) + 5px);
     top: 0;
     height: 100%;
     padding: var(--tab-block-margin) var(--sb2-main-padding) var(--tab-block-margin) var(--sb2-main-padding);

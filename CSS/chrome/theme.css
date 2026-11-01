@@ -13,6 +13,14 @@
   box-shadow: none !important;
 }
 
+/* Make all viewport corners consistent */
+#tabbrowser-tabbox[sidebar-shown] .browserSidebarContainer,
+.browserSidebarContainer {
+  border-radius: 0 !important;
+  border-start-start-radius: 0 !important;
+  border-start-end-radius: 0 !important;
+}
+
 /*=====================================================================
 ======================== A N I M A T I O N S ===========================
 =====================================================================*/

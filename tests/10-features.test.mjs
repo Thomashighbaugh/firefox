@@ -304,3 +304,31 @@ test("first toolbar button is centred on the vertical tab icon axis", () => {
   assert.match(vt, /--tab-collapsed-background-width/);
   assert.match(vt, /#PanelUI-menu-button\s*\{[^}]*padding-inline-end/);
 });
+
+test("vertical tabs meet the top bar with squared viewport corners", () => {
+  const files = [
+    fs.readFileSync(`${REPO}/CSS/chrome/colors.css`, "utf8"),
+    fs.readFileSync(`${REPO}/CSS/chrome/vertical-tabs.css`, "utf8"),
+    fs.readFileSync(`${REPO}/CSS/chrome/theme.css`, "utf8"),
+  ];
+  for (const css of files) {
+    assert.match(css, /\.browserSidebarContainer\s*\{[^}]*border-radius:\s*0/);
+  }
+});
+
+test("native vertical-tabs tools/extensions overflow is forced to the chevron group", () => {
+  assert.ok(fs.existsSync(`${REPO}/JS/sidebarMainOverflow.uc.mjs`));
+  const script = fs.readFileSync(`${REPO}/JS/sidebarMainOverflow.uc.mjs`, "utf8");
+  assert.match(script, /\.tools-and-extensions:not\(\.overflow-button\)\s*\{[^}]*display:\s*none/);
+  assert.match(script, /overflow-button/);
+  const vt = fs.readFileSync(`${REPO}/CSS/chrome/vertical-tabs.css`, "utf8");
+  assert.match(vt, /#sidebar-main::part\(overflow-button\)/);
+});
+
+test("second sidebar button rhythm matches native vertical tabs pitch", () => {
+  const sb = fs.readFileSync(
+    `${REPO}/resources/second-sidebar/css/second_sidebar.mjs`,
+    "utf8",
+  );
+  assert.match(sb, /gap:\s*calc\(2 \* var\(--tab-block-margin\) \+ var\(--space-small\) \+ 5px\)/);
+});

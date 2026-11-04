@@ -33,6 +33,54 @@ var appversion = parseInt(Services.appinfo.version, 10);
 // Set to true for compact toolbar buttons
 var compact_buttons = false;
 
+/**
+ * Firefox 158 implements every special toolbar-button behaviour through delegated
+ * listeners on #navigator-toolbox (browser/content/browser/navigator-toolbox.js:
+ * `navigatorToolbox.addEventListener("mousedown", onMouseDown)` and friends).
+ *
+ * #addonbar is appended as a sibling of #browser, i.e. outside the toolbox, so a
+ * button placed here never receives those handlers. The visible symptom is the
+ * downloads button: it responds to hover, and clicking it does nothing, because
+ * the call that opens the panel is `DownloadsIndicatorView.onCommand(event)` from
+ * that delegated listener.
+ *
+ * Mirror the handful of cases that make sense on a status bar. #library-button is
+ * deliberately absent — JS/libraryRedirect.uc.js already owns it.
+ */
+function wireToolboxDelegation(bar) {
+  if (!bar || bar.__toolboxDelegationWired) return;
+  bar.__toolboxDelegationWired = true;
+
+  bar.addEventListener("mousedown", (event) => {
+    if (event.button !== 0) return;
+    if (event.target.closest("menupopup")) return;
+
+    const button = event.target.closest(
+      "#downloads-button, #alltabs-button, #unified-extensions-button, #fxa-toolbar-menu-button",
+    );
+    if (!button) return;
+
+    try {
+      switch (button.id) {
+        case "downloads-button":
+          window.DownloadsIndicatorView?.onCommand(event);
+          break;
+        case "alltabs-button":
+          window.gTabsPanel?.showAllTabsPanel(event, "alltabs-button");
+          break;
+        case "unified-extensions-button":
+          window.gUnifiedExtensions?.togglePanel(event);
+          break;
+        case "fxa-toolbar-menu-button":
+          window.gSync?.toggleAccountPanel(button, event);
+          break;
+      }
+    } catch (e) {
+      console.error("addonbar delegation failed for #" + button.id, e);
+    }
+  });
+}
+
 var AddAddonbar = {
   /**
    * Initializes the addonbar and injects required CSS and UI elements.
@@ -108,9 +156,19 @@ var AddAddonbar = {
 		  }
 		  #addonbar {
             border-radius: 0;
+			/* Same surface as the bottom of the sidebars: end colour + texture.
+			   The gradient is intentionally omitted — it is sized to the sidebar's
+			   full height, so re-applying it to a 26px bar would re-base the ramp
+			   and land on the wrong colour. */
 			background-color: var(--firefoxcss-sidebar-end-bg-color, var(--in-content-page-background)) !important;
-			background-image: none !important;
+			background-image: var(--firefoxcss-sidebar-texture) !important;
+			background-repeat: repeat !important;
+			background-size: auto !important;
 			-moz-window-dragging: no-drag !important;
+		  }
+		  #addonbar toolbarbutton {
+			background-color: transparent !important;
+			background-image: none !important;
 		  }
 		  :root[lwtheme] #addonbar {
 			background-color: var(--firefoxcss-sidebar-end-bg-color, var(--in-content-page-background)) !important;
@@ -138,7 +196,8 @@ var AddAddonbar = {
 			background-image: none !important;
 		  }
 		  #addonbar toolbarbutton {
-			background-color: var(--firefoxcss-sidebar-end-bg-color, var(--in-content-page-background)) !important;
+			background-color: transparent !important;
+			background-image: none !important;
 			border: none !important;
 		  }
 		  #unified-extensions-button[hidden]{
@@ -194,6 +253,8 @@ var AddAddonbar = {
 
           CUI.registerToolbarNode(tb_addonbar);
         }
+
+        wireToolboxDelegation(tb_addonbar);
 
         // Set toolbar visibility based on preference
         try {

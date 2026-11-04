@@ -23,7 +23,17 @@
 }
 
 /* Make all viewport corners consistent (remove rounded corner where
-   sidebar/vertical tabs meet the top bar) */
+   sidebar/vertical tabs meet the top bar).
+   Firefox 158 rounds .browserContainer — not .browserSidebarContainer — through
+   --content-area-start-radius, set in browser/tabbrowser/content-area.css when the
+   sidebar faces the start side. Zeroing the variable is the actual switch; the
+   explicit radii cover the split-view / sidebar-position variants. */
+.browserContainer {
+  --content-area-start-radius: 0 !important;
+  border-start-start-radius: 0 !important;
+  border-start-end-radius: 0 !important;
+}
+
 #tabbrowser-tabbox[sidebar-shown] .browserSidebarContainer,
 .browserSidebarContainer {
   border-radius: 0 !important;

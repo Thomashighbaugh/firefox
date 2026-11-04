@@ -39,6 +39,12 @@ ensure_userjs() {
 	touch "$uj"
 	grep -q 'devtools.console.stdout.chrome' "$uj" 2>/dev/null ||
 		printf '%s\n' 'user_pref("devtools.console.stdout.chrome", true);' >>"$uj"
+	# Start blank so the URL passed on the command line is the tab that gets focus,
+	# instead of a restored session tab.
+	grep -q 'browser.startup.page' "$uj" 2>/dev/null ||
+		printf '%s\n' \
+			'user_pref("browser.startup.page", 0);' \
+			'user_pref("browser.sessionstore.resume_from_crash", false);' >>"$uj"
 }
 
 prepare() {

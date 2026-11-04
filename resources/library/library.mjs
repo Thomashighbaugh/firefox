@@ -22,6 +22,48 @@ function getChromeWindow() {
 
 const FALLBACK_ICON = "chrome://global/skin/icons/defaultFavicon.svg";
 
+/** Human readable byte size, or "" when the size is unknown. */
+function formatBytes(bytes) {
+  if (!Number.isFinite(bytes) || bytes <= 0) return "";
+  const units = ["B", "KB", "MB", "GB", "TB"];
+  let value = bytes;
+  let unit = 0;
+  while (value >= 1024 && unit < units.length - 1) {
+    value /= 1024;
+    unit++;
+  }
+  return `${unit === 0 ? value : value.toFixed(value < 10 ? 1 : 0)} ${units[unit]}`;
+}
+
+/**
+ * One-line state for a download row: live percentage, transferred size and
+ * speed while it runs, the reason when it failed.
+ * @param {object} dl Download object from the Downloads API.
+ */
+function describeDownload(dl) {
+  if (dl.error) {
+    const reason = dl.error.message || "";
+    return reason ? `failed — ${reason}` : "failed";
+  }
+  if (dl.canceled) return "canceled";
+  const total = formatBytes(dl.totalBytes);
+  if (dl.succeeded) return total ? `${total} · complete` : "complete";
+  if (dl.stopped) {
+    const partial = formatBytes(dl.currentBytes);
+    return partial ? `paused · ${partial}` : "paused";
+  }
+  const parts = [];
+  if (dl.hasProgress) {
+    parts.push(`${Math.min(100, Math.round(dl.progress))}%`);
+  }
+  const current = formatBytes(dl.currentBytes);
+  if (current && total) parts.push(`${current} of ${total}`);
+  else if (current) parts.push(current);
+  const speed = formatBytes(dl.speed);
+  if (speed) parts.push(`${speed}/s`);
+  return parts.length ? parts.join(" · ") : "downloading";
+}
+
 /** Delete a file from disk (ignore a missing file). */
 async function deleteFile(path) {
   if (!path) return;
@@ -279,6 +321,8 @@ async function renderDownloads(win) {
   } catch (e) {
     downloads = [];
   }
+  await watchDownloads(win);
+  const selected = new Set(selFor("downloads"));
   const list = $("#rows-downloads");
   list.textContent = "";
   const rows = [];
@@ -292,7 +336,7 @@ async function renderDownloads(win) {
         key: path || String(dl.id),
         title: name,
         url: path,
-        meta: dl.error ? "failed" : dl.succeeded ? "complete" : "incomplete",
+        meta: describeDownload(dl),
         extraActions: [
           // Retry restarts a failed/incomplete download (Download.start()).
           ...(failedOrIncomplete
@@ -338,12 +382,54 @@ async function renderDownloads(win) {
       }),
     );
   }
-  for (const row of rows) list.appendChild(row);
+  for (const row of rows) {
+    if (selected.has(row.dataset.key)) {
+      row.querySelector(".row-check").checked = true;
+    }
+    list.appendChild(row);
+  }
   $("[data-empty=downloads]").hidden = rows.length > 0;
   viewKeys.set("downloads", rows.map((r) => r.dataset.key));
-  selFor("downloads").clear();
+  // Live refreshes keep the user's selection, but drop rows that are gone.
+  const keys = new Set(viewKeys.get("downloads"));
+  const selection = selFor("downloads");
+  for (const key of [...selection]) if (!keys.has(key)) selection.delete(key);
   if (currentView === "downloads") updateBulkbar("downloads");
   setNavCount("downloads", rows.length);
+}
+
+/* ------------------------------------------------- live download updates */
+
+let downloadsWatched = false;
+let downloadsRefreshTimer = 0;
+
+/**
+ * Keep the downloads view in step with the manager: rows update their size,
+ * percentage and speed while a transfer runs, and new or removed downloads
+ * show up without a manual reload. Renders are debounced because one transfer
+ * reports progress several times per second.
+ * @param {Window} win Chrome window the page belongs to.
+ */
+async function watchDownloads(win) {
+  if (downloadsWatched) return;
+  downloadsWatched = true;
+  try {
+    const list = await lazy.Downloads.getList(lazy.Downloads.ALL);
+    const refresh = () => {
+      if (currentView !== "downloads" || downloadsRefreshTimer) return;
+      downloadsRefreshTimer = setTimeout(() => {
+        downloadsRefreshTimer = 0;
+        if (currentView === "downloads") renderDownloads(win);
+      }, 400);
+    };
+    list.addView({
+      onDownloadAdded: refresh,
+      onDownloadChanged: refresh,
+      onDownloadRemoved: refresh,
+    });
+  } catch (e) {
+    downloadsWatched = false;
+  }
 }
 
 function groupsOf(win) {

@@ -173,9 +173,19 @@ body {
   gap: 12px;
 }
 
+/* Downloads carry a percentage, a size and five actions: give them the full
+   width instead of a card that has to wrap. */
+#rows-downloads {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .row {
   display: grid;
-  grid-template-columns: auto auto minmax(0, 1fr) auto;
+  /* One column per child, placed by name below: bookmark and history rows
+     have no meta line, and auto-placement would let the action buttons
+     squeeze those rows around. */
+  grid-template-columns: auto auto minmax(0, 1fr) auto auto;
+  grid-template-areas: "check icon main meta actions";
   align-items: start;
   gap: 12px;
   padding: 14px;
@@ -190,7 +200,12 @@ body {
   box-shadow: 0 4px 14px light-dark(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.35));
 }
 
+.row-check {
+  grid-area: check;
+}
+
 .row-icon {
+  grid-area: icon;
   width: 24px;
   height: 24px;
   padding: 4px;
@@ -200,6 +215,7 @@ body {
 }
 
 .row-main {
+  grid-area: main;
   min-width: 0;
 }
 
@@ -218,13 +234,17 @@ body {
 }
 
 .row-meta {
+  grid-area: meta;
   color: var(--lib-dim);
   font-size: 0.8rem;
   white-space: nowrap;
 }
 
 .row-actions {
+  grid-area: actions;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 6px;
 }
 

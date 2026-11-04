@@ -65,3 +65,8 @@
   - **AGENTS.md updated**: root (refreshed date, file count, deleted `tabContextMenuNavigation` removed, `CSS/AGENTS.md` noted as missing); `JS/AGENTS.md` (corrected to 18 scripts, added new scripts, removed deleted one).
   - **Validation**: opencode.jsonc unchanged (schema-compliant). All cross-references in AGENTS.md resolve (subsystem AGENTS.md files exist; the missing `CSS/AGENTS.md` is now flagged as not existing rather than a broken link).
   - **Stale references flagged**: JS/AGENTS.md referenced a deleted file; root AGENTS.md referenced a non-existent CSS/AGENTS.md. Both fixed.
+
+## 2026-11-03
+
+- **Captured** Firefox 158 chrome internals into `research/firefox-158-chrome-internals/README.md` — distilled from the shipped `omni.ja` while diagnosing the about:addons rail, downloads panel, status-bar colour and corner-radius bugs. Records the `categories-box`/`moz-page-nav` shadow-DOM replacement (with the dead `#categories`/`.category` selectors and the `--page-nav-margin-inline-start` clipping mechanism), the downloads open path and its silent bail-outs, and the measured status-bar colour mismatch.
+- **Added skill** `firefox-chrome-repro` — the manual-verification harness this repo never had: `repro.sh` (Xvfb + awesome + throwaway profile, screenshot, repo→profile sync, probe install), `extract-firefox-source.sh` (unpack a version's toolkit/browser chrome), `probe-chrome.uc.js` (chrome-context state dump + function wrappers writing to a file). Documents the traps that cost time: the primary-password modal freezing chrome timers, `pkill -f ff-repro` killing its own shell, `IOUtils` being unimportable on 158, `nsIFileOutputStream` append flags, and headless screenshots not rendering chrome.

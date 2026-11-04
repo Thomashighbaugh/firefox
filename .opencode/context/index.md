@@ -6,6 +6,10 @@
 - [architecture/architecture-analysis.md](architecture/architecture-analysis.md) — Three-layer entry point analysis, module structure, CSS variable flow, sidebar init flow, key patterns, architecture risks.
 - [architecture/conventions.md](architecture/conventions.md) — Coding conventions: file naming, code style, naming patterns, JS patterns, CSS patterns, error handling, git conventions.
 
+## Debugging & Verification
+
+- [research/firefox-158-chrome-internals/](research/firefox-158-chrome-internals/README.md) — What Firefox 158 actually ships, read out of `omni.ja` rather than guessed: about:addons' Lit `categories-box` / `moz-page-nav` shadow DOM and which theme selectors are dead, the downloads panel + `DownloadsButton.getAnchor()` bail-out logic, why the panel opens fine when called programmatically, and the sidebar-gradient vs `#addonbar` colour discrepancy. Pairs with the `firefox-chrome-repro` skill (Xvfb + WM + throwaway profile, chrome-internals probe, omni.ja unpacking).
+
 ## Plans & Brainstorms
 
 - [plans/](plans/) — Durable plan/backlog for turning this theme into a **Linux-only Firefox fork with a Gjoa-style 3-lane dev loop**. `00-fork-3-lane-roadmap.md` (lanes, plus open decisions: retire Higgs Boson branding, Beagle-alternative language, `userchrome.*` prefs/hotkey matrix) and `01-task-backlog.md` (9 tasks: second-sidebar refactor, All-Tabs-Menu home/new-tab, native Tab Groups (workspaces concept removed), Library→about: page, QuickTabs Search, drop-to-split + 2×2, shortcut cheat-sheet, Logins & Passwords page, full docs + GIF demos).

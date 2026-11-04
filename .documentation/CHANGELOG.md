@@ -154,3 +154,8 @@ All notable changes to this project will be documented in this file.
 - **2026-03-07 23:39** [CSS/Content] Fixed firefox-view.css missing quotes in url-prefix selector
 - **2026-03-07 23:31** [CSS/Content] Renamed about-blank.css to about-pages.css to accurately reflect that it styles all Firefox about:* pages, not just about:blank
 - **2026-03-07 21:33** [CSS/Content] Fixed about-blank.css by replacing overly broad url-prefix("about:") selector with exhaustive list of specific about:* page URLs to prevent dark background from affecting regular webpages while maintaining styling for all Firefox internal pages
+- **2026-11-03 21:49** [Downloads/JS] Fixed downloads panel opening from addonbar by delegating mousedown on #downloads-button/#alltabs-button/#unified-extensions-button/#fxa-toolbar-menu-button to DownloadsIndicatorView/onCommand since addonbar is outside #navigator-toolbox handlers
+- **2026-11-03 21:49** [Library] Added live progress/size/speed and paused/failed/canceled states to the downloads view with debounced DownloadsList updates; fixed grid layout and full-width rows
+- **2026-11-03 21:49** [About:Addons/CSS] Switched to icon-only 60px moz-page-nav rail and removed clipping hacks
+- **2026-11-03 21:49** [UI/CSS] Zeroed top-left content corner radius; added sidebar texture to addonbar and made toolbarbuttons transparent
+- **2026-11-03 21:49** [Nav/CSS] Tightened top-bar right edge spacing around PanelUI menu button

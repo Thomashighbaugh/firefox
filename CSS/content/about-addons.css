@@ -39,7 +39,6 @@
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(480px, 3fr));
     gap: 1em;
-    margin-right: var(--sidebar-width) !important;
   }
 
   addon-card {
@@ -150,32 +149,37 @@
 }
 
 @-moz-document url-prefix("about:addons") {
+  /* Firefox 158 replaced the #categories / .category list with
+     <categories-box> → <moz-page-nav>. categories-box renders into the light DOM
+     (createRenderRoot() returns `this`), so the nav and its buttons are ordinary
+     document elements and can be styled here.
+
+     moz-page-nav picks its icon-only layout from
+     `@container style(--page-nav-collapsed: collapsed)`; in the shipped build only a
+     `@media (max-width: 950px)` rule ever sets that property, so on a normal desktop
+     window the rail stayed expanded (labels and all) and overflowed on top of the
+     cards. Setting it here collapses it at any width. */
   :root {
     --sidebar-width: 60px !important;
   }
 
-  #categories {
-    width: var(--sidebar-width) !important;
+  #sidebar {
+    --page-nav-collapsed: collapsed;
+    /* The component pins itself 40px in from the column edge; that offset is what
+       pushed the icon column underneath the add-on cards. */
+    --page-nav-margin-inline-start: 0px !important;
+    align-items: center;
   }
 
-  #categories > .category {
-    margin-left: 10px !important;
-    -moz-box-pack: center;
+  moz-page-nav {
+    margin-inline-start: 0 !important;
+    padding-inline-end: 0 !important;
+    border-inline-end: 0 !important;
+    width: 100% !important;
   }
 
-  #category-discover,
-  .category[data-l10n-id*="discover"],
-  #categories > button:first-of-type {
-    display: none !important;
-  }
-
-  .sidebar-footer-list {
-    margin-left: 18px !important;
-  }
-
-  .sidebar-footer-label,
-  .category > .category-name {
-    display: none;
+  moz-page-nav-button {
+    justify-content: center;
   }
 }
 

@@ -50,6 +50,8 @@ prepare() {
 	fi
 	# A primary-password modal blocks chrome timers until dismissed; drop the encrypted store.
 	rm -f "$PROFILE/key4.db" "$PROFILE/logins.json"
+	# Otherwise a copied profile restores the previous session instead of the URL we asked for.
+	rm -rf "$PROFILE/sessionstore-backups" "$PROFILE/sessionstore.jsonlz4"
 	# chrome/ must be a real directory so probes never land in the repo.
 	if [ -L "$PROFILE/chrome" ] || [ ! -d "$PROFILE/chrome" ]; then
 		rm -rf "$PROFILE/chrome"

@@ -23,6 +23,17 @@ export class Settings {
 
 const PREF = "second-sidebar.settings";
 
+/**
+ * Schema version stamped into the saved settings. Bump when the meaning of a
+ * stored value changes so load() can migrate old profiles exactly once.
+ *
+ * v2: padding default changed from the fixed "xxsmall" space token to
+ * "default" (match the tab strip's --tab-margin-inline-inner inset). Profiles
+ * carrying the old default are migrated; a deliberately re-chosen "xxsmall"
+ * saved under v2 or later is left alone.
+ */
+const SETTINGS_VERSION = 2;
+
 export class SidebarSettings {
   /**
    *
@@ -89,29 +100,19 @@ export class SidebarSettings {
    */
   static load() {
     const pref = Settings.load(PREF) ?? {};
-    return new SidebarSettings({
-      position: pref.position,
-      padding: pref.padding,
-      newWebPanelPosition: pref.newWebPanelPosition,
-      defaultFloatingOffset: pref.defaultFloatingOffset,
-      autoHideBackButton: pref.autoHideBackButton,
-      autoHideForwardButton: pref.autoHideForwardButton,
-      containerBorder: pref.containerBorder,
-      tooltip: pref.tooltip,
-      tooltipFullUrl: pref.tooltipFullUrl,
-      autoHideSidebar: pref.autoHideSidebar,
-      autoHideSidebarBehavior: pref.autoHideSidebarBehavior,
-      sidebarWidgetHideWebPanel: pref.sidebarWidgetHideWebPanel,
-      sidebarWidgetShortcut: pref.sidebarWidgetShortcut,
-      lastWebPanelShortcut: pref.lastWebPanelShortcut,
-      hideSidebarAnimated: pref.hideSidebarAnimated,
-      hideToolbarAnimated: pref.hideToolbarAnimated,
-      enableSidebarBoxHint: pref.enableSidebarBoxHint,
-    });
+    const version = Number(pref.settingsVersion ?? 1);
+    if (version < 2 && pref.padding === "xxsmall") {
+      // Legacy default: the old code force-persisted "xxsmall" (2px) on every
+      // profile, so it cannot be told apart from an explicit choice made
+      // before "Same as Tabs" existed. Treat it as the new default.
+      pref.padding = "default";
+    }
+    return new SidebarSettings(pref);
   }
 
   save() {
     Settings.save(PREF, {
+      settingsVersion: SETTINGS_VERSION,
       position: this.position,
       padding: this.padding,
       newWebPanelPosition: this.newWebPanelPosition,

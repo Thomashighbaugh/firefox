@@ -345,3 +345,19 @@ test("second sidebar button rhythm matches native vertical tabs pitch", () => {
   );
   assert.doesNotMatch(sb, /--tab-block-margin/);
 });
+
+test("second-sidebar settings migrate the legacy padding default once", () => {
+  const s = fs.readFileSync(
+    `${REPO}/resources/second-sidebar/settings/settings.mjs`,
+    "utf8",
+  );
+  assert.match(s, /const SETTINGS_VERSION = 2/);
+  assert.match(s, /version < 2 && pref\.padding === "xxsmall"/);
+  assert.match(s, /pref\.padding = "default"/);
+  assert.match(s, /settingsVersion: SETTINGS_VERSION/);
+  assert.match(
+    s,
+    /padding = "default"/,
+    "constructor default must be the tab-matched value",
+  );
+});

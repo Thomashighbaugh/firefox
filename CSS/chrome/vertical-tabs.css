@@ -17,24 +17,26 @@
   }
 
   /* Centre the first toolbar icon on the same vertical axis as the tab
-     favicons. Tabs are 36px wide with a 28px icon box: (36 - 28) / 2 = 4px
-     inside the tab, and the tab itself is inset by --tab-inner-inline-margin.
+     favicons. Tabs are --tab-collapsed-background-width wide with a 28px
+     icon box, and the tab itself is inset by --tab-margin-inline-inner.
      Subtract the native first-child toolbar padding and the button's outer
      padding to land the icon box on exactly the same axis. */
   #nav-bar .toolbarbutton-1:first-child {
     margin-inline-start: calc(
-      var(--tab-inner-inline-margin) +
+      var(--tab-margin-inline-inner) +
         (var(--tab-collapsed-background-width) - (2 * var(--toolbarbutton-inner-padding) + var(--toolbarbutton-icon-size))) / 2 -
         var(--toolbarbutton-outer-padding) - var(--toolbar-padding-inline)
     ) !important;
   }
 
   /* Mirror that inset on the right so the app-menu icon is centred over the
-     second sidebar's web-panel buttons (60px wide, 28px icon box).
+     second sidebar's web-panel buttons (square pill sized by
+     --tab-collapsed-background-width, 28px icon box, inset by
+     --tab-margin-inline-inner — same axis as the tabs).
      Tighten spacing to avoid a large gap at the right edge. */
   #PanelUI-menu-button {
     padding-inline-end: calc(
-      var(--tab-inner-inline-margin) +
+      var(--tab-margin-inline-inner) +
         (var(--tab-collapsed-background-width) - (2 * var(--toolbarbutton-inner-padding) + var(--toolbarbutton-icon-size))) / 2 -
         var(--toolbarbutton-outer-padding)
     ) !important;

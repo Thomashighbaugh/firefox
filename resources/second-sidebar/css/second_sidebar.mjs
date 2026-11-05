@@ -4,7 +4,10 @@ export const SECOND_SIDEBAR_CSS = `
   @import url("chrome://global/content/elements/moz-toggle.css");
 
   :root {
-    --sb2-main-padding: 0;
+    /* Default inline padding: the same inset the tab strip gives collapsed
+       tabs (--tab-margin-inline-inner). The settings popup can override it;
+       "Same as Tabs" restores this value. */
+    --sb2-main-padding: var(--tab-margin-inline-inner, var(--space-medium, 12px));
     --sb2-main-web-panel-buttons-position: start;
   }
 
@@ -34,10 +37,16 @@ export const SECOND_SIDEBAR_CSS = `
     display: flex;
     flex-direction: column;
     justify-content: var(--sb2-main-web-panel-buttons-position);
-    gap: calc(2 * var(--tab-block-margin) + var(--space-small) + 5px);
+    /* Same block rhythm as the vertical tab strip: each tab carries a 2px
+       --tab-margin-block-vertical margin, so neighbours sit 4px apart with
+       2px at the ends. (The pre-158 tab block-margin token was removed by
+       Firefox, so the old calc() resolved to nothing and the gap rendered
+       as 0.) */
+    gap: calc(2 * var(--tab-margin-block-vertical, 2px));
     top: 0;
     height: 100%;
-    padding: var(--tab-block-margin) var(--sb2-main-padding) var(--tab-block-margin) var(--sb2-main-padding);
+    padding: var(--tab-margin-block-vertical, 2px) var(--sb2-main-padding)
+      var(--tab-margin-block-vertical, 2px) var(--sb2-main-padding);
     overflow-y: scroll;
     scrollbar-width: none;
 
@@ -70,10 +79,14 @@ export const SECOND_SIDEBAR_CSS = `
 
     .toolbarbutton-1,
     .sb2-main-button {
-      padding: 0 12px !important;
+      /* Square pill sized like a collapsed tab background
+         (--tab-collapsed-background-width), inset from the sidebar edge by
+         the same --tab-margin-inline-inner the tab strip uses, so the 28px
+         icon box lands on the same axis as tab favicons. */
+      padding: 0 !important;
       min-height: var(--tab-min-height) !important;
       height: var(--tab-min-height) !important;
-      width: calc(var(--tab-min-height) + 24px) !important;
+      width: var(--tab-collapsed-background-width, var(--tab-min-height)) !important;
       box-sizing: border-box !important;
 
       /* Hover: match vertical tabs — icon scales up, bg changes, border becomes white */

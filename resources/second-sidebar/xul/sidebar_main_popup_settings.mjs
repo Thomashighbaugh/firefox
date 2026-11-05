@@ -33,7 +33,7 @@ export class SidebarMainPopupSettings extends PopupPanel {
       .setAttribute("level", "parent");
 
     this.positionMenuList = this.#createPositionMenuList();
-    this.paddingMenuList = this.#createPaddingMenuList();
+    this.paddingMenuList = this.#createPaddingMenuList(true);
     this.newWebPanelPositionMenuList =
       this.#createNewWebPanelPositionMenuList();
     this.autoHideBackToggle = new Toggle();
@@ -181,8 +181,11 @@ export class SidebarMainPopupSettings extends PopupPanel {
    *
    * @returns {MenuList}
    */
-  #createPaddingMenuList() {
+  #createPaddingMenuList(includeTabMatch = false) {
     const menuList = createMenuList();
+    if (includeTabMatch) {
+      menuList.appendItem("Same as Tabs", "default");
+    }
     menuList.appendItem("Extra Extra Small", "xxsmall");
     menuList.appendItem("Extra Small", "xsmall");
     menuList.appendItem("Small", "small");

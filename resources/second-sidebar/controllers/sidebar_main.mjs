@@ -69,11 +69,18 @@ export class SidebarMainController {
 
   getPadding() {
     const value = this.root.getProperty("--sb2-main-padding");
+    if (value.includes("--tab-margin-inline-inner")) {
+      return "default";
+    }
     return value.match(/var\(--space-([^)]+)\)/)[1];
   }
 
   setPadding(value) {
-    this.root.setProperty("--sb2-main-padding", `var(--space-${value})`);
+    const css =
+      value === "default"
+        ? "var(--tab-margin-inline-inner, var(--space-medium, 12px))"
+        : `var(--space-${value})`;
+    this.root.setProperty("--sb2-main-padding", css);
   }
 
   /**

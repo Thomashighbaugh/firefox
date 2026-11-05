@@ -296,11 +296,20 @@ test("second-sidebar web panels share the tab button metrics", () => {
   );
   assert.match(sb, /\.toolbarbutton-1,\s*\n\s*\.sb2-main-button\s*\{/);
   assert.match(sb, /min-height:\s*var\(--tab-min-height\)\s*!important/);
+  assert.match(
+    sb,
+    /width:\s*var\(--tab-collapsed-background-width, var\(--tab-min-height\)\)\s*!important/,
+  );
+  assert.match(
+    sb,
+    /--sb2-main-padding:\s*var\(--tab-margin-inline-inner, var\(--space-medium, 12px\)\)/,
+  );
 });
 
 test("first toolbar button is centred on the vertical tab icon axis", () => {
   const vt = fs.readFileSync(`${REPO}/CSS/chrome/vertical-tabs.css`, "utf8");
-  assert.match(vt, /--tab-inner-inline-margin/);
+  assert.match(vt, /--tab-margin-inline-inner/);
+  assert.doesNotMatch(vt, /--tab-inner-inline-margin/);
   assert.match(vt, /--tab-collapsed-background-width/);
   assert.match(vt, /#PanelUI-menu-button\s*\{[^}]*padding-inline-end/);
 });
@@ -330,5 +339,9 @@ test("second sidebar button rhythm matches native vertical tabs pitch", () => {
     `${REPO}/resources/second-sidebar/css/second_sidebar.mjs`,
     "utf8",
   );
-  assert.match(sb, /gap:\s*calc\(2 \* var\(--tab-block-margin\) \+ var\(--space-small\) \+ 5px\)/);
+  assert.match(
+    sb,
+    /gap:\s*calc\(2 \* var\(--tab-margin-block-vertical, 2px\)\)/,
+  );
+  assert.doesNotMatch(sb, /--tab-block-margin/);
 });

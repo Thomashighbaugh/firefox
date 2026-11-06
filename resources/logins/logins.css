@@ -16,6 +16,14 @@
   box-sizing: border-box;
 }
 
+/* Author display rules further down (.menu, .context-menu, .dialog-backdrop)
+   would otherwise defeat the UA's [hidden] rule — author origin beats the UA
+   stylesheet regardless of specificity — leaving the add-login dialog and the
+   export/context menus visible on page load, blocking everything. */
+[hidden] {
+  display: none !important;
+}
+
 html,
 body {
   margin: 0;

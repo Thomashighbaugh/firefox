@@ -136,6 +136,14 @@ test("logins page exists and is wired for privileged access", () => {
   assert.match(loginsPage, /getAllLogins/);
 });
 
+test("logins page CSS keeps [hidden] authoritative over display rules", () => {
+  // .menu/.context-menu/.dialog-backdrop set display:flex; without an
+  // author [hidden] guard the UA's [hidden]{display:none} loses (author
+  // origin wins) and the dialog + menus render open on load.
+  const css = fs.readFileSync(`${REPO}/resources/logins/logins.css`, "utf8");
+  assert.match(css, /\[hidden\]\s*\{[^}]*display:\s*none\s*!important/);
+});
+
 test("logins page gates password reveal and export behind re-auth", () => {
   // Both reveal and export must route through requireAuth -> requestReauth.
   assert.match(loginsPage, /requestReauth/);

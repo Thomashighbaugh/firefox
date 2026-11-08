@@ -91,6 +91,23 @@ test("homeRedirect re-applies on pref change and unloads cleanly", () => {
   assert.match(home, /addEventListener\(\s*"unload"/);
 });
 
+test("homeRedirect points the homepage at the custom page without clobbering user choice", () => {
+  // about:home is a separate channel from about:newtab; the startup page and
+  // home button read browser.startup.homepage and never see the newTabURL
+  // override, so the script must manage that pref itself.
+  assert.match(home, /HOMEPAGE_PREF = "browser\.startup\.homepage"/);
+  assert.match(home, /HOMEPAGE_DEFAULT = "about:home"/);
+  assert.match(home, /setStringPref\(HOMEPAGE_PREF, HOME\)/);
+  // Restore on disable, but only if the pref still holds our value.
+  assert.match(home, /clearUserPref\(HOMEPAGE_PREF\)/);
+  assert.match(home, /homepageIsOurs/);
+  assert.match(
+    home,
+    /value === HOMEPAGE_DEFAULT \|\| value === HOME/,
+    "a user-configured homepage is left alone",
+  );
+});
+
 test("homeRedirect target file exists and is the module home page", () => {
   const target = `${REPO}/resources/home/home.html`;
   assert.ok(fs.existsSync(target), "homeRedirect points at resources/home/home.html");

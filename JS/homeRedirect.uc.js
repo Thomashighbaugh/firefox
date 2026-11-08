@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name           Home / New Tab Redirect
-// @description    Loads the custom Home page (All-Tabs-Menu content + Firefox View sections) for new tabs. The fork will instead patch AboutNewTab.sys.mjs; this keeps the behaviour working on stock Firefox in the meantime.
+// @description    Loads the custom Home page (All-Tabs-Menu content + Firefox View sections) for new tabs AND as the homepage: new tabs go through AboutNewTab.newTabURL, the startup page and home button through browser.startup.homepage — but only while that pref is still the stock default (a homepage the user configured themselves is never touched; disabling the feature restores the default). The fork will instead patch AboutNewTab.sys.mjs; this keeps the behaviour working on stock Firefox in the meantime.
 // @author         Thomas Leon Highbaugh
-// @version        1.2.0
+// @version        1.3.0
 // @include        main
 // ==/UserScript==
 
@@ -18,6 +18,8 @@
   const DEBUG_PREF = "userchrome.home.debug";
   const HOME = "chrome://userchrome/content/home/home.html";
   const NATIVE = "about:newtab";
+  const HOMEPAGE_PREF = "browser.startup.homepage";
+  const HOMEPAGE_DEFAULT = "about:home";
 
   const debug = (...args) => {
     if (Services.prefs.getBoolPref(DEBUG_PREF, false)) {
@@ -47,6 +49,49 @@
       }
     } catch (e) {
       console.error("[homeRedirect] apply failed:", e);
+    }
+    applyHomepage();
+  }
+
+  /**
+   * True while browser.startup.homepage carries no user decision of its own:
+   * no user value at all, the built-in default, or a value this script set.
+   * A homepage the user configured themselves is never touched.
+   */
+  function homepageIsOurs() {
+    if (!Services.prefs.prefHasUserValue(HOMEPAGE_PREF)) {
+      return true;
+    }
+    const value = Services.prefs.getStringPref(HOMEPAGE_PREF);
+    return value === HOMEPAGE_DEFAULT || value === HOME;
+  }
+
+  /**
+   * about:home is a separate channel from about:newtab: the startup page and
+   * the home button read browser.startup.homepage and the stock activity
+   * stream serves it, ignoring the AboutNewTab.newTabURL override. Point the
+   * pref at the custom Home page while it is still the stock default; restore
+   * the default when the feature is disabled.
+   */
+  function applyHomepage() {
+    try {
+      if (enabled()) {
+        if (
+          homepageIsOurs() &&
+          Services.prefs.getStringPref(HOMEPAGE_PREF, "") !== HOME
+        ) {
+          Services.prefs.setStringPref(HOMEPAGE_PREF, HOME);
+          debug("homepage ->", HOME);
+        }
+      } else if (
+        Services.prefs.prefHasUserValue(HOMEPAGE_PREF) &&
+        Services.prefs.getStringPref(HOMEPAGE_PREF) === HOME
+      ) {
+        Services.prefs.clearUserPref(HOMEPAGE_PREF);
+        debug("homepage restored to default");
+      }
+    } catch (e) {
+      console.error("[homeRedirect] homepage apply failed:", e);
     }
   }
 

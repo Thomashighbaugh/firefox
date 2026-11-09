@@ -131,13 +131,16 @@ test("uiAnimations kill-switch writes the uc-animations attribute", () => {
   assert.match(animCss, /:root\[uc-animations="off"\]/);
 });
 
-test("uiAnimations honours prefers-reduced-motion", () => {
-  assert.match(anim, /prefers-reduced-motion:\s*reduce/);
-  assert.match(animCss, /@media\s*\(prefers-reduced-motion/);
-});
-
-test("uiAnimations writes the fan transform with !important (CSS can't override it)", () => {
-  assert.match(anim, /setProperty\(\s*"transform",\s*value,\s*"important"\s*\)/);
+test("uiAnimations no longer moves elements (fan removed)", () => {
+  // Fan transform math, its observer wiring, and the prefers-reduced-motion
+  // branch were deleted with the fan: swatches stay put so they can be clicked.
+  assert.ok(
+    !/setProperty\(\s*"transform"/.test(anim),
+    "JS writes no transforms",
+  );
+  assert.ok(!/transform/.test(anim), "no transform math left");
+  assert.ok(!/prefers-reduced-motion/.test(anim), "no media-query branch left");
+  assert.match(animCss, /@media\s*\(prefers-reduced-motion/, "reduced-motion CSS kept");
 });
 
 /* ------------------------- logins page + redirect ------------------------- */
@@ -387,11 +390,12 @@ test("second-sidebar settings migrate the legacy padding default once", () => {
   );
 });
 
-test("tab-group colour fan is disabled by default", () => {
+test("tab-group colour fan removed entirely", () => {
   const ua = fs.readFileSync(`${REPO}/JS/uiAnimations.uc.js`, "utf8");
-  assert.match(
-    ua,
-    /DEFAULTS\s*=\s*\{\s*enabled:\s*true,\s*fan:\s*false/,
-    "flying swatch fan must not be on by default",
-  );
+  const css = fs.readFileSync(`${REPO}/CSS/chrome/animations.css`, "utf8");
+  assert.ok(!/tabGroupFan/.test(ua), "tabGroupFan pref gone");
+  assert.ok(!/layoutFan/.test(ua), "layoutFan gone");
+  assert.ok(!/resetFan/.test(ua), "resetFan gone");
+  assert.ok(!/fan-open/.test(ua), "fan-open gone from JS");
+  assert.ok(!/fan-open/.test(css), "fan-open gone from CSS");
 });

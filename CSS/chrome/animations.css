@@ -34,14 +34,6 @@ Tab-group colour swatches — the fan.
     box-shadow 0.28s ease !important;
 }
 
-/* The open fan needs room to spill out of its row, exactly as render.js lifts
-   the workspace button's overflow. */
-.tab-group-editor-swatches[fan-open="true"],
-.tab-group-editor-swatches[fan-open="true"] .tab-group-editor-swatch {
-  overflow: visible !important;
-  z-index: 3;
-}
-
 /* Glow: hovered or currently-checked swatch lights up in its own colour. */
 .tab-group-editor-swatches input:checked + .tab-group-editor-swatch,
 .tab-group-editor-swatch:hover {
@@ -69,7 +61,6 @@ Kill-switches. The root attribute is set by JS from userchrome.animations.enable
 pref cannot accidentally disable motion (a bare `-moz-pref()` on an unset pref reads false).
 =====================================================================================================*/
 :root[uc-animations="off"] .tab-group-editor-swatch,
-:root[uc-animations="off"] .tab-group-editor-swatches[fan-open="true"] .tab-group-editor-swatch,
 :root[uc-animations="off"] toolbar .toolbarbutton-1 > .toolbarbutton-icon,
 :root[uc-animations="off"] .tab-close-button {
   transition: none !important;
@@ -79,7 +70,6 @@ pref cannot accidentally disable motion (a bare `-moz-pref()` on an unset pref r
 
 @media (prefers-reduced-motion: reduce) {
   .tab-group-editor-swatch,
-  .tab-group-editor-swatches[fan-open="true"] .tab-group-editor-swatch,
   toolbar .toolbarbutton-1 > .toolbarbutton-icon,
   .tab-close-button {
     transition: none !important;

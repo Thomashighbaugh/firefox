@@ -386,3 +386,12 @@ test("second-sidebar settings migrate the legacy padding default once", () => {
     "constructor default must be the tab-matched value",
   );
 });
+
+test("tab-group colour fan is disabled by default", () => {
+  const ua = fs.readFileSync(`${REPO}/JS/uiAnimations.uc.js`, "utf8");
+  assert.match(
+    ua,
+    /DEFAULTS\s*=\s*\{\s*enabled:\s*true,\s*fan:\s*false/,
+    "flying swatch fan must not be on by default",
+  );
+});

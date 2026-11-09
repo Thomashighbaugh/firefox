@@ -28,7 +28,7 @@
     fan: "userchrome.animations.tabGroupFan",
     speed: "userchrome.animations.speed",
   };
-  const DEFAULTS = { enabled: true, fan: true, speed: "0.45s" };
+  const DEFAULTS = { enabled: true, fan: false, speed: "0.45s" };
 
   function opts() {
     const o = { ...DEFAULTS };

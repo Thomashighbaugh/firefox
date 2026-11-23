@@ -41,4 +41,43 @@
   /* Menu items */
   --arrowpanel-menuitem-padding-block: 2px !important; /* Default: 8px */
   --arrowpanel-menuitem-padding-inline: 2px !important; /* Default: 8px */
+
+  /* ========================================================================
+     SOLID GLASS edge tokens (port of deeplethe/solid-glass)
+     These sit alongside your existing colors — nothing is replaced.
+     Finish at the edge: rim (top light) + hairline (all-round) + shadow (under).
+     Depth is thickness: panel < card < popover.
+     ======================================================================== */
+
+  --glass-rim: oklch(100% 0 0 / 16%) !important;
+  --glass-inner: oklch(100% 0 0 / 4%) !important;
+  --glass-edge: oklch(100% 0 0 / 6%) !important;
+  --glass-shade: oklch(0 0 0 / 60%) !important;
+  --glass-contact: oklch(0 0 0 / 10%) !important;
+  --glass-lift: oklch(0 0 0 / 22%) !important;
+  --glass-control: oklch(100% 0 0 / 7%) !important;
+  --glass-control-rim: oklch(100% 0 0 / 11%) !important;
+  --glass-state: oklch(100% 0 0 / 8%) !important;
+  --glass-state-rim: oklch(100% 0 0 / 11%) !important;
+  --glass-state-edge: oklch(100% 0 0 / 6%) !important;
+  --glass-blur: blur(26px) !important;
+  --glass-blur-control: blur(14px) !important;
+
+  /* Field edge tokens (a field is a pane of clear glass to type on). */
+  --field-rim: oklch(100% 0 0 / 15%) !important;
+  --field-edge: oklch(100% 0 0 / 8%) !important;
+  --focus-line: oklch(100% 0 0 / 40%) !important;
+
+  /* Popover edge tokens (thickest pane). */
+  --popover-edge: var(--glass-edge) !important;
+  --popover-under: oklch(0 0 0 / 0%) !important;
+
+  --radius-control: 0.7rem !important;
+
+  /* Surface thickness aliases mapped to existing chrome colors so the monochrome
+     base reads as one material while your accent colors (--red-*, --grey-*) stay
+     untouched. */
+  --firefoxcss-surface-panel: var(--firefoxcss-tab-bg-color) !important;
+  --firefoxcss-surface-card: var(--firefoxcss-item-bg-color) !important;
+  --firefoxcss-surface-popover: var(--firefoxcss-panel-bg-color) !important;
 }

@@ -128,18 +128,22 @@
       --icon-size-default: var(--toolbarbutton-icon-size);
     }
 
-    /* Resting: dark bg + dark border (matches .toolbarbutton-icon resting state) */
+    /* Resting: clear glass bg + hairline border (matches .toolbarbutton-icon resting state) */
     &::part(button) {
-      background-color: hsla(240, 2%, 35%, 0.95) !important;
-      border: 1px solid hsla(240, 2%, 05%, 0.75) !important;
+      background-color: var(--glass-control) !important;
+      background-clip: padding-box !important;
+      border: 1px solid var(--glass-edge) !important;
       border-radius: var(--firefoxcss-border-radius) !important;
-      box-shadow: inset 2px 2px 4px var(--firefoxcss-toolbar-button-box-shadow) !important;
+      box-shadow:
+        inset 0 1px 0 var(--glass-control-rim),
+        0 1px 2px var(--glass-contact) !important;
     }
 
-    /* Hover: lighter bg + white border (matches .toolbarbutton-icon:hover) */
+    /* Hover: one state — the same clear-glass pane (matches .toolbarbutton-icon:hover) */
     &:hover::part(button) {
-      background-color: hsla(240, 2%, 55%, 0.75) !important;
-      border: 1px solid hsla(240, 2%, 95%, 0.75) !important;
+      background-color: var(--glass-state) !important;
+      background-clip: padding-box !important;
+      border: 1px solid var(--glass-state-edge) !important;
     }
   }
 }

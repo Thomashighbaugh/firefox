@@ -39,18 +39,21 @@
   transition: opacity 100ms ease !important;
 }
 
-/* Normal tabs design */
+/* Normal tabs design — glass pane, panel thickness (thinnest).
+   Finish at the edge: rim (top light) + hairline (all round) + shade (under).
+   Sizes (min/max-width, height) and the rainbow animation are untouched. */
 .tabbrowser-tab .tab-background:not([selected]) {
   border: 0 !important;
   border-radius: var(--firefoxcss-border-radius) !important;
   background-image: none !important;
-  background-color: color-mix(
-    in srgb,
-    var(--firefoxcss-tab-bg-color) 4%,
-    transparent
-  ) !important;
+  background-color: var(--firefoxcss-tab-bg-color) !important;
   transition: background-color 100ms ease !important;
-  box-shadow: var(--firefoxcss-normal-tabs-box-shadow) !important;
+  box-shadow:
+    inset 0 1px 0 var(--glass-rim),
+    inset 0 0 0 1px var(--glass-inner),
+    0 0 0 1px var(--glass-edge),
+    0 1px 2px var(--glass-contact),
+    0 12px 32px -14px var(--glass-shade) !important;
 }
 
 @media -moz-pref("sidebar.verticalTabs") {
@@ -65,7 +68,8 @@
   }
 }
 
-/* Normal tabs design on hover */
+/* Normal tabs design on hover — one state: the same clear-glass pane.
+   No colour change, just the glass-state fill. */
 #tabbrowser-tabs
   .tabbrowser-tab:hover
   > .tab-stack
@@ -73,40 +77,45 @@
   border: 0 !important;
   border-radius: var(--firefoxcss-border-radius) !important;
   background-image: none !important;
-  background-color: color-mix(
-    in srgb,
-    var(--firefoxcss-tab-hover-bg-color) 4%,
-    transparent
-  ) !important;
-  box-shadow: var(--firefoxcss-normal-tabs-box-shadow) !important;
+  background-color: var(--glass-state) !important;
+  box-shadow:
+    inset 0 1px 0 var(--glass-state-rim),
+    inset 0 0 0 1px var(--glass-inner),
+    0 0 0 1px var(--glass-state-edge),
+    0 1px 2px var(--glass-contact),
+    0 12px 32px -14px var(--glass-shade) !important;
 }
 
-/* Selected tabs design */
+/* Selected tabs design — card thickness (thicker pane).
+   Finish at the edge, same as unselected but with the card surface.
+   Rainbow border animation on .tab-icon-stack is untouched. */
 #tabbrowser-tabs .tabbrowser-tab .tab-background[selected] {
   border: 0 !important;
   border-radius: var(--firefoxcss-border-radius) !important;
   background-image: none !important;
-  background-color: color-mix(
-    in srgb,
-    var(--firefoxcss-tab-active-bg-color) 4%,
-    transparent
-  ) !important;
-  box-shadow: none !important;
+  background-color: var(--firefoxcss-tab-active-bg-color) !important;
+  box-shadow:
+    inset 0 1px 0 var(--glass-rim),
+    inset 0 0 0 1px var(--glass-inner),
+    0 0 0 1px var(--glass-edge),
+    0 1px 2px var(--glass-contact),
+    0 12px 32px -14px var(--glass-shade) !important;
   outline: none !important;
 }
 
-/* Multiselect tabs */
+/* Multiselect tabs — card thickness, same glass edge finish. */
 #tabbrowser-tabs .tabbrowser-tab .tab-background[multiselected] {
   border: 0 !important;
   border-radius: var(--firefoxcss-border-radius) !important;
   background-image: none !important;
   outline: none !important;
-  background-color: color-mix(
-    in srgb,
-    var(--firefoxcss-tab-active-bg-color) 4%,
-    transparent
-  ) !important;
-  box-shadow: none !important;
+  background-color: var(--firefoxcss-tab-active-bg-color) !important;
+  box-shadow:
+    inset 0 1px 0 var(--glass-rim),
+    inset 0 0 0 1px var(--glass-inner),
+    0 0 0 1px var(--glass-edge),
+    0 1px 2px var(--glass-contact),
+    0 12px 32px -14px var(--glass-shade) !important;
 }
 
 #tabbrowser-tabs
@@ -191,6 +200,12 @@
     transparent
   ) !important;
   backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 1px 0 var(--glass-rim),
+    inset 0 0 0 1px var(--glass-inner),
+    0 0 0 1px var(--glass-edge),
+    0 1px 2px var(--glass-contact),
+    0 12px 32px -14px var(--glass-shade) !important;
 }
 
 /* Tab audio controls styling */

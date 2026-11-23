@@ -2,15 +2,18 @@
 ===================== S P I L L   T H E M E =============================
 =====================================================================*/
 
-/* Main BAR - Remove border for Spill theme */
+/* Main BAR - glass edge finish for Spill theme: hairline bottom edge + shade */
 #main-window #navigator-toolbox {
-  border-bottom: none !important;
+  border-bottom: 1px solid var(--glass-edge) !important;
+  box-shadow: 0 1px 2px var(--glass-contact) !important;
 }
 
-/* Remove the white line around the content window */
+/* Remove the white line around the content window - replace with glass edge */
 #browser #tabbrowser-tabbox {
   outline: none !important;
   box-shadow: none !important;
+  border-bottom: 1px solid var(--glass-edge) !important;
+  box-shadow: 0 1px 2px var(--glass-contact) !important;
 }
 
 /* Make all viewport corners consistent */

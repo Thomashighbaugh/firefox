@@ -7,7 +7,7 @@
 /* ----- My Custom Colors ----- */
 @media (prefers-color-scheme: dark) {
   :root {
-    --firefoxcss-bookmarks-bg-color: hsla(240, 2%, 13%, 0.85) !important;
+    --firefoxcss-bookmarks-bg-color: oklch(0.13 0 0 / 0.85) !important;
   }
 }
 

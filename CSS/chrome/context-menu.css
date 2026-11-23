@@ -46,7 +46,13 @@ panel {
     --panel-padding: 1px 0px !important;
     --panel-border-radius: 8px !important;
 /*     --panel-padding-block: 4px !important; */
-    --panel-background: var(--firefoxcss-main-bg-color) !important;
+    --panel-background: var(--firefoxcss-panel-bg-color) !important;
+    box-shadow:
+      inset 0 1px 0 var(--glass-rim),
+      inset 0 -1px 0 var(--popover-under),
+      0 0 0 1px var(--glass-edge),
+      0 24px 60px -18px var(--glass-shade),
+      0 6px 16px -6px var(--glass-lift) !important;
   }
 }
 

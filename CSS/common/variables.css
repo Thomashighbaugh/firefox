@@ -55,7 +55,7 @@
   --glass-shade: oklch(0 0 0 / 60%) !important;
   --glass-contact: oklch(0 0 0 / 10%) !important;
   --glass-lift: oklch(0 0 0 / 22%) !important;
-  --glass-control: oklch(0.3 0 0 / 0.5) !important;
+  --glass-control: oklch(0.45 0 0 / 0.7) !important;
   --glass-control-rim: oklch(100% 0 0 / 11%) !important;
   --glass-state: oklch(100% 0 0 / 8%) !important;
   --glass-state-rim: oklch(100% 0 0 / 11%) !important;

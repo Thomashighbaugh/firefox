@@ -57,9 +57,9 @@
 
     /* Tab colors — depth is thickness: panel (thinnest) < card < popover.
        Unselected = panel (thin glass), selected = card (thicker glass). */
-    --firefoxcss-tab-bg-color: oklch(0.16 0 0 / 0.3);
+    --firefoxcss-tab-bg-color: oklch(0.28 0 0 / 0.5);
     --firefoxcss-tab-hover-bg-color: var(--glass-state);
-    --firefoxcss-tab-active-bg-color: oklch(0.31 0 0 / 0.46);
+    --firefoxcss-tab-active-bg-color: oklch(0.45 0 0 / 0.65);
     --firefoxcss-non-active-tabs: hsla(0, 0%, 100%, 0.65);
 
     --firefoxcss-normal-tabs-box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.4);

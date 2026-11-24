@@ -28,6 +28,54 @@ DEPENDENCIES: None (this is the foundation for all styling)
 @import url("CSS/common/variables.css");
 
 /*=====================================================================================================
+IMPORT: SearXNG Localhost Wider Results
+PURPOSE: Widens SearXNG search results to an 80/20 split on localhost:8080
+DESCRIPTION: Converts the "SearXNG Localhost Wider Results" user style into a userContent
+stylesheet scoped to http://localhost:8080. Removes the duplicated normalize.css boilerplate
+and the duplicate layout override block present in the original userstyle.
+DEPENDENCIES: none
+===================================================================================================*/
+@import url("CSS/content/searxng.css");
+
+/*=====================================================================================================
+IMPORT: Hacker News Pretty
+PURPOSE: Applies a dark-mode-aware theme to news.ycombinator.com
+DESCRIPTION: Converts the "HN Pretty" user style by krruzic into a userContent
+stylesheet scoped to news.ycombinator.com. Fixes the invalid url-prefix glob
+pattern and consolidates the theme variables, comment tree styling, and
+per-page overrides (newcomments, security/newsfaq/showhn, lists, login).
+DEPENDENCIES: none
+===================================================================================================*/
+@import url("CSS/content/hacker-news.css");
+
+/*=====================================================================================================
+IMPORT: Bitbucket Full Dark
+PURPOSE: Applies a dark theme to Bitbucket and Bitbucket Server instances
+DESCRIPTION: Converts the "Bitbucket Full Dark" user style by Mike Ellertson into a userContent
+stylesheet scoped to bitbucket domains and vetthevote.com/bitbucket paths.
+DEPENDENCIES: none
+===================================================================================================*/
+@import url("CSS/content/bitbucket-dark.css");
+
+/*=====================================================================================================
+IMPORT: dark ollama
+PURPOSE: Applies a dark theme to ollama.com
+DESCRIPTION: Converts the "dark ollama" user style by notmee12 into a userContent
+stylesheet scoped to ollama.com.
+DEPENDENCIES: none
+===================================================================================================*/
+@import url("CSS/content/ollama-dark.css");
+
+/*=====================================================================================================
+IMPORT: DuckDuckGo Dark Lite
+PURPOSE: Applies a dark theme to DuckDuckGo Lite
+DESCRIPTION: Converts the "DuckDuckGo Dark Lite" user style into a userContent
+stylesheet scoped to https://lite.duckduckgo.com/lite.
+DEPENDENCIES: none
+===================================================================================================*/
+@import url("CSS/content/duckduckgo-lite.css");
+
+/*=====================================================================================================
 IMPORT: Private Browsing Styling
 PURPOSE: Customizes the appearance of private browsing mode interfaces
 DESCRIPTION: Handles styling for private browsing windows, indicators, and related UI elements

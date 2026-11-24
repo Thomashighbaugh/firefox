@@ -1,0 +1,33 @@
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+/* ==UserStyle==
+@name         Bitbucket Full Dark
+@namespace    USO Archive
+@author       Mike Ellertson
+@description  A dark theme for Bitbucket, complements the Jira Full Dark theme.
+@version      20190802.03.36
+@license      NONE
+==/UserStyle== */
+
+@-moz-document url-prefix("https://bitbucket"),
+regexp("https?://.*/bitbucket/.*"),
+url-prefix("https://vetthevote.com/bitbucket/") {
+
+    /* Global header */
+    .bitbucket-theme #content > header {
+        background-color: #202020;
+    }
+    /* Global Left Side Panel */
+    aside.aui-page-panel-sidebar,
+    aside.aui-page-panel-sidebar section {
+        background-color: #202020;
+    }
+    aside.aui-page-panel-sidebar section div,
+    aside.aui-page-panel-sidebar section div.welcome-mat p {
+        background-color: #303030;
+        color: #deebff;
+    }
+    /* global footer */
+    body #footer-logo {
+        background: #202020;
+    }

@@ -1,0 +1,214 @@
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+/* ==UserStyle==
+@name         HN Pretty
+@version      20231226.07.55
+@namespace    userstyles.world/user/krruzic
+@description  Hackernews theme with dark mode support, better looking comment tree and more
+@author       krruzic
+@license      CC Zero
+==/UserStyle== */
+
+/* Main HN domain (fixes invalid url-prefix("https://*.ycombinator.com/*") glob) */
+@-moz-document domain("news.ycombinator.com") {
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --primary: #ff6600;
+            --primary-light: #a57453;
+            --text-select: #ff853394;
+            --text-primary: #c7c7c7;
+            --text-secondary: #9b9b9b;
+            --bg-primary: #111;
+            --bg-secondary: #1a1a1a;
+            --bg-light-primary: #222;
+            --bg-light-secondary: #333;
+        }
+    }
+    @media (prefers-color-scheme: light) {
+        :root {
+            --primary: #ff6600;
+            --primary-light: #a57453;
+            --text-select: #ff853394;
+            --text-primary: #222;
+            --text-secondary: #5a5a5a;
+            --bg-primary: #fdfdfd;
+            --bg-secondary: #f8f8f8;
+            --bg-light-primary: #f3f3f3;
+            --bg-light-secondary: #e7e7e7;
+        }
+    }
+
+    ::selection {
+        background: var(--text-select);
+        color: var(--text-primary);
+    }
+
+    body,
+    table {
+        background: var(--bg-primary);
+    }
+
+    .pagetop a,
+    .pagetop,
+    a:link,
+    .c00,
+    td,
+    b,
+    form {
+        color: var(--text-primary) !important;
+    }
+
+    .subline a:link,
+    .comhead {
+        color: var(--text-secondary) !important;
+    }
+
+    textarea,
+    input {
+        background: var(--bg-light-secondary);
+        color: var(--text-primary) !important;
+        border: none;
+        border-radius: 2px;
+    }
+
+    textarea {
+        padding: 4px;
+    }
+
+    a[href="https://news.ycombinator.com"] > img {
+        border: none !important;
+        width: 38px;
+        height: 38px;
+        margin: 4px;
+    }
+
+    input[type="submit"] {
+        cursor: pointer;
+        border: none;
+        border-radius: 2px;
+        transition: all .4s ease-in-out;
+        padding: 6px;
+    }
+    input[type="submit"]:hover {
+        background: var(--text-primary);
+        color: var(--bg-secondary) !important;
+    }
+
+    a.more,
+    .hnmore > a,
+    .titleline > a,
+    .pagetop a,
+    .comment a {
+        transition: all .2s ease-in-out;
+    }
+
+    .hnmore > a:visited:hover,
+    .titleline > a:visited:hover,
+    .comment a:visited:hover {
+        color: var(--primary-light) !important;
+    }
+
+    a.morelink:hover,
+    .hnmore > a:hover,
+    .titleline > a:hover,
+    .pagetop a:hover,
+    .comment a:hover {
+        color: var(--primary) !important;
+    }
+
+    .votelinks a div:hover {
+        filter: brightness(0) saturate(100%) invert(58%) sepia(86%) saturate(4822%) hue-rotate(2deg) brightness(102%) contrast(107%);
+    }
+    img[src="y18t.svg"] {
+        background:#ff6600;
+    }
+
+    tr.athing > td td.default {
+        padding: 8px;
+        border-radius: 2px;
+    }
+
+    tr.athing:nth-of-type(2n+1) > td td.default {
+        background: var(--bg-light-primary);
+    }
+
+    tr.athing:nth-of-type(2n) > td td.default {
+        background: var(--bg-light-secondary);
+    }
+
+    td.nosee {
+        width: 12px;
+    }
+
+    td.ind {
+        width: 0;
+    }
+
+    .comment-tree {
+        width: 100%;
+    }
+
+    .comment-tree table {
+        width: 100%;
+    }
+
+    .comment-tree .votelinks {
+        width: 12px;
+    }
+}
+
+/* New comments page */
+@-moz-document url-prefix("https://news.ycombinator.com/newcomments") {
+    tr.athing > td.default {
+        padding: 8px;
+        border-radius: 2px;
+    }
+
+    tr.athing:nth-of-type(4n+1) > td.default {
+        background: var(--bg-light-primary);
+    }
+
+    tr.athing:nth-of-type(4n-1) > td.default {
+        background: var(--bg-light-secondary);
+    }
+}
+
+/* Special HN pages */
+@-moz-document regexp("https://news.ycombinator.com/(security.html|newsfaq.html|showhn.html)") {
+    td {
+        background: var(--bg-light-primary);
+        margin: 10px;
+        padding: 10px;
+    }
+    td > br:nth-of-type(1),
+    td > br:nth-of-type(2) {
+        display: none;
+    }
+    td > b:first-of-type {
+        font-size: x-large;
+    }
+    a[href="http://www.ycombinator.com"] {
+        display: none;
+    }
+}
+
+/* Lists page */
+@-moz-document url("https://news.ycombinator.com/lists") {
+    td > a:hover {
+        transition: all .2s ease-in-out;
+        color: var(--primary) !important;
+    }
+    td > a:visited:hover {
+        transition: all .2s ease-in-out;
+        color: var(--primary-light) !important;
+    }
+}
+
+/* Login page */
+@-moz-document url-prefix("https://news.ycombinator.com/login") {
+    html {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

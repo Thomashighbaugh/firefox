@@ -1,0 +1,86 @@
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+/* ==UserStyle==
+@name         SearXNG Localhost Wider Results
+@namespace    localhost.searxng.style
+@version      1.0.1
+@description  Makes the search results wider (80/20 split) on a local SearXNG instance.
+==/UserStyle== */
+
+@-moz-document url-prefix("http://localhost:8080") {
+    /* ========================================================
+       AGGRESSIVE 80/20 FULL-WIDTH LAYOUT OVERRIDES
+       Forces SearXNG results to a 78/20 grid split across the
+       full viewport width on wide screens.
+       ======================================================== */
+    @media screen and (min-width: 60em) {
+        /* Force the results grid to use full viewport width and exact 78/20 split */
+        #main_results div#results,
+        .center-alignment-yes #main_results div#results,
+        .center-alignment-no #main_results div#results {
+            display: grid !important;
+            grid-template:
+                "corrections sidebar" min-content
+                "answers sidebar" min-content
+                "urls sidebar" 1fr
+                "pagination sidebar" min-content / 78% 20% !important;
+            gap: 2% !important;
+            width: 96vw !important;
+            max-width: 96vw !important;
+            margin: 1rem 2vw !important;
+            justify-content: stretch !important;
+            align-content: start !important;
+        }
+
+        /* Remove the fixed 54em width limits on result descriptions so they span the 80% */
+        .result .content,
+        .result .stat,
+        .result {
+            max-width: none !important;
+            width: 100% !important;
+        }
+
+        /* Expand the top header wrapper if constrained */
+        .page_with_header {
+            width: 100% !important;
+            max-width: none !important;
+        }
+
+        /* Ensure Sidebar fully expands within its 20% column */
+        #sidebar,
+        .center-alignment-no #sidebar,
+        .center-alignment-yes #sidebar {
+            width: 100% !important;
+            max-width: none !important;
+            margin: 0 !important;
+            float: none !important;
+        }
+
+        /* Ensure URLs fully expand within their 78% column */
+        #urls,
+        .center-alignment-no #urls,
+        .center-alignment-yes #urls {
+            width: 100% !important;
+            max-width: none !important;
+            margin: 0 !important;
+        }
+
+        /* Fix the search header so it spans the wide page instead of bunching up */
+        .center-alignment-yes #main_results #search_header,
+        .center-alignment-no #main_results #search_header,
+        #search_header {
+            grid-template-columns: 3rem 1fr !important;
+            grid-template-areas: "logo search" "spacer categories" !important;
+            width: 96vw !important;
+            max-width: 96vw !important;
+            padding-left: 2vw !important;
+            padding-right: 2vw !important;
+            margin: 0 auto !important;
+        }
+
+        .search_filters {
+            width: auto !important;
+            max-width: none !important;
+        }
+    }
+}

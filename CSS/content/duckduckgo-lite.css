@@ -1,0 +1,156 @@
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+/* ==UserStyle==
+@name         DuckDuckGo Dark Lite
+@version      20240118.07.33
+@namespace    ?
+@description  Dark theme for DuckDuckGo Lite (lite.duckduckgo.com)
+==/UserStyle== */
+
+@-moz-document url-prefix("https://lite.duckduckgo.com/lite") {
+    html {
+        color: rgb(141, 141, 141) !important;
+        background: rgb(48, 48, 48) !important;
+        font-family: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+    }
+
+    body {
+        padding-left: 20px;
+        width: 90%;
+    }
+
+    a {
+        color: rgb(230, 230, 230) !important;
+        text-decoration: none;
+    }
+
+    a:visited {
+        color: rgb(255, 207, 207) !important;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .submit {
+        padding: 0 23px;
+        height: 28px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 18px;
+        background-color: #fdce3e;
+        border: 1px solid #e5a716;
+        color: #434343;
+        -moz-appearance: none;
+    }
+
+    input.query {
+        color: rgb(28, 28, 28) !important;
+        background-color: rgb(234, 234, 234) !important;
+        border: 1px solid rgb(36, 36, 36) !important;
+        border-radius: 18px;
+        height: 18px;
+        font-size: 16px;
+        padding: 5px 6px;
+        text-align: left;
+        width: 55%;
+        max-width: 600px;
+        box-shadow: 0 0 3px 1px rgb(136, 136, 136) inset !important;
+    }
+
+    .header {
+        font-size: 32px;
+        font-weight: bold;
+        color: #eee;
+    }
+
+    .extra {
+        margin-top: 0;
+        margin-bottom: 0;
+        height: 1.3em;
+    }
+
+    #end-spacer {
+        height: 10em;
+    }
+
+    span.no-results {
+        font-size: 110%;
+    }
+
+    .link-text {
+        color: #f37901 !important;
+        font-size: 77.4%;
+    }
+
+    .result-link {
+        font-size: 107.1%;
+    }
+
+    .result-snippet {
+        font-size: 77.4%;
+        color: #cacaca;
+    }
+
+    .result-sponsored {
+        background: rgb(60, 60, 60) !important;
+        border: 0 solid #fef9eb !important;
+    }
+
+    .result-sponsored:hover {
+        background: rgb(60, 60, 60) !important;
+    }
+
+    .did-you-mean {
+        color: #ee4444;
+        font-size: 107.1%;
+    }
+
+    .timestamp {
+        color: #fffefe;
+        font-size: 77.4%;
+    }
+
+    .navbutton {
+        background-color: transparent;
+        border: 0 none;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: underline;
+        color: #10bdbb !important;
+        border-bottom: 1px solid transparent;
+        padding: 0;
+    }
+
+    .navbutton:hover {
+        border-bottom: 1px solid #10bdbb !important;
+    }
+
+    th,
+    td {
+        margin: 0;
+        padding: 0;
+        font-size: 107.1%;
+        color: #9fc6c5 !important;
+    }
+
+    @media only screen and (max-device-width: 700px) {
+        body {
+            width: 95%;
+            margin-left: 10px;
+            padding: 0;
+        }
+        .query {
+            width: 180px;
+            font-size: 12px;
+        }
+    }
+
+    @media only screen and (max-device-width: 701px) and (orientation: landscape) {
+        .query {
+            width: 273px;
+        }
+    }
+}

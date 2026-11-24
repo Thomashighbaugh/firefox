@@ -1,0 +1,159 @@
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+/* ==UserStyle==
+@name         dark ollama
+@version      20240710.09.01
+@namespace    https://userstyles.world/user/notmee12
+@description  darker ollama
+@author       notmee12
+==/UserStyle== */
+
+@-moz-document url-prefix("https://ollama.com/") {
+    body,
+    main,
+    nav,
+    header,
+    div {
+        background-color: rgb(25, 25, 25);
+    }
+
+    img.w-4.h-4,
+    img:not(#headerProfileImg):not(#profileImg) {
+        filter: invert(0.9);
+    }
+
+    h1,
+    h2,
+    p,
+    span,
+    a,
+    input,
+    select,
+    strong,
+    th,
+    td,
+    li,
+    button,
+    #popup {
+        color: #fff !important;
+    }
+
+    h3,
+    #text-xs,
+    div.text-neutral-500 {
+        color: #aaa !important;
+    }
+
+    footer,
+    input#search,
+    select,
+    a {
+        background: rgb(25, 25, 25) !important;
+    }
+
+    button {
+        background: transparent !important;
+    }
+
+    input[type="submit"] {
+        background: #fff !important;
+        color: rgb(25, 25, 25) !important;
+    }
+
+    a[href="/download"] {
+        transition: 0.5s ease-in-out;
+        background-color: #222 !important;
+        color: #fff !important;
+    }
+
+    a[href="/download"]:hover {
+        background-color: #fff !important;
+        color: rgb(25, 25, 25) !important;
+    }
+
+    span[x-test-capability],
+    span.bg-indigo-50 {
+        background-color: rgb(79 70 229);
+        color: rgb(238 242 255);
+    }
+
+    span[x-test-size] {
+        background-color: rgb(37 99 235);
+        color: rgb(221 244 255);
+    }
+
+    .bg-neutral-50 {
+        background-color: rgb(38, 38, 38);
+    }
+
+    .bg-slate-100 {
+        background-color: rgb(71, 72, 73);
+    }
+
+    .peer:checked ~ .peer-checked\\:bg-neutral-100 {
+        background: rgb(59, 59, 59) !important;
+    }
+
+    code,
+    pre {
+        background-color: #222 !important;
+        color: #fff !important;
+        font-family: monospace;
+    }
+
+    li::marker {
+        color: #fff !important;
+    }
+
+    .mt-2 {
+        margin-top: 0;
+        padding-top: 0.5rem;
+        background-color: rgb(25, 25, 25);
+    }
+
+    .text-neutral-900 {
+        color: #fff;
+    }
+
+    div.px-4.py-3.bg-neutral-50.flex.justify-between.items-center.text-xs.text-neutral-900 {
+        background: #0a0a0a;
+    }
+
+    .space-y-1 {
+        visibility: hidden;
+    }
+
+    div.mt-2 {
+        border-radius: 0px;
+    }
+
+    label,
+    textarea,
+    input {
+        background: rgb(25, 25, 25) !important;
+        color: #fff !important;
+    }
+
+    label img {
+        background: transparent !important;
+    }
+
+    div.my-2 {
+        background: rgb(25, 25, 25) !important;
+    }
+
+    div.py-2.px-4.space-y-2 {
+        background: transparent;
+    }
+
+    div.font-medium.text-neutral-800.text-sm.truncate {
+        color: #fff;
+    }
+
+    a.group.text-neutral-700.flex.px-4.py-2.text-sm.items-center.space-x-2.justify-between.w-full.bg-neutral-100 {
+        background-color: #eee1 !important;
+    }
+    a.group.text-neutral-700.flex.px-4.py-2.text-sm.items-center.space-x-2.justify-between.w-full.bg-neutral-100 div {
+        background-color: transparent;
+    }
+}

@@ -81,6 +81,31 @@ function wireToolboxDelegation(bar) {
   });
 }
 
+function flattenSidebarSeams() {
+  const sidebar = document.querySelector("sidebar-main");
+  if (!sidebar || !sidebar.shadowRoot) {
+    setTimeout(flattenSidebarSeams, 500);
+    return;
+  }
+  if (sidebar.shadowRoot.querySelector("style[data-panel-unity]")) return;
+  const style = document.createElement("style");
+  style.setAttribute("data-panel-unity", "");
+  style.textContent = `
+    #sidebar-tools-and-extensions-splitter {
+      background-image: none !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+    :host(:not([expanded])) .buttons-wrapper {
+      --glass-control: transparent !important;
+      --glass-edge: transparent !important;
+      --glass-control-rim: transparent !important;
+      --glass-contact: transparent !important;
+    }
+  `;
+  sidebar.shadowRoot.appendChild(style);
+}
+
 var AddAddonbar = {
   /**
    * Initializes the addonbar and injects required CSS and UI elements.
@@ -165,6 +190,60 @@ var AddAddonbar = {
 			background-repeat: repeat !important;
 			background-size: auto !important;
 			-moz-window-dragging: no-drag !important;
+		  }
+		  /* Panel unity — match the statusbar's single translucent textured
+		     layer over an opaque canvas base, without compounding fills. */
+		  #nav-bar,
+		  #TabsToolbar,
+		  #PersonalToolbar,
+		  #toolbar-menubar,
+		  sidebar-main,
+		  #sb2-main,
+		  #browser #sidebar-box,
+		  #sb2-toolbar {
+			-moz-appearance: none !important;
+			background-color: var(--firefoxcss-sidebar-end-bg-color, var(--in-content-page-background)) !important;
+			background-image: var(--firefoxcss-sidebar-texture) !important;
+			background-repeat: repeat !important;
+			background-size: auto !important;
+		  }
+		  /* The tab strip is a child of sidebar-main; keep it transparent so
+		     the collapsed tools/extensions area and the tab strip share one fill. */
+		  #vertical-tabs {
+			background-color: transparent !important;
+			background-image: none !important;
+		  }
+		  #TabsToolbar {
+			border-bottom: none !important;
+			box-shadow: none !important;
+		  }
+		  /* Give every panel the same opaque base the statusbar gets from
+		     body/canvas, then paint exactly one translucent textured layer. */
+		  #navigator-toolbox,
+		  #browser,
+		  #browserContainer,
+		  #sb2-box {
+			-moz-appearance: none !important;
+			background-color: rgb(28, 28, 28) !important;
+			background-image: none !important;
+		  }
+		  window,
+		  #main-window,
+		  #sidebar-container {
+			-moz-appearance: none !important;
+			background-color: transparent !important;
+			background-image: none !important;
+		  }
+		  /* Seamless joints: remove the content area's bottom border/shadow
+		     and the collapsed tab-strip/tools divider image. */
+		  #tabbrowser-tabbox,
+		  .browserContainer {
+			border-bottom: none !important;
+			box-shadow: none !important;
+			outline: none !important;
+		  }
+		  sidebar-main {
+			--sidebar-divider-image: none !important;
 		  }
 		  #addonbar toolbarbutton {
 			background-color: transparent !important;
@@ -275,6 +354,7 @@ document.addEventListener("DOMContentLoaded", () => AddAddonbar.init(), false);
 setTimeout(function () {
   AddAddonbar.init();
 }, 2000);
+setTimeout(flattenSidebarSeams, 1000);
 
 /**
  * NOTE: The previous version of this script re-fetched Firefox's own
